@@ -1,0 +1,17 @@
+assets/
+node_modules/
+scripts/
+dev/
+tests/
+.gitignore
+.npmignore
+.prettierrc.yaml
+.prettierignore
+eslint.config.js
+pnpm-lock.yaml
+prettier.config.js
+prod.tsconfig.json
+tsconfig.json
+tsup.config.ts
+*.tgz
+.env

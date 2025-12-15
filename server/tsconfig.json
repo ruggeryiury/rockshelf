@@ -1,0 +1,22 @@
+{
+  "compilerOptions": {
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "target": "ESNext",
+    "module": "ESNext",
+    "resolveJsonModule": true,
+    "noImplicitOverride": true,
+    "moduleResolution": "bundler",
+    "outDir": "dist",
+    "declaration": true,
+    "declarationMap": true,
+    "sourceMap": true,
+    "lib": ["ESNext"],
+    "forceConsistentCasingInFileNames": true,
+    "verbatimModuleSyntax": true
+    // "isolatedDeclarations": true
+  },
+  "include": ["src/**/*.ts", "dev/**/*.ts", "tests/**/*.ts"],
+  "exclude": ["node_modules"]
+}

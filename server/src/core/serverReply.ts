@@ -1,7 +1,8 @@
 import type { FastifyReply } from 'fastify'
 import type { LiteralUnion } from 'type-fest'
 import { isDev } from '../lib.exports'
-import { codeMap, type ReplyCodeNames, type DirectMessage, type HTTPCodes, type HTTPCodeNames, httpCodes } from './serverError'
+import { type ReplyCodeNames, type DirectMessage, type HTTPCodes, type HTTPCodeNames, httpCodes } from './serverError'
+import { codeMap } from '../core.exports'
 
 /**
  * Builds and sends stardardized replies to user's requests throughout the server routes.
@@ -42,12 +43,24 @@ export const serverReply = (reply: FastifyReply, codeOrMessage: LiteralUnion<Rep
     sendObj.set('statusFullName', statusFullName)
     sendObj.set('serverCode', serverCode)
     sendObj.set('message', message)
-  } else if (codeMap[codeOrMessage as ReplyCodeNames]) {
+  } else if (codeMap[codeOrMessage as ReplyCodeNames] && codeOrMessage in codeMap) {
     const statusCode = codeMap[codeOrMessage as ReplyCodeNames][0]
     const statusName = httpCodes[codeMap[codeOrMessage as ReplyCodeNames][0]]
     const statusFullName = `${statusCode} ${statusName}`
     const serverCode = codeOrMessage
     const message = codeMap[codeOrMessage as ReplyCodeNames][1]
+
+    sendObj.set('statusCode', statusCode)
+    sendObj.set('statusName', statusName)
+    sendObj.set('statusFullName', statusFullName)
+    sendObj.set('serverCode', serverCode)
+    sendObj.set('message', message)
+  } else {
+    const statusCode = 500
+    const statusName = 'Internal Server Error'
+    const statusFullName = `${statusCode} ${statusName}`
+    const serverCode = codeOrMessage
+    const message = codeOrMessage
 
     sendObj.set('statusCode', statusCode)
     sendObj.set('statusName', statusName)
@@ -66,5 +79,5 @@ export const serverReply = (reply: FastifyReply, codeOrMessage: LiteralUnion<Rep
 
   if (data) sendObj.set('data', data)
 
-  return reply.status(Array.isArray(codeOrMessage) ? codeOrMessage[0] : codeMap[codeOrMessage as keyof typeof codeMap][0]).send(Object.fromEntries(sendObj.entries()))
+  return reply.status(Array.isArray(codeOrMessage) ? codeOrMessage[0] : codeOrMessage in codeMap ? codeMap[codeOrMessage as keyof typeof codeMap][0] : 500).send(Object.fromEntries(sendObj.entries()))
 }

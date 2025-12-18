@@ -1,23 +1,29 @@
 import 'dotenv/config'
 import fastify from 'fastify'
-import { readEnv } from './lib.exports'
+import { isDev, readEnv } from './lib.exports'
 import { loggerConfig } from './config'
-import { Server } from 'socket.io'
-import { mongoDBConnectPlugin } from './core.exports'
+import { InitScripts } from './core.exports'
 import { initRoutes } from './core/initRoutes'
+import fastifyCors from '@fastify/cors'
+import fastifyMultipart from '@fastify/multipart'
 
-console.log('Rockshelf Server --- v0.0.1\n')
+// Initialize Fastify app
+export const app = fastify({ logger: loggerConfig, disableRequestLogging: true })
 
-export const app = fastify({ logger: loggerConfig })
+const dev = isDev()
+console.log(`Rockshelf Server --- v0.0.1\nInitializing server${dev && ' on development mode'}...\n`)
+
+await InitScripts.checkPublicFolder(dev)
+await InitScripts.checkTempFolder(dev)
+const __deps = await InitScripts.checkDeps()
+console.log(__deps)
+
 const { port, mongoDBURI } = readEnv()
 
-const io = new Server(app.server)
-io.on('connection', (socket) => {
-  console.log(socket)
-})
-
 const main = async () => {
-  await app.register(mongoDBConnectPlugin, { mongoDBURI })
+  await app.register(InitScripts.plugins.mongoDBConnect, { mongoDBURI })
+  await app.register(fastifyCors)
+  await app.register(fastifyMultipart)
 
   initRoutes()
 

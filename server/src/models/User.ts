@@ -1,6 +1,5 @@
 import { Document, Model, model, Schema } from 'mongoose'
 import { genSalt, hash } from 'bcryptjs'
-import { jwtSign } from '../lib.exports'
 
 export interface UserSchemaInput {
   /**
@@ -81,7 +80,7 @@ const userSchema = new Schema<UserSchemaInput, UserSchemaModel>(
       default: Date.now,
     },
   },
-  {}
+  { timestamps: true }
 )
 
 userSchema.pre('save', async function () {

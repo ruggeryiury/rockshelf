@@ -1,9 +1,10 @@
-import type { FastifyError, FastifyRequest } from 'fastify'
+import { type FastifyError, type FastifyRequest } from 'fastify'
 import type { LiteralUnion } from 'type-fest'
 import { MongoError } from 'mongodb'
 import { TokenError } from 'fast-jwt'
 import { ZodError } from 'zod'
 import { MongooseError } from 'mongoose'
+import { codeMap } from '../core.exports'
 
 export interface ServerErrorLogObject {
   /**
@@ -124,14 +125,6 @@ export const httpCodes = {
   511: 'Network Authentication Required',
 } as const
 
-// #region Code Map
-
-export const codeMap = {
-  // General codes
-  ok: [200, 'Request completed'],
-  err_unknown: [500, 'An unknown occurred, please try again later'],
-} as const
-
 export type ReplyCodeNames = keyof typeof codeMap
 export type HTTPCodes = keyof typeof httpCodes
 export type HTTPCodeNames = (typeof httpCodes)[HTTPCodes]
@@ -202,6 +195,7 @@ export class ServerError extends Error {
 
     // zod
     const isZodError = error instanceof ZodError
+
     const output = {
       isError,
       isServerError,

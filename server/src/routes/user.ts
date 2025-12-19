@@ -1,5 +1,5 @@
 import { app } from '..'
-import { userRegisterCtrl } from '../controller.exports'
+import { userLoginCtrl, userRegisterCtrl } from '../controller.exports'
 
 export const UserRouter = () => {
   app.route({
@@ -7,5 +7,12 @@ export const UserRouter = () => {
     url: '/user/register',
     logLevel: 'warn',
     ...userRegisterCtrl,
+  })
+
+  app.route({
+    method: ['POST', 'HEAD'],
+    url: '/user/login',
+    logLevel: 'warn',
+    ...userLoginCtrl,
   })
 }

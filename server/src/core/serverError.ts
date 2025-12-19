@@ -1,53 +1,5 @@
-import { type FastifyError, type FastifyRequest } from 'fastify'
 import type { LiteralUnion } from 'type-fest'
-import { MongoError } from 'mongodb'
-import { TokenError } from 'fast-jwt'
-import { ZodError } from 'zod'
-import { MongooseError } from 'mongoose'
 import { codeMap } from '../core.exports'
-
-export interface ServerErrorLogObject {
-  /**
-   * Tells if the error is an instance of the generic `Error` class from NodeJS.
-   */
-  isError: boolean
-  /**
-   * Tells if the error is an instance of `ServerError` (custom error class used on this server).
-   */
-  isServerError: boolean
-  /**
-   * Tells if the error is an instance of `EvalError`.
-   */
-  isEvalError: boolean
-  /**
-   * Tells if the error is an instance of `TypeError`.
-   */
-  isTypeError: boolean
-  /**
-   * Tells if the error is an instance of `RangeError`.
-   */
-  isRangeError: boolean
-  /**
-   * Tells if the error is an instance of `SyntaxError`.
-   */
-  isSyntaxError: boolean
-  /**
-   * Tells if the error is an instance of `MongoError` (imported from `mongodb`).
-   */
-  isMongoError: boolean
-  /**
-   * Tells if the error is an instance of `TokenError` (imported from `fast-jwt`).
-   */
-  isTokenError: boolean
-  /**
-   * Tells if the error is an instance of `TokenError` (imported from `mongoose`).
-   */
-  isMongooseError: boolean
-  /**
-   * Tells if the error is an instance of `ZodError` (imported from `zod`).
-   */
-  isZodError: boolean
-}
 
 // #region Enums
 
@@ -167,48 +119,5 @@ export class ServerError extends Error {
         this.message = this.message.replaceAll(`\{\{${key}\}\}`, messageValues[key])
       }
     }
-  }
-
-  /**
-   * A function that helps identifying the classes behind errors on a route error handler function, returning an object with commam checked error instances.
-   * - - - -
-   * @param {FastifyError} error The fastify instance of the error.
-   * @param {FastifyRequest} [req] `OPTIONAL` By giving the fastify request instance, it automatically logs the error on the console.
-   * @returns {ServerErrorLogObject}
-   */
-  static logErrors(error: FastifyError, req?: FastifyRequest): ServerErrorLogObject {
-    const isError = error instanceof Error
-    const isServerError = error instanceof ServerError
-    const isEvalError = error instanceof EvalError
-    const isTypeError = error instanceof TypeError
-    const isRangeError = error instanceof RangeError
-    const isSyntaxError = error instanceof SyntaxError
-
-    // mongodb
-    const isMongoError = error instanceof MongoError
-
-    // fast-jwt
-    const isTokenError = error instanceof TokenError
-
-    // mongoose
-    const isMongooseError = error instanceof MongooseError
-
-    // zod
-    const isZodError = error instanceof ZodError
-
-    const output = {
-      isError,
-      isServerError,
-      isEvalError,
-      isTypeError,
-      isRangeError,
-      isSyntaxError,
-      isMongoError,
-      isTokenError,
-      isMongooseError,
-      isZodError,
-    }
-    if (req) req.log.error(output, 'An error occurred')
-    return output
   }
 }

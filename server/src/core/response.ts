@@ -1,54 +1,79 @@
-import type { FastifyReply } from 'fastify'
+import type { FastifyError, FastifyReply } from 'fastify'
 import type { LiteralUnion } from 'type-fest'
 import { isDev } from '../lib.exports'
 import { type ReplyCodeNames, type DirectMessage, type HTTPCodes, type HTTPCodeNames, httpCodes } from './serverError'
-import { codeMap } from '../core.exports'
+import { codeMap, ErrorHandlers, type ErrorDiagnosticObject } from '../core.exports'
+import { useDefaultOptions } from '../../../../use-default-options/dist'
+
+export interface ServerReplyOptions {
+  /**
+   * A code of the error (status code and message will be retrieved from the internal code map), or an array with the status code and the custom message.
+   */
+  code: LiteralUnion<ReplyCodeNames, string> | DirectMessage
+  /**
+   * `OPTIONAL` Values that will be placed on the reply JSON object.
+   */
+  data?: Record<string, any> | null
+  /**
+   * `OPTIONAL` An object with key values that can be replaced parameters inside the message string by using `{{paramName}}` flags inside the string.
+   */
+  messageValues?: Record<string, string> | null
+}
 
 /**
  * Builds and sends stardardized replies to user's requests throughout the server routes.
  * - - - -
  * @param {FastifyReply} reply The reply instance of the request.
- * @param {LiteralUnion<ReplyCodeNames, string> | DirectMessage} codeOrMessage A code of the error (status code and message will be retrieved from the internal code map), or an array with the status code and the custom message.
- * @param {Record<string, any> | null} [data] `OPTIONAL` Values that will be placed on the reply JSON object.
- * @param {Record<string, string>} [messageValues] `OPTIONAL` An object with key values that can be replaced parameters inside the message string by using `{{paramName}}` flags inside the string.
+ * @param {ServerReplyOptions} options
  * @returns {FastifyReply}
  */
-export const serverReply = (reply: FastifyReply, codeOrMessage: LiteralUnion<ReplyCodeNames, string> | DirectMessage, data?: Record<string, any> | null, messageValues?: Record<string, string>): FastifyReply => {
-  const isExplicitUnknownError = codeOrMessage === 'err_unknown'
-  const sendDataOnError = isExplicitUnknownError && isDev()
+export const response = (reply: FastifyReply, options: ServerReplyOptions): FastifyReply => {
+  const { code, data, messageValues } = useDefaultOptions<ServerReplyOptions>(
+    {
+      code: 'err_unknown',
+      data: null,
+      messageValues: null,
+    },
+    options
+  )
 
   const sendObj = new Map()
+
+  const isExplicitUnknownError = code === 'err_unknown'
+  const sendErrorDiag = isExplicitUnknownError && isDev()
 
   if (isExplicitUnknownError) {
     sendObj.set('statusCode', 500)
     sendObj.set('statusName', 'Internal Server Error')
     sendObj.set('statusFullName', '500 Internal Server Error')
-    sendObj.set('serverCode', codeOrMessage)
+    sendObj.set('serverCode', code)
     sendObj.set('message', isDev() ? `An unknown error occurred${data ? '' : ', send the error object as data for more details'}` : 'An unknown error occurred, please try again later')
 
-    if (sendDataOnError && data) sendObj.set('data', data)
+    if (sendErrorDiag && data) {
+      sendObj.set('error', data as FastifyError)
+      sendObj.set('errDebug', ErrorHandlers.diagnoseErrors(data as FastifyError))
+    }
 
     return reply.status(500).send(Object.fromEntries(sendObj.entries()))
   }
 
-  if (Array.isArray(codeOrMessage)) {
-    const statusCode = codeOrMessage[0]
-    const statusName = httpCodes[codeOrMessage[0]]
+  if (Array.isArray(code)) {
+    const statusCode = code[0]
+    const statusName = httpCodes[code[0]]
     const statusFullName = `${statusCode} ${statusName}`
     const serverCode = 'UNKNOWN'
-    const message = codeOrMessage[1]
+    const message = code[1]
 
     sendObj.set('statusCode', statusCode)
     sendObj.set('statusName', statusName)
     sendObj.set('statusFullName', statusFullName)
     sendObj.set('serverCode', serverCode)
     sendObj.set('message', message)
-  } else if (codeMap[codeOrMessage as ReplyCodeNames] && codeOrMessage in codeMap) {
-    const statusCode = codeMap[codeOrMessage as ReplyCodeNames][0]
-    const statusName = httpCodes[codeMap[codeOrMessage as ReplyCodeNames][0]]
+  } else if (codeMap[code as ReplyCodeNames]) {
+    const [statusCode, message] = codeMap[code as ReplyCodeNames]
+    const statusName = httpCodes[statusCode]
     const statusFullName = `${statusCode} ${statusName}`
-    const serverCode = codeOrMessage
-    const message = codeMap[codeOrMessage as ReplyCodeNames][1]
+    const serverCode = code
 
     sendObj.set('statusCode', statusCode)
     sendObj.set('statusName', statusName)
@@ -59,8 +84,8 @@ export const serverReply = (reply: FastifyReply, codeOrMessage: LiteralUnion<Rep
     const statusCode = 500
     const statusName = 'Internal Server Error'
     const statusFullName = `${statusCode} ${statusName}`
-    const serverCode = codeOrMessage
-    const message = codeOrMessage
+    const serverCode = code
+    const message = code
 
     sendObj.set('statusCode', statusCode)
     sendObj.set('statusName', statusName)
@@ -79,5 +104,5 @@ export const serverReply = (reply: FastifyReply, codeOrMessage: LiteralUnion<Rep
 
   if (data) sendObj.set('data', data)
 
-  return reply.status(Array.isArray(codeOrMessage) ? codeOrMessage[0] : codeOrMessage in codeMap ? codeMap[codeOrMessage as keyof typeof codeMap][0] : 500).send(Object.fromEntries(sendObj.entries()))
+  return reply.status(Array.isArray(code) ? code[0] : code in codeMap ? codeMap[code as keyof typeof codeMap][0] : 500).send(Object.fromEntries(sendObj.entries()))
 }

@@ -16,7 +16,6 @@ console.log(`Rockshelf Server --- v0.0.1\nInitializing server${dev && ' on devel
 await InitScripts.checkPublicFolder(dev)
 await InitScripts.checkTempFolder(dev)
 const __deps = await InitScripts.checkDeps()
-console.log(__deps)
 
 const { port, mongoDBURI } = readEnv()
 

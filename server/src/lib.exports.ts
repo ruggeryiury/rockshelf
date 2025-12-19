@@ -1,5 +1,4 @@
 export * from './lib/fastify'
 export * from './lib/isDev'
 export * from './lib/jwt'
-export * from './lib/myObject'
 export * from './lib/readEnv'

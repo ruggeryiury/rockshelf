@@ -1,6 +1,7 @@
 import fastifyPlugin from 'fastify-plugin'
 import mongoose from 'mongoose'
 import { DirPath, execAsync, FilePath } from 'node-lib'
+import { app } from '..'
 
 interface MongoDbConnectPluginOptions {
   /**
@@ -16,11 +17,11 @@ export class InitScripts {
   static async checkPublicFolder(dev: boolean): Promise<void> {
     const publicDir = DirPath.of('public')
     if (publicDir.exists) {
-      return console.log('CORE_INIT: Public folder already exists, skipping folder creation')
+      return app.log.info('INIT_SCRIPTS: Public folder already exists, skipping folder creation')
     }
 
     await publicDir.mkDir()
-    return console.log(`CORE_INIT: Public folder created successfully. Path: ${publicDir.path}`)
+    return app.log.info(`INIT_SCRIPTS: Public folder created successfully. Path: ${publicDir.path}`)
   }
 
   static async checkTempFolder(dev: boolean): Promise<void> {
@@ -30,20 +31,21 @@ export class InitScripts {
       const allFiles = await tempFolder.readDir(true)
 
       if (allFiles.length === 0) {
-        return console.log(`CORE_INIT: No files on temp folder`)
+        return app.log.info(`INIT_SCRIPTS: No files on temp folder`)
       }
 
       for (const file of allFiles) {
         await FilePath.of(file).delete()
       }
 
-      return console.log(`${allFiles.length} temporary file${allFiles.length !== 1 ? 's' : ''} deleted`)
+      return app.log.info(`INIT_SCRIPTS: ${allFiles.length} temporary file${allFiles.length !== 1 ? 's' : ''} deleted`)
     }
 
-    return console.log(`Temp folder created successfully. Path: ${tempFolder.path}\n`)
+    return app.log.info(`INIT_SCRIPTS: Temp folder created successfully. Path: ${tempFolder.path}`)
   }
 
   static async checkDeps() {
+    app.log.info('INIT_SCRIPTS: Checking server dependencies...')
     const node = process.versions.node
 
     const python = await execAsync('python --version')
@@ -59,6 +61,7 @@ export class InitScripts {
     }
 
     const pipList = await execAsync('pip list')
+
     return {
       node,
       python: python.stdout.trim().split(' ')[1],
@@ -83,13 +86,12 @@ export class InitScripts {
      * @param {FastifyInstance} instance - The Fastify instance the plugin is registered on.
      * @param options - Plugin options.
      * @param options.mongoDBURI - MongoDB connection string used by Mongoose.
-     *
      * @throws {Error} If Mongoose fails to establish a connection.
      */
     mongoDBConnect: fastifyPlugin<MongoDbConnectPluginOptions>(async (app, data) => {
-      app.log.info('Trying to connect to MongoDB...')
-      mongoose.connection.on('connected', () => app.log.info(`MongoDB database connected successfully`))
-      mongoose.connection.on('disconnected', () => app.log.warn(`MongoDB database disconnected`))
+      app.log.info('DB_CONNECT: Trying to connect to MongoDB...')
+      mongoose.connection.on('connected', () => app.log.info(`DB_CONNECT: MongoDB database connected successfully`))
+      mongoose.connection.on('disconnected', () => app.log.warn(`DB_CONNECT: MongoDB database disconnected`))
       await mongoose.connect(data.mongoDBURI)
     }),
   } as const

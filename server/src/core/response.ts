@@ -4,6 +4,7 @@ import { isDev } from '../lib.exports'
 import { type ReplyCodeNames, type DirectMessage, type HTTPCodes, type HTTPCodeNames, httpCodes } from './serverError'
 import { codeMap, ErrorHandlers, type ErrorDiagnosticObject } from '../core.exports'
 import { useDefaultOptions } from '../../../../use-default-options/dist'
+import { MyObject } from 'node-lib'
 
 export interface ServerReplyOptions {
   /**
@@ -20,14 +21,23 @@ export interface ServerReplyOptions {
   messageValues?: Record<string, string> | null
 }
 
+export interface StandardResponseObject<T extends Record<string, any> | undefined = undefined> {
+  statusCode: number
+  statusName: string
+  statusFullName: string
+  serverCode: string
+  message: string
+  data?: T
+}
+
 /**
  * Builds and sends stardardized replies to user's requests throughout the server routes.
  * - - - -
  * @param {FastifyReply} reply The reply instance of the request.
  * @param {ServerReplyOptions} options
- * @returns {FastifyReply}
+ * @returns {true}
  */
-export const response = (reply: FastifyReply, options: ServerReplyOptions): FastifyReply => {
+export const response = (reply: FastifyReply, options: ServerReplyOptions): true => {
   const { code, data, messageValues } = useDefaultOptions<ServerReplyOptions>(
     {
       code: 'err_unknown',
@@ -37,24 +47,24 @@ export const response = (reply: FastifyReply, options: ServerReplyOptions): Fast
     options
   )
 
-  const sendObj = new Map()
+  const res = new MyObject<StandardResponseObject>()
 
   const isExplicitUnknownError = code === 'err_unknown'
   const sendErrorDiag = isExplicitUnknownError && isDev()
 
   if (isExplicitUnknownError) {
-    sendObj.set('statusCode', 500)
-    sendObj.set('statusName', 'Internal Server Error')
-    sendObj.set('statusFullName', '500 Internal Server Error')
-    sendObj.set('serverCode', code)
-    sendObj.set('message', isDev() ? `An unknown error occurred${data ? '' : ', send the error object as data for more details'}` : 'An unknown error occurred, please try again later')
+    res.set('statusCode', 500)
+    res.set('statusName', 'Internal Server Error')
+    res.set('statusFullName', '500 Internal Server Error')
+    res.set('serverCode', code)
+    res.set('message', isDev() ? `An unknown error occurred${data ? '' : ', send the error object as data for more details'}` : 'An unknown error occurred, please try again later')
 
     if (sendErrorDiag && data) {
-      sendObj.set('error', data as FastifyError)
-      sendObj.set('errDebug', ErrorHandlers.diagnoseErrors(data as FastifyError))
+      res.set('error', data as FastifyError)
+      res.set('errDebug', ErrorHandlers.diagnoseErrors(data as FastifyError))
     }
-
-    return reply.status(500).send(Object.fromEntries(sendObj.entries()))
+    reply.status(500).send(res.toObject())
+    return true
   }
 
   if (Array.isArray(code)) {
@@ -64,22 +74,22 @@ export const response = (reply: FastifyReply, options: ServerReplyOptions): Fast
     const serverCode = 'UNKNOWN'
     const message = code[1]
 
-    sendObj.set('statusCode', statusCode)
-    sendObj.set('statusName', statusName)
-    sendObj.set('statusFullName', statusFullName)
-    sendObj.set('serverCode', serverCode)
-    sendObj.set('message', message)
+    res.set('statusCode', statusCode)
+    res.set('statusName', statusName)
+    res.set('statusFullName', statusFullName)
+    res.set('serverCode', serverCode)
+    res.set('message', message)
   } else if (codeMap[code as ReplyCodeNames]) {
     const [statusCode, message] = codeMap[code as ReplyCodeNames]
     const statusName = httpCodes[statusCode]
     const statusFullName = `${statusCode} ${statusName}`
     const serverCode = code
 
-    sendObj.set('statusCode', statusCode)
-    sendObj.set('statusName', statusName)
-    sendObj.set('statusFullName', statusFullName)
-    sendObj.set('serverCode', serverCode)
-    sendObj.set('message', message)
+    res.set('statusCode', statusCode)
+    res.set('statusName', statusName)
+    res.set('statusFullName', statusFullName)
+    res.set('serverCode', serverCode)
+    res.set('message', message)
   } else {
     const statusCode = 500
     const statusName = 'Internal Server Error'
@@ -87,22 +97,23 @@ export const response = (reply: FastifyReply, options: ServerReplyOptions): Fast
     const serverCode = code
     const message = code
 
-    sendObj.set('statusCode', statusCode)
-    sendObj.set('statusName', statusName)
-    sendObj.set('statusFullName', statusFullName)
-    sendObj.set('serverCode', serverCode)
-    sendObj.set('message', message)
+    res.set('statusCode', statusCode)
+    res.set('statusName', statusName)
+    res.set('statusFullName', statusFullName)
+    res.set('serverCode', serverCode)
+    res.set('message', message)
   }
 
   if (messageValues) {
     const allKeys = Object.keys(messageValues)
     for (const key of allKeys) {
-      const oldMessage = sendObj.get('message') as string
-      sendObj.set('message', oldMessage.replaceAll(`\{\{${key}\}\}`, messageValues[key]))
+      const oldMessage = res.get('message') as string
+      res.set('message', oldMessage.replaceAll(`\{\{${key}\}\}`, messageValues[key]))
     }
   }
 
-  if (data) sendObj.set('data', data)
+  if (data) res.set('data', data)
 
-  return reply.status(Array.isArray(code) ? code[0] : code in codeMap ? codeMap[code as keyof typeof codeMap][0] : 500).send(Object.fromEntries(sendObj.entries()))
+  reply.status(Array.isArray(code) ? code[0] : code in codeMap ? codeMap[code as keyof typeof codeMap][0] : 500).send(res.toObject())
+  return true
 }

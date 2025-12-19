@@ -3,6 +3,7 @@ import bcrypt, { genSalt, hash } from 'bcryptjs'
 import { randomByteFromRanges } from 'node-lib'
 import { ServerError } from '../core.exports'
 import { jwtSign } from '../lib.exports'
+import { v4 } from 'uuid'
 
 export interface UserSchemaInput {
   /**
@@ -33,6 +34,10 @@ export interface UserSchemaInput {
    * The code which can verify your account. It's generated automatically on each new registry.
    */
   emailVerificationCode: string
+  /**
+   * The code that is embed to the e-mail auto-verification link as an extra security step
+   */
+  emailAutoVerificationCode: string
   /**
    * Tells when the user was originally created.
    */
@@ -102,6 +107,10 @@ const userSchema = new Schema<UserSchemaInput, UserSchemaModel>(
     emailVerificationCode: {
       type: String,
       default: `${randomByteFromRanges(4, ['uppercase'])}-${randomByteFromRanges(4, ['uppercase'])}`,
+    },
+    emailAutoVerificationCode: {
+      type: String,
+      default: v4(),
     },
     createdAt: {
       type: Schema.Types.Date,

@@ -11,7 +11,10 @@ export const userRegisterBodySchema = zod.object({
     .string()
     .min(8)
     .max(32)
-    .regex(/[A-Z|a-z|0-9]/),
+    .regex(/[A-Z]/)
+    .regex(/[a-z]/)
+    .regex(/[0-9]/)
+    .regex(/[^A-Za-z0-9]/),
 })
 
 export interface UserRegister {

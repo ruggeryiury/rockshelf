@@ -22,24 +22,8 @@ export const evalBooleanString = (val: string): boolean => ['true', '1'].include
 /**
  * Determines whether the application is running in development mode.
  *
- * This function reads the `DEV` environment variable and evaluates it
- * using {@link evalBooleanString}. If the variable is not defined,
- * the function defaults to `false`.
- *
- * Accepted truthy values for `DEV` are `"true"` and `"1"` (case-insensitive).
+ * This function reads the `NODE_ENV` environment variable and evaluates it. If the variable is not defined, the function defaults to `false`.
  * - - - -
- * @returns {boolean} `true` if `process.env.DEV` represents a truthy value, otherwise `false`.
- * - - - -
- * @example
- * // process.env.DEV = 'true'
- * isDev() // true
- *
- * @example
- * // process.env.DEV = '1'
- * isDev() // true
- *
- * @example
- * // process.env.DEV is undefined
- * isDev() // false
+ * @returns {boolean} `true` if `process.env.NODE_ENV` is `"development"`, otherwise `false`.
  */
-export const isDev = (): boolean => (process.env.DEV ? evalBooleanString(process.env.DEV) : false)
+export const isDev = (): boolean => process.env.NODE_ENV === 'development'

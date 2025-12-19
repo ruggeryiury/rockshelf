@@ -75,34 +75,22 @@ export class ErrorHandlers {
   /**
    * Detects syntax and content errors on routes that expects a JSON body.
    */
-  static json(error: FastifyError, req: FastifyRequest, reply: FastifyReply) {
-    if (error.code === 'FST_ERR_CTP_EMPTY_JSON_BODY') {
-      response(reply, { code: 'err_empty_json_body' })
-      return true
-    } else if (error.code === 'FST_ERR_CTP_INVALID_JSON_BODY' || error instanceof SyntaxError) {
-      response(reply, { code: 'err_syntax_json_body' })
-      return true
-    }
-    if (!req.body) {
-      response(reply, { code: 'err_route_requires_json_body' })
-      return true
-    }
+  static json(error: FastifyError, req: FastifyRequest, reply: FastifyReply): true | undefined {
+    if (error.code === 'FST_ERR_CTP_EMPTY_JSON_BODY') return response(reply, { code: 'err_empty_json_body' })
+    else if (error.code === 'FST_ERR_CTP_INVALID_JSON_BODY' || error instanceof SyntaxError) return response(reply, { code: 'err_syntax_json_body' })
+    if (!req.body) return response(reply, { code: 'err_route_requires_json_body' })
   }
   /**
    * Handlers explicit `ServerError` throughout the route handler.
    */
-  static generic(error: FastifyError, reply: FastifyReply) {
-    if (error instanceof ServerError) {
-      response(reply, { code: error.serverErrorCode, data: error.data, messageValues: error.messageValues })
-      return true
-    }
+  static generic(error: FastifyError, reply: FastifyReply): true | undefined {
+    if (error instanceof ServerError) return response(reply, { code: error.serverErrorCode, data: error.data, messageValues: error.messageValues })
   }
 
   /**
    * Returns a fallback generic server error reply when no other error conditions are met.
    */
-  static unknown(error: FastifyError, reply: FastifyReply) {
-    response(reply, { code: 'err_unknown', data: error })
-    return true
+  static unknown(error: FastifyError, reply: FastifyReply): true | undefined {
+    return response(reply, { code: 'err_unknown', data: error })
   }
 }

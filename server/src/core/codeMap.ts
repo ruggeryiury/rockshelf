@@ -35,7 +35,7 @@ export const codeMap = {
   err_user_register_password_toosmall: [400, 'Provided password must have at least 8 characters'],
   err_user_register_username_invalid_type1: [400, 'Provided username is not valid due to forbidden symbols: # % +'],
   err_user_register_username_invalid_type2: [400, "Provided username can't start or end with period, underscore, or hyphen"],
-  err_user_register_username_nospace: [400, "Provided username can't have space characters"],
+  err_user_register_username_nospaceallowed: [400, "Provided username can't have space characters"],
   err_user_register_username_toobig: [400, "Provided username can't have more than 32 characters"],
   err_user_register_username_toosmall: [400, 'Provided username must have at least 3 characters'],
 } as const

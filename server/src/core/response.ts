@@ -35,9 +35,9 @@ export interface StandardResponseObject<T extends Record<string, any> | undefine
  * - - - -
  * @param {FastifyReply} reply The reply instance of the request.
  * @param {ServerReplyOptions} options
- * @returns {true}
+ * @returns {FastifyReply}
  */
-export const response = (reply: FastifyReply, options: ServerReplyOptions): true => {
+export const response = (reply: FastifyReply, options: ServerReplyOptions): FastifyReply => {
   const { code, data, messageValues } = useDefaultOptions<ServerReplyOptions>(
     {
       code: 'err_unknown',
@@ -63,8 +63,7 @@ export const response = (reply: FastifyReply, options: ServerReplyOptions): true
       res.set('error', data as FastifyError)
       res.set('errDebug', ErrorHandlers.diagnoseErrors(data as FastifyError))
     }
-    reply.status(500).send(res.toObject())
-    return true
+    return reply.status(500).send(res.toObject())
   }
 
   if (Array.isArray(code)) {
@@ -114,6 +113,5 @@ export const response = (reply: FastifyReply, options: ServerReplyOptions): true
 
   if (data) res.set('data', data)
 
-  reply.status(Array.isArray(code) ? code[0] : code in codeMap ? codeMap[code as keyof typeof codeMap][0] : 500).send(res.toObject())
-  return true
+  return reply.status(Array.isArray(code) ? code[0] : code in codeMap ? codeMap[code as keyof typeof codeMap][0] : 500).send(res.toObject())
 }

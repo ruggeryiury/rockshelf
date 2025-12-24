@@ -12,7 +12,7 @@ export const codeMap = {
   err_login_password_validation: [401, "The provided password and the registered user's password don't match"],
   err_login_user_inactive: [401, 'The registered user has been deactivated and is unable to login'],
   err_login_user_email_unverified: [401, "The registered user's email address has not been verified yet"],
-  err_login_user_notfound: [400, 'The provided username {{username}} is not registered'],
+  err_login_user_notfound: [400, 'The provided e-mail "{{email}}" is not registered as an user'],
   err_user_login_no_body: [400, 'No body response provided for user login validation route'],
   err_user_login_no_password: [400, 'No password provided for user login validation'],
   err_user_login_no_username: [400, 'No username provided for user login validation'],

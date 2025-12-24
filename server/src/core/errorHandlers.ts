@@ -74,7 +74,7 @@ export class ErrorHandlers {
   /**
    * Detects syntax and content errors on routes that expects a JSON body.
    */
-  static json(error: FastifyError, req: FastifyRequest, reply: FastifyReply): true | undefined {
+  static json(error: FastifyError, req: FastifyRequest, reply: FastifyReply): FastifyReply | undefined {
     if (error.code === 'FST_ERR_CTP_EMPTY_JSON_BODY') return response(reply, { code: 'err_empty_json_body' })
     else if (error.code === 'FST_ERR_CTP_INVALID_JSON_BODY' || error instanceof SyntaxError) return response(reply, { code: 'err_syntax_json_body' })
     if (!req.body) return response(reply, { code: 'err_route_requires_json_body' })
@@ -82,14 +82,14 @@ export class ErrorHandlers {
   /**
    * Handlers explicit `ServerError` throughout the route handler.
    */
-  static generic(error: FastifyError, reply: FastifyReply): true | undefined {
+  static generic(error: FastifyError, reply: FastifyReply): FastifyReply | undefined {
     if (error instanceof ServerError) return response(reply, { code: error.serverErrorCode, data: error.data, messageValues: error.messageValues })
   }
 
   /**
    * Returns a fallback generic server error reply when no other error conditions are met.
    */
-  static unknown(error: FastifyError, reply: FastifyReply): true | undefined {
+  static unknown(error: FastifyError, reply: FastifyReply): FastifyReply {
     return response(reply, { code: 'err_unknown', data: error })
   }
 
@@ -99,7 +99,7 @@ export class ErrorHandlers {
   static route = {
     // #region user/login
 
-    userLogin: (error, req, reply) => {
+    userLogin: (error, _, reply) => {
       if (error instanceof ZodError) {
         const issue = error.issues[0]
         if (issue.code === 'invalid_type') {
@@ -133,7 +133,7 @@ export class ErrorHandlers {
 
     // #region user/register
 
-    userRegister: (error, req, reply) => {
+    userRegister: (error, _, reply) => {
       if (error instanceof ZodError) {
         const issue = error.issues[0]
         if (issue.code === 'invalid_type') {
@@ -187,5 +187,5 @@ export class ErrorHandlers {
         return response(reply, { code: 'err_user_register_duplicated_username', messageValues: { username } })
       }
     },
-  } as Record<string, (error: FastifyError, req: FastifyRequest, reply: FastifyReply) => true | undefined>
+  } as Record<string, (error: FastifyError, req: FastifyRequest, reply: FastifyReply) => FastifyReply | undefined>
 }

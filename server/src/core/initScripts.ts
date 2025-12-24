@@ -16,14 +16,23 @@ export class InitScripts {
    */
   static async checkPublicFolder(dev: boolean): Promise<void> {
     const publicDir = DirPath.of('public')
-    if (publicDir.exists) {
-      return app.log.info('INIT_SCRIPTS: Public folder already exists, skipping folder creation')
+    const artworkDir = publicDir.gotoDir('artwork')
+    const packagesDir = publicDir.gotoDir('packages')
+
+    if (!publicDir.exists) {
+      app.log.info('INIT_SCRIPTS: Public folder not found, creating public folder template...')
+      await publicDir.mkDir()
+      await artworkDir.mkDir()
+      await packagesDir.mkDir()
+      return app.log.info(`INIT_SCRIPTS: Public folder created successfully. Path: ${publicDir.path}`)
     }
 
-    await publicDir.mkDir()
-    return app.log.info(`INIT_SCRIPTS: Public folder created successfully. Path: ${publicDir.path}`)
+    return app.log.info(`INIT_SCRIPTS: Public folder exists, skipping folder template creation.`)
   }
 
+  /**
+   * Checks the existence of a `temp` folder (creates one if it doesn't) and cleans the folder.
+   */
   static async checkTempFolder(dev: boolean): Promise<void> {
     const tempFolder = DirPath.of('temp')
 
@@ -35,7 +44,7 @@ export class InitScripts {
       }
 
       for (const file of allFiles) {
-        await FilePath.of(file).delete()
+        if (file instanceof FilePath) await file.delete()
       }
 
       return app.log.info(`INIT_SCRIPTS: ${allFiles.length} temporary file${allFiles.length !== 1 ? 's' : ''} deleted`)

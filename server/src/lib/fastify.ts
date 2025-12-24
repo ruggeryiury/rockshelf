@@ -1,5 +1,6 @@
 import type { FastifyError, FastifyInstance, FastifyReply, FastifyRequest } from 'fastify'
 import type { FilePath } from 'node-lib'
+import type { Promisable } from 'type-fest'
 
 export interface ServerHandlerFnOpts {
   body?: Record<string, any>
@@ -20,11 +21,11 @@ export type ServerReply<T extends ServerHandlerFnOpts = {}> = FastifyReply<{
 }>
 
 export interface ServerHandler<T extends ServerHandlerFnOpts = {}> {
-  (this: FastifyInstance, req: ServerRequest<T>, reply: ServerReply<T>): any
+  (this: FastifyInstance, req: ServerRequest<T>, reply: ServerReply<T>): Promisable<FastifyReply>
 }
 
 export interface ServerErrorHandler<T extends ServerHandlerFnOpts = {}> {
-  (this: FastifyInstance, error: FastifyError, req: ServerRequest<T>, reply: ServerReply<T>): any
+  (this: FastifyInstance, error: FastifyError, req: ServerRequest<T>, reply: ServerReply<T>): Promisable<FastifyReply | undefined>
 }
 
 export interface ServerAuthHandler<T extends ServerHandlerFnOpts = {}> {

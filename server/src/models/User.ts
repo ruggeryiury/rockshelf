@@ -2,7 +2,7 @@ import { Document, Model, model, Schema } from 'mongoose'
 import bcrypt, { genSalt, hash } from 'bcryptjs'
 import { randomByteFromRanges } from 'node-lib'
 import { ServerError } from '../core.exports'
-import { jwtSign } from '../lib.exports'
+import { jwtSign, jwtVerify } from '../lib.exports'
 
 export interface UserSchemaInput {
   /**
@@ -10,9 +10,13 @@ export interface UserSchemaInput {
    */
   email: string
   /**
-   * The username registered by the user.
+   * The username registered by the user, used on URLs.
    */
   username: string
+  /**
+   * The name displayed of the user's profile.
+   */
+  profileName: string
   /**
    * The hashed password of the user.
    */
@@ -21,10 +25,6 @@ export interface UserSchemaInput {
    * Tells if the user registry is active
    */
   isActive: boolean
-  /**
-   * Tells if the user has verified its email address
-   */
-  isEmailVerified: boolean
   /**
    * Tells if the user registered has admin privileges
    */
@@ -49,7 +49,7 @@ export interface UserSchemaDocument extends UserSchemaInput, Document {
    * Performs a case-insensitive e-mail and username validation for new user registry.
    * - - - -
    */
-  checkForCaseInsensitivity(): Promise<true>
+  checkRegistryCaseInsensitive(): Promise<true>
   /**
    * Signs a token for the user with the `ObjectID` of the user for user requests validation.
    * - - - -
@@ -68,6 +68,13 @@ export interface UserSchemaModel extends Model<UserSchemaDocument> {
    * @throws {ServerError} When no user is found using the provided e-mail, or when the provided password doesn't match.
    */
   findByCredentials(email: string, password: string): Promise<UserSchemaDocument>
+  /**
+   * Finds a `User` registry by it's token.
+   * - - - -
+   * @param {string | undefined} token The user toke.
+   * @returns {Promise<UserSchemaDocument>}
+   */
+  findByToken(token: string): Promise<UserSchemaDocument>
 }
 
 const userSchema = new Schema<UserSchemaInput, UserSchemaModel>(
@@ -82,6 +89,10 @@ const userSchema = new Schema<UserSchemaInput, UserSchemaModel>(
       required: true,
       unique: true,
     },
+    profileName: {
+      type: String,
+      required: true,
+    },
     password: {
       type: String,
       required: true,
@@ -91,17 +102,9 @@ const userSchema = new Schema<UserSchemaInput, UserSchemaModel>(
       type: Boolean,
       default: true,
     },
-    isEmailVerified: {
-      type: Boolean,
-      default: false,
-    },
     isAdmin: {
       type: Boolean,
       default: false,
-    },
-    emailVerificationCode: {
-      type: String,
-      default: `${randomByteFromRanges(4, ['uppercase'])}-${randomByteFromRanges(4, ['uppercase'])}`,
     },
     createdAt: {
       type: Schema.Types.Date,
@@ -115,7 +118,7 @@ const userSchema = new Schema<UserSchemaInput, UserSchemaModel>(
   {
     timestamps: true,
     methods: {
-      async checkForCaseInsensitivity() {
+      async checkRegistryCaseInsensitive() {
         const users = User.find().select({ username: 1, email: 1 })
         let invalid: boolean | 'username' | 'email' = false
         for await (const user of users) {
@@ -144,7 +147,13 @@ const userSchema = new Schema<UserSchemaInput, UserSchemaModel>(
         const isMatch = await bcrypt.compare(password, user.password)
         if (!isMatch) throw new ServerError('err_login_password_validation')
         if (!user.isActive) throw new ServerError('err_login_user_inactive')
-        if (!user.isEmailVerified) throw new ServerError('err_login_user_email_unverified')
+        return user
+      },
+      async findByToken(token: string) {
+        const decoded = jwtVerify(token)
+        const user = await this.findOne({ _id: decoded._id })
+        if (!user) throw new ServerError('err_invalid_auth')
+        if (!user.isActive) throw new ServerError('err_login_user_inactive')
         return user
       },
     },
@@ -159,4 +168,4 @@ userSchema.pre('save', async function () {
   this.updatedAt = new Date()
 })
 
-export const User = model<UserSchemaInput, UserSchemaModel>('User', userSchema)
+export const User = model<UserSchemaInput, UserSchemaModel>('User', userSchema, 'users')

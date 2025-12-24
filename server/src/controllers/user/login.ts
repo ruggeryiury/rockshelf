@@ -1,7 +1,8 @@
-import zod, { ZodError, type infer as ZodInfer } from 'zod'
+import zod, { type infer as ZodInfer } from 'zod'
 import type { ServerErrorHandler, ServerHandler } from '../../lib.exports'
 import { ErrorHandlers, response } from '../../core.exports'
 import { User } from '../../models/User'
+import { userLoginErrorHandler } from './login.error'
 
 export const userLoginBodySchema = zod.object({
   email: zod.email(),
@@ -21,10 +22,5 @@ const handler: ServerHandler<UserLogin> = async function (req, reply) {
 
 export const userLoginCtrl = {
   handler,
-  errorHandler: function (error, req, reply) {
-    if (ErrorHandlers.json(error, req, reply)) return
-    if (ErrorHandlers.generic(error, reply)) return
-    if (ErrorHandlers.route.userLogin(error, req, reply)) return
-    if (ErrorHandlers.unknown(error, reply)) return
-  } as ServerErrorHandler<UserLogin>,
+  errorHandler: userLoginErrorHandler,
 } as const

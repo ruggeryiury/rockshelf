@@ -8,8 +8,7 @@ export interface RegistrationTokenSchemaInput {
 }
 
 // Methods here
-export interface RegistrationTokenSchemaDocument extends RegistrationTokenSchemaInput, Document {
-}
+export interface RegistrationTokenSchemaDocument extends RegistrationTokenSchemaInput, Document {}
 
 // Statics here
 export interface RegistrationTokenSchemaModel extends Model<RegistrationTokenSchemaDocument> {
@@ -29,8 +28,7 @@ const userSchema = new Schema<RegistrationTokenSchemaInput, RegistrationTokenSch
     },
   },
   {
-    methods: {
-    },
+    methods: {},
 
     // #region Statics
     statics: {

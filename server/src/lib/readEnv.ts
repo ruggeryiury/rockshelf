@@ -67,6 +67,6 @@ export const readEnv = (): EnvironmentObj => {
     port,
     mongoDBURI,
     jwtSecret,
-    adminKey
+    adminKey,
   }
 }

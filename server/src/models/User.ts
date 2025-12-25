@@ -2,7 +2,7 @@ import { Document, Model, model, Schema } from 'mongoose'
 import bcrypt, { genSalt, hash } from 'bcryptjs'
 import { randomByteFromRanges } from 'node-lib'
 import { ServerError } from '../core.exports'
-import { jwtSign, jwtVerify } from '../lib.exports'
+import { jwtSign, jwtVerify, type BearerDecodedTokenObject } from '../lib.exports'
 
 export interface UserSchemaInput {
   /**
@@ -51,7 +51,7 @@ export interface UserSchemaDocument extends UserSchemaInput, Document {
    */
   checkRegistryCaseInsensitive(): Promise<true>
   /**
-   * Signs a token for the user with the `ObjectID` of the user for user requests validation.
+   * Returns a signed token in Base64 encoding for user requests validation.
    * - - - -
    */
   generateToken(): Promise<string>
@@ -69,12 +69,12 @@ export interface UserSchemaModel extends Model<UserSchemaDocument> {
    */
   findByCredentials(email: string, password: string): Promise<UserSchemaDocument>
   /**
-   * Finds a `User` registry by it's token.
+   * Finds a `User` registry by it's decoded token.
    * - - - -
-   * @param {string | undefined} token The user toke.
+   * @param {BearerDecodedTokenObject} token The user decode token.
    * @returns {Promise<UserSchemaDocument>}
    */
-  findByToken(token: string): Promise<UserSchemaDocument>
+  findByDecodedToken(token: BearerDecodedTokenObject): Promise<UserSchemaDocument>
 }
 
 const userSchema = new Schema<UserSchemaInput, UserSchemaModel>(
@@ -135,23 +135,22 @@ const userSchema = new Schema<UserSchemaInput, UserSchemaModel>(
         else if (invalid === 'email') throw new ServerError('err_user_register_duplicated_email', null, { email: this.email })
       },
       async generateToken() {
-        return jwtSign({ _id: this.id, admin: this.isAdmin })
+        return Buffer.from(jwtSign({ id: this.id, isAdmin: this.isAdmin })).toString('base64')
       },
     },
 
     // #region Statics
     statics: {
       async findByCredentials(email: string, password: string) {
-        const user = await this.findOne({ email }).select(['+password', '+emailVerified'])
+        const user = await this.findOne({ email }).select(['+password'])
         if (!user) throw new ServerError('err_login_user_notfound', null, { email })
         const isMatch = await bcrypt.compare(password, user.password)
         if (!isMatch) throw new ServerError('err_login_password_validation')
         if (!user.isActive) throw new ServerError('err_login_user_inactive')
         return user
       },
-      async findByToken(token: string) {
-        const decoded = jwtVerify(token)
-        const user = await this.findOne({ _id: decoded._id })
+      async findByDecodedToken(token: BearerDecodedTokenObject) {
+        const user = await this.findOne({ _id: token.id }).select({})
         if (!user) throw new ServerError('err_invalid_auth')
         if (!user.isActive) throw new ServerError('err_login_user_inactive')
         return user

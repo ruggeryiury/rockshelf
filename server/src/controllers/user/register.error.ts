@@ -19,6 +19,9 @@ export const userRegisterErrorHandler: ServerErrorHandler<UserRegister> = (error
       if (issue.message === 'Invalid input: expected string, received undefined' && issue.path[0] === 'username') return response(reply, { code: 'err_user_register_no_username' })
       // No password
       if (issue.message === 'Invalid input: expected string, received undefined' && issue.path[0] === 'password') return response(reply, { code: 'err_user_register_no_password' })
+
+      // No registering code
+      if (issue.message === 'Invalid input: expected string, received undefined' && issue.path[0] === 'code') return response(reply, { code: 'err_user_register_no_regcode' })
     }
     if (issue.code === 'too_small') {
       // Too small username
@@ -43,6 +46,8 @@ export const userRegisterErrorHandler: ServerErrorHandler<UserRegister> = (error
       if (issue.pattern === '/[0-9]/') return response(reply, { code: 'err_user_register_password_nonumber' })
       if (issue.pattern === '/[^A-Za-z0-9]/') return response(reply, { code: 'err_user_register_password_nospecialchar' })
     }
+
+    if (issue.code === 'invalid_format' && issue.path[0] === 'code') return response(reply, { code: 'err_user_register_invalidcode_format' })
 
     if (issue.code === 'custom') return response(reply, { code: issue.message })
   }

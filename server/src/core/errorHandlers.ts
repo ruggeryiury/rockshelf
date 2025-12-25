@@ -50,6 +50,7 @@ export interface ErrorDiagnosticObject {
 }
 
 export class ErrorHandlers {
+  static tokenErrorCodes = ['FAST_JWT_INVALID_TYPE', 'FAST_JWT_INVALID_OPTION', 'FAST_JWT_INVALID_ALGORITHM', 'FAST_JWT_INVALID_CLAIM_TYPE', 'FAST_JWT_INVALID_CLAIM_VALUE', 'FAST_JWT_INVALID_KEY', 'FAST_JWT_INVALID_SIGNATURE', 'FAST_JWT_INVALID_PAYLOAD', 'FAST_JWT_MALFORMED', 'FAST_JWT_INACTIVE', 'FAST_JWT_EXPIRED', 'FAST_JWT_MISSING_KEY', 'FAST_JWT_KEY_FETCHING_ERROR', 'FAST_JWT_SIGN_ERROR', 'FAST_JWT_VERIFY_ERROR', 'FAST_JWT_MISSING_REQUIRED_CLAIM', 'FAST_JWT_MISSING_SIGNATURE'] as const
   /**
    * A function that helps identifying the class instances behind errors on a route error handler function.
    * - - - -
@@ -65,7 +66,7 @@ export class ErrorHandlers {
     output.set('isRangeError', error instanceof RangeError)
     output.set('isSyntaxError', error instanceof SyntaxError)
     output.set('isMongoError', error instanceof MongoError)
-    output.set('isTokenError', error instanceof TokenError)
+    output.set('isTokenError', this.tokenErrorCodes.includes(error.code as (typeof this.tokenErrorCodes)[number]))
     output.set('isMongooseError', error instanceof MongooseError)
     output.set('isZodError', error instanceof ZodError)
 
@@ -84,6 +85,13 @@ export class ErrorHandlers {
    */
   static generic(error: FastifyError, reply: FastifyReply): FastifyReply | undefined {
     if (error instanceof ServerError) return response(reply, { code: error.serverErrorCode, data: error.data, messageValues: error.messageValues })
+  }
+
+  static bearerToken(error: FastifyError, reply: FastifyReply): FastifyReply | undefined {
+    if (ErrorHandlers.tokenErrorCodes.includes(error.code as (typeof this.tokenErrorCodes)[number])) {
+      if (error.code === 'FAST_JWT_EXPIRED') return response(reply, { code: 'err_user_token_expired' })
+    }
+    return
   }
 
   /**

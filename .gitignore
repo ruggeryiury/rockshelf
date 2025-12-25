@@ -5,6 +5,8 @@
 *.http
 pnpm-lock.yaml
 **/temp/
+*.md
+!README.md
 
 # Temporary
 app/

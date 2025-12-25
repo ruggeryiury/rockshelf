@@ -23,6 +23,7 @@ export interface EnvironmentObj {
    * and should be kept private and secure.
    */
   jwtSecret: string
+  adminKey: string
 }
 
 /**
@@ -59,9 +60,13 @@ export const readEnv = (): EnvironmentObj => {
   const jwtSecret = process.env.JWT_SECRET
   if (!jwtSecret) throw new Error('No JWT secret provided as environmente variable.')
 
+  const adminKey = process.env.ADMIN_KEY
+  if (!adminKey) throw new Error('No super user key provided as environmente variable.')
+
   return {
     port,
     mongoDBURI,
     jwtSecret,
+    adminKey
   }
 }

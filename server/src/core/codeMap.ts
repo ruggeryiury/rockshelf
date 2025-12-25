@@ -2,11 +2,21 @@ export const codeMap = {
   // Generic
   ok: [200, 'Request completed'],
   err_unknown: [500, 'An unknown occurred, please try again later'],
+  err_notfound: [404, `{{method}} route {{url}} not found`],
 
   // #region JSON body parsing
   err_empty_json_body: [400, "Body cannot be empty when content-type is set to 'application/json'"],
   err_syntax_json_body: [400, 'Request body has a syntax error'],
   err_route_requires_json_body: [400, 'Route requests a JSON body'],
+
+  // #region Auth
+  err_auth_required: [401, 'No authorization string found on request headers'],
+  err_invalid_auth: [401, 'The provided authorization token is not valid. Please logout this session, validate a new login and try again'],
+  err_invalid_auth_admin: [401, 'The current endpoint is restricted for admin users only'],
+  err_invalid_auth_format: [401, 'Invalid authorization string format found on request headers'],
+
+  // #region User Token
+  err_user_token_expired: [401, 'The provided user token has expired'],
 
   // #region User Login
   err_login_password_validation: [401, "The provided password and the registered user's password don't match"],
@@ -19,9 +29,9 @@ export const codeMap = {
   suceess_user_login: [200, "You're logged in"],
 
   // #region User Register
+  success_user_register: [201, 'Your user account was created successfully'],
   err_user_register_duplicated_username: [409, 'Provided username "{{username}}" is already being used by another account'],
   err_user_register_duplicated_email: [409, 'Provided e-mail "{{email}}" is already being used by another account'],
-  success_user_register: [201, 'Your user account was created successfully'],
   err_user_register_no_body: [400, 'No body response provided for user registering route'],
   err_user_register_no_password: [400, 'No password provided for user registering'],
   err_user_register_no_username: [400, 'No username provided for user registering'],
@@ -38,4 +48,10 @@ export const codeMap = {
   err_user_register_username_nospaceallowed: [400, "Provided username can't have space characters"],
   err_user_register_username_toobig: [400, "Provided username can't have more than 32 characters"],
   err_user_register_username_toosmall: [400, 'Provided username must have at least 3 characters'],
+
+  // #region Reg Token
+  success_admin_createregistrationtoken: [201, 'Registration Token created successfully'],
+  err_admin_createregistrationtoken_invalidcode: [400, 'Provided code "{{code}}" is not a valid registration code'],
+  err_user_register_no_regcode: [400, 'No registration code provided for user registering'],
+  err_user_register_invalidcode_format: [400, 'Invalid registration code format'],
 } as const

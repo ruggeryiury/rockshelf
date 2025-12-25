@@ -27,6 +27,9 @@ export class InitScripts {
       return app.log.info(`INIT_SCRIPTS: Public folder created successfully. Path: ${publicDir.path}`)
     }
 
+    if (!artworkDir.exists) await artworkDir.mkDir()
+    if (!packagesDir.exists) await packagesDir.mkDir()
+
     return app.log.info(`INIT_SCRIPTS: Public folder exists, skipping folder template creation.`)
   }
 

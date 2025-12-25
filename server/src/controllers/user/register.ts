@@ -1,10 +1,14 @@
 import zod, { type infer as ZodInfer } from 'zod'
-import { response } from '../../core.exports'
+import { response, ServerError } from '../../core.exports'
 import type { ServerHandler } from '../../lib.exports'
 import { User } from '../../models/User'
 import { userRegisterErrorHandler } from './register.error'
+import { RegistrationToken } from '../../models/RegistrationToken'
 
 export const userRegisterBodySchema = zod.object({
+  // Delete this for any person to registrate
+  code: zod.string().regex(/^[A-Za-z]{3}-[A-Za-z0-9]{4}$/),
+
   email: zod.email(),
   username: zod
     .string()
@@ -33,9 +37,22 @@ export interface UserRegister {
 
 const handler: ServerHandler<UserRegister> = async function (req, reply) {
   const body = userRegisterBodySchema.parse(req.body)
+
+  // Delete this for any person to registrate
+  const regToken = await RegistrationToken.findByCode(body.code.toUpperCase())
+  if (!regToken) throw new ServerError('err_admin_createregistrationtoken_invalidcode', null, { code: body.code.toUpperCase() })
+
   const user = new User(body)
+
+  // Delete this for any person to registrate
+  if (regToken.admin) user.isAdmin = true
+
   await user.checkRegistryCaseInsensitive()
   await user.save()
+
+  // Delete this for any person to registrate
+  await regToken.deleteOne()
+
   return response(reply, { code: 'success_user_register' })
 }
 

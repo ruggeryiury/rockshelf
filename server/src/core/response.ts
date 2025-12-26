@@ -22,12 +22,30 @@ export interface ServerReplyOptions {
 }
 
 export interface StandardResponseObject<T extends Record<string, any> | undefined = undefined> {
+  /**
+   * The status code of the response.
+   */
   statusCode: number
+  /**
+   * The status name of the response.
+   */
   statusName: string
+  /**
+   * A string with both status code and name concatenated.
+   */
   statusFullName: string
+  /**
+   * A code ID that represents the state of the response.
+   */
   serverCode: string
+  /**
+   * A description of the response (in English).
+   */
   message: string
-  data?: T
+  /**
+   * Additional data of the route.
+   */
+  data: T
 }
 
 /**
@@ -38,16 +56,19 @@ export interface StandardResponseObject<T extends Record<string, any> | undefine
  * @returns {FastifyReply}
  */
 export const response = (reply: FastifyReply, options: ServerReplyOptions): FastifyReply => {
-  const { code, data, messageValues } = useDefaultOptions<ServerReplyOptions>(
+  const { code, messageValues } = useDefaultOptions<Omit<ServerReplyOptions, 'data'>>(
     {
       code: 'err_unknown',
-      data: null,
-      messageValues: null,
+      messageValues: {},
     },
-    options
+    {
+      code: options.code,
+      messageValues: options.messageValues,
+    }
   )
 
   const res = new MyObject<StandardResponseObject>()
+  const data = options.data
 
   const isExplicitUnknownError = code === 'err_unknown'
   const sendErrorDiag = isExplicitUnknownError && isDev()
@@ -111,7 +132,8 @@ export const response = (reply: FastifyReply, options: ServerReplyOptions): Fast
     }
   }
 
-  if (data) res.set('data', data)
-
-  return reply.status(Array.isArray(code) ? code[0] : code in codeMap ? codeMap[code as keyof typeof codeMap][0] : 500).send(res.toObject())
+  return reply.status(Array.isArray(code) ? code[0] : code in codeMap ? codeMap[code as keyof typeof codeMap][0] : 500).send({
+    ...res.toObject(),
+    data,
+  })
 }

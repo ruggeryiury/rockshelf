@@ -1,3 +1,5 @@
+import { DirPath } from 'node-lib'
+
 export const loggerConfig = {
   transport: {
     target: 'pino-pretty',
@@ -8,3 +10,5 @@ export const loggerConfig = {
     },
   },
 } as const
+
+export const rootPath = new DirPath(import.meta.dirname)

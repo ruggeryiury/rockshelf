@@ -1,4 +1,5 @@
 import { AdminRouter } from '../routes/admin'
+import { CustomRouter } from '../routes/custom'
 import { StatusRouter } from '../routes/status'
 import { UserRouter } from '../routes/user'
 
@@ -7,6 +8,7 @@ import { UserRouter } from '../routes/user'
  */
 export const initRoutes = () => {
   AdminRouter()
+  CustomRouter()
   StatusRouter()
   UserRouter()
 }

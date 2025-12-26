@@ -2,7 +2,7 @@ import { ServerError } from '../core.exports'
 import { jwtVerify } from './jwt'
 
 export interface BearerDecodedTokenObject {
-  id: string
+  _id: string
   isAdmin: boolean
   iat: number
   exp: number

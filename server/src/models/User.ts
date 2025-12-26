@@ -135,7 +135,7 @@ const userSchema = new Schema<UserSchemaInput, UserSchemaModel>(
         else if (invalid === 'email') throw new ServerError('err_user_register_duplicated_email', null, { email: this.email })
       },
       async generateToken() {
-        return Buffer.from(jwtSign({ id: this.id, isAdmin: this.isAdmin })).toString('base64')
+        return Buffer.from(jwtSign({ _id: this.id, isAdmin: this.isAdmin })).toString('base64')
       },
     },
 
@@ -150,7 +150,7 @@ const userSchema = new Schema<UserSchemaInput, UserSchemaModel>(
         return user
       },
       async findByDecodedToken(token: BearerDecodedTokenObject) {
-        const user = await this.findOne({ _id: token.id }).select({})
+        const user = await this.findOne({ _id: token._id }).select({})
         if (!user) throw new ServerError('err_invalid_auth')
         if (!user.isActive) throw new ServerError('err_login_user_inactive')
         return user

@@ -74,6 +74,23 @@ export class InitScripts {
 
     const pipList = await execAsync('pip list')
 
+    if (!pipList.stdout.includes('audioop')) {
+      console.log("ERROR: Can't find 'audioop' or 'audioop-lts' module for Python language.")
+      process.exit(1)
+    }
+    if (!pipList.stdout.includes('pillow')) {
+      console.log("ERROR: Can't find 'pillow' module for Python language.")
+      process.exit(1)
+    }
+    if (!pipList.stdout.includes('pycryptodome')) {
+      console.log("ERROR: Can't find 'pycryptodome' module for Python language.")
+      process.exit(1)
+    }
+    if (!pipList.stdout.includes('pydub')) {
+      console.log("ERROR: Can't find 'pydub' module for Python language.")
+      process.exit(1)
+    }
+
     return {
       node,
       python: python.stdout.trim().split(' ')[1],

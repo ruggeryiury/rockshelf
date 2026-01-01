@@ -1,8 +1,9 @@
+import type { RouteOptions } from 'fastify'
 import zod, { type infer as ZodInfer } from 'zod'
-import type { ServerHandler } from '../../lib.exports'
-import { response } from '../../core.exports'
-import { User } from '../../models/User'
-import { userLoginErrorHandler } from './login.error'
+import type { ServerHandler } from '../lib.exports'
+import { response } from '../core.exports'
+import { User } from '../models/User'
+import { userLoginErrorHandler } from './userLogin.error'
 
 export const userLoginBodySchema = zod.object({
   email: zod.email(),
@@ -20,7 +21,10 @@ const handler: ServerHandler<UserLogin> = async function (req, reply) {
   return response(reply, { code: 'suceess_user_login', data: { token } })
 }
 
-export const userLoginCtrl = {
+export const userLogin = {
+  method: ['POST', 'HEAD'],
+  url: '/user/login',
+  logLevel: 'warn',
   handler,
   errorHandler: userLoginErrorHandler,
-} as const
+} as RouteOptions

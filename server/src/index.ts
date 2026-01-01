@@ -17,23 +17,20 @@ console.log(`Rockshelf Server --- v0.0.1\nInitializing server${dev && ' on devel
 
 await InitScripts.checkPublicFolder(dev)
 await InitScripts.checkTempFolder(dev)
-// const __deps = await InitScripts.checkDeps()
+await InitScripts.checkDeps()
 
 const { port, mongoDBURI } = readEnv()
 
-const main = async () => {
-  await app.register(InitScripts.plugins.mongoDBConnect, { mongoDBURI })
-  await app.register(fastifyCors)
-  await app.register(fastifyMultipart)
+await app.register(InitScripts.plugins.mongoDBConnect, { mongoDBURI })
+await app.register(fastifyCors, { origin: '*' })
+await app.register(fastifyMultipart)
+// await app.register(fastifyWebsocket)
 
-  initRoutes()
+initRoutes(app)
 
-  try {
-    await app.listen({ port })
-  } catch (err) {
-    app.log.error(err)
-    process.exit(1)
-  }
+try {
+  await app.listen({ port })
+} catch (err) {
+  app.log.error(err)
+  process.exit(1)
 }
-
-main()

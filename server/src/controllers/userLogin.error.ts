@@ -1,7 +1,8 @@
+import type { UserLogin } from './userLogin'
+
 import { ZodError } from 'zod'
-import type { ServerErrorHandler } from '../../lib.exports'
-import { ErrorHandlers, response } from '../../core.exports'
-import type { UserLogin } from './login'
+import type { ServerErrorHandler } from '../lib.exports'
+import { ErrorHandlers, response } from '../core.exports'
 
 export const userLoginErrorHandler: ServerErrorHandler<UserLogin> = (error, req, reply) => {
   if (ErrorHandlers.json(error, req, reply)) return

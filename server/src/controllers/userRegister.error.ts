@@ -1,7 +1,7 @@
 import { ZodError } from 'zod'
-import type { ServerErrorHandler } from '../../lib.exports'
-import { ErrorHandlers, response } from '../../core.exports'
-import type { UserRegister } from './register'
+import type { ServerErrorHandler } from '../lib.exports'
+import { ErrorHandlers, response } from '../core.exports'
+import type { UserRegister } from './userRegister'
 import { MongoError } from 'mongodb'
 
 export const userRegisterErrorHandler: ServerErrorHandler<UserRegister> = (error, req, reply) => {
@@ -41,13 +41,18 @@ export const userRegisterErrorHandler: ServerErrorHandler<UserRegister> = (error
 
     // Password validation
     if (issue.code === 'invalid_format' && issue.path[0] === 'password') {
+      // No lowercase characters
       if (issue.pattern === '/[a-z]/') return response(reply, { code: 'err_user_register_password_nolowercase' })
+
+      // No uppercase characters
       if (issue.pattern === '/[A-Z]/') return response(reply, { code: 'err_user_register_password_nouppercase' })
+
+      // No number characters
       if (issue.pattern === '/[0-9]/') return response(reply, { code: 'err_user_register_password_nonumber' })
+
+      // No any special character
       if (issue.pattern === '/[^A-Za-z0-9]/') return response(reply, { code: 'err_user_register_password_nospecialchar' })
     }
-
-    if (issue.code === 'invalid_format' && issue.path[0] === 'code') return response(reply, { code: 'err_user_register_invalidcode_format' })
 
     if (issue.code === 'custom') return response(reply, { code: issue.message })
   }

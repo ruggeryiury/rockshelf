@@ -1,7 +1,8 @@
-import { decodeAuthBearerToken, type ServerHandler } from '../../lib.exports'
-import { response } from '../../core.exports'
-import { User } from '../../models/User'
-import { userProfileErrorHandler } from './profile.error'
+import type { RouteOptions } from 'fastify'
+import { decodeAuthBearerToken, type ServerHandler } from '../lib.exports'
+import { response } from '../core.exports'
+import { User } from '../models/User'
+import { userProfileErrorHandler } from './userProfile.error'
 
 export interface UserProfile {
   body: undefined
@@ -24,7 +25,10 @@ const handler: ServerHandler<UserProfile> = async function (req, reply) {
   // return response(reply, { code: 'ok', data: { asdksjkajsk: data } })
 }
 
-export const userProfileCtrl = {
+export const userProfile = {
+  method: ['GET', 'HEAD'],
+  url: '/user/profile',
+  logLevel: 'warn',
   handler,
   errorHandler: userProfileErrorHandler,
-} as const
+} as RouteOptions

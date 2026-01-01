@@ -1,19 +1,18 @@
-import { decodeAuthBearerToken, type ServerHandler } from '../../lib.exports'
-import { response, ServerError } from '../../core.exports'
-import { customUploadFileErrorHandler } from './uploadFile.error'
+import { decodeAuthBearerToken, type ServerHandler } from '../lib.exports'
+import { response, ServerError } from '../core.exports'
 import { v4 as genUUIDv4 } from 'uuid'
-import { rootPath } from '../../config'
+import { rootPath } from '../config'
 import { getReadableBytesSize, parseReadableBytesSize } from 'node-lib'
-import { User } from '../../models/User'
+import { User } from '../models/User'
 import { createWriteStream } from 'node:fs'
 import { pipeline } from 'node:stream/promises'
 import { DTAParser, PythonAPI, STFSFile } from 'rbtools'
 
-export interface CustomUploadFile {
+export interface CustomClaimFile {
   body: undefined
 }
 
-const handler: ServerHandler<CustomUploadFile> = async function (req, reply) {
+const handler: ServerHandler<CustomClaimFile> = async function (req, reply) {
   const decToken = decodeAuthBearerToken(req.headers.authorization)
   const user = await User.findByDecodedToken(decToken)
   const uuid = genUUIDv4()
@@ -47,7 +46,7 @@ const handler: ServerHandler<CustomUploadFile> = async function (req, reply) {
   })
 }
 
-export const customUploadFileCtrl = {
+export const customClaimFileCtrl = {
   handler,
-  errorHandler: customUploadFileErrorHandler,
+//   errorHandler: customClaimFileErrorHandler,
 } as const

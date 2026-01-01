@@ -9,8 +9,8 @@
 
 - [About](#about)
   - [Server](#server)
-  - [Client](#client)
-  - [Electron App](#electron-app)
+  - [App](#app)
+  - [Core](#core)
 
 # About
 
@@ -20,10 +20,10 @@ Rockshelf is a project for a Rock Band 3 custom song distribution service and cu
 
 Working under [NodeJS](https://nodejs.org/en), using the [Fastify](https://fastify.dev/) as a REST API server and [MongoDB](https://www.mongodb.com/) as database.
 
-## Client
-
-Built with [ReactJS](https://react.dev/) framework, is an exclusive client for the Rockshelf Music Store API communication.
-
-## Electron App
+## App
 
 Built with [Electron Vite](https://electron-vite.org/), a multi-platform downloadable song manager for RPCS3 users.
+
+## Core
+
+An external package with functions that will be executed from the Rockshelf App.

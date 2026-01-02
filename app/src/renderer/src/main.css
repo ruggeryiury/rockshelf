@@ -1,0 +1,73 @@
+@import 'tailwindcss';
+
+@font-face {
+  font-family: 'Pentatonic';
+  src: url('./assets/fonts/Pentatonic-Regular.ttf') format('truetype');
+  font-display: 'swap';
+}
+
+@theme {
+  /* Breakpoints */
+  --breakpoint-mobile: 0px;
+  --breakpoint-mobile-md: 320px;
+  --breakpoint-mobile-lg: 375px;
+  --breakpoint-tablet: 425px;
+  --breakpoint-tablet-md: 600px;
+  --breakpoint-tablet-lg: 768px;
+  --breakpoint-laptop: 1024px;
+  --breakpoint-laptop-lg: 1366px;
+  --breakpoint-desktop: 1440px;
+  --breakpoint-hd: 1290px;
+
+  /* Colors */
+  --color-default-white: #c8c8c8;
+  --color-default-black: #0a0a0a;
+
+  /* Fonts */
+  --font-pentatonic: 'Pentatonic', 'Segoe UI', sans-serif;
+}
+
+* {
+  outline: none;
+  line-height: 0.95;
+}
+
+body {
+  @apply relative h-screen w-full overflow-hidden bg-default-black text-default-white select-none;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#root {
+  @apply w-full max-w-full h-full max-h-full;
+}
+
+div,
+header,
+footer,
+section,
+main {
+  @apply relative flex flex-col w-full;
+}
+
+button {
+  @apply relative cursor-default;
+}
+
+h1 {
+  @apply font-pentatonic;
+}
+
+#TopBar {
+  -webkit-app-region: drag;
+
+  h1 {
+    @apply select-none font-sans;
+  }
+
+  button {
+    -webkit-app-region: no-drag;
+  }
+}

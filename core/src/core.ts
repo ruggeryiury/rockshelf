@@ -1,2 +1,2 @@
-export * from './core/addHandler'
-export * from './core/setAppDataFolder'
+export * from './core/fs'
+export * from './core/topbar'

@@ -1,7 +1,14 @@
 import { create } from 'zustand'
 
 export interface MainStateProps {
+  // Window
   isWinMaximized: boolean
+  disableButtons: boolean
+
+  // Intro Screen
+  finishedLoading: boolean
+  isFirstTimeLoading: boolean
+  selectedRPCS3FolderPath: string
 }
 
 export interface MainStateActions {
@@ -14,6 +21,10 @@ export type MainStateHook = MainStateProps & MainStateActions
 
 const defaultState: MainStateProps = {
   isWinMaximized: false,
+  disableButtons: false,
+  finishedLoading: true,
+  isFirstTimeLoading: false,
+  selectedRPCS3FolderPath: '',
 }
 
 export const useMainState = create<MainStateHook>()((set, get) => ({

@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
 @import 'tailwindcss';
 
 @font-face {
@@ -25,6 +26,7 @@
 
   /* Fonts */
   --font-pentatonic: 'Pentatonic', 'Segoe UI', sans-serif;
+  --font-inter: 'Inter', sans-serif;
 }
 
 * {
@@ -33,7 +35,7 @@
 }
 
 body {
-  @apply relative h-screen w-full overflow-hidden bg-default-black text-default-white select-none;
+  @apply relative h-screen w-full overflow-hidden bg-default-black text-default-white select-none font-inter;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -49,7 +51,7 @@ header,
 footer,
 section,
 main {
-  @apply relative flex flex-col w-full;
+  @apply relative flex flex-col;
 }
 
 button {

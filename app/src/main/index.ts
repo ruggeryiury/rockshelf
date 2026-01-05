@@ -6,7 +6,7 @@ import { initMainHandlers, setAppDataFolder } from '@rockshelf/core'
 
 setAppDataFolder('Rockshelf')
 
-function createWindow(): void {
+function createWindow(): BrowserWindow {
   const mainWindow = new BrowserWindow({
     width: 900,
     height: 670,
@@ -35,6 +35,8 @@ function createWindow(): void {
   } else {
     mainWindow.loadFile(join(__dirname, '../renderer/index.html'))
   }
+
+  return mainWindow
 }
 
 app.whenReady().then(() => {

@@ -9,4 +9,5 @@ export default defineConfig({
   ],
   fixedExtension: false,
   minify: true,
+  sourcemap: 'inline',
 })

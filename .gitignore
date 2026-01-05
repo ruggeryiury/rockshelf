@@ -6,6 +6,7 @@
 pnpm-lock.yaml
 **/temp/
 *.md
+!LICENSE.md
 !README.md
 .DS_Store
 .eslintcache

@@ -11,6 +11,7 @@
   - [Server](#server)
   - [App](#app)
   - [Core](#core)
+- [License](#license)
 
 # About
 
@@ -27,3 +28,7 @@ Built with [Electron Vite](https://electron-vite.org/), a multi-platform downloa
 ## Core
 
 An external package with functions that will be executed from the Rockshelf App.
+
+# License
+
+MIT

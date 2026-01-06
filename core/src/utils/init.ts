@@ -29,3 +29,19 @@ export const selectDevHDD0FolderInit = async (win: BrowserWindow) => {
   const [dir] = selection.filePaths.map((d) => DirPath.of(d))
   return dir.path
 }
+
+export const selectRPCS3ExeFileInit = async (win: BrowserWindow) => {
+  const selection = await dialog.showOpenDialog({ properties: ['openFile'], filters: [{ extensions: ['exe'], name: 'RPCS3 Executable' }] })
+  if (selection.canceled) {
+    sendErrorMessage(win, {
+      type: 'warn',
+      module: 'generic',
+      method: 'selectDevHDD0FolderInit',
+      code: 'action_cancelled_by_user',
+      message: 'RPCS3 Executable file path selection cancelled by the user',
+    })
+    return false
+  }
+  const [dir] = selection.filePaths.map((d) => DirPath.of(d))
+  return dir.path
+}

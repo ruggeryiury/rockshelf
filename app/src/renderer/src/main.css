@@ -31,7 +31,7 @@
 
 * {
   outline: none;
-  line-height: 0.95;
+  line-height: 0.99;
 }
 
 body {
@@ -50,7 +50,8 @@ div,
 header,
 footer,
 section,
-main {
+main,
+button {
   @apply relative flex flex-col;
 }
 

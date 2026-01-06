@@ -1,6 +1,6 @@
 import { winMinimize, winMaximize, winClose } from './core'
 import { addHandler, initRBToolsChannels } from './lib'
-import { checkUserConfig, selectDevHDD0FolderInit } from './utils'
+import { checkUserConfig, selectDevHDD0FolderInit, selectRPCS3ExeFileInit } from './utils'
 
 export function initMainHandlers() {
   // #region TopBar
@@ -11,6 +11,7 @@ export function initMainHandlers() {
   // #region Init
   addHandler('@Init/checkUserConfig', checkUserConfig)
   addHandler('@Init/selectDevHDD0FolderInit', selectDevHDD0FolderInit)
+  addHandler('@Init/selectRPCS3ExeFileInit', selectRPCS3ExeFileInit)
 
   initRBToolsChannels()
 }

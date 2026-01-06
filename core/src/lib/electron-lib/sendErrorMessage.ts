@@ -11,6 +11,7 @@ export interface MainErrorMessageObject {
   messageValues?: Record<string, string | number | boolean>
 }
 
-export const sendErrorMessage = (win: BrowserWindow, options: MainErrorMessageObject) => {
+export const sendErrorMessage = (win: BrowserWindow, options: MainErrorMessageObject): false => {
   win.webContents.send('@Error/message', options)
+  return false
 }

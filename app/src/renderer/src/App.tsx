@@ -1,20 +1,20 @@
 import { useEffect } from 'react'
 import { useMainState } from './states/main'
-import { AppFrame, ErrorModals, IntroScreen, TopBar } from './core'
+import { AppFrame, ErrorModal, IntroScreen, TopBar } from './core'
 
 export default function App() {
   const setMainState = useMainState((x) => x.setMainState)
 
   useEffect(() => {
-    const loadUserConfig = async () => {
+    const loadUserConfigOrInit = async () => {
       const hasUserConfig = await window.api.init.checkUserConfig()
       if (!hasUserConfig) {
-        setMainState({ isFirstTimeLoading: true })
+        setMainState({ isFirstTimeLoading: 1 })
       }
     }
 
     setTimeout(() => {
-      loadUserConfig()
+      loadUserConfigOrInit()
     }, 40)
   }, [])
 
@@ -22,7 +22,7 @@ export default function App() {
     <>
       <TopBar />
       <AppFrame>
-        <ErrorModals />
+        <ErrorModal />
         <IntroScreen />
       </AppFrame>
     </>

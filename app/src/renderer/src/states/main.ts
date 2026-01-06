@@ -7,8 +7,11 @@ export interface MainStateProps {
 
   // Intro Screen
   finishedLoading: boolean
-  isFirstTimeLoading: boolean
-  selectedRPCS3FolderPath: string
+  isFirstTimeLoading: number
+  selectedDevHDD0FolderPath: string
+  selectedRPCS3ExeFilePath: string
+  isIntroScreenLoadingDevHdd0: boolean
+  isIntroScreenLoadingRPCS3EXE: boolean
 }
 
 export interface MainStateActions {
@@ -22,9 +25,13 @@ export type MainStateHook = MainStateProps & MainStateActions
 const defaultState: MainStateProps = {
   isWinMaximized: false,
   disableButtons: false,
+
   finishedLoading: true,
-  isFirstTimeLoading: false,
-  selectedRPCS3FolderPath: '',
+  isFirstTimeLoading: 0,
+  selectedDevHDD0FolderPath: '',
+  selectedRPCS3ExeFilePath: '',
+  isIntroScreenLoadingDevHdd0: false,
+  isIntroScreenLoadingRPCS3EXE: false,
 }
 
 export const useMainState = create<MainStateHook>()((set, get) => ({

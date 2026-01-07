@@ -1,4 +1,6 @@
-import type { BrowserWindow } from 'electron'
+import { shell, type BrowserWindow } from 'electron'
+import { execAsync } from 'node-lib'
+import { FS } from '../../core'
 
 export const winMinimize = (win: BrowserWindow): void => win.minimize()
 export const winMaximize = (win: BrowserWindow): boolean => {
@@ -10,3 +12,8 @@ export const winMaximize = (win: BrowserWindow): boolean => {
   return true
 }
 export const winClose = (win: BrowserWindow): void => win.close()
+
+export const openUserDataFolder = async () => {
+  const userDataFolderPath = FS.userDataFolder()
+  await shell.openPath(userDataFolderPath.path)
+}

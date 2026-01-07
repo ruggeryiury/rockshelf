@@ -57,10 +57,10 @@ i18n
           // Success
           successInstallHighMemotyPatchSuccess: 'Patch de Ampliação de Memória instalado com sucesso',
 
-          // Errors
-          errorSelectDevHDD0FolderInitActionCancelledByUser: 'A seleção da pasta DEVHDD0 foi cancelada pelo usuário',
+          // Errors and Warnings
+          warnSelectDevHDD0FolderInitActionCancelledByUser: 'A seleção da pasta DEVHDD0 foi cancelada pelo usuário',
           errorIsDevHDD0PathValidInvalidPath: 'A pasta DEVHDD0 escolhida "{{devhdd0Path}}" não é válida',
-          errorSelectRPCS3ExeFileInitActionCancelledByUser: 'A seleção do executável do RPCS3 foi cancelada pelo usuário',
+          warnSelectRPCS3ExeFileInitActionCancelledByUser: 'A seleção do executável do RPCS3 foi cancelada pelo usuário',
           errorIsRPCS3ExePathValidInvalidPath: 'O executável do RPCS3 escolhido "{{rpcs3ExePath}}" não é válido',
         },
       },

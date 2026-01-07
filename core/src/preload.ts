@@ -1,6 +1,6 @@
 import { ipcRenderer, type IpcRendererEvent } from 'electron'
 import type { checkUserConfig, readUserConfigFilePath, saveUserConfigOnDisk, selectDevHDD0FolderInit, selectRPCS3ExeFileInit, UserConfig } from './core'
-import type { getRPCS3InstalledGamesStats, getSaveFileData, installHighMemotyPatch, isDevHDD0PathValid, isRPCS3ExePathValid, MessagePopUpOptions, winClose, winMaximize, winMinimize } from './lib'
+import type { getRPCS3InstalledGamesStats, getSaveFileData, installHighMemotyPatch, isDevHDD0PathValid, isRPCS3ExePathValid, MessagePopUpOptions, openUserDataFolder, winClose, winMaximize, winMinimize } from './lib'
 
 type Promiseable<T> = T | Promise<T>
 
@@ -12,6 +12,7 @@ export const rockshelfAPI = {
     minimize: async () => (await ipcRenderer.invoke('@TopBar/minimize')) as ReturnType<typeof winMinimize>,
     maximize: async () => (await ipcRenderer.invoke('@TopBar/maximize')) as ReturnType<typeof winMaximize>,
     close: async () => (await ipcRenderer.invoke('@TopBar/close')) as ReturnType<typeof winClose>,
+    openUserDataFolder: async () => (await ipcRenderer.invoke('@TopBar/openUserDataFolder')) as ReturnType<typeof openUserDataFolder>,
   },
   initFunctions: {
     selectDevHDD0FolderInit: async () => (await ipcRenderer.invoke('@InitFunctions/selectDevHDD0FolderInit')) as ReturnType<typeof selectDevHDD0FolderInit>,

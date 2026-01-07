@@ -1,4 +1,4 @@
-import { CloseIcon, MaximizeIcon, MinimizeIcon, RestoreWinIcon } from '@renderer/assets/icons'
+import { CloseIcon, FolderWithPlusIcon, MaximizeIcon, MinimizeIcon, RestoreWinIcon } from '@renderer/assets/icons'
 import { useMainState } from '../states/main'
 
 export function TopBar() {
@@ -8,6 +8,12 @@ export function TopBar() {
     <>
       <header id="TopBar" className="text-default-white max-h-[5%] min-h-[5%] w-full flex-row! items-center bg-[#1c1c1c] pl-4">
         <h1 className="mr-auto text-xs">Rockshelf</h1>
+        {import.meta.env.DEV && (
+          <button onClick={async () => await window.api.topbar.openUserDataFolder()} className="h-full justify-center px-3 duration-200 hover:bg-green-500/50">
+            <FolderWithPlusIcon />
+          </button>
+        )}
+
         <button onClick={async () => await window.api.topbar.minimize()} className="h-full justify-center px-3 duration-200 hover:bg-white/25">
           <MinimizeIcon />
         </button>

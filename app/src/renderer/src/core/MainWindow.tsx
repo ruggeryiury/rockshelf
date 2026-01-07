@@ -19,7 +19,9 @@ export function MainWindow() {
   return (
     <AnimatedComponent condition={introStateIndex >= 10}>
       <MotionDiv {...genAnimation({ opacity: true, duration: 0.5 })} id="MainWindow" className="z-1 h-full max-h-full w-full max-w-full bg-neutral-900 p-8">
-        <h1 className="border-default-white mb-8 border-b pb-3 text-3xl">{saveData?.profileName ? t('welcomeWithProfileName', { profileName: saveData.profileName }) : t('welcome')}</h1>
+        <div className="mb-8 w-full flex-row! items-center border-b pb-3">
+          <h1 className="text-3xl">{saveData?.profileName ? t('welcomeWithProfileName', { profileName: saveData.profileName }) : t('welcome')}</h1>
+        </div>
         {stats && 'BLUS30463' in stats ? (
           <>
             <div className="flex-row!">

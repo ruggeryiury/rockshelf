@@ -1,17 +1,14 @@
+import type { RPCS3InstalledGamesStats, ParsedRB3SaveData } from '@rockshelf/core'
 import { create } from 'zustand'
 
 export interface MainStateProps {
-  // Window
   isWinMaximized: boolean
   disableButtons: boolean
+  disableTopBarButtons: boolean
+  stats: RPCS3InstalledGamesStats | null
+  saveData: ParsedRB3SaveData | null
 
-  // Intro Screen
-  finishedLoading: boolean
-  isFirstTimeLoading: number
-  selectedDevHDD0FolderPath: string
-  selectedRPCS3ExeFilePath: string
-  isIntroScreenLoadingDevHdd0: boolean
-  isIntroScreenLoadingRPCS3EXE: boolean
+  isHighMemoryPatchBeingInstalled: boolean
 }
 
 export interface MainStateActions {
@@ -24,14 +21,12 @@ export type MainStateHook = MainStateProps & MainStateActions
 
 const defaultState: MainStateProps = {
   isWinMaximized: false,
-  disableButtons: false,
+  disableButtons: true,
+  disableTopBarButtons: true,
+  stats: null,
+  saveData: null,
 
-  finishedLoading: true,
-  isFirstTimeLoading: 0,
-  selectedDevHDD0FolderPath: '',
-  selectedRPCS3ExeFilePath: '',
-  isIntroScreenLoadingDevHdd0: false,
-  isIntroScreenLoadingRPCS3EXE: false,
+  isHighMemoryPatchBeingInstalled: false,
 }
 
 export const useMainState = create<MainStateHook>()((set, get) => ({

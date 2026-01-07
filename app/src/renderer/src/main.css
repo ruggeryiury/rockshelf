@@ -3,7 +3,7 @@
 
 @font-face {
   font-family: 'Pentatonic';
-  src: url('./assets/fonts/Pentatonic-Regular.ttf') format('truetype');
+  src: url('./assets/fonts/Pentatonic-Regular.woff2') format('woff2');
   font-display: 'swap';
 }
 
@@ -35,7 +35,7 @@
 }
 
 body {
-  @apply relative h-screen w-full overflow-hidden bg-default-black text-default-white select-none font-inter;
+  @apply bg-default-black text-default-white font-inter relative h-screen w-full overflow-hidden select-none;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -43,7 +43,7 @@ body {
 }
 
 #root {
-  @apply w-full max-w-full h-full max-h-full;
+  @apply h-full max-h-full w-full max-w-full;
 }
 
 div,
@@ -67,7 +67,7 @@ h1 {
   -webkit-app-region: drag;
 
   h1 {
-    @apply select-none font-sans;
+    @apply font-sans select-none;
   }
 
   button {

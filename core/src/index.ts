@@ -1,6 +1,5 @@
-import { winMinimize, winMaximize, winClose } from './core'
-import { addHandler, initRBToolsChannels } from './lib'
-import { checkUserConfig, selectDevHDD0FolderInit, selectRPCS3ExeFileInit } from './utils'
+import { checkUserConfig, readUserConfigFilePath, saveUserConfigOnDisk, selectDevHDD0FolderInit, selectRPCS3ExeFileInit } from './core'
+import { addHandler, initRBToolsChannels, winClose, winMaximize, winMinimize } from './lib'
 
 export function initMainHandlers() {
   // #region TopBar
@@ -8,14 +7,17 @@ export function initMainHandlers() {
   addHandler('@TopBar/maximize', winMaximize)
   addHandler('@TopBar/close', winClose)
 
-  // #region Init
-  addHandler('@Init/checkUserConfig', checkUserConfig)
-  addHandler('@Init/selectDevHDD0FolderInit', selectDevHDD0FolderInit)
-  addHandler('@Init/selectRPCS3ExeFileInit', selectRPCS3ExeFileInit)
+  // #region Init Functions
+  addHandler('@InitFunctions/selectDevHDD0FolderInit', selectDevHDD0FolderInit)
+  addHandler('@InitFunctions/selectRPCS3ExeFileInit', selectRPCS3ExeFileInit)
+
+  // #region User Config
+  addHandler('@UserConfig/checkUserConfig', checkUserConfig)
+  addHandler('@UserConfig/readUserConfigFilePath', readUserConfigFilePath)
+  addHandler('@UserConfig/saveUserConfigOnDisk', saveUserConfigOnDisk)
 
   initRBToolsChannels()
 }
 
 export * from './core'
 export * from './lib'
-export * from './utils'

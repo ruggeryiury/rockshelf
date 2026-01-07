@@ -1,20 +1,11 @@
 import { app } from 'electron'
-import { DirPath } from 'node-lib'
+import { DirPath, type FilePath } from 'node-lib'
 
-export interface UserConfig {
-  devhdd0Path: string
-}
-
-export const getUserDataFolderPath = (): DirPath => {
-  return DirPath.of(app.getPath('userData')).gotoDir('../Rockshelf')
-}
-
-export const getUserConfigFilePath = () => {
-  return getUserDataFolderPath().gotoFile('config.json')
-}
-
-export const readUserConfigFilePath = async (): Promise<UserConfig | false> => {
-  const configPath = getUserConfigFilePath()
-  if (configPath.exists) return await configPath.readJSON<UserConfig>()
-  return false
+export class FS {
+  static userDataFolder(): DirPath {
+    return DirPath.of(app.getPath('userData')).gotoDir('../Rockshelf')
+  }
+  static userConfigFile(): FilePath {
+    return this.userDataFolder().gotoFile('config.json')
+  }
 }

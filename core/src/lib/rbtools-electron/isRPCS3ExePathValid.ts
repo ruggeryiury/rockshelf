@@ -1,6 +1,6 @@
 import type { BrowserWindow, IpcMainInvokeEvent } from 'electron'
 import { pathLikeToFilePath, type FilePathLikeTypes } from 'node-lib'
-import { sendErrorMessage } from '../electron-lib/sendErrorMessage'
+import { activateMessagePopUp } from '../electron-lib/activateMessagePopUp'
 
 export const isRPCS3ExePathValid = (win: BrowserWindow, __: IpcMainInvokeEvent, rpcs3exePath: FilePathLikeTypes): boolean => {
   let proof = true
@@ -16,14 +16,13 @@ export const isRPCS3ExePathValid = (win: BrowserWindow, __: IpcMainInvokeEvent, 
   if (!gamesConfig.exists) proof = false
 
   if (!proof)
-    return sendErrorMessage(win, {
+    return activateMessagePopUp(win, {
       type: 'error',
       module: 'rbtools',
       method: 'isRPCS3ExePathValid',
-      code: 'invalid_rpcs3exe_path',
-      message: `Provided RPCS3 Executable file path "${exe.path}" is invalid`,
+      code: 'invalidPath',
       messageValues: {
-        rpcs3exe: exe.path,
+        rpcs3ExePath: exe.path,
       },
     })
   return proof

@@ -1,26 +1,25 @@
 import type { BrowserWindow, IpcMainInvokeEvent } from 'electron'
 import { pathLikeToDirPath, type DirPathLikeTypes } from 'node-lib'
-import { sendErrorMessage } from '../electron-lib/sendErrorMessage'
+import { activateMessagePopUp } from '../electron-lib/activateMessagePopUp'
 
-export const isDevHDD0PathValid = (win: BrowserWindow, __: IpcMainInvokeEvent, devHDD0Path: DirPathLikeTypes): boolean => {
+export const isDevHDD0PathValid = (win: BrowserWindow, __: IpcMainInvokeEvent, devhdd0Path: DirPathLikeTypes): boolean => {
   let proof = true
-  const devhdd0 = pathLikeToDirPath(devHDD0Path)
+  const devhdd0 = pathLikeToDirPath(devhdd0Path)
 
   const game = devhdd0.gotoDir('game')
   if (!game.exists) proof = false
 
   const home = devhdd0.gotoDir('home')
   if (!home.exists) proof = false
-  
+
   if (!proof)
-    return sendErrorMessage(win, {
+    return activateMessagePopUp(win, {
       type: 'error',
       module: 'rbtools',
       method: 'isDevHDD0PathValid',
-      code: 'invalid_devhdd0_path',
-      message: `Provided DevHDD0 folder path "${devhdd0.path}" is invalid`,
+      code: 'invalidPath',
       messageValues: {
-        devhdd0: devhdd0.path,
+        devhdd0Path: devhdd0.path,
       },
     })
 

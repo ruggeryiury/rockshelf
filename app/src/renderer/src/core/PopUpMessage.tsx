@@ -27,7 +27,7 @@ export function PopUpMessage() {
   return (
     <section id="PopUpMessages" className="absolute! h-full w-full">
       <AnimatedComponent condition={msgObject !== null}>
-        <MotionDiv {...genAnimation({ opacity: true })} className={clsx('z-50 mt-4 mr-4 ml-auto w-fit max-w-[30%] flex-row! items-center border p-4', msgObject?.type === 'warn' ? 'border-yellow-500' : msgObject?.type === 'error' ? 'border-red-500' : '')}>
+        <MotionDiv {...genAnimation({ opacity: true })} className={clsx('z-50 mt-4 mr-4 ml-auto w-fit max-w-[30%] flex-row! items-center border p-4 bg-black/90 backdrop-blur-md', msgObject?.type === 'warn' ? 'border-yellow-500' : msgObject?.type === 'error' ? 'border-red-500' : '')}>
           {msgObject && (
             <>
               {msgObject.type === 'warn' && <ErrorIcon className="mr-2 min-w-8 text-lg text-yellow-500" />}

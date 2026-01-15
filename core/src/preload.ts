@@ -1,33 +1,76 @@
-import { ipcRenderer, type IpcRendererEvent } from 'electron'
+import { ipcRenderer, shell, webUtils, type IpcRenderer, type IpcRendererEvent } from 'electron'
 import type { checkUserConfig, readUserConfigFilePath, saveUserConfigOnDisk, selectDevHDD0FolderInit, selectRPCS3ExeFileInit, UserConfig } from './core'
-import type { getRPCS3InstalledGamesStats, getSaveFileData, installHighMemotyPatch, isDevHDD0PathValid, isRPCS3ExePathValid, MessagePopUpOptions, openUserDataFolder, winClose, winMaximize, winMinimize } from './lib'
-
-type Promiseable<T> = T | Promise<T>
+import type { installHighMemoryPatch, isDevHDD0PathValid, isRPCS3ExePathValid, MessagePopUpOptions, openUserDataFolder, winClose, winMaximize, winMinimize } from './lib'
+import type { Promisable } from 'type-fest'
 
 export const rockshelfAPI = {
   listeners: {
-    onPopUpMessage: (cb: (ev: IpcRendererEvent, message: MessagePopUpOptions) => Promiseable<void>) => ipcRenderer.on('@PopUp/message', cb),
+    onPopUpMessage(cb: (ev: IpcRendererEvent, message: MessagePopUpOptions) => Promisable<void>): IpcRenderer {
+      return ipcRenderer.on('@PopUp/message', cb)
+    },
   },
   topbar: {
-    minimize: async () => (await ipcRenderer.invoke('@TopBar/minimize')) as ReturnType<typeof winMinimize>,
-    maximize: async () => (await ipcRenderer.invoke('@TopBar/maximize')) as ReturnType<typeof winMaximize>,
-    close: async () => (await ipcRenderer.invoke('@TopBar/close')) as ReturnType<typeof winClose>,
-    openUserDataFolder: async () => (await ipcRenderer.invoke('@TopBar/openUserDataFolder')) as ReturnType<typeof openUserDataFolder>,
+    async minimize(): Promise<ReturnType<typeof winMinimize>> {
+      return await ipcRenderer.invoke('@TopBar/minimize')
+    },
+    async maximize(): Promise<ReturnType<typeof winMaximize>> {
+      return await ipcRenderer.invoke('@TopBar/maximize')
+    },
+    async close(): Promise<ReturnType<typeof winClose>> {
+      return await ipcRenderer.invoke('@TopBar/close')
+    },
+    async openUserDataFolder(): ReturnType<typeof openUserDataFolder> {
+      return await ipcRenderer.invoke('@TopBar/openUserDataFolder')
+    },
   },
   initFunctions: {
-    selectDevHDD0FolderInit: async () => (await ipcRenderer.invoke('@InitFunctions/selectDevHDD0FolderInit')) as ReturnType<typeof selectDevHDD0FolderInit>,
-    selectRPCS3ExeFileInit: async (rpcs3ExeLocale: string) => (await ipcRenderer.invoke('@InitFunctions/selectRPCS3ExeFileInit', rpcs3ExeLocale)) as ReturnType<typeof selectRPCS3ExeFileInit>,
+    async selectDevHDD0FolderInit(): ReturnType<typeof selectDevHDD0FolderInit> {
+      return await ipcRenderer.invoke('@InitFunctions/selectDevHDD0FolderInit')
+    },
+    async selectRPCS3ExeFileInit(rpcs3ExeLocale: string): ReturnType<typeof selectRPCS3ExeFileInit> {
+      return await ipcRenderer.invoke('@InitFunctions/selectRPCS3ExeFileInit', rpcs3ExeLocale)
+    },
   },
   userConfig: {
-    checkUserConfig: async () => (await ipcRenderer.invoke('@UserConfig/checkUserConfig')) as ReturnType<typeof checkUserConfig>,
-    readUserConfigFilePath: async () => (await ipcRenderer.invoke('@UserConfig/readUserConfigFilePath')) as ReturnType<typeof readUserConfigFilePath>,
-    saveUserConfigOnDisk: async (options: Partial<UserConfig>) => (await ipcRenderer.invoke('@UserConfig/saveUserConfigOnDisk', options)) as ReturnType<typeof saveUserConfigOnDisk>,
+    async checkUserConfig(): Promise<ReturnType<typeof checkUserConfig>> {
+      return await ipcRenderer.invoke('@UserConfig/checkUserConfig')
+    },
+    async readUserConfigFilePath(): ReturnType<typeof readUserConfigFilePath> {
+      return await ipcRenderer.invoke('@UserConfig/readUserConfigFilePath')
+    },
+    async saveUserConfigOnDisk(options: Partial<UserConfig>): ReturnType<typeof saveUserConfigOnDisk> {
+      return await ipcRenderer.invoke('@UserConfig/saveUserConfigOnDisk', options)
+    },
   },
   rbtools: {
-    getRPCS3InstalledGamesStats: async (devhdd0Path: string, rpcs3exePath: string) => (await ipcRenderer.invoke('@RBTools/getRPCS3InstalledGamesStats', devhdd0Path, rpcs3exePath)) as ReturnType<typeof getRPCS3InstalledGamesStats>,
-    getSaveFileData: async (devhdd0Path: string) => (await ipcRenderer.invoke('@RBTools/getSaveFileData', devhdd0Path)) as ReturnType<typeof getSaveFileData>,
-    installHighMemotyPatch: async (devhdd0Path: string) => (await ipcRenderer.invoke('@RBTools/installHighMemotyPatch', devhdd0Path)) as ReturnType<typeof installHighMemotyPatch>,
-    isDevHDD0PathValid: async (devhdd0Path: string) => (await ipcRenderer.invoke('@RBTools/isDevHDD0PathValid', devhdd0Path)) as ReturnType<typeof isDevHDD0PathValid>,
-    isRPCS3ExePathValid: async (rpcs3exePath: string) => (await ipcRenderer.invoke('@RBTools/isRPCS3ExePathValid', rpcs3exePath)) as ReturnType<typeof isRPCS3ExePathValid>,
+    async installHighMemoryPatch(devhdd0Path: string): ReturnType<typeof installHighMemoryPatch> {
+      return await ipcRenderer.invoke('@RBTools/installHighMemoryPatch', devhdd0Path)
+    },
+    async isDevHDD0PathValid(devhdd0Path: string): Promise<ReturnType<typeof isDevHDD0PathValid>> {
+      return await ipcRenderer.invoke('@RBTools/isDevHDD0PathValid', devhdd0Path)
+    },
+    async isRPCS3ExePathValid(rpcs3exePath: string): Promise<ReturnType<typeof isRPCS3ExePathValid>> {
+      return await ipcRenderer.invoke('@RBTools/isRPCS3ExePathValid', rpcs3exePath)
+    },
+  },
+  utils: {
+    async openExternalLink(url: string) {
+      return await shell.openExternal(url)
+    },
+    fileToPath<T extends File | File[], RT extends T extends File ? string : string[]>(files: T): RT {
+      if (Array.isArray(files)) {
+        const filesPath: string[] = []
+
+        for (const file of files) {
+          const path = webUtils.getPathForFile(file)
+          filesPath.push(path)
+        }
+
+        return filesPath as RT
+      }
+
+      const path = webUtils.getPathForFile(files)
+      return path as RT
+    },
   },
 } as const

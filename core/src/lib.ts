@@ -4,10 +4,8 @@ export * from './lib/electron-lib/getBrowserWindowByEvent'
 export * from './lib/electron-lib/setAppDataFolder'
 export * from './lib/electron-lib/topbar'
 
-export * from './lib/rbtools-electron/getRPCS3InstalledGamesStats'
-export * from './lib/rbtools-electron/getSaveFileData'
-export * from './lib/rbtools-electron/installHighMemotyPatch'
-export * from './lib/rbtools-electron/initRBToolsChannels'
+export * from './lib/rbtools-electron/core/InitRBToolsChannels'
+
+export * from './lib/rbtools-electron/installHighMemoryPatch'
 export * from './lib/rbtools-electron/isDevHDD0PathValid'
 export * from './lib/rbtools-electron/isRPCS3ExePathValid'
-export * from './lib/rbtools-electron/rb3SaveFile'

@@ -1,15 +1,7 @@
-import type { RPCS3InstalledGamesStats, ParsedRB3SaveData } from '@rockshelf/core'
+import type { RPCS3InstalledGamesStats, ParsedRB3SaveData, DetailedScoreDataObject } from '@rockshelf/core'
 import { create } from 'zustand'
 
-export interface MainStateProps {
-  isWinMaximized: boolean
-  disableButtons: boolean
-  disableTopBarButtons: boolean
-  stats: RPCS3InstalledGamesStats | null
-  saveData: ParsedRB3SaveData | null
-
-  isHighMemoryPatchBeingInstalled: boolean
-}
+export interface MainStateProps {}
 
 export interface MainStateActions {
   setMainState(state: Partial<MainStateProps> | ((oldState: MainStateProps) => Partial<MainStateProps>)): void
@@ -19,15 +11,7 @@ export interface MainStateActions {
 
 export type MainStateHook = MainStateProps & MainStateActions
 
-const defaultState: MainStateProps = {
-  isWinMaximized: false,
-  disableButtons: true,
-  disableTopBarButtons: true,
-  stats: null,
-  saveData: null,
-
-  isHighMemoryPatchBeingInstalled: false,
-}
+const defaultState: MainStateProps = {}
 
 export const useMainState = create<MainStateHook>()((set, get) => ({
   ...defaultState,

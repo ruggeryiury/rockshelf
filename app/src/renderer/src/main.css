@@ -29,9 +29,17 @@
   --font-inter: 'Inter', sans-serif;
 }
 
+@utility w-fill {
+  width: -webkit-fill-available;
+}
+
+@utility h-fill {
+  height: -webkit-fill-available;
+}
+
 * {
   outline: none;
-  line-height: 0.99;
+  line-height: 1.2;
 }
 
 body {
@@ -73,4 +81,8 @@ h1 {
   button {
     -webkit-app-region: no-drag;
   }
+}
+
+p {
+  @apply text-xs;
 }

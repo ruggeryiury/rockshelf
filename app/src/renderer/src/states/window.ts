@@ -1,8 +1,7 @@
-import type { RPCS3InstalledGamesStats, ParsedRB3SaveData, DetailedScoreDataObject } from '@rockshelf/core'
+
 import { create } from 'zustand'
 
 export interface WindowStateProps {
-  programProcessingInitMS: number
   isWinMaximized: boolean
   disableButtons: boolean
   disableTopBarButtons: boolean
@@ -20,7 +19,6 @@ export interface WindowStateActions {
 export type WindowStateHook = WindowStateProps & WindowStateActions
 
 const defaultState: WindowStateProps = {
-  programProcessingInitMS: 2000,
   isWinMaximized: false,
   disableButtons: true,
   disableTopBarButtons: false,

@@ -1,15 +1,18 @@
-import { AppFrame, PopUpMessage, TopBar, FirstTimeModal } from './core'
+import { AppFrame, PopUpMessage, TopBar, FirstTimeModal, IntroScreen } from './core'
 
 export default function App() {
   return (
     <>
       <TopBar />
       <AppFrame>
+        {/* Core Components */}
+        <PopUpMessage />
+
         {/* Modals */}
         <FirstTimeModal />
 
-        {/* Core Components */}
-        <PopUpMessage />
+        {/* Screens */}
+        <IntroScreen />
       </AppFrame>
     </>
   )

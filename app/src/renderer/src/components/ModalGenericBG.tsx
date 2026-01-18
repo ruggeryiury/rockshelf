@@ -1,14 +1,13 @@
 import { AnimationGeneratorReturnObject } from '@renderer/lib/genAnimation'
-import { AnimatedComponent, MotionSection } from '@renderer/lib/motion'
+import { AnimatedSection } from '@renderer/lib/motion'
 
 import clsx from 'clsx'
+import { HTMLMotionProps } from 'motion/react'
 
-export function ModalGenericBG({ children, id, condition, animation, className }: React.PropsWithChildren & { id?: string; condition: boolean; animation: AnimationGeneratorReturnObject; className: string }) {
+export function ModalGenericBG({ children, condition, animation, ...props }: HTMLMotionProps<'section'> & React.PropsWithChildren & { condition: boolean; animation: AnimationGeneratorReturnObject }) {
   return (
-    <AnimatedComponent condition={condition}>
-      <MotionSection {...animation} id={id} className={clsx(className, '')}>
-        {children}
-      </MotionSection>
-    </AnimatedComponent>
+    <AnimatedSection condition={condition} {...animation} {...props}>
+      {children}
+    </AnimatedSection>
   )
 }

@@ -1,8 +1,8 @@
 import { ExeFileIcon, LoadingIcon, OpenFolderIcon } from '@renderer/assets/icons'
 import { ModalGenericBG } from '@renderer/components'
 import { genAnimation } from '@renderer/lib/genAnimation'
-import { AnimatedComponent, MotionButton, MotionDiv } from '@renderer/lib/motion'
-import { TransComponent } from '@renderer/lib/transComponents'
+import { AnimatedDiv } from '@renderer/lib/motion'
+import { TransComponent } from '@renderer/lib/transComponent'
 import { useConfigState } from '@renderer/states/config'
 import { useWindowState } from '@renderer/states/window'
 import { UserConfig } from '@rockshelf/core'
@@ -27,12 +27,10 @@ export function FirstTimeModal() {
         <TransComponent i18nKey="firstTimeDesc" />
       </p>
       <div className="mb-2 flex-row! items-center border-b border-neutral-500 pb-2">
-        <AnimatedComponent condition={isBrowsingDevhdd0}>
-          <MotionDiv className="flex-row! items-center" {...genAnimation({ opacity: true, width: true, scaleX: true })}>
-            <LoadingIcon className="animate-spin" />
-            <div className="w-2" />
-          </MotionDiv>
-        </AnimatedComponent>
+        <AnimatedDiv condition={isBrowsingDevhdd0} className="flex-row! items-center" {...genAnimation({ opacity: true, width: true, scaleX: true })}>
+          <LoadingIcon className="animate-spin" />
+          <div className="w-2" />
+        </AnimatedDiv>
         <h2 className="mr-auto">
           <TransComponent i18nKey="devhdd0Folder" />
         </h2>
@@ -60,12 +58,10 @@ export function FirstTimeModal() {
         <p className="font-mono text-sm!">{introDevHDD0Folder || t('noPathSelected')}</p>
       </div>
       <div className="mb-2 flex-row! items-center border-b border-neutral-500 pb-2">
-        <AnimatedComponent condition={isBrowsingRPCS3Exe}>
-          <MotionDiv className="flex-row! items-center" {...genAnimation({ opacity: true, width: true, scaleX: true })}>
-            <LoadingIcon className="animate-spin" />
-            <div className="w-2" />
-          </MotionDiv>
-        </AnimatedComponent>
+        <AnimatedDiv condition={isBrowsingRPCS3Exe} className="flex-row! items-center" {...genAnimation({ opacity: true, width: true, scaleX: true })}>
+          <LoadingIcon className="animate-spin" />
+          <div className="w-2" />
+        </AnimatedDiv>
         <h2 className="mr-auto">
           <TransComponent i18nKey="rpcs3ExeFile" />
         </h2>
@@ -92,31 +88,29 @@ export function FirstTimeModal() {
       <div className="flex-row!">
         <p className="font-mono text-sm!">{introRPCS3File || t('noPathSelected')}</p>
       </div>
-      <AnimatedComponent condition={Boolean(introDevHDD0Folder) && Boolean(introRPCS3File)}>
-        <MotionDiv {...genAnimation({ opacity: true, height: true, scaleY: true })}>
-          <div className="h-4" />
-          <button
-            disabled={disableButtons}
-            className="font-pentatonic w-fit rounded-sm border border-neutral-500 px-2 py-1 text-sm uppercase duration-200 hover:border-neutral-400 active:border-neutral-300 disabled:border-neutral-800 disabled:text-neutral-700"
-            onClick={async () => {
-              setWindowState({ disableButtons: true })
-              const isDevHDD0Valid = await window.api.rbtools.isDevHDD0PathValid(introDevHDD0Folder)
-              if (!isDevHDD0Valid) return setWindowState({ disableButtons: false })
-              const isRPCS3ExeValid = await window.api.rbtools.isRPCS3ExePathValid(introRPCS3File)
-              if (!isRPCS3ExeValid) return setWindowState({ disableButtons: false })
-              const newConfig: UserConfig = {
-                devhdd0Path: introDevHDD0Folder,
-                rpcs3ExePath: introRPCS3File,
-              }
-              setConfigState(newConfig)
-              console.log(newConfig)
-              setWindowState({ disableButtons: false, isFirstTimeModalActivated: false })
-            }}
-          >
-            {t('continue')}
-          </button>
-        </MotionDiv>
-      </AnimatedComponent>
+      <AnimatedDiv condition={Boolean(introDevHDD0Folder) && Boolean(introRPCS3File)} {...genAnimation({ opacity: true, height: true, scaleY: true })}>
+        <div className="h-4" />
+        <button
+          disabled={disableButtons}
+          className="font-pentatonic w-fit rounded-sm border border-neutral-500 px-2 py-1 text-sm uppercase duration-200 hover:border-neutral-400 active:border-neutral-300 disabled:border-neutral-800 disabled:text-neutral-700"
+          onClick={async () => {
+            setWindowState({ disableButtons: true })
+            const isDevHDD0Valid = await window.api.rbtools.isDevHDD0PathValid(introDevHDD0Folder)
+            if (!isDevHDD0Valid) return setWindowState({ disableButtons: false })
+            const isRPCS3ExeValid = await window.api.rbtools.isRPCS3ExePathValid(introRPCS3File)
+            if (!isRPCS3ExeValid) return setWindowState({ disableButtons: false })
+            const newConfig: UserConfig = {
+              devhdd0Path: introDevHDD0Folder,
+              rpcs3ExePath: introRPCS3File,
+            }
+            setConfigState(newConfig)
+            await window.api.userConfig.saveUserConfigOnDisk(newConfig)
+            setWindowState({ disableButtons: false, isFirstTimeModalActivated: false })
+          }}
+        >
+          {t('continue')}
+        </button>
+      </AnimatedDiv>
     </ModalGenericBG>
     // <ModalGenericBG id="FirstTimeModal" condition={isFirstTimeModalActivated} animation={genAnimation({ opacity: true })} className="absolute! z-1 h-full w-full bg-black/95 p-8 backdrop-blur-md">
     //   <h1 className="mb-6 border-b border-neutral-700 pb-2 text-2xl uppercase">{t('firstTimeHeader')}</h1>

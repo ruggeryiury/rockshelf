@@ -1,4 +1,3 @@
-
 import { create } from 'zustand'
 
 export interface WindowStateProps {
@@ -6,7 +5,10 @@ export interface WindowStateProps {
   disableButtons: boolean
   disableTopBarButtons: boolean
 
-  // Modals
+  // Core: IntroScreen.tsx
+  isIntroScreenActivated: boolean
+
+  // Modals: FirstTimeModal.tsx
   isFirstTimeModalActivated: boolean
 }
 
@@ -23,7 +25,10 @@ const defaultState: WindowStateProps = {
   disableButtons: true,
   disableTopBarButtons: false,
 
-  // Modals
+  // Core: IntroScreen.tsx
+  isIntroScreenActivated: true,
+
+  // Modals: FirstTimeModal.tsx
   isFirstTimeModalActivated: false,
 }
 

@@ -1,4 +1,4 @@
-import { checkUserConfig, readUserConfigFilePath, saveUserConfigOnDisk, selectDevHDD0FolderInit, selectRPCS3ExeFileInit } from './core'
+import { checkUserConfig, fetchRPCS3Data, readUserConfigFilePath, saveUserConfigOnDisk, selectDevHDD0FolderInit, selectRPCS3ExeFileInit } from './core'
 import { addHandler, initRBToolsChannels, openUserDataFolder, winClose, winMaximize, winMinimize } from './lib'
 
 export function initMainHandlers() {
@@ -11,6 +11,7 @@ export function initMainHandlers() {
   // #region Init Functions
   addHandler('@InitFunctions/selectDevHDD0FolderInit', selectDevHDD0FolderInit)
   addHandler('@InitFunctions/selectRPCS3ExeFileInit', selectRPCS3ExeFileInit)
+  addHandler('@InitFunctions/fetchRPCS3Data', fetchRPCS3Data)
 
   // #region User Config
   addHandler('@UserConfig/checkUserConfig', checkUserConfig)

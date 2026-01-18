@@ -1,4 +1,4 @@
-import { AppFrame, PopUpMessage, TopBar, FirstTimeModal, IntroScreen } from './core'
+import { AppFrame, PopUpMessage, TopBar, FirstTimeModal, IntroScreen, MainScreen } from './core'
 
 export default function App() {
   return (
@@ -13,6 +13,7 @@ export default function App() {
 
         {/* Screens */}
         <IntroScreen />
+        <MainScreen />
       </AppFrame>
     </>
   )

@@ -1,5 +1,6 @@
 export * from './core/AppFrame'
 export * from './core/IntroScreen'
+export * from './core/MainScreen'
 export * from './core/PopUpMessage'
 export * from './core/TopBar'
 

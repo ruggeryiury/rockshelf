@@ -1,4 +1,3 @@
-import type { RPCS3InstalledGamesStats, ParsedRB3SaveData } from '@rockshelf/core'
 import { create } from 'zustand'
 
 export interface ConfigStateProps {

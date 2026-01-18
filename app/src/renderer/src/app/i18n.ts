@@ -31,12 +31,18 @@ i18n
           ok: 'OK',
           yes: 'Sim',
           no: 'Não',
+          welcomeText: 'Bem-vindo(a), {{userName}}!',
+          musicLibIconTitle: 'Quantidade de músicas disponíveis na sua Biblioteca',
 
           // Warnings
           warnSelectDevHDD0FolderInitActionCancelledByUser: 'Seleção de pasta <code>dev_hdd0</code> abortada pelo usuário.',
           warnSelectRPCS3ExeFileInitActionCancelledByUser: 'Seleção do executável do RPCS3 abortada pelo usuário.',
+
+          // Errors
+          errorIsDevHDD0PathValidInvalidPath: 'A pasta <code>dev_hdd0</code> selecionada "{{devhdd0Path}}" não é uma pasta válida.',
+          errorIsRPCS3ExePathValidInvalidPath: 'O executável selecionado "{{rpcs3ExePath}}" não é um executável do RPCS3 válido.',
         },
       },
     },
-    fallbackLng: 'en',
+    fallbackLng: 'pt',
   })

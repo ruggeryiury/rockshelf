@@ -1,7 +1,13 @@
-import type { RPCS3InstalledGamesStats, ParsedRB3SaveData, DetailedScoreDataObject } from '@rockshelf/core'
+import { InstrumentScoreData, ParsedRB3SaveData } from 'rbtools'
+import { RB3SongPackagesData, RPCS3StatsObject } from 'rbtools/lib'
 import { create } from 'zustand'
 
-export interface MainStateProps {}
+export interface MainStateProps {
+  stats?: RPCS3StatsObject
+  packages?: RB3SongPackagesData
+  saveData?: ParsedRB3SaveData
+  scores?: InstrumentScoreData
+}
 
 export interface MainStateActions {
   setMainState(state: Partial<MainStateProps> | ((oldState: MainStateProps) => Partial<MainStateProps>)): void

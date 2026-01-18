@@ -1,25 +1,13 @@
-import { motion, AnimatePresence } from 'motion/react'
+import { motion, AnimatePresence, ForwardRefComponent, HTMLMotionProps } from 'motion/react'
 
-export interface AnimatedComponentProps extends React.PropsWithChildren {
-  /**
-   * The condition where the component will be rendered.
-   */
-  condition: boolean
+export function AnimatedDiv({ condition, children, ...props }: HTMLMotionProps<'div'> & React.PropsWithChildren & { condition: boolean }) {
+  return <AnimatePresence>{condition && <motion.div {...props}>{children}</motion.div>}</AnimatePresence>
 }
 
-export function AnimatedComponent({ condition, children }: AnimatedComponentProps): React.JSX.Element {
-  return <AnimatePresence>{condition && children}</AnimatePresence>
+export function AnimatedSection({ condition, children, ...props }: HTMLMotionProps<'section'> & React.PropsWithChildren & { condition: boolean }) {
+  return <AnimatePresence>{condition && <motion.section {...props}>{children}</motion.section>}</AnimatePresence>
 }
 
-export const MotionSection = motion.section
-export const MotionDiv = motion.div
-export const MotionH1 = motion.h1
-export const MotionH2 = motion.h2
-export const MotionH3 = motion.h3
-export const MotionH4 = motion.h4
-export const MotionH5 = motion.h5
-export const MotionH6 = motion.h6
-export const MotionP = motion.p
-export const MotionSpan = motion.span
-export const MotionImg = motion.img
-export const MotionButton = motion.button
+export function AnimatedButton({ condition, children, ...props }: HTMLMotionProps<'button'> & React.PropsWithChildren & { condition: boolean }) {
+  return <AnimatePresence>{condition && <motion.button {...props}>{children}</motion.button>}</AnimatePresence>
+}

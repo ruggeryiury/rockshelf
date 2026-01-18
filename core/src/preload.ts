@@ -1,5 +1,5 @@
 import { ipcRenderer, shell, webUtils, type IpcRenderer, type IpcRendererEvent } from 'electron'
-import type { checkUserConfig, readUserConfigFilePath, saveUserConfigOnDisk, selectDevHDD0FolderInit, selectRPCS3ExeFileInit, UserConfig } from './core'
+import type { checkUserConfig, fetchRPCS3Data, readUserConfigFilePath, saveUserConfigOnDisk, selectDevHDD0FolderInit, selectRPCS3ExeFileInit, UserConfig } from './core'
 import type { installHighMemoryPatch, isDevHDD0PathValid, isRPCS3ExePathValid, MessagePopUpOptions, openUserDataFolder, winClose, winMaximize, winMinimize } from './lib'
 import type { Promisable } from 'type-fest'
 
@@ -29,6 +29,9 @@ export const rockshelfAPI = {
     },
     async selectRPCS3ExeFileInit(rpcs3ExeLocale: string): ReturnType<typeof selectRPCS3ExeFileInit> {
       return await ipcRenderer.invoke('@InitFunctions/selectRPCS3ExeFileInit', rpcs3ExeLocale)
+    },
+    async fetchRPCS3Data(devhdd0FolderPath: string, rpcs3ExeFilePath: string): Promise<ReturnType<typeof fetchRPCS3Data>> {
+      return await ipcRenderer.invoke('@InitFunctions/fetchRPCS3Data', devhdd0FolderPath, rpcs3ExeFilePath)
     },
   },
   userConfig: {

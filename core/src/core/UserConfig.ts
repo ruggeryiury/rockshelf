@@ -1,9 +1,12 @@
 import type { BrowserWindow, IpcMainInvokeEvent } from 'electron'
 import { FS } from '../core'
+import type { ScoreDataInstrumentTypes } from 'rbtools'
 
 export interface UserConfig {
   devhdd0Path: string
   rpcs3ExePath: string
+  mostPlayedInstrument: ScoreDataInstrumentTypes
+  mostPlayedDifficulty: 0 | 1 | 2 | 3
 }
 
 export const checkUserConfig = (): boolean => {
@@ -17,11 +20,13 @@ export const readUserConfigFilePath = async (): Promise<UserConfig | false> => {
   return false
 }
 
-export const saveUserConfigOnDisk = async (_: BrowserWindow, __: IpcMainInvokeEvent, options: Partial<UserConfig>): Promise<true> => {
+export const saveUserConfigOnDisk = async (_: BrowserWindow, __: IpcMainInvokeEvent, options: Partial<UserConfig>): Promise<UserConfig> => {
   const configPath = FS.userConfigFile()
   const configDefault: UserConfig = {
     devhdd0Path: '',
     rpcs3ExePath: '',
+    mostPlayedInstrument: 'band',
+    mostPlayedDifficulty: 3,
   }
 
   const oldConfig = await readUserConfigFilePath()
@@ -32,7 +37,7 @@ export const saveUserConfigOnDisk = async (_: BrowserWindow, __: IpcMainInvokeEv
     }
 
     await configPath.write(JSON.stringify(newConfig))
-    return true
+    return newConfig
   }
 
   const newConfig: UserConfig = {
@@ -42,5 +47,5 @@ export const saveUserConfigOnDisk = async (_: BrowserWindow, __: IpcMainInvokeEv
   }
 
   await configPath.write(JSON.stringify(newConfig))
-  return true
+  return newConfig
 }

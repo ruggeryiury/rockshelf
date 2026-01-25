@@ -12,7 +12,7 @@
 </div>
 
 <div align=center style="margin-bottom: 2rem">
-<img src='app/resources/icon.png' width=256px>
+<img src='docs/icon.png' width=256px>
 </div>
 
 - [About](#about)

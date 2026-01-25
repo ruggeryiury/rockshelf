@@ -1,5 +1,5 @@
 {
-  "name": "@rockshelf/core",
+  "name": "rockshelf-core",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -14,6 +14,7 @@
   "license": "ISC",
   "packageManager": "pnpm@10.28.0",
   "dependencies": {
+    "@electron-toolkit/utils": "^4.0.0",
     "electron": "^40.0.0",
     "node-lib": "link:..\\..\\node-lib",
     "rbtools": "link:..\\..\\rbtools",
@@ -28,8 +29,16 @@
   },
   "exports": {
     ".": {
-      "types": "./dist/index.d.ts",
-      "import": "./dist/index.js"
+      "types": "./dist/core.d.ts",
+      "import": "./dist/core.js"
+    },
+    "./main": {
+      "types": "./dist/main.d.ts",
+      "import": "./dist/main.js"
+    },
+    "./lib": {
+      "types": "./dist/lib.d.ts",
+      "import": "./dist/lib.js"
     },
     "./preload": {
       "types": "./dist/preload.d.ts",

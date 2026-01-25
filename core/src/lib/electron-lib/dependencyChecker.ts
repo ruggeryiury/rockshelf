@@ -1,3 +1,3 @@
-export const dependencyChecker = (app: Electron.App) => {
+export const dependencyChecker = (app: Electron.App): void => {
 
 }

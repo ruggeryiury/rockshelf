@@ -1,4 +1,3 @@
-import { shell, type BrowserWindow } from 'electron'
 import { useHandler } from './useHandler'
 
 export const winMinimize = useHandler((win): void => win.minimize())

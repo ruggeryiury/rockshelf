@@ -1,0 +1,39 @@
+{
+  "name": "@rockshelf/core",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "build": "tsdown",
+    "format": "prettier --write .",
+    "xport": "python scripts/create_exports_src.py"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "packageManager": "pnpm@10.28.0",
+  "dependencies": {
+    "electron": "^40.0.0",
+    "node-lib": "link:..\\..\\node-lib",
+    "rbtools": "link:..\\..\\rbtools",
+    "yaml": "^2.8.2"
+  },
+  "devDependencies": {
+    "@types/node": "^25.0.10",
+    "prettier": "^3.8.1",
+    "tsdown": "^0.20.0",
+    "type-fest": "^5.4.1",
+    "typescript": "^5.9.3"
+  },
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./preload": {
+      "types": "./dist/preload.d.ts",
+      "import": "./dist/preload.js"
+    }
+  }
+}

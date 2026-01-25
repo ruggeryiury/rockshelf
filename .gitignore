@@ -1,0 +1,17 @@
+dev/
+**/node_modules/
+**/dist/
+**/out/
+*.env
+*.http
+pnpm-lock.yaml
+**/temp/
+*.md
+!LICENSE.md
+!README.md
+.DS_Store
+.eslintcache
+*.log*
+
+# Remove this later
+app/

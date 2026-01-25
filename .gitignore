@@ -12,6 +12,3 @@ pnpm-lock.yaml
 .DS_Store
 .eslintcache
 *.log*
-
-# Remove this later
-app/src/renderer

@@ -1,8 +1,8 @@
-import { initRockshelfApp } from 'rockshelf-core/main'
 import { join } from 'node:path'
 import { BrowserWindow, shell } from 'electron'
-import icon from '../../resources/icon.png?asset'
+import { initRockshelfApp } from 'rockshelf-core/main'
 import { is } from '@electron-toolkit/utils'
+import icon from '../../resources/icon.png?asset'
 
 export function createWindow(): BrowserWindow {
   const mainWindow = new BrowserWindow({

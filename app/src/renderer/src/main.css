@@ -1,0 +1,89 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+@import 'tailwindcss';
+
+@font-face {
+  font-family: 'Pentatonic';
+  src: url('./assets/fonts/Pentatonic-Regular.woff2') format('woff2');
+  font-display: 'swap';
+}
+
+@theme {
+  /* Breakpoints */
+  --breakpoint-mobile: 0px;
+  --breakpoint-mobile-md: 320px;
+  --breakpoint-mobile-lg: 375px;
+  --breakpoint-tablet: 425px;
+  --breakpoint-tablet-md: 600px;
+  --breakpoint-tablet-lg: 768px;
+  --breakpoint-laptop: 1024px;
+  --breakpoint-laptop-lg: 1366px;
+  --breakpoint-desktop: 1440px;
+  --breakpoint-hd: 1290px;
+
+  /* Colors */
+  --color-default-white: #c8c8c8;
+  --color-default-black: #0a0a0a;
+
+  /* Fonts */
+  --font-pentatonic: 'Pentatonic', sans-serif;
+  --font-inter: 'Inter', sans-serif;
+}
+
+@utility w-fill {
+  width: -webkit-fill-available;
+}
+
+@utility h-fill {
+  height: -webkit-fill-available;
+}
+
+* {
+  outline: none;
+  line-height: 1.2;
+}
+
+body {
+  @apply bg-default-black text-default-white relative h-screen w-full overflow-hidden font-sans select-none;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#root {
+  @apply h-full max-h-full w-full max-w-full;
+}
+
+div,
+header,
+footer,
+section,
+main,
+button {
+  @apply relative flex flex-col;
+}
+
+button {
+  @apply relative cursor-default;
+}
+
+h1,
+button {
+  @apply font-pentatonic;
+}
+
+#TopBar {
+  -webkit-app-region: drag;
+
+  h1 {
+    @apply font-sans select-none;
+  }
+
+  button {
+    -webkit-app-region: no-drag;
+  }
+}
+
+p {
+  @apply text-xs;
+}

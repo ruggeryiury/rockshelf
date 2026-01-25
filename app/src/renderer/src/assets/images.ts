@@ -1,0 +1,16 @@
+import imgIconRB3 from './images/icon-rb3.webp'
+import imgIconRB3DX from './images/icon-rb3dx.webp'
+import bandIcon from './images/instrument-icons-band.webp'
+import bassIcon from './images/instrument-icons-bass.webp'
+import drumsIcon from './images/instrument-icons-drums.webp'
+import guitarIcon from './images/instrument-icons-guitar.webp'
+import harm2Icon from './images/instrument-icons-harm2.webp'
+import harm3Icon from './images/instrument-icons-harm3.webp'
+import keysIcon from './images/instrument-icons-keys.webp'
+import proBassIcon from './images/instrument-icons-probass.webp'
+import proDrumsIcon from './images/instrument-icons-prodrums.webp'
+import proGuitarIcon from './images/instrument-icons-proguitar.webp'
+import proKeysIcon from './images/instrument-icons-prokeys.webp'
+import vocalsIcon from './images/instrument-icons-vocals.webp'
+
+export { imgIconRB3, imgIconRB3DX, bandIcon, bassIcon, drumsIcon, guitarIcon, harm2Icon, harm3Icon, keysIcon, proBassIcon, proDrumsIcon, proGuitarIcon, proKeysIcon, vocalsIcon }

@@ -12,5 +12,6 @@ import proDrumsIcon from './images/instrument-icons-prodrums.webp'
 import proGuitarIcon from './images/instrument-icons-proguitar.webp'
 import proKeysIcon from './images/instrument-icons-prokeys.webp'
 import vocalsIcon from './images/instrument-icons-vocals.webp'
+import wavesPattern from './images/waves-seamless-pattern.webp'
 
-export { imgIconRB3, imgIconRB3DX, bandIcon, bassIcon, drumsIcon, guitarIcon, harm2Icon, harm3Icon, keysIcon, proBassIcon, proDrumsIcon, proGuitarIcon, proKeysIcon, vocalsIcon }
+export { imgIconRB3, imgIconRB3DX, bandIcon, bassIcon, drumsIcon, guitarIcon, harm2Icon, harm3Icon, keysIcon, proBassIcon, proDrumsIcon, proGuitarIcon, proKeysIcon, vocalsIcon, wavesPattern }

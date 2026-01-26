@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap');
 @import 'tailwindcss';
 
 @font-face {
@@ -26,7 +26,18 @@
 
   /* Fonts */
   --font-pentatonic: 'Pentatonic', sans-serif;
-  --font-inter: 'Inter', sans-serif;
+  --font-urbanist: 'Urbanist', sans-serif;
+
+  /* Animations */
+  --animate-move-pattern: movePattern 48s linear infinite;
+  @keyframes movePattern {
+    0% {
+      background-position: 0 0;
+    }
+    100% {
+      background-position: 100% 0;
+    }
+  }
 }
 
 @utility w-fill {
@@ -64,20 +75,16 @@ button {
 }
 
 button {
-  @apply relative cursor-default;
+  @apply cursor-default;
 }
 
 h1,
 button {
-  @apply font-pentatonic;
+  @apply font-urbanist! font-semibold uppercase;
 }
 
 #TopBar {
   -webkit-app-region: drag;
-
-  h1 {
-    @apply font-sans select-none;
-  }
 
   button {
     -webkit-app-region: no-drag;

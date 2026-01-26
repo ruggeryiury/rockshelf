@@ -11,6 +11,5 @@ export const initHandlers = (): void => {
     ['@Window/maximize', winMaximize],
     ['@Window/close', winClose],
   ]
-  const listeners: any[] = []
   for (const [channel, listeners] of handlers) addHandler(channel, listeners)
 }

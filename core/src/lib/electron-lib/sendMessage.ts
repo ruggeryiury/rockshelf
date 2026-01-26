@@ -1,10 +1,10 @@
 import type { BrowserWindow } from 'electron'
 
-export interface MessagePopUpOptions {
+export interface RendererMessageObject {
   /**
    * The type of the message
    */
-  type: 'error' | 'warn' | 'success' | 'loading'
+  type: 'error' | 'warn' | 'success' | 'info' | 'fatal'
   /**
    * The module or subsystem that emitted the message.
    */
@@ -30,7 +30,7 @@ export interface MessagePopUpOptions {
  * @param {MessagePopUpOptions} options Message configuration payload.
  * @returns {true} Always returns true after dispatching the message.
  */
-export const sendMessage = (window: BrowserWindow, options: MessagePopUpOptions): true => {
+export const sendMessage = (window: BrowserWindow, options: RendererMessageObject): true => {
   window.webContents.send('@Message', options)
   return true
 }

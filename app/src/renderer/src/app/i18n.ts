@@ -10,11 +10,20 @@ i18n
     resources: {
       en: {
         translation: {
-          title: 'Rockshelf',
+          appTitle: 'Rockshelf',
+          versionText: 'Version {{version}}',
+          introFooterText: 'Rockshelf © 2025-2026 Ruggery Iury Corrêa (Ruggy). All rights reserved',
+          welcomeScreenTitle: 'Welcome to Rockshelf!',
+          welcomeScreenDescription: "Your ultimate music library manager. Let's get started by setting up your music folders.",
         },
       },
       pt: {
-        translation: {},
+        translation: {
+          appTitle: 'Rockshelf',
+          versionText: 'Versão {{version}}',
+          introFooterText: 'Rockshelf © 2025-2026 Ruggery Iury Corrêa (Ruggy). Todos os direitos reservados',
+          welcomeScreenTitle: 'Bem-vindo ao Rockshelf!',
+        },
       },
     },
     fallbackLng: 'en',

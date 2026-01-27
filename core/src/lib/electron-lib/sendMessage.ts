@@ -4,11 +4,11 @@ export interface RendererMessageObject {
   /**
    * The type of the message
    */
-  type: 'error' | 'warn' | 'success' | 'info' | 'fatal'
+  type: 'error' | 'warn' | 'success' | 'info'
   /**
    * The module or subsystem that emitted the message.
    */
-  module: 'generic' | 'electronLib' | 'rockshelf' | 'dom'
+  module: 'generic' | 'electronLib' | 'rockshelf' | 'dom' | 'rpcs3'
   /**
    * The method or function name where the message originated.
    */

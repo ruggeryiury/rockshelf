@@ -1,6 +1,7 @@
 import { app, BrowserWindow } from 'electron'
-import { initHandlers, setUserDataFolder } from './lib'
+import { setUserDataFolder } from './lib'
 import { electronApp, optimizer } from '@electron-toolkit/utils'
+import { initHandlers } from './core'
 
 export async function initRockshelfApp(createWindow: () => BrowserWindow): Promise<void> {
   await setUserDataFolder(app, 'Rockshelf')

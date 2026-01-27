@@ -1,15 +1,16 @@
+import { useTranslation } from 'react-i18next'
 import { APP_VERSION } from '@renderer/app/rockshelf'
 import { AnimatedSection, genAnim, TransComponent } from '@renderer/lib'
 import { useRendererState } from '@renderer/states/RendererState'
-import { useTranslation } from 'react-i18next'
 
 export function IntroScreen() {
   const { t } = useTranslation()
+
   const condition = useRendererState((state) => state.IntroScreen)
 
   const props = {
     condition,
-    ...genAnim({ opacity: true }),
+    ...genAnim({ opacityInit: true }),
     id: 'IntroScreen',
   }
 

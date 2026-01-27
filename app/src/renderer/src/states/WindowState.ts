@@ -13,6 +13,7 @@ export interface WindowStateProps {
    * Indicates whether the top bar buttons are disabled.
    */
   disableTopBarButtons: boolean
+  browserDetectorLang: string
 }
 
 export interface WindowStateActions {
@@ -40,6 +41,7 @@ const defaultState: WindowStateProps = {
   isWinMaximized: false,
   disableButtons: true,
   disableTopBarButtons: false,
+  browserDetectorLang: 'en-US',
 }
 
 export const useWindowState = create<WindowStateHook>()((set, get) => ({

@@ -6,5 +6,9 @@ export * from './lib/electron-lib/thisFilePath'
 export * from './lib/electron-lib/useHandler'
 export * from './lib/electron-lib/windowControls'
 
+export * from './lib/fs/userConfig'
+
 export * from './lib/rockshelf/dependencyChecker'
-export * from './lib/rockshelf/initHandlers'
+
+export * from './lib/rpcs3/devhdd0Folder'
+export * from './lib/rpcs3/rpcs3Exe'

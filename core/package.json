@@ -6,6 +6,7 @@
   "type": "module",
   "scripts": {
     "build": "tsdown",
+    "build:watch": "tsdown --watch",
     "format": "prettier --write .",
     "xport": "python scripts/create_exports_src.py"
   },

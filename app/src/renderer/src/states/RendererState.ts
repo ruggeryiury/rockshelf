@@ -31,7 +31,7 @@ export type RendererStateHook = RendererStateProps & RendererStateActions
 
 const defaultState: RendererStateProps = {
   IntroScreen: true,
-  WelcomeModal: true,
+  WelcomeModal: false,
 }
 
 export const useRendererState = create<RendererStateHook>()((set, get) => ({

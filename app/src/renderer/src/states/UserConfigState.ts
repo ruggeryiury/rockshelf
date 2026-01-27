@@ -27,7 +27,7 @@ export type UserConfigStateHook = UserConfigStateProps & UserConfigStateActions
 const defaultState: UserConfigStateProps = {
   devhdd0Path: '',
   rpcs3ExePath: '',
-  lang: 'en',
+  lang: 'en-US',
   mostPlayedDifficulty: 3,
   mostPlayedInstrument: 'band',
 }

@@ -1,17 +1,20 @@
-import { AnimatedSection, genAnim, TransComponent } from '@renderer/lib'
+import { AnimatedDiv, AnimatedSection, genAnim, TransComponent } from '@renderer/lib'
 import { useRendererState } from '@renderer/states/RendererState'
-import { wavesPattern } from '@renderer/assets/images'
+import { BRAFlag, SPNFlag, USAFlag, wavesPattern } from '@renderer/assets/images'
 import { useTranslation } from 'react-i18next'
 import { useWindowState } from '@renderer/states/WindowState'
 import { useUserConfigState } from '@renderer/states/UserConfigState'
+import clsx from 'clsx'
+import { UserConfigObj } from 'rockshelf-core/lib'
 
 export function WelcomeModal() {
-  const { t } = useTranslation()
+  const { t, i18n } = useTranslation()
 
   const disabledButtons = useWindowState((state) => state.disableButtons)
   const setWindowState = useWindowState((state) => state.setWindowState)
 
   const devhdd0Path = useUserConfigState((state) => state.devhdd0Path)
+  const rpcs3ExePath = useUserConfigState((state) => state.rpcs3ExePath)
   const setUserConfigState = useUserConfigState((state) => state.setUserConfigState)
 
   const condition = useRendererState((state) => state.WelcomeModal)
@@ -29,8 +32,9 @@ export function WelcomeModal() {
           <h2 className="mr-auto">
             <TransComponent i18nKey="devhdd0Folder" />
           </h2>
+          <p className={clsx('mr-2 text-neutral-600', devhdd0Path ? 'font-mono' : 'italic')}>{devhdd0Path || t('noPathSelected')}</p>
           <button
-            className="rounded-xs bg-neutral-900 p-1 duration-100 hover:bg-neutral-800 active:bg-neutral-700 disabled:text-neutral-700 disabled:hover:bg-neutral-900"
+            className="rounded-xs bg-neutral-900 px-1 py-0.5 text-sm! duration-100 hover:bg-neutral-800 active:bg-neutral-700 disabled:text-neutral-700 disabled:hover:bg-neutral-900"
             disabled={disabledButtons}
             onClick={async () => {
               setWindowState({ disableButtons: true })
@@ -54,12 +58,13 @@ export function WelcomeModal() {
           <h2 className="mr-auto">
             <TransComponent i18nKey="rpcs3Exe" />
           </h2>
+          <p className={clsx('mr-2 text-neutral-600', rpcs3ExePath ? 'font-mono' : 'italic')}>{rpcs3ExePath || t('noPathSelected')}</p>
           <button
-            className="rounded-xs bg-neutral-900 p-1 duration-100 hover:bg-neutral-800 active:bg-neutral-700 disabled:text-neutral-700 disabled:hover:bg-neutral-900"
+            className="rounded-xs bg-neutral-900 px-1 py-0.5 text-sm! duration-100 hover:bg-neutral-800 active:bg-neutral-700 disabled:text-neutral-700 disabled:hover:bg-neutral-900"
             disabled={disabledButtons}
             onClick={async () => {
               setWindowState({ disableButtons: true })
-              const path = await window.api.rpcs3.selectRPCS3Exe()
+              const path = await window.api.rpcs3.selectRPCS3Exe(i18n.language)
               if (!path) {
                 setWindowState({ disableButtons: false })
                 return
@@ -74,6 +79,41 @@ export function WelcomeModal() {
         <p className="text-neutral-600 italic">
           <TransComponent i18nKey="rpcs3ExeDescription" />
         </p>
+        <AnimatedDiv condition={Boolean(devhdd0Path && rpcs3ExePath)} {...genAnim({ height: true, scaleY: true, opacity: true })}>
+          <div className="h-4 w-full" />
+          <button
+            className="w-fit rounded-xs bg-neutral-900 px-1 py-0.5 text-sm! duration-100 hover:bg-neutral-800 active:bg-neutral-700 disabled:text-neutral-700 disabled:hover:bg-neutral-900"
+            disabled={disabledButtons}
+            onClick={async () => {
+              setWindowState({ disableButtons: true })
+              const newConfig: Partial<UserConfigObj> = {
+                devhdd0Path,
+                rpcs3ExePath,
+                lang: i18n.language,
+                mostPlayedDifficulty: 3,
+                mostPlayedInstrument: 'band',
+              }
+              setWindowState({ disableButtons: false })
+            }}
+          >
+            {t('continue')}
+          </button>
+        </AnimatedDiv>
+        <div className="mt-auto h-4 w-full flex-row! items-center">
+          <h2 className="mr-4 text-xs">{t('changeLang')}</h2>
+          <button className={clsx('mr-2 flex-row! items-center rounded-xs px-2 py-1 font-sans! text-xs! duration-200 last:mr-0', i18n.language === 'en-US' ? 'bg-neutral-400 text-neutral-900 hover:bg-neutral-300 active:bg-neutral-200' : 'bg-neutral-900 hover:bg-neutral-800 active:bg-neutral-700')} onClick={() => i18n.changeLanguage('en-US')}>
+            <img src={USAFlag} width={12} className="mr-2" />
+            <h1>{t('en-US')}</h1>
+          </button>
+          <button className={clsx('mr-2 flex-row! items-center rounded-xs px-2 py-1 font-sans! text-xs! duration-200 last:mr-0', i18n.language === 'pt-BR' ? 'bg-neutral-400 text-neutral-900 hover:bg-neutral-300 active:bg-neutral-200' : 'bg-neutral-900 hover:bg-neutral-800 active:bg-neutral-700')} onClick={() => i18n.changeLanguage('pt-BR')}>
+            <img src={BRAFlag} width={12} className="mr-2" />
+            <h1>{t('pt-BR')}</h1>
+          </button>
+          <button className={clsx('mr-2 flex-row! items-center rounded-xs px-2 py-1 font-sans! text-xs! duration-200 last:mr-0', i18n.language === 'es-ES' ? 'bg-neutral-400 text-neutral-900 hover:bg-neutral-300 active:bg-neutral-200' : 'bg-neutral-900 hover:bg-neutral-800 active:bg-neutral-700')} onClick={() => i18n.changeLanguage('es-ES')}>
+            <img src={SPNFlag} width={12} className="mr-2" />
+            <h1>{t('es-ES')}</h1>
+          </button>
+        </div>
       </div>
     </AnimatedSection>
   )

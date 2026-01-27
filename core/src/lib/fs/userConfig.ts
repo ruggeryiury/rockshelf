@@ -7,7 +7,7 @@ export interface UserConfigObj {
   /**
    * The preferred language of the user.
    */
-  lang: 'pt' | 'es' | 'en'
+  lang: string
   /**
    * The path to the `dev_hdd0` folder.
    */

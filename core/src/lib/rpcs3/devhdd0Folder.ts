@@ -38,6 +38,7 @@ export const selectDevhdd0Folder = useHandler(async (win) => {
       module: 'rpcs3',
       method: 'selectDevhdd0Folder',
       code: 'invalidFolder',
+      messageValues: { path: devhdd0.path },
     })
     return false
   }

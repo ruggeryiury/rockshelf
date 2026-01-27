@@ -20,8 +20,8 @@ export const isRPCS3ExePathValid = (rpcs3ExePath: FilePathLikeTypes): boolean =>
   return proof
 }
 
-export const selectRPCS3Exe = useHandler(async (win) => {
-  const selection = await dialog.showOpenDialog({ properties: ['openFile'] })
+export const selectRPCS3Exe = useHandler(async (win, _, lang: string) => {
+  const selection = await dialog.showOpenDialog({ properties: ['openFile'], filters: [{ name: lang.startsWith('pt') ? 'Executável do RPCS3' : lang.startsWith('es') ? 'Ejecutable de RPCS3' : 'RPCS3 Executable', extensions: ['exe'] }] })
   if (selection.canceled) {
     sendMessage(win, {
       type: 'info',
@@ -39,6 +39,7 @@ export const selectRPCS3Exe = useHandler(async (win) => {
       module: 'rpcs3',
       method: 'selectRPCS3Exe',
       code: 'invalidExecutable',
+      messageValues: { path: rpcs3Exe.path },
     })
     return false
   }

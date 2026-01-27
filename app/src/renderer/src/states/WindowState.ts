@@ -1,3 +1,4 @@
+import { RendererMessageObject } from 'rockshelf-core/lib'
 import { create } from 'zustand'
 
 export interface WindowStateProps {
@@ -13,7 +14,7 @@ export interface WindowStateProps {
    * Indicates whether the top bar buttons are disabled.
    */
   disableTopBarButtons: boolean
-  browserDetectorLang: string
+  messageBox: RendererMessageObject | null
 }
 
 export interface WindowStateActions {
@@ -41,7 +42,7 @@ const defaultState: WindowStateProps = {
   isWinMaximized: false,
   disableButtons: true,
   disableTopBarButtons: false,
-  browserDetectorLang: 'en-US',
+  messageBox: null,
 }
 
 export const useWindowState = create<WindowStateHook>()((set, get) => ({

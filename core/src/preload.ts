@@ -55,8 +55,8 @@ export const rockshelfAPI = {
     selectDevhdd0Folder: async (): ReturnType<typeof selectDevhdd0Folder> => {
       return await ipcRenderer.invoke('@RPCS3/selectDevhdd0Folder')
     },
-    selectRPCS3Exe: async (): ReturnType<typeof selectRPCS3Exe> => {
-      return await ipcRenderer.invoke('@RPCS3/selectRPCS3Exe')
+    selectRPCS3Exe: async (lang: string): ReturnType<typeof selectRPCS3Exe> => {
+      return await ipcRenderer.invoke('@RPCS3/selectRPCS3Exe', lang)
     },
   },
   utils: {

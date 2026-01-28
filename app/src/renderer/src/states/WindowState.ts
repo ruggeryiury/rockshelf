@@ -1,4 +1,4 @@
-import { RendererMessageObject } from 'rockshelf-core/lib'
+import { RendererMessageObject, RockBand3Data } from 'rockshelf-core/lib'
 import { create } from 'zustand'
 
 export interface WindowStateProps {
@@ -19,7 +19,7 @@ export interface WindowStateProps {
    */
   messageBox: RendererMessageObject | null
   mainWindowSelectionIndex: number
-  rb3Stats: object | null
+  rb3Stats: RockBand3Data | null
 }
 
 export interface WindowStateActions {
@@ -48,7 +48,7 @@ const defaultState: WindowStateProps = {
   disableButtons: true,
   disableTopBarButtons: false,
   messageBox: null,
-  mainWindowSelectionIndex: -1,
+  mainWindowSelectionIndex: 0,
   rb3Stats: null,
 }
 

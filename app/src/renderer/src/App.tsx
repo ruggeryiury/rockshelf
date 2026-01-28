@@ -23,7 +23,7 @@ export function App() {
 
       setUserConfigState(hasUserConfig)
       setRendererState({ IntroScreen: false })
-      setWindowState({ mainWindowSelectionIndex: 0 })
+      setWindowState({ disableButtons: false, mainWindowSelectionIndex: 0 })
     }
 
     const timeout = setTimeout(() => {

@@ -14,7 +14,12 @@ export interface WindowStateProps {
    * Indicates whether the top bar buttons are disabled.
    */
   disableTopBarButtons: boolean
+  /**
+   * An object that controls the MessageBox rendering.
+   */
   messageBox: RendererMessageObject | null
+  mainWindowSelectionIndex: number
+  rb3Stats: object | null
 }
 
 export interface WindowStateActions {
@@ -43,6 +48,8 @@ const defaultState: WindowStateProps = {
   disableButtons: true,
   disableTopBarButtons: false,
   messageBox: null,
+  mainWindowSelectionIndex: -1,
+  rb3Stats: null,
 }
 
 export const useWindowState = create<WindowStateHook>()((set, get) => ({

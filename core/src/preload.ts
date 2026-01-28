@@ -1,5 +1,5 @@
 import { ipcRenderer, shell, webUtils, type IpcRenderer, type IpcRendererEvent } from 'electron'
-import type { openUserConfigOnExplorer, readUserConfig, RendererMessageObject, selectDevhdd0Folder, winClose, winMaximize, winMinimize } from './lib'
+import type { getRB3Data, openUserData, readUserConfig, RendererMessageObject, saveUserConfig, selectDevhdd0Folder, UserConfigObj, winClose, winMaximize, winMinimize } from './lib'
 import type { Promisable } from 'type-fest'
 import type { selectRPCS3Exe } from './lib/rpcs3/rpcs3Exe'
 
@@ -43,11 +43,14 @@ export const rockshelfAPI = {
   },
   fs: {
     userConfig: {
-      openUserConfigOnExplorer: async (selected: boolean = false): ReturnType<typeof openUserConfigOnExplorer> => {
-        return await ipcRenderer.invoke('@FileSystem/userConfig/openUserConfigOnExplorer', selected)
+      openUserData: async (): ReturnType<typeof openUserData> => {
+        return await ipcRenderer.invoke('@FileSystem/userConfig/openUserData')
       },
       readUserConfig: async (): ReturnType<typeof readUserConfig> => {
         return await ipcRenderer.invoke('@FileSystem/userConfig/readUserConfig')
+      },
+      saveUserConfig: async (newConfig: Partial<UserConfigObj>): ReturnType<typeof saveUserConfig> => {
+        return await ipcRenderer.invoke('@FileSystem/userConfig/saveUserConfig', newConfig)
       },
     },
   },
@@ -57,6 +60,9 @@ export const rockshelfAPI = {
     },
     selectRPCS3Exe: async (lang: string): ReturnType<typeof selectRPCS3Exe> => {
       return await ipcRenderer.invoke('@RPCS3/selectRPCS3Exe', lang)
+    },
+    getRB3Data: async (devhdd0Path: string, rpcs3ExePath: string): ReturnType<typeof getRB3Data> => {
+      return await ipcRenderer.invoke('@RPCS3/getRB3Data', devhdd0Path, rpcs3ExePath)
     },
   },
   utils: {

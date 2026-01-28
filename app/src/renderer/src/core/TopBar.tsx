@@ -14,7 +14,7 @@ export function TopBar() {
       <p className="mr-auto">{t('appTitle')}</p>
       {import.meta.env.DEV && (
         <>
-          <button onClick={async () => await window.api.fs.userConfig.openUserConfigOnExplorer()} className="h-full justify-center px-3 duration-200 hover:bg-green-500/50" title={t('openUserDataFolder')}>
+          <button onClick={async () => await window.api.fs.userConfig.openUserData()} className="h-full justify-center px-3 duration-200 hover:bg-green-500/50" title={t('openUserDataFolder')}>
             <FolderWithPlusIcon className="text-xl" />
           </button>
           <div className="h-full w-px py-1.5">

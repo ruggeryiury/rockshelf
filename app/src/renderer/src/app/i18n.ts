@@ -31,6 +31,8 @@ i18n
           versionText: 'Version {{version}}',
           welcomeScreenDescription: 'Rockshelf is a Rock Band 3/Rock Band 3 Deluxe song package manager for RPCS3 users.<n /><n />Since it is your first time running the program, please choose the path to your <code>dev_hdd0</code> folder, and the RPCS3 executable <code>rpcs3.exe</code>, then click "Continue".',
           welcomeScreenTitle: 'Welcome to Rockshelf!',
+          rockBand3Title: 'Rock Band 3',
+          loadingRB3StatData: 'Carregando Dados do Rock Band 3...',
 
           // Info
           infoSelectDevhdd0FolderActionCancelledByUser: '<code>dev_hdd0</code> folder selection aborted by the user.',
@@ -64,6 +66,8 @@ i18n
           versionText: 'Versão {{version}}',
           welcomeScreenDescription: 'Rockshelf é um gerenciador de packs instalados no emulador RPCS3 para o Rock Band 3/Rock Band 3 Deluxe.<n /><n />Como é a primeira vez que você está rodando o programa, por favor, escolha a localização da sua pasta <code>dev_hdd0</code> e do executável do RPCS3 <code>rpcs3.exe</code>, depois clique em "Continuar".',
           welcomeScreenTitle: 'Bem-vindo ao Rockshelf!',
+          rockBand3Title: 'Rock Band 3',
+          loadingRB3StatData: 'Loading Rock Band 3 Data...',
 
           // Info
           infoSelectDevhdd0FolderActionCancelledByUser: 'A seleção da pasta <code>dev_hdd0</code> foi abortada pelo usuário.',

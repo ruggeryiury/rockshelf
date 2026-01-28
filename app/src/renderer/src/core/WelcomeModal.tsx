@@ -12,6 +12,7 @@ export function WelcomeModal() {
 
   const disabledButtons = useWindowState((state) => state.disableButtons)
   const setWindowState = useWindowState((state) => state.setWindowState)
+  const setRendererState = useRendererState((state) => state.setRendererState)
 
   const devhdd0Path = useUserConfigState((state) => state.devhdd0Path)
   const rpcs3ExePath = useUserConfigState((state) => state.rpcs3ExePath)
@@ -21,7 +22,7 @@ export function WelcomeModal() {
   return (
     <AnimatedSection id="WelcomeModal" condition={condition} {...genAnim({ opacity: true })} className="absolute! z-10 h-full w-full backdrop-blur-xs">
       <div className={'absolute! inset-0 z-11 bg-black/95'} />
-      <div className={`animate-move-pattern absolute! inset-0 z-12 h-full w-full bg-size-[12rem] bg-center bg-repeat opacity-2`} style={{ backgroundImage: `url('${wavesPattern}')` }} />
+      <div className={`animate-move-pattern absolute! inset-0 z-12 h-full w-full bg-size-[12rem] bg-center bg-repeat opacity-3`} style={{ backgroundImage: `url('${wavesPattern}')` }} />
       <div className="absolute! inset-0 z-13 h-full w-full bg-transparent px-12 py-8">
         <h1 className="border-default-white/50 mb-2 w-full border-b pb-1 text-3xl">{t('welcomeScreenTitle')}</h1>
         <p className="mb-4 text-base!">
@@ -89,10 +90,12 @@ export function WelcomeModal() {
               const newConfig: Partial<UserConfigObj> = {
                 devhdd0Path,
                 rpcs3ExePath,
-                lang: i18n.language,
                 mostPlayedDifficulty: 3,
                 mostPlayedInstrument: 'band',
               }
+              await window.api.fs.userConfig.saveUserConfig(newConfig)
+
+              setRendererState({ IntroScreen: false, WelcomeModal: false })
               setWindowState({ disableButtons: false })
             }}
           >

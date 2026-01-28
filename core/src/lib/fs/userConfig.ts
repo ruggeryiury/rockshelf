@@ -2,12 +2,9 @@ import type { ScoreDataInstrumentTypes } from 'rbtools'
 import { FileSystem } from '../../core'
 import { shell } from 'electron'
 import { useHandler } from '../electron-lib/useHandler'
+import { sendMessage } from '../electron-lib/sendMessage'
 
 export interface UserConfigObj {
-  /**
-   * The preferred language of the user.
-   */
-  lang: string
   /**
    * The path to the `dev_hdd0` folder.
    */
@@ -29,16 +26,12 @@ export interface UserConfigObj {
 /**
  * Opens the user configuration file in the system's file explorer.
  * - - - -
- * @param {boolean} selected If `true`, opens the file directly; otherwise, opens the parent directory.
- * @returns {Promise<void>}
+ * @returns {Promise<boolean>}
  */
-export const openUserConfigOnExplorer = useHandler(async (_, __, selected: boolean = false): Promise<void> => {
-  if (!selected) {
-    await shell.openPath(FileSystem.files.userConfig().path)
-    return
-  }
-
-  shell.showItemInFolder(FileSystem.files.userConfig().path)
+export const openUserData = useHandler(async (win, __): Promise<boolean> => {
+  const error = await shell.openPath(FileSystem.dirs.userDataDirPath().path)
+  if (error) sendMessage(win, { type: 'error', module: 'generic', code: 'debug', method: 'openUserData' })
+  return Boolean(error)
 })
 
 /**
@@ -47,6 +40,22 @@ export const openUserConfigOnExplorer = useHandler(async (_, __, selected: boole
  * @returns {Promise<UserConfig | undefined>}
  */
 export const readUserConfig = async (): Promise<UserConfigObj | undefined> => {
-  const userConfigFile = FileSystem.files.userConfig()
+  const userConfigFile = FileSystem.files.userConfigFilePath()
   if (userConfigFile.exists) return await userConfigFile.readJSON<UserConfigObj>()
 }
+
+export const saveUserConfig = useHandler(async (_, __, newConfig: Partial<UserConfigObj>) => {
+  const userConfigFilePath = FileSystem.files.userConfigFilePath()
+  const oldConfig = await readUserConfig()
+  const value: UserConfigObj = {
+    devhdd0Path: '',
+    rpcs3ExePath: '',
+    mostPlayedInstrument: 'band',
+    mostPlayedDifficulty: 3,
+    ...oldConfig,
+    ...newConfig,
+  }
+
+  await userConfigFilePath.write(JSON.stringify(value))
+  return userConfigFilePath.path
+})

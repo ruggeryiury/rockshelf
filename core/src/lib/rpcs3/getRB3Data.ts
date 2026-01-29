@@ -3,23 +3,65 @@ import { useHandler } from '../electron-lib/useHandler'
 import { parse as parseYAML } from 'yaml'
 
 export interface RockBand3Data {
+  /**
+   * Your profile name on the PS3 system.
+   */
   userName: string
-  path: string
+  /**
+   * The path to the Rock Band 3 game files. The value is `null` when the game is not installed and recognized on RPCS3.
+   */
+  path: string | null
+  /**
+   * The title of the game (always `"Rock Band 3"`)
+   */
   gameName: string
-  gameID: string
+  /**
+   * The serial number of the game (always `"BLUS30463"`)
+   */
+  gameSerial: string
+  /**
+   * The path where you save game data can be found.
+   */
   saveDataPath: string
+  /**
+   * True if Rock Band 3 is installed and recognized on RPCS3, otherwise false.
+   */
+  hasGameInstalled: boolean
+  /**
+   * True if the save game data is found on the `dev_hdd0` folder, otherwise false.
+   */
   hasSaveData: boolean
+  /**
+   * True if it has installed any type of update patches, otherwise false.
+   */
   hasUpdate: boolean
+  /**
+   * True if the installed patch update is from Rock Band 3 Deluxe, otherwise false.
+   */
   hasDeluxe: boolean
-  updateType: 'unknown' | 'dx' | 'tu5'
-  deluxeVersion: string
+  /**
+   * The type of the update installed on Rock Band 3. Default is `"none"`.
+   */
+  updateType: 'none' | 'dx' | 'tu5'
+  /**
+   * The version of the installed Rock Band 3 Deluxe patch.
+   */
+  deluxeVersion: string | null
+  /**
+   * True if it has the teleport glitch patch installed, otherwise false.
+   */
   hasTeleportGlitchPatch: boolean
+  /**
+   * True if it has the high memory patch installed, otherwise false
+   */
   hasHighMemoryPatch: boolean
+  /**
+   * An array with folders where the patches and the song packages are installed and read.
+   */
   contents: string[]
 }
 
-export const getRB3Data = useHandler(async (win, __, devhdd0Path: string, rpcs3ExePath: string) => {
-  console.warn(devhdd0Path, rpcs3ExePath)
+export const getRB3Data = useHandler(async (win, __, devhdd0Path: string, rpcs3ExePath: string): Promise<RockBand3Data> => {
   const devhdd0DirPath = pathLikeToDirPath(devhdd0Path)
   const rpcs3ExeFilePath = pathLikeToFilePath(rpcs3ExePath)
 
@@ -33,17 +75,20 @@ export const getRB3Data = useHandler(async (win, __, devhdd0Path: string, rpcs3E
   const hdr = gen.gotoFile('patch_ps3.hdr')
   const ark = gen.gotoFile('patch_ps3_0.ark')
 
+  const contents: string[] = []
+
   map.setMany({
     userName: await userNameFilePath.read('utf8'),
-    path: games.BLUS30463 ? pathLikeToDirPath(games.BLUS30463).path : '',
+    path: games.BLUS30463 ? pathLikeToDirPath(games.BLUS30463).path : null,
     gameName: 'Rock Band 3',
-    gameID: 'BLUS-30463',
+    gameSerial: 'BLUS30463',
     saveDataPath: saveDataPath.path,
+    hasGameInstalled: Boolean(games.BLUS30463),
     hasSaveData: saveDataPath.exists,
     hasUpdate: gen.exists && hdr.exists && ark.exists,
     hasDeluxe: false,
-    updateType: 'unknown',
-    deluxeVersion: '',
+    updateType: 'none',
+    deluxeVersion: null,
     hasTeleportGlitchPatch: false,
     hasHighMemoryPatch: false,
   })
@@ -57,13 +102,13 @@ export const getRB3Data = useHandler(async (win, __, devhdd0Path: string, rpcs3E
       map.setMany({
         hasDeluxe: true,
         updateType: 'dx',
-        deluxeVersion: 'unknown',
+        deluxeVersion: null,
       })
 
       // TODO: Make some way to recognize the update version
     }
 
-    // Title Update 5
+    // CHECK: Title Update 5
     else if (hdrStats.size === 0x8d69) map.set('updateType', 'tu5')
   }
 

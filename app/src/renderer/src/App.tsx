@@ -14,7 +14,7 @@ export function App() {
     const timeouts: NodeJS.Timeout[] = []
     const initProgramProcessing = async () => {
       const hasUserConfig = await window.api.fs.userConfig.readUserConfig()
-      console.log('hasUserConfig:', hasUserConfig)
+      if (import.meta.env.DEV) console.log('Loaded User Configuration:', hasUserConfig)
       if (!hasUserConfig) {
         setRendererState({ WelcomeModal: true })
         setWindowState({ disableButtons: false })

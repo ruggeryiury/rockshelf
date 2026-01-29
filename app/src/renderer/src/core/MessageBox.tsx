@@ -44,10 +44,10 @@ export function MessageBox() {
         {messageBox && (
           <>
             <div className="flex-row! items-start">
-              <ErrorIcon className={clsx('mr-2 min-w-8 text-lg mt-0.5', messageBox.type === 'error' ? 'text-red-500' : messageBox.type === 'warn' ? 'text-yellow-500' : '')} />
+              <ErrorIcon className={clsx('mt-0.5 mr-2 min-w-8 text-lg', messageBox.type === 'error' ? 'text-red-500' : messageBox.type === 'warn' ? 'text-yellow-500' : messageBox.type === 'success' ? 'text-green-500' : '')} />
               <div>
-                <h1 className='text-sm! border-b border-neutral-800 mb-0.5'>{t(messageBox.type)}</h1>
-                <p className="text-xs wrap-anywhere rounded-xs">
+                <h1 className="mb-0.5 border-b border-neutral-800 text-sm!">{t(messageBox.type)}</h1>
+                <p className="rounded-xs text-xs wrap-anywhere">
                   <TransComponent i18nKey={i18nKey} values={messageBox.messageValues} />
                 </p>
               </div>

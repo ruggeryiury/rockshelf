@@ -11,12 +11,12 @@ export function MainScreen() {
   const setWindowState = useWindowState((state) => state.setWindowState)
   return (
     <section id="MainScreen" className="h-full w-full flex-row! items-center">
-      <div className="h-full w-[20%] min-w-[20%] border-r-2 border-white/10 bg-neutral-900">
-        <button className={clsx('py-2 duration-100', mainWindowSelectionIndex === 0 ? 'bg-neutral-400 text-neutral-800 hover:bg-neutral-300 active:bg-neutral-200' : 'bg-neutral-800 hover:bg-neutral-700 active:bg-neutral-600')} onClick={() => setWindowState({ mainWindowSelectionIndex: 0 })}>
+      <div className="h-full w-[15%] min-w-[15%] border-r-2 border-white/10 bg-neutral-900">
+        <button className={clsx('px-2 py-1 text-start text-sm! duration-100', mainWindowSelectionIndex === 0 ? 'bg-neutral-400 text-neutral-800 hover:bg-neutral-300 active:bg-neutral-200' : 'bg-neutral-800 hover:bg-neutral-700 active:bg-neutral-600')} onClick={() => setWindowState({ mainWindowSelectionIndex: 0 })}>
           {t('rockBand3Title')}
         </button>
-        <button className={clsx('py-2 duration-100', mainWindowSelectionIndex === 1 ? 'bg-neutral-400 text-neutral-800 hover:bg-neutral-300 active:bg-neutral-200' : 'bg-neutral-800 hover:bg-neutral-700 active:bg-neutral-600')} onClick={() => setWindowState({ mainWindowSelectionIndex: 1 })}>
-          {t('rockBand3Title')}
+        <button className={clsx('px-2 py-1 text-start text-sm! duration-100', mainWindowSelectionIndex === 1 ? 'bg-neutral-400 text-neutral-800 hover:bg-neutral-300 active:bg-neutral-200' : 'bg-neutral-800 hover:bg-neutral-700 active:bg-neutral-600')} onClick={() => setWindowState({ mainWindowSelectionIndex: 1 })}>
+          {t('configurations')}
         </button>
       </div>
       <div className="w-fill h-full">

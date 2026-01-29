@@ -1,7 +1,6 @@
 import { ipcRenderer, shell, webUtils, type IpcRenderer, type IpcRendererEvent } from 'electron'
-import type { getRB3Data, openUserData, readUserConfig, RendererMessageObject, saveUserConfig, selectDevhdd0Folder, UserConfigObj, winClose, winMaximize, winMinimize } from './lib'
 import type { Promisable } from 'type-fest'
-import type { selectRPCS3Exe } from './lib/rpcs3/rpcs3Exe'
+import type { installQuickConfig, getRB3Data, openUserData, QuickConfigType, readUserConfig, RendererMessageObject, saveUserConfig, selectDevhdd0Folder, UserConfigObj, winClose, winMaximize, winMinimize, selectRPCS3Exe, installHighMemoryPatch } from './lib'
 
 export const rockshelfAPI = {
   listeners: {
@@ -58,11 +57,17 @@ export const rockshelfAPI = {
     selectDevhdd0Folder: async (): ReturnType<typeof selectDevhdd0Folder> => {
       return await ipcRenderer.invoke('@RPCS3/selectDevhdd0Folder')
     },
-    selectRPCS3Exe: async (lang: string): ReturnType<typeof selectRPCS3Exe> => {
-      return await ipcRenderer.invoke('@RPCS3/selectRPCS3Exe', lang)
-    },
     getRB3Data: async (devhdd0Path: string, rpcs3ExePath: string): ReturnType<typeof getRB3Data> => {
       return await ipcRenderer.invoke('@RPCS3/getRB3Data', devhdd0Path, rpcs3ExePath)
+    },
+    installHighMemoryPatch: async (devhdd0Path: string): ReturnType<typeof installHighMemoryPatch> => {
+      return await ipcRenderer.invoke('@RPCS3/installHighMemoryPatch', devhdd0Path)
+    },
+    installQuickConfig: async (rpcs3ExePath: string, configType: QuickConfigType): ReturnType<typeof installQuickConfig> => {
+      return await ipcRenderer.invoke('@RPCS3/installQuickConfig', rpcs3ExePath, configType)
+    },
+    selectRPCS3Exe: async (lang: string): ReturnType<typeof selectRPCS3Exe> => {
+      return await ipcRenderer.invoke('@RPCS3/selectRPCS3Exe', lang)
     },
   },
   utils: {

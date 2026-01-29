@@ -19,7 +19,7 @@ export const isDevhdd0PathValid = (devhdd0Path: DirPathLikeTypes): boolean => {
   return proof
 }
 
-export const selectDevhdd0Folder = useHandler(async (win) => {
+export const selectDevhdd0Folder = useHandler(async (win): Promise<string | false> => {
   const selection = await dialog.showOpenDialog({ properties: ['openDirectory'] })
   if (selection.canceled) {
     sendMessage(win, {

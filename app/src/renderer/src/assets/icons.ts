@@ -6,3 +6,4 @@ export { FiFolderPlus as FolderWithPlusIcon } from 'react-icons/fi'
 export { BsFiletypeExe as ExeFileIcon } from 'react-icons/bs'
 export { BiSolidDonateHeart as DonateIcon } from 'react-icons/bi'
 export { TbArrowBackUp as GoBackIcon } from 'react-icons/tb'
+export { TfiControlForward as GoBackToRightIcon } from "react-icons/tfi"

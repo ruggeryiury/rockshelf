@@ -12,4 +12,6 @@ export * from './lib/rockshelf/dependencyChecker'
 
 export * from './lib/rpcs3/devhdd0Folder'
 export * from './lib/rpcs3/getRB3Data'
+export * from './lib/rpcs3/installHighMemoryPatch'
+export * from './lib/rpcs3/installQuickConfig'
 export * from './lib/rpcs3/rpcs3Exe'

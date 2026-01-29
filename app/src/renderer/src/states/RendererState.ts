@@ -6,6 +6,7 @@ export interface RendererStateProps {
 
   // Modals
   WelcomeModal: boolean
+  QuickConfigurationModal: boolean
 }
 
 export interface RendererStateActions {
@@ -32,6 +33,7 @@ export type RendererStateHook = RendererStateProps & RendererStateActions
 const defaultState: RendererStateProps = {
   IntroScreen: true,
   WelcomeModal: false,
+  QuickConfigurationModal: false,
 }
 
 export const useRendererState = create<RendererStateHook>()((set, get) => ({

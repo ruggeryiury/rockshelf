@@ -41,7 +41,7 @@ i18n
           no: 'No',
           noHighMemoryPatchText: 'The High Memory Patch makes the emulator to ignore the PS3 hardware limit and allows you to install way more songs than the games would normally supports. <spanLink>Click here</spanLink> to install the High Memory Patch.',
           noPatchInstalled: 'No Patch installed',
-          noPatchInstalledText: 'You can get the latest development version of Rock Band 3 Deluxe <spanLink>clicking here</spanLink>. Download and install the PKG file directly on RPCS3, run the game once with Deluxe installed, then click "Refresh" to view information of the installed patch version.<n />For official game patches, you can download the latest official patch (Title Update 5) <spanLink2>clicking here</spanLink2>.',
+          noPatchInstalledText: 'You can get the latest development version of Rock Band 3 Deluxe <spanLink>clicking here</spanLink>. Download and install the PKG file directly on RPCS3, run the game once with Deluxe installed, then click "Refresh" to view information of the installed patch version.<n /><n />For official game patches, you can download the latest official patch (Title Update 5) <spanLink2>clicking here</spanLink2>.',
           noPathSelected: 'No Path Selected',
           noRB3FoundInstalled: "It looks like you don't have Rock Band 3 downloaded and recognized on RPCS3.<n /><n />You can download Rock Band 3 clicking the button below.",
           noSaveDataFound: 'No Rock Band 3 save data found, start the game once to get more info',
@@ -74,6 +74,9 @@ i18n
           welcomeScreenTitle: 'Welcome to Rockshelf!',
           welcomeUserText: 'Welcome, {{userName}}',
           yes: 'Yes',
+          highMemoryPatchNoEffect: 'The High Memory Patch only works when using Rock Band 3 Deluxe. You can get the latest development version of Rock Band 3 Deluxe <spanLink>clicking here</spanLink>. Download and install the PKG file directly on RPCS3, run the game once with Deluxe installed, then click "Refresh" to view information of the installed patch version.',
+          goBack: 'Go Back',
+          installPKGFile: 'Install PKG File',
 
           // Success
           successInstallHighMemoryPatchSuccess: 'High Memory Patch installed successfully.',
@@ -82,10 +85,11 @@ i18n
           // Info
           infoSelectDevhdd0FolderActionCancelledByUser: '<code>dev_hdd0</code> folder selection aborted by the user.',
           infoSelectRPCS3ExeActionCancelledByUser: 'RPCS3 executable file <code>rpcs3.exe</code> selection aborted by the user.',
+          infoSelectPKGFileToInstallInvalidFileSignature: 'Selected PKG file has invalid file signature and  it\'s not valid.',
 
           // Error
-          errorSelectDevhdd0FolderInvalidFolder: 'The selected <code>dev_hdd0</code> folder is not valid.',
-          errorSelectRPCS3ExeInvalidFolder: 'The selected RPCS3 executable is not valid.',
+          errorSelectDevhdd0FolderInvalidFolder: 'Selected <code>dev_hdd0</code> folder is not valid.',
+          errorSelectRPCS3ExeInvalidFolder: 'Selected RPCS3 executable is not valid.',
         },
       },
       'pt-BR': {
@@ -120,7 +124,7 @@ i18n
           no: 'Não',
           noHighMemoryPatchText: 'O Patch de Expansão de Memória faz o emulador ignorar o limite de hardware do PS3 e permite você instalar muito mais músicas que o jogo suportaria normalmente. <spanLink>Clique aqui</spanLink> para instalar o Patch de Expansão de Memória.',
           noPatchInstalled: 'Nenhum Patch instalado',
-          noPatchInstalledText: 'Você pode obter a versão de desenvolvedor mais recente do Rock Band 3 Deluxe <spanLink>clicando aqui</spanLink>. Baixe e instale o arquivo PKG diretamente no RPCS3, rode o jogo pela primeira vez com o Deluxe instalado, e então clique em "Atualizar" para ver informação da versão de patch do Deluxe instalada.<n />Para Patches oficiais, você pode obter a versão mais recente do Patch oficial (Title Update 5) <spanLink2>clicando aqui</spanLink2>.',
+          noPatchInstalledText: 'Você pode obter a versão de desenvolvedor mais recente do Rock Band 3 Deluxe <spanLink>clicando aqui</spanLink>. Baixe e instale o arquivo PKG diretamente no RPCS3, rode o jogo pela primeira vez com o Deluxe instalado, e então clique em "Atualizar" para ver informação da versão de patch do Deluxe instalada.<n /><n />Para Patches oficiais, você pode obter a versão mais recente do Patch oficial (Title Update 5) <spanLink2>clicando aqui</spanLink2>.',
           noPathSelected: 'Caminho não selecionado',
           noRB3FoundInstalled: 'Parece que você não tem o Rock Band 3 baixado e reconhecido no RPCS3.<n /><n />Você pode baixar o Rock Band 3 clicando no botão abaixo',
           noSaveDataFound: 'Nenhum dados salvos do jogo encontrado, inicie o jogo pela primeira vez para obter mais informações',
@@ -152,6 +156,9 @@ i18n
           welcomeScreenTitle: 'Bem-vindo ao Rockshelf!',
           welcomeUserText: 'Bem-vindo(a), {{userName}}',
           yes: 'Sim',
+          highMemoryPatchNoEffect: 'O Patch de Expansão de Memória funciona apenas usando o Rock Band 3 Deluxe. Você pode obter a versão de desenvolvedor mais recente do Rock Band 3 Deluxe <spanLink>clicando aqui</spanLink>. Baixe e instale o arquivo PKG diretamente no RPCS3, rode o jogo pela primeira vez com o Deluxe instalado, e então clique em "Atualizar" para ver informação da versão de patch do Deluxe instalada.',
+          goBack: 'Voltar',
+          installPKGFile: 'Instalar Arquivo PKG',
 
           // Success
           successInstallHighMemoryPatchSuccess: 'Patch de Expansão de Memória instalado com sucesso.',

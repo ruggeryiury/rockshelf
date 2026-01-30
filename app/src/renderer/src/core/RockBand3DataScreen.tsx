@@ -11,8 +11,8 @@ import { useEffect } from 'react'
 import { useTranslation } from 'react-i18next'
 import { RockBand3Data } from 'rockshelf-core/lib'
 
-export function RockBand3() {
-  const { t } = useTranslation()
+export function RockBand3DataScreen() {
+  const { i18n, t } = useTranslation()
   const devhdd0Path = useUserConfigState((state) => state.devhdd0Path)
   const rpcs3ExePath = useUserConfigState((state) => state.rpcs3ExePath)
   const isIntroActivated = useRendererState((state) => state.IntroScreen)
@@ -34,6 +34,10 @@ export function RockBand3() {
 
     fetchData()
   }, [isIntroActivated])
+
+  useEffect(() => {
+    if (mainWindowSelectionIndex !== 0) setRendererState({ QuickConfigurationModal: false })
+  }, [mainWindowSelectionIndex])
   return (
     <AnimatedDiv condition={mainWindowSelectionIndex === 0} {...genAnim({ opacity: true, duration: 0.1 })} className="h-full w-full overflow-hidden">
       {/* Loading Data Screen */}
@@ -49,7 +53,7 @@ export function RockBand3() {
         <>
           <div className="p-6">
             <div className="mb-2 w-full flex-row! items-center bg-neutral-800 p-1">
-              <h1 className="mr-auto">{t('welcomeUserText', { userName: rb3Stats.userName })}</h1>
+              <h1 className="mr-auto">{rb3Stats.userName}</h1>
               {!rb3Stats.hasSaveData && <p className="text-neutral-400 italic">{t('noSaveDataFound')}</p>}
               <button
                 className="ml-2 w-fit rounded-xs bg-neutral-900 px-1 py-0.5 text-xs! duration-100 hover:bg-neutral-700 active:bg-neutral-600 disabled:text-neutral-700 disabled:hover:bg-neutral-900"
@@ -65,9 +69,21 @@ export function RockBand3() {
             </div>
             <div className="h-full w-full flex-row! items-start">
               <div>
-                <img src={rb3Stats.hasDeluxe ? imgIconRB3DX : imgIconRB3} width={192} className={clsx('mb-2 min-w-48 hover:animate-pulse', rb3Stats.path ? '' : 'grayscale')} alt={rb3Stats.hasDeluxe ? t('rb3DXLogo') : t('rb3Logo')} title={rb3Stats.hasDeluxe ? t('rb3DXLogo') : t('rb3Logo')} />
+                <img src={rb3Stats.hasDeluxe ? imgIconRB3DX : imgIconRB3} className={clsx('laptop:w-[256px] laptop:min-w-[256px] mb-2 w-48 min-w-48 hover:animate-pulse', rb3Stats.path ? '' : 'grayscale')} alt={rb3Stats.hasDeluxe ? t('rb3DXLogo') : t('rb3Logo')} title={rb3Stats.hasDeluxe ? t('rb3DXLogo') : t('rb3Logo')} />
                 <button
-                  className="w-fit rounded-xs bg-neutral-900 px-1 py-0.5 text-xs! duration-100 hover:bg-neutral-700 active:bg-neutral-600 disabled:text-neutral-700 disabled:hover:bg-neutral-900"
+                  disabled={disableButtons}
+                  className="mb-1 w-full rounded-xs bg-neutral-900 px-1 py-0.5 text-xs! duration-100 last:mb-0 hover:bg-neutral-700 active:bg-neutral-600 disabled:text-neutral-700 disabled:hover:bg-neutral-900"
+                  onClick={async () => {
+                    setWindowState({ disableButtons: true })
+                    const pkgPath = await window.api.rpcs3.selectPKGFileToInstall(i18n.language)
+                    setWindowState({ disableButtons: false })
+                  }}
+                >
+                  {t('installPKGFile')}
+                </button>
+                <button
+                  disabled={disableButtons}
+                  className="mb-1 w-full rounded-xs bg-neutral-900 px-1 py-0.5 text-xs! duration-100 last:mb-0 hover:bg-neutral-700 active:bg-neutral-600 disabled:text-neutral-700 disabled:hover:bg-neutral-900"
                   onClick={() => {
                     setRendererState({ QuickConfigurationModal: true })
                   }}
@@ -101,7 +117,7 @@ export function RockBand3() {
 
                     <p className="mb-2">{rb3Stats.updateType === 'none' ? t('noPatchInstalled') : rb3Stats.updateType === 'tu5' ? t('tu5') : t('deluxe')}</p>
                     {rb3Stats.updateType === 'none' && (
-                      <p className="text-neutral-600 italic">
+                      <p className="mb-4 text-neutral-600 italic">
                         <TransComponent components={{ spanLink: <a className="cursor-pointer underline hover:text-neutral-400 active:text-neutral-300" href={DXNIGHTLYLINK} target="_blank" />, spanLink2: <a className="cursor-pointer underline hover:text-neutral-400 active:text-neutral-300" href={TU5LINK} target="_blank" /> }} i18nKey="noPatchInstalledText" />
                       </p>
                     )}
@@ -155,6 +171,12 @@ export function RockBand3() {
                             ),
                           }}
                         />
+                      </p>
+                    )}
+
+                    {rb3Stats.hasHighMemoryPatch && rb3Stats.updateType !== 'dx' && (
+                      <p className="mb-4 text-neutral-600 italic">
+                        <TransComponent components={{ spanLink: <a className="cursor-pointer underline hover:text-neutral-400 active:text-neutral-300" href={DXNIGHTLYLINK} target="_blank" /> }} i18nKey="highMemoryPatchNoEffect" />
                       </p>
                     )}
                   </>

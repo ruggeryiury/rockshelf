@@ -1,4 +1,4 @@
-import { RockBand3 } from '@renderer/core'
+import { RockBand3DataScreen } from '@renderer/core'
 import { useWindowState } from '@renderer/states/WindowState'
 import clsx from 'clsx'
 import { useTranslation } from 'react-i18next'
@@ -11,7 +11,7 @@ export function MainScreen() {
   const setWindowState = useWindowState((state) => state.setWindowState)
   return (
     <section id="MainScreen" className="h-full w-full flex-row! items-center">
-      <div className="h-full w-[15%] min-w-[15%] border-r-2 border-white/10 bg-neutral-900">
+      <div className="h-full w-[17.5%] min-w-[17.5%] border-r-2 border-white/10 bg-neutral-900">
         <button className={clsx('px-2 py-1 text-start text-sm! duration-100', mainWindowSelectionIndex === 0 ? 'bg-neutral-400 text-neutral-800 hover:bg-neutral-300 active:bg-neutral-200' : 'bg-neutral-800 hover:bg-neutral-700 active:bg-neutral-600')} onClick={() => setWindowState({ mainWindowSelectionIndex: 0 })}>
           {t('rockBand3Title')}
         </button>
@@ -20,7 +20,7 @@ export function MainScreen() {
         </button>
       </div>
       <div className="w-fill h-full">
-        <RockBand3 />
+        <RockBand3DataScreen />
       </div>
     </section>
   )

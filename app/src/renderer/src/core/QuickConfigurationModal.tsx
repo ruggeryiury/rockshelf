@@ -21,12 +21,13 @@ export function QuickConfigurationModal() {
         <h1 className="text-3xl mr-auto">{t('installQuickConfigurations')}</h1>
         <button
           disabled={disableButtons}
-          className="p-1 text-neutral-500 hover:text-neutral-400 active:text-neutral-300 duration-100 bg-white/5 hover:bg-white/10 active:bg-white/15"
+          className="p-1 rounded-xs text-neutral-500 hover:text-neutral-400 active:text-neutral-300 duration-100 bg-white/5 hover:bg-white/10 active:bg-white/15"
+          title={t('goBack')}
           onClick={() => {
             setRendererState({ QuickConfigurationModal: false })
           }}
         >
-          <GoBackToRightIcon className="text-2xl" />
+          <GoBackToRightIcon className="text-xl" />
         </button>
       </div>
       <button

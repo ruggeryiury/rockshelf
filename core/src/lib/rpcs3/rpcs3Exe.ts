@@ -1,6 +1,7 @@
 import { pathLikeToFilePath, type FilePathLikeTypes } from 'node-lib'
 import { sendMessage, useHandler } from '../../lib'
 import { dialog } from 'electron'
+import { locale } from '../../locale'
 
 /**
  * Checks if the provided RPCS3 executable file path is valid.
@@ -21,7 +22,7 @@ export const isRPCS3ExePathValid = (rpcs3ExePath: FilePathLikeTypes): boolean =>
 }
 
 export const selectRPCS3Exe = useHandler(async (win, _, lang: string): Promise<string | false> => {
-  const selection = await dialog.showOpenDialog({ properties: ['openFile'], filters: [{ name: lang.startsWith('pt') ? 'Executável do RPCS3' : lang.startsWith('es') ? 'Ejecutable de RPCS3' : 'RPCS3 Executable', extensions: ['exe'] }] })
+  const selection = await dialog.showOpenDialog({ properties: ['openFile'], filters: [{ name: lang.startsWith('pt') ? locale.rpcs3Exe['pt-BR'] : lang.startsWith('es') ? locale.rpcs3Exe['es-ES'] : locale.rpcs3Exe['en-US'], extensions: ['exe'] }] })
   if (selection.canceled) {
     sendMessage(win, {
       type: 'info',

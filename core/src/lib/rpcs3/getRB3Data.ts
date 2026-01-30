@@ -44,9 +44,9 @@ export interface RockBand3Data {
    */
   updateType: 'none' | 'dx' | 'tu5'
   /**
-   * The version of the installed Rock Band 3 Deluxe patch.
+   * The hash of the Rock Band 3 Deluxe develop commit the user has installed.
    */
-  deluxeVersion: string | null
+  deluxeVersionHash: string | null
   /**
    * True if it has the teleport glitch patch installed, otherwise false.
    */
@@ -71,7 +71,8 @@ export const getRB3Data = useHandler(async (win, __, devhdd0Path: string, rpcs3E
   const userNameFilePath = devhdd0DirPath.gotoFile(`home/00000001/localusername`)
 
   const saveDataPath = devhdd0DirPath.gotoFile('home/00000001/savedata/BLUS30463-AUTOSAVE/SAVE.DAT')
-  const gen = devhdd0DirPath.gotoDir('game/BLUS30463/USRDIR/gen')
+  const usrdir = devhdd0DirPath.gotoDir('game/BLUS30463/USRDIR')
+  const gen = usrdir.gotoDir('gen')
   const hdr = gen.gotoFile('patch_ps3.hdr')
   const ark = gen.gotoFile('patch_ps3_0.ark')
 
@@ -88,7 +89,7 @@ export const getRB3Data = useHandler(async (win, __, devhdd0Path: string, rpcs3E
     hasUpdate: gen.exists && hdr.exists && ark.exists,
     hasDeluxe: false,
     updateType: 'none',
-    deluxeVersion: null,
+    deluxeVersionHash: null,
     hasTeleportGlitchPatch: false,
     hasHighMemoryPatch: false,
   })
@@ -100,16 +101,21 @@ export const getRB3Data = useHandler(async (win, __, devhdd0Path: string, rpcs3E
     // CHECK: Only RB3DX update can be bigger than 500MB
     if (arkStats.size > 0x1f400000) {
       map.setMany({
+        gameName: 'Rock Band 3 Deluxe',
         hasDeluxe: true,
         updateType: 'dx',
-        deluxeVersion: null,
       })
 
-      // TODO: Make some way to recognize the update version
+      const dxVersionFile = usrdir.gotoFile('dx_version.dta')
+      if (dxVersionFile.exists) {
+        let hash = (await dxVersionFile.readLines())[4].trim().replace(/"/g, '').split('-')[0]
+        if (hash.length === 9) map.set('deluxeVersionHash', hash)
+      }
     }
 
-    // CHECK: Title Update 5
-    else if (hdrStats.size === 0x8d69) map.set('updateType', 'tu5')
+    // Title Update 5 HDR file has exactly 36201 bytes
+    // Title Update 5 ARK File has exactly 3349707 bytes
+    else if (hdrStats.size === 0x8d69 && arkStats.size === 0x331ccb) map.set('updateType', 'tu5')
   }
 
   if (games.BLUS30463) {

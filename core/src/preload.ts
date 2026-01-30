@@ -1,6 +1,6 @@
 import { ipcRenderer, shell, webUtils, type IpcRenderer, type IpcRendererEvent } from 'electron'
 import type { Promisable } from 'type-fest'
-import type { installQuickConfig, getRB3Data, openUserData, QuickConfigType, readUserConfig, RendererMessageObject, saveUserConfig, selectDevhdd0Folder, UserConfigObj, winClose, winMaximize, winMinimize, selectRPCS3Exe, installHighMemoryPatch } from './lib'
+import type { installQuickConfig, getRB3Data, openUserData, QuickConfigType, readUserConfig, RendererMessageObject, saveUserConfig, selectDevhdd0Folder, UserConfigObj, winClose, winMaximize, winMinimize, selectRPCS3Exe, installHighMemoryPatch, selectPKGFileToInstall } from './lib'
 
 export const rockshelfAPI = {
   listeners: {
@@ -15,6 +15,14 @@ export const rockshelfAPI = {
     },
   },
   window: {
+    /**
+     * Close the application window.
+     * - - - -
+     * @returns {Promise<void>}
+     */
+    async close(): Promise<ReturnType<typeof winClose>> {
+      return await ipcRenderer.invoke('@Window/close')
+    },
     /**
      * Minimize the application window.
      * - - - -
@@ -31,14 +39,6 @@ export const rockshelfAPI = {
     async maximize(): Promise<ReturnType<typeof winMaximize>> {
       return await ipcRenderer.invoke('@Window/maximize')
     },
-    /**
-     * Close the application window.
-     * - - - -
-     * @returns {Promise<void>}
-     */
-    async close(): Promise<ReturnType<typeof winClose>> {
-      return await ipcRenderer.invoke('@Window/close')
-    },
   },
   fs: {
     userConfig: {
@@ -54,8 +54,11 @@ export const rockshelfAPI = {
     },
   },
   rpcs3: {
-    selectDevhdd0Folder: async (): ReturnType<typeof selectDevhdd0Folder> => {
-      return await ipcRenderer.invoke('@RPCS3/selectDevhdd0Folder')
+    deleteTempPKGFile: async (tempFolderPath: string) => {
+      return await ipcRenderer.invoke('@RPCS3/deleteTempPKGFile', tempFolderPath)
+    },
+    extractPKGFileToTemp: async (pkgFilePath: string) => {
+      return await ipcRenderer.invoke('@RPCS3/extractPKGFileToTemp', pkgFilePath)
     },
     getRB3Data: async (devhdd0Path: string, rpcs3ExePath: string): ReturnType<typeof getRB3Data> => {
       return await ipcRenderer.invoke('@RPCS3/getRB3Data', devhdd0Path, rpcs3ExePath)
@@ -65,6 +68,12 @@ export const rockshelfAPI = {
     },
     installQuickConfig: async (rpcs3ExePath: string, configType: QuickConfigType): ReturnType<typeof installQuickConfig> => {
       return await ipcRenderer.invoke('@RPCS3/installQuickConfig', rpcs3ExePath, configType)
+    },
+    selectDevhdd0Folder: async (): ReturnType<typeof selectDevhdd0Folder> => {
+      return await ipcRenderer.invoke('@RPCS3/selectDevhdd0Folder')
+    },
+    selectPKGFileToInstall: async (lang: string): ReturnType<typeof selectPKGFileToInstall> => {
+      return await ipcRenderer.invoke('@RPCS3/selectPKGFileToInstall', lang)
     },
     selectRPCS3Exe: async (lang: string): ReturnType<typeof selectRPCS3Exe> => {
       return await ipcRenderer.invoke('@RPCS3/selectRPCS3Exe', lang)

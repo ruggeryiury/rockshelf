@@ -1,3 +1,4 @@
+import { SelectPKGFileReturnObject } from 'rockshelf-core/lib'
 import { create } from 'zustand'
 
 export interface RendererStateProps {
@@ -7,6 +8,7 @@ export interface RendererStateProps {
   // Modals
   WelcomeModal: boolean
   QuickConfigurationModal: boolean
+  InstallPKGConfirmationModal: false | SelectPKGFileReturnObject
 }
 
 export interface RendererStateActions {
@@ -34,6 +36,7 @@ const defaultState: RendererStateProps = {
   IntroScreen: true,
   WelcomeModal: false,
   QuickConfigurationModal: false,
+  InstallPKGConfirmationModal: false,
 }
 
 export const useRendererState = create<RendererStateHook>()((set, get) => ({

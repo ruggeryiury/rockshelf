@@ -1,5 +1,5 @@
 import { useEffect } from 'react'
-import { WelcomeModal, InnerAppFrame, IntroScreen, MessageBox, TopBar, MainScreen } from './core'
+import { WelcomeModal, InnerAppFrame, IntroScreen, MessageBox, TopBar, MainScreen, InstallPKGConfirmationModal } from './core'
 import { useRendererState } from './states/RendererState'
 import { useWindowState } from './states/WindowState'
 import { useUserConfigState } from './states/UserConfigState'
@@ -49,6 +49,7 @@ export function App() {
 
         {/* Modals */}
         <WelcomeModal />
+        <InstallPKGConfirmationModal />
       </InnerAppFrame>
     </>
   )

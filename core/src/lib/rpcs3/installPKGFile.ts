@@ -2,12 +2,16 @@ import { dialog } from 'electron'
 import { pathLikeToFilePath } from 'node-lib'
 import { useHandler } from '../electron-lib/useHandler'
 import { sendMessage } from '../../lib'
+import { PKGFile, type PKGFileSongPackageStatObject } from 'rbtools'
 
-export type SelectedPKGFileType = 'tu5' | 'dx' | 'unknown'
+export type SelectedPKGFileType = 'tu5' | 'dx' | 'songPackage'
+
 export interface SelectPKGFileReturnObject {
   pkgPath: string
   pkgType: SelectedPKGFileType
+  pkgSize: number
   dxHash: string | null
+  songPackage?: PKGFileSongPackageStatObject
 }
 
 export const selectPKGFileToInstall = useHandler(async (win, _, lang: string): Promise<SelectPKGFileReturnObject | false> => {
@@ -23,19 +27,15 @@ export const selectPKGFileToInstall = useHandler(async (win, _, lang: string): P
   }
   const [pkgFile] = selection.filePaths.map((file) => pathLikeToFilePath(file))
 
-  let pkgType: SelectedPKGFileType = 'unknown'
+  let pkgType: SelectedPKGFileType = 'songPackage'
   let dxHash: string | null = null
 
-  if (pkgFile.name === 'UP8802-BLUS30463_00-ROCKBAND3PATCH05-A0105-V0100-PE') pkgType = 'tu5'
-  else if (pkgFile.name.startsWith('UP8802-BLUS30463_00-RB3DXNITE')) {
-    pkgType = 'dx'
-    dxHash = pkgFile.name.slice(29)
-  }
+  const pkg = new PKGFile(pkgFile)
+  const stat = await pkg.stat()
 
-  const reader = await pkgFile.openReader()
-  const magic = await reader.readHex(0x04)
-
-  if (magic !== '0x7f504b47') {
+  try {
+    await pkg.checkFileIntegrity()
+  } catch (err) {
     sendMessage(win, {
       type: 'info',
       module: 'rpcs3',
@@ -46,11 +46,34 @@ export const selectPKGFileToInstall = useHandler(async (win, _, lang: string): P
     return false
   }
 
-  await reader.close()
+  if (stat.header.cidTitle1 !== 'BLUS30463') {
+    sendMessage(win, {
+      type: 'info',
+      module: 'rpcs3',
+      method: 'selectPKGFileToInstall',
+      code: 'notRB3PKG',
+      messageValues: { filePath: pkgFile.path },
+    })
+    return false
+  }
+
+  if (stat.header.cidTitle2 === 'ROCKBAND3PATCH05') pkgType = 'tu5'
+  else if (stat.header.cidTitle2.startsWith('RB3DXNITE')) {
+    pkgType = 'dx'
+    dxHash = stat.header.cidTitle2.slice(9)
+  }
+
+  let songPackage: SelectPKGFileReturnObject['songPackage'] = undefined
+  try {
+    songPackage = await pkg.songPackageStat()
+  } catch (err) {}
+
   return {
     pkgPath: pkgFile.path,
     pkgType,
+    pkgSize: stat.fileSize,
     dxHash,
+    songPackage,
   }
 })
 

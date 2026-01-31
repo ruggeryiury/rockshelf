@@ -39,7 +39,7 @@ export function RockBand3DataScreen() {
     if (mainWindowSelectionIndex !== 0) setRendererState({ QuickConfigurationModal: false })
   }, [mainWindowSelectionIndex])
   return (
-    <AnimatedDiv condition={mainWindowSelectionIndex === 0} {...genAnim({ opacity: true, duration: 0.1 })} className="h-full w-full overflow-hidden">
+    <AnimatedDiv id="RockBand3DataScreen" condition={mainWindowSelectionIndex === 0} {...genAnim({ opacity: true, duration: 0.1 })} className="h-full w-full overflow-hidden">
       {/* Loading Data Screen */}
       {rb3Stats === null && (
         <div className="h-full w-full p-24">
@@ -75,7 +75,8 @@ export function RockBand3DataScreen() {
                   className="mb-1 w-full rounded-xs bg-neutral-900 px-1 py-0.5 text-xs! duration-100 last:mb-0 hover:bg-neutral-700 active:bg-neutral-600 disabled:text-neutral-700 disabled:hover:bg-neutral-900"
                   onClick={async () => {
                     setWindowState({ disableButtons: true })
-                    const pkgPath = await window.api.rpcs3.selectPKGFileToInstall(i18n.language)
+                    const selPKGData = await window.api.rpcs3.selectPKGFileToInstall(i18n.language)
+                    setRendererState({ InstallPKGConfirmationModal: selPKGData })
                     setWindowState({ disableButtons: false })
                   }}
                 >

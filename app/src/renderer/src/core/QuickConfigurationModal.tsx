@@ -16,7 +16,7 @@ export function QuickConfigurationModal() {
 
   const condition = useRendererState((state) => state.QuickConfigurationModal)
   return (
-    <AnimatedDiv condition={condition} className="absolute! h-full w-full bg-black/90 p-6 backdrop-blur-sm" {...genAnim({ right: true })}>
+    <AnimatedDiv id='QuickConfigurationModal' condition={condition} className="absolute! h-full w-full bg-black/90 p-6 backdrop-blur-sm" {...genAnim({ right: true })}>
       <div className="mb-2 w-full flex-row! items-center">
         <h1 className="text-3xl mr-auto">{t('installQuickConfigurations')}</h1>
         <button

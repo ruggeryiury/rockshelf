@@ -39,7 +39,7 @@ export function RockBand3DataScreen() {
     if (mainWindowSelectionIndex !== 0) setRendererState({ QuickConfigurationModal: false })
   }, [mainWindowSelectionIndex])
   return (
-    <AnimatedDiv id="RockBand3DataScreen" condition={mainWindowSelectionIndex === 0} {...genAnim({ opacity: true, duration: 0.1 })} className="h-full w-full overflow-hidden">
+    <AnimatedDiv id="RockBand3DataScreen" condition={mainWindowSelectionIndex === 0} {...genAnim({ opacity: true, duration: 0.1 })} className="absolute! h-full w-full overflow-hidden">
       {/* Loading Data Screen */}
       {rb3Stats === null && (
         <div className="h-full w-full p-24">
@@ -56,7 +56,7 @@ export function RockBand3DataScreen() {
               <h1 className="mr-auto">{rb3Stats.userName}</h1>
               {!rb3Stats.hasSaveData && <p className="text-neutral-400 italic">{t('noSaveDataFound')}</p>}
               <button
-                className="ml-2 w-fit rounded-xs bg-neutral-900 px-1 py-0.5 text-xs! duration-100 hover:bg-neutral-700 active:bg-neutral-600 disabled:text-neutral-700 disabled:hover:bg-neutral-900"
+                className="ml-2 w-fit rounded-xs border border-neutral-700 bg-neutral-900 px-1 py-0.5 text-xs! duration-100 hover:bg-neutral-700 active:bg-neutral-600 disabled:text-neutral-700 disabled:hover:bg-neutral-900"
                 disabled={disableButtons}
                 onClick={async () => {
                   setWindowState({ disableButtons: true, rb3Stats: null })
@@ -72,10 +72,11 @@ export function RockBand3DataScreen() {
                 <img src={rb3Stats.hasDeluxe ? imgIconRB3DX : imgIconRB3} className={clsx('laptop:w-[256px] laptop:min-w-[256px] mb-2 w-48 min-w-48 hover:animate-pulse', rb3Stats.path ? '' : 'grayscale')} alt={rb3Stats.hasDeluxe ? t('rb3DXLogo') : t('rb3Logo')} title={rb3Stats.hasDeluxe ? t('rb3DXLogo') : t('rb3Logo')} />
                 <button
                   disabled={disableButtons}
-                  className="mb-1 w-full rounded-xs bg-neutral-900 px-1 py-0.5 text-xs! duration-100 last:mb-0 hover:bg-neutral-700 active:bg-neutral-600 disabled:text-neutral-700 disabled:hover:bg-neutral-900"
+                  className="mb-1 w-full rounded-xs border border-neutral-800 bg-neutral-900 px-1 py-0.5 text-xs! duration-100 last:mb-0 hover:bg-neutral-700 active:bg-neutral-600 disabled:text-neutral-700 disabled:hover:bg-neutral-900"
                   onClick={async () => {
                     setWindowState({ disableButtons: true })
                     const selPKGData = await window.api.rpcs3.selectPKGFileToInstall(i18n.language)
+                    if (import.meta.env.DEV) console.log('Selected PKG Data:', selPKGData)
                     setRendererState({ InstallPKGConfirmationModal: selPKGData })
                     setWindowState({ disableButtons: false })
                   }}
@@ -84,7 +85,7 @@ export function RockBand3DataScreen() {
                 </button>
                 <button
                   disabled={disableButtons}
-                  className="mb-1 w-full rounded-xs bg-neutral-900 px-1 py-0.5 text-xs! duration-100 last:mb-0 hover:bg-neutral-700 active:bg-neutral-600 disabled:text-neutral-700 disabled:hover:bg-neutral-900"
+                  className="mb-1 border border-neutral-800 w-full rounded-xs bg-neutral-900 px-1 py-0.5 text-xs! duration-100 last:mb-0 hover:bg-neutral-700 active:bg-neutral-600 disabled:text-neutral-700 disabled:hover:bg-neutral-900"
                   onClick={() => {
                     setRendererState({ QuickConfigurationModal: true })
                   }}

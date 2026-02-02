@@ -1,6 +1,6 @@
 import type { BrowserWindow, IpcMainInvokeEvent } from 'electron'
 import type { Promisable } from 'type-fest'
-import { addHandler, deleteTempPKGFile, extractPKGFileToTemp, getRB3Data, installHighMemoryPatch, installQuickConfig, openUserData, readUserConfig, saveUserConfig, selectDevhdd0Folder, selectPKGFileToInstall, selectRPCS3Exe, winClose, winMaximize, winMinimize } from './lib'
+import { addHandler, getRB3Data, installHighMemoryPatch, installQuickConfig, openUserData, readUserConfig, saveUserConfig, selectDevhdd0Folder, selectPKGFileToInstall, selectRPCS3Exe, winClose, winMaximize, winMinimize } from './lib'
 
 export type HandlerFnType = (window: BrowserWindow, event: IpcMainInvokeEvent, ...args: any[]) => Promisable<any>
 
@@ -17,8 +17,6 @@ export const initHandlers = (): void => {
     ['@FileSystem/userConfig/saveUserConfig', saveUserConfig],
 
     // RPCS3
-    ['@RPCS3/deleteTempPKGFile', deleteTempPKGFile],
-    ['@RPCS3/extractPKGFileToTemp', extractPKGFileToTemp],
     ['@RPCS3/getRB3Data', getRB3Data],
     ['@RPCS3/installHighMemoryPatch', installHighMemoryPatch],
     ['@RPCS3/installQuickConfig', installQuickConfig],

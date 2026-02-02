@@ -1,25 +1,43 @@
 import { useEffect, useState } from 'react'
-import axios, { AxiosError } from 'axios'
+import axios from 'axios'
 import clsx from 'clsx'
-import { AnimatedSection, genAnim, getReadableBytesSize, TransComponent } from '@renderer/lib'
+import { AnimatedDiv, AnimatedSection, genAnim, getReadableBytesSize, TransComponent } from '@renderer/lib'
 import { useRendererState } from '@renderer/states/RendererState'
-import { imgIconRB3, imgIconRB3DX, wavesPattern } from '@renderer/assets/images'
+import { imgIconRB, imgIconRB2, imgIconRB3, imgIconLRB, imgIconRB3DX, wavesPattern } from '@renderer/assets/images'
 import { useTranslation } from 'react-i18next'
 import { useWindowState } from '@renderer/states/WindowState'
 import { useUserConfigState } from '@renderer/states/UserConfigState'
 import type { GitHubCommitResponse } from '@renderer/app/types'
-import { GitHubIcon, LoadingIcon } from '@renderer/assets/icons'
+import { CheckedBoxIcon, GitHubIcon, LoadingIcon, MusicLibIcon, StarCircleIcon, UncheckedBoxIcon } from '@renderer/assets/icons'
+import { SelectedPKGFileType } from 'rockshelf-core/lib'
 
 export function InstallPKGConfirmationModal() {
   const { t, i18n } = useTranslation()
 
   const [commitInfo, setCommitInfo] = useState<GitHubCommitResponse | null>(null)
   const [isLoadingCommitInfo, setIsLoadingCommitInfo] = useState<boolean>(true)
-  const [commitInfoGetError, setCommitInfoGetError] = useState<boolean>(false)
+  const [packageFolderName, setPackageFolderName] = useState('')
+  const [encryptPKGFiles, setEncryptPKGFiles] = useState(false)
+
+  const getPkgTimeImage = (type: SelectedPKGFileType): string => {
+    switch (type) {
+      case 'dx':
+        return imgIconRB3DX
+      case 'rb1':
+        return imgIconRB
+      case 'rb2':
+        return imgIconRB2
+      case 'lrb':
+        return imgIconLRB
+      default:
+        return imgIconRB3
+    }
+  }
 
   const disabledButtons = useWindowState((state) => state.disableButtons)
   const setWindowState = useWindowState((state) => state.setWindowState)
   const setRendererState = useRendererState((state) => state.setRendererState)
+  const rb3Stats = useWindowState((state) => state.rb3Stats)
 
   const devhdd0Path = useUserConfigState((state) => state.devhdd0Path)
   const rpcs3ExePath = useUserConfigState((state) => state.rpcs3ExePath)
@@ -31,18 +49,21 @@ export function InstallPKGConfirmationModal() {
     const resetStatesAndFetchCommitData = async () => {
       if (condition && condition.pkgType === 'dx') {
         try {
-          const { data } = await axios.get<GitHubCommitResponse>(`https://api.github.com/repos/hmxmilohax/rock-band-3-deluxe/commits/${condition.dxHash}`, { responseType: 'json' })
+          const { data } = await axios.get<GitHubCommitResponse>(`https://api.github.com/repos/hmxmilohax/rock-band-3-deluxe/commits/${condition.dxHash}`, { responseType: 'json', timeout: 6000 })
           setCommitInfo(data)
           setIsLoadingCommitInfo(false)
           if (import.meta.env.DEV) console.log('Install Deluxe PKG Commit Data:', data)
         } catch (err) {
-          if (err instanceof AxiosError) {
-          }
+          setIsLoadingCommitInfo(false)
         }
+      } else if (condition && condition.pkgType === 'songPackage' && condition.songPackage) {
+        setPackageFolderName(condition.songPackage.folderName)
+        if (!rb3Stats?.hasDeluxe) setEncryptPKGFiles(true)
       } else {
         setCommitInfo(null)
         setIsLoadingCommitInfo(true)
-        setCommitInfoGetError(false)
+        setPackageFolderName('')
+        setEncryptPKGFiles(false)
       }
     }
 
@@ -55,24 +76,27 @@ export function InstallPKGConfirmationModal() {
       <div className="absolute! inset-0 z-13 h-full w-full bg-transparent px-12 py-8">
         {condition !== false && (
           <>
-            <h1 className="border-default-white/50 mb-2 w-full border-b pb-1 text-3xl">{condition.pkgType === 'tu5' ? t('installPKGFileTU5') : condition.pkgType === 'dx' ? t('installPKGFileDX') : t('installPKGFileSongPkg')}</h1>
+            <h1 className="border-default-white/50 mb-2 w-full border-b pb-1 text-3xl">{condition.pkgType !== 'songPackage' ? t(`installPKGFile${condition.pkgType.toUpperCase()}`) : t('installPKGFileSongPackage')}</h1>
             <div className="flex-row! items-start">
-              <img src={condition.pkgType === 'dx' ? imgIconRB3DX : imgIconRB3} className={clsx('laptop:w-[256px] laptop:min-w-[256px] mr-4 mb-2 w-48 min-w-48 hover:animate-pulse')} alt={condition.pkgType === 'dx' ? t('rb3DXLogo') : t('rb3Logo')} title={condition.pkgType === 'dx' ? t('rb3DXLogo') : t('rb3Logo')} />
+              <img src={getPkgTimeImage(condition.pkgType)} className={clsx('laptop:w-[256px] laptop:min-w-[256px] mr-4 mb-2 w-48 min-w-48 hover:animate-pulse')} />
               <div className="w-fill">
                 <p className="mb-4 text-base!">
-                  <TransComponent i18nKey={condition.pkgType === 'dx' ? 'installPKGFileConfirmDX' : condition.pkgType === 'tu5' ? 'installPKGFileConfirmTU5' : ''} />
+                  <TransComponent i18nKey={condition.pkgType === 'dx' || condition.pkgType === 'tu5' ? `installPKGFileConfirm${condition.pkgType.toUpperCase()}` : 'installPKGFileConfirmSongPackage'} />
                 </p>
 
                 <h1>{t('pkgPath')}</h1>
-                <p className="mb-2">{condition.pkgPath}</p>
+                <p className="mb-2 font-mono">{condition.pkgPath}</p>
 
                 <h1>{t('pkgSize')}</h1>
                 <p className="mb-2">{getReadableBytesSize(condition.pkgSize)}</p>
 
+                <h1>{t('pkgInstalationPath')}</h1>
+                <p className="mb-2 font-mono">{`${devhdd0Path}\\game\\${condition.stat.header.cidTitle1}${condition.pkgType === 'dx' || condition.pkgType === 'tu5' ? '' : condition.pkgType !== 'songPackage' && condition.songPackage ? `\\${condition.songPackage.folderName}` : `\\${packageFolderName}`}`}</p>
+
                 {condition.pkgType === 'dx' && (
                   <>
                     <h1 className="mb-2">{t('deluxeCommitDetails')}</h1>
-                    <div className="rounded-xs bg-neutral-800 p-2">
+                    <div className="rounded-xs bg-neutral-900 p-2">
                       {isLoadingCommitInfo && (
                         <div className="flex-row! items-center">
                           <LoadingIcon className="mr-2 animate-spin" />
@@ -107,22 +131,80 @@ export function InstallPKGConfirmationModal() {
                           </button>
                         </>
                       )}
+                      {!isLoadingCommitInfo && !commitInfo && (
+                        <>
+                          <p className="mb-2 text-neutral-400 italic">{t('errorNoInternetCommitDetails')}</p>
+                          <button
+                            className="mr-2 w-fit rounded-xs border-2 border-white/25 bg-neutral-800 px-1 py-0.5 text-sm! duration-100 last:mr-0 hover:bg-neutral-700 active:bg-neutral-600 disabled:text-neutral-700 disabled:hover:bg-neutral-900"
+                            disabled={disabledButtons}
+                            onClick={async () => {
+                              setIsLoadingCommitInfo(true)
+                              try {
+                                const { data } = await axios.get<GitHubCommitResponse>(`https://api.github.com/repos/hmxmilohax/rock-band-3-deluxe/commits/${condition.dxHash}`, { responseType: 'json', timeout: 6000 })
+                                setCommitInfo(data)
+                                setIsLoadingCommitInfo(false)
+                                if (import.meta.env.DEV) console.log('Install Deluxe PKG Commit Data:', data)
+                              } catch (err) {
+                                setIsLoadingCommitInfo(false)
+                              }
+                            }}
+                          >
+                            {t('tryAgain')}
+                          </button>
+                        </>
+                      )}
                     </div>
                   </>
                 )}
 
+                {condition.pkgType !== 'dx' && condition.pkgType !== 'tu5' && condition.songPackage && (
+                  <>
+                    <h1 className="mb-2">{t('packageDetails')}</h1>
+                    <div className="mb-4 flex-row! items-center rounded-xs bg-neutral-900 p-2">
+                      <MusicLibIcon className="mr-2" />
+                      <h2 className="font-urbanist mr-8 uppercase">
+                        {(condition.songPackage.dta.songs.length + condition.songPackage.dta.updates.length).toString()} {condition.songPackage.dta.songs.length === 1 ? t('song') : t('songPlural')}
+                      </h2>
+                      <StarCircleIcon className="mr-2" />
+                      <h2 className="font-urbanist uppercase">
+                        {((condition.songPackage.dta.songs.length + condition.songPackage.dta.updates.length) * 5).toString()} {condition.songPackage.dta.songs.length === 1 ? t('star') : t('starPlural')}
+                      </h2>
+                    </div>
+                  </>
+                )}
+
+                {condition.pkgType === 'songPackage' && condition.songPackage && (
+                  <>
+                    <div className="mb-2 h-0.5 w-full rounded-xs bg-white/25" />
+                    <h1 className="mb-2">{t('installationOptions')}</h1>
+                    <h2>{t('packageFolderName')}</h2>
+                    <p className="mb-4 text-neutral-600 italic">{t('packageFolderNameDesc')}</p>
+                    <input value={packageFolderName} onChange={(ev) => setPackageFolderName(ev.target.value)} className="mb-4 rounded-xs border border-neutral-800 bg-neutral-950 px-2 py-1 hover:border-neutral-700 hover:bg-neutral-900 focus:border-neutral-400 active:border-neutral-400" />
+                    <div className="flex-row! items-center">
+                      <button className="mr-2 border border-transparent hover:border-neutral-500" onClick={() => setEncryptPKGFiles((prev) => !prev)}>
+                        {encryptPKGFiles ? <CheckedBoxIcon /> : <UncheckedBoxIcon />}
+                      </button>
+                      <h2>{t('encryptPKGFiles')}</h2>
+                    </div>
+                    <p className="mb-4 text-neutral-600 italic">{t('encryptPKGFilesDesc')}</p>
+                    <AnimatedDiv condition={!rb3Stats?.hasDeluxe && !encryptPKGFiles} {...genAnim({ opacity: true, scaleY: true, height: true })} className="origin-top">
+                      <p className="mb-4 text-yellow-600 italic">{t('encryptionUnckeckedBadChoiceText')}</p>
+                    </AnimatedDiv>
+                  </>
+                )}
+
                 <div className="mt-4 flex-row! items-center">
-                  <button className="mr-2 rounded-xs bg-neutral-900 px-1 py-0.5 text-sm! duration-100 last:mr-0 hover:bg-neutral-800 active:bg-neutral-700 disabled:text-neutral-700 disabled:hover:bg-neutral-900" disabled={disabledButtons} onClick={async () => {}}>
-                    {t('yes')}
+                  <button className="mr-2 rounded-xs border border-neutral-800 bg-neutral-900 px-1 py-0.5 text-sm! duration-100 last:mr-0 hover:bg-neutral-800 active:bg-neutral-700 disabled:text-neutral-700 disabled:hover:bg-neutral-900" disabled={disabledButtons} onClick={async () => {}}>
+                    {t('install')}
                   </button>
                   <button
-                    className="mr-2 rounded-xs bg-neutral-900 px-1 py-0.5 text-sm! duration-100 last:mr-0 hover:bg-neutral-800 active:bg-neutral-700 disabled:text-neutral-700 disabled:hover:bg-neutral-900"
+                    className="mr-2 rounded-xs border border-neutral-800 bg-neutral-900 px-1 py-0.5 text-sm! duration-100 last:mr-0 hover:bg-neutral-800 active:bg-neutral-700 disabled:text-neutral-700 disabled:hover:bg-neutral-900"
                     disabled={disabledButtons}
                     onClick={async () => {
                       setRendererState({ InstallPKGConfirmationModal: false })
                     }}
                   >
-                    {t('no')}
+                    {t('cancel')}
                   </button>
                 </div>
               </div>

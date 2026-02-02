@@ -11,3 +11,7 @@ export function AnimatedSection({ condition, children, ...props }: HTMLMotionPro
 export function AnimatedButton({ condition, children, ...props }: HTMLMotionProps<'button'> & React.PropsWithChildren & { condition: boolean }) {
   return <AnimatePresence>{condition && <motion.button {...props}>{children}</motion.button>}</AnimatePresence>
 }
+
+export function AnimatedP({ condition, children, ...props }: HTMLMotionProps<'p'> & React.PropsWithChildren & { condition: boolean }) {
+  return <AnimatePresence>{condition && <motion.p {...props}>{children}</motion.p>}</AnimatePresence>
+}

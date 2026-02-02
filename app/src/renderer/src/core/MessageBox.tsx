@@ -23,7 +23,7 @@ export function MessageBox() {
   useEffect(() => {
     if (timeout !== null) clearTimeout(timeout)
     if (messageBox !== null) {
-      const newTimeout = setTimeout(() => setWindowState({ messageBox: null }), 4000)
+      const newTimeout = setTimeout(() => setWindowState({ messageBox: null }), messageBox.timeout || 4000)
       setNewTimeout(newTimeout)
     }
   }, [messageBox])

@@ -2,7 +2,10 @@ import USAFlag from './images/flags/us.svg'
 import BRAFlag from './images/flags/br.svg'
 import SPNFlag from './images/flags/es.svg'
 
+import imgIconRB from './images/icon-rb1.webp'
+import imgIconRB2 from './images/icon-rb2.webp'
 import imgIconRB3 from './images/icon-rb3.webp'
+import imgIconLRB from './images/icon-lego.webp'
 import imgIconRB3DX from './images/icon-rb3dx.webp'
 import bandIcon from './images/instrument-icons-band.webp'
 import bassIcon from './images/instrument-icons-bass.webp'
@@ -18,4 +21,4 @@ import proKeysIcon from './images/instrument-icons-prokeys.webp'
 import vocalsIcon from './images/instrument-icons-vocals.webp'
 import wavesPattern from './images/waves-seamless-pattern.webp'
 
-export { USAFlag, BRAFlag, SPNFlag, imgIconRB3, imgIconRB3DX, bandIcon, bassIcon, drumsIcon, guitarIcon, harm2Icon, harm3Icon, keysIcon, proBassIcon, proDrumsIcon, proGuitarIcon, proKeysIcon, vocalsIcon, wavesPattern }
+export { USAFlag, BRAFlag, SPNFlag, imgIconRB, imgIconRB2, imgIconRB3, imgIconLRB, imgIconRB3DX, bandIcon, bassIcon, drumsIcon, guitarIcon, harm2Icon, harm3Icon, keysIcon, proBassIcon, proDrumsIcon, proGuitarIcon, proKeysIcon, vocalsIcon, wavesPattern }

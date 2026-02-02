@@ -18,6 +18,10 @@ export interface RendererMessageObject {
    */
   code: string
   /**
+   * The amount of time (in milliseconds) that the message will disappear. Default is `4000` (4secs).
+   */
+  timeout?: number
+  /**
    * Optional dynamic values used for interpolation or localization.
    */
   messageValues?: Record<string, string | number | boolean>

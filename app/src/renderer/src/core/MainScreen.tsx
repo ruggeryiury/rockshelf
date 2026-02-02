@@ -1,4 +1,4 @@
-import { RockBand3DataScreen } from '@renderer/core'
+import { ConfigurationScreen, RockBand3DataScreen } from '@renderer/core'
 import { useWindowState } from '@renderer/states/WindowState'
 import clsx from 'clsx'
 import { useTranslation } from 'react-i18next'
@@ -21,6 +21,7 @@ export function MainScreen() {
       </div>
       <div className="w-fill h-full">
         <RockBand3DataScreen />
+        <ConfigurationScreen />
       </div>
     </section>
   )

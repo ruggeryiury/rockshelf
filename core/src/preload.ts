@@ -7,7 +7,7 @@ export const rockshelfAPI = {
     /**
      * Listens for messages from the main process.
      * - - - -
-     * @param {(event: IpcRendererEvent, message: RendererMessageObject): Promisable<void>} callback The callback function to handle the message event.
+     * @param {(event: IpcRendererEvent, message: RendererMessageObject) => Promisable<void>} callback The callback function to handle the message event.
      * @returns {IpcRenderer}
      */
     onMessage(callback: (event: IpcRendererEvent, message: RendererMessageObject) => Promisable<void>): IpcRenderer {
@@ -16,11 +16,11 @@ export const rockshelfAPI = {
     /**
      * Listens for requests to localized values.
      * - - - -
-     * @param {(event: IpcRendererEvent, uuid: string, key: string): Promise<string>} callback The callback function to handle the localized string request.
+     * @param {(event: IpcRendererEvent, uuid: string, key: string) => Promise<string>} callback The callback function to handle the localized string request.
      */
-    onLocaleRequest(callback: (event: IpcRendererEvent, uuid: string, key: string) => Promise<string>): IpcRenderer {
+    onLocaleRequest(callback: (event: IpcRendererEvent, uuid: string, key: string) => Promisable<void>): IpcRenderer {
       return ipcRenderer.on('@LocaleRequest', callback)
-    }
+    },
   },
   window: {
     /**
@@ -80,11 +80,11 @@ export const rockshelfAPI = {
     selectDevhdd0Folder: async (): ReturnType<typeof selectDevhdd0Folder> => {
       return await ipcRenderer.invoke('@RPCS3/selectDevhdd0Folder')
     },
-    selectPKGFileToInstall: async (lang: string): ReturnType<typeof selectPKGFileToInstall> => {
-      return await ipcRenderer.invoke('@RPCS3/selectPKGFileToInstall', lang)
+    selectPKGFileToInstall: async (): ReturnType<typeof selectPKGFileToInstall> => {
+      return await ipcRenderer.invoke('@RPCS3/selectPKGFileToInstall')
     },
-    selectRPCS3Exe: async (lang: string): ReturnType<typeof selectRPCS3Exe> => {
-      return await ipcRenderer.invoke('@RPCS3/selectRPCS3Exe', lang)
+    selectRPCS3Exe: async (): ReturnType<typeof selectRPCS3Exe> => {
+      return await ipcRenderer.invoke('@RPCS3/selectRPCS3Exe')
     },
   },
   utils: {
@@ -117,6 +117,15 @@ export const rockshelfAPI = {
 
       const path = webUtils.getPathForFile(files)
       return path as RT
+    },
+    /**
+     * Sends a localized string to the main process. This function must be called inside the `onLocaleRequest` listener to get the request UUID.
+     * - - - -
+     * @param {string} uuid A unique
+     * @param {string} val The localized string you want to send to the main process.
+     */
+    sendLocale(uuid: string, val: string): void {
+      return ipcRenderer.send(`@LocaleRequest/${uuid}`, val)
     },
   },
 } as const

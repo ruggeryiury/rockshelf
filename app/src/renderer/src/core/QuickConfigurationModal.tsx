@@ -30,6 +30,7 @@ export function QuickConfigurationModal() {
           <GoBackToRightIcon className="text-xl" />
         </button>
       </div>
+      <p className='text-neutral-600 italic ml-2 mb-4 mr-8'>{t('installQuickConfigurationsDesc')}</p>
       <button
         className="mb-2 ml-2 w-fit rounded-xs bg-neutral-900 px-1 py-0.5 text-xs! duration-100 last:mb-0 hover:bg-neutral-700 active:bg-neutral-600 disabled:text-neutral-700 disabled:hover:bg-neutral-900"
         onClick={async (ev) => {

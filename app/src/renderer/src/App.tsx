@@ -41,8 +41,9 @@ export function App() {
   // Initialize renderer locale sender
   useEffect(() => {
     // TODO: Implement i18n key getter, remove all lang:string from preload
-    window.api.listeners.onLocaleRequest((event, uuid, key) => {
-      event.sender.send(`@LocaleRequest/${uuid}`, key)
+    window.api.listeners.onLocaleRequest((_, uuid, key) => {
+      const val = i18n.exists(key) ? i18n.t(key) : key
+      window.api.utils.sendLocale(uuid, val)
     })
   }, [])
 

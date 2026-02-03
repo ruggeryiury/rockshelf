@@ -1,4 +1,4 @@
-import { ErrorIcon } from '@renderer/assets/icons'
+import { ErrorIcon, SuccessIcon } from '@renderer/assets/icons'
 import { AnimatedDiv, genAnim, TransComponent } from '@renderer/lib'
 import { useWindowState } from '@renderer/states/WindowState'
 import { useEffect, useMemo, useState } from 'react'
@@ -33,7 +33,7 @@ export function MessageBox() {
       <AnimatedDiv
         condition={Boolean(messageBox)}
         {...genAnim({ opacity: true })}
-        className={clsx('z-50 mt-4 mr-4 ml-auto w-fit max-w-[30%] flex-row! items-start border bg-black/90 p-2 backdrop-blur-md', messageBox?.type === 'warn' ? 'border-yellow-500' : messageBox?.type === 'error' ? 'border-red-500' : '')}
+        className={clsx('z-50 mt-4 mr-4 ml-auto w-fit max-w-[30%] flex-row! items-start border bg-black/90 p-2 backdrop-blur-md', messageBox?.type === 'warn' ? 'border-yellow-500' : messageBox?.type === 'error' ? 'border-red-500' : messageBox?.type === 'success' ? 'border-green-500' : '')}
         onClick={() => {
           if (messageBox && timeout !== null) {
             clearTimeout(timeout)
@@ -44,7 +44,8 @@ export function MessageBox() {
         {messageBox && (
           <>
             <div className="flex-row! items-start">
-              <ErrorIcon className={clsx('mt-0.5 mr-2 min-w-8 text-lg', messageBox.type === 'error' ? 'text-red-500' : messageBox.type === 'warn' ? 'text-yellow-500' : messageBox.type === 'success' ? 'text-green-500' : '')} />
+              {messageBox.type === 'success' && <SuccessIcon className="mt-0.5 mr-2 min-w-8 text-lg text-green-500" />}
+              {messageBox.type === 'info' || messageBox.type === 'warn' || (messageBox.type === 'error' && <ErrorIcon className={clsx('mt-0.5 mr-2 min-w-8 text-lg', messageBox.type === 'error' ? 'text-red-500' : messageBox.type === 'warn' ? 'text-yellow-500' : '')} />)}
               <div>
                 <h1 className="mb-0.5 border-b border-neutral-800 text-sm!">{t(messageBox.type)}</h1>
                 <p className="rounded-xs text-xs wrap-anywhere">

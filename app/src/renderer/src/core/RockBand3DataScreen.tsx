@@ -75,7 +75,7 @@ export function RockBand3DataScreen() {
                   className="mb-1 w-full rounded-xs border border-neutral-800 bg-neutral-900 px-1 py-0.5 text-xs! duration-100 last:mb-0 hover:bg-neutral-700 active:bg-neutral-600 disabled:text-neutral-700 disabled:hover:bg-neutral-900"
                   onClick={async () => {
                     setWindowState({ disableButtons: true })
-                    const selPKGData = await window.api.rpcs3.selectPKGFileToInstall(i18n.language)
+                    const selPKGData = await window.api.rpcs3.selectPKGFileToInstall()
                     if (import.meta.env.DEV) console.log('Selected PKG Data:', selPKGData)
                     setRendererState({ InstallPKGConfirmationModal: selPKGData })
                     setWindowState({ disableButtons: false })
@@ -85,7 +85,7 @@ export function RockBand3DataScreen() {
                 </button>
                 <button
                   disabled={disableButtons}
-                  className="mb-1 border border-neutral-800 w-full rounded-xs bg-neutral-900 px-1 py-0.5 text-xs! duration-100 last:mb-0 hover:bg-neutral-700 active:bg-neutral-600 disabled:text-neutral-700 disabled:hover:bg-neutral-900"
+                  className="mb-1 w-full rounded-xs border border-neutral-800 bg-neutral-900 px-1 py-0.5 text-xs! duration-100 last:mb-0 hover:bg-neutral-700 active:bg-neutral-600 disabled:text-neutral-700 disabled:hover:bg-neutral-900"
                   onClick={() => {
                     setRendererState({ QuickConfigurationModal: true })
                   }}

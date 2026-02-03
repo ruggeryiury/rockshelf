@@ -79,7 +79,7 @@ export function ConfigurationScreen() {
             disabled={disableButtons}
             onClick={async () => {
               setWindowState({ disableButtons: true })
-              const path = await window.api.rpcs3.selectRPCS3Exe(i18n.language)
+              const path = await window.api.rpcs3.selectRPCS3Exe()
               if (!path) {
                 setWindowState({ disableButtons: false })
                 return

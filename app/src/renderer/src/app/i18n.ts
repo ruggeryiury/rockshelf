@@ -116,6 +116,7 @@ i18n
           welcomeScreenTitle: 'Welcome to Rockshelf!',
           welcomeUserText: 'Welcome, {{userName}}',
           yes: 'Yes',
+          pkgFile: 'PS3 Package File',
 
           // Success
           successChangeDevhdd0FolderSuccess: 'The path to your <code>dev_hdd0</code> folder has changed and your configurations has been saved successfully.',
@@ -134,7 +135,7 @@ i18n
           errorSelectPKGFileToInstallInvalidFileSignature: "Selected PKG file has invalid file signature and it's not valid.",
           errorSelectPKGFileToInstallNotRBPKG: 'Selected PKG file is not a package for any Rock Band title.',
           errorSelectPKGFileToInstallPreRB3PKG: 'Selected PKG file is a Rock Band package file and Rockshelf does not support installing this type of package. Please, install it directly on RPCS3.',
-          errorSelectRPCS3ExeInvalidFolder: 'Selected RPCS3 executable is not valid.',
+          errorSelectRPCS3ExeInvalidExecutable: 'Selected executable is not a valid RPCS3 executable.',
         },
       },
       'pt-BR': {
@@ -244,6 +245,7 @@ i18n
           welcomeScreenTitle: 'Bem-vindo ao Rockshelf!',
           welcomeUserText: 'Bem-vindo(a), {{userName}}',
           yes: 'Sim',
+          pkgFile: 'Arquivo de Pacote do PS3',
 
           // Success
           successChangeDevhdd0FolderSuccess: 'O caminho da sua pasta <code>dev_hdd0</code> foi modificada e suas configurações foram salvas com sucesso.',
@@ -262,7 +264,7 @@ i18n
           errorSelectPKGFileToInstallInvalidFileSignature: 'O arquivo PKG selecionado não é válido.',
           errorSelectPKGFileToInstallNotRBPKG: 'O arquivo PKG selecionado não é um pacote para nenhum jogo da franquia Rock Band.',
           errorSelectPKGFileToInstallPreRB3PKG: 'O arquivo PKG selecionado é um arquivo de pacote para o Rock Band original e o Rockshelf não possui suporte para instalar este tipo de PKG. Por favor, instale diretamente no RPCS3.',
-          errorSelectRPCS3ExeInvalidFolder: 'O executável do RPCS3 selecionado não é válido.',
+          errorSelectRPCS3ExeInvalidExecutable: 'O executável selecionado não é um executável do RPCS3 válido.',
         },
       },
     },

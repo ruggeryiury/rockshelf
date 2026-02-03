@@ -44,7 +44,7 @@
   width: -webkit-fill-available;
 }
 
-@utility max-w-full {
+@utility max-w-fill {
   max-width: -webkit-fill-available;
 }
 
@@ -52,7 +52,7 @@
   height: -webkit-fill-available;
 }
 
-@utility max-h-full {
+@utility max-h-fill {
   max-height: -webkit-fill-available;
 }
 

@@ -1,8 +1,9 @@
 import { dialog } from 'electron'
 import { pathLikeToFilePath } from 'node-lib'
-import { sendMessage, useHandler } from '../../lib'
+import { getLocaleStringFromRenderer, sendMessage, useHandler } from '../../lib'
 import { PKGFile, type PKGFileSongPackageStatObject } from 'rbtools'
 import type { PKGData } from 'rbtools/lib'
+import { is } from '@electron-toolkit/utils'
 
 export type OfficialSongPackagesTypes = 'rb1' | 'rb2' | 'lrb'
 export type SelectedPKGFileType = 'tu5' | 'dx' | 'songPackage' | OfficialSongPackagesTypes
@@ -42,7 +43,7 @@ export interface SelectPKGFileReturnObject {
  * Checks for known PKG entries hash for PKG files that's installed on the original Rock Band USRDIR folder (BLUS30050).
  * - - - -
  * @param {string} entriesHash The entries hash of the PKG file.
- * @returns 
+ * @returns
  */
 export const checkOfficialPreRB3PackagesIDs = (entriesHash: string): [SelectedPKGFileType, string] | false => {
   switch (entriesHash) {
@@ -62,7 +63,7 @@ export const checkOfficialPreRB3PackagesIDs = (entriesHash: string): [SelectedPK
  * Checks for known PKG entries hash for PKG files that's installed on the Rock Band 3 USRDIR folder (BLUS30463).
  * - - - -
  * @param {string} entriesHash The entries hash of the PKG file.
- * @returns 
+ * @returns
  */
 export const checkOfficialRB3PackagesIDs = (entriesHash: string): [SelectedPKGFileType, string] | false => {
   switch (entriesHash) {
@@ -78,8 +79,9 @@ export const checkOfficialRB3PackagesIDs = (entriesHash: string): [SelectedPKGFi
   }
 }
 
-export const selectPKGFileToInstall = useHandler(async (win, _, lang: string): Promise<SelectPKGFileReturnObject | false> => {
-  const selection = await dialog.showOpenDialog({ properties: ['openFile'], filters: [{ name: lang.startsWith('pt') ? 'Arquivo de Pacote do PS3' : lang.startsWith('es') ? '' : 'PS3 Package File', extensions: ['pkg'] }] })
+export const selectPKGFileToInstall = useHandler(async (win, _): Promise<SelectPKGFileReturnObject | false> => {
+  const pkgFileFilterName = await getLocaleStringFromRenderer(win, 'pkgFile')
+  const selection = await dialog.showOpenDialog({ properties: ['openFile'], filters: [{ name: pkgFileFilterName, extensions: ['pkg'] }] })
 
   // If the selection is cancelled, return false
   if (selection.canceled) {
@@ -120,7 +122,7 @@ export const selectPKGFileToInstall = useHandler(async (win, _, lang: string): P
   // Get PKG file stats
   const stat = await pkg.stat()
 
-  dev
+  if (is.dev) console.log(pkg.path.name, stat.header.contentID, stat.entries.sha256)
 
   // Not Rock Band 3 song package
   if (stat.header.cidTitle1 !== 'BLUS30463') {
@@ -179,7 +181,7 @@ export const selectPKGFileToInstall = useHandler(async (win, _, lang: string): P
   let songPackage: SelectPKGFileReturnObject['songPackage'] = undefined
   try {
     songPackage = await pkg.songPackageStat()
-  } catch (err) { }
+  } catch (err) {}
 
   return {
     pkgPath: pkgFile.path,

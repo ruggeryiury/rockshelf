@@ -6,7 +6,6 @@ import { sendMessage } from '../electron-lib/sendMessage'
 export type QuickConfigType = 'recommended' | 'minimum' | 'potato'
 
 export const installQuickConfig = useHandler(async (win, _, rpcs3ExePath: string, configType: QuickConfigType): Promise<boolean> => {
-  console.log(FileSystem.dirs.packageBinDirPath.path)
   const configYmlFile = FileSystem.dirs.packageBinDirPath.gotoFile(`rpcs3config/${configType}.yml`)
   const configFolder = pathLikeToFilePath(rpcs3ExePath).gotoDir('config/custom_configs/')
   const rb3ConfigFile = configFolder.gotoFile('config_BLUS30463.yml')

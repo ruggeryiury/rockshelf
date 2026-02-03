@@ -28,7 +28,7 @@ export function RockBand3DataScreen() {
       if (!isIntroActivated) {
         const newRB3Stats = await window.api.rpcs3.getRB3Data(devhdd0Path, rpcs3ExePath)
         setWindowState({ rb3Stats: newRB3Stats })
-        console.log('Rock Band 3 Data:', newRB3Stats)
+        if (import.meta.env.DEV) console.log('Rock Band 3 Data:', newRB3Stats)
       }
     }
 
@@ -69,7 +69,7 @@ export function RockBand3DataScreen() {
             </div>
             <div className="h-full w-full flex-row! items-start">
               <div>
-                <img src={rb3Stats.hasDeluxe ? imgIconRB3DX : imgIconRB3} className={clsx('laptop:w-[256px] laptop:min-w-[256px] mb-2 w-48 min-w-48 hover:animate-pulse', rb3Stats.path ? '' : 'grayscale')} alt={rb3Stats.hasDeluxe ? t('rb3DXLogo') : t('rb3Logo')} title={rb3Stats.hasDeluxe ? t('rb3DXLogo') : t('rb3Logo')} />
+                <img src={rb3Stats.hasDeluxe ? imgIconRB3DX : imgIconRB3} className={clsx('laptop:w-[256px] laptop:min-w-[256px] mb-2 w-48 min-w-48 hover:animate-pulse', rb3Stats.path ? '' : 'grayscale')} title={rb3Stats.hasDeluxe ? t('rb3dx') : t('rb3')} />
                 <button
                   disabled={disableButtons}
                   className="mb-1 w-full rounded-xs border border-neutral-800 bg-neutral-900 px-1 py-0.5 text-xs! duration-100 last:mb-0 hover:bg-neutral-700 active:bg-neutral-600 disabled:text-neutral-700 disabled:hover:bg-neutral-900"

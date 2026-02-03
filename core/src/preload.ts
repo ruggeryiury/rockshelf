@@ -5,14 +5,22 @@ import type { installQuickConfig, getRB3Data, openUserData, QuickConfigType, rea
 export const rockshelfAPI = {
   listeners: {
     /**
-     * Listen for messages from the main process.
+     * Listens for messages from the main process.
      * - - - -
-     * @param {(event: IpcRendererEvent, message: RendererMessageObject) => Promisable<void>} callback The callback function to handle the message event.
+     * @param {(event: IpcRendererEvent, message: RendererMessageObject): Promisable<void>} callback The callback function to handle the message event.
      * @returns {IpcRenderer}
      */
     onMessage(callback: (event: IpcRendererEvent, message: RendererMessageObject) => Promisable<void>): IpcRenderer {
       return ipcRenderer.on('@Message', callback)
     },
+    /**
+     * Listens for requests to localized values.
+     * - - - -
+     * @param {(event: IpcRendererEvent, uuid: string, key: string): Promise<string>} callback The callback function to handle the localized string request.
+     */
+    onLocaleRequest(callback: (event: IpcRendererEvent, uuid: string, key: string) => Promise<string>): IpcRenderer {
+      return ipcRenderer.on('@LocaleRequest', callback)
+    }
   },
   window: {
     /**

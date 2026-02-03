@@ -1,10 +1,12 @@
 import { useEffect } from 'react'
+import { useTranslation } from 'react-i18next'
 import { WelcomeModal, InnerAppFrame, IntroScreen, MessageBox, TopBar, MainScreen, InstallPKGConfirmationModal } from './core'
 import { useRendererState } from './states/RendererState'
 import { useWindowState } from './states/WindowState'
 import { useUserConfigState } from './states/UserConfigState'
 
 export function App() {
+  const { i18n } = useTranslation()
   const setRendererState = useRendererState((state) => state.setRendererState)
   const setWindowState = useWindowState((state) => state.setWindowState)
   const setUserConfigState = useUserConfigState((state) => state.setUserConfigState)
@@ -34,6 +36,14 @@ export function App() {
     return () => {
       for (const timeout of timeouts) clearTimeout(timeout)
     }
+  }, [])
+
+  // Initialize renderer locale sender
+  useEffect(() => {
+    // TODO: Implement i18n key getter, remove all lang:string from preload
+    window.api.listeners.onLocaleRequest((event, uuid, key) => {
+      event.sender.send(`@LocaleRequest/${uuid}`, key)
+    })
   }, [])
 
   return (

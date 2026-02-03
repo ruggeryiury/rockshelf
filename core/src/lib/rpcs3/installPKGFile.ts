@@ -8,19 +8,49 @@ export type OfficialSongPackagesTypes = 'rb1' | 'rb2' | 'lrb'
 export type SelectedPKGFileType = 'tu5' | 'dx' | 'songPackage' | OfficialSongPackagesTypes
 
 export interface SelectPKGFileReturnObject {
+  /**
+   * The path to the PKG file.
+   */
   pkgPath: string
+  /**
+   * The name of the package. Defaults to the file name itself, except when it's a recognizable PKG file.
+   */
   pkgName: string
+  /**
+   * The type of the package. Defaults to `'songPackage'` excepts when it's a recognizable PKG file.
+   */
   pkgType: SelectedPKGFileType
+  /**
+   * The size of the PKG file.
+   */
   pkgSize: number
-  dxHash: string | null
+  /**
+   * General stats of the package.
+   */
   stat: PKGData
+  /**
+   * The short commit hash of the RB3DX version. This property will always be `undefined` if the selected PKG is not a RB3DX patch PKG.
+   */
+  dxHash?: string
+  /**
+   * The stats related to song package PKG files. Default is `undefined` is the selected PKG file is not a song package file.
+   */
   songPackage?: PKGFileSongPackageStatObject
 }
 
+/**
+ * Checks for known PKG entries hash for PKG files that's installed on the original Rock Band USRDIR folder (BLUS30050).
+ * - - - -
+ * @param {string} entriesHash The entries hash of the PKG file.
+ * @returns 
+ */
 export const checkOfficialPreRB3PackagesIDs = (entriesHash: string): [SelectedPKGFileType, string] | false => {
   switch (entriesHash) {
+    // Rock Band 1 (On-disc)
     case 'e386b8ab41e844ff087400533920cccca99c4fe3d455756bab35223592b0e683':
       return ['rb1', 'Rock Band']
+
+    // LEGO Rock Band (On-disc)
     case '7b76d701a8513dd7a2a50065d34d0eb0b10aee4980e0ae6814baeb43f3caae87':
       return ['lrb', 'LEGO Rock Band']
     default:
@@ -28,10 +58,19 @@ export const checkOfficialPreRB3PackagesIDs = (entriesHash: string): [SelectedPK
   }
 }
 
+/**
+ * Checks for known PKG entries hash for PKG files that's installed on the Rock Band 3 USRDIR folder (BLUS30463).
+ * - - - -
+ * @param {string} entriesHash The entries hash of the PKG file.
+ * @returns 
+ */
 export const checkOfficialRB3PackagesIDs = (entriesHash: string): [SelectedPKGFileType, string] | false => {
   switch (entriesHash) {
+    // Title Update 5 (not song package)
     case 'cba38dc92d6b7327e0a4c6efb014f3269d183ba475fce6d863b33d2178d28778':
       return ['tu5', 'Title Update 5']
+
+    // Rock Band 2 (On-disc)
     case '92462fe7347aa14446b5b38409c7a91c48564fd4932d76e0b4e83a52fb3ca5ce':
       return ['rb2', 'Rock Band 2']
     default:
@@ -58,7 +97,7 @@ export const selectPKGFileToInstall = useHandler(async (win, _, lang: string): P
 
   let pkgType: SelectedPKGFileType = 'songPackage'
   let pkgName = pkgFile.name
-  let dxHash: string | null = null
+  let dxHash: SelectPKGFileReturnObject['dxHash']
   let isOfficialPreRB3Package: boolean = false
 
   // Get package stats
@@ -81,7 +120,7 @@ export const selectPKGFileToInstall = useHandler(async (win, _, lang: string): P
   // Get PKG file stats
   const stat = await pkg.stat()
 
-  console.log(pkg.path.name, stat.header.contentID, stat.entries.sha256)
+  dev
 
   // Not Rock Band 3 song package
   if (stat.header.cidTitle1 !== 'BLUS30463') {
@@ -108,7 +147,7 @@ export const selectPKGFileToInstall = useHandler(async (win, _, lang: string): P
         return false
       }
 
-      // If it's not a Rock Band 3 nor Rock Band content
+      // If it's not a Rock Band 3 nor any Rock Band content
     } else {
       sendMessage(win, {
         type: 'error',
@@ -140,7 +179,7 @@ export const selectPKGFileToInstall = useHandler(async (win, _, lang: string): P
   let songPackage: SelectPKGFileReturnObject['songPackage'] = undefined
   try {
     songPackage = await pkg.songPackageStat()
-  } catch (err) {}
+  } catch (err) { }
 
   return {
     pkgPath: pkgFile.path,

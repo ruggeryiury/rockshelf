@@ -30,11 +30,11 @@ export interface RendererMessageObject {
 /**
  * Sends a message event to a renderer process.
  * - - - -
- * @param {BrowserWindow} window Target `BrowserWindow` that will receive the message.
+ * @param {BrowserWindow} win Target `BrowserWindow` that will receive the message.
  * @param {MessagePopUpOptions} options Message configuration payload.
  * @returns {true} Always returns true after dispatching the message.
  */
-export const sendMessage = (window: BrowserWindow, options: RendererMessageObject): true => {
-  window.webContents.send('@Message', options)
+export const sendMessage = (win: BrowserWindow, options: RendererMessageObject): true => {
+  win.webContents.send('@Message', options)
   return true
 }

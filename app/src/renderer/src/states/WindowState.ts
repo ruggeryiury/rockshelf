@@ -1,4 +1,4 @@
-import { RendererMessageObject, RockBand3Data } from 'rockshelf-core/lib'
+import { RendererMessageObject, RockBand3Data, SelectPKGFileReturnObject } from 'rockshelf-core/lib'
 import { create } from 'zustand'
 
 export interface WindowStateProps {
@@ -15,11 +15,21 @@ export interface WindowStateProps {
    */
   disableTopBarButtons: boolean
   /**
-   * An object that controls the MessageBox rendering.
+   * An object that controls the msgObject rendering.
    */
-  messageBox: RendererMessageObject | null
+  msgObject: RendererMessageObject | false
+  /**
+   * Controls the tabs of the `MainScreen` component.
+   */
   mainWindowSelectionIndex: number
-  rb3Stats: RockBand3Data | null
+  /**
+   * Stats from Rock Band 3.
+   */
+  rb3Stats: RockBand3Data | false
+  /**
+   * Information of the selected PKG file to install, controls the rendering of the `InstallPKGConfirmationModal` component
+   */
+  selectedPKGFile: SelectPKGFileReturnObject | false
 }
 
 export interface WindowStateActions {
@@ -47,9 +57,10 @@ const defaultState: WindowStateProps = {
   isWinMaximized: false,
   disableButtons: true,
   disableTopBarButtons: false,
-  messageBox: null,
+  msgObject: false,
   mainWindowSelectionIndex: 0,
-  rb3Stats: null,
+  rb3Stats: false,
+  selectedPKGFile: false,
 }
 
 export const useWindowState = create<WindowStateHook>()((set, get) => ({

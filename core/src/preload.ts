@@ -1,6 +1,6 @@
 import { ipcRenderer, shell, webUtils, type IpcRenderer, type IpcRendererEvent } from 'electron'
 import type { Promisable } from 'type-fest'
-import type { installQuickConfig, getRB3Data, openUserData, QuickConfigType, readUserConfig, RendererMessageObject, saveUserConfig, selectDevhdd0Folder, UserConfigObj, winClose, winMaximize, winMinimize, selectRPCS3Exe, installHighMemoryPatch, selectPKGFileToInstall } from './lib'
+import type { installQuickConfig, getRB3Data, openUserData, QuickConfigType, readUserConfig, RendererMessageObject, saveUserConfig, selectDevhdd0Folder, UserConfigObj, winClose, winMaximize, winMinimize, selectRPCS3Exe, installHighMemoryPatch, SelectPKGFile } from './lib'
 
 export const rockshelfAPI = {
   listeners: {
@@ -80,8 +80,8 @@ export const rockshelfAPI = {
     selectDevhdd0Folder: async (): ReturnType<typeof selectDevhdd0Folder> => {
       return await ipcRenderer.invoke('@RPCS3/selectDevhdd0Folder')
     },
-    selectPKGFileToInstall: async (): ReturnType<typeof selectPKGFileToInstall> => {
-      return await ipcRenderer.invoke('@RPCS3/selectPKGFileToInstall')
+    SelectPKGFile: async (): ReturnType<typeof SelectPKGFile> => {
+      return await ipcRenderer.invoke('@RPCS3/SelectPKGFile')
     },
     selectRPCS3Exe: async (): ReturnType<typeof selectRPCS3Exe> => {
       return await ipcRenderer.invoke('@RPCS3/selectRPCS3Exe')

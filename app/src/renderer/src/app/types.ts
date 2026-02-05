@@ -93,4 +93,18 @@ export interface GitHubCommitResponse {
   stats?: GitHubCommitStats
 }
 
+export interface GitHubCommitCompare {
+  url: string
+  html_url: string
+  parmalink_url: string
+  diff_url: string
+  patch_url: string
+  base_commit: GitHubCommitResponse
+  merge_base_commit: GitHubCommitResponse
+  status: 'behind' | 'identical'
+  ahead_by: number
+  behind_by: number
+  total_commits: number
+}
+
 export {}

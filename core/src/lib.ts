@@ -9,11 +9,12 @@ export * from './lib/electron-lib/windowControls'
 
 export * from './lib/fs/userConfig'
 
+export * from './lib/pkg/selectPKGFile'
+
 export * from './lib/rockshelf/dependencyChecker'
 
 export * from './lib/rpcs3/devhdd0Folder'
 export * from './lib/rpcs3/getRB3Data'
 export * from './lib/rpcs3/installHighMemoryPatch'
-export * from './lib/rpcs3/installPKGFile'
 export * from './lib/rpcs3/installQuickConfig'
 export * from './lib/rpcs3/rpcs3Exe'

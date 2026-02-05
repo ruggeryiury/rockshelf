@@ -8,14 +8,8 @@ export function IntroScreen() {
 
   const condition = useRendererState((state) => state.IntroScreen)
 
-  const props = {
-    condition,
-    ...genAnim({ opacityInit: true }),
-    id: 'IntroScreen',
-  }
-
   return (
-    <AnimatedSection {...props} className="absolute! z-1 h-full w-full items-center justify-center bg-neutral-900 p-16">
+    <AnimatedSection id="IntroScreen" condition={condition} {...genAnim({ opacityInit: true })} className="absolute! z-1 h-full w-full items-center justify-center bg-neutral-900 p-16">
       <h1 className="text-[4rem] uppercase">{t('appTitle')}</h1>
       <p className="absolute bottom-5 text-center text-xs">
         {t('versionText', { version: APP_VERSION })}

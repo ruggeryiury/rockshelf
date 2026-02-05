@@ -50,9 +50,9 @@ i18n
           installPKGFileConfirmSongPackage: 'Are you sure you want to install this song package?',
           installPKGFileConfirmTU5: 'Are you sure you want to install Title Update 5?',
           installPKGFileDX: 'Install Rock Band 3 Deluxe',
-          installPKGFileLRB: 'Install LEGO Rock Band On-disc Song Package',
-          installPKGFileRB1: 'Install Rock Band On-disc Song Package',
-          installPKGFileRB2: 'Install Rock Band 2 On-disc Song Package',
+          installPKGFileLRB: 'Install LEGO Rock Band Songs',
+          installPKGFileRB1: 'Install Rock Band Songs',
+          installPKGFileRB2: 'Install Rock Band 2 Songs',
           installPKGFileSongPackage: 'Install Song Package',
           installPKGFileTU5: 'Install Title Update 5',
           installQuickConfigurations: 'Install Quick Configurations',
@@ -117,6 +117,9 @@ i18n
           welcomeUserText: 'Welcome, {{userName}}',
           yes: 'Yes',
           pkgFile: 'PS3 Package File',
+          updatedRB3DXInfo: 'This version of Rock Band 3 Deluxe is updated.',
+          notUpdatedRB3DXInfo: '{{behindBy}} commit behind the latest commit of Rock Band 3 Deluxe.',
+          notUpdatedRB3DXInfoPlural: '{{behindBy}} commits behind the latest commit of Rock Band 3 Deluxe.',
 
           // Success
           successChangeDevhdd0FolderSuccess: 'The path to your <code>dev_hdd0</code> folder has changed and your configurations has been saved successfully.',
@@ -126,15 +129,15 @@ i18n
 
           // Info
           infoSelectDevhdd0FolderActionCancelledByUser: '<code>dev_hdd0</code> folder selection aborted by the user.',
-          infoSelectPKGFileToInstallActionCancelledByUser: 'PKG file selection aborted by the user.',
+          infoSelectPKGFileActionCancelledByUser: 'PKG file selection aborted by the user.',
           infoSelectRPCS3ExeActionCancelledByUser: 'RPCS3 executable file <code>rpcs3.exe</code> selection aborted by the user.',
 
           // Error
           errorNoInternetCommitDetails: "Rockshelf couldn't load details from GitHub. Please, check your internet connection and try again.",
           errorSelectDevhdd0FolderInvalidFolder: 'Selected <code>dev_hdd0</code> folder is not valid.',
-          errorSelectPKGFileToInstallInvalidFileSignature: "Selected PKG file has invalid file signature and it's not valid.",
-          errorSelectPKGFileToInstallNotRBPKG: 'Selected PKG file is not a package for any Rock Band title.',
-          errorSelectPKGFileToInstallPreRB3PKG: 'Selected PKG file is a Rock Band package file and Rockshelf does not support installing this type of package. Please, install it directly on RPCS3.',
+          errorSelectPKGFileInvalidFileSignature: "Selected PKG file has invalid file signature and it's not valid.",
+          errorSelectPKGFileNotRBPKG: 'Selected PKG file is not a package for any Rock Band title.',
+          errorSelectPKGFilePreRB3PKG: 'Selected PKG file is a Rock Band package file and Rockshelf does not support installing this type of package. Please, install it directly on RPCS3.',
           errorSelectRPCS3ExeInvalidExecutable: 'Selected executable is not a valid RPCS3 executable.',
         },
       },
@@ -180,9 +183,9 @@ i18n
           installPKGFileConfirmSongPackage: 'Você tem certeza que deseja instalar este pacote de músicas?',
           installPKGFileConfirmTU5: 'Você tem certeza que deseja instalar o Title Update 5?',
           installPKGFileDX: 'Instalar Rock Band 3 Deluxe',
-          installPKGFileLRB: 'Instalar Pacote de Músicas do LEGO Rock Band',
-          installPKGFileRB1: 'Instalar Pacote de Músicas do Rock Band',
-          installPKGFileRB2: 'Instalar Pacote de Músicas do Rock Band 2',
+          installPKGFileLRB: 'Instalar Músicas do LEGO Rock Band',
+          installPKGFileRB1: 'Instalar Músicas do Rock Band',
+          installPKGFileRB2: 'Instalar Músicas do Rock Band 2',
           installPKGFileSongPackage: 'Instalar Pacote de Músicas',
           installPKGFileTU5: 'Instalar Title Update 5',
           installQuickConfigurations: 'Instalar Configurações Rápidas',
@@ -246,6 +249,9 @@ i18n
           welcomeUserText: 'Bem-vindo(a), {{userName}}',
           yes: 'Sim',
           pkgFile: 'Arquivo de Pacote do PS3',
+          updatedRB3DXInfo: 'Esta versão do Rock Band 3 Deluxe está atualizada.',
+          notUpdatedRB3DXInfo: '{{behindBy}} commit atrás do último commit do Rock Band 3 Deluxe.',
+          notUpdatedRB3DXInfoPlural: '{{behindBy}} commits atrás do último commit do Rock Band 3 Deluxe.',
 
           // Success
           successChangeDevhdd0FolderSuccess: 'O caminho da sua pasta <code>dev_hdd0</code> foi modificada e suas configurações foram salvas com sucesso.',
@@ -255,15 +261,15 @@ i18n
 
           // Info
           infoSelectDevhdd0FolderActionCancelledByUser: 'A seleção da pasta <code>dev_hdd0</code> foi abortada pelo usuário.',
-          infoSelectPKGFileToInstallActionCancelledByUser: 'A seleção do arquivo PKG for abortada pelo usuário.',
+          infoSelectPKGFileActionCancelledByUser: 'A seleção do arquivo PKG for abortada pelo usuário.',
           infoSelectRPCS3ExeActionCancelledByUser: 'A seleção do executável do RPCS3 <code>rpcs3.exe</code> foi abortada pelo usuário.',
 
           // Error
           errorNoInternetCommitDetails: 'O Rockshelf não conseguiu carregar detalhes do GitHub. Por favor, cheque sua coneção de internet e tente novamente.',
           errorSelectDevhdd0FolderInvalidFolder: 'A pasta <code>dev_hdd0</code> selecionada não é válida.',
-          errorSelectPKGFileToInstallInvalidFileSignature: 'O arquivo PKG selecionado não é válido.',
-          errorSelectPKGFileToInstallNotRBPKG: 'O arquivo PKG selecionado não é um pacote para nenhum jogo da franquia Rock Band.',
-          errorSelectPKGFileToInstallPreRB3PKG: 'O arquivo PKG selecionado é um arquivo de pacote para o Rock Band original e o Rockshelf não possui suporte para instalar este tipo de PKG. Por favor, instale diretamente no RPCS3.',
+          errorSelectPKGFileInvalidFileSignature: 'O arquivo PKG selecionado não é válido.',
+          errorSelectPKGFileNotRBPKG: 'O arquivo PKG selecionado não é um pacote para nenhum jogo da franquia Rock Band.',
+          errorSelectPKGFilePreRB3PKG: 'O arquivo PKG selecionado é um arquivo de pacote para o Rock Band original e o Rockshelf não possui suporte para instalar este tipo de PKG. Por favor, instale diretamente no RPCS3.',
           errorSelectRPCS3ExeInvalidExecutable: 'O executável selecionado não é um executável do RPCS3 válido.',
         },
       },

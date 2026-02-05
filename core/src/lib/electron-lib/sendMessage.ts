@@ -4,7 +4,7 @@ export interface RendererMessageObject {
   /**
    * The type of the message
    */
-  type: 'error' | 'warn' | 'success' | 'info'
+  type: 'error' | 'warn' | 'success' | 'info' | 'loading'
   /**
    * The module or subsystem that emitted the message.
    */

@@ -1,2 +1,3 @@
+export * from './core/CreateWindow'
 export * from './core/FileSystem'
-export * from './initHandlers'
+export * from './core/initHandlers'

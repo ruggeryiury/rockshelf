@@ -4,7 +4,6 @@ import { useUserConfigState } from '@renderer/states/UserConfigState'
 import { useWindowState } from '@renderer/states/WindowState'
 import clsx from 'clsx'
 import { useTranslation } from 'react-i18next'
-import { UserConfigObj } from 'rockshelf-core/lib'
 
 export function ConfigurationScreen() {
   const { i18n, t } = useTranslation()
@@ -60,7 +59,7 @@ export function ConfigurationScreen() {
               setUserConfigState({ devhdd0Path: path })
               const newConfig = getUserConfigState()
               await window.api.fs.userConfig.saveUserConfig(newConfig)
-              setWindowState({ disableButtons: false, messageBox: { type: 'success', method: 'changeDevhdd0Folder', code: 'success', module: 'dom' } })
+              setWindowState({ disableButtons: false, msgObject: { type: 'success', method: 'changeDevhdd0Folder', code: 'success', module: 'dom' } })
             }}
           >
             {t('change')}
@@ -87,7 +86,7 @@ export function ConfigurationScreen() {
               setUserConfigState({ rpcs3ExePath: path })
               const newConfig = getUserConfigState()
               await window.api.fs.userConfig.saveUserConfig(newConfig)
-              setWindowState({ disableButtons: false, messageBox: { type: 'success', method: 'changeRPCS3ExeFile', code: 'success', module: 'dom' } })
+              setWindowState({ disableButtons: false, msgObject: { type: 'success', method: 'changeRPCS3ExeFile', code: 'success', module: 'dom' } })
             }}
           >
             {t('change')}

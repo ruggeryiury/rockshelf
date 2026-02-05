@@ -12,7 +12,7 @@ import { useTranslation } from 'react-i18next'
 import { RockBand3Data } from 'rockshelf-core/lib'
 
 export function RockBand3DataScreen() {
-  const { i18n, t } = useTranslation()
+  const { t } = useTranslation()
   const devhdd0Path = useUserConfigState((state) => state.devhdd0Path)
   const rpcs3ExePath = useUserConfigState((state) => state.rpcs3ExePath)
   const isIntroActivated = useRendererState((state) => state.IntroScreen)
@@ -23,21 +23,27 @@ export function RockBand3DataScreen() {
   const setWindowState = useWindowState((state) => state.setWindowState)
   const setRendererState = useRendererState((state) => state.setRendererState)
 
-  useEffect(() => {
-    const fetchData = async () => {
-      if (!isIntroActivated) {
-        const newRB3Stats = await window.api.rpcs3.getRB3Data(devhdd0Path, rpcs3ExePath)
-        setWindowState({ rb3Stats: newRB3Stats })
-        if (import.meta.env.DEV) console.log('Rock Band 3 Data:', newRB3Stats)
+  useEffect(
+    function FetchRockBand3Data() {
+      const start = async () => {
+        if (!isIntroActivated) {
+          const newRB3Stats = await window.api.rpcs3.getRB3Data(devhdd0Path, rpcs3ExePath)
+          setWindowState({ rb3Stats: newRB3Stats })
+          if (import.meta.env.DEV) console.log('struct RockBand3Data ["core\\src\\lib\\rpcs3\\getRB3Data.ts"]:', newRB3Stats)
+        }
       }
-    }
 
-    fetchData()
-  }, [isIntroActivated])
+      start()
+    },
+    [isIntroActivated]
+  )
 
-  useEffect(() => {
-    if (mainWindowSelectionIndex !== 0) setRendererState({ QuickConfigurationModal: false })
-  }, [mainWindowSelectionIndex])
+  useEffect(
+    function ResetTabState() {
+      if (mainWindowSelectionIndex !== 0) setRendererState({ QuickConfigurationModal: false })
+    },
+    [mainWindowSelectionIndex]
+  )
   return (
     <AnimatedDiv id="RockBand3DataScreen" condition={mainWindowSelectionIndex === 0} {...genAnim({ opacity: true, duration: 0.1 })} className="absolute! h-full w-full overflow-hidden">
       {/* Loading Data Screen */}
@@ -59,7 +65,7 @@ export function RockBand3DataScreen() {
                 className="ml-2 w-fit rounded-xs border border-neutral-700 bg-neutral-900 px-1 py-0.5 text-xs! duration-100 hover:bg-neutral-700 active:bg-neutral-600 disabled:text-neutral-700 disabled:hover:bg-neutral-900"
                 disabled={disableButtons}
                 onClick={async () => {
-                  setWindowState({ disableButtons: true, rb3Stats: null })
+                  setWindowState({ disableButtons: true, rb3Stats: false })
                   const newRB3Stats = await window.api.rpcs3.getRB3Data(devhdd0Path, rpcs3ExePath)
                   setWindowState({ disableButtons: false, rb3Stats: newRB3Stats })
                 }}
@@ -75,10 +81,9 @@ export function RockBand3DataScreen() {
                   className="mb-1 w-full rounded-xs border border-neutral-800 bg-neutral-900 px-1 py-0.5 text-xs! duration-100 last:mb-0 hover:bg-neutral-700 active:bg-neutral-600 disabled:text-neutral-700 disabled:hover:bg-neutral-900"
                   onClick={async () => {
                     setWindowState({ disableButtons: true })
-                    const selPKGData = await window.api.rpcs3.selectPKGFileToInstall()
-                    if (import.meta.env.DEV) console.log('Selected PKG Data:', selPKGData)
-                    setRendererState({ InstallPKGConfirmationModal: selPKGData })
-                    setWindowState({ disableButtons: false })
+                    const selPKGData = await window.api.rpcs3.SelectPKGFile()
+                    if (import.meta.env.DEV) console.log('struct SelectPKGFileReturnObject ["core\\src\\lib\\pkg\\SelectPKGFile.ts"]:', selPKGData)
+                    setWindowState({ selectedPKGFile: selPKGData, disableButtons: false })
                   }}
                 >
                   {t('installPKGFile')}

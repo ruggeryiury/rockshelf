@@ -1,9 +1,8 @@
-import { ConfigurationScreen, RockBand3DataScreen } from '@renderer/core'
-import { useWindowState } from '@renderer/states/WindowState'
 import clsx from 'clsx'
 import { useTranslation } from 'react-i18next'
+import { useWindowState } from '@renderer/states/WindowState'
 
-export function MainScreen() {
+export function MainScreen({ children }: React.PropsWithChildren) {
   const { t } = useTranslation()
 
   const mainWindowSelectionIndex = useWindowState((state) => state.mainWindowSelectionIndex)
@@ -19,10 +18,7 @@ export function MainScreen() {
           {t('configurations')}
         </button>
       </div>
-      <div className="w-fill h-full">
-        <RockBand3DataScreen />
-        <ConfigurationScreen />
-      </div>
+      <div className="w-fill h-full">{children}</div>
     </section>
   )
 }

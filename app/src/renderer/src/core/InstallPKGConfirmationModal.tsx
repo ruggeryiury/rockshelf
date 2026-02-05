@@ -7,7 +7,7 @@ import { imgIconRB, imgIconRB2, imgIconRB3, imgIconLRB, imgIconRB3DX, wavesPatte
 import { useTranslation } from 'react-i18next'
 import { useWindowState } from '@renderer/states/WindowState'
 import { useUserConfigState } from '@renderer/states/UserConfigState'
-import type { GitHubCommitResponse } from '@renderer/app/types'
+import type { GitHubCommitCompare, GitHubCommitResponse } from '@renderer/app/types'
 import { CheckedBoxIcon, GitHubIcon, LoadingIcon, MusicLibIcon, StarCircleIcon, UncheckedBoxIcon } from '@renderer/assets/icons'
 import { SelectedPKGFileType } from 'rockshelf-core/lib'
 
@@ -15,6 +15,7 @@ export function InstallPKGConfirmationModal() {
   const { t, i18n } = useTranslation()
 
   const [commitInfo, setCommitInfo] = useState<GitHubCommitResponse | null>(null)
+  const [aheadCommitInfo, setAheadCommitInfo] = useState<GitHubCommitCompare | null>(null)
   const [isLoadingCommitInfo, setIsLoadingCommitInfo] = useState<boolean>(true)
   const [packageFolderName, setPackageFolderName] = useState('')
   const [encryptPKGFiles, setEncryptPKGFiles] = useState(false)
@@ -44,25 +45,51 @@ export function InstallPKGConfirmationModal() {
   const rpcs3ExePath = useUserConfigState((state) => state.rpcs3ExePath)
   const setUserConfigState = useUserConfigState((state) => state.setUserConfigState)
 
-  const condition = useRendererState((state) => state.InstallPKGConfirmationModal)
+  const condition = useWindowState((state) => state.selectedPKGFile)
 
   useEffect(
-    function resetStatesAndFetchCommitData() {
+    function DisplayPKGFileStatTableOnConsole() {
+      if (condition && import.meta.env.DEV) console.table([{ 'PKG Path': condition.stat.pkgFilePath, Name: condition.pkgName, 'Is official?': condition.isPackageOfficial, 'Console ID': condition.stat.header.contentID, 'SHA256 Hash': condition.stat.entries.sha256 }])
+    },
+    [condition]
+  )
+
+  useEffect(
+    function CheckCommitsAhead() {
+      const start = async () => {
+        if (condition && commitInfo && !aheadCommitInfo) {
+          try {
+            const { data } = await axios.get<GitHubCommitCompare>(`https://api.github.com/repos/hmxmilohax/rock-band-3-deluxe/compare/develop...${condition.dxHash}`, { responseType: 'json', timeout: 6000 })
+
+            setAheadCommitInfo(data)
+          } catch (err) {
+            // Do nothing
+          }
+        }
+      }
+      start()
+    },
+    [commitInfo]
+  )
+
+  useEffect(
+    function ResetStatesAndFetchCommitData() {
       const start = async () => {
         if (condition && condition.pkgType === 'dx') {
           try {
             const { data } = await axios.get<GitHubCommitResponse>(`https://api.github.com/repos/hmxmilohax/rock-band-3-deluxe/commits/${condition.dxHash}`, { responseType: 'json', timeout: 6000 })
             setCommitInfo(data)
             setIsLoadingCommitInfo(false)
-            if (import.meta.env.DEV) console.log('Install Deluxe PKG Commit Data:', data)
+            if (import.meta.env.DEV) console.log('struct GitHubCommitResponse ["app\\src\\renderer\\src\\app\\types.ts"]:', data)
           } catch (err) {
             setIsLoadingCommitInfo(false)
           }
         } else if (condition && condition.pkgType === 'songPackage' && condition.songPackage) {
           setPackageFolderName(condition.songPackage.folderName)
-          if (!rb3Stats?.hasDeluxe) setEncryptPKGFiles(true)
+          if (rb3Stats && !rb3Stats.hasDeluxe) setEncryptPKGFiles(true)
         } else {
           setCommitInfo(null)
+          setAheadCommitInfo(null)
           setIsLoadingCommitInfo(true)
           setPackageFolderName('')
           setEncryptPKGFiles(false)
@@ -127,10 +154,17 @@ export function InstallPKGConfirmationModal() {
                           </div>
                           <p className="mb-2 text-neutral-400 italic">{commitInfo.commit.message}</p>
                           <h1 className="text-xs!">{t('commitBy')}</h1>
-                          <div className="mb-4 flex-row! items-center">
+                          <div className="mb-2 flex-row! items-center">
                             <img src={commitInfo.author?.avatar_url} className="mr-2 w-6" />
                             <p>{commitInfo.commit.author.name}</p>
                           </div>
+
+                          <AnimatedDiv condition={Boolean(aheadCommitInfo)} {...genAnim({ opacity: true, height: true, scaleY: true })}>
+                            {aheadCommitInfo?.status === 'identical' && <p className="text-green-500 italic">{t('updatedRB3DXInfo')}</p>}
+                            {aheadCommitInfo?.status === 'behind' && <p className="text-yellow-500 italic">{t(aheadCommitInfo.behind_by === 1 ? 'notUpdatedRB3DXInfo' : 'notUpdatedRB3DXInfoPlural', { behindBy: aheadCommitInfo.behind_by })}</p>}
+                            <div className="h-4 w-full" />
+                          </AnimatedDiv>
+
                           <button className="mr-2 w-fit flex-row! items-center rounded-xs border border-white/25 bg-neutral-900 p-2 text-sm! duration-100 last:mr-0 hover:bg-neutral-700 active:bg-neutral-600 disabled:text-neutral-700 disabled:hover:bg-neutral-900" disabled={disabledButtons} onClick={async () => await window.api.utils.openExternalLink(commitInfo.html_url)}>
                             <GitHubIcon className="mr-2" />
                             <h1>{t('showCommitOnGitHub')}</h1>
@@ -149,7 +183,7 @@ export function InstallPKGConfirmationModal() {
                                 const { data } = await axios.get<GitHubCommitResponse>(`https://api.github.com/repos/hmxmilohax/rock-band-3-deluxe/commits/${condition.dxHash}`, { responseType: 'json', timeout: 6000 })
                                 setCommitInfo(data)
                                 setIsLoadingCommitInfo(false)
-                                if (import.meta.env.DEV) console.log('Install Deluxe PKG Commit Data:', data)
+                                if (import.meta.env.DEV) console.log('struct GitHubCommitResponse ["app\\src\\renderer\\src\\app\\types.ts"]:', data)
                               } catch (err) {
                                 setIsLoadingCommitInfo(false)
                               }
@@ -193,7 +227,7 @@ export function InstallPKGConfirmationModal() {
                       <h2>{t('encryptPKGFiles')}</h2>
                     </div>
                     <p className="mb-4 text-neutral-600 italic">{t('encryptPKGFilesDesc')}</p>
-                    <AnimatedDiv condition={!rb3Stats?.hasDeluxe && !encryptPKGFiles} {...genAnim({ opacity: true, scaleY: true, height: true })} className="origin-top">
+                    <AnimatedDiv condition={rb3Stats && !rb3Stats.hasDeluxe && !encryptPKGFiles} {...genAnim({ opacity: true, scaleY: true, height: true })} className="origin-top">
                       <p className="mb-4 text-yellow-600 italic">{t('encryptionUnckeckedBadChoiceText')}</p>
                     </AnimatedDiv>
                   </>
@@ -219,7 +253,7 @@ export function InstallPKGConfirmationModal() {
                     className="mr-2 rounded-xs border border-neutral-800 bg-neutral-900 px-1 py-0.5 text-sm! duration-100 last:mr-0 hover:bg-neutral-800 active:bg-neutral-700 disabled:text-neutral-700 disabled:hover:bg-neutral-900"
                     disabled={disabledButtons}
                     onClick={async () => {
-                      setRendererState({ InstallPKGConfirmationModal: false })
+                      setWindowState({ selectedPKGFile: false })
                     }}
                   >
                     {t('cancel')}

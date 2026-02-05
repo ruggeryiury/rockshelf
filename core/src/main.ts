@@ -1,9 +1,9 @@
 import { app, BrowserWindow } from 'electron'
 import { setUserDataFolder } from './lib'
 import { electronApp, optimizer } from '@electron-toolkit/utils'
-import { initHandlers } from './core'
+import { CreateWindow, InitHandlers, type CreateWindowOptions } from './core'
 
-export async function initRockshelfApp(createWindow: () => BrowserWindow): Promise<void> {
+export async function initRockshelfApp(options: CreateWindowOptions): Promise<void> {
   await setUserDataFolder(app, 'Rockshelf')
 
   app.on('window-all-closed', () => {
@@ -21,10 +21,10 @@ export async function initRockshelfApp(createWindow: () => BrowserWindow): Promi
     optimizer.watchWindowShortcuts(window)
   })
 
-  createWindow()
-  initHandlers()
+  CreateWindow(options)
+  InitHandlers()
 
   app.on('activate', function (event, hasVisibleWindows) {
-    if (BrowserWindow.getAllWindows().length === 0) createWindow()
+    if (BrowserWindow.getAllWindows().length === 0) CreateWindow(options)
   })
 }

@@ -1,6 +1,6 @@
 import { useEffect } from 'react'
 import { useTranslation } from 'react-i18next'
-import { WelcomeModal, InnerAppFrame, IntroScreen, MessageBox, TopBar, MainScreen, InstallPKGConfirmationModal } from './core'
+import { WelcomeModal, InnerAppFrame, IntroScreen, MessageBox, TopBar, MainScreen, InstallPKGConfirmationModal, ConfigurationScreen, RockBand3DataScreen } from './core'
 import { useRendererState } from './states/RendererState'
 import { useWindowState } from './states/WindowState'
 import { useUserConfigState } from './states/UserConfigState'
@@ -12,11 +12,10 @@ export function App() {
   const setUserConfigState = useUserConfigState((state) => state.setUserConfigState)
 
   // Initialize program
-  useEffect(() => {
-    const timeouts: NodeJS.Timeout[] = []
-    const initProgramProcessing = async () => {
+  useEffect(function InitProgram() {
+    const start = async () => {
       const hasUserConfig = await window.api.fs.userConfig.readUserConfig()
-      if (import.meta.env.DEV) console.log('Loaded User Configuration:', hasUserConfig)
+      if (import.meta.env.DEV) console.log('struct UserConfigObj ["core\\src\\lib\\fs\\userConfig.ts"]:', hasUserConfig)
       if (!hasUserConfig) {
         setRendererState({ WelcomeModal: true })
         setWindowState({ disableButtons: false })
@@ -27,9 +26,10 @@ export function App() {
       setRendererState({ IntroScreen: false })
       setWindowState({ disableButtons: false, mainWindowSelectionIndex: 0 })
     }
+    const timeouts: NodeJS.Timeout[] = []
 
     const timeout = setTimeout(() => {
-      initProgramProcessing()
+      start()
     }, 1500)
     timeouts.push(timeout)
 
@@ -38,9 +38,7 @@ export function App() {
     }
   }, [])
 
-  // Initialize renderer locale sender
-  useEffect(() => {
-    // TODO: Implement i18n key getter, remove all lang:string from preload
+  useEffect(function InitLocaleRequestListener() {
     window.api.listeners.onLocaleRequest((_, uuid, key) => {
       const val = i18n.exists(key) ? i18n.t(key) : key
       window.api.utils.sendLocale(uuid, val)
@@ -56,7 +54,10 @@ export function App() {
 
         {/* Screens */}
         <IntroScreen />
-        <MainScreen />
+        <MainScreen>
+          <RockBand3DataScreen />
+          <ConfigurationScreen />
+        </MainScreen>
 
         {/* Modals */}
         <WelcomeModal />

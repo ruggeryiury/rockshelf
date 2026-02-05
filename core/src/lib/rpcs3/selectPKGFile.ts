@@ -1,11 +1,11 @@
 import { dialog } from 'electron'
-import { pathLikeToFilePath } from 'node-lib'
+import { MyObject, pathLikeToFilePath } from 'node-lib'
 import { getLocaleStringFromRenderer, sendMessage, useHandler } from '../../lib'
 import { PKGFile, type PKGFileSongPackageStatObject } from 'rbtools'
 import type { PKGData } from 'rbtools/lib'
 import { is } from '@electron-toolkit/utils'
 
-export type OfficialSongPackagesTypes = 'rb1' | 'rb2' | 'lrb' | 'rb3beta'
+export type OfficialSongPackagesTypes = 'rb1' | 'rb2' | 'lrb' | 'rb3beta' | 'tbrb' | 'blitz'
 export type SelectedPKGFileType = 'tu5' | 'dx' | 'songPackage' | OfficialSongPackagesTypes
 
 export interface SelectPKGFileReturnObject {
@@ -82,21 +82,28 @@ export const checkOfficialRB3PackagesIDs = (entriesHash: string): [SelectedPKGFi
     // Rock Band 3 Beta Songs
     case 'df60d01b226d3d94ebc78fed44199040e551fbb96280ddd964b59d88bc0e077b':
       return ['rb3beta', 'Rock Band 3 (Beta Songs)']
+
+    // The Beatles: Rock Band
+    case 'bcd76cd6d5dfacfe24a7ba240a53eadc0b00a4d89d75096f02f1da6971f101cf':
+      return ['tbrb', 'The Beatles: Rock Band']
+
+    // Rock Band Blitz (exports)
+    case 'e10d0362d06128ba7111a4bc16369c6c2c8044c4ec2a298bf78a45d30e7c6c0e':
+      return ['blitz', 'Rock Band Blitz']
     default:
       return false
   }
 }
 
-export const SelectPKGFile = useHandler(async (win, _): Promise<SelectPKGFileReturnObject | false> => {
-  const pkgFileFilterName = await getLocaleStringFromRenderer(win, 'pkgFile')
-  const selection = await dialog.showOpenDialog({ properties: ['openFile'], filters: [{ name: pkgFileFilterName, extensions: ['pkg'] }] })
+export const selectPKGFile = useHandler(async (win, _): Promise<SelectPKGFileReturnObject | false> => {
+  const selection = await dialog.showOpenDialog({ properties: ['openFile'], filters: [{ name: await getLocaleStringFromRenderer(win, 'pkgFile'), extensions: ['pkg'] }] })
 
   // If the selection is cancelled, return false
   if (selection.canceled) {
     sendMessage(win, {
       type: 'info',
       module: 'rpcs3',
-      method: 'SelectPKGFile',
+      method: 'selectPKGFile',
       code: 'actionCancelledByUser',
     })
     return false
@@ -105,23 +112,27 @@ export const SelectPKGFile = useHandler(async (win, _): Promise<SelectPKGFileRet
   // Transform file into FilePath instance
   const [pkgFile] = selection.filePaths.map((file) => pathLikeToFilePath(file))
 
-  let pkgType: SelectedPKGFileType = 'songPackage'
+  const pkgPath = pkgFile.path
   let pkgName = pkgFile.name
-  let dxHash: SelectPKGFileReturnObject['dxHash']
-  let isOfficialPreRB3Package: boolean = false
+  let pkgType: SelectedPKGFileType = 'songPackage'
+  let pkgSize: number = 0
   let isPackageOfficial = false
+  let dxHash: SelectPKGFileReturnObject['dxHash']
+  let songPackage: SelectPKGFileReturnObject['songPackage']
+
+  let isOfficialPreRB3Package: boolean = false
 
   // Get package stats
-  const pkg = new PKGFile(pkgFile)
+  const pkgClass = new PKGFile(pkgFile)
 
   // File magic signature check
   try {
-    await pkg.checkFileIntegrity()
+    await pkgClass.checkFileIntegrity()
   } catch (err) {
     sendMessage(win, {
       type: 'error',
       module: 'rpcs3',
-      method: 'SelectPKGFile',
+      method: 'selectPKGFile',
       code: 'invalidFileSignature',
       messageValues: { filePath: pkgFile.path },
     })
@@ -129,7 +140,8 @@ export const SelectPKGFile = useHandler(async (win, _): Promise<SelectPKGFileRet
   }
 
   // Get PKG file stats
-  const stat = await pkg.stat()
+  const stat = await pkgClass.stat()
+  pkgSize = stat.fileSize
 
   // Not Rock Band 3 song package
   if (stat.header.cidTitle1 !== 'BLUS30463') {
@@ -139,16 +151,17 @@ export const SelectPKGFile = useHandler(async (win, _): Promise<SelectPKGFileRet
       const officialPkgType = checkOfficialPreRB3PackagesIDs(stat.entries.sha256)
       if (officialPkgType) {
         isPackageOfficial = true
-        isOfficialPreRB3Package = true
         pkgType = officialPkgType[0]
         pkgName = officialPkgType[1]
+
+        isOfficialPreRB3Package = true
 
         // Probably is a custom converted to RB2, not compatible anyway...
       } else {
         sendMessage(win, {
           type: 'error',
           module: 'rpcs3',
-          method: 'SelectPKGFile',
+          method: 'selectPKGFile',
           code: 'preRB3PKG',
           timeout: 6000,
           messageValues: { filePath: pkgFile.path },
@@ -162,7 +175,7 @@ export const SelectPKGFile = useHandler(async (win, _): Promise<SelectPKGFileRet
       sendMessage(win, {
         type: 'error',
         module: 'rpcs3',
-        method: 'SelectPKGFile',
+        method: 'selectPKGFile',
         code: 'notRBPKG',
         messageValues: { filePath: pkgFile.path },
       })
@@ -179,6 +192,7 @@ export const SelectPKGFile = useHandler(async (win, _): Promise<SelectPKGFileRet
       pkgType = officialPkgType[0]
       pkgName = officialPkgType[1]
     }
+
     // Is a RB3DX patch package
     else if (stat.header.cidTitle2.startsWith('RB3DXNITE')) {
       pkgType = 'dx'
@@ -187,19 +201,18 @@ export const SelectPKGFile = useHandler(async (win, _): Promise<SelectPKGFileRet
   }
 
   // If the package has a songs.dta file
-  let songPackage: SelectPKGFileReturnObject['songPackage'] = undefined
   try {
-    songPackage = await pkg.songPackageStat()
+    songPackage = await pkgClass.songPackageStat()
   } catch (err) {}
 
   return {
-    pkgPath: pkgFile.path,
+    pkgPath,
     pkgName,
     pkgType,
-    pkgSize: stat.fileSize,
+    pkgSize,
     isPackageOfficial,
-    dxHash,
     stat,
+    dxHash,
     songPackage,
   }
 })

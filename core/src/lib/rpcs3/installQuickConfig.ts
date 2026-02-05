@@ -12,6 +12,6 @@ export const installQuickConfig = useHandler(async (win, _, rpcs3ExePath: string
   if (!configFolder.exists) await configFolder.mkDir(true)
   await configYmlFile.copy(rb3ConfigFile, true)
 
-  sendMessage(win, { type: 'success', method: 'installQuickConfig', code: 'success', module: 'rpcs3', messageValues: { config: configType } })
+  sendMessage(win, { type: 'success', method: 'installQuickConfig', code: '', module: 'rpcs3', messageValues: { config: configType } })
   return true
 })

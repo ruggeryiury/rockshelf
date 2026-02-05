@@ -81,8 +81,8 @@ export function RockBand3DataScreen() {
                   className="mb-1 w-full rounded-xs border border-neutral-800 bg-neutral-900 px-1 py-0.5 text-xs! duration-100 last:mb-0 hover:bg-neutral-700 active:bg-neutral-600 disabled:text-neutral-700 disabled:hover:bg-neutral-900"
                   onClick={async () => {
                     setWindowState({ disableButtons: true })
-                    const selPKGData = await window.api.rpcs3.SelectPKGFile()
-                    if (import.meta.env.DEV) console.log('struct SelectPKGFileReturnObject ["core\\src\\lib\\pkg\\SelectPKGFile.ts"]:', selPKGData)
+                    const selPKGData = await window.api.rpcs3.selectPKGFile()
+                    if (import.meta.env.DEV) console.log('struct SelectPKGFileReturnObject ["core\\src\\lib\\pkg\\selectPKGFile.ts"]:', selPKGData)
                     setWindowState({ selectedPKGFile: selPKGData, disableButtons: false })
                   }}
                 >
@@ -122,7 +122,7 @@ export function RockBand3DataScreen() {
 
                     <h1>{t('patchVersion')}</h1>
 
-                    <p className="mb-2">{rb3Stats.updateType === 'none' ? t('noPatchInstalled') : rb3Stats.updateType === 'tu5' ? t('tu5') : t('deluxe')}</p>
+                    <p className="mb-2">{rb3Stats.updateType === 'none' ? t('noPatchInstalled') : rb3Stats.updateType === 'tu5' ? t('tu5') : t('dx')}</p>
                     {rb3Stats.updateType === 'none' && (
                       <p className="mb-4 text-neutral-600 italic">
                         <TransComponent components={{ spanLink: <a className="cursor-pointer underline hover:text-neutral-400 active:text-neutral-300" href={DXNIGHTLYLINK} target="_blank" />, spanLink2: <a className="cursor-pointer underline hover:text-neutral-400 active:text-neutral-300" href={TU5LINK} target="_blank" /> }} i18nKey="noPatchInstalledText" />

@@ -29,6 +29,10 @@ export function InstallPKGConfirmationModal() {
         return imgIconRB
       case 'rb2':
         return imgIconRB2
+      case 'tbrb':
+        return 'https://media.pitchfork.com/photos/5929a5f75e6ef95969320c11/master/pass/f781f7bd.jpg'
+      case 'blitz':
+        return 'https://static.wikia.nocookie.net/rockband/images/9/9e/Rockbandblitz-coverart.jpg'
       case 'lrb':
         return imgIconLRB
       default:
@@ -239,12 +243,9 @@ export function InstallPKGConfirmationModal() {
                     disabled={disabledButtons}
                     onClick={async () => {
                       setWindowState({ disableButtons: true })
-                      setIsInstallingPackage(true)
-
-                      setTimeout(() => {
-                        setIsInstallingPackage(false)
-                        setWindowState({ disableButtons: false })
-                      }, 3000)
+                      const a = await window.api.rpcs3.installPKGFile(condition, devhdd0Path)
+                      const newRB3Stats = await window.api.rpcs3.getRB3Data(devhdd0Path, rpcs3ExePath)
+                      setWindowState({ disableButtons: false, rb3Stats: newRB3Stats })
                     }}
                   >
                     {t('install')}

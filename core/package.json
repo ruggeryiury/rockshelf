@@ -19,6 +19,7 @@
     "electron": "^40.0.0",
     "node-lib": "link:..\\..\\node-lib",
     "rbtools": "link:..\\..\\rbtools",
+    "tempy": "^3.2.0",
     "yaml": "^2.8.2"
   },
   "devDependencies": {

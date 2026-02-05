@@ -1,6 +1,6 @@
 import { ipcRenderer, shell, webUtils, type IpcRenderer, type IpcRendererEvent } from 'electron'
 import type { Promisable } from 'type-fest'
-import type { installQuickConfig, getRB3Data, openUserData, QuickConfigType, readUserConfig, RendererMessageObject, saveUserConfig, selectDevhdd0Folder, UserConfigObj, winClose, winMaximize, winMinimize, selectRPCS3Exe, installHighMemoryPatch, SelectPKGFile } from './lib'
+import type { installQuickConfig, getRB3Data, openUserData, QuickConfigType, readUserConfig, RendererMessageObject, saveUserConfig, selectDevhdd0Folder, UserConfigObj, winClose, winMaximize, winMinimize, selectRPCS3Exe, installHighMemoryPatch, selectPKGFile, installPKGFile, SelectPKGFileReturnObject } from './lib'
 
 export const rockshelfAPI = {
   listeners: {
@@ -61,6 +61,7 @@ export const rockshelfAPI = {
       },
     },
   },
+  pkg: {},
   rpcs3: {
     deleteTempPKGFile: async (tempFolderPath: string) => {
       return await ipcRenderer.invoke('@RPCS3/deleteTempPKGFile', tempFolderPath)
@@ -74,17 +75,20 @@ export const rockshelfAPI = {
     installHighMemoryPatch: async (devhdd0Path: string): ReturnType<typeof installHighMemoryPatch> => {
       return await ipcRenderer.invoke('@RPCS3/installHighMemoryPatch', devhdd0Path)
     },
+    installPKGFile: async (selectedPKG: SelectPKGFileReturnObject, devhdd0Folder: string): ReturnType<typeof installPKGFile> => {
+      return await ipcRenderer.invoke('@RPCS3/installPKGFile', selectedPKG, devhdd0Folder)
+    },
     installQuickConfig: async (rpcs3ExePath: string, configType: QuickConfigType): ReturnType<typeof installQuickConfig> => {
       return await ipcRenderer.invoke('@RPCS3/installQuickConfig', rpcs3ExePath, configType)
     },
     selectDevhdd0Folder: async (): ReturnType<typeof selectDevhdd0Folder> => {
       return await ipcRenderer.invoke('@RPCS3/selectDevhdd0Folder')
     },
-    SelectPKGFile: async (): ReturnType<typeof SelectPKGFile> => {
-      return await ipcRenderer.invoke('@RPCS3/SelectPKGFile')
-    },
     selectRPCS3Exe: async (): ReturnType<typeof selectRPCS3Exe> => {
       return await ipcRenderer.invoke('@RPCS3/selectRPCS3Exe')
+    },
+    selectPKGFile: async (): ReturnType<typeof selectPKGFile> => {
+      return await ipcRenderer.invoke('@RPCS3/selectPKGFile')
     },
   },
   utils: {

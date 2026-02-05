@@ -59,7 +59,7 @@ export function ConfigurationScreen() {
               setUserConfigState({ devhdd0Path: path })
               const newConfig = getUserConfigState()
               await window.api.fs.userConfig.saveUserConfig(newConfig)
-              setWindowState({ disableButtons: false, msgObject: { type: 'success', method: 'changeDevhdd0Folder', code: 'success', module: 'dom' } })
+              setWindowState({ disableButtons: false, msgObject: { type: 'success', method: 'changeDevhdd0Folder', code: '', module: 'dom' } })
             }}
           >
             {t('change')}
@@ -86,7 +86,7 @@ export function ConfigurationScreen() {
               setUserConfigState({ rpcs3ExePath: path })
               const newConfig = getUserConfigState()
               await window.api.fs.userConfig.saveUserConfig(newConfig)
-              setWindowState({ disableButtons: false, msgObject: { type: 'success', method: 'changeRPCS3ExeFile', code: 'success', module: 'dom' } })
+              setWindowState({ disableButtons: false, msgObject: { type: 'success', method: 'changeRPCS3ExeFile', code: '', module: 'dom' } })
             }}
           >
             {t('change')}

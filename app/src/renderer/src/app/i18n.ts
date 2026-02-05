@@ -141,7 +141,7 @@ i18n
           errorSelectPKGFilePreRB3PKG: 'Selected PKG file is a Rock Band package file and Rockshelf does not support installing this type of package. Please, install it directly on RPCS3.',
           errorSelectRPCS3ExeInvalidExecutable: 'Selected executable is not a valid RPCS3 executable.',
           loadingInstallPKGFileMovingPKGContents: 'Moving extracted PKG contents to USRDIR...',
-          loadingInstallPKGFileExtractingPKGFile: 'Extracting PKG contents...'
+          loadingInstallPKGFileExtractingPKGFile: 'Extracting PKG contents...',
         },
       },
       'pt-BR': {
@@ -276,7 +276,7 @@ i18n
           successInstallPKGFile: 'Pacote de músicas instalado com sucesso.',
           successInstallPKGFileTU5: 'Title Update 5 instalado com sucesso.',
           loadingInstallPKGFileMovingPKGContents: 'Movendo arquivos extraídos para a pasta USRDIR...',
-          loadingInstallPKGFileExtractingPKGFile: 'Extraíndo conteúdo do arquivo PKG...'
+          loadingInstallPKGFileExtractingPKGFile: 'Extraíndo conteúdo do arquivo PKG...',
         },
       },
     },

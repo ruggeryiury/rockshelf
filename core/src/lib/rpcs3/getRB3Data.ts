@@ -61,12 +61,20 @@ export interface RockBand3Data {
   contents: string[]
 }
 
-export const getRB3Data = useHandler(async (win, __, devhdd0Path: string, rpcs3ExePath: string): Promise<RockBand3Data> => {
+export interface RPCS3GamesYAML {
+  BLUS30463?: string
+}
+
+export const getRB3Data = useHandler(async (win, __, devhdd0Path: string, rpcs3ExePath: string): Promise<RockBand3Data | false> => {
   const devhdd0DirPath = pathLikeToDirPath(devhdd0Path)
   const rpcs3ExeFilePath = pathLikeToFilePath(rpcs3ExePath)
 
   const map = new MyObject<RockBand3Data>()
-  const games = parseYAML(await rpcs3ExeFilePath.gotoFile('config/games.yml').read('utf8')) as { BLUS30463?: string }
+  const gamesYml = rpcs3ExeFilePath.gotoFile('config/games.yml')
+  if (!gamesYml.exists) {
+    return false
+  }
+  const games = parseYAML(await gamesYml.read('utf8')) as RPCS3GamesYAML
 
   const userNameFilePath = devhdd0DirPath.gotoFile(`home/00000001/localusername`)
 

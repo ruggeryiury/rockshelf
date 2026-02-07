@@ -1,4 +1,5 @@
 export * from './lib/electron-lib/addHandler'
+export * from './lib/electron-lib/createWindow'
 export * from './lib/electron-lib/getBrowserWindowByEvent'
 export * from './lib/electron-lib/getLocaleStringFromRenderer'
 export * from './lib/electron-lib/sendMessage'
@@ -9,7 +10,8 @@ export * from './lib/electron-lib/windowControls'
 
 export * from './lib/fs/userConfig'
 
-export * from './lib/pkg/extractPKGToFolder'
+export * from './lib/pkg/extractPKGToTempFolder'
+export * from './lib/pkg/moveExtractedFilesToGameDir'
 
 export * from './lib/rockshelf/dependencyChecker'
 

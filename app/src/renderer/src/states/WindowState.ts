@@ -25,7 +25,7 @@ export interface WindowStateProps {
   /**
    * Stats from Rock Band 3.
    */
-  rb3Stats: RockBand3Data | false
+  rb3Stats: RockBand3Data | false | null
   /**
    * Information of the selected PKG file to install, controls the rendering of the `InstallPKGConfirmationModal` component
    */
@@ -59,7 +59,7 @@ const defaultState: WindowStateProps = {
   disableTopBarButtons: false,
   msgObject: false,
   mainWindowSelectionIndex: 0,
-  rb3Stats: false,
+  rb3Stats: null,
   selectedPKGFile: false,
 }
 

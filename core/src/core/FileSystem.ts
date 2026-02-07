@@ -5,12 +5,19 @@ import { thisFilePath } from '../lib'
 export class FileSystem {
   static readonly dirs = {
     packageBinDirPath: DirPath.of(thisFilePath(import.meta.url).path, '../../bin'),
-
     userDataDirPath: DirPath.of(app.getPath('userData')).gotoDir('../Rockshelf'),
 
-    rb3UsrDir: (devhdd0Path: DirPathLikeTypes): DirPath => {
+    rb3BLUS30463: (devhdd0Path: DirPathLikeTypes): DirPath => {
       const devhdd0 = pathLikeToDirPath(devhdd0Path)
-      return devhdd0.gotoDir('game/BLUS30463/USRDIR')
+      return devhdd0.gotoDir('game/BLUS30463')
+    },
+    rb2BLUS30147: (devhdd0Path: DirPathLikeTypes): DirPath => {
+      const devhdd0 = pathLikeToDirPath(devhdd0Path)
+      return devhdd0.gotoDir('game/BLUS30147')
+    },
+    rbBLUS30050: (devhdd0Path: DirPathLikeTypes): DirPath => {
+      const devhdd0 = pathLikeToDirPath(devhdd0Path)
+      return devhdd0.gotoDir('game/BLUS30050')
     },
   } as const
 

@@ -13,13 +13,14 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "packageManager": "pnpm@10.28.0",
+  "packageManager": "pnpm@10.28.2",
   "dependencies": {
     "@electron-toolkit/utils": "^4.0.0",
     "electron": "^40.0.0",
     "node-lib": "link:..\\..\\node-lib",
     "rbtools": "link:..\\..\\rbtools",
     "tempy": "^3.2.0",
+    "use-default-options": "link:..\\..\\use-default-options",
     "yaml": "^2.8.2"
   },
   "devDependencies": {

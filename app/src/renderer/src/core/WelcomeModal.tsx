@@ -1,6 +1,6 @@
 import { AnimatedDiv, AnimatedSection, genAnim, TransComponent } from '@renderer/lib'
 import { useRendererState } from '@renderer/states/RendererState'
-import { BRAFlag, SPNFlag, USAFlag, wavesPattern } from '@renderer/assets/images'
+import { BRAFlag, MEXFlag, USAFlag, wavesPattern } from '@renderer/assets/images'
 import { useTranslation } from 'react-i18next'
 import { useWindowState } from '@renderer/states/WindowState'
 import { useUserConfigState } from '@renderer/states/UserConfigState'
@@ -113,7 +113,7 @@ export function WelcomeModal() {
             <h1>{t('pt-BR')}</h1>
           </button>
           <button className={clsx('mr-2 flex-row! items-center rounded-xs border border-neutral-800 px-2 py-1 font-sans! text-xs! duration-200 last:mr-0', i18n.language === 'es-ES' ? 'bg-neutral-400 text-neutral-900 hover:bg-neutral-300 active:bg-neutral-200' : 'bg-neutral-900 hover:bg-neutral-800 active:bg-neutral-700')} onClick={() => i18n.changeLanguage('es-ES')}>
-            <img src={SPNFlag} width={12} className="mr-2" />
+            <img src={MEXFlag} width={12} className="mr-2" />
             <h1>{t('es-ES')}</h1>
           </button>
         </div>

@@ -5,7 +5,7 @@ import { PKGFile, type PKGFileSongPackageStatObject } from 'rbtools'
 import type { PKGData } from 'rbtools/lib'
 import { is } from '@electron-toolkit/utils'
 
-export type OfficialSongPackagesTypes = 'rb1' | 'rb2' | 'lrb' | 'rb3beta' | 'tbrb' | 'blitz'
+export type OfficialSongPackagesTypes = 'rb1' | 'rb2' | 'lrb' | 'rb3beta' | 'tbrb' | 'blitz' | 'rbdlc1'
 export type SelectedPKGFileType = 'tu5' | 'dx' | 'songPackage' | OfficialSongPackagesTypes
 
 export interface SelectPKGFileReturnObject {
@@ -58,6 +58,11 @@ export const checkOfficialPreRB3PackagesIDs = (entriesHash: string): [SelectedPK
     // LEGO Rock Band (On-disc)
     case '7b76d701a8513dd7a2a50065d34d0eb0b10aee4980e0ae6814baeb43f3caae87':
       return ['lrb', 'LEGO Rock Band']
+
+    // Rock Band/Rock Band 2 DLC Pack 01
+    case '09b366ffd83d1952ceb0bb45a27e990773109ffeffc590118075a43d786a65f6':
+      return ['rbdlc1', 'Rock Band DLC Pack 01']
+
     default:
       return false
   }
@@ -90,6 +95,7 @@ export const checkOfficialRB3PackagesIDs = (entriesHash: string): [SelectedPKGFi
     // Rock Band Blitz (exports)
     case 'e10d0362d06128ba7111a4bc16369c6c2c8044c4ec2a298bf78a45d30e7c6c0e':
       return ['blitz', 'Rock Band Blitz']
+
     default:
       return false
   }
@@ -142,6 +148,8 @@ export const selectPKGFile = useHandler(async (win, _): Promise<SelectPKGFileRet
   // Get PKG file stats
   const stat = await pkgClass.stat()
   pkgSize = stat.fileSize
+
+  console.log(stat.pkgFilePath, stat.entries.sha256)
 
   // Not Rock Band 3 song package
   if (stat.header.cidTitle1 !== 'BLUS30463') {

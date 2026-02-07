@@ -2,9 +2,13 @@ import type { BrowserWindow } from 'electron'
 
 export interface RendererMessageObject {
   /**
-   * The type of the message
+   * The type of the message.
+   *
+   * The `"loading"` type won't create timeout event to unrender it.
+   *
+   * The `"debug"` type also won't create a timeout event, but it will use the "code" property as an unlocalized text (to use it as a message).
    */
-  type: 'error' | 'warn' | 'success' | 'info' | 'loading'
+  type: 'error' | 'info' | 'success' | 'warn' | 'loading' | 'debug'
   /**
    * The module or subsystem that emitted the message.
    */

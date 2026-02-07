@@ -2,16 +2,17 @@ import { DirPath, pathLikeToDirPath, type DirPathLikeTypes, type FilePathLikeTyp
 import { PKGFile } from 'rbtools'
 import { temporaryDirectory } from 'tempy'
 
-export const extractPKGToFolder = async (pkgFilePath: FilePathLikeTypes, destFolder?: DirPathLikeTypes): Promise<DirPath> => {
+export const extractPKGToTempFolder = async (pkgFilePath: FilePathLikeTypes, destFolder?: DirPathLikeTypes): Promise<DirPath | false> => {
   const pkg = new PKGFile(pkgFilePath)
+
+  // If destination folder is not provided [destFolder]
+  // use create temp folder under X:/Users/[USERNAME]/AppData/Local (On Windows).
   const folder = destFolder ? pathLikeToDirPath(destFolder) : pathLikeToDirPath(temporaryDirectory())
-  if (folder.exists) {
-    await folder.deleteDir()
-    await folder.mkDir()
-  }
+
   try {
     return await pkg.extract(folder)
   } catch (err) {
+    //
     await folder.deleteDir()
     return folder
   }

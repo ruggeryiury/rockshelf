@@ -53,6 +53,16 @@ export function RockBand3DataScreen() {
           <h1 className="text-neutral-600">{t('loadingRB3StatData')}</h1>
         </div>
       )}
+      {rb3Stats === false && (
+        <div>
+          <p className="mb-2 text-neutral-600 italic">
+            <TransComponent i18nKey="noRB3FoundInstalled" />
+          </p>
+          <button className="w-fit rounded-xs bg-neutral-900 px-1 py-0.5 text-sm! duration-100 hover:bg-neutral-800 active:bg-neutral-700 disabled:text-neutral-700 disabled:hover:bg-neutral-900" onClick={async () => await window.api.utils.openExternalLink(ARBYS3_LINK)}>
+            {t('downloadArbys3Btn')}
+          </button>
+        </div>
+      )}
 
       {/* Data fetched */}
       {rb3Stats && (

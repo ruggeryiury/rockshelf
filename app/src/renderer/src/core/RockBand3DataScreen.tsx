@@ -1,8 +1,8 @@
-import { ARBYS3_LINK, DXNIGHTLYLINK, TU5LINK } from '@renderer/app/rockshelf'
+import { DXNIGHTLYLINK, TU5LINK } from '@renderer/app/rockshelf'
 import { LoadingIcon } from '@renderer/assets/icons'
 import { imgIconRB3, imgIconRB3DX } from '@renderer/assets/images'
 import { QuickConfigurationModal } from '@renderer/core'
-import { AnimatedDiv, genAnim, TransComponent } from '@renderer/lib'
+import { AnimatedDiv, genAnim, selectInstrumentIcon, TransComponent } from '@renderer/lib'
 import { useRendererState } from '@renderer/states/RendererState'
 import { useUserConfigState } from '@renderer/states/UserConfigState'
 import { useWindowState } from '@renderer/states/WindowState'
@@ -13,21 +13,22 @@ import { RockBand3Data } from 'rockshelf-core/lib'
 
 export function RockBand3DataScreen() {
   const { t } = useTranslation()
-  const devhdd0Path = useUserConfigState((state) => state.devhdd0Path)
-  const rpcs3ExePath = useUserConfigState((state) => state.rpcs3ExePath)
   const isIntroActivated = useRendererState((state) => state.IntroScreen)
   const rb3Stats = useWindowState((state) => state.rb3Stats)
+  const saveData = useWindowState((state) => state.saveData)
+  const instrumentScoresData = useWindowState((state) => state.instrumentScoresData)
   const mainWindowSelectionIndex = useWindowState((state) => state.mainWindowSelectionIndex)
   const disableButtons = useWindowState((state) => state.disableButtons)
 
   const setWindowState = useWindowState((state) => state.setWindowState)
   const setRendererState = useRendererState((state) => state.setRendererState)
+  const getUserConfigState = useUserConfigState((state) => state.getUserConfigState)
 
   useEffect(
     function FetchRockBand3Data() {
       const start = async () => {
         if (!isIntroActivated) {
-          const newRB3Stats = await window.api.rpcs3.getRB3Data(devhdd0Path, rpcs3ExePath)
+          const newRB3Stats = await window.api.rpcs3.getRB3Data(getUserConfigState())
           setWindowState({ rb3Stats: newRB3Stats })
           if (import.meta.env.DEV) console.log('struct RockBand3Data ["core\\src\\lib\\rpcs3\\getRB3Data.ts"]:', newRB3Stats)
         }
@@ -47,36 +48,32 @@ export function RockBand3DataScreen() {
   return (
     <AnimatedDiv id="RockBand3DataScreen" condition={mainWindowSelectionIndex === 0} {...genAnim({ opacity: true, duration: 0.1 })} className="absolute! h-full w-full overflow-hidden">
       {/* Loading Data Screen */}
-      {rb3Stats === null && (
+      {rb3Stats === 'loading' && (
         <div className="h-full w-full p-24">
           <LoadingIcon className="mb-2 animate-spin text-3xl" />
           <h1 className="text-neutral-600">{t('loadingRB3StatData')}</h1>
         </div>
       )}
       {rb3Stats === false && (
-        <div>
-          <p className="mb-2 text-neutral-600 italic">
-            <TransComponent i18nKey="noRB3FoundInstalled" />
-          </p>
-          <button className="w-fit rounded-xs bg-neutral-900 px-1 py-0.5 text-sm! duration-100 hover:bg-neutral-800 active:bg-neutral-700 disabled:text-neutral-700 disabled:hover:bg-neutral-900" onClick={async () => await window.api.utils.openExternalLink(ARBYS3_LINK)}>
-            {t('downloadArbys3Btn')}
-          </button>
-        </div>
+        <p className="mb-2 text-neutral-600 italic">
+          <TransComponent i18nKey="noRB3FoundInstalled" />
+        </p>
       )}
 
       {/* Data fetched */}
-      {rb3Stats && (
+      {typeof rb3Stats === 'object' && (
         <>
           <div className="p-6">
             <div className="mb-2 w-full flex-row! items-center bg-neutral-800 p-1">
+              {saveData && instrumentScoresData && <img src={selectInstrumentIcon(instrumentScoresData.instrument)} title={t(instrumentScoresData.instrument)} className="mr-2 w-6 scale-110" />}
               <h1 className="mr-auto">{rb3Stats.userName}</h1>
               {!rb3Stats.hasSaveData && <p className="text-neutral-400 italic">{t('noSaveDataFound')}</p>}
               <button
                 className="ml-2 w-fit rounded-xs border border-neutral-700 bg-neutral-900 px-1 py-0.5 text-xs! duration-100 hover:bg-neutral-700 active:bg-neutral-600 disabled:text-neutral-700 disabled:hover:bg-neutral-900"
                 disabled={disableButtons}
                 onClick={async () => {
-                  setWindowState({ disableButtons: true, rb3Stats: false })
-                  const newRB3Stats = await window.api.rpcs3.getRB3Data(devhdd0Path, rpcs3ExePath)
+                  setWindowState({ disableButtons: true, rb3Stats: 'loading' })
+                  const newRB3Stats = await window.api.rpcs3.getRB3Data(getUserConfigState())
                   setWindowState({ disableButtons: false, rb3Stats: newRB3Stats })
                 }}
               >
@@ -111,14 +108,9 @@ export function RockBand3DataScreen() {
               <div className="w-fill ml-4 h-full">
                 {/* No Rock Band 3 found on RPCS3 */}
                 {!rb3Stats.hasGameInstalled && (
-                  <>
-                    <p className="mb-2 text-neutral-600 italic">
-                      <TransComponent i18nKey="noRB3FoundInstalled" />
-                    </p>
-                    <button className="w-fit rounded-xs bg-neutral-900 px-1 py-0.5 text-sm! duration-100 hover:bg-neutral-800 active:bg-neutral-700 disabled:text-neutral-700 disabled:hover:bg-neutral-900" onClick={async () => await window.api.utils.openExternalLink(ARBYS3_LINK)}>
-                      {t('downloadArbys3Btn')}
-                    </button>
-                  </>
+                  <p className="mb-2 text-neutral-600 italic">
+                    <TransComponent i18nKey="noRB3FoundInstalled" />
+                  </p>
                 )}
 
                 {/* Rock Band 3 found on RPCS3 */}
@@ -149,16 +141,16 @@ export function RockBand3DataScreen() {
                     <h1>{t('teleportGlitch')}</h1>
                     <p className="mb-2">{rb3Stats.hasTeleportGlitchPatch ? t('installed') : t('notInstalled')}</p>
 
-                    {!rb3Stats.hasTeleportGlitchPatch && (
+                    {/* {!rb3Stats.hasTeleportGlitchPatch && (
                       <p className="mb-4 text-neutral-600 italic">
                         <TransComponent
                           i18nKey="noTeleportGlitchText"
                           components={{
-                            spanLink: <a className="cursor-pointer underline hover:text-neutral-400 active:text-neutral-300" href={ARBYS3_LINK} target="_blank" />,
+                            spanLink: <a className="cursor-pointer underline hover:text-neutral-400 active:text-neutral-300" href={RB3_TGF_LINK} target="_blank" />,
                           }}
                         />
                       </p>
-                    )}
+                    )} */}
 
                     <h1>{t('highMemoryPatch')}</h1>
                     <p className="mb-2">{rb3Stats.hasHighMemoryPatch ? t('installed') : t('notInstalled')}</p>
@@ -173,7 +165,7 @@ export function RockBand3DataScreen() {
                                 className="cursor-pointer underline hover:text-neutral-400 active:text-neutral-300"
                                 onClick={async () => {
                                   setWindowState({ disableButtons: true })
-                                  await window.api.rpcs3.installHighMemoryPatch(devhdd0Path)
+                                  await window.api.rpcs3.installHighMemoryPatch(getUserConfigState())
                                   setWindowState((oldState) => {
                                     return {
                                       rb3Stats: {

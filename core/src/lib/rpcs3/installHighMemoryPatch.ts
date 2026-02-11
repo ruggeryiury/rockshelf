@@ -1,8 +1,8 @@
 import { FileSystem } from '../../core'
 import { sendMessage } from '../electron-lib/sendMessage'
-import { useHandler } from '../electron-lib/useHandler'
+import { useHandlerWithUserConfig } from '../electron-lib/useHandler'
 
-export const installHighMemoryPatch = useHandler(async (win, _, devhdd0Path: string): Promise<boolean> => {
+export const installHighMemoryPatch = useHandlerWithUserConfig(async (win, _, { devhdd0Path }): Promise<boolean> => {
   const usrdir = FileSystem.dirs.rb3BLUS30463(devhdd0Path).gotoDir('USRDIR')
   if (!usrdir.exists) await usrdir.mkDir(true)
   const highMemoryDTAFile = usrdir.gotoFile('dx_high_memory.dta')

@@ -17,7 +17,7 @@ export function ConfigurationScreen() {
   const getUserConfigState = useUserConfigState((state) => state.getUserConfigState)
   return (
     <>
-      <AnimatedDiv id="ConfigurationScreen" condition={mainWindowSelectionIndex === 1} {...genAnim({ opacity: true, duration: 0.1 })} className="absolute! h-full w-full overflow-hidden p-6">
+      <AnimatedDiv id="ConfigurationScreen" condition={mainWindowSelectionIndex === 2} {...genAnim({ opacity: true, duration: 0.1 })} className="absolute! h-full w-full overflow-hidden p-6">
         <div className="mb-2 rounded-xs p-3 duration-200 last:mb-0 hover:bg-white/5">
           <h1>{t('lang')}</h1>
           <p className="mb-3 text-neutral-600 italic">

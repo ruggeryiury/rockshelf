@@ -1,6 +1,9 @@
 import { ipcRenderer, shell, webUtils, type IpcRenderer, type IpcRendererEvent } from 'electron'
 import type { Promisable } from 'type-fest'
-import type { installQuickConfig, getRB3Data, openUserData, QuickConfigType, readUserConfig, RendererMessageObject, saveUserConfig, selectDevhdd0Folder, UserConfigObj, winClose, winMaximize, winMinimize, selectRPCS3Exe, installHighMemoryPatch, selectPKGFile, installPKGFile, SelectPKGFileReturnObject } from './lib'
+import type { installQuickConfig, getRB3Data, openUserData, QuickConfigType, readUserConfig, RendererMessageObject, saveUserConfig, selectDevhdd0Folder, UserConfigObj, winClose, winMaximize, winMinimize, selectRPCS3Exe, installHighMemoryPatch, selectPKGFile, installPKGFile, SelectPKGFileReturnObject, getPackagesData, getSaveData, getInstrumentScoresData } from './lib'
+import type { ParsedRB3SaveData } from 'rbtools'
+
+const invoke = ipcRenderer.invoke
 
 export const rockshelfAPI = {
   listeners: {
@@ -28,68 +31,39 @@ export const rockshelfAPI = {
      * - - - -
      * @returns {Promise<void>}
      */
-    async close(): Promise<ReturnType<typeof winClose>> {
-      return await ipcRenderer.invoke('@Window/close')
-    },
+    close: async (): Promise<ReturnType<typeof winClose>> => await invoke('@Window/close'),
     /**
      * Minimize the application window.
      * - - - -
      * @returns {Promise<void>}
      */
-    async minimize(): Promise<ReturnType<typeof winMinimize>> {
-      return await ipcRenderer.invoke('@Window/minimize')
-    },
+    minimize: async (): Promise<ReturnType<typeof winMinimize>> => await invoke('@Window/minimize'),
     /**
      * Maximize the application window. Returns true if the window is maximized, false otherwise.
      * - - - -
      * @returns {Promise<boolean>}
      */
-    async maximize(): Promise<ReturnType<typeof winMaximize>> {
-      return await ipcRenderer.invoke('@Window/maximize')
-    },
+    maximize: async (): Promise<ReturnType<typeof winMaximize>> => await invoke('@Window/maximize'),
   },
   fs: {
     userConfig: {
-      openUserData: async (): ReturnType<typeof openUserData> => {
-        return await ipcRenderer.invoke('@FileSystem/userConfig/openUserData')
-      },
-      readUserConfig: async (): ReturnType<typeof readUserConfig> => {
-        return await ipcRenderer.invoke('@FileSystem/userConfig/readUserConfig')
-      },
-      saveUserConfig: async (newConfig: Partial<UserConfigObj>): ReturnType<typeof saveUserConfig> => {
-        return await ipcRenderer.invoke('@FileSystem/userConfig/saveUserConfig', newConfig)
-      },
+      openUserData: async (): ReturnType<typeof openUserData> => await invoke('@FileSystem/userConfig/openUserData'),
+      readUserConfig: async (): ReturnType<typeof readUserConfig> => await invoke('@FileSystem/userConfig/readUserConfig'),
+      saveUserConfig: async (newConfig: Partial<UserConfigObj>): ReturnType<typeof saveUserConfig> => await invoke('@FileSystem/userConfig/saveUserConfig', newConfig),
     },
   },
   pkg: {},
   rpcs3: {
-    deleteTempPKGFile: async (tempFolderPath: string) => {
-      return await ipcRenderer.invoke('@RPCS3/deleteTempPKGFile', tempFolderPath)
-    },
-    extractPKGFileToTemp: async (pkgFilePath: string) => {
-      return await ipcRenderer.invoke('@RPCS3/extractPKGFileToTemp', pkgFilePath)
-    },
-    getRB3Data: async (devhdd0Path: string, rpcs3ExePath: string): ReturnType<typeof getRB3Data> => {
-      return await ipcRenderer.invoke('@RPCS3/getRB3Data', devhdd0Path, rpcs3ExePath)
-    },
-    installHighMemoryPatch: async (devhdd0Path: string): ReturnType<typeof installHighMemoryPatch> => {
-      return await ipcRenderer.invoke('@RPCS3/installHighMemoryPatch', devhdd0Path)
-    },
-    installPKGFile: async (selectedPKG: SelectPKGFileReturnObject, devhdd0Folder: string): ReturnType<typeof installPKGFile> => {
-      return await ipcRenderer.invoke('@RPCS3/installPKGFile', selectedPKG, devhdd0Folder)
-    },
-    installQuickConfig: async (rpcs3ExePath: string, configType: QuickConfigType): ReturnType<typeof installQuickConfig> => {
-      return await ipcRenderer.invoke('@RPCS3/installQuickConfig', rpcs3ExePath, configType)
-    },
-    selectDevhdd0Folder: async (): ReturnType<typeof selectDevhdd0Folder> => {
-      return await ipcRenderer.invoke('@RPCS3/selectDevhdd0Folder')
-    },
-    selectRPCS3Exe: async (): ReturnType<typeof selectRPCS3Exe> => {
-      return await ipcRenderer.invoke('@RPCS3/selectRPCS3Exe')
-    },
-    selectPKGFile: async (): ReturnType<typeof selectPKGFile> => {
-      return await ipcRenderer.invoke('@RPCS3/selectPKGFile')
-    },
+    getInstrumentScoresData: async (userConfig: UserConfigObj, saveData: ParsedRB3SaveData): ReturnType<typeof getInstrumentScoresData> => await invoke('@RPCS3/getInstrumentScoresData', userConfig, saveData),
+    getPackagesData: async (userConfig: UserConfigObj): ReturnType<typeof getPackagesData> => await invoke('@RPCS3/getPackagesData', userConfig),
+    getRB3Data: async (userConfig: UserConfigObj): ReturnType<typeof getRB3Data> => await invoke('@RPCS3/getRB3Data', userConfig),
+    getSaveData: async (userConfig: UserConfigObj): ReturnType<typeof getSaveData> => await invoke('@RPCS3/getSaveData', userConfig),
+    installHighMemoryPatch: async (userConfig: UserConfigObj): ReturnType<typeof installHighMemoryPatch> => await invoke('@RPCS3/installHighMemoryPatch', userConfig),
+    installPKGFile: async (userConfig: UserConfigObj, selectedPKG: SelectPKGFileReturnObject): ReturnType<typeof installPKGFile> => await invoke('@RPCS3/installPKGFile', userConfig, selectedPKG),
+    installQuickConfig: async (userConfig: UserConfigObj, configType: QuickConfigType): ReturnType<typeof installQuickConfig> => await invoke('@RPCS3/installQuickConfig', userConfig, configType),
+    selectDevhdd0Folder: async (): ReturnType<typeof selectDevhdd0Folder> => await invoke('@RPCS3/selectDevhdd0Folder'),
+    selectPKGFile: async (): ReturnType<typeof selectPKGFile> => await invoke('@RPCS3/selectPKGFile'),
+    selectRPCS3Exe: async (): ReturnType<typeof selectRPCS3Exe> => await invoke('@RPCS3/selectRPCS3Exe'),
   },
   utils: {
     /**

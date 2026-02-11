@@ -29,7 +29,7 @@ export interface UserConfigObj {
  * @returns {Promise<boolean>}
  */
 export const openUserData = useHandler(async (win, __): Promise<boolean> => {
-  const error = await shell.openPath(FileSystem.dirs.userDataDirPath.path)
+  const error = await shell.openPath(FileSystem.userDataDir.path)
   if (error) sendMessage(win, { type: 'error', module: 'generic', code: 'debug', method: 'openUserData' })
   return Boolean(error)
 })
@@ -40,12 +40,12 @@ export const openUserData = useHandler(async (win, __): Promise<boolean> => {
  * @returns {Promise<UserConfig | undefined>}
  */
 export const readUserConfig = async (): Promise<UserConfigObj | undefined> => {
-  const userConfigFile = FileSystem.files.userConfigFilePath()
+  const userConfigFile = FileSystem.userConfigFile()
   if (userConfigFile.exists) return await userConfigFile.readJSON<UserConfigObj>()
 }
 
 export const saveUserConfig = useHandler(async (_, __, newConfig: Partial<UserConfigObj>): Promise<string> => {
-  const userConfigFilePath = FileSystem.files.userConfigFilePath()
+  const userConfigFilePath = FileSystem.userConfigFile()
   const oldConfig = await readUserConfig()
   const value: UserConfigObj = {
     devhdd0Path: '',

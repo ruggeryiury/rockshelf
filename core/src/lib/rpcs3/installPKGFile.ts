@@ -1,9 +1,9 @@
-import { DirPath, pathLikeToDirPath, StreamWriter, type DirPathLikeTypes } from 'node-lib'
+import { pathLikeToDirPath, StreamWriter, type DirPathLikeTypes } from 'node-lib'
 import { FileSystem } from '../../core'
-import { extractPKGToTempFolder, sendMessage, type SelectPKGFileReturnObject, useHandler, moveExtractedFilesToGameDir } from '../../lib'
+import { extractPKGToTempFolder, sendMessage, type SelectPKGFileReturnObject, moveExtractedFilesToGameDir, useHandlerWithUserConfig } from '../../lib'
 
-export const installPKGFile = useHandler(async (win, _, selectedPKG: SelectPKGFileReturnObject, devhdd0Folder: DirPathLikeTypes): Promise<string | false> => {
-  const devhdd0 = pathLikeToDirPath(devhdd0Folder)
+export const installPKGFile = useHandlerWithUserConfig(async (win, _, { devhdd0Path }, selectedPKG: SelectPKGFileReturnObject): Promise<string | false> => {
+  const devhdd0 = pathLikeToDirPath(devhdd0Path)
   const rb3GameFolder = FileSystem.dirs.rb3BLUS30463(devhdd0)
   const rb2GameFolder = FileSystem.dirs.rb2BLUS30147(devhdd0)
   const rbGameFolder = FileSystem.dirs.rbBLUS30050(devhdd0)

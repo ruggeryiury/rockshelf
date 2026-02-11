@@ -15,6 +15,9 @@ export function MainScreen({ children }: React.PropsWithChildren) {
           {t('rockBand3Title')}
         </button>
         <button className={clsx('px-2 py-1 text-start text-sm! duration-100', mainWindowSelectionIndex === 1 ? 'bg-neutral-400 text-neutral-800 hover:bg-neutral-300 active:bg-neutral-200' : 'bg-neutral-800 hover:bg-neutral-700 active:bg-neutral-600')} onClick={() => setWindowState({ mainWindowSelectionIndex: 1 })}>
+          {t('yourPackages')}
+        </button>
+        <button className={clsx('px-2 py-1 text-start text-sm! duration-100', mainWindowSelectionIndex === 2 ? 'bg-neutral-400 text-neutral-800 hover:bg-neutral-300 active:bg-neutral-200' : 'bg-neutral-800 hover:bg-neutral-700 active:bg-neutral-600')} onClick={() => setWindowState({ mainWindowSelectionIndex: 2 })}>
           {t('configurations')}
         </button>
       </div>

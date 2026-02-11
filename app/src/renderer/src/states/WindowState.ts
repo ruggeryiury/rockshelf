@@ -1,4 +1,5 @@
-import { RendererMessageObject, RockBand3Data, SelectPKGFileReturnObject } from 'rockshelf-core/lib'
+import { InstrumentScoreData, ParsedRB3SaveData } from 'rbtools'
+import { RB3PackagesData, RendererMessageObject, RockBand3Data, SelectPKGFileReturnObject } from 'rockshelf-core/lib'
 import { create } from 'zustand'
 
 export interface WindowStateProps {
@@ -25,7 +26,10 @@ export interface WindowStateProps {
   /**
    * Stats from Rock Band 3.
    */
-  rb3Stats: RockBand3Data | false | null
+  rb3Stats: RockBand3Data | false | 'loading'
+  saveData: ParsedRB3SaveData | false
+  packages: RB3PackagesData | false
+  instrumentScoresData: InstrumentScoreData | false
   /**
    * Information of the selected PKG file to install, controls the rendering of the `InstallPKGConfirmationModal` component
    */
@@ -59,7 +63,10 @@ const defaultState: WindowStateProps = {
   disableTopBarButtons: false,
   msgObject: false,
   mainWindowSelectionIndex: 0,
-  rb3Stats: null,
+  rb3Stats: 'loading',
+  saveData: false,
+  packages: false,
+  instrumentScoresData: false,
   selectedPKGFile: false,
 }
 

@@ -1,5 +1,5 @@
 import { MyObject, pathLikeToDirPath, pathLikeToFilePath } from 'node-lib'
-import { useHandler } from '../electron-lib/useHandler'
+import { useHandlerWithUserConfig } from '../electron-lib/useHandler'
 import { parse as parseYAML } from 'yaml'
 
 export interface RockBand3Data {
@@ -65,7 +65,7 @@ export interface RPCS3GamesYAML {
   BLUS30463?: string
 }
 
-export const getRB3Data = useHandler(async (win, __, devhdd0Path: string, rpcs3ExePath: string): Promise<RockBand3Data | false> => {
+export const getRB3Data = useHandlerWithUserConfig(async (_, __, { devhdd0Path, rpcs3ExePath }): Promise<RockBand3Data | false> => {
   const devhdd0DirPath = pathLikeToDirPath(devhdd0Path)
   const rpcs3ExeFilePath = pathLikeToFilePath(rpcs3ExePath)
 

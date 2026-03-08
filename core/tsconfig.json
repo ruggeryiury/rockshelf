@@ -11,6 +11,7 @@
     "moduleResolution": "bundler",
     "outDir": "dist",
     "declaration": true,
+    "declarationMap": true,
     "sourceMap": true,
     "lib": ["ES2023"],
     "forceConsistentCasingInFileNames": true,

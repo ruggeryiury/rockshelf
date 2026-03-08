@@ -1,10 +1,12 @@
 import { defineConfig } from 'tsdown'
 
 export default defineConfig({
-  entry: ['src/core.ts', 'src/main.ts', 'src/lib.ts', 'src/preload.ts'],
+  entry: ['src/index.ts', 'src/preload.ts'],
   fixedExtension: false,
-  minify: true,
+  // minify: true, # Uncomment this for production bundling
   unbundle: true,
   copy: { from: 'src/bin', to: 'dist' },
-  external: ['type-fest'],
+  deps: {
+    neverBundle: ['type-fest'],
+  },
 })

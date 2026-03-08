@@ -8,15 +8,15 @@
     "build": "tsdown",
     "build:watch": "tsdown --watch",
     "format": "prettier --write .",
-    "xport": "python scripts/create_exports_src.py"
+    "lint": "eslint src"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "packageManager": "pnpm@10.28.2",
+  "packageManager": "pnpm@10.30.3",
   "dependencies": {
     "@electron-toolkit/utils": "^4.0.0",
-    "electron": "^40.0.0",
+    "electron": "^40.6.1",
     "node-lib": "link:..\\..\\node-lib",
     "rbtools": "link:..\\..\\rbtools",
     "tempy": "^3.2.0",
@@ -24,24 +24,22 @@
     "yaml": "^2.8.2"
   },
   "devDependencies": {
-    "@types/node": "^25.0.10",
+    "@eslint/js": "^10.0.1",
+    "@types/node": "^25.3.3",
+    "eslint": "^10.0.2",
+    "eslint-import-resolver-typescript": "^4.4.4",
+    "eslint-plugin-import": "^2.32.0",
+    "globals": "^17.4.0",
     "prettier": "^3.8.1",
-    "tsdown": "^0.20.0",
-    "type-fest": "^5.4.1",
-    "typescript": "^5.9.3"
+    "tsdown": "0.21.0-beta.2",
+    "type-fest": "^5.4.4",
+    "typescript": "^5.9.3",
+    "typescript-eslint": "^8.56.1"
   },
   "exports": {
     ".": {
-      "types": "./dist/core.d.ts",
-      "import": "./dist/core.js"
-    },
-    "./main": {
-      "types": "./dist/main.d.ts",
-      "import": "./dist/main.js"
-    },
-    "./lib": {
-      "types": "./dist/lib.d.ts",
-      "import": "./dist/lib.js"
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
     },
     "./preload": {
       "types": "./dist/preload.d.ts",

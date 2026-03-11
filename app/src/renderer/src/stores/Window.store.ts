@@ -1,4 +1,4 @@
-import { RendererMessageObject, } from 'rockshelf-core'
+import { RendererMessageObject } from 'rockshelf-core'
 import { create } from 'zustand'
 
 export interface WindowStateProps {
@@ -14,14 +14,15 @@ export interface WindowStateProps {
    * Indicates whether the top bar buttons are disabled.
    */
   disableTopBarButtons: boolean
-  /**
-   * An object that controls the msgObject rendering.
-   */
-  msgObject: RendererMessageObject | false
-  /**
-   * Controls the tabs of the `MainScreen` component.
-   */
-  mainWindowNavigationIndex: number
+  unhandledException: Error | null
+  // /**
+  //  * An object that controls the msgObject rendering.
+  //  */
+  // msgObject: RendererMessageObject | false
+  // /**
+  //  * Controls the tabs of the `MainScreen` component.
+  //  */
+  // mainWindowNavigationIndex: number
 }
 
 export interface WindowStateActions {
@@ -49,8 +50,9 @@ const defaultState: WindowStateProps = {
   isWinMaximized: false,
   disableButtons: true,
   disableTopBarButtons: false,
-  msgObject: false,
-  mainWindowNavigationIndex: 0,
+  unhandledException: null,
+  // msgObject: false,
+  // mainWindowNavigationIndex: 0,
 }
 
 export const useWindowState = create<WindowStateHook>()((set, get) => ({

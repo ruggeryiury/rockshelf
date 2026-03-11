@@ -1,6 +1,8 @@
-import { app, BrowserWindow } from 'electron'
+import { app, BrowserWindow, protocol, net } from 'electron'
+import { pathToFileURL } from 'node:url'
 import { electronApp, optimizer } from '@electron-toolkit/utils'
-import { checkDeps, createWindow, initMainProcessHandlers, setElectronUserDataFolder, type CreateWindowOptions } from './core.exports'
+import { checkDeps, createWindow, getRockshelfModuleRootDir, initMainProcessHandlers, setElectronUserDataFolder, type CreateWindowOptions } from './core.exports'
+import { RBTools } from 'rbtools'
 
 export async function initRockshelfMainProcess(options: CreateWindowOptions): Promise<void> {
   await setElectronUserDataFolder(app, 'Rockshelf')
@@ -13,6 +15,22 @@ export async function initRockshelfMainProcess(options: CreateWindowOptions): Pr
   })
 
   await app.whenReady()
+
+  protocol.handle('rbicons', (request) => {
+    const root = getRockshelfModuleRootDir()
+    const code = request.url.slice('rbicons://'.length)
+    const name = code === 'songPackage' ? 'custom' : code
+    let filePath = root.gotoFile(`bin/icons/${name}.webp`)
+    if (!filePath.exists) {
+      filePath = root.gotoFile(`bin/icons/${name}.jpg`)
+      if (!filePath.exists) {
+        filePath = root.gotoFile(`bin/icons/${name}.png`)
+        if (!filePath.exists) filePath = root.gotoFile(`bin/icons/custom.webp`)
+      }
+    }
+
+    return net.fetch(pathToFileURL(filePath.path).toString())
+  })
 
   electronApp.setAppUserModelId('com.electron.rockshelf')
 
@@ -28,4 +46,5 @@ export async function initRockshelfMainProcess(options: CreateWindowOptions): Pr
   })
 }
 
+export * from './controllers.exports'
 export * from './core.exports'

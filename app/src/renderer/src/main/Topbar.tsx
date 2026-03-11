@@ -10,14 +10,14 @@ export function Topbar() {
   const disableTopBarButtons = useWindowState((state) => state.disableTopBarButtons)
 
   return (
-    <header id="TopBar" className="max-h-[5%] min-h-[5%] w-full flex-row! items-center bg-[#1c1c1c] pl-4">
-      <p className="mr-auto">{t('appTitle')}</p>
+    <header id="TopBar" className="laptop-lg:max-h-[4%] laptop-lg:min-h-[4%] max-h-[5%] min-h-[5%] w-full flex-row! items-center bg-[#1c1c1c] pl-4">
+      <p className="mr-auto font-sans text-xs">{t('appTitle')}</p>
       {import.meta.env.DEV && (
         <>
           <button onClick={async () => await window.api.openUserDataFolder()} className="h-full justify-center px-3 duration-200 hover:bg-green-500/50" title={t('openUserDataFolder')}>
-            <FolderWithPlusIcon className="text-xl" />
+            <FolderWithPlusIcon className="text-lg" />
           </button>
-          <div className="h-full w-px py-1.5">
+          <div className="mx-2 h-full w-px py-1.5">
             <div className="bg-default-white/25 h-full w-full" />
           </div>
         </>

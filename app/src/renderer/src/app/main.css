@@ -1,14 +1,16 @@
-@import url('https://fonts.googleapis.com/css2?family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap');
 @import 'tailwindcss';
 
 @font-face {
   font-family: 'Pentatonic';
-  src: url('./assets/fonts/Pentatonic-Regular.woff2') format('woff2');
+  src: url('../assets/fonts/Pentatonic-Regular.woff2') format('woff2');
+  font-weight: 400;
   font-display: 'swap';
 }
+
 @font-face {
-  font-family: 'Chalet';
-  src: url('./assets/fonts/Chalet.woff2') format('woff2');
+  font-family: 'Pentatonic Alt';
+  src: url('../assets/fonts/Pentatonic-RegularAltOne.woff2') format('woff2');
+  font-weight: 400;
   font-display: 'swap';
 }
 
@@ -26,13 +28,11 @@
   --breakpoint-hd: 1290px;
 
   /* Colors */
-  --color-default-white: #c8c8c8;
+  --color-default-white: #9e9e9e;
   --color-default-black: #0a0a0a;
 
   /* Fonts */
-  --font-pentatonic: 'Pentatonic', sans-serif;
-  --font-chalet: 'Chalet', sans-serif;
-  --font-urbanist: 'Urbanist', sans-serif;
+  --font-pentatonic: 'Pentatonic Alt', sans-serif;
 
   /* Animations */
   --animate-move-pattern: movePattern 48s linear infinite;
@@ -68,7 +68,7 @@
 }
 
 body {
-  @apply text-default-white font-chalet relative h-screen w-full overflow-hidden bg-transparent select-none;
+  @apply text-default-white relative h-screen w-full overflow-hidden bg-transparent font-sans text-sm select-none;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -94,17 +94,14 @@ button {
 
 h1,
 button {
-  @apply font-semibold uppercase;
+  @apply font-pentatonic;
 }
 
 #TopBar {
+  @apply font-sans text-xs;
   -webkit-app-region: drag;
 
   button {
     -webkit-app-region: no-drag;
   }
-}
-
-p {
-  @apply text-xs;
 }

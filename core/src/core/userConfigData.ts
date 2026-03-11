@@ -32,7 +32,7 @@ export const openUserDataFolder = async (win: BrowserWindow): Promise<boolean> =
   const rockshelfUserDataDir = getRockshelfUserDataDir()
   const error = await shell.openPath(rockshelfUserDataDir.path)
   if (error) {
-    sendMessage(win, { type: 'error', code: 'openUserDataError' })
+    sendMessage(win, { type: 'error', method:'openUserDataFolder', code: 'openUserDataError' })
     return false
   }
   return true

@@ -1,7 +1,9 @@
 /* eslint-disable @typescript-eslint/no-unsafe-return */
-import { ipcRenderer, type IpcRenderer, type IpcRendererEvent } from 'electron'
+import { ipcRenderer, shell, webUtils, type IpcRenderer, type IpcRendererEvent } from 'electron'
 import type { Promisable } from 'type-fest'
-import type { openUserDataFolder, readUserConfigFile, RendererMessageObject, saveUserConfigFile, windowClose, windowMaximize, windowMinimize } from './core.exports'
+import type { openUserDataFolder, readUserConfigFile, RendererMessageObject, saveUserConfigFile, UserConfigObject, windowClose, windowMaximize, windowMinimize } from './core.exports'
+import type { installHighMemoryPatch, rpcs3GetInstrumentScores, rpcs3GetRB3Stats, rpcs3GetSaveDataStats, selectDevhdd0Dir, selectPKGFileToInstall, selectRPCS3Exe } from './controllers.exports'
+import type { ParsedRB3SaveData } from 'rbtools'
 
 const invoke = ipcRenderer.invoke.bind(ipcRenderer)
 const on = ipcRenderer.on.bind(ipcRenderer)
@@ -17,7 +19,7 @@ export const preloadAPI = {
    * @returns {IpcRenderer}
    */
   onMessage(callback: OnMessageCallback): IpcRenderer {
-    return on('onMessage', callback)
+    return on('sendMessage', callback)
   },
   /**
    * Listens for requests to localized values.
@@ -25,7 +27,47 @@ export const preloadAPI = {
    * @param {(event: IpcRendererEvent, uuid: string, key: string) => Promise<string>} callback The callback function to handle the localized string request.
    */
   onLocaleRequest(callback: OnLocaleRequestCallback): IpcRenderer {
-    return on('onLocaleRequest', callback)
+    return on('getLocaleStringFromRenderer', callback)
+  },
+  /**
+   * Sends a localized string to the main process. This function must be called inside the `onLocaleRequest` listener to get the request UUID.
+   * - - - -
+   * @param {string} uuid A unique
+   * @param {string} val The localized string you want to send to the main process.
+   */
+  sendLocale(uuid: string, val: string): void {
+    return ipcRenderer.send(`sendLocale/${uuid}`, val)
+  },
+
+  /**
+   * Open an external link in the default web browser.
+   * - - - -
+   * @param {string} url The URL to open.
+   * @returns {Promise<void>}
+   */
+  async openExternalLink(url: string): Promise<void> {
+    return await shell.openExternal(url)
+  },
+  /**
+   * Convert a `File` object or an array of `File` objects to their respective file paths.
+   * - - - -
+   * @param {T} files The File or array of Files to convert.
+   * @returns {RT}
+   */
+  fileToPath<T extends File | File[], RT extends T extends File ? string : string[]>(files: T): RT {
+    if (Array.isArray(files)) {
+      const filesPath: string[] = []
+
+      for (const file of files) {
+        const path = webUtils.getPathForFile(file as File)
+        filesPath.push(path)
+      }
+
+      return filesPath as RT
+    }
+
+    const path = webUtils.getPathForFile(files)
+    return path as RT
   },
 
   /**
@@ -33,22 +75,29 @@ export const preloadAPI = {
    * - - - -
    * @returns {Promise<void>}
    */
-  windowClose: async (): Promise<ReturnType<typeof windowClose>> => await invoke('windowClose()'),
+  windowClose: async (): Promise<ReturnType<typeof windowClose>> => await invoke('windowClose'),
   /**
    * Minimize the application window.
    * - - - -
    * @returns {Promise<void>}
    */
-  windowMinimize: async (): Promise<ReturnType<typeof windowMinimize>> => await invoke('windowMinimize()'),
+  windowMinimize: async (): Promise<ReturnType<typeof windowMinimize>> => await invoke('windowMinimize'),
   /**
    * Maximize the application window. Returns true if the window is maximized, false otherwise.
    * - - - -
    * @returns {Promise<boolean>}
    */
-  windowMaximize: async (): Promise<ReturnType<typeof windowMaximize>> => await invoke('windowMaximize()'),
-  openUserDataFolder: async (): ReturnType<typeof openUserDataFolder> => await invoke('openUserDataFolder()'),
-  readUserConfigFile: async (): ReturnType<typeof readUserConfigFile> => await invoke('readUserConfigFile()'),
-  saveUserConfigFile: async (): ReturnType<typeof saveUserConfigFile> => await invoke('saveUserConfigFile()'),
+  windowMaximize: async (): Promise<ReturnType<typeof windowMaximize>> => await invoke('windowMaximize'),
+  openUserDataFolder: async (): ReturnType<typeof openUserDataFolder> => await invoke('openUserDataFolder'),
+  readUserConfigFile: async (): ReturnType<typeof readUserConfigFile> => await invoke('readUserConfigFile'),
+  saveUserConfigFile: async (newConfig: Partial<UserConfigObject>): ReturnType<typeof saveUserConfigFile> => await invoke('saveUserConfigFile', newConfig),
+  selectDevhdd0Dir: async (): ReturnType<typeof selectDevhdd0Dir> => await invoke('selectDevhdd0Dir'),
+  selectRPCS3Exe: async (): ReturnType<typeof selectRPCS3Exe> => await invoke('selectRPCS3Exe'),
+  rpcs3GetRB3Stats: async (): ReturnType<typeof rpcs3GetRB3Stats> => await invoke('rpcs3GetRB3Stats'),
+  rpcs3GetSaveDataStats: async (): ReturnType<typeof rpcs3GetSaveDataStats> => await invoke('rpcs3GetSaveDataStats'),
+  rpcs3GetInstrumentScores: async (saveData: ParsedRB3SaveData): ReturnType<typeof rpcs3GetInstrumentScores> => await invoke('rpcs3GetInstrumentScores', saveData),
+  selectPKGFileToInstall: async (): ReturnType<typeof selectPKGFileToInstall> => await invoke('selectPKGFileToInstall'),
+  installHighMemoryPatch: async (): ReturnType<typeof installHighMemoryPatch> => await invoke('installHighMemoryPatch'),
 } as const
 
 export const rbtoolsAPI = {} as const

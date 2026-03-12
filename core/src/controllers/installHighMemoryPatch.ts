@@ -4,7 +4,7 @@ import { readUserConfigFile, sendMessage, useHandler } from '../core.exports'
 export const installHighMemoryPatch = useHandler(async (win, _): Promise<boolean> => {
   const userConfig = await readUserConfigFile()
   if (!userConfig) {
-    sendMessage(win, { method: 'rpcs3GetSaveDataStats', type: 'error', code: 'noUserConfigFile' })
+    sendMessage(win, { method: 'installHighMemoryPatch', type: 'error', code: 'noUserConfigFile' })
     return false
   }
 

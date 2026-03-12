@@ -55,7 +55,7 @@ export const selectPKGFileToInstall = useHandler(async (win, _): Promise<SelectP
       type: 'error',
       method: 'selectPKGFileToInstall',
       code: 'invalidFileSignature',
-      messageValues: { filePath: pkg.path.path },
+      messageValues: { path: pkg.path.path },
     })
     return false
   }
@@ -72,7 +72,7 @@ export const selectPKGFileToInstall = useHandler(async (win, _): Promise<SelectP
       method: 'selectPKGFileToInstall',
       code: 'rb2PKGNotAllowed',
       timeout: 6000,
-      messageValues: { filePath: pkg.path.path },
+      messageValues: { path: pkg.path.path },
     })
 
     return false
@@ -87,7 +87,7 @@ export const selectPKGFileToInstall = useHandler(async (win, _): Promise<SelectP
       type: 'error',
       method: 'selectPKGFileToInstall',
       code: 'notRockBandPKG',
-      messageValues: { filePath: pkg.path.path },
+      messageValues: { path: pkg.path.path },
     })
 
     return false

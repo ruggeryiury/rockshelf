@@ -1,4 +1,5 @@
 export * from './controllers/installHighMemoryPatch'
+export * from './controllers/installPKGFile'
 export * from './controllers/rpcs3GetInstrumentScores'
 export * from './controllers/rpcs3GetRB3Stats'
 export * from './controllers/rpcs3GetSaveDataStats'

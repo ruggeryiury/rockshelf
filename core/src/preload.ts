@@ -2,7 +2,7 @@
 import { ipcRenderer, shell, webUtils, type IpcRenderer, type IpcRendererEvent } from 'electron'
 import type { Promisable } from 'type-fest'
 import type { openUserDataFolder, readUserConfigFile, RendererMessageObject, saveUserConfigFile, UserConfigObject, windowClose, windowMaximize, windowMinimize } from './core.exports'
-import type { installHighMemoryPatch, rpcs3GetInstrumentScores, rpcs3GetRB3Stats, rpcs3GetSaveDataStats, selectDevhdd0Dir, selectPKGFileToInstall, selectRPCS3Exe } from './controllers.exports'
+import type { installHighMemoryPatch, installPKGFile, rpcs3GetInstrumentScores, rpcs3GetRB3Stats, rpcs3GetSaveDataStats, selectDevhdd0Dir, SelectPKGFileReturnObject, selectPKGFileToInstall, selectRPCS3Exe } from './controllers.exports'
 import type { ParsedRB3SaveData } from 'rbtools'
 
 const invoke = ipcRenderer.invoke.bind(ipcRenderer)
@@ -98,6 +98,7 @@ export const preloadAPI = {
   rpcs3GetInstrumentScores: async (saveData: ParsedRB3SaveData): ReturnType<typeof rpcs3GetInstrumentScores> => await invoke('rpcs3GetInstrumentScores', saveData),
   selectPKGFileToInstall: async (): ReturnType<typeof selectPKGFileToInstall> => await invoke('selectPKGFileToInstall'),
   installHighMemoryPatch: async (): ReturnType<typeof installHighMemoryPatch> => await invoke('installHighMemoryPatch'),
+  installPKGFile: async (selectedPKG: SelectPKGFileReturnObject): ReturnType<typeof installPKGFile> => await invoke('installPKGFile', selectedPKG),
 } as const
 
 export const rbtoolsAPI = {} as const

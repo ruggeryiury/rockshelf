@@ -24,7 +24,7 @@ export function ConfigScreen() {
   return (
     <AnimatedSection condition={isActivated} id="ConfigScreen" className="absolute! h-full w-full overflow-hidden p-6" {...animate({opacity: true})}>
       <div className="mb-2 rounded-xs p-3 duration-200 last:mb-0 hover:bg-white/5">
-        <h1 className='text-lg mb-1'>{t('lang')}</h1>
+        <h1 className='text-lg mb-1 uppercase'>{t('lang')}</h1>
         <p className="mb-3 text-neutral-600 italic">
           <TransComponent i18nKey="configLangDesc" />
         </p>
@@ -44,7 +44,7 @@ export function ConfigScreen() {
         </div>
       </div>
       <div className="group mb-2 rounded-xs p-3 duration-200 last:mb-0 hover:bg-white/5">
-        <h1 className='text-lg mb-1'>{t('devhdd0Dir')}</h1>
+        <h1 className='text-lg mb-1 uppercase'>{t('devhdd0Dir')}</h1>
         <p className="mb-4 text-neutral-600 italic">
           <TransComponent i18nKey="devhdd0DirDesc" />
         </p>
@@ -76,7 +76,7 @@ export function ConfigScreen() {
         </button>
       </div>
       <div className="group mb-2 rounded-xs p-3 duration-200 last:mb-0 hover:bg-white/5">
-        <h1 className='text-lg mb-1'>{t('rpcs3Exe')}</h1>
+        <h1 className='text-lg mb-1 uppercase'>{t('rpcs3Exe')}</h1>
         <p className="mb-4 text-neutral-600 italic">
           <TransComponent i18nKey="rpcs3ExeDesc" />
         </p>

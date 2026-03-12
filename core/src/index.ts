@@ -48,3 +48,4 @@ export async function initRockshelfMainProcess(options: CreateWindowOptions): Pr
 
 export * from './controllers.exports'
 export * from './core.exports'
+export * from './lib.exports'

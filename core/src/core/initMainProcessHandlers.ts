@@ -1,6 +1,6 @@
 import type { BrowserWindow, IpcMainInvokeEvent } from 'electron'
 import type { Promisable } from 'type-fest'
-import { installHighMemoryPatch, rpcs3GetInstrumentScores, rpcs3GetRB3Stats, rpcs3GetSaveDataStats, selectDevhdd0Dir, selectPKGFileToInstall, selectRPCS3Exe } from '../controllers.exports'
+import { installHighMemoryPatch, installPKGFile, rpcs3GetInstrumentScores, rpcs3GetRB3Stats, rpcs3GetSaveDataStats, selectDevhdd0Dir, selectPKGFileToInstall, selectRPCS3Exe } from '../controllers.exports'
 import { openUserDataFolder, readUserConfigFile, saveUserConfigFile, windowClose, windowMaximize, windowMinimize, type UserConfigObject } from '../core.exports'
 import { addHandler } from './handler'
 
@@ -22,6 +22,7 @@ export const initMainProcessHandlers = (): void => {
     ['rpcs3GetInstrumentScores', rpcs3GetInstrumentScores],
     ['selectPKGFileToInstall', selectPKGFileToInstall],
     ['installHighMemoryPatch', installHighMemoryPatch],
+    ['installPKGFile', installPKGFile],
   ]
   for (const [channel, listeners] of handlers) addHandler(channel, listeners)
 }

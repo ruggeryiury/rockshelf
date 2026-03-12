@@ -105,13 +105,13 @@ export function RockBand3StatsScreen() {
                 {/* Rock Band 3 found on RPCS3 */}
                 {rb3Stats.hasGameInstalled && (
                   <>
-                    <h1>{t('gameTitle')}</h1>
+                    <h1 className="mb-0.5 text-xs text-gray-400 uppercase">{t('gameTitle')}</h1>
                     <p className="mb-2">{rb3Stats.gameName}</p>
 
-                    <h1>{t('gameSerial')}</h1>
+                    <h1 className="mb-0.5 text-xs text-gray-400 uppercase">{t('gameSerial')}</h1>
                     <p className="mb-2">{rb3Stats.gameSerial}</p>
 
-                    <h1>{t('patchVersion')}</h1>
+                    <h1 className="mb-0.5 text-xs text-gray-400 uppercase">{t('patchVersion')}</h1>
 
                     <p className="mb-2">{rb3Stats.updateType === 'none' ? t('noPatchInstalled') : rb3Stats.updateType === 'tu5' ? t('tu5') : t('dx')}</p>
                     {rb3Stats.updateType === 'none' && (
@@ -125,23 +125,12 @@ export function RockBand3StatsScreen() {
                       </p>
                     )}
 
-                    <h1 className="mb-2 border-b border-neutral-600 pb-1">{t('patches')}</h1>
+                    <h1 className="mb-2 border-b border-neutral-600 pb-1 uppercase text-gray-400">{t('patches')}</h1>
 
-                    <h1>{t('teleportGlitch')}</h1>
+                    <h1 className="uppercase mb-0.5 text-gray-400">{t('teleportGlitch')}</h1>
                     <p className="mb-2">{rb3Stats.hasTeleportGlitchPatch ? t('installed') : t('notInstalled')}</p>
 
-                    {/* {!rb3Stats.hasTeleportGlitchPatch && (
-                      <p className="mb-4 text-neutral-600 italic">
-                        <TransComponent
-                          i18nKey="noTeleportGlitchText"
-                          components={{
-                            spanLink: <a className="cursor-pointer underline hover:text-neutral-400 active:text-neutral-300" href={RB3_TGF_LINK} target="_blank" />,
-                          }}
-                        />
-                      </p>
-                    )} */}
-
-                    <h1>{t('highMemoryPatch')}</h1>
+                    <h1 className="uppercase mb-0.5 text-gray-400">{t('highMemoryPatch')}</h1>
                     <p className="mb-2">{rb3Stats.hasHighMemoryPatch ? t('installed') : t('notInstalled')}</p>
 
                     {!rb3Stats.hasHighMemoryPatch && (

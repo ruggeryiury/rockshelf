@@ -2,7 +2,6 @@ import { app, BrowserWindow, protocol, net } from 'electron'
 import { pathToFileURL } from 'node:url'
 import { electronApp, optimizer } from '@electron-toolkit/utils'
 import { checkDeps, createWindow, getRockshelfModuleRootDir, initMainProcessHandlers, setElectronUserDataFolder, type CreateWindowOptions } from './core.exports'
-import { RBTools } from 'rbtools'
 
 export async function initRockshelfMainProcess(options: CreateWindowOptions): Promise<void> {
   await setElectronUserDataFolder(app, 'Rockshelf')

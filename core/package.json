@@ -16,7 +16,7 @@
   "packageManager": "pnpm@10.30.3",
   "dependencies": {
     "@electron-toolkit/utils": "^4.0.0",
-    "electron": "^40.6.1",
+    "electron": "^41.0.1",
     "node-lib": "link:..\\..\\node-lib",
     "rbtools": "link:..\\..\\rbtools",
     "tempy": "^3.2.0",
@@ -25,16 +25,16 @@
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",
-    "@types/node": "^25.3.3",
-    "eslint": "^10.0.2",
+    "@types/node": "^25.5.0",
+    "eslint": "^10.0.3",
     "eslint-import-resolver-typescript": "^4.4.4",
     "eslint-plugin-import": "^2.32.0",
     "globals": "^17.4.0",
     "prettier": "^3.8.1",
-    "tsdown": "0.21.0-beta.2",
+    "tsdown": "0.21.2",
     "type-fest": "^5.4.4",
     "typescript": "^5.9.3",
-    "typescript-eslint": "^8.56.1"
+    "typescript-eslint": "^8.57.0"
   },
   "exports": {
     ".": {

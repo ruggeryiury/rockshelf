@@ -11,7 +11,7 @@ const on = ipcRenderer.on.bind(ipcRenderer)
 export type OnMessageCallback = (event: IpcRendererEvent, message: RendererMessageObject) => Promisable<any>
 export type OnLocaleRequestCallback = (event: IpcRendererEvent, uuid: string, key: string) => void
 
-export const preloadAPI = {
+export const rockshelfAPI = {
   /**
    * Listens for messages from the main process.
    * - - - -
@@ -100,5 +100,3 @@ export const preloadAPI = {
   installHighMemoryPatch: async (): ReturnType<typeof installHighMemoryPatch> => await invoke('installHighMemoryPatch'),
   installPKGFile: async (selectedPKG: SelectPKGFileReturnObject): ReturnType<typeof installPKGFile> => await invoke('installPKGFile', selectedPKG),
 } as const
-
-export const rbtoolsAPI = {} as const

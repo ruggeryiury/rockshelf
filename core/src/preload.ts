@@ -33,10 +33,10 @@ export const rockshelfAPI = {
    * Sends a localized string to the main process. This function must be called inside the `onLocaleRequest` listener to get the request UUID.
    * - - - -
    * @param {string} uuid A unique
-   * @param {string} val The localized string you want to send to the main process.
+   * @param {string} text The localized string you want to send to the main process.
    */
-  sendLocale(uuid: string, val: string): void {
-    return ipcRenderer.send(`sendLocale/${uuid}`, val)
+  sendLocale(uuid: string, text: string): void {
+    return ipcRenderer.send(`sendLocale/${uuid}`, text)
   },
 
   /**

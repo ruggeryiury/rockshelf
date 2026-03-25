@@ -12,8 +12,8 @@
 <img src='https://img.shields.io/github/last-commit/ruggeryiury/rockshelf?color=%23DDD&style=for-the-badge' /> <img src='https://img.shields.io/github/repo-size/ruggeryiury/rockshelf?style=for-the-badge' /> <img src='https://img.shields.io/github/issues/ruggeryiury/rockshelf?style=for-the-badge' /> <img src='https://img.shields.io/github/license/ruggeryiury/rockshelf?style=for-the-badge' />
 </div>
 
-<div align=center style="margin-bottom: 2rem">
-<img src='app/resources/icon.png' width=256px>
+<div align=center >
+<img src='front.webp'>
 </div>
 
 - [About](#about)

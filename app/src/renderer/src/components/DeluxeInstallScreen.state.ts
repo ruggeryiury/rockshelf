@@ -1,9 +1,12 @@
+import { GitHubCommitCompare, GitHubCommitResponse } from '@renderer/app/types'
 import { SelectPKGFileReturnObject } from 'rockshelf-core'
 import { create } from 'zustand'
 
 export interface DeluxeInstallScreenStateProps {
   active: boolean
-  selectedPKG: SelectPKGFileReturnObject | false | 'loading'
+  selectedPKG: SelectPKGFileReturnObject | null | 'loading'
+  commitData: GitHubCommitResponse | null | 'loading'
+  aheadCommitData: GitHubCommitCompare | null | 'loading'
 }
 
 export interface DeluxeInstallScreenStateActions {
@@ -29,7 +32,9 @@ export type DeluxeInstallScreenStateHook = DeluxeInstallScreenStateProps & Delux
 
 const defaultState: DeluxeInstallScreenStateProps = {
   active: false,
-  selectedPKG: false,
+  selectedPKG: null,
+  commitData: null,
+  aheadCommitData: null,
 }
 
 export const useDeluxeInstallScreenState = create<DeluxeInstallScreenStateHook>()((set, get) => ({

@@ -1,5 +1,5 @@
 import { useEffect } from 'react'
-import { DeluxeInstallScreen, DialogScreen, FirstTimeScreen, LogoScreen, MainScreen, MessageBox, Topbar, WindowFrame } from './components.exports'
+import { BuzyLoadScreen, DeluxeInstallScreen, DialogScreen, FirstTimeScreen, LogoScreen, MainScreen, MessageBox, Topbar, WindowFrame } from './components.exports'
 import { useWindowState } from './stores/Window.state'
 import { useFirstTimeScreenState } from './components/FirstTimeScreen.state'
 import { useTranslation } from 'react-i18next'
@@ -8,6 +8,7 @@ import { InstrumentScoreData, ParsedRB3SaveData } from 'rbtools'
 import { useLogoScreenState } from './components/LogoScreen.state'
 import { useMessageBoxState } from './components/MessageBox.state'
 import { useDialogScreenState } from './components/DialogScreen.state'
+import { useBuzyLoadScreenState } from './components/BuzyLoadScreen.state'
 
 export function App() {
   const { i18n } = useTranslation()
@@ -17,6 +18,7 @@ export function App() {
   const setLogoScreenState = useLogoScreenState((x) => x.setLogoScreenState)
   const setMessageBoxState = useMessageBoxState((x) => x.setMessageBoxState)
   const setDialogScreenState = useDialogScreenState((x) => x.setDialogScreenState)
+  const setBuzyLoadScreenState = useBuzyLoadScreenState((x) => x.setBuzyLoadScreenState)
 
   useEffect(function initApp() {
     const fn = async () => {
@@ -80,19 +82,40 @@ export function App() {
       const text = i18n.exists(key) ? i18n.t(key) : key
       window.api.sendLocale(uuid, text)
     })
-  })
+  }, [])
 
   useEffect(function initMessageListener() {
-    window.api.onMessage((_, message) => setMessageBoxState({ message }))
-  })
+    window.api.onMessage((_, message) => {
+      if (import.meta.env.DEV) console.log('struct MessageBoxObject [core/src/core/rendererSenders.ts]', message)
+      setMessageBoxState({ message })
+    })
+  }, [])
 
   useEffect(function initDialogListener() {
     window.api.onDialog((_, code) => setDialogScreenState({ active: code }))
+  }, [])
+
+  useEffect(function initBuzyLoadListener() {
+    window.api.onBuzyLoad((_, func) => {
+      if (import.meta.env.DEV) {
+        if (func.code === 'init') console.log('struct BuzyLoadInitObject [core/src/core/rendererSenders.ts]', func)
+        else console.log('struct BuzyLoadObject [core/src/core/rendererSenders.ts]', func)
+      }
+      if (func.code === 'init') {
+        setBuzyLoadScreenState({ active: func })
+      } else if (func.code === 'incrementStep') {
+        setBuzyLoadScreenState((oldState) => ({ step: oldState.step + 1 }))
+      } else if (func.code === 'callSuccess') {
+        setBuzyLoadScreenState({ isCompleted: true })
+      }
+      //  else if (func.code === 'throwError') { }
+    })
   })
   return (
     <>
       <Topbar />
       <WindowFrame>
+        <BuzyLoadScreen />
         <DialogScreen />
         <FirstTimeScreen />
         <LogoScreen />

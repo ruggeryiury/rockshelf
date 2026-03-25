@@ -45,8 +45,8 @@ export function MessageBox() {
           {message.type === 'success' && <SuccessIcon className="mt-0.5 mr-2 min-w-8 text-lg text-green-500" />}
           {(message.type === 'info' || message.type === 'warn' || message.type === 'error') && <ErrorIcon className={clsx('mt-0.5 mr-2 min-w-8 text-lg', message.type === 'error' ? 'text-red-500' : message.type === 'warn' ? 'text-yellow-500' : '')} />}
           <div className="w-full">
-            <h1 className="mb-0.5 w-full border-b border-neutral-800 text-sm uppercase">{t(message.type)}</h1>
-            <p className="rounded-xs text-xs wrap-anywhere">{message.type === 'debug' ? message.code : <TransComponent i18nKey={i18nKey} values={message.messageValues} />}</p>
+            <h1 className="mb-1 w-full border-b border-neutral-800 pb-1 text-base uppercase">{t(message.type)}</h1>
+            <p className="text-xs wrap-anywhere">{message.type === 'debug' ? message.code : <TransComponent i18nKey={i18nKey} values={message.messageValues} />}</p>
           </div>
         </div>
       )}

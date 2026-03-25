@@ -84,7 +84,7 @@ export function MainScreen() {
                   {t('installDeluxe')}
                 </button>
               </div>
-              <div>
+              <div className="w-full">
                 {!rb3Stats.hasGameInstalled && <p className="text-xs text-neutral-500 italic">{t('noRB3FoundInstalled')}</p>}
                 {rb3Stats.hasGameInstalled && (
                   <>

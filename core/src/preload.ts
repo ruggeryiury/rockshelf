@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-unsafe-return */
 import { ipcRenderer, shell, webUtils, type IpcRenderer, type IpcRendererEvent } from 'electron'
 import type { Promisable } from 'type-fest'
-import type { openUserDataFolder, readUserConfigFile, MessageBoxObject, saveUserConfigFile, UserConfigObject, windowClose, windowMaximize, windowMinimize } from './core.exports'
+import type { openUserDataFolder, readUserConfigFile, MessageBoxObject, saveUserConfigFile, UserConfigObject, windowClose, windowMaximize, windowMinimize, BuzyLoadInitObject, BuzyLoadObject } from './core.exports'
 import type { deleteUserConfigAndRestart, installHighMemoryPatch, installPKGFile, rpcs3GetInstrumentScores, rpcs3GetRB3Stats, rpcs3GetSaveDataStats, selectDevhdd0Dir, SelectPKGFileReturnObject, selectPKGFileToInstall, selectRPCS3Exe, testUserConfig } from './controllers.exports'
 import type { ParsedRB3SaveData } from 'rbtools'
 
@@ -11,6 +11,7 @@ const on = ipcRenderer.on.bind(ipcRenderer)
 export type OnMessageCallback = (event: IpcRendererEvent, message: MessageBoxObject) => Promisable<any>
 export type OnDialogScreenCallback = (event: IpcRendererEvent, code: string) => Promisable<any>
 export type OnLocaleRequestCallback = (event: IpcRendererEvent, uuid: string, key: string) => void
+export type OnBuzyLoadCallback = (event: IpcRendererEvent, func: BuzyLoadObject | BuzyLoadInitObject) => void
 
 export const rockshelfAPI = {
   /**
@@ -24,6 +25,9 @@ export const rockshelfAPI = {
   },
   onDialog(callback: OnDialogScreenCallback): IpcRenderer {
     return on('sendDialog', callback)
+  },
+  onBuzyLoad(callback: OnBuzyLoadCallback): IpcRenderer {
+    return on('sendBuzyLoad', callback)
   },
   /**
    * Listens for requests to localized values.
@@ -106,4 +110,5 @@ export const rockshelfAPI = {
   selectPKGFileToInstall: async (): ReturnType<typeof selectPKGFileToInstall> => await invoke('selectPKGFileToInstall'),
   selectRPCS3Exe: async (): ReturnType<typeof selectRPCS3Exe> => await invoke('selectRPCS3Exe'),
   testUserConfig: async (): ReturnType<typeof testUserConfig> => await invoke('testUserConfig'),
+  testError: async (message?: string): ReturnType<typeof testUserConfig> => await invoke('testError', message),
 } as const

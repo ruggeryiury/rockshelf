@@ -13,12 +13,9 @@ export const installPKGFile = useHandler(async (win, _, selectedPKG: SelectPKGFi
   const devhdd0 = isRPCS3Devhdd0PathValid(userConfig.devhdd0Path)
 
   const { pkgType } = selectedPKG
-  console.log(selectedPKG)
 
   if (pkgType === 'dx' || pkgType === 'tu5') {
-    sendMessageBox(win, { type: 'loading', method: 'installPKGFile', code: 'extractingPKGFile', messageValues: { path: selectedPKG.pkgPath } })
-    await installPatchTypePKGForRB3(devhdd0, selectedPKG)
-    sendMessageBox(win, { type: 'success', method: 'installPKGFile', code: pkgType === 'tu5' ? 'TU5' : 'RB3DX' })
+    await installPatchTypePKGForRB3(win, devhdd0, selectedPKG)
     return true
   }
 

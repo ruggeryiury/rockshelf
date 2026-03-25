@@ -43,3 +43,21 @@ export const sendDialog = (win: BrowserWindow, code: string): true => {
   win.webContents.send('sendDialog', code)
   return true
 }
+
+export interface BuzyLoadObject {
+  code: 'incrementStep' | 'throwError' | 'callSuccess'
+}
+
+export type BuzyLoadOnCompleteActions = 'refreshRB3Stats'
+
+export interface BuzyLoadInitObject {
+  code: 'init'
+  title: string
+  steps: string[]
+  onCompleted?: BuzyLoadOnCompleteActions[]
+}
+
+export const sendBuzyLoad = (win: BrowserWindow, func: BuzyLoadObject | BuzyLoadInitObject): true => {
+  win.webContents.send('sendBuzyLoad', func)
+  return true
+}

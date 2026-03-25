@@ -96,7 +96,6 @@ export function FirstTimeScreen() {
               mostPlayedDifficulty: 3,
               mostPlayedInstrument: 'band',
             })
-            
 
             const rb3Stats = await window.api.rpcs3GetRB3Stats()
             if (import.meta.env.DEV) console.log('struct RockBand3Data ["rbtools/src/lib/rpcs3/rpcs3GetRB3Stats.ts"]:', rb3Stats)

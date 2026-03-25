@@ -25,6 +25,12 @@ export const initMainProcessHandlers = (): void => {
     ['windowClose', windowClose],
     ['windowMaximize', windowMaximize],
     ['windowMinimize', windowMinimize],
+    [
+      'testError',
+      (_, __, message?: string) => {
+        throw new Error(message || '')
+      },
+    ],
   ]
   for (const [channel, listeners] of handlers) addHandler(channel, listeners)
 }

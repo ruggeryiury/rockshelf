@@ -36,7 +36,7 @@ export function MyPackagesScreen() {
               let newPackages: RPCS3SongPackagesDataExtra | false = false
               try {
                 newPackages = await window.api.refreshPackagesData()
-                 console.log('struct RPCS3SongPackagesDataExtra ["rbtools/src/lib/rpcs3/rpcs3GetSongPackagesStatsExtra.ts"]:', newPackages)
+                console.log('struct RPCS3SongPackagesDataExtra ["rbtools/src/lib/rpcs3/rpcs3GetSongPackagesStatsExtra.ts"]:', newPackages)
               } catch (err) {
                 if (err instanceof Error) setWindowState({ err })
               }
@@ -48,7 +48,7 @@ export function MyPackagesScreen() {
         </div>
         <div className="h-full w-full overflow-y-auto">
           <AnimatedP condition={packages === 'loading'} {...animate({ opacity: true, duration: 0.1 })} className="absolute! pt-2 pl-2 text-xs">
-            Loading Packages Data...
+            {t('loadingPackagesData')}
           </AnimatedP>
           <AnimatedDiv condition={typeof packages === 'object'} {...animate({ opacity: true, duration: 0.1 })} className="overflow-y-auto">
             {typeof packages === 'object' && (
@@ -64,15 +64,14 @@ export function MyPackagesScreen() {
                       >
                         <img src={pkg.thumbnailSrc} className="mr-2 w-16 min-w-16" />
                         <div>
-                          <h2 className='text-base font-bold'>{pkg.packageData.packageName}</h2>
-                          <h3 className='text-xs text-neutral-700'>{t(pkg.songs.length === 1 ? 'songCount' : 'songCountPlural', { count: pkg.songs.length })}</h3>
+                          <h2 className="text-base font-bold">{pkg.packageData.packageName}</h2>
+                          <h3 className="text-xs text-neutral-700">{t(pkg.songs.length === 1 ? 'songCount' : 'songCountPlural', { count: pkg.songs.length })}</h3>
                         </div>
                       </div>
                       <div className="h-full w-2" />
                     </div>
                   )
                 })}
-                
               </>
             )}
           </AnimatedDiv>

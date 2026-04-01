@@ -4,7 +4,7 @@ import { useUserConfigState } from '@renderer/stores/UserConfig.state'
 import { useWindowState } from '@renderer/stores/Window.state'
 import { animate, AnimatedButton, AnimatedSection, TransComponent } from '@renderer/lib.exports'
 import clsx from 'clsx'
-import { BRAFlag, MEXFlag, USAFlag } from '@renderer/assets/images'
+import { ARGFlag, BOLFlag, BRAFlag, COLFlag, MEXFlag, PARYFlag, PERUFlag, URUFlag, USAFlag, VEZFlag } from '@renderer/assets/images'
 import { RPCS3SongPackagesDataExtra, UserConfigObject } from 'rockshelf-core'
 import { InstrumentScoreData, ParsedRB3SaveData } from 'rbtools'
 import { useLogoScreenState } from './LogoScreen.state'
@@ -98,25 +98,26 @@ export function FirstTimeScreen() {
             })
 
             const rb3Stats = await window.api.rpcs3GetRB3Stats()
-             console.log('struct RockBand3Data ["rbtools/src/lib/rpcs3/rpcs3GetRB3Stats.ts"]:', rb3Stats)
+            console.log('struct RockBand3Data ["rbtools/src/lib/rpcs3/rpcs3GetRB3Stats.ts"]:', rb3Stats)
             let saveData: ParsedRB3SaveData | false = false
             let instrumentScores: InstrumentScoreData | false = false
             let packagesData: RPCS3SongPackagesDataExtra | false = false
             if (typeof rb3Stats === 'object' && rb3Stats.hasSaveData) {
               saveData = await window.api.rpcs3GetSaveDataStats()
-               console.log('struct ParsedRB3SaveData ["rbtools/src/lib/rpsc3/getSaveData.ts"]:', saveData)
+              console.log('struct ParsedRB3SaveData ["rbtools/src/lib/rpsc3/getSaveData.ts"]:', saveData)
               if (saveData) {
                 instrumentScores = await window.api.rpcs3GetInstrumentScores(saveData)
-                 console.log('struct InstrumentScoreData ["rbtools/src/lib/rpcs3/getInstrumentScoresData.ts"]:', instrumentScores)
+                console.log('struct InstrumentScoreData ["rbtools/src/lib/rpcs3/getInstrumentScoresData.ts"]:', instrumentScores)
               }
               packagesData = await window.api.rpcs3GetPackagesData()
-               console.log('struct RPCS3SongPackagesDataExtra ["rbtools/src/lib/rpcs3/rpcs3GetSongPackagesStatsExtra.ts"]:', packagesData)
+              console.log('struct RPCS3SongPackagesDataExtra ["rbtools/src/lib/rpcs3/rpcs3GetSongPackagesStatsExtra.ts"]:', packagesData)
             }
 
             setWindowState({
               rb3Stats,
               saveData,
               instrumentScores,
+              packages: packagesData,
               disableButtons: false,
             })
             setLogoScreenState({ active: false })
@@ -140,9 +141,16 @@ export function FirstTimeScreen() {
           <img src={BRAFlag} width={12} className="mr-2" />
           <h1>{t('pt-BR')}</h1>
         </button>
-        <button className={clsx('mr-2 flex-row! items-center rounded-xs border border-neutral-800 px-2 py-1 font-sans! text-xs! uppercase duration-200 last:mr-0', i18n.language === 'es-ES' ? 'bg-neutral-400 text-neutral-900 hover:bg-neutral-300 active:bg-neutral-200' : 'bg-neutral-900 hover:bg-neutral-800 active:bg-neutral-700')} onClick={() => i18n.changeLanguage('es-ES')}>
+        <button className={clsx('mr-2 flex-row! items-center rounded-xs border border-neutral-800 px-2 py-1 font-sans! text-xs! uppercase duration-200 last:mr-0', i18n.language === 'es-419' ? 'bg-neutral-400 text-neutral-900 hover:bg-neutral-300 active:bg-neutral-200' : 'bg-neutral-900 hover:bg-neutral-800 active:bg-neutral-700')} onClick={() => i18n.changeLanguage('es-419')}>
+          <img src={ARGFlag} width={12} className="mr-2" />
+          <img src={BOLFlag} width={12} className="mr-2" />
+          <img src={COLFlag} width={12} className="mr-2" />
           <img src={MEXFlag} width={12} className="mr-2" />
-          <h1>{t('es-LA')}</h1>
+          <img src={PERUFlag} width={12} className="mr-2" />
+          <img src={PARYFlag} width={12} className="mr-2" />
+          <img src={URUFlag} width={12} className="mr-2" />
+          <img src={VEZFlag} width={12} className="mr-2" />
+          <h1>{t('es-419')}</h1>
         </button>
       </div>
     </AnimatedSection>

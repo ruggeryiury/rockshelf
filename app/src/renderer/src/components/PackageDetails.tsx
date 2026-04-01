@@ -34,7 +34,7 @@ export function PackageDetails() {
       {active !== null && typeof catalog === 'object' && (
         <>
           <div className="mb-2 flex-row! items-center border-b border-white/25 pb-1">
-            <img src={active.thumbnailSrc} className="mr-2 h-16 w-16" />
+            <img src={active.thumbnailSrc} className="mr-2 h-24 w-24" />
 
             <div className="mr-auto h-full">
               <h1 className="font-pentatonicalt! text-[2rem] uppercase">{active.packageData.packageName}</h1>

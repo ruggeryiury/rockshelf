@@ -33,11 +33,11 @@ export function PackageDetails() {
     <AnimatedSection id="PackageDetails" condition={active !== null && typeof catalog === 'object'} {...animate({ opacity: true })} className="absolute! z-5 h-full max-h-full w-full max-w-full bg-black/90 p-8 backdrop-blur-lg">
       {active !== null && typeof catalog === 'object' && (
         <>
-          <div className="mb-2 flex-row! items-center border-b border-white/25 pb-1">
+          <div className="mb-2 flex-row! items-center border-b border-white/25 pb-2">
             <img src={active.thumbnailSrc} className="mr-2 h-24 w-24" />
 
             <div className="mr-auto h-full">
-              <h1 className="font-pentatonicalt! text-[2rem] uppercase">{active.packageData.packageName}</h1>
+              <h1 className="font-pentatonicalt! text-[2rem]">{active.packageData.packageName}</h1>
               <p>{t(active.songs.length === 1 ? 'songCount' : 'songCountPlural', { count: active.songs.length })}</p>
             </div>
             <button
@@ -58,15 +58,15 @@ export function PackageDetails() {
                   header.songsIndexes.length > 0 && (
                     <div className="mb-1 w-full flex-row! duration-150 last:mb-0" key={`titleHeader${headerI}`}>
                       <div className="w-full">
-                        <div className="w-full flex-row! items-center rounded-sm bg-neutral-950 px-2 py-1 mb-1">
+                        <div className="w-full flex-row! items-center rounded-b-sm bg-neutral-900 px-2 py-1 mb-1 sticky! top-0 z-100">
                           <h1 className="mr-auto text-xl">{header.name}</h1>
-                          <p className="font-pentatonic uppercase">{t(header.songsIndexes.length === 1 ? 'songCount' : 'songCountPlural', { count: header.songsIndexes.length })}</p>
+                          <p className="font-pentatonic uppercase text-neutral-500">{t(header.songsIndexes.length === 1 ? 'songCount' : 'songCountPlural', { count: header.songsIndexes.length })}</p>
                         </div>
                         {header.songsIndexes.map((songI) => {
                           const song = active.songs[songI]
                           return (
                             <div className="flex-row! items-center w-full rounded-sm border-2 mb-0.5 last:mb-1 border-white/5 p-2 hover:bg-white/5" key={`song${songI}`}>
-                              <h2 className='mr-2'>{song.name}</h2>
+                              <h2 className='font-pentatonic mr-2'>{song.name}</h2>
                               <h2 className="text-xs text-neutral-600 italic">{song.artist}</h2>{' '}
                             </div>
                           )

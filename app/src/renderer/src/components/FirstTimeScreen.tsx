@@ -90,7 +90,7 @@ export function FirstTimeScreen() {
         onClick={async () => {
           setWindowState({ disableButtons: true })
           try {
-            const save = await window.api.saveUserConfigFile({
+            await window.api.saveUserConfigFile({
               devhdd0Path,
               rpcs3ExePath,
               mostPlayedDifficulty: 3,
@@ -106,6 +106,8 @@ export function FirstTimeScreen() {
               saveData = await window.api.rpcs3GetSaveDataStats()
               console.log('struct ParsedRB3SaveData ["rbtools/src/lib/rpsc3/getSaveData.ts"]:', saveData)
               if (saveData) {
+                await window.api.saveUserConfigFile({ mostPlayedInstrument: saveData.mostPlayedInstrument })
+                setUserConfigState({ mostPlayedInstrument: saveData.mostPlayedInstrument })
                 instrumentScores = await window.api.rpcs3GetInstrumentScores(saveData)
                 console.log('struct InstrumentScoreData ["rbtools/src/lib/rpcs3/getInstrumentScoresData.ts"]:', instrumentScores)
               }
@@ -126,7 +128,7 @@ export function FirstTimeScreen() {
             if (err instanceof Error) setWindowState({ err })
           }
         }}
-        className="w-fit rounded-xs border border-neutral-800 bg-neutral-900 px-1 py-0.5 text-sm! uppercase duration-100 hover:bg-neutral-800 active:bg-neutral-700 disabled:text-neutral-700 disabled:hover:bg-neutral-900"
+        className="w-fit origin-top rounded-xs border border-neutral-800 bg-neutral-900 px-1 py-0.5 text-sm! uppercase duration-100 hover:bg-neutral-800 active:bg-neutral-700 disabled:text-neutral-700 disabled:hover:bg-neutral-900"
       >
         {t('continue')}
       </AnimatedButton>
@@ -143,13 +145,8 @@ export function FirstTimeScreen() {
         </button>
         <button className={clsx('mr-2 flex-row! items-center rounded-xs border border-neutral-800 px-2 py-1 font-sans! text-xs! uppercase duration-200 last:mr-0', i18n.language === 'es-419' ? 'bg-neutral-400 text-neutral-900 hover:bg-neutral-300 active:bg-neutral-200' : 'bg-neutral-900 hover:bg-neutral-800 active:bg-neutral-700')} onClick={() => i18n.changeLanguage('es-419')}>
           <img src={ARGFlag} width={12} className="mr-2" />
-          <img src={BOLFlag} width={12} className="mr-2" />
           <img src={COLFlag} width={12} className="mr-2" />
           <img src={MEXFlag} width={12} className="mr-2" />
-          <img src={PERUFlag} width={12} className="mr-2" />
-          <img src={PARYFlag} width={12} className="mr-2" />
-          <img src={URUFlag} width={12} className="mr-2" />
-          <img src={VEZFlag} width={12} className="mr-2" />
           <h1>{t('es-419')}</h1>
         </button>
       </div>

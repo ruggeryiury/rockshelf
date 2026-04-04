@@ -17,6 +17,8 @@ export function DialogScreen() {
   const { t } = useTranslation()
   const active = useDialogScreenState((x) => x.active)
   const setDialogScreenState = useDialogScreenState((x) => x.setDialogScreenState)
+  const disableButtons = useWindowState((x) => x.disableButtons)
+  const packages = useWindowState((x) => x.packages)
   const setWindowState = useWindowState((x) => x.setWindowState)
 
   return (
@@ -40,6 +42,7 @@ export function DialogScreen() {
                     if (err instanceof Error) setWindowState({ err })
                   }
                 }}
+                disabled={disableButtons}
               >
                 {t('deleteUserConfigData')}
               </DialogButton>
@@ -51,15 +54,44 @@ export function DialogScreen() {
                   setWindowState({ disableButtons: true })
                   try {
                     const newPackagesData = await window.api.rpcs3GetPackagesData(true)
-                    setDialogScreenState({active: null})
+                    setDialogScreenState({ active: null })
                     setWindowState({ packages: newPackagesData, disableButtons: false })
                   } catch (err) {
                     if (err instanceof Error) setWindowState({ err })
                   }
                 }}
+                disabled={disableButtons}
               >
                 {t('recreatePackagesCacheFile')}
               </DialogButton>
+            )
+          } else if (active?.startsWith('parsingErrorsOnPackagesDTA')) {
+            return (
+              <div className="items-center">
+                {typeof packages === 'object' && (
+                  <>
+                    <h2 className="mb-2">{t('affectedPackages')}</h2>
+                    {packages.parsingErrors.length > 0 &&
+                      packages.parsingErrors.map((packagePath, packagePathI) => {
+                        return (
+                          <p className="mb-2 bg-neutral-950 px-2 py-1 font-mono" key={`parsingErrorPath${packagePathI}`}>
+                            {packagePath}
+                          </p>
+                        )
+                      })}
+                  </>
+                )}
+                <div className="mt-4 flex-row! items-center">
+                  <DialogButton
+                    onClick={async () => {
+                      setDialogScreenState({ active: null })
+                    }}
+                    disabled={disableButtons}
+                  >
+                    {t('ok')}
+                  </DialogButton>
+                </div>
+              </div>
             )
           } else return null
         })()}

@@ -1,10 +1,11 @@
-import { BuzyLoadInitObject } from 'rockshelf-core'
+import type { BuzyLoadErrorObject, BuzyLoadInitObject } from 'rockshelf-core'
 import { create } from 'zustand'
 
 export interface BuzyLoadScreenStateProps {
   active: null | BuzyLoadInitObject
   step: number
   isCompleted: boolean
+  hasError: null | BuzyLoadErrorObject
 }
 
 export interface BuzyLoadScreenStateActions {
@@ -32,6 +33,7 @@ const defaultState: BuzyLoadScreenStateProps = {
   active: null,
   step: 0,
   isCompleted: false,
+  hasError: null,
 }
 
 export const useBuzyLoadScreenState = create<BuzyLoadScreenStateHook>()((set, get) => ({

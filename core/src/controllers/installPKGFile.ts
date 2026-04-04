@@ -1,7 +1,7 @@
 import { isRPCS3Devhdd0PathValid } from 'rbtools/lib'
 import type { SelectPKGFileReturnObject } from '../controllers.exports'
 import { readUserConfigFile, sendMessageBox, useHandler } from '../core.exports'
-import { installPatchTypePKGForRB3 } from '../lib.exports'
+import { installRB3PatchFromPKG } from '../lib.exports'
 
 /**
  * Installs a PKG file into the `dev_hdd0` folder.
@@ -17,10 +17,7 @@ export const installPKGFile = useHandler(async (win, _, selectedPKG: SelectPKGFi
 
   const { pkgType } = selectedPKG
 
-  if (pkgType === 'dx' || pkgType === 'tu5') {
-    await installPatchTypePKGForRB3(win, devhdd0, selectedPKG)
-    return true
-  }
+  if (pkgType === 'dx' || pkgType === 'tu5') return await installRB3PatchFromPKG(win, devhdd0, selectedPKG)
 
   return true
   //   // Only TU5 and DX and official song packages will extract and just move all files

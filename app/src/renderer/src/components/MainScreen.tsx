@@ -11,12 +11,14 @@ import { useDeluxeInstallScreenState } from './DeluxeInstallScreen.state'
 import { useMessageBoxState } from './MessageBox.state'
 import { useConfigScreenState } from './ConfigScreen.state'
 import { useMyPackagesScreenState } from './MyPackagesScreen.state'
+import { useInstallPKGScreenState } from './InstallPKGScreen.state'
 
 export function MainScreen() {
   const { t } = useTranslation()
   const active = useMainScreenState((x) => x.active)
   const rb3Stats = useWindowState((x) => x.rb3Stats)
   const saveData = useWindowState((x) => x.saveData)
+  const instrumentScores = useWindowState((x) => x.instrumentScores)
   const packages = useWindowState((x) => x.packages)
   const disableButtons = useWindowState((x) => x.disableButtons)
   const setWindowState = useWindowState((x) => x.setWindowState)
@@ -24,16 +26,36 @@ export function MainScreen() {
   const setDeluxeInstallScreenState = useDeluxeInstallScreenState((x) => x.setDeluxeInstallScreenState)
   const setConfigScreenState = useConfigScreenState((x) => x.setConfigScreenState)
   const setMyPackagesScreenState = useMyPackagesScreenState((x) => x.setMyPackagesScreenState)
+  const setInstallPKGScreenState = useInstallPKGScreenState((x) => x.setInstallPKGScreenState)
 
   return (
     <AnimatedSection id="MainScreen" condition={active} className="z-0 h-full max-h-full w-full max-w-full overflow-y-hidden p-8">
       <div className="h-full max-h-full w-full max-w-full overflow-y-auto">
         <div className="mb-4 h-12 w-full flex-row! items-center rounded-sm border border-neutral-900 bg-neutral-800 px-3 py-2">
-          {typeof rb3Stats === 'object' && rb3Stats.userName && rb3Stats.hasSaveData && (
+          {typeof rb3Stats === 'object' && rb3Stats.userName && rb3Stats.hasSaveData && typeof saveData === 'object' && typeof instrumentScores === 'object' && (
             <>
-              <div>
-                <h1 className="text-lg">{rb3Stats.userName}</h1>
-                {typeof saveData === 'object' && <h2 className="text-xs">{saveData.profileName}</h2>}
+              <div className="h-full flex-row! items-center">
+                <img title={t(instrumentScores.instrument)} src={`instrumenticons://${instrumentScores.instrument.toLowerCase()}`} className="mr-2 h-8 min-h-8 w-8 min-w-8 opacity-65" />
+                <div>
+                  <h1 className="text-lg">{rb3Stats.userName}</h1>
+                  <h2 className="text-xs">{saveData.profileName}</h2>
+                </div>
+                <div className="mx-4 h-full w-0.5 bg-white/50" />
+                <div className="mr-4">
+                  <h1 className="text-[0.65rem] uppercase">{t('totalScore')}</h1>
+                  <h2 className="font-pentatonic text-sm">{instrumentScores.scoreCount}</h2>
+                </div>
+                {typeof packages === 'object' && (
+                  <div className="">
+                    <h1 className="text-[0.65rem] uppercase">{t('starsCount')}</h1>
+                    <div className="flex-row! items-center">
+                      <img title={t(instrumentScores.instrument)} src='rbicons://rb4-stars' className="mr-1 h-3 min-h-3 w-3 min-w-3 relative! top-[0.05rem]" />
+                      <h2 className="font-pentatonic text-sm">
+                        {instrumentScores.starsCount}/{packages.starsCount}
+                      </h2>
+                    </div>
+                  </div>
+                )}
               </div>
               <div className="mr-auto"></div>
             </>
@@ -45,7 +67,7 @@ export function MainScreen() {
           )}
           {rb3Stats === 'loading' && (
             <>
-              <p className="mr-auto self-start text-xs text-neutral-500 italic">{t('loadingRB3Data')}</p>
+              <p className="mr-auto self-start text-base text-neutral-500 italic">{t('loadingRB3Data')}</p>
             </>
           )}
           <button
@@ -56,15 +78,15 @@ export function MainScreen() {
               try {
                 setTimeout(async () => {
                   const newRB3Stats = await window.api.rpcs3GetRB3Stats()
-                   console.log('struct RockBand3Data ["rbtools/src/lib/rpcs3/rpcs3GetRB3Stats.ts"]:', rb3Stats)
+                  console.log('struct RockBand3Data ["rbtools/src/lib/rpcs3/rpcs3GetRB3Stats.ts"]:', rb3Stats)
                   let newSaveData: ParsedRB3SaveData | false = false
                   let newInstrumentScores: InstrumentScoreData | false = false
                   if (typeof rb3Stats === 'object' && (rb3Stats.hasSaveData || rb3Stats.userName !== null)) {
                     newSaveData = await window.api.rpcs3GetSaveDataStats()
-                     console.log('struct ParsedRB3SaveData ["rbtools/src/lib/rpsc3/getSaveData.ts"]:', newSaveData)
+                    console.log('struct ParsedRB3SaveData ["rbtools/src/lib/rpsc3/getSaveData.ts"]:', newSaveData)
                     if (newSaveData) {
                       newInstrumentScores = await window.api.rpcs3GetInstrumentScores(newSaveData)
-                       console.log('struct InstrumentScoreData ["rbtools/src/lib/rpcs3/getInstrumentScoresData.ts"]:', newInstrumentScores)
+                      console.log('struct InstrumentScoreData ["rbtools/src/lib/rpcs3/getInstrumentScoresData.ts"]:', newInstrumentScores)
                     }
                   }
                   setWindowState({ disableButtons: false, rb3Stats: newRB3Stats, saveData: newSaveData, instrumentScores: newInstrumentScores })
@@ -84,6 +106,7 @@ export function MainScreen() {
                 <img src={`rbicons://${rb3Stats.hasDeluxe ? 'dx' : 'rb3'}`} className={clsx(!rb3Stats.hasGameInstalled && 'grayscale', 'mr-4 mb-2 h-48 min-h-48 w-48 min-w-48 duration-200')} />
                 <button
                   className="mb-2 w-full self-start rounded-xs border border-neutral-700 bg-neutral-900 px-1 py-0.5 text-xs! uppercase duration-100 last:mb-0 hover:bg-neutral-700 active:bg-neutral-600 disabled:text-neutral-700 disabled:hover:bg-neutral-900"
+                  disabled={disableButtons}
                   onClick={async () => {
                     setDeluxeInstallScreenState({ active: true })
                   }}
@@ -92,6 +115,29 @@ export function MainScreen() {
                 </button>
                 <button
                   className="mb-2 w-full self-start rounded-xs border border-neutral-700 bg-neutral-900 px-1 py-0.5 text-xs! uppercase duration-100 last:mb-0 hover:bg-neutral-700 active:bg-neutral-600 disabled:text-neutral-700 disabled:hover:bg-neutral-900"
+                  disabled={disableButtons}
+                  onClick={async () => {
+                    setWindowState({ disableButtons: true })
+                    const selectedPKG = await window.api.selectPKGFileToInstall()
+                    console.log('struct SelectPKGFileReturnObject [core/src/controllers/selectPKGFileToInstall.ts]', selectedPKG)
+
+                    if (selectedPKG) {
+                      if (selectedPKG.pkgType === 'tu5') {
+                        setMessageBoxState({ message: { type: 'error', method: 'selectPKG', code: 'TU5NotSupported' } })
+                      } else if (selectedPKG.pkgType === 'dx') {
+                        setDeluxeInstallScreenState({ active: true, selectedPKG })
+                      } else {
+                        setInstallPKGScreenState({ selectedPKG })
+                      }
+                    }
+                    setWindowState({ disableButtons: false })
+                  }}
+                >
+                  {t('installPackage')}
+                </button>
+                {/* <button
+                  className="mb-2 w-full self-start rounded-xs border border-neutral-700 bg-neutral-900 px-1 py-0.5 text-xs! uppercase duration-100 last:mb-0 hover:bg-neutral-700 active:bg-neutral-600 disabled:text-neutral-700 disabled:hover:bg-neutral-900"
+                  disabled={disableButtons}
                   onClick={async () => {
                     setWindowState({ disableButtons: true })
                     // if (!packages) {
@@ -100,23 +146,21 @@ export function MainScreen() {
                   }}
                 >
                   {t('createNewPackage')}
-                </button>
+                </button> */}
                 <button
                   className="mb-2 w-full self-start rounded-xs border border-neutral-700 bg-neutral-900 px-1 py-0.5 text-xs! uppercase duration-100 last:mb-0 hover:bg-neutral-700 active:bg-neutral-600 disabled:text-neutral-700 disabled:hover:bg-neutral-900"
+                  disabled={disableButtons}
                   onClick={async () => {
-                    setWindowState({ disableButtons: true })
                     setMyPackagesScreenState({ active: true })
-                    setWindowState({ disableButtons: false })
                   }}
                 >
                   {t('myPackages')}
                 </button>
                 <button
                   className="mb-2 w-full self-start rounded-xs border border-neutral-700 bg-neutral-900 px-1 py-0.5 text-xs! uppercase duration-100 last:mb-0 hover:bg-neutral-700 active:bg-neutral-600 disabled:text-neutral-700 disabled:hover:bg-neutral-900"
+                  disabled={disableButtons}
                   onClick={async () => {
-                    setWindowState({ disableButtons: true })
                     setConfigScreenState({ active: true })
-                    setWindowState({ disableButtons: false })
                   }}
                 >
                   {t('configurations')}

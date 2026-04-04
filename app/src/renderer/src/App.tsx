@@ -1,5 +1,5 @@
 import { useEffect } from 'react'
-import { BuzyLoadScreen, ConfigScreen, CreateNewPackageScreen, DeluxeInstallScreen, DialogScreen, FatalErrorScreen, FirstTimeScreen, LogoScreen, MainScreen, MessageBox, MyPackagesScreen, Topbar, WindowFrame } from './components.exports'
+import { BuzyLoadScreen, ConfigScreen, CreateNewPackageScreen, DeluxeInstallScreen, DialogScreen, FatalErrorScreen, FirstTimeScreen, InstallPKGScreen, LogoScreen, MainScreen, MessageBox, MyPackagesScreen, Topbar, WindowFrame } from './components.exports'
 import { useWindowState } from './stores/Window.state'
 import { useFirstTimeScreenState } from './components/FirstTimeScreen.state'
 import { useTranslation } from 'react-i18next'
@@ -105,18 +105,19 @@ export function App() {
 
   useEffect(function initBuzyLoadListener() {
     window.api.onBuzyLoad((_, func) => {
-      {
-        if (func.code === 'init') console.log('struct BuzyLoadInitObject [core/src/core/rendererSenders.ts]', func)
-        else console.log('struct BuzyLoadObject [core/src/core/rendererSenders.ts]', func)
-      }
+      if (func.code === 'init') console.log('struct BuzyLoadInitObject [core/src/lib/senders/buzyLoad.ts]', func)
+      else if (func.code === 'throwError') console.log('struct BuzyLoadErrorObject [core/src/lib/senders/buzyLoad.ts]', func)
+      else console.log('struct BuzyLoadObject [core/src/lib/senders/buzyLoad.ts]', func)
+
       if (func.code === 'init') {
         setBuzyLoadScreenState({ active: func })
+      } else if (func.code === 'throwError') {
+        setBuzyLoadScreenState({ hasError: func })
       } else if (func.code === 'incrementStep') {
         setBuzyLoadScreenState((oldState) => ({ step: oldState.step + 1 }))
       } else if (func.code === 'callSuccess') {
         setBuzyLoadScreenState({ isCompleted: true })
       }
-      //  else if (func.code === 'throwError') { }
     })
   }, [])
 
@@ -134,6 +135,7 @@ export function App() {
         <DialogScreen />
         <FatalErrorScreen />
         <FirstTimeScreen />
+        <InstallPKGScreen />
         <LogoScreen />
         <MainScreen />
         <MessageBox />

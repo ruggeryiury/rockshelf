@@ -1,3 +1,4 @@
+export * from './controllers/deletePackageThumbnails'
 export * from './controllers/deleteUserConfigAndRestart'
 export * from './controllers/getDTACatalog'
 export * from './controllers/installHighMemoryPatch'

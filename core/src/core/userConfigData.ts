@@ -1,6 +1,6 @@
 import type { ScoreDataInstrumentTypes } from 'rbtools'
 import { BrowserWindow, shell } from 'electron'
-import { getRockshelfUserDataDir, getUserConfigFile } from './fs'
+import { getPackagesCacheFile, getRockshelfUserDataDir, getUserConfigFile } from './fs'
 import { sendMessageBox } from './rendererSenders'
 
 export interface UserConfigObject {
@@ -48,14 +48,18 @@ export const readUserConfigFile = async (): Promise<UserConfigObject | undefined
   if (userConfigFile.exists) return await userConfigFile.readJSON<UserConfigObject>()
 }
 
-export const saveUserConfigFile = async (newConfig: Partial<UserConfigObject>): Promise<string> => {
+export const saveUserConfigFile = async (newConfig?: Partial<UserConfigObject>): Promise<string> => {
   const userConfigFilePath = getUserConfigFile()
   const oldConfig = await readUserConfigFile()
-  const value: UserConfigObject = {
+  const defaultValues: UserConfigObject = {
     devhdd0Path: '',
     rpcs3ExePath: '',
     mostPlayedInstrument: 'band',
     mostPlayedDifficulty: 3,
+  }
+
+  const value: UserConfigObject = {
+    ...defaultValues,
     ...oldConfig,
     ...newConfig,
   }
@@ -64,7 +68,12 @@ export const saveUserConfigFile = async (newConfig: Partial<UserConfigObject>): 
   return userConfigFilePath.path
 }
 
-export const deleteUserConfigFile = async () => {
+export const deleteUserConfigFile = async (): Promise<void> => {
   const userConfigFile = getUserConfigFile()
   if (userConfigFile.exists) await userConfigFile.delete()
+}
+
+export const deletePackagesCacheFile = async (): Promise<void> => {
+  const packagesCacheFile = getPackagesCacheFile()
+  if (packagesCacheFile.exists) await packagesCacheFile.delete()
 }

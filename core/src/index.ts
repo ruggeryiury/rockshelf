@@ -25,6 +25,15 @@ export async function initRockshelfMainProcess(options: CreateWindowOptions): Pr
     return net.fetch(pathToFileURL(filePath.path).toString())
   })
 
+   protocol.handle('instrumenticons', (request) => {
+    const root = getRockshelfModuleRootDir()
+    const code = request.url.slice('instrumenticons://'.length)
+    let filePath = root.gotoFile(`bin/icons/instrument-icons-${code}.webp`)
+    if (!filePath.exists) filePath = root.gotoFile(`bin/icons/custom.webp`)
+
+    return net.fetch(pathToFileURL(filePath.path).toString())
+  })
+
   protocol.handle('rb3packimg', async (request) => {
     const userConfig = await readUserConfigFile()
     if (!userConfig) throw new Error('User config file not found, aborting...')

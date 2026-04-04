@@ -17,10 +17,9 @@ export const refreshPackagesData = useHandler(async (win, _): Promise<RPCS3SongP
 
   const cache = getPackagesCacheFile()
   const packagesData = await rpcs3GetSongPackagesStatsExtra(devhdd0)
-  if (packagesData) {
-    await cache.write(JSON.stringify(packagesData))
-    const now = new Date()
-    await utimes(cache.path, now, now)
-  }
+  await cache.write(JSON.stringify(packagesData))
+  const now = new Date()
+  await utimes(cache.path, now, now)
+  if (packagesData.parsingErrors.length > 0) sendDialog(win, 'parsingErrorsOnPackagesDTA')
   return packagesData
 })

@@ -1,11 +1,11 @@
-// Basic functionality extracted the RBTools.
-
 import { createHashFromBuffer, DirPath, FilePath, MyObject, parseReadableBytesSize, pathLikeToDirPath, type DirPathLikeTypes } from 'node-lib'
 import { DTAParser, EDATFile, RBTools } from 'rbtools'
 import { getOfficialSongPackageStatsFromHash, isRPCS3Devhdd0PathValid, rpcs3GenSongPackageManifest, type OfficialSongPackageStats, type RB3CompatibleDTAFile } from 'rbtools/lib'
 import { useDefaultOptions } from 'use-default-options'
 import { getRB1USRDIR, getRB3USRDIR, getRockshelfModuleRootDir } from '../../core.exports'
 import { createRSPackImageV1, parseRSPackImageFile, type RSPackImageV1Object } from '../../lib.exports'
+
+// #region Types
 
 export interface RPCS3SongPackagesObjectExtra {
   /**
@@ -122,6 +122,10 @@ export interface RPCS3SongPackagesDataExtra {
    * An array with objects that represents an installed song package and its properties.
    */
   packages: RPCS3SongPackagesObjectExtra[]
+  /**
+   * An array with paths to packages where the DTA parsing process went wrong
+   */
+  parsingErrors: string[]
 }
 
 export interface RPCS3PackageFilesManifestData {
@@ -146,6 +150,8 @@ export interface RPCS3SongPackageStatsOptions {
   excludeRB3Songs?: boolean
 }
 
+// #region Functions
+
 /**
  * Returns an object with statistics of installed Rock Band song packages on RPCS3 emulator.
  * - - - -
@@ -158,6 +164,7 @@ export const rpcs3GetSongPackagesStatsExtra = async (devhdd0Path: DirPathLikeTyp
   const devhdd0 = isRPCS3Devhdd0PathValid(devhdd0Path)
 
   const packages: RPCS3SongPackagesObjectExtra[] = []
+  const parsingErrors: string[] = []
 
   if (!excludeRB3Songs) {
     const rb3SongsJSON = await RBTools.dbFolder.gotoFile('rb3.json').readJSON<RB3CompatibleDTAFile[]>()
@@ -207,7 +214,7 @@ export const rpcs3GetSongPackagesStatsExtra = async (devhdd0Path: DirPathLikeTyp
 
   const rb3UsrDir = getRB3USRDIR(devhdd0)
   if (rb3UsrDir.exists) {
-    const allRB3PackagesFolder = (await rb3UsrDir.readDir()).filter((entry) => entry instanceof DirPath && entry.name !== 'gen') as DirPath[]
+    const allRB3PackagesFolder = (await rb3UsrDir.readDir()).filter((entry) => entry instanceof DirPath && entry.name !== 'gen' && entry.name !== 'custom_textures') as DirPath[]
 
     if (allRB3PackagesFolder.length > 0) {
       for (const packagePath of allRB3PackagesFolder) {
@@ -215,7 +222,14 @@ export const rpcs3GetSongPackagesStatsExtra = async (devhdd0Path: DirPathLikeTyp
 
         if (!dtaFilePath.exists) continue
 
-        const parsedData = await DTAParser.fromFile(dtaFilePath)
+        let parsedData: DTAParser
+        try {
+          parsedData = await DTAParser.fromFile(dtaFilePath)
+        } catch (err) {
+          parsingErrors.push(`BLUS30463/USRDIR/${packagePath.name}`)
+          continue
+        }
+
         parsedData.sort('ID')
 
         const devklic = EDATFile.genDevKLicHash(packagePath.name)
@@ -279,7 +293,13 @@ export const rpcs3GetSongPackagesStatsExtra = async (devhdd0Path: DirPathLikeTyp
 
         if (!dtaFilePath.exists) continue
 
-        const parsedData = await DTAParser.fromFile(dtaFilePath)
+        let parsedData: DTAParser
+        try {
+          parsedData = await DTAParser.fromFile(dtaFilePath)
+        } catch (err) {
+          parsingErrors.push(`BLUS30050/USRDIR/${packagePath.name}`)
+          continue
+        }
         await parsedData.applyDXUpdatesOnSongs(true)
 
         if (parsedData.songs.length === 0) continue
@@ -356,9 +376,9 @@ export const rpcs3GetSongPackagesStatsExtra = async (devhdd0Path: DirPathLikeTyp
     allSongsCount,
     allSongsPlusRB3,
     starsCount,
-
     allPackagesSize,
     packages,
+    parsingErrors,
   })
 
   return obj.toJSON()

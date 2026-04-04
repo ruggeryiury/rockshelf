@@ -1,5 +1,5 @@
 import { utimes } from 'node:fs/promises'
-import { getPackagesCacheFile, readUserConfigFile, sendDialog, useHandler } from '../core.exports'
+import { getPackagesCacheFile, readUserConfigFile, sendDialog, sendMessageBox, useHandler } from '../core.exports'
 import { genPackImageToAllPackages, rpcs3GetSongPackagesStatsExtra, type RPCS3SongPackagesDataExtra } from '../lib.exports'
 import { isRPCS3Devhdd0PathValid } from 'rbtools/lib'
 
@@ -19,11 +19,10 @@ export const rpcs3GetPackagesData = useHandler(async (win, _, forceUpdate: boole
 
   if (forceUpdate || !cache.exists) {
     const packagesData = await rpcs3GetSongPackagesStatsExtra(devhdd0)
-    if (packagesData) {
-      await cache.write(JSON.stringify(packagesData))
-      const now = new Date()
-      await utimes(cache.path, now, now)
-    }
+    await cache.write(JSON.stringify(packagesData))
+    const now = new Date()
+    await utimes(cache.path, now, now)
+    if (packagesData.parsingErrors.length > 0) sendDialog(win, 'parsingErrorsOnPackagesDTA')
     return packagesData
   }
 
@@ -40,7 +39,7 @@ export const rpcs3GetPackagesData = useHandler(async (win, _, forceUpdate: boole
       await genPackImageToAllPackages(devhdd0)
       const cacheContents = await cache.readJSON<RPCS3SongPackagesDataExtra>()
       if (typeof cacheContents !== 'object' || (typeof cacheContents !== 'object' && typeof cacheContents === null)) throw new Error(`Rockshelf's cache file returned a ${typeof cacheContents} and it's not valid.`)
-
+      if (cacheContents.parsingErrors.length > 0) sendDialog(win, 'parsingErrorsOnPackagesDTA')
       return cacheContents
     } catch (err) {
       sendDialog(win, 'corruptedPackagesCache')
@@ -49,10 +48,10 @@ export const rpcs3GetPackagesData = useHandler(async (win, _, forceUpdate: boole
   }
 
   const packagesData = await rpcs3GetSongPackagesStatsExtra(devhdd0)
-  if (packagesData) {
-    await cache.write(JSON.stringify(packagesData))
-    const now = new Date()
-    await utimes(cache.path, now, now)
-  }
+  await cache.write(JSON.stringify(packagesData))
+  const now = new Date()
+  await utimes(cache.path, now, now)
+  if (packagesData.parsingErrors.length > 0) sendDialog(win, 'parsingErrorsOnPackagesDTA')
+
   return packagesData
 })

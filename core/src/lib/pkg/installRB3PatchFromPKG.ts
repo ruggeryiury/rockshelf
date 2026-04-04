@@ -5,19 +5,32 @@ import { getRB3USRDIR, sendBuzyLoad } from '../../core.exports'
 import type { BrowserWindow } from 'electron'
 import { BinaryAPI } from '../../lib.exports'
 
-export const installPatchTypePKGForRB3 = async (win: BrowserWindow, devhdd0Path: DirPathLikeTypes, selectedPKG: SelectPKGFileReturnObject): Promise<boolean> => {
+export const installRB3PatchFromPKG = async (win: BrowserWindow, devhdd0Path: DirPathLikeTypes, selectedPKG: SelectPKGFileReturnObject): Promise<boolean> => {
   sendBuzyLoad(win, { code: 'init', title: selectedPKG.pkgType === 'dx' ? 'installingRB3DX' : 'installingTU5', steps: selectedPKG.pkgType === 'dx' ? ['extractingDeluxePKG', 'installingRB3DX'] : ['extractingTU5PKG', 'installingTU5'], onCompleted: ['refreshRB3Stats', 'resetDeluxeInstallScreenState'] })
   const rb3GameFolder = getRB3USRDIR(devhdd0Path).gotoDir('../')
   let tempFolderPath: DirPath
 
   try {
     tempFolderPath = await BinaryAPI.ps3pPKGRipper(selectedPKG.pkgPath, temporaryDirectory())
+    sendBuzyLoad(win, { code: 'incrementStep' })
   } catch (err) {
-    sendBuzyLoad(win, { code: 'throwError' })
+    if (err instanceof Error)
+      sendBuzyLoad(win, {
+        code: 'throwError',
+        errorName: 'errorUnpackingPKGFile',
+        messageValues: {
+          path: selectedPKG.pkgPath,
+        },
+        error: {
+          message: err.message,
+          stack: err.stack,
+          name: err.name,
+          cause: err.cause,
+        },
+      })
     return false
   }
 
-  sendBuzyLoad(win, { code: 'incrementStep' })
   for (const entry of await tempFolderPath.readDir(true)) {
     const relPath = entry.path.slice(tempFolderPath.path.length + 1)
     if (entry instanceof DirPath) {

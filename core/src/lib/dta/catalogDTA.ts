@@ -1,7 +1,10 @@
-import type { RB3CompatibleDTAFile } from 'rbtools/lib'
+import { dta, sortDTA, type RB3CompatibleDTAFile } from 'rbtools/lib'
 import { leadingArticleToTrailing } from 'rbtools/utils'
 
-export interface DTACatalogByTitleHeaders {
+export interface DTACatalogGenericHeaders {
+  /**
+   * The name of header (in English).
+   */
   name: string
   code: string
   songsIndexes: number[]
@@ -9,42 +12,50 @@ export interface DTACatalogByTitleHeaders {
 
 export interface DTACatalogByTitleObject {
   type: 'title'
-  headers: DTACatalogByTitleHeaders[]
+  headers: DTACatalogGenericHeaders[]
 }
 
-export type DTACatalogTypes = 'title' | 'artist'
+export interface DTACatalogByGenreObject {
+  type: 'genre'
+  headers: DTACatalogGenericHeaders[]
+}
 
-export const catalogDTAByTitle = (songs: RB3CompatibleDTAFile[]): DTACatalogByTitleObject => {
+export type DTACatalogTypes = 'title' | 'artist' | 'genre'
+
+/**
+ *
+ * @param songs
+ * @param filterEmptyHeader `OPTIONAL` Default is `true`.
+ * @returns
+ */
+export const catalogDTAByTitle = (songs: RB3CompatibleDTAFile[], filterEmptyHeader: boolean = true): DTACatalogByTitleObject => {
   const sortedSongs = songs
     .map((val, valI) => ({ ...val, index: valI }))
     .sort((a, b) => {
-      if (leadingArticleToTrailing(a.name).toLocaleLowerCase() > leadingArticleToTrailing(b.name).toLocaleLowerCase()) return 1
-      else if (leadingArticleToTrailing(a.name).toLocaleLowerCase() < leadingArticleToTrailing(b.name).toLocaleLowerCase()) return -1
+      if (leadingArticleToTrailing(a.name).toLowerCase() > leadingArticleToTrailing(b.name).toLowerCase()) return 1
+      else if (leadingArticleToTrailing(a.name).toLowerCase() < leadingArticleToTrailing(b.name).toLowerCase()) return -1
+      else if (leadingArticleToTrailing(a.artist).toLowerCase() > leadingArticleToTrailing(b.artist).toLowerCase()) return 1
+      else if (leadingArticleToTrailing(a.artist).toLowerCase() < leadingArticleToTrailing(b.artist).toLowerCase()) return -1
       else return 0
     })
 
   const charZCode = 0x7a
-  const headers = [
+  const headers: DTACatalogGenericHeaders[] = [
     {
       name: '123',
       code: 'titleSymbols',
       songsIndexes: [],
-    } as DTACatalogByTitleHeaders,
-    ...(() => {
-      const charArray = [] as DTACatalogByTitleHeaders[]
+    },
+  ] as DTACatalogGenericHeaders[]
 
-      for (let i = 0x61; i <= charZCode; i++) {
-        const letter = Buffer.from([i]).toString()
-        charArray.push({
-          name: letter.toUpperCase(),
-          code: `title${letter.toUpperCase()}`,
-          songsIndexes: [],
-        })
-      }
-
-      return charArray
-    })(),
-  ] as DTACatalogByTitleHeaders[]
+  for (let i = 0x61; i <= charZCode; i++) {
+    const letter = Buffer.from([i]).toString()
+    headers.push({
+      name: letter.toUpperCase(),
+      code: `title${letter.toUpperCase()}`,
+      songsIndexes: [],
+    })
+  }
 
   for (const song of sortedSongs) {
     const nameWOLeadingArticle = leadingArticleToTrailing(song.name)
@@ -58,6 +69,49 @@ export const catalogDTAByTitle = (songs: RB3CompatibleDTAFile[]): DTACatalogByTi
 
   return {
     type: 'title',
-    headers,
+    headers: filterEmptyHeader ? headers.filter((val) => val.songsIndexes.length > 0) : headers,
+  }
+}
+
+/**
+ *
+ * @param songs
+ * @param filterEmptyHeader `OPTIONAL` Default is `true`.
+ * @returns
+ */
+export const catalogDTAByGenre = (songs: RB3CompatibleDTAFile[], filterEmptyHeader: boolean = true): DTACatalogByGenreObject => {
+  const sortedSongs = songs
+    .map((val, valI) => ({ ...val, index: valI }))
+    .sort((a, b) => {
+      if (leadingArticleToTrailing(a.name).toLowerCase() > leadingArticleToTrailing(b.name).toLowerCase()) return 1
+      else if (leadingArticleToTrailing(a.name).toLowerCase() < leadingArticleToTrailing(b.name).toLowerCase()) return -1
+      else if (leadingArticleToTrailing(a.artist).toLowerCase() > leadingArticleToTrailing(b.artist).toLowerCase()) return 1
+      else if (leadingArticleToTrailing(a.artist).toLowerCase() < leadingArticleToTrailing(b.artist).toLowerCase()) return -1
+      else return 0
+    })
+
+  const headers: DTACatalogGenericHeaders[] = [
+    // ...(() => {
+    //   const genres: DTACatalogGenericHeaders[] = []
+    //   return genres
+    // })(),
+  ] as DTACatalogGenericHeaders[]
+
+  const allGenres = { ...dta.genre, ...dta.genreDX }
+
+  for (const key of Object.keys(allGenres).toSorted() as (keyof typeof allGenres)[]) {
+    headers.push({ name: allGenres[key], code: key, songsIndexes: [] })
+  }
+
+  for (const song of sortedSongs) {
+    const genre = song.customsource?.genre || song.genre
+
+    const i = headers.findIndex((val) => val.code.toLowerCase() === genre.toLowerCase())
+    if (i > -1 && i in headers) headers[i].songsIndexes.push(song.index)
+  }
+
+  return {
+    type: 'genre',
+    headers: filterEmptyHeader ? headers.filter((val) => val.songsIndexes.length > 0) : headers,
   }
 }

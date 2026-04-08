@@ -39,11 +39,12 @@ export function InstallPKGScreen() {
                 <img src={thumbnailPath || 'rbicons://custom'} className="h-48 min-h-48 w-48 min-w-48" />
               </div>
               <div className="w-full">
-                <h1 className="mb-1 uppercase">{t('pkgPath')}</h1>
-                <p className="mb-3 font-mono">{selectedPKG.pkgPath}</p>
-                <h1 className="mb-1 uppercase">{t('pkgSize')}</h1>
-                <p className="mb-3 font-mono">{getReadableBytesSize(selectedPKG.pkgSize)}</p>
-                <h1 className="mb-1 uppercase">{t('packageFolderName')}</h1>
+                <h1 className="mb-0.5 text-xs text-gray-400 uppercase">{t('pkgPath')}</h1>
+                <p className="mb-4 font-mono text-xs">{selectedPKG.pkgPath}</p>
+                <h1 className="mb-0.5 text-xs text-gray-400 uppercase">{t('pkgSize')}</h1>
+                <p className="mb-4 font-mono text-xs">{getReadableBytesSize(selectedPKG.pkgSize)}</p>
+                <h1 className="mb-0.5 text-xs text-gray-400 uppercase">{t('packageFolderName')}</h1>
+                <p className='mb-2'>{t('packageFolderNameDesc')}</p>
                 <input className="h-7 rounded-xs bg-neutral-900 px-2" value={packageFolderName} onChange={(ev) => setInstallPKGScreenState({ packageFolderName: ev.target.value })} />
                 {/* <p>{JSON.stringify(selectedPKG.stat, null, 4)}</p> */}
               </div>

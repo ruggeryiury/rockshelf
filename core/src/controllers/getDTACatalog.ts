@@ -1,5 +1,5 @@
 import { getPackagesCacheFile, useHandler } from '../core.exports'
-import { catalogDTAByTitle, type DTACatalogTypes, type RPCS3SongPackagesDataExtra } from '../lib.exports'
+import { catalogDTAByGenre, catalogDTAByTitle, type DTACatalogTypes, type RPCS3SongPackagesDataExtra } from '../lib.exports'
 
 export const getDTACatalog = useHandler(async (win, _, packageIndex: number, type: DTACatalogTypes = 'title') => {
   const cache = getPackagesCacheFile()
@@ -13,5 +13,7 @@ export const getDTACatalog = useHandler(async (win, _, packageIndex: number, typ
     case 'title':
     default:
       return catalogDTAByTitle(songs)
+    case 'genre':
+      return catalogDTAByGenre(songs)
   }
 })

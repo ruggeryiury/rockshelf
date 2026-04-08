@@ -1,10 +1,12 @@
-import { type DTACatalogByTitleObject } from 'rockshelf-core'
+import { DTACatalogByGenreObject, DTACatalogTypes, type DTACatalogByTitleObject } from 'rockshelf-core'
 import { create } from 'zustand'
 
 export interface MyPackagesScreenStateProps {
   active: boolean
   selPKG: number
-  catalog: DTACatalogByTitleObject | false | 'loading'
+  catalog: DTACatalogByTitleObject | DTACatalogByGenreObject | false | 'loading'
+  catalogSortBy: DTACatalogTypes
+  packageDetailsTab: number
   hoveredPKG: number
   selSong: number
   isArtworkLoading: boolean
@@ -36,6 +38,8 @@ const defaultState: MyPackagesScreenStateProps = {
   active: false,
   selPKG: -1,
   catalog: false,
+  catalogSortBy: 'title',
+  packageDetailsTab: 0,
   hoveredPKG: -1,
   selSong: -1,
   isArtworkLoading: true,

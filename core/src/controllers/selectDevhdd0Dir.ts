@@ -1,6 +1,6 @@
 import { dialog } from 'electron'
 import { sendMessageBox, useHandler } from '../core.exports'
-import { isRPCS3Devhdd0PathValid } from 'rbtools/lib'
+import { isRPCS3Devhdd0PathValid } from '../lib/rbtools/lib.exports'
 
 /**
  * Opens a prompt for the user to select a valid `dev_hdd0` folder.

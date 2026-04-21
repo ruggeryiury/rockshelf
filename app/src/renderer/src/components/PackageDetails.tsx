@@ -322,8 +322,17 @@ export function PackageDetails() {
                     </div>
                     <p className="mb-2">{active.name}</p>
 
-                    <div className="mb-1 border-b border-white/25 pb-1">
-                      <h1 className="text-lg uppercase">{t('packagePath')}</h1>
+                    <div className="mb-1 flex-row! items-center border-b border-white/25 pb-1">
+                      <h1 className="mr-auto text-lg uppercase">{t('packagePath')}</h1>
+                      <button
+                        disabled={disableButtons}
+                        className="w-fit self-start rounded-xs border border-neutral-700 bg-neutral-900 px-1 py-0.5 text-xs! uppercase duration-100 hover:bg-neutral-700 active:bg-neutral-600 disabled:text-neutral-700 disabled:hover:bg-neutral-900"
+                        onClick={async () => {
+                          await window.api.openFolderInExplorer(active.path)
+                        }}
+                      >
+                        {t('openPackageFolder')}
+                      </button>
                     </div>
                     <p className="mb-2 font-mono">{active.path}</p>
                   </>
@@ -336,8 +345,22 @@ export function PackageDetails() {
 
                 {active.official?.code !== 'rb3' && (
                   <>
-                    <div className="mb-1 border-b border-white/25 pb-1">
-                      <h1 className="uppercase">{t('packageHash')}</h1>
+                    <div className="mb-1 flex-row! items-center border-b border-white/25 pb-1">
+                      <h1 className="mr-auto text-lg uppercase">{t('packageHash')}</h1>
+                      <button
+                        disabled={disableButtons}
+                        className="w-fit self-start rounded-xs border border-neutral-700 bg-neutral-900 px-1 py-0.5 text-xs! uppercase duration-100 hover:bg-neutral-700 active:bg-neutral-600 disabled:text-neutral-700 disabled:hover:bg-neutral-900"
+                        onClick={async () => {
+                          try {
+                            await navigator.clipboard.writeText(active.contentsHash)
+                            setMessageBoxState({ message: { type: 'info', method: 'packageHash', code: 'copiedToClipboard' } })
+                          } catch (err) {
+                            setMessageBoxState({ message: { type: 'error', method: 'packageHash', code: 'copiedToClipboard' } })
+                          }
+                        }}
+                      >
+                        {t('copyHash')}
+                      </button>
                     </div>
                     <p className="mb-2 font-mono">{active.contentsHash}</p>
                   </>
@@ -370,9 +393,9 @@ export function PackageDetails() {
                     onClick={async () => {
                       setWindowState({ disableButtons: true })
                       try {
-                        const imgStats = await window.api.selectImageForPackage(active.path)
+                        const imgStats = await window.api.loadImageForCrop(active.path)
                         if (imgStats) {
-                          setImageCropScreenState({ imgPath: imgStats.path, imgDataURL: imgStats.dataURL })
+                          setImageCropScreenState({ imgPath: imgStats.path, imgDataURL: imgStats.dataURL, func: 'packageDetails' })
                           setMessageBoxState({ message: null })
                         }
                       } catch (err) {

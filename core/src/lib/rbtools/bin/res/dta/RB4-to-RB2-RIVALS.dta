@@ -1,0 +1,2445 @@
+(
+   'sink'
+   (
+      'name'
+      "Sink"
+   )
+   (
+      'artist'
+      "Animal Flag"
+   )
+   ('master' 1)
+   (
+      'song'
+      ('name' 'songs/sink/sink')
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1)
+            )
+            (
+               'bass'
+               (2 3)
+            )
+            (
+               'guitar'
+               (4 5)
+            )
+            (
+               'vocals'
+               (6 7)
+            )
+         )
+      )
+      (
+         'pans'
+         (-1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0)
+      )
+      (
+         'vols'
+         (-4.0 -4.0 -4.0 -4.0 -4.0 -4.0 -4.0 -4.0 -4.0 -4.0)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 1 1 -1 -1 -1 -1)
+      )
+      ('vocal_parts' 1)
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+      ('midi_file' 'songs/sink/sink.mid')
+   )
+   ('song_scroll_speed' 2300)
+   ('bank' 'sfx/tambourine_bank.milo')
+   ('anim_tempo' 'kTempoMedium')
+   ('song_length' 200790)
+   ('preview' 91931 121931)
+   (
+      'rank'
+      ('band' 260)
+      ('guitar' 230)
+      ('drum' 300)
+      ('bass' 285)
+      ('vocals' 170)
+   )
+   ('genre' 'indierock')
+   ('vocal_gender' 'male')
+   ('version' 0)
+   ('format' 4)
+   ('album_art' 1)
+   ('year_released' 2016)
+   ('rating' 1)
+   ('sub_genre' 'subgenre_other')
+   ('song_id' 6021)
+   ('tuning_offset_cents' 0.0)
+   ('vocal_tonic_note' 7)
+   ('game_origin' 'rb4_rivals')
+   (
+      'album_name'
+      "Boston Sessions, Vol. 1: Beast"
+   )
+   ('album_track_number' 1)
+   ('ugc' 0)
+   (
+      'author'
+      "Harmonix, Rhythm Authors"
+   )
+   ('context' 2000)
+   ('decade' 'the10s')
+   ('downloaded' 'TRUE')
+   ('base_points' 0)
+)
+
+(
+   'shadow'
+   (
+      'name'
+      "Shadow"
+   )
+   (
+      'artist'
+      "Bearstronaut"
+   )
+   ('master' 1)
+   (
+      'song'
+      ('name' 'songs/shadow/shadow')
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1)
+            )
+            (
+               'bass'
+               (2 3)
+            )
+            (
+               'guitar'
+               (4 5)
+            )
+            (
+               'vocals'
+               (6 7)
+            )
+         )
+      )
+      (
+         'pans'
+         (-1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0)
+      )
+      (
+         'vols'
+         (-4.0 -4.0 -4.0 -4.0 -4.0 -4.0 -4.0 -4.0 -4.0 -4.0)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 1 1 -1 -1 -1 -1)
+      )
+      ('vocal_parts' 3)
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+      ('midi_file' 'songs/shadow/shadow.mid')
+   )
+   ('song_scroll_speed' 2300)
+   ('bank' 'sfx/cowbell_bank.milo')
+   ('anim_tempo' 'kTempoMedium')
+   ('song_length' 211524)
+   ('preview' 55170 85170)
+   (
+      'rank'
+      ('band' 275)
+      ('guitar' 260)
+      ('drum' 435)
+      ('bass' 229)
+      ('vocals' 285)
+   )
+   ('genre' 'poprock')
+   ('vocal_gender' 'male')
+   ('version' 0)
+   ('format' 4)
+   ('album_art' 1)
+   ('year_released' 2016)
+   ('rating' 1)
+   ('sub_genre' 'subgenre_other')
+   ('song_id' 6001)
+   ('tuning_offset_cents' 0.0)
+   ('vocal_tonic_note' 2)
+   ('game_origin' 'rb4_rivals')
+   (
+      'album_name'
+      "Telecoast"
+   )
+   ('album_track_number' 2)
+   ('ugc' 0)
+   (
+      'author'
+      "Harmonix, Rhythm Authors"
+   )
+   ('context' 2000)
+   ('decade' 'the10s')
+   ('downloaded' 'TRUE')
+   ('base_points' 0)
+)
+
+(
+   'thesehands'
+   (
+      'name'
+      "These Hands"
+   )
+   (
+      'artist'
+      "Bent Knee"
+   )
+   ('master' 1)
+   (
+      'song'
+      ('name' 'songs/thesehands/thesehands')
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1)
+            )
+            (
+               'bass'
+               (2 3)
+            )
+            (
+               'guitar'
+               (4 5)
+            )
+            (
+               'vocals'
+               (6 7)
+            )
+         )
+      )
+      (
+         'pans'
+         (-1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0)
+      )
+      (
+         'vols'
+         (-4.0 -4.0 -4.0 -4.0 -4.0 -4.0 -4.0 -4.0 -4.0 -4.0)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 1 1 -1 -1 -1 -1)
+      )
+      ('vocal_parts' 3)
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+      ('midi_file' 'songs/thesehands/thesehands.mid')
+   )
+   ('song_scroll_speed' 2300)
+   ('bank' 'sfx/tambourine_bank.milo')
+   ('anim_tempo' 'kTempoFast')
+   ('song_length' 337314)
+   ('preview' 72434 102434)
+   (
+      'rank'
+      ('band' 250)
+      ('guitar' 207)
+      ('drum' 232)
+      ('bass' 214)
+      ('vocals' 292)
+   )
+   ('genre' 'indierock')
+   ('vocal_gender' 'female')
+   ('version' 0)
+   ('format' 4)
+   ('album_art' 1)
+   ('year_released' 2016)
+   ('rating' 1)
+   ('sub_genre' 'subgenre_other')
+   ('song_id' 6024)
+   ('tuning_offset_cents' 0.0)
+   ('vocal_tonic_note' 7)
+   ('game_origin' 'rb4_rivals')
+   (
+      'album_name'
+      "Boston Sessions, Vol. 1: Beast"
+   )
+   ('album_track_number' 13)
+   ('ugc' 0)
+   (
+      'author'
+      "Harmonix, Rhythm Authors"
+   )
+   ('context' 2000)
+   ('decade' 'the10s')
+   ('downloaded' 'TRUE')
+   ('base_points' 0)
+)
+
+(
+   'noplaceforme'
+   (
+      'name'
+      "No Place for Me"
+   )
+   (
+      'artist'
+      "Black Beach"
+   )
+   ('master' 1)
+   (
+      'song'
+      ('name' 'songs/noplaceforme/noplaceforme')
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1)
+            )
+            (
+               'bass'
+               (2 3)
+            )
+            (
+               'guitar'
+               (4 5)
+            )
+            (
+               'vocals'
+               (6 7)
+            )
+         )
+      )
+      (
+         'pans'
+         (-1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0)
+      )
+      (
+         'vols'
+         (-4.0 -4.0 -4.0 -4.0 -4.0 -4.0 -4.0 -4.0 -4.0 -4.0)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 1 1 -1 -1 -1 -1)
+      )
+      ('vocal_parts' 1)
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+      ('midi_file' 'songs/noplaceforme/noplaceforme.mid')
+   )
+   ('song_scroll_speed' 2300)
+   ('bank' 'sfx/tambourine_bank.milo')
+   ('anim_tempo' 'kTempoFast')
+   ('song_length' 117770)
+   ('preview' 32368 62369)
+   (
+      'rank'
+      ('band' 238)
+      ('guitar' 202)
+      ('drum' 238)
+      ('bass' 235)
+      ('vocals' 136)
+   )
+   ('genre' 'rock')
+   ('vocal_gender' 'male')
+   ('version' 0)
+   ('format' 4)
+   ('album_art' 1)
+   ('year_released' 2016)
+   ('rating' 2)
+   ('sub_genre' 'subgenre_rock')
+   ('song_id' 6022)
+   ('tuning_offset_cents' 0.0)
+   ('vocal_tonic_note' 7)
+   ('game_origin' 'rb4_rivals')
+   (
+      'album_name'
+      "Boston Sessions, Vol. 1: Beast"
+   )
+   ('album_track_number' 3)
+   ('ugc' 0)
+   (
+      'author'
+      "Harmonix, Rhythm Authors"
+   )
+   ('context' 2000)
+   ('decade' 'the10s')
+   ('downloaded' 'TRUE')
+   ('base_points' 0)
+)
+
+(
+   'rudeboys'
+   (
+      'name'
+      "RudeBoys"
+   )
+   (
+      'artist'
+      "Dutch ReBelle"
+   )
+   ('master' 1)
+   (
+      'song'
+      ('name' 'songs/rudeboys/rudeboys')
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1)
+            )
+            (
+               'bass'
+               (2 3)
+            )
+            (
+               'guitar'
+               (4 5)
+            )
+            (
+               'vocals'
+               (6 7)
+            )
+         )
+      )
+      (
+         'pans'
+         (-1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0)
+      )
+      (
+         'vols'
+         (-4.0 -4.0 -4.0 -4.0 -4.0 -4.0 -4.0 -4.0 -4.0 -4.0)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 1 1 -1 -1 -1 -1)
+      )
+      ('vocal_parts' 3)
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+      ('midi_file' 'songs/rudeboys/rudeboys.mid')
+   )
+   ('song_scroll_speed' 2300)
+   ('bank' 'sfx/tambourine_bank.milo')
+   ('anim_tempo' 'kTempoMedium')
+   ('song_length' 219998)
+   ('preview' 34048 64048)
+   (
+      'rank'
+      ('band' 206)
+      ('guitar' 146)
+      ('drum' 155)
+      ('bass' 128)
+      ('vocals' 178)
+   )
+   ('genre' 'hiphoprap')
+   ('vocal_gender' 'female')
+   ('version' 0)
+   ('format' 4)
+   ('album_art' 1)
+   ('year_released' 2016)
+   ('rating' 2)
+   ('sub_genre' 'subgenre_other')
+   ('song_id' 6019)
+   ('tuning_offset_cents' 0.0)
+   ('vocal_tonic_note' 7)
+   ('game_origin' 'rb4_rivals')
+   (
+      'album_name'
+      "Boston Sessions, Vol. 1: Beast"
+   )
+   ('album_track_number' 8)
+   ('ugc' 0)
+   (
+      'author'
+      "Harmonix, Rhythm Authors"
+   )
+   ('context' 2000)
+   ('decade' 'the10s')
+   ('downloaded' 'TRUE')
+   ('base_points' 0)
+)
+
+(
+   'neverletemholdyaback'
+   (
+      'name'
+      "Never Let 'Em Hold Ya Back!"
+   )
+   (
+      'artist'
+      "Parlour Bells"
+   )
+   ('master' 1)
+   (
+      'song'
+      ('name' 'songs/neverletemholdyaback/neverletemholdyaback')
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1)
+            )
+            (
+               'bass'
+               (2 3)
+            )
+            (
+               'guitar'
+               (4 5)
+            )
+            (
+               'vocals'
+               (6 7)
+            )
+         )
+      )
+      (
+         'pans'
+         (-1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0)
+      )
+      (
+         'vols'
+         (-4.0 -4.0 -4.0 -4.0 -4.0 -4.0 -4.0 -4.0 -4.0 -4.0)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 1 1 -1 -1 -1 -1)
+      )
+      ('vocal_parts' 3)
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+      ('midi_file' 'songs/neverletemholdyaback/neverletemholdyaback.mid')
+   )
+   ('song_scroll_speed' 2300)
+   ('bank' 'sfx/tambourine_bank.milo')
+   ('anim_tempo' 'kTempoMedium')
+   ('song_length' 293016)
+   ('preview' 58158 88160)
+   (
+      'rank'
+      ('band' 253)
+      ('guitar' 242)
+      ('drum' 290)
+      ('bass' 214)
+      ('vocals' 225)
+   )
+   ('genre' 'glam')
+   ('vocal_gender' 'male')
+   ('version' 0)
+   ('format' 4)
+   ('album_art' 1)
+   ('year_released' 2017)
+   ('rating' 1)
+   ('sub_genre' 'subgenre_glam')
+   ('song_id' 6010)
+   ('tuning_offset_cents' 0.0)
+   ('vocal_tonic_note' 2)
+   ('game_origin' 'rb4_rivals')
+   (
+      'album_name'
+      "Waylaid in the Melée"
+   )
+   ('album_track_number' 5)
+   ('ugc' 0)
+   (
+      'author'
+      "Harmonix, Rhythm Authors"
+   )
+   ('context' 2000)
+   ('decade' 'the10s')
+   ('downloaded' 'TRUE')
+   ('encoding' 'latin1')
+   ('base_points' 0)
+)
+
+(
+   'trueconfessional'
+   (
+      'name'
+      "True Confessional"
+   )
+   (
+      'artist'
+      "Party Bois"
+   )
+   ('master' 1)
+   (
+      'song'
+      ('name' 'songs/trueconfessional/trueconfessional')
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1)
+            )
+            (
+               'bass'
+               (2 3)
+            )
+            (
+               'guitar'
+               (4 5)
+            )
+            (
+               'vocals'
+               (6 7)
+            )
+         )
+      )
+      (
+         'pans'
+         (-1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0)
+      )
+      (
+         'vols'
+         (-4.0 -4.0 -4.0 -4.0 -4.0 -4.0 -4.0 -4.0 -4.0 -4.0)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 1 1 -1 -1 -1 -1)
+      )
+      ('vocal_parts' 3)
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+      ('midi_file' 'songs/trueconfessional/trueconfessional.mid')
+   )
+   ('song_scroll_speed' 2300)
+   ('bank' 'sfx/tambourine_bank.milo')
+   ('anim_tempo' 'kTempoMedium')
+   ('song_length' 198011)
+   ('preview' 42289 72289)
+   (
+      'rank'
+      ('band' 262)
+      ('guitar' 219)
+      ('drum' 400)
+      ('bass' 235)
+      ('vocals' 210)
+   )
+   ('genre' 'other')
+   ('vocal_gender' 'male')
+   ('version' 0)
+   ('format' 4)
+   ('album_art' 1)
+   ('year_released' 2016)
+   ('rating' 2)
+   ('sub_genre' 'subgenre_electronica')
+   ('song_id' 6012)
+   ('tuning_offset_cents' 0.0)
+   ('vocal_tonic_note' 2)
+   ('game_origin' 'rb4_rivals')
+   (
+      'album_name'
+      "True Confessional"
+   )
+   ('album_track_number' 1)
+   ('ugc' 0)
+   (
+      'author'
+      "Harmonix, Rhythm Authors"
+   )
+   ('context' 2000)
+   ('decade' 'the10s')
+   ('downloaded' 'TRUE')
+   ('base_points' 0)
+)
+
+(
+   'painkiller2'
+   (
+      'name'
+      "Pain Killer"
+   )
+   (
+      'artist'
+      "Ruby Rose Fox"
+   )
+   ('master' 1)
+   (
+      'song'
+      ('name' 'songs/painkiller2/painkiller2')
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1)
+            )
+            (
+               'bass'
+               (2 3)
+            )
+            (
+               'guitar'
+               (4 5)
+            )
+            (
+               'vocals'
+               (6 7)
+            )
+         )
+      )
+      (
+         'pans'
+         (-1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0)
+      )
+      (
+         'vols'
+         (-4.0 -4.0 -4.0 -4.0 -4.0 -4.0 -4.0 -4.0 -4.0 -4.0)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 1 1 -1 -1 -1 -1)
+      )
+      ('vocal_parts' 3)
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+      ('midi_file' 'songs/painkiller2/painkiller2.mid')
+   )
+   ('song_scroll_speed' 2300)
+   ('bank' 'sfx/tambourine_bank.milo')
+   ('anim_tempo' 'kTempoSlow')
+   ('song_length' 213665)
+   ('preview' 43362 73363)
+   (
+      'rank'
+      ('band' 239)
+      ('guitar' 187)
+      ('drum' 128)
+      ('bass' 137)
+      ('vocals' 425)
+   )
+   ('genre' 'indierock')
+   ('vocal_gender' 'female')
+   ('version' 0)
+   ('format' 4)
+   ('album_art' 1)
+   ('year_released' 2016)
+   ('rating' 2)
+   ('sub_genre' 'subgenre_other')
+   ('song_id' 6011)
+   ('tuning_offset_cents' 0.0)
+   ('vocal_tonic_note' 6)
+   ('game_origin' 'rb4_rivals')
+   (
+      'album_name'
+      "Domestic"
+   )
+   ('album_track_number' 6)
+   ('ugc' 0)
+   (
+      'author'
+      "Harmonix, Rhythm Authors"
+   )
+   ('context' 2000)
+   ('decade' 'the10s')
+   ('downloaded' 'TRUE')
+   ('base_points' 0)
+)
+
+(
+   'skydiver'
+   (
+      'name'
+      "Skydiver"
+   )
+   (
+      'artist'
+      "Ruby Rose Fox"
+   )
+   ('master' 1)
+   (
+      'song'
+      ('name' 'songs/skydiver/skydiver')
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1)
+            )
+            (
+               'bass'
+               (2 3)
+            )
+            (
+               'guitar'
+               (4 5)
+            )
+            (
+               'vocals'
+               (6 7)
+            )
+         )
+      )
+      (
+         'pans'
+         (-1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0)
+      )
+      (
+         'vols'
+         (-4.0 -4.0 -4.0 -4.0 -4.0 -4.0 -4.0 -4.0 -4.0 -4.0)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 1 1 -1 -1 -1 -1)
+      )
+      ('vocal_parts' 3)
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+      ('midi_file' 'songs/skydiver/skydiver.mid')
+   )
+   ('song_scroll_speed' 2300)
+   ('bank' 'sfx/tambourine_bank.milo')
+   ('anim_tempo' 'kTempoSlow')
+   ('song_length' 226362)
+   ('preview' 51475 81477)
+   (
+      'rank'
+      ('band' 272)
+      ('guitar' 280)
+      ('drum' 265)
+      ('bass' 255)
+      ('vocals' 350)
+   )
+   ('genre' 'indierock')
+   ('vocal_gender' 'female')
+   ('version' 0)
+   ('format' 4)
+   ('album_art' 1)
+   ('year_released' 2016)
+   ('rating' 1)
+   ('sub_genre' 'subgenre_other')
+   ('song_id' 6015)
+   ('tuning_offset_cents' 0.0)
+   ('vocal_tonic_note' 2)
+   ('game_origin' 'rb4_rivals')
+   (
+      'album_name'
+      "Boston Sessions, Vol. 1: Beast"
+   )
+   ('album_track_number' 4)
+   ('ugc' 0)
+   (
+      'author'
+      "Harmonix, Rhythm Authors"
+   )
+   ('context' 2000)
+   ('decade' 'the10s')
+   ('downloaded' 'TRUE')
+   ('base_points' 0)
+)
+
+(
+   'somp'
+   (
+      'name'
+      "S.O.M.P."
+   )
+   (
+      'artist'
+      "Skratch'N Snyf"
+   )
+   ('master' 1)
+   (
+      'song'
+      ('name' 'songs/somp/somp')
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1)
+            )
+            (
+               'bass'
+               (2 3)
+            )
+            (
+               'guitar'
+               (4 5)
+            )
+            (
+               'vocals'
+               (6 7)
+            )
+         )
+      )
+      (
+         'pans'
+         (-1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0)
+      )
+      (
+         'vols'
+         (-4.0 -4.0 -4.0 -4.0 -4.0 -4.0 -4.0 -4.0 -4.0 -4.0)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 1 1 -1 -1 -1 -1)
+      )
+      ('vocal_parts' 3)
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+      ('midi_file' 'songs/somp/somp.mid')
+   )
+   ('song_scroll_speed' 2300)
+   ('bank' 'sfx/cowbell_bank.milo')
+   ('anim_tempo' 'kTempoMedium')
+   ('song_length' 278998)
+   ('preview' 75750 105750)
+   (
+      'rank'
+      ('band' 280)
+      ('guitar' 480)
+      ('drum' 255)
+      ('bass' 236)
+      ('vocals' 229)
+   )
+   ('genre' 'glam')
+   ('vocal_gender' 'male')
+   ('version' 0)
+   ('format' 4)
+   ('album_art' 1)
+   ('year_released' 1990)
+   ('rating' 1)
+   ('sub_genre' 'subgenre_glam')
+   ('song_id' 6013)
+   ('tuning_offset_cents' 0.0)
+   ('vocal_tonic_note' 4)
+   ('game_origin' 'rb4_rivals')
+   (
+      'album_name'
+      "Arkade of Dreams"
+   )
+   ('album_track_number' 1)
+   ('ugc' 0)
+   (
+      'author'
+      "Harmonix, Rhythm Authors"
+   )
+   ('context' 2000)
+   ('decade' 'the90s')
+   ('downloaded' 'TRUE')
+   ('base_points' 0)
+)
+
+(
+   'historyrepeats'
+   (
+      'name'
+      "History Repeats"
+   )
+   (
+      'artist'
+      "Creaturos"
+   )
+   ('master' 1)
+   (
+      'song'
+      ('name' 'songs/historyrepeats/historyrepeats')
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1)
+            )
+            (
+               'bass'
+               (2 3)
+            )
+            (
+               'guitar'
+               (4 5)
+            )
+            (
+               'vocals'
+               (6 7)
+            )
+         )
+      )
+      (
+         'pans'
+         (-1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0)
+      )
+      (
+         'vols'
+         (-3.0 -3.0 -3.0 -3.0 -3.0 -3.0 -3.0 -3.0 -3.0 -3.0)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 1 1 -1 -1 -1 -1)
+      )
+      ('vocal_parts' 2)
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+      ('midi_file' 'songs/historyrepeats/historyrepeats.mid')
+   )
+   ('song_scroll_speed' 2300)
+   ('bank' 'sfx/tambourine_bank.milo')
+   ('anim_tempo' 32)
+   ('song_length' 230629)
+   ('preview' 30512 60512)
+   (
+      'rank'
+      ('band' 185)
+      ('guitar' 150)
+      ('bass' 150)
+      ('drum' 170)
+      ('vocals' 101)
+   )
+   ('genre' 'rock')
+   ('vocal_gender' 'male')
+   ('version' 0)
+   ('format' 4)
+   ('album_art' 1)
+   ('year_released' 2016)
+   ('rating' 2)
+   ('sub_genre' 'subgenre_rock')
+   ('song_id' 6018)
+   ('tuning_offset_cents' 0.0)
+   ('game_origin' 'rb4_rivals')
+   (
+      'album_name'
+      "Boston Sessions, Vol. 1: Beast"
+   )
+   ('album_track_number' 10)
+   ('context' 2000)
+   ('decade' 'the10s')
+   ('downloaded' 'TRUE')
+   ('base_points' 0)
+   ('vocal_tonic_note' 9)
+)
+
+(
+   'bethany'
+   (
+      'name'
+      "Bethany"
+   )
+   (
+      'artist'
+      "Goddamn Draculas"
+   )
+   ('master' 1)
+   (
+      'song'
+      ('name' 'songs/bethany/bethany')
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1)
+            )
+            (
+               'bass'
+               (2 3)
+            )
+            (
+               'guitar'
+               (4 5)
+            )
+            (
+               'vocals'
+               (6 7)
+            )
+         )
+      )
+      (
+         'pans'
+         (-1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0)
+      )
+      (
+         'vols'
+         (-2.0 -2.0 -1.0 -1.0 -2.0 -2.0 -2.0 -2.0 -2.5 -2.5)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 1 1 -1 -1 -1 -1)
+      )
+      ('vocal_parts' 3)
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+      ('midi_file' 'songs/bethany/bethany.mid')
+   )
+   ('song_scroll_speed' 2300)
+   ('bank' 'sfx/tambourine_bank.milo')
+   ('anim_tempo' 32)
+   ('song_length' 251817)
+   ('preview' 66466 96466)
+   (
+      'rank'
+      ('band' 246)
+      ('guitar' 225)
+      ('bass' 225)
+      ('drum' 187)
+      ('vocals' 255)
+   )
+   ('genre' 'rock')
+   ('vocal_gender' 'male')
+   ('version' 0)
+   ('format' 4)
+   ('album_art' 1)
+   ('year_released' 2015)
+   ('rating' 1)
+   ('sub_genre' 'subgenre_rock')
+   ('song_id' 6002)
+   ('tuning_offset_cents' 0.0)
+   ('game_origin' 'rb4_rivals')
+   (
+      'album_name'
+      "Bethany"
+   )
+   ('album_track_number' 1)
+   ('context' 2000)
+   ('decade' 'the10s')
+   ('downloaded' 'TRUE')
+   ('base_points' 0)
+   ('vocal_tonic_note' 9)
+)
+
+(
+   'hurryupandwait'
+   (
+      'name'
+      "Hurry Up (& Wait for You)"
+   )
+   (
+      'artist'
+      "Julie Rhodes"
+   )
+   ('master' 1)
+   (
+      'song'
+      ('name' 'songs/hurryupandwait/hurryupandwait')
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1)
+            )
+            (
+               'bass'
+               (2 3)
+            )
+            (
+               'guitar'
+               (4 5)
+            )
+            (
+               'vocals'
+               (6 7)
+            )
+         )
+      )
+      (
+         'pans'
+         (-1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0)
+      )
+      (
+         'vols'
+         (-3.0 -3.0 -3.0 -3.0 -3.0 -3.0 -3.0 -3.0 -3.0 -3.0)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 1 1 -1 -1 -1 -1)
+      )
+      ('vocal_parts' 3)
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+      ('midi_file' 'songs/hurryupandwait/hurryupandwait.mid')
+   )
+   ('song_scroll_speed' 2300)
+   ('bank' 'sfx/tambourine_bank.milo')
+   ('anim_tempo' 64)
+   ('song_length' 187944)
+   ('preview' 40033 70035)
+   (
+      'rank'
+      ('band' 230)
+      ('guitar' 200)
+      ('bass' 155)
+      ('drum' 155)
+      ('vocals' 265)
+   )
+   ('genre' 'indierock')
+   ('vocal_gender' 'female')
+   ('version' 0)
+   ('format' 4)
+   ('album_art' 1)
+   ('year_released' 2016)
+   ('rating' 1)
+   ('sub_genre' 'subgenre_indierock')
+   ('song_id' 6020)
+   ('tuning_offset_cents' 0.0)
+   ('game_origin' 'rb4_rivals')
+   (
+      'album_name'
+      "Boston Sessions, Vol. 1: Beast"
+   )
+   ('album_track_number' 11)
+   ('context' 2000)
+   ('decade' 'the10s')
+   ('downloaded' 'TRUE')
+   ('base_points' 0)
+   ('vocal_tonic_note' 11)
+)
+
+(
+   'casablanca'
+   (
+      'name'
+      "Casablanca"
+   )
+   (
+      'artist'
+      "Littlefoot"
+   )
+   ('master' 1)
+   (
+      'song'
+      ('name' 'songs/casablanca/casablanca')
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1)
+            )
+            (
+               'bass'
+               (2 3)
+            )
+            (
+               'guitar'
+               (4 5)
+            )
+            (
+               'vocals'
+               (6 7)
+            )
+         )
+      )
+      (
+         'pans'
+         (-1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0)
+      )
+      (
+         'vols'
+         (-3.0 -3.0 -3.0 -3.0 -3.0 -3.0 -3.0 -3.0 -3.0 -3.0)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 1 1 -1 -1 -1 -1)
+      )
+      ('vocal_parts' 3)
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+      ('midi_file' 'songs/casablanca/casablanca.mid')
+   )
+   ('song_scroll_speed' 2300)
+   ('bank' 'sfx/tambourine_bank.milo')
+   ('anim_tempo' 16)
+   ('song_length' 203053)
+   ('preview' 67400 97400)
+   (
+      'rank'
+      ('band' 210)
+      ('guitar' 152)
+      ('bass' 162)
+      ('drum' 142)
+      ('vocals' 210)
+   )
+   ('genre' 'indierock')
+   ('vocal_gender' 'female')
+   ('version' 0)
+   ('format' 4)
+   ('album_art' 1)
+   ('year_released' 2016)
+   ('rating' 1)
+   ('sub_genre' 'subgenre_indierock')
+   ('song_id' 6023)
+   ('tuning_offset_cents' 0.0)
+   ('game_origin' 'rb4_rivals')
+   (
+      'album_name'
+      "Boston Sessions, Vol. 1: Beast"
+   )
+   ('album_track_number' 6)
+   ('context' 2000)
+   ('decade' 'the10s')
+   ('downloaded' 'TRUE')
+   ('base_points' 0)
+   ('vocal_tonic_note' 5)
+)
+
+(
+   'crossthatline'
+   (
+      'name'
+      "Cross That Line"
+   )
+   (
+      'artist'
+      "Michael Christmas"
+   )
+   ('master' 1)
+   (
+      'song'
+      ('name' 'songs/crossthatline/crossthatline')
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1)
+            )
+            (
+               'bass'
+               (2 3)
+            )
+            (
+               'guitar'
+               (4 5)
+            )
+            (
+               'vocals'
+               (6 7)
+            )
+         )
+      )
+      (
+         'pans'
+         (-1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0)
+      )
+      (
+         'vols'
+         (-3.0 -3.0 -3.0 -3.0 -3.0 -3.0 -3.0 -3.0 -3.0 -3.0)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 1 1 -1 -1 -1 -1)
+      )
+      ('vocal_parts' 3)
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+      ('midi_file' 'songs/crossthatline/crossthatline.mid')
+   )
+   ('song_scroll_speed' 2300)
+   ('bank' 'sfx/tambourine_bank.milo')
+   ('anim_tempo' 16)
+   ('song_length' 177408)
+   ('preview' 4418 34420)
+   (
+      'rank'
+      ('band' 130)
+      ('guitar' 132)
+      ('bass' 140)
+      ('drum' 112)
+      ('vocals' 139)
+   )
+   ('genre' 'urban')
+   ('vocal_gender' 'male')
+   ('version' 0)
+   ('format' 4)
+   ('album_art' 1)
+   ('year_released' 2016)
+   ('rating' 2)
+   ('sub_genre' 'subgenre_hiphop')
+   ('song_id' 6017)
+   ('tuning_offset_cents' 0.0)
+   ('game_origin' 'rb4_rivals')
+   (
+      'album_name'
+      "Boston Sessions, Vol. 1: Beast"
+   )
+   ('album_track_number' 2)
+   ('context' 2000)
+   ('decade' 'the10s')
+   ('downloaded' 'TRUE')
+   ('base_points' 0)
+   ('vocal_tonic_note' 10)
+)
+
+(
+   'blackstreak'
+   (
+      'name'
+      "Black Streak"
+   )
+   (
+      'artist'
+      "Nemes"
+   )
+   ('master' 1)
+   (
+      'song'
+      ('name' 'songs/blackstreak/blackstreak')
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1)
+            )
+            (
+               'bass'
+               (2 3)
+            )
+            (
+               'guitar'
+               (4 5)
+            )
+            (
+               'vocals'
+               (6 7)
+            )
+         )
+      )
+      (
+         'pans'
+         (-1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0)
+      )
+      (
+         'vols'
+         (-3.0 -3.0 -3.0 -3.0 -3.0 -3.0 -3.0 -3.0 -3.0 -3.0)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 1 1 -1 -1 -1 -1)
+      )
+      ('vocal_parts' 3)
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+      ('midi_file' 'songs/blackstreak/blackstreak.mid')
+   )
+   ('song_scroll_speed' 2300)
+   ('bank' 'sfx/tambourine_bank.milo')
+   ('anim_tempo' 64)
+   ('song_length' 146270)
+   ('preview' 10112 40112)
+   (
+      'rank'
+      ('band' 265)
+      ('guitar' 300)
+      ('bass' 299)
+      ('drum' 165)
+      ('vocals' 261)
+   )
+   ('genre' 'indierock')
+   ('vocal_gender' 'male')
+   ('version' 0)
+   ('format' 4)
+   ('album_art' 1)
+   ('year_released' 2014)
+   ('rating' 1)
+   ('sub_genre' 'subgenre_indierock')
+   ('song_id' 6004)
+   ('tuning_offset_cents' 0.0)
+   ('game_origin' 'rb4_rivals')
+   (
+      'album_name'
+      "I Carry Your Heart"
+   )
+   ('album_track_number' 1)
+   ('context' 2000)
+   ('decade' 'the10s')
+   ('downloaded' 'TRUE')
+   ('base_points' 0)
+   ('vocal_tonic_note' 9)
+)
+
+(
+   'irecognize'
+   (
+      'name'
+      "I Recognize"
+   )
+   (
+      'artist'
+      "Newfane"
+   )
+   ('master' 1)
+   (
+      'song'
+      ('name' 'songs/irecognize/irecognize')
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1)
+            )
+            (
+               'bass'
+               (2 3)
+            )
+            (
+               'guitar'
+               (4 5)
+            )
+            (
+               'vocals'
+               (6 7)
+            )
+         )
+      )
+      (
+         'pans'
+         (-1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0)
+      )
+      (
+         'vols'
+         (-3.0 -3.0 -3.0 -3.0 -3.0 -3.0 -3.0 -3.0 -3.0 -3.0)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 1 1 -1 -1 -1 -1)
+      )
+      ('vocal_parts' 2)
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+      ('midi_file' 'songs/irecognize/irecognize.mid')
+   )
+   ('song_scroll_speed' 2300)
+   ('bank' 'sfx/tambourine_bank.milo')
+   ('anim_tempo' 16)
+   ('song_length' 338565)
+   ('preview' 76402 106402)
+   (
+      'rank'
+      ('band' 259)
+      ('guitar' 400)
+      ('bass' 286)
+      ('drum' 175)
+      ('vocals' 137)
+   )
+   ('genre' 'alternative')
+   ('vocal_gender' 'male')
+   ('version' 0)
+   ('format' 4)
+   ('album_art' 1)
+   ('year_released' 2016)
+   ('rating' 1)
+   ('sub_genre' 'subgenre_alternative')
+   ('song_id' 6008)
+   ('tuning_offset_cents' 0.0)
+   ('game_origin' 'rb4_rivals')
+   (
+      'album_name'
+      "Wellness Center"
+   )
+   ('album_track_number' 3)
+   ('context' 2000)
+   ('decade' 'the10s')
+   ('downloaded' 'TRUE')
+   ('base_points' 0)
+   ('vocal_tonic_note' 9)
+)
+
+(
+   'meangirls'
+   (
+      'name'
+      "Mean Girls"
+   )
+   (
+      'artist'
+      "Petty Morals"
+   )
+   ('master' 1)
+   (
+      'song'
+      ('name' 'songs/meangirls/meangirls')
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1)
+            )
+            (
+               'bass'
+               (2 3)
+            )
+            (
+               'guitar'
+               (4 5)
+            )
+            (
+               'vocals'
+               (6 7)
+            )
+         )
+      )
+      (
+         'pans'
+         (-1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0)
+      )
+      (
+         'vols'
+         (-2.0 -2.0 -1.5 -1.5 -1.5 -1.5 -2.0 -2.0 -1.5 -1.5)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 1 1 -1 -1 -1 -1)
+      )
+      ('vocal_parts' 2)
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+      ('midi_file' 'songs/meangirls/meangirls.mid')
+   )
+   ('song_scroll_speed' 2300)
+   ('bank' 'sfx/tambourine_bank.milo')
+   ('anim_tempo' 64)
+   ('song_length' 147317)
+   ('preview' 49188 79188)
+   (
+      'rank'
+      ('band' 240)
+      ('guitar' 182)
+      ('bass' 234)
+      ('drum' 188)
+      ('vocals' 192)
+   )
+   ('genre' 'poprock')
+   ('vocal_gender' 'female')
+   ('version' 0)
+   ('format' 4)
+   ('album_art' 1)
+   ('year_released' 2016)
+   ('rating' 1)
+   ('sub_genre' 'subgenre_other')
+   ('song_id' 6009)
+   ('tuning_offset_cents' 0.0)
+   ('game_origin' 'rb4_rivals')
+   ('context' 2000)
+   ('decade' 'the10s')
+   ('downloaded' 'TRUE')
+   ('base_points' 0)
+   ('vocal_tonic_note' 4)
+)
+
+(
+   'good'
+   (
+      'name'
+      "Good"
+   )
+   (
+      'artist'
+      "STL GLD"
+   )
+   ('master' 1)
+   (
+      'song'
+      ('name' 'songs/good/good')
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1)
+            )
+            (
+               'bass'
+               (2 3)
+            )
+            (
+               'guitar'
+               (4 5)
+            )
+            (
+               'vocals'
+               (6 7)
+            )
+         )
+      )
+      (
+         'pans'
+         (-1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0)
+      )
+      (
+         'vols'
+         (-3.0 -3.0 -3.0 -3.0 -3.0 -3.0 -3.0 -3.0 -3.0 -3.0)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 1 1 -1 -1 -1 -1)
+      )
+      ('vocal_parts' 3)
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+      ('midi_file' 'songs/good/good.mid')
+   )
+   ('song_scroll_speed' 2300)
+   ('bank' 'sfx/tambourine_bank.milo')
+   ('anim_tempo' 64)
+   ('song_length' 190539)
+   ('preview' 93446 123446)
+   (
+      'rank'
+      ('band' 191)
+      ('guitar' 130)
+      ('bass' 175)
+      ('drum' 173)
+      ('vocals' 168)
+   )
+   ('genre' 'urban')
+   ('vocal_gender' 'male')
+   ('version' 0)
+   ('format' 4)
+   ('album_art' 1)
+   ('year_released' 2016)
+   ('rating' 2)
+   ('sub_genre' 'subgenre_hiphop')
+   ('song_id' 6016)
+   ('tuning_offset_cents' 0.0)
+   ('game_origin' 'rb4_rivals')
+   (
+      'album_name'
+      "Boston Sessions, Vol. 1: Beast"
+   )
+   ('album_track_number' 5)
+   ('context' 2000)
+   ('decade' 'the10s')
+   ('downloaded' 'TRUE')
+   ('base_points' 0)
+   ('vocal_tonic_note' 0)
+)
+
+(
+   'hourofrats'
+   (
+      'name'
+      "Hour of Rats"
+   )
+   (
+      'artist'
+      "The Red Chord"
+   )
+   ('master' 1)
+   (
+      'song'
+      ('name' 'songs/hourofrats/hourofrats')
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1)
+            )
+            (
+               'bass'
+               (2 3)
+            )
+            (
+               'guitar'
+               (4 5)
+            )
+            (
+               'vocals'
+               (6 7)
+            )
+         )
+      )
+      (
+         'pans'
+         (-1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0)
+      )
+      (
+         'vols'
+         (-3.0 -3.0 -2.0 -2.0 -3.0 -3.0 -3.0 -3.0 -3.0 -3.0)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 1 1 -1 -1 -1 -1)
+      )
+      ('vocal_parts' 2)
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+      ('midi_file' 'songs/hourofrats/hourofrats.mid')
+   )
+   ('song_scroll_speed' 2300)
+   ('bank' 'sfx/cowbell_bank.milo')
+   ('anim_tempo' 32)
+   ('song_length' 166722)
+   ('preview' 68864 98864)
+   (
+      'rank'
+      ('band' 389)
+      ('guitar' 505)
+      ('bass' 420)
+      ('drum' 490)
+      ('vocals' 102)
+   )
+   ('genre' 'metal')
+   ('vocal_gender' 'male')
+   ('version' 0)
+   ('format' 4)
+   ('album_art' 1)
+   ('year_released' 2009)
+   ('rating' 2)
+   ('sub_genre' 'subgenre_metal')
+   ('song_id' 6007)
+   ('tuning_offset_cents' 0.0)
+   ('game_origin' 'rb4_rivals')
+   (
+      'album_name'
+      "Fed Through the Teeth Machine"
+   )
+   ('album_track_number' 2)
+   ('context' 2000)
+   ('decade' 'the00s')
+   ('downloaded' 'TRUE')
+   ('base_points' 0)
+   ('vocal_tonic_note' 3)
+)
+
+(
+   'closercloser'
+   (
+      'name'
+      "Closer, Closer"
+   )
+   (
+      'artist'
+      "The Warning Shots"
+   )
+   ('master' 1)
+   (
+      'song'
+      ('name' 'songs/closercloser/closercloser')
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1)
+            )
+            (
+               'bass'
+               (2 3)
+            )
+            (
+               'guitar'
+               (4 5)
+            )
+            (
+               'vocals'
+               (6 7)
+            )
+         )
+      )
+      (
+         'pans'
+         (-1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0)
+      )
+      (
+         'vols'
+         (-3.0 -3.0 -3.0 -3.0 -3.0 -3.0 -3.0 -3.0 -3.0 -3.0)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 1 1 -1 -1 -1 -1)
+      )
+      ('vocal_parts' 3)
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+      ('midi_file' 'songs/closercloser/closercloser.mid')
+   )
+   ('song_scroll_speed' 2300)
+   ('bank' 'sfx/tambourine_bank.milo')
+   ('anim_tempo' 16)
+   ('song_length' 182727)
+   ('preview' 53316 83316)
+   (
+      'rank'
+      ('band' 264)
+      ('guitar' 345)
+      ('bass' 288)
+      ('drum' 225)
+      ('vocals' 205)
+   )
+   ('genre' 'punk')
+   ('vocal_gender' 'male')
+   ('version' 0)
+   ('format' 4)
+   ('album_art' 1)
+   ('year_released' 2016)
+   ('rating' 2)
+   ('sub_genre' 'subgenre_pop')
+   ('song_id' 6005)
+   ('tuning_offset_cents' 0.0)
+   ('game_origin' 'rb4_rivals')
+   (
+      'album_name'
+      "Tonight!"
+   )
+   ('album_track_number' 1)
+   ('context' 2000)
+   ('decade' 'the10s')
+   ('downloaded' 'TRUE')
+   ('base_points' 0)
+   ('vocal_tonic_note' 8)
+)
+
+(
+   'alonetime'
+   (
+      'name'
+      "Alone Time"
+   )
+   (
+      'artist'
+      "Tigerman WOAH"
+   )
+   ('master' 1)
+   (
+      'song'
+      ('name' 'songs/alonetime/alonetime')
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1)
+            )
+            (
+               'bass'
+               (2 3)
+            )
+            (
+               'guitar'
+               (4 5)
+            )
+            (
+               'vocals'
+               (6 7)
+            )
+         )
+      )
+      (
+         'pans'
+         (-1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0)
+      )
+      (
+         'vols'
+         (-4.0 -4.0 -4.0 -4.0 -4.0 -4.0 -4.0 -4.0 -4.0 -4.0)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 1 1 -1 -1 -1 -1)
+      )
+      ('vocal_parts' 3)
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+      ('midi_file' 'songs/alonetime/alonetime.mid')
+   )
+   ('song_scroll_speed' 2300)
+   ('bank' 'sfx/tambourine_bank.milo')
+   ('anim_tempo' 16)
+   ('song_length' 222475)
+   ('preview' 48070 78071)
+   (
+      'rank'
+      ('band' 261)
+      ('guitar' 242)
+      ('bass' 263)
+      ('drum' 211)
+      ('vocals' 385)
+   )
+   ('genre' 'rock')
+   ('vocal_gender' 'male')
+   ('version' 0)
+   ('format' 4)
+   ('album_art' 1)
+   ('year_released' 2016)
+   ('rating' 2)
+   ('sub_genre' 'subgenre_rock')
+   ('song_id' 6014)
+   ('tuning_offset_cents' 0.0)
+   ('game_origin' 'rb4_rivals')
+   (
+      'album_name'
+      "Boston Sessions, Vol. 1: Beast"
+   )
+   ('album_track_number' 12)
+   ('context' 2000)
+   ('decade' 'the10s')
+   ('downloaded' 'TRUE')
+   ('base_points' 0)
+   ('vocal_tonic_note' 11)
+)
+
+(
+   'constantdisaster'
+   (
+      'name'
+      "Constant Disaster"
+   )
+   (
+      'artist'
+      "When Particles Collide"
+   )
+   ('master' 1)
+   (
+      'song'
+      ('name' 'songs/constantdisaster/constantdisaster')
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1)
+            )
+            (
+               'bass'
+               (2 3)
+            )
+            (
+               'guitar'
+               (4 5)
+            )
+            (
+               'vocals'
+               (6 7)
+            )
+         )
+      )
+      (
+         'pans'
+         (-1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0)
+      )
+      (
+         'vols'
+         (-3.0 -3.0 -3.0 -3.0 -3.0 -3.0 -3.0 -3.0 -3.0 -3.0)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 1 1 -1 -1 -1 -1)
+      )
+      ('vocal_parts' 2)
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+      ('midi_file' 'songs/constantdisaster/constantdisaster.mid')
+   )
+   ('song_scroll_speed' 2300)
+   ('bank' 'sfx/tambourine_bank.milo')
+   ('anim_tempo' 32)
+   ('song_length' 268493)
+   ('preview' 41033 71033)
+   (
+      'rank'
+      ('band' 249)
+      ('guitar' 199)
+      ('bass' 185)
+      ('drum' 238)
+      ('vocals' 290)
+   )
+   ('genre' 'alternative')
+   ('vocal_gender' 'female')
+   ('version' 0)
+   ('format' 4)
+   ('album_art' 1)
+   ('year_released' 2014)
+   ('rating' 1)
+   ('sub_genre' 'subgenre_alternative')
+   ('song_id' 6006)
+   ('tuning_offset_cents' 0.0)
+   ('game_origin' 'rb4_rivals')
+   (
+      'album_name'
+      "Photoelectric"
+   )
+   ('album_track_number' 1)
+   ('context' 2000)
+   ('decade' 'the10s')
+   ('downloaded' 'TRUE')
+   ('base_points' 0)
+   ('vocal_tonic_note' 4)
+)
+
+(
+   'blackcorridor'
+   (
+      'name'
+      "Black Corridor"
+   )
+   (
+      'artist'
+      "Worshipper"
+   )
+   ('master' 1)
+   (
+      'song'
+      ('name' 'songs/blackcorridor/blackcorridor')
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1)
+            )
+            (
+               'bass'
+               (2 3)
+            )
+            (
+               'guitar'
+               (4 5)
+            )
+            (
+               'vocals'
+               (6 7)
+            )
+         )
+      )
+      (
+         'pans'
+         (-1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0)
+      )
+      (
+         'vols'
+         (-3.0 -3.0 -2.0 -2.0 -3.0 -3.0 -3.0 -3.0 -3.0 -3.0)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 1 1 -1 -1 -1 -1)
+      )
+      ('vocal_parts' 3)
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+      ('midi_file' 'songs/blackcorridor/blackcorridor.mid')
+   )
+   ('song_scroll_speed' 2300)
+   ('bank' 'sfx/cowbell_bank.milo')
+   ('anim_tempo' 32)
+   ('song_length' 241216)
+   ('preview' 61967 91967)
+   (
+      'rank'
+      ('band' 285)
+      ('guitar' 345)
+      ('bass' 385)
+      ('drum' 265)
+      ('vocals' 250)
+   )
+   ('genre' 'metal')
+   ('vocal_gender' 'male')
+   ('version' 0)
+   ('format' 4)
+   ('album_art' 1)
+   ('year_released' 2016)
+   ('rating' 2)
+   ('sub_genre' 'subgenre_metal')
+   ('song_id' 6003)
+   ('tuning_offset_cents' 0.0)
+   ('game_origin' 'rb4_rivals')
+   (
+      'album_name'
+      "Shadow Hymns"
+   )
+   ('album_track_number' 8)
+   ('context' 2000)
+   ('decade' 'the10s')
+   ('downloaded' 'TRUE')
+   ('base_points' 0)
+   ('vocal_tonic_note' 1)
+)

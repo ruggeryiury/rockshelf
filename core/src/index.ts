@@ -1,12 +1,13 @@
 import { app, BrowserWindow, protocol, net, ipcMain } from 'electron'
 import { pathToFileURL } from 'node:url'
 import { electronApp, optimizer } from '@electron-toolkit/utils'
-import { checkDeps, createWindow, getRB1USRDIR, getRB3USRDIR, getRockshelfModuleRootDir, initRichPresence, readUserConfigFile, setElectronUserDataFolder, type CreateWindowOptions } from './core.exports'
+import { checkDeps, createTempFolders, createWindow, getRB1USRDIR, getRB3USRDIR, getRockshelfModuleRootDir, getRockshelfTempDir, initRichPresence, readUserConfigFile, setElectronUserDataFolder, type CreateWindowOptions } from './core.exports'
 import { initMainProcessHandlers } from './initMainProcessHandlers'
 
 export async function initRockshelfMainProcess(options: CreateWindowOptions): Promise<void> {
   await setElectronUserDataFolder(app, 'Rockshelf')
   await checkDeps(app)
+  await createTempFolders()
 
   app.on('window-all-closed', () => {
     if (process.platform !== 'darwin') {
@@ -86,6 +87,29 @@ export async function initRockshelfMainProcess(options: CreateWindowOptions): Pr
     return net.fetch(pathToFileURL(artwork.path).toString(), { headers: { 'Content-Type': 'image/png' } })
   })
 
+  protocol.handle('tempjpg', async (request) => {
+    const root = getRockshelfTempDir()
+    const name = request.url.slice('tempjpg://'.length)
+    const artwork = root.gotoFile(`${name}.jpg`)
+
+    if (!artwork.exists) return new Response(null)
+
+    const fileBuffer = await artwork.read()
+
+    return new Response(fileBuffer, {
+      headers: {
+        'Content-Type': 'image/jpeg',
+        'Cache-Control': 'no-store',
+      },
+    })
+  })
+
+  electronApp.setAppUserModelId('com.electron.rockshelf')
+
+  app.on('browser-window-created', (event, window) => {
+    optimizer.watchWindowShortcuts(window)
+  })
+
   electronApp.setAppUserModelId('com.electron.rockshelf')
 
   app.on('browser-window-created', (event, window) => {
@@ -94,7 +118,7 @@ export async function initRockshelfMainProcess(options: CreateWindowOptions): Pr
 
   createWindow(options)
   initMainProcessHandlers()
-  await initRichPresence()
+  void initRichPresence()
 
   app.on('activate', function (event, hasVisibleWindows) {
     if (BrowserWindow.getAllWindows().length === 0) createWindow(options)

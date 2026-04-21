@@ -9,3 +9,8 @@ export const PACKAGE_DETAILS_TABS = {
   EDIT_PACKAGE: 2,
   FILTERS: 10,
 } as const
+
+export const CREATE_NEW_PACKAGE_TABS = {
+  FILES: 0,
+  OPTIONS: 1,
+}

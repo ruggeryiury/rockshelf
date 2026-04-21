@@ -1,5 +1,5 @@
 import { readUserConfigFile, sendDialog, useHandler } from '../core.exports'
-import { RB3SaveData, type InstrumentScoreData, type ParsedRB3SaveData } from 'rbtools'
+import { type ParsedRB3SaveData, type InstrumentScoreData, RB3SaveData } from '../lib/rbtools'
 
 /**
  * Retrieves information about your scoring based on the user's most played instrument and difficulty.

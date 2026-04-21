@@ -7,13 +7,15 @@ import Cropper from 'react-easy-crop'
 import { useState } from 'react'
 import { useMyPackagesScreenState } from './MyPackagesScreen.state'
 import { useMessageBoxState } from './MessageBox.state'
+import { useCreateNewPackageScreenState } from './CreateNewPackageScreen.state'
 
 export function ImageCropScreen() {
   const { t } = useTranslation()
   const { disableButtons, setWindowState } = useWindowState(useShallow((x) => ({ disableButtons: x.disableButtons, setWindowState: x.setWindowState })))
-  const { resetImageCropScreenState, imgPath, imgDataURL, setImageCropScreenState, imgCropOptions } = useImageCropScreenState(useShallow((x) => ({ resetImageCropScreenState: x.resetImageCropScreenState, imgPath: x.imgPath, imgDataURL: x.imgDataURL, setImageCropScreenState: x.setImageCropScreenState, imgCropOptions: x.imgCropOptions })))
+  const { resetImageCropScreenState, imgPath, imgDataURL, setImageCropScreenState, imgCropOptions, func } = useImageCropScreenState(useShallow((x) => ({ resetImageCropScreenState: x.resetImageCropScreenState, imgPath: x.imgPath, imgDataURL: x.imgDataURL, setImageCropScreenState: x.setImageCropScreenState, imgCropOptions: x.imgCropOptions, func: x.func })))
   const { selPKG } = useMyPackagesScreenState(useShallow((x) => ({ selPKG: x.selPKG })))
   const { setMessageBoxState } = useMessageBoxState(useShallow((x) => ({ setMessageBoxState: x.setMessageBoxState })))
+  const { setCreateNewPackageScreenState } = useCreateNewPackageScreenState(useShallow((x) => ({ setCreateNewPackageScreenState: x.setCreateNewPackageScreenState })))
   const [crop, setCrop] = useState({ x: 0, y: 0 })
   const [zoom, setZoom] = useState(1)
 
@@ -29,18 +31,32 @@ export function ImageCropScreen() {
               onClick={async () => {
                 setWindowState({ disableButtons: true })
                 setMessageBoxState({ message: { type: 'loading', method: 'image', code: 'processing' } })
-                try {
-                  if (imgCropOptions) {
-                    const newPackages = await window.api.editPackageData(selPKG, { imgPath, imgCropOptions })
-                    console.log('struct RPCS3SongPackagesDataExtra ["rbtools/src/lib/rpcs3/rpcs3GetSongPackagesStatsExtra.ts"]:', newPackages)
+                if (func === 'packageDetails') {
+                  try {
+                    if (imgCropOptions) {
+                      const newPackages = await window.api.editPackageData(selPKG, { imgPath, imgCropOptions })
+                      console.log('struct RPCS3SongPackagesDataExtra ["rbtools/src/lib/rpcs3/rpcs3GetSongPackagesStatsExtra.ts"]:', newPackages)
 
-                    if (newPackages) setWindowState({ packages: newPackages, disableImg: selPKG })
-                    setMessageBoxState({ message: { type: 'success', method: 'editPackageImage', code: '' } })
-                    resetImageCropScreenState()
+                      if (newPackages) setWindowState({ packages: newPackages, disableImg: selPKG })
+                      setMessageBoxState({ message: { type: 'success', method: 'editPackageImage', code: '' } })
+                      resetImageCropScreenState()
+                    }
+                  } catch (err) {
+                    if (err instanceof Error) setWindowState({ err })
                   }
-                } catch (err) {
-                  if (err instanceof Error) setWindowState({ err })
-                }
+                } else if (func === 'createNewPackage') {
+                  try {
+                    if (imgCropOptions) {
+                      setCreateNewPackageScreenState({ packageArtwork: `rbicons://custom` })
+                      await window.api.cropImageAndSaveToTemp({ imgPath, imgCropOptions, name: 'thumbnail' })
+                      setCreateNewPackageScreenState({ packageArtwork: `tempjpg://thumbnail` })
+                      setMessageBoxState({ message: { type: 'success', method: 'editPackageImage', code: '' } })
+                      resetImageCropScreenState()
+                    }
+                  } catch (err) {
+                    if (err instanceof Error) setWindowState({ err })
+                  }
+                } else setMessageBoxState({ message: { type: 'error', method: 'imageCrop', code: 'noFunc' } })
                 setWindowState({ disableButtons: false })
               }}
             >

@@ -1,7 +1,7 @@
-import { isRPCS3Devhdd0PathValid } from 'rbtools/lib'
 import { getPackagesCacheFile, readUserConfigFile, sendDialog, useHandler } from '../core.exports'
 import { rpcs3GetSongPackagesStatsExtra, type RPCS3SongPackagesDataExtra } from '../lib.exports'
 import { utimes } from 'fs/promises'
+import { isRPCS3Devhdd0PathValid } from '../lib/rbtools/lib.exports'
 
 /**
  * Forcefully refreshes the song packages cache file.

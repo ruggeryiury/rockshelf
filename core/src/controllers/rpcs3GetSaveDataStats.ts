@@ -1,6 +1,6 @@
-import { RB3SaveData, type ParsedRB3SaveData } from 'rbtools'
 import { getRB3SaveDataFile, readUserConfigFile, sendDialog, useHandler } from '../core.exports'
-import { isRPCS3Devhdd0PathValid } from 'rbtools/lib'
+import { type ParsedRB3SaveData, RB3SaveData } from '../lib/rbtools'
+import { isRPCS3Devhdd0PathValid } from '../lib/rbtools/lib.exports'
 
 /**
  * Retrieves data from the user's Rock Band 3 save data.

@@ -1,5 +1,5 @@
 import { useEffect } from 'react'
-import { BuzyLoadScreen, ConfigScreen, CreateNewPackageScreen, DeluxeInstallScreen, DialogScreen, FatalErrorScreen, FirstTimeScreen, ImageCropScreen, InstallPKGScreen, LogoScreen, MainScreen, MessageBox, MyPackagesScreen, RBIconsSelector, SongDetails, Topbar, WindowFrame } from './components.exports'
+import { BuzyLoadScreen, ConfigScreen, CreateNewPackageScreen, DeluxeInstallScreen, DialogScreen, FatalErrorScreen, FirstTimeScreen, ImageCropScreen, LogoScreen, MainScreen, MessageBox, MyPackagesScreen, RBIconsSelector, SongDetails, Topbar, WindowFrame } from './components.exports'
 import { useWindowState } from './stores/Window.state'
 import { useFirstTimeScreenState } from './components/FirstTimeScreen.state'
 import { useTranslation } from 'react-i18next'
@@ -20,7 +20,6 @@ export function App() {
   const { setLogoScreenState } = useLogoScreenState(useShallow((x) => ({ setLogoScreenState: x.setLogoScreenState })))
   const { setMessageBoxState } = useMessageBoxState(useShallow((x) => ({ setMessageBoxState: x.setMessageBoxState })))
   const { setDialogScreenState } = useDialogScreenState(useShallow((x) => ({ setDialogScreenState: x.setDialogScreenState })))
-  const { setBuzyLoadScreenState } = useBuzyLoadScreenState(useShallow((x) => ({ setBuzyLoadScreenState: x.setBuzyLoadScreenState })))
 
   useEffect(function initApp() {
     const fn = async () => {
@@ -106,24 +105,6 @@ export function App() {
     })
   }, [])
 
-  useEffect(function initBuzyLoadListener() {
-    window.api.onBuzyLoad((_, func) => {
-      if (func.code === 'init') console.log('struct BuzyLoadInitObject [core/src/lib/senders/buzyLoad.ts]', func)
-      else if (func.code === 'throwError') console.log('struct BuzyLoadErrorObject [core/src/lib/senders/buzyLoad.ts]', func)
-      else console.log('struct BuzyLoadObject [core/src/lib/senders/buzyLoad.ts]', func)
-
-      if (func.code === 'init') {
-        setBuzyLoadScreenState({ active: func })
-      } else if (func.code === 'throwError') {
-        setBuzyLoadScreenState({ hasError: func })
-      } else if (func.code === 'incrementStep') {
-        setBuzyLoadScreenState((oldState) => ({ step: oldState.step + 1 }))
-      } else if (func.code === 'callSuccess') {
-        setBuzyLoadScreenState({ isCompleted: true })
-      }
-    })
-  }, [])
-
   useEffect(function initRendererConsoleListener() {
     window.api.onRendererConsole((_, val) => console.log(val))
   }, [])
@@ -146,7 +127,6 @@ export function App() {
         <FatalErrorScreen />
         <FirstTimeScreen />
         <ImageCropScreen />
-        <InstallPKGScreen />
         <LogoScreen />
         <MainScreen />
         <MessageBox />

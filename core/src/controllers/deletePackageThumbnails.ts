@@ -1,6 +1,6 @@
-import { isRPCS3Devhdd0PathValid } from 'rbtools/lib'
 import { getRB1USRDIR, getRB3USRDIR, readUserConfigFile, useHandler } from '../core.exports'
 import { DirPath } from 'node-lib'
+import { isRPCS3Devhdd0PathValid } from '../lib/rbtools/lib.exports'
 
 /**
  * Deletes the user configuraton file and reload the window.

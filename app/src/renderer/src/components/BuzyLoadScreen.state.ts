@@ -6,6 +6,9 @@ export interface BuzyLoadScreenStateProps {
   step: number
   isCompleted: boolean
   hasError: null | BuzyLoadErrorObject
+  subtextKey: null | string
+  subtextValues: null | Record<string, string>
+  disableSubtext: boolean
 }
 
 export interface BuzyLoadScreenStateActions {
@@ -34,6 +37,9 @@ const defaultState: BuzyLoadScreenStateProps = {
   step: 0,
   isCompleted: false,
   hasError: null,
+  subtextKey: null,
+  subtextValues: null,
+  disableSubtext: false,
 }
 
 export const useBuzyLoadScreenState = create<BuzyLoadScreenStateHook>()((set, get) => ({

@@ -1,8 +1,7 @@
-import { getOfficialSongPackageStatsFromHash, type OfficialSongPackageStats } from 'rbtools/lib'
 import { getLocaleStringFromRenderer, sendMessageBox, useHandler } from '../core.exports'
-import { PKGFile, type PKGFileJSONRepresentation } from 'rbtools'
 import { dialog } from 'electron'
-import { MyObject, pathLikeToFilePath } from 'node-lib'
+import { type PKGFileJSONRepresentation, PKGFile } from '../lib/rbtools'
+import { type OfficialSongPackageStats, getOfficialSongPackageStatsFromHash } from '../lib/rbtools/lib.exports'
 
 export type SelectedPKGFileType = 'dx' | 'songPackage' | OfficialSongPackageStats['code']
 

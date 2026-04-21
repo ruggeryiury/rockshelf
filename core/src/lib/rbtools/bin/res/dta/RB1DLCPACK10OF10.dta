@@ -1,0 +1,8671 @@
+(
+   'americangirl'
+   (
+      'name'
+      "American Girl (Live)"
+   )
+   (
+      'artist'
+      "Tom Petty and the Heartbreakers"
+   )
+   ('master' 'TRUE')
+   ('context' 1009)
+   (
+      'song'
+      (
+         'name'
+         "songs/americangirl/americangirl"
+      )
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1 2 3 4 5)
+            )
+            ('bass' 6)
+            (
+               'guitar'
+               (7 8)
+            )
+            (
+               'vocals'
+               (9 10)
+            )
+         )
+      )
+      (
+         'pans'
+         (-1.0 1.0 -1.0 1.0 -1.0 1.0 0.0 -1.0 1.0 -1.0 1.0 -1.0 1.0)
+      )
+      (
+         'vols'
+         (-4.0 -4.0 -3.5 -3.5 -3.5 -3.5 -1.0 -3.0 -3.0 -5.0 -5.0 -4.0 -4.0)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 -1 -1 -1 1 1 -1 -1 -1 -1)
+      )
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+      (midi_file "songs/americangirl/americangirl.mid")
+   )
+   ('song_scroll_speed' 2300)
+   ('bank' 'sfx/tambourine_bank.milo')
+   ('anim_tempo' 'kTempoMedium')
+   ('preview' 60000 90000)
+   (
+      'rank'
+      ('drum' 327)
+      ('guitar' 410)
+      ('bass' 289)
+      ('vocals' 220)
+      ('band' 363)
+   )
+   ('genre' 'rock')
+   ('decade' 'the00s')
+   ('vocal_gender' 'male')
+   ('format' 4)
+   ('version' 3)
+   (
+      'fake'
+      {'==' $SONG_VERSION 0}
+   )
+   ('downloaded' 'TRUE')
+   ('game_origin' 'rb1')
+   ('song_id' 1005816)
+   ('rating' 2)
+   ('short_version' 126293)
+   ('album_art' 'TRUE')
+   ('year_released' 2009)
+   (
+      'album_name'
+      "The Live Anthology"
+   )
+   ('album_track_number' 35)
+   (
+      'pack_name'
+      "Tom Petty & The Heartbreakers Live Anthology Pack 01"
+   )
+   ('base_points' 565256)
+)
+(
+   'americanmusic'
+   (
+      'name'
+      "American Music"
+   )
+   (
+      'artist'
+      "Violent Femmes"
+   )
+   ('master' 'TRUE')
+   ('context' 1198)
+   (
+      'song'
+      (
+         'name'
+         "songs/americanmusic/americanmusic"
+      )
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1 2)
+            )
+            ('bass' 3)
+            (
+               'guitar'
+               (4 5)
+            )
+            (
+               'vocals'
+               (6 7)
+            )
+         )
+      )
+      ('vocal_parts' 1)
+      (
+         'pans'
+         (0.0 -1.0 1.0 0.0 -1.0 1.0 -1.0 1.0 -1.0 1.0)
+      )
+      (
+         'vols'
+         (-4.5 -4.5 -4.5 -2.5 -3.5 -3.5 -3.8 -3.8 -5.0 -5.0)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 1 1 -1 -1 -1 -1)
+      )
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+      (midi_file "songs/americanmusic/americanmusic.mid")
+   )
+   ('song_scroll_speed' 2300)
+   ('bank' 'sfx/tambourine_bank.milo')
+   ('anim_tempo' 'kTempoMedium')
+   ('preview' 85000 115000)
+   (
+      'rank'
+      ('drum' 276)
+      ('guitar' 259)
+      ('bass' 351)
+      ('vocals' 255)
+      ('band' 294)
+   )
+   ('genre' 'alternative')
+   ('decade' 'the90s')
+   ('vocal_gender' 'male')
+   ('vocal_tonic_note' 0)
+   ('format' 5)
+   ('version' 3)
+   (
+      'fake'
+      {'==' $SONG_VERSION 0}
+   )
+   ('downloaded' 'TRUE')
+   ('game_origin' 'rb1_dlc')
+   ('song_id' 1006024)
+   ('rating' 2)
+   ('short_version' 117500)
+   ('song_length' 224000)
+   ('album_art' 'TRUE')
+   ('year_released' 1991)
+   (
+      'album_name'
+      "Why Do Birds Sing?"
+   )
+   ('album_track_number' 1)
+   ('base_points' 562693)
+)
+(
+   'athingaboutyou'
+   (
+      'name'
+      "A Thing About You (Live)"
+   )
+   (
+      'artist'
+      "Tom Petty and the Heartbreakers"
+   )
+   ('master' 'TRUE')
+   ('context' 1008)
+   (
+      'song'
+      (
+         'name'
+         "songs/athingaboutyou/athingaboutyou"
+      )
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1 2 3 4)
+            )
+            ('bass' 5)
+            (
+               'guitar'
+               (6 7)
+            )
+            (
+               'vocals'
+               (8 9)
+            )
+         )
+      )
+      (
+         'pans'
+         (0.0 -1.0 1.0 -1.0 1.0 0.0 -1.0 1.0 -1.0 1.0 -1.0 1.0)
+      )
+      (
+         'vols'
+         (-1.0 -2.0 -2.0 -2.0 -2.0 -3.0 -1.0 -1.0 -1.0 -1.0 -2.0 -2.0)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 -1 -1 1 1 -1 -1 -1 -1)
+      )
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+      (midi_file "songs/athingaboutyou/athingaboutyou.mid")
+   )
+   ('song_scroll_speed' 2300)
+   ('bank' 'sfx/tambourine_bank.milo')
+   ('anim_tempo' 'kTempoMedium')
+   ('preview' 33204 63204)
+   (
+      'rank'
+      ('drum' 272)
+      ('guitar' 265)
+      ('bass' 284)
+      ('vocals' 251)
+      ('band' 269)
+   )
+   ('genre' 'rock')
+   ('decade' 'the00s')
+   ('vocal_gender' 'male')
+   ('format' 4)
+   ('version' 3)
+   (
+      'fake'
+      {'==' $SONG_VERSION 0}
+   )
+   ('downloaded' 'TRUE')
+   ('game_origin' 'rb1')
+   ('song_id' 1005820)
+   ('rating' 1)
+   ('short_version' 124130)
+   ('album_art' 'TRUE')
+   ('year_released' 2009)
+   (
+      'album_name'
+      "The Live Anthology"
+   )
+   ('album_track_number' 5)
+   (
+      'pack_name'
+      "Tom Petty & The Heartbreakers Live Anthology Pack 01"
+   )
+   ('base_points' 642722)
+)
+(
+   'awomaninlovelive'
+   (
+      'name'
+      "A Woman in Love (It's Not Me) (Live)"
+   )
+   (
+      'artist'
+      "Tom Petty and the Heartbreakers"
+   )
+   ('master' 'TRUE')
+   ('context' 1058)
+   (
+      'song'
+      (
+         'name'
+         "songs/awomaninlovelive/awomaninlovelive"
+      )
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1 2 3)
+            )
+            ('bass' 4)
+            (
+               'guitar'
+               (5 6)
+            )
+            (
+               'vocals'
+               (7 8)
+            )
+         )
+      )
+      ('vocal_parts' 1)
+      (
+         'pans'
+         (0.0 0.0 -1.0 1.0 0.0 -1.0 1.0 -1.0 1.0 -1.0 1.0)
+      )
+      (
+         'vols'
+         (-1.7 -1.0 -7.0 -7.0 -7.3 -6.5 -6.5 -7.0 -7.0 -8.0 -8.0)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 -1 1 1 -1 -1 -1 -1)
+      )
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+      (midi_file "songs/awomaninlovelive/awomaninlovelive.mid")
+   )
+   ('song_scroll_speed' 2300)
+   ('bank' 'sfx/tambourine_bank.milo')
+   ('anim_tempo' 'kTempoMedium')
+   ('preview' 77926 107709)
+   (
+      'rank'
+      ('drum' 254)
+      ('guitar' 272)
+      ('bass' 210)
+      ('vocals' 180)
+      ('band' 277)
+   )
+   ('genre' 'rock')
+   ('decade' 'the00s')
+   ('vocal_gender' 'male')
+   ('format' 5)
+   ('version' 3)
+   (
+      'fake'
+      {'==' $SONG_VERSION 0}
+   )
+   ('downloaded' 'TRUE')
+   ('game_origin' 'rb1_dlc')
+   ('song_id' 1005877)
+   ('rating' 1)
+   ('short_version' 143927)
+   ('song_length' 337272)
+   ('album_art' 'TRUE')
+   ('year_released' 2009)
+   (
+      'album_name'
+      "The Live Anthology"
+   )
+   ('album_track_number' 19)
+   (
+      'pack_name'
+      "Tom Petty & the Heartbreakers Live Anthology Pack 02"
+   )
+   ('base_points' 659270)
+)
+(
+   'bathwater'
+   (
+      'name'
+      "Bathwater"
+   )
+   (
+      'artist'
+      "No Doubt"
+   )
+   ('master' 'TRUE')
+   ('context' 522)
+   (
+      'song'
+      ('name' 'songs/bathwater/bathwater')
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1 2 3 4 5)
+            )
+            ('bass' 6)
+            (
+               'guitar'
+               (7 8)
+            )
+            (
+               'vocals'
+               (9 10)
+            )
+         )
+      )
+      (
+         'pans'
+         (-1.0 1.0 -1.0 1.0 -1.0 1.0 0.0 -1.0 1.0 -1.0 1.0 -1.0 1.0)
+      )
+      (
+         'vols'
+         (-2.0 -2.0 -2.0 -2.0 -3.2 -3.2 -1.4 -1.5 -1.5 -1.8 -1.8 -3.5 -3.5)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 -1 -1 -1 1 1 -1 -1 -1 -1)
+      )
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+      ('midi_file' 'songs/bathwater/bathwater.mid')
+   )
+   ('song_scroll_speed' 2300)
+   ('bank' 'sfx/tambourine_bank.milo')
+   ('anim_tempo' 'kTempoMedium')
+   ('preview' 98600 129800)
+   (
+      'rank'
+      ('drum' 202)
+      ('guitar' 142)
+      ('bass' 119)
+      ('vocals' 266)
+      ('band' 178)
+   )
+   ('genre' 'poprock')
+   ('decade' 'the00s')
+   ('vocal_gender' 'female')
+   ('format' 3)
+   ('version' 2)
+   (
+      'fake'
+      {'==' $SONG_VERSION 0}
+   )
+   ('downloaded' 'TRUE')
+   ('album_art' 'TRUE')
+   ('year_released' 2003)
+   (
+      'album_name'
+      "The Singles 1992-2003"
+   )
+   ('album_track_number' 4)
+   ('base_points' 447061)
+)
+(
+   'beerformyhorses'
+   (
+      'name'
+      "Beer for My Horses"
+   )
+   (
+      'artist'
+      "Toby Keith"
+   )
+   ('master' 'TRUE')
+   ('context' 638)
+   (
+      'song'
+      ('name' 'songs/beerformyhorses/beerformyhorses')
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1 2 3 4 5)
+            )
+            ('bass' 6)
+            (
+               'guitar'
+               (7 8)
+            )
+            (
+               'vocals'
+               (9 10)
+            )
+         )
+      )
+      (
+         'pans'
+         (-1.0 1.0 -1.0 1.0 -1.0 1.0 0.0 -1.0 1.0 -1.0 1.0 -1.0 1.0)
+      )
+      (
+         'vols'
+         (-0.5 -0.5 -0.5 -0.5 -3.0 -3.0 -3.5 -4.5 -4.5 -2.0 -2.0 -3.5 -3.5)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 -1 -1 -1 1 1 -1 -1 -1 -1)
+      )
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+      ('midi_file' 'songs/beerformyhorses/beerformyhorses.mid')
+   )
+   ('song_scroll_speed' 2300)
+   ('bank' 'sfx/tambourine_bank.milo')
+   ('anim_tempo' 'kTempoMedium')
+   ('preview' 71703 101703)
+   (
+      'rank'
+      ('drum' 197)
+      ('guitar' 242)
+      ('bass' 150)
+      ('vocals' 144)
+      ('band' 210)
+   )
+   ('genre' 'country')
+   ('decade' 'the00s')
+   ('vocal_gender' 'male')
+   ('format' 3)
+   ('version' 3)
+   (
+      'fake'
+      {'==' $SONG_VERSION 0}
+   )
+   ('downloaded' 'TRUE')
+   ('album_art' 'TRUE')
+   ('year_released' 2002)
+   (
+      'album_name'
+      "Unleashed"
+   )
+   ('album_track_number' 5)
+   (
+      'pack_name'
+      "Toby Keith Pack 01"
+   )
+   ('base_points' 417216)
+)
+(
+   'beverlyhills'
+   (
+      'name'
+      "Beverly Hills"
+   )
+   (
+      'artist'
+      "Weezer"
+   )
+   ('master' 'TRUE')
+   ('context' 1035)
+   (
+      'song'
+      (
+         'name'
+         "songs/beverlyhills/beverlyhills"
+      )
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1 2 3 4 5)
+            )
+            (
+               'bass'
+               (6 7)
+            )
+            (
+               'guitar'
+               (8 9)
+            )
+            (
+               'vocals'
+               (10 11)
+            )
+         )
+      )
+      ('vocal_parts' 1)
+      (
+         'pans'
+         (-1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0)
+      )
+      (
+         'vols'
+         (-3.0 -3.0 -5.0 -5.0 -5.0 -5.0 -5.5 -5.5 -4.5 -4.5 -3.5 -3.5 -5.0 -5.0)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 -1 -1 -1 -1 1 1 -1 -1 -1 -1)
+      )
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+      (midi_file "songs/beverlyhills/beverlyhills.mid")
+   )
+   ('song_scroll_speed' 2300)
+   ('bank' 'sfx/handclap_bank.milo')
+   ('anim_tempo' 'kTempoSlow')
+   ('preview' 86000 116000)
+   (
+      'rank'
+      ('drum' 145)
+      ('guitar' 202)
+      ('bass' 105)
+      ('vocals' 127)
+      ('band' 165)
+   )
+   ('genre' 'rock')
+   ('decade' 'the00s')
+   ('vocal_gender' 'male')
+   ('tuning_offset_cents' -40)
+   ('format' 5)
+   ('version' 3)
+   (
+      'fake'
+      {'==' $SONG_VERSION 0}
+   )
+   ('downloaded' 'TRUE')
+   ('game_origin' 'rb1_dlc')
+   ('song_id' 1005861)
+   ('rating' 2)
+   ('short_version' 108741)
+   ('song_length' 208636)
+   ('album_art' 'TRUE')
+   ('year_released' 2005)
+   (
+      'album_name'
+      "Make Believe"
+   )
+   ('album_track_number' 1)
+   (
+      'pack_name'
+      "Weezer Pack 03"
+   )
+   ('base_points' 383026)
+)
+(
+   'blacksunshine'
+   (
+      'name'
+      "Black Sunshine"
+   )
+   (
+      'artist'
+      "White Zombie"
+   )
+   ('master' 'TRUE')
+   ('context' 584)
+   (
+      'song'
+      ('name' 'songs/blacksunshine/blacksunshine')
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1 2 3 4)
+            )
+            ('bass' 5)
+            (
+               'guitar'
+               (6 7)
+            )
+            (
+               'vocals'
+               (8 9)
+            )
+         )
+      )
+      (
+         'pans'
+         (0.0 -1.0 1.0 -1.0 1.0 0.0 -1.0 1.0 -1.0 1.0 -1.0 1.0)
+      )
+      (
+         'vols'
+         (-0.2 -1.3 -1.3 -5.0 -5.0 -2.5 -5.0 -5.0 -1.5 -1.5 -6.0 -6.0)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 -1 -1 1 1 -1 -1 -1 -1)
+      )
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+      ('midi_file' 'songs/blacksunshine/blacksunshine.mid')
+   )
+   ('song_scroll_speed' 2300)
+   ('bank' 'sfx/cowbell3_bank.milo')
+   ('anim_tempo' 'kTempoFast')
+   ('preview' 47368 75975)
+   (
+      'rank'
+      ('drum' 347)
+      ('guitar' 256)
+      ('bass' 360)
+      ('vocals' 319)
+      ('band' 355)
+   )
+   ('genre' 'metal')
+   ('decade' 'the90s')
+   ('vocal_gender' 'male')
+   ('format' 3)
+   ('version' 3)
+   (
+      'fake'
+      {'==' $SONG_VERSION 0}
+   )
+   ('downloaded' 'TRUE')
+   ('album_art' 'TRUE')
+   ('year_released' 1992)
+   (
+      'album_name'
+      "La Sexorcisto: Devil Music, Vol. 1"
+   )
+   ('album_track_number' 4)
+   ('base_points' 660218)
+)
+(
+   'bluespark'
+   (
+      'name'
+      "Blue Spark"
+   )
+   (
+      'artist'
+      "X"
+   )
+   ('master' 'TRUE')
+   ('context' 1163)
+   (
+      'song'
+      (
+         'name'
+         "songs/bluespark/bluespark"
+      )
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1 2 3 4)
+            )
+            ('bass' 5)
+            (
+               'guitar'
+               (6 7)
+            )
+            (
+               'vocals'
+               (8 9)
+            )
+         )
+      )
+      ('vocal_parts' 1)
+      (
+         'pans'
+         (0.0 -1.0 1.0 -1.0 1.0 0.0 -1.0 1.0 -1.0 1.0 -1.0 1.0)
+      )
+      (
+         'vols'
+         (-6.0 -10.0 -10.0 -10.0 -10.0 -7.0 -10.0 -10.0 -10.0 -10.0 -13.0 -13.0)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 -1 -1 1 1 -1 -1 -1 -1)
+      )
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+      (midi_file "songs/bluespark/bluespark.mid")
+   )
+   ('song_scroll_speed' 2300)
+   ('bank' 'sfx/tambourine_bank.milo')
+   ('anim_tempo' 'kTempoMedium')
+   ('preview' 45893 75893)
+   (
+      'rank'
+      ('drum' 171)
+      ('guitar' 190)
+      ('bass' 181)
+      ('vocals' 263)
+      ('band' 219)
+   )
+   ('genre' 'punk')
+   ('decade' 'the80s')
+   ('vocal_gender' 'male')
+   ('vocal_tonic_note' 7)
+   ('format' 5)
+   ('version' 3)
+   (
+      'fake'
+      {'==' $SONG_VERSION 0}
+   )
+   ('downloaded' 'TRUE')
+   ('game_origin' 'rb1_dlc')
+   ('song_id' 1005973)
+   ('rating' 1)
+   ('short_version' 0)
+   ('song_length' 129626)
+   ('album_art' 'TRUE')
+   ('year_released' 1982)
+   (
+      'album_name'
+      "Under the Big Black Sun"
+   )
+   ('album_track_number' 7)
+   (
+      'pack_name'
+      "X Pack 01"
+   )
+   ('base_points' 287364)
+)
+(
+   'boysarebackintown'
+   (
+      'name'
+      "The Boys Are Back in Town (Live)"
+   )
+   (
+      'artist'
+      "Thin Lizzy"
+   )
+   ('master' 'TRUE')
+   ('context' 577)
+   (
+      'song'
+      ('name' 'songs/boysarebackintown/boysarebackintown')
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1 2 3 4)
+            )
+            ('bass' 5)
+            (
+               'guitar'
+               (6 7)
+            )
+            (
+               'vocals'
+               (8 9)
+            )
+         )
+      )
+      (
+         'pans'
+         (0.0 -1.0 1.0 -1.0 1.0 0.0 -1.0 1.0 -1.0 1.0 -1.0 1.0)
+      )
+      (
+         'vols'
+         (-0.5 -1.0 -1.0 -3.5 -3.5 -3.5 -5.5 -5.5 -2.0 -2.0 -3.0 -3.0)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 -1 -1 1 1 -1 -1 -1 -1)
+      )
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+      ('midi_file' 'songs/boysarebackintown/boysarebackintown.mid')
+   )
+   ('song_scroll_speed' 2300)
+   ('bank' 'sfx/tambourine_bank.milo')
+   ('anim_tempo' 'kTempoMedium')
+   ('preview' 33715 63344)
+   (
+      'rank'
+      ('drum' 278)
+      ('guitar' 333)
+      ('bass' 299)
+      ('vocals' 168)
+      ('band' 310)
+   )
+   ('genre' 'classicrock')
+   ('decade' 'the70s')
+   ('vocal_gender' 'male')
+   ('format' 3)
+   ('version' 3)
+   (
+      'fake'
+      {'==' $SONG_VERSION 0}
+   )
+   ('downloaded' 'TRUE')
+   ('album_art' 'TRUE')
+   ('year_released' 2009)
+   (
+      'album_name'
+      "Still Dangerous - Live At the Tower Theatre Philadelphia 1977"
+   )
+   ('album_track_number' 4)
+   (
+      'pack_name'
+      "Thin Lizzy Pack 01"
+   )
+   ('base_points' 657020)
+)
+(
+   'breakdownlive'
+   (
+      'name'
+      "Breakdown (Live)"
+   )
+   (
+      'artist'
+      "Tom Petty and the Heartbreakers"
+   )
+   ('master' 'TRUE')
+   ('context' 1055)
+   (
+      'song'
+      (
+         'name'
+         "songs/breakdownlive/breakdownlive"
+      )
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1 2 3)
+            )
+            ('bass' 4)
+            (
+               'guitar'
+               (5 6)
+            )
+            (
+               'vocals'
+               (7 8)
+            )
+         )
+      )
+      ('vocal_parts' 1)
+      (
+         'pans'
+         (0.0 0.0 -1.0 1.0 0.0 -1.0 1.0 -1.0 1.0 -1.0 1.0)
+      )
+      (
+         'vols'
+         (-1.5 -2.0 -5.0 -5.0 -5.0 -5.0 -5.0 -5.0 -5.0 -5.5 -5.5)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 -1 1 1 -1 -1 -1 -1)
+      )
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+      (midi_file "songs/breakdownlive/breakdownlive.mid")
+   )
+   ('song_scroll_speed' 2300)
+   ('bank' 'sfx/handclap_bank.milo')
+   ('anim_tempo' 'kTempoMedium')
+   ('preview' 149500 179500)
+   (
+      'rank'
+      ('drum' 191)
+      ('guitar' 193)
+      ('bass' 200)
+      ('vocals' 172)
+      ('band' 184)
+   )
+   ('genre' 'rock')
+   ('decade' 'the00s')
+   ('vocal_gender' 'male')
+   ('vocal_tonic_note' 9)
+   ('format' 5)
+   ('version' 3)
+   (
+      'fake'
+      {'==' $SONG_VERSION 0}
+   )
+   ('downloaded' 'TRUE')
+   ('game_origin' 'rb1_dlc')
+   ('song_id' 1005734)
+   ('rating' 1)
+   ('short_version' 146000)
+   ('song_length' 330909)
+   ('album_art' 'TRUE')
+   ('year_released' 2009)
+   (
+      'album_name'
+      "The Live Anthology"
+   )
+   ('album_track_number' 9)
+   (
+      'pack_name'
+      "Tom Petty & the Heartbreakers Live Anthology Pack 02"
+   )
+   ('base_points' 374515)
+)
+(
+   'buddyholly'
+   (
+      'name'
+      "Buddy Holly"
+   )
+   (
+      'artist'
+      "Weezer"
+   )
+   ('master' 'TRUE')
+   ('context' 104)
+   (
+      'song'
+      ('name' 'songs/buddyholly/buddyholly')
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1 2 3 4)
+            )
+            ('bass' 5)
+            (
+               'guitar'
+               (6 7)
+            )
+            (
+               'vocals'
+               (8 9)
+            )
+         )
+      )
+      (
+         'pans'
+         (0.0 -1.0 1.0 -1.0 1.0 0.0 -1.0 1.0 -1.0 1.0 -1.0 1.0)
+      )
+      (
+         'vols'
+         (0.0 0.0 0.0 -1.5 -1.5 -3.0 -4.5 -4.5 -4.0 -4.0 -6.0 -6.0)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 -1 -1 1 1 -1 -1 -1 -1)
+      )
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+      ('midi_file' 'songs/buddyholly/buddyholly.mid')
+   )
+   ('song_scroll_speed' 2100)
+   ('bank' 'sfx/tambourine_bank.milo')
+   ('anim_tempo' 'kTempoMedium')
+   ('preview' 83313 111920)
+   (
+      'rank'
+      ('drum' 150)
+      ('guitar' 160)
+      ('bass' 150)
+      ('vocals' 130)
+      ('band' 150)
+   )
+   ('genre' 'alternative')
+   ('decade' 'the90s')
+   ('downloaded' 'TRUE')
+   ('vocal_gender' 'male')
+)
+(
+   'bulletsandguns'
+   (
+      'name'
+      "Bullets & Guns"
+   )
+   (
+      'artist'
+      "Them Terribles"
+   )
+   ('master' 'TRUE')
+   ('context' 211)
+   (
+      'song'
+      ('name' 'songs/bulletsandguns/bulletsandguns')
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1 2 3 4)
+            )
+            ('bass' 5)
+            (
+               'guitar'
+               (6 7)
+            )
+            (
+               'vocals'
+               (8 9)
+            )
+         )
+      )
+      (
+         'pans'
+         (0.0 -1.0 1.0 -1.0 1.0 0.0 -1.0 1.0 -1.0 1.0 -1.0 1.0)
+      )
+      (
+         'vols'
+         (-0.7 -1.3 -1.3 -2.5 -2.5 -3.5 -3.7 -3.7 -3.6 -3.6 -4.2 -4.2)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 -1 -1 1 1 -1 -1 -1 -1)
+      )
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+      ('midi_file' 'songs/bulletsandguns/bulletsandguns.mid')
+   )
+   ('song_scroll_speed' 2300)
+   ('bank' 'sfx/tambourine_bank.milo')
+   ('anim_tempo' 'kTempoMedium')
+   ('preview' 19000 47500)
+   (
+      'rank'
+      ('drum' 240)
+      ('guitar' 150)
+      ('bass' 150)
+      ('vocals' 175)
+      ('band' 220)
+   )
+   ('genre' 'alternative')
+   ('decade' 'the00s')
+   ('downloaded' 'TRUE')
+   ('vocal_gender' 'male')
+)
+(
+   'burymealive'
+   (
+      'name'
+      "Bury Me Alive"
+   )
+   (
+      'artist'
+      "We Are The Fallen"
+   )
+   ('master' 'TRUE')
+   ('context' 1329)
+   (
+      'song'
+      (
+         'name'
+         "songs/burymealive/burymealive"
+      )
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1 2 3 4)
+            )
+            ('bass' 5)
+            (
+               'guitar'
+               (6 7)
+            )
+            (
+               'vocals'
+               (8 9)
+            )
+         )
+      )
+      ('vocal_parts' 1)
+      (
+         'pans'
+         (0.0 -1.0 1.0 -1.0 1.0 0.0 -1.0 1.0 -1.0 1.0 -1.0 1.0)
+      )
+      (
+         'vols'
+         (-0.9 -4.0 -4.0 -3.5 -3.5 -1.1 -3.5 -3.5 -4.0 -4.0 -4.0 -4.0)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 -1 -1 1 1 -1 -1 -1 -1)
+      )
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+      (midi_file "songs/burymealive/burymealive.mid")
+   )
+   ('song_scroll_speed' 2300)
+   ('bank' 'sfx/tambourine_bank.milo')
+   ('anim_tempo' 'kTempoMedium')
+   ('preview' 58705 88705)
+   (
+      'rank'
+      ('drum' 249)
+      ('guitar' 196)
+      ('bass' 170)
+      ('vocals' 233)
+      ('band' 224)
+   )
+   ('genre' 'metal')
+   ('decade' 'the10s')
+   ('vocal_gender' 'female')
+   ('vocal_tonic_note' 11)
+   ('format' 6)
+   ('version' 3)
+   (
+      'fake'
+      {'==' $SONG_VERSION 0}
+   )
+   ('downloaded' 'TRUE')
+   ('game_origin' 'rb1_dlc')
+   ('song_id' 1006162)
+   ('rating' 2)
+   ('short_version' 127959)
+   ('song_length' 289501)
+   ('album_art' 'TRUE')
+   ('year_released' 2010)
+   (
+      'album_name'
+      "Tear the World Down"
+   )
+   ('album_track_number' 1)
+   (
+      'pack_name'
+      "Universal Motown Pack 01"
+   )
+   ('base_points' 483338)
+)
+(
+   'capricididiablo'
+   (
+      'name'
+      "Caprici di Diablo"
+   )
+   (
+      'artist'
+      "Yngwie Malmsteen's Rising Force"
+   )
+   ('master' 'TRUE')
+   ('context' 502)
+   (
+      'song'
+      ('name' 'songs/capricididiablo/capricididiablo')
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1 2 3 4 5)
+            )
+            ('bass' 6)
+            (
+               'guitar'
+               (7 8)
+            )
+         )
+      )
+      (
+         'pans'
+         (-1.0 1.0 -1.0 1.0 -1.0 1.0 0.0 -1.0 1.0 -1.0 1.0)
+      )
+      (
+         'vols'
+         (-0.5 -0.5 -2.0 -2.0 -3.0 -3.0 -2.0 -2.0 -2.0 -7.0 -7.0)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 -1 -1 -1 1 1 -1 -1)
+      )
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+      ('midi_file' 'songs/capricididiablo/capricididiablo.mid')
+   )
+   ('song_scroll_speed' 2300)
+   ('bank' 'sfx/tambourine_bank.milo')
+   ('anim_tempo' 'kTempoFast')
+   ('preview' 16811 45975)
+   (
+      'rank'
+      ('drum' 304)
+      ('guitar' 530)
+      ('bass' 373)
+      ('vocals' 0)
+      ('band' 525)
+   )
+   ('genre' 'metal')
+   ('decade' 'the00s')
+   ('vocal_gender' 'male')
+   ('format' 3)
+   ('version' 2)
+   (
+      'fake'
+      {'==' $SONG_VERSION 0}
+   )
+   ('downloaded' 'TRUE')
+   ('album_art' 'TRUE')
+   ('year_released' 2008)
+   (
+      'album_name'
+      "Perpetual Flame"
+   )
+   ('album_track_number' 8)
+   (
+      'pack_name'
+      "Yngwie Malmsteen Pack 01"
+   )
+   ('base_points' 605999)
+)
+(
+   'centurycitylive'
+   (
+      'name'
+      "Century City (Live)"
+   )
+   (
+      'artist'
+      "Tom Petty and the Heartbreakers"
+   )
+   ('master' 'TRUE')
+   ('context' 1059)
+   (
+      'song'
+      (
+         'name'
+         "songs/centurycitylive/centurycitylive"
+      )
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1 2 3)
+            )
+            ('bass' 4)
+            (
+               'guitar'
+               (5 6)
+            )
+            (
+               'vocals'
+               (7 8)
+            )
+         )
+      )
+      ('vocal_parts' 1)
+      (
+         'pans'
+         (0.0 0.0 -1.0 1.0 0.0 -1.0 1.0 -1.0 1.0 -1.0 1.0)
+      )
+      (
+         'vols'
+         (-1.0 -4.0 -4.0 -4.0 -4.0 -4.0 -4.0 -3.0 -3.0 -4.0 -4.0)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 -1 1 1 -1 -1 -1 -1)
+      )
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+      (midi_file "songs/centurycitylive/centurycitylive.mid")
+   )
+   ('song_scroll_speed' 2300)
+   ('bank' 'sfx/tambourine_bank.milo')
+   ('anim_tempo' 'kTempoMedium')
+   ('preview' 92589 122589)
+   (
+      'rank'
+      ('drum' 247)
+      ('guitar' 260)
+      ('bass' 259)
+      ('vocals' 225)
+      ('band' 291)
+   )
+   ('genre' 'rock')
+   ('decade' 'the00s')
+   ('vocal_gender' 'male')
+   ('vocal_tonic_note' 9)
+   ('format' 5)
+   ('version' 3)
+   (
+      'fake'
+      {'==' $SONG_VERSION 0}
+   )
+   ('downloaded' 'TRUE')
+   ('game_origin' 'rb1_dlc')
+   ('song_id' 1005876)
+   ('rating' 1)
+   ('short_version' 145409)
+   ('song_length' 221818)
+   ('album_art' 'TRUE')
+   ('year_released' 2009)
+   (
+      'album_name'
+      "The Live Anthology"
+   )
+   ('album_track_number' 47)
+   (
+      'pack_name'
+      "Tom Petty & the Heartbreakers Live Anthology Pack 02"
+   )
+   ('base_points' 577384)
+)
+(
+   'cowboysong_live'
+   (
+      'name'
+      "Cowboy Song (Live)"
+   )
+   (
+      'artist'
+      "Thin Lizzy"
+   )
+   ('master' 'TRUE')
+   ('context' 576)
+   (
+      'song'
+      ('name' 'songs/cowboysong_live/cowboysong_live')
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1 2 3 4)
+            )
+            ('bass' 5)
+            (
+               'guitar'
+               (6 7)
+            )
+            (
+               'vocals'
+               (8 9)
+            )
+         )
+      )
+      (
+         'pans'
+         (0.0 -1.0 1.0 -1.0 1.0 0.0 -1.0 1.0 -1.0 1.0 -1.0 1.0)
+      )
+      (
+         'vols'
+         (-2.0 -3.0 -3.0 -3.0 -3.0 -2.0 -3.0 -3.0 -3.0 -3.0 -3.0 -3.0)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 -1 -1 1 1 -1 -1 -1 -1)
+      )
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+      ('midi_file' 'songs/cowboysong_live/cowboysong_live.mid')
+   )
+   ('song_scroll_speed' 2300)
+   ('bank' 'sfx/tambourine_bank.milo')
+   ('anim_tempo' 'kTempoMedium')
+   ('preview' 135000 165000)
+   (
+      'rank'
+      ('drum' 265)
+      ('guitar' 350)
+      ('bass' 244)
+      ('vocals' 233)
+      ('band' 295)
+   )
+   ('genre' 'classicrock')
+   ('decade' 'the70s')
+   ('vocal_gender' 'male')
+   ('format' 3)
+   ('version' 3)
+   (
+      'fake'
+      {'==' $SONG_VERSION 0}
+   )
+   ('downloaded' 'TRUE')
+   ('album_art' 'TRUE')
+   ('year_released' 2009)
+   (
+      'album_name'
+      "Still Dangerous - Live At the Tower Theatre Philadelphia 1977"
+   )
+   ('album_track_number' 3)
+   (
+      'pack_name'
+      "Thin Lizzy Pack 01"
+   )
+   ('base_points' 647175)
+)
+(
+   'crazytuesday'
+   (
+      'name'
+      "Crazy Tuesday"
+   )
+   (
+      'artist'
+      "thenewno2"
+   )
+   ('master' 'TRUE')
+   ('context' 448)
+   (
+      'song'
+      ('name' 'songs/crazytuesday/crazytuesday')
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1 2 3)
+            )
+            ('bass' 4)
+            (
+               'guitar'
+               (5 6)
+            )
+            (
+               'vocals'
+               (7 8)
+            )
+         )
+      )
+      (
+         'pans'
+         (0.0 0.0 -1.0 1.0 0.0 -1.0 1.0 -1.0 1.0 -1.0 1.0)
+      )
+      (
+         'vols'
+         (-0.5 -0.5 -2.5 -2.5 -3.0 -5.0 -5.0 -3.0 -3.0 -2.5 -2.5)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 -1 1 1 -1 -1 -1 -1)
+      )
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+      ('midi_file' 'songs/crazytuesday/crazytuesday.mid')
+   )
+   ('song_scroll_speed' 2300)
+   ('bank' 'sfx/tambourine_bank.milo')
+   ('anim_tempo' 'kTempoMedium')
+   ('preview' 30465 60465)
+   (
+      'rank'
+      ('drum' 170)
+      ('guitar' 161)
+      ('bass' 116)
+      ('vocals' 217)
+      ('band' 175)
+   )
+   ('genre' 'poprock')
+   ('decade' 'the00s')
+   ('vocal_gender' 'male')
+   ('format' 3)
+   ('version' 2)
+   (
+      'fake'
+      {'==' $SONG_VERSION 0}
+   )
+   ('downloaded' 'TRUE')
+   ('album_art' 'TRUE')
+   ('year_released' 2008)
+   (
+      'album_name'
+      "You Are Here"
+   )
+   ('album_track_number' 7)
+   ('base_points' 364935)
+)
+(
+   'damnationgame'
+   (
+      'name'
+      "Damnation Game"
+   )
+   (
+      'artist'
+      "Yngwie Malmsteen's Rising Force"
+   )
+   ('master' 'TRUE')
+   ('context' 503)
+   (
+      'song'
+      ('name' 'songs/damnationgame/damnationgame')
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1 2 3 4 5)
+            )
+            ('bass' 6)
+            (
+               'guitar'
+               (7 8)
+            )
+            (
+               'vocals'
+               (9 10)
+            )
+         )
+      )
+      (
+         'pans'
+         (-1.0 1.0 -1.0 1.0 -1.0 1.0 0.0 -1.0 1.0 -1.0 1.0 -1.0 1.0)
+      )
+      (
+         'vols'
+         (-2.5 -2.5 -4.0 -4.0 -2.0 -2.0 -3.2 -2.3 -2.3 -2.8 -2.8 -3.0 -3.0)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 -1 -1 -1 1 1 -1 -1 -1 -1)
+      )
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+      ('midi_file' 'songs/damnationgame/damnationgame.mid')
+   )
+   ('song_scroll_speed' 2300)
+   ('bank' 'sfx/cowbell3_bank.milo')
+   ('anim_tempo' 'kTempoMedium')
+   ('preview' 75700 100400)
+   (
+      'rank'
+      ('drum' 343)
+      ('guitar' 498)
+      ('bass' 460)
+      ('vocals' 176)
+      ('band' 470)
+   )
+   ('genre' 'metal')
+   ('decade' 'the00s')
+   ('vocal_gender' 'male')
+   ('format' 3)
+   ('version' 2)
+   (
+      'fake'
+      {'==' $SONG_VERSION 0}
+   )
+   ('downloaded' 'TRUE')
+   ('album_art' 'TRUE')
+   ('year_released' 2008)
+   (
+      'album_name'
+      "Perpetual Flame"
+   )
+   ('album_track_number' 2)
+   (
+      'pack_name'
+      "Yngwie Malmsteen Pack 01"
+   )
+   ('base_points' 805649)
+)
+(
+   'datewiththenight'
+   (
+      'name'
+      "Date with the Night"
+   )
+   (
+      'artist'
+      "Yeah Yeah Yeahs"
+   )
+   ('master' 'TRUE')
+   ('context' 189)
+   (
+      'song'
+      ('name' 'songs/datewiththenight/datewiththenight')
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1 2 3 4 5)
+            )
+            (
+               'bass'
+               (6 7)
+            )
+            (
+               'guitar'
+               (8 9)
+            )
+            (
+               'vocals'
+               (10 11)
+            )
+         )
+      )
+      (
+         'pans'
+         (-1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0)
+      )
+      (
+         'vols'
+         (-1.0 -1.0 -3.0 -3.0 -8.0 -8.0 -2.0 -2.0 -2.0 -2.0 -2.0 -2.0 -3.0 -3.0)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 -1 -1 -1 -1 1 1 -1 -1 -1 -1)
+      )
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+      ('midi_file' 'songs/datewiththenight/datewiththenight.mid')
+   )
+   ('song_scroll_speed' 2300)
+   ('bank' 'sfx/tambourine_bank.milo')
+   ('anim_tempo' 'kTempoMedium')
+   ('preview' 8400 38000)
+   (
+      'rank'
+      ('drum' 370)
+      ('guitar' 235)
+      ('bass' 235)
+      ('vocals' 165)
+      ('band' 280)
+   )
+   ('genre' 'rock')
+   ('decade' 'the00s')
+   ('downloaded' 'TRUE')
+   ('vocal_gender' 'female')
+)
+(
+   'desperatetimes'
+   (
+      'name'
+      "Desperate Times, Desperate Measures"
+   )
+   (
+      'artist'
+      "Underoath"
+   )
+   ('master' 'TRUE')
+   ('context' 450)
+   (
+      'song'
+      ('name' 'songs/desperatetimes/desperatetimes')
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1 2 3 4)
+            )
+            ('bass' 5)
+            (
+               'guitar'
+               (6 7)
+            )
+            (
+               'vocals'
+               (8 9)
+            )
+         )
+      )
+      (
+         'pans'
+         (0.0 -1.0 1.0 -1.0 1.0 0.0 -1.0 1.0 -1.0 1.0 -1.0 1.0)
+      )
+      (
+         'vols'
+         (-0.0 -1.0 -1.0 -2.0 -2.0 -6.5 -8.0 -8.0 -6.5 -6.5 -4.0 -4.0)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 -1 -1 1 1 -1 -1 -1 -1)
+      )
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+      ('midi_file' 'songs/desperatetimes/desperatetimes.mid')
+   )
+   ('song_scroll_speed' 2300)
+   ('bank' 'sfx/tambourine_bank.milo')
+   ('anim_tempo' 'kTempoFast')
+   ('preview' 54800 80000)
+   (
+      'rank'
+      ('drum' 345)
+      ('guitar' 307)
+      ('bass' 208)
+      ('vocals' 181)
+      ('band' 332)
+   )
+   ('genre' 'metal')
+   ('decade' 'the00s')
+   ('vocal_gender' 'male')
+   ('format' 3)
+   ('version' 1)
+   (
+      'fake'
+      {'==' $SONG_VERSION 0}
+   )
+   ('downloaded' 'TRUE')
+   ('album_art' 'TRUE')
+   ('year_released' 2008)
+   (
+      'album_name'
+      "Lost in the Sound of Separation"
+   )
+   ('album_track_number' 9)
+   ('base_points' 595541)
+)
+(
+   'downfall'
+   (
+      'name'
+      "Downfall"
+   )
+   (
+      'artist'
+      "Trust Company"
+   )
+   ('master' 'TRUE')
+   ('context' 1094)
+   (
+      'song'
+      (
+         'name'
+         "songs/downfall/downfall"
+      )
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1 2 3)
+            )
+            ('bass' 4)
+            (
+               'guitar'
+               (5 6)
+            )
+            (
+               'vocals'
+               (7 8)
+            )
+         )
+      )
+      ('vocal_parts' 1)
+      (
+         'pans'
+         (0.0 0.0 -1.0 1.0 0.0 -1.0 1.0 -1.0 1.0 -1.0 1.0)
+      )
+      (
+         'vols'
+         (-1.0 -1.0 -3.0 -3.0 -3.5 -4.0 -4.0 -4.5 -4.5 -4.5 -4.5)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 -1 1 1 -1 -1 -1 -1)
+      )
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+      (midi_file "songs/downfall/downfall.mid")
+   )
+   ('song_scroll_speed' 2300)
+   ('bank' 'sfx/tambourine_bank.milo')
+   ('anim_tempo' 'kTempoSlow')
+   ('preview' 39473 69473)
+   (
+      'rank'
+      ('drum' 320)
+      ('guitar' 280)
+      ('bass' 260)
+      ('vocals' 217)
+      ('band' 306)
+   )
+   ('genre' 'numetal')
+   ('decade' 'the00s')
+   ('vocal_gender' 'male')
+   ('vocal_tonic_note' 3)
+   ('format' 5)
+   ('version' 3)
+   (
+      'fake'
+      {'==' $SONG_VERSION 0}
+   )
+   ('downloaded' 'TRUE')
+   ('game_origin' 'rb1_dlc')
+   ('song_id' 1005920)
+   ('rating' 1)
+   ('short_version' 129706)
+   ('song_length' 197000)
+   ('album_art' 'TRUE')
+   ('year_released' 2002)
+   (
+      'album_name'
+      "The Lonely Position of Neutral"
+   )
+   ('album_track_number' 1)
+   ('base_points' 532747)
+)
+(
+   'dreamin'
+   (
+      'name'
+      "Dreamin'"
+   )
+   (
+      'artist'
+      "Weezer"
+   )
+   ('master' 'TRUE')
+   ('context' 0)
+   (
+      'song'
+      ('name' 'songs/dreamin/dreamin')
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1 2 3 4 5)
+            )
+            ('bass' 6)
+            (
+               'guitar'
+               (7 8)
+            )
+            (
+               'vocals'
+               (9 10)
+            )
+         )
+      )
+      (
+         'pans'
+         (-1.0 1.0 -1.0 1.0 -1.0 1.0 0.0 -1.0 1.0 -1.0 1.0 -1.0 1.0)
+      )
+      (
+         'vols'
+         (-1.0 -1.0 -1.5 -1.5 -3.5 -3.5 -4.5 -4.0 -4.0 -3.5 -3.5 -3.5 -3.5)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 -1 -1 -1 1 1 -1 -1 -1 -1)
+      )
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+      ('midi_file' 'songs/dreamin/dreamin.mid')
+   )
+   ('song_scroll_speed' 2300)
+   ('bank' 'sfx/tambourine_bank.milo')
+   ('anim_tempo' 'kTempoMedium')
+   ('preview' 27000 58900)
+   (
+      'rank'
+      ('drum' 95)
+      ('guitar' 159)
+      ('bass' 159)
+      ('vocals' 95)
+      ('band' 120)
+   )
+   ('genre' 'alternative')
+   ('decade' 'the00s')
+   ('downloaded' 'TRUE')
+   ('vocal_gender' 'male')
+   ('format' 2)
+   ('version' 1)
+   ('album_art' 'TRUE')
+   ('year_released' 2008)
+   (
+      'album_name'
+      "Weezer (The Red Album)"
+   )
+   ('album_track_number' 6)
+   (
+      'pack_name'
+      "Weezer Pack 01"
+   )
+)
+(
+   'elscorcho'
+   (
+      'name'
+      "El Scorcho"
+   )
+   (
+      'artist'
+      "Weezer"
+   )
+   ('master' 'TRUE')
+   ('context' 142)
+   (
+      'song'
+      ('name' 'songs/elscorcho/elscorcho')
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1 2 3 4)
+            )
+            ('bass' 5)
+            (
+               'guitar'
+               (6 7)
+            )
+            ('vocals' 8)
+         )
+      )
+      (
+         'pans'
+         (0.0 -1.0 1.0 -1.0 1.0 0.0 -1.0 1.0 0.0 -1.0 1.0)
+      )
+      (
+         'vols'
+         (-2.0 -3.5 -3.5 -3.0 -3.0 1.5 -4.5 -4.5 -2.0 -2.0 -2.0)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 -1 -1 1 1 -1 -1 -1)
+      )
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+      ('midi_file' 'songs/elscorcho/elscorcho.mid')
+      ('hopo_threshold' 100)
+   )
+   ('song_scroll_speed' 2300)
+   ('bank' 'sfx/tambourine_bank.milo')
+   ('anim_tempo' 'kTempoSlow')
+   ('preview' 15750 70430)
+   (
+      'rank'
+      ('drum' 201)
+      ('guitar' 130)
+      ('bass' 130)
+      ('vocals' 120)
+      ('band' 160)
+   )
+   ('genre' 'alternative')
+   ('decade' 'the90s')
+   ('downloaded' 'TRUE')
+   ('vocal_gender' 'male')
+)
+(
+   'eventhelosers'
+   (
+      'name'
+      "Even the Losers (Live)"
+   )
+   (
+      'artist'
+      "Tom Petty and the Heartbreakers"
+   )
+   ('master' 'TRUE')
+   ('context' 1010)
+   (
+      'song'
+      (
+         'name'
+         "songs/eventhelosers/eventhelosers"
+      )
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1 2 3)
+            )
+            ('bass' 4)
+            (
+               'guitar'
+               (5 6)
+            )
+            (
+               'vocals'
+               (7 8)
+            )
+         )
+      )
+      (
+         'pans'
+         (0.0 0.0 -1.0 1.0 0.0 -1.0 1.0 -1.0 1.0 -1.0 1.0)
+      )
+      (
+         'vols'
+         (-1.0 -0.6 -4.8 -4.8 -1.5 -4.5 -4.5 -3.8 -3.8 -4.5 -4.5)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 -1 1 1 -1 -1 -1 -1)
+      )
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+      (midi_file "songs/eventhelosers/eventhelosers.mid")
+   )
+   ('song_scroll_speed' 2300)
+   ('bank' 'sfx/tambourine_bank.milo')
+   ('anim_tempo' 'kTempoMedium')
+   ('preview' 58514 87851)
+   (
+      'rank'
+      ('drum' 275)
+      ('guitar' 250)
+      ('bass' 270)
+      ('vocals' 245)
+      ('band' 265)
+   )
+   ('genre' 'rock')
+   ('decade' 'the00s')
+   ('vocal_gender' 'male')
+   ('format' 4)
+   ('version' 3)
+   (
+      'fake'
+      {'==' $SONG_VERSION 0}
+   )
+   ('downloaded' 'TRUE')
+   ('game_origin' 'rb1')
+   ('song_id' 1005788)
+   ('rating' 2)
+   ('short_version' 107748)
+   ('album_art' 'TRUE')
+   ('year_released' 2009)
+   (
+      'album_name'
+      "The Live Anthology"
+   )
+   ('album_track_number' 3)
+   (
+      'pack_name'
+      "Tom Petty & The Heartbreakers Live Anthology Pack 01"
+   )
+   ('base_points' 456613)
+)
+(
+   'exgirlfriend'
+   (
+      'name'
+      "Ex-Girlfriend"
+   )
+   (
+      'artist'
+      "No Doubt"
+   )
+   ('master' 'TRUE')
+   ('context' 532)
+   (
+      'song'
+      ('name' 'songs/exgirlfriend/exgirlfriend')
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1 2 3 4)
+            )
+            ('bass' 5)
+            (
+               'guitar'
+               (6 7)
+            )
+            (
+               'vocals'
+               (8 9)
+            )
+         )
+      )
+      (
+         'pans'
+         (0.0 -1.0 1.0 -1.0 1.0 0.0 -1.0 1.0 -1.0 1.0 -1.0 1.0)
+      )
+      (
+         'vols'
+         (-0.0 -2.0 -2.0 -3.5 -3.5 -2.5 -3.5 -3.5 -4.5 -4.5 -5.0 -5.0)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 -1 -1 1 1 -1 -1 -1 -1)
+      )
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+      ('midi_file' 'songs/exgirlfriend/exgirlfriend.mid')
+   )
+   ('song_scroll_speed' 2300)
+   ('bank' 'sfx/tambourine_bank.milo')
+   ('anim_tempo' 'kTempoFast')
+   ('preview' 39566 69195)
+   (
+      'rank'
+      ('drum' 262)
+      ('guitar' 231)
+      ('bass' 160)
+      ('vocals' 182)
+      ('band' 226)
+   )
+   ('genre' 'poprock')
+   ('decade' 'the00s')
+   ('vocal_gender' 'female')
+   ('format' 3)
+   ('version' 2)
+   (
+      'fake'
+      {'==' $SONG_VERSION 0}
+   )
+   ('downloaded' 'TRUE')
+   ('album_art' 'TRUE')
+   ('year_released' 2003)
+   (
+      'album_name'
+      "The Singles 1992-2003"
+   )
+   ('album_track_number' 14)
+   ('base_points' 550368)
+)
+(
+   'fireitup'
+   (
+      'name'
+      "Fire It Up"
+   )
+   (
+      'artist'
+      "Thousand Foot Krutch"
+   )
+   ('master' 'TRUE')
+   ('context' 1186)
+   (
+      'song'
+      (
+         'name'
+         "songs/fireitup/fireitup"
+      )
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1)
+            )
+            ('bass' 2)
+            (
+               'guitar'
+               (3 4)
+            )
+            (
+               'vocals'
+               (5 6)
+            )
+         )
+      )
+      ('vocal_parts' 1)
+      (
+         'pans'
+         (-1.0 1.0 0.0 -1.0 1.0 -1.0 1.0 -1.0 1.0)
+      )
+      (
+         'vols'
+         (-3.2 -3.2 -2.5 -4.2 -4.2 -4.5 -4.5 -4.7 -4.7)
+      )
+      (
+         'cores'
+         (-1 -1 -1 1 1 -1 -1 -1 -1)
+      )
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+      (midi_file "songs/fireitup/fireitup.mid")
+   )
+   ('song_scroll_speed' 2300)
+   ('tuning_offset_cents' 15)
+   ('bank' 'sfx/tambourine_bank.milo')
+   ('anim_tempo' 'kTempoMedium')
+   ('preview' 17844 47844)
+   (
+      'rank'
+      ('drum' 266)
+      ('guitar' 267)
+      ('bass' 162)
+      ('vocals' 218)
+      ('band' 270)
+   )
+   ('genre' 'numetal')
+   ('decade' 'the00s')
+   ('vocal_gender' 'male')
+   ('vocal_tonic_note' 2)
+   ('format' 5)
+   ('version' 3)
+   (
+      'fake'
+      {'==' $SONG_VERSION 0}
+   )
+   ('downloaded' 'TRUE')
+   ('game_origin' 'rb1_dlc')
+   ('song_id' 1006008)
+   ('rating' 1)
+   ('short_version' 101262)
+   ('song_length' 186474)
+   ('album_art' 'TRUE')
+   ('year_released' 2009)
+   (
+      'album_name'
+      "Welcome to the Masquerade"
+   )
+   ('album_track_number' 3)
+   (
+      'pack_name'
+      "Fired Up Pack 01"
+   )
+   ('base_points' 369962)
+)
+(
+   'girlyouhavenofaith'
+   (
+      'name'
+      "Girl, You Have No Faith in Medicine"
+   )
+   (
+      'artist'
+      "The White Stripes"
+   )
+   ('master' 'TRUE')
+   ('context' 993)
+   (
+      'song'
+      (
+         'name'
+         "songs/girlyouhavenofaith/girlyouhavenofaith"
+      )
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1 2)
+            )
+            (
+               'bass'
+               (3 4)
+            )
+            (
+               'guitar'
+               (5 6)
+            )
+            (
+               'vocals'
+               (7 8)
+            )
+         )
+      )
+      (
+         'pans'
+         (0.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0)
+      )
+      (
+         'vols'
+         (-1.0 -3.0 -3.0 -5.0 -5.0 -6.0 -6.0 -2.0 -2.0 -8.5 -8.5)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 -1 1 1 -1 -1 -1 -1)
+      )
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+      (midi_file "songs/girlyouhavenofaith/girlyouhavenofaith.mid")
+   )
+   ('song_scroll_speed' 2300)
+   ('bank' 'sfx/tambourine_bank.milo')
+   ('anim_tempo' 'kTempoFast')
+   ('preview' 30000 49600)
+   (
+      'rank'
+      ('drum' 185)
+      ('guitar' 263)
+      ('bass' 310)
+      ('vocals' 251)
+      ('band' 259)
+   )
+   ('genre' 'rock')
+   ('decade' 'the00s')
+   ('vocal_gender' 'male')
+   ('format' 4)
+   ('version' 3)
+   (
+      'fake'
+      {'==' $SONG_VERSION 0}
+   )
+   ('downloaded' 'TRUE')
+   ('game_origin' 'rb2')
+   ('song_id' 1005837)
+   ('rating' 1)
+   ('short_version' 129892)
+   ('album_art' 'TRUE')
+   ('year_released' 2003)
+   (
+      'album_name'
+      "Elephant"
+   )
+   ('album_track_number' 13)
+   (
+      'pack_name'
+      "The White Stripes Pack 01"
+   )
+   ('base_points' 497243)
+)
+(
+   'hellagood'
+   (
+      'name'
+      "Hella Good"
+   )
+   (
+      'artist'
+      "No Doubt"
+   )
+   ('master' 'TRUE')
+   ('context' 524)
+   (
+      'song'
+      ('name' 'songs/hellagood/hellagood')
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1 2 3)
+            )
+            (
+               'bass'
+               (4 5)
+            )
+            (
+               'guitar'
+               (6 7)
+            )
+            (
+               'vocals'
+               (8 9)
+            )
+         )
+      )
+      (
+         'pans'
+         (0.0 0.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0)
+      )
+      (
+         'vols'
+         (-0.3 -0.5 -5.0 -5.0 -5.0 -5.0 -7.0 -7.0 -9.0 -9.0 -3.0 -3.0)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 -1 -1 -1 -1 1 1 -1 -1)
+      )
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+      ('midi_file' 'songs/hellagood/hellagood.mid')
+   )
+   ('song_scroll_speed' 2300)
+   ('bank' 'sfx/handclap_bank.milo')
+   ('anim_tempo' 'kTempoMedium')
+   ('preview' 52000 82000)
+   (
+      'rank'
+      ('drum' 185)
+      ('guitar' 183)
+      ('bass' 325)
+      ('vocals' 116)
+      ('band' 227)
+   )
+   ('genre' 'poprock')
+   ('decade' 'the00s')
+   ('vocal_gender' 'female')
+   ('format' 3)
+   ('version' 2)
+   (
+      'fake'
+      {'==' $SONG_VERSION 0}
+   )
+   ('downloaded' 'TRUE')
+   ('album_art' 'TRUE')
+   ('year_released' 2003)
+   (
+      'album_name'
+      "The Singles 1992-2003"
+   )
+   ('album_track_number' 6)
+   (
+      'video_venues'
+      ('video_03')
+   )
+   ('base_points' 431002)
+)
+(
+   'herecomesmygirl'
+   (
+      'name'
+      "Here Comes My Girl (Live)"
+   )
+   (
+      'artist'
+      "Tom Petty and the Heartbreakers"
+   )
+   ('master' 'TRUE')
+   ('context' 1011)
+   (
+      'song'
+      (
+         'name'
+         "songs/herecomesmygirl/herecomesmygirl"
+      )
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1 2 3 4)
+            )
+            ('bass' 5)
+            (
+               'guitar'
+               (6 7)
+            )
+            (
+               'vocals'
+               (8 9)
+            )
+         )
+      )
+      (
+         'pans'
+         (0.0 -1.0 1.0 -1.0 1.0 0.0 -1.0 1.0 -1.0 1.0 -1.0 1.0)
+      )
+      (
+         'vols'
+         (-1.3 -1.7 -1.7 -1.5 -1.5 -2.0 -1.5 -1.5 -1.5 -1.5 -1.5 -1.5)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 -1 -1 1 1 -1 -1 -1 -1)
+      )
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+      (midi_file "songs/herecomesmygirl/herecomesmygirl.mid")
+   )
+   ('song_scroll_speed' 2300)
+   ('bank' 'sfx/tambourine_bank.milo')
+   ('anim_tempo' 'kTempoSlow')
+   ('preview' 56378 86378)
+   (
+      'rank'
+      ('drum' 278)
+      ('guitar' 280)
+      ('bass' 262)
+      ('vocals' 193)
+      ('band' 279)
+   )
+   ('genre' 'rock')
+   ('decade' 'the00s')
+   ('vocal_gender' 'male')
+   ('format' 4)
+   ('version' 3)
+   (
+      'fake'
+      {'==' $SONG_VERSION 0}
+   )
+   ('downloaded' 'TRUE')
+   ('game_origin' 'rb1')
+   ('song_id' 1005807)
+   ('rating' 1)
+   ('short_version' 144561)
+   ('album_art' 'TRUE')
+   ('year_released' 2009)
+   (
+      'album_name'
+      "The Live Anthology"
+   )
+   ('album_track_number' 4)
+   (
+      'pack_name'
+      "Tom Petty & The Heartbreakers Live Anthology Pack 01"
+   )
+   ('base_points' 552277)
+)
+(
+   'heybaby'
+   (
+      'name'
+      "Hey Baby"
+   )
+   (
+      'artist'
+      "No Doubt"
+   )
+   ('master' 'TRUE')
+   ('context' 521)
+   (
+      'song'
+      ('name' 'songs/heybaby/heybaby')
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1)
+            )
+            (
+               'bass'
+               (2 3)
+            )
+            (
+               'guitar'
+               (4 5)
+            )
+            (
+               'vocals'
+               (6 7)
+            )
+         )
+      )
+      (
+         'pans'
+         (-1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0)
+      )
+      (
+         'vols'
+         (-2.0 -2.0 -3.0 -3.0 -0.5 -0.5 -3.0 -3.0 -3.0 -3.0)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 1 1 -1 -1 -1 -1)
+      )
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+      ('midi_file' 'songs/heybaby/heybaby.mid')
+   )
+   ('song_scroll_speed' 2300)
+   ('bank' 'sfx/tambourine_bank.milo')
+   ('anim_tempo' 'kTempoSlow')
+   ('preview' 84500 115000)
+   (
+      'rank'
+      ('drum' 301)
+      ('guitar' 206)
+      ('bass' 130)
+      ('vocals' 212)
+      ('band' 212)
+   )
+   ('genre' 'poprock')
+   ('decade' 'the00s')
+   ('vocal_gender' 'female')
+   ('format' 3)
+   ('version' 2)
+   (
+      'fake'
+      {'==' $SONG_VERSION 0}
+   )
+   ('downloaded' 'TRUE')
+   ('album_art' 'TRUE')
+   ('year_released' 2003)
+   (
+      'album_name'
+      "The Singles 1992-2003"
+   )
+   ('album_track_number' 3)
+   ('base_points' 606902)
+)
+(
+   'hierkommtalex'
+   (
+      'name'
+      "Hier Kommt Alex"
+   )
+   (
+      'artist'
+      "Die Toten Hosen"
+   )
+   ('master' 'TRUE')
+   ('context' 173)
+   (
+      'song'
+      ('name' 'songs/hierkommtalex/hierkommtalex')
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1 2 3 4 5)
+            )
+            ('bass' 6)
+            (
+               'guitar'
+               (7 8)
+            )
+            (
+               'vocals'
+               (9 10)
+            )
+         )
+      )
+      (
+         'pans'
+         (-1.0 1.0 -1.0 1.0 -1.0 1.0 0.0 -1.0 1.0 -1.0 1.0 -1.0 1.0)
+      )
+      (
+         'vols'
+         (0.0 0.0 0.0 0.0 -1.5 -1.5 -3.0 -3.5 -3.5 -3.0 -3.0 -5.0 -5.0)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 -1 -1 -1 1 1 -1 -1 -1 -1)
+      )
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+      ('midi_file' 'songs/hierkommtalex/hierkommtalex.mid')
+   )
+   ('song_scroll_speed' 2300)
+   ('bank' 'sfx/tambourine_bank.milo')
+   ('anim_tempo' 'kTempoMedium')
+   ('preview' 33200 56158)
+   (
+      'rank'
+      ('drum' 170)
+      ('guitar' 343)
+      ('bass' 343)
+      ('vocals' 230)
+      ('band' 275)
+   )
+   ('genre' 'punk')
+   ('decade' 'the80s')
+   ('vocal_gender' 'male')
+   ('downloaded' 'TRUE')
+)
+(
+   'howdoyoulikemenow'
+   (
+      'name'
+      "How Do You Like Me Now?!"
+   )
+   (
+      'artist'
+      "Toby Keith"
+   )
+   ('master' 'TRUE')
+   ('context' 639)
+   (
+      'song'
+      ('name' 'songs/howdoyoulikemenow/howdoyoulikemenow')
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1 2 3 4)
+            )
+            ('bass' 5)
+            (
+               'guitar'
+               (6 7)
+            )
+            (
+               'vocals'
+               (8 9)
+            )
+         )
+      )
+      (
+         'pans'
+         (0.0 -1.0 1.0 -1.0 1.0 0.0 -1.0 1.0 -1.0 1.0 -1.0 1.0)
+      )
+      (
+         'vols'
+         (-0.5 -1.0 -1.0 -3.0 -3.0 -3.5 -4.0 -4.0 -3.0 -3.0 -2.0 -2.0)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 -1 -1 1 1 -1 -1 -1 -1)
+      )
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+      ('midi_file' 'songs/howdoyoulikemenow/howdoyoulikemenow.mid')
+   )
+   ('song_scroll_speed' 2300)
+   ('bank' 'sfx/tambourine_bank.milo')
+   ('anim_tempo' 'kTempoSlow')
+   ('preview' 118863 148863)
+   (
+      'rank'
+      ('drum' 182)
+      ('guitar' 258)
+      ('bass' 160)
+      ('vocals' 154)
+      ('band' 212)
+   )
+   ('genre' 'country')
+   ('decade' 'the90s')
+   ('vocal_gender' 'male')
+   ('format' 3)
+   ('version' 3)
+   (
+      'fake'
+      {'==' $SONG_VERSION 0}
+   )
+   ('downloaded' 'TRUE')
+   ('album_art' 'TRUE')
+   ('year_released' 1999)
+   (
+      'album_name'
+      "How Do You Like Me Now?!"
+   )
+   ('album_track_number' 1)
+   (
+      'pack_name'
+      "Toby Keith Pack 01"
+   )
+   ('base_points' 502207)
+)
+(
+   'hungrywolf'
+   (
+      'name'
+      "The Hungry Wolf"
+   )
+   (
+      'artist'
+      "X"
+   )
+   ('master' 'TRUE')
+   ('context' 1164)
+   (
+      'song'
+      (
+         'name'
+         "songs/hungrywolf/hungrywolf"
+      )
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1 2 3 4)
+            )
+            ('bass' 5)
+            (
+               'guitar'
+               (6 7)
+            )
+            (
+               'vocals'
+               (8 9)
+            )
+         )
+      )
+      ('vocal_parts' 1)
+      (
+         'pans'
+         (0.0 -1.0 1.0 -1.0 1.0 0.0 -1.0 1.0 -1.0 1.0 -1.0 1.0)
+      )
+      (
+         'vols'
+         (-1.0 -6.0 -6.0 -4.3 -4.3 -4.7 -4.1 -4.1 -5.7 -5.7 -7.0 -7.0)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 -1 -1 1 1 -1 -1 -1 -1)
+      )
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+      (midi_file "songs/hungrywolf/hungrywolf.mid")
+      ('hopo_threshold' 90)
+   )
+   ('song_scroll_speed' 2300)
+   ('bank' 'sfx/tambourine_bank.milo')
+   ('anim_tempo' 'kTempoMedium')
+   ('preview' 16068 45325)
+   (
+      'rank'
+      ('drum' 303)
+      ('guitar' 251)
+      ('bass' 295)
+      ('vocals' 241)
+      ('band' 300)
+   )
+   ('genre' 'punk')
+   ('decade' 'the80s')
+   ('vocal_gender' 'male')
+   ('vocal_tonic_note' 9)
+   ('format' 5)
+   ('version' 3)
+   (
+      'fake'
+      {'==' $SONG_VERSION 0}
+   )
+   ('downloaded' 'TRUE')
+   ('game_origin' 'rb1_dlc')
+   ('song_id' 1005976)
+   ('rating' 2)
+   ('short_version' 121033)
+   ('song_length' 230259)
+   ('album_art' 'TRUE')
+   ('year_released' 1982)
+   (
+      'album_name'
+      "Under the Big Black Sun"
+   )
+   ('album_track_number' 1)
+   (
+      'pack_name'
+      "X Pack 01"
+   )
+   ('base_points' 688773)
+)
+(
+   'ilovethisbar'
+   (
+      'name'
+      "I Love This Bar"
+   )
+   (
+      'artist'
+      "Toby Keith"
+   )
+   ('master' 'TRUE')
+   ('context' 640)
+   (
+      'song'
+      ('name' 'songs/ilovethisbar/ilovethisbar')
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1 2 3 4)
+            )
+            ('bass' 5)
+            (
+               'guitar'
+               (6 7)
+            )
+            (
+               'vocals'
+               (8 9)
+            )
+         )
+      )
+      (
+         'pans'
+         (0.0 -1.0 1.0 -1.0 1.0 0.0 -1.0 1.0 -1.0 1.0 -1.0 1.0)
+      )
+      (
+         'vols'
+         (-0.5 -0.5 -0.5 -3.0 -3.0 -6.0 -4.5 -4.5 -2.0 -2.0 -3.0 -3.0)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 -1 -1 1 1 -1 -1 -1 -1)
+      )
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+      ('midi_file' 'songs/ilovethisbar/ilovethisbar.mid')
+   )
+   ('song_scroll_speed' 2300)
+   ('bank' 'sfx/handclap_bank.milo')
+   ('anim_tempo' 'kTempoMedium')
+   ('preview' 85400 106600)
+   (
+      'rank'
+      ('drum' 166)
+      ('guitar' 212)
+      ('bass' 120)
+      ('vocals' 171)
+      ('band' 161)
+   )
+   ('genre' 'country')
+   ('decade' 'the00s')
+   ('vocal_gender' 'male')
+   ('format' 3)
+   ('version' 3)
+   (
+      'fake'
+      {'==' $SONG_VERSION 0}
+   )
+   ('downloaded' 'TRUE')
+   ('album_art' 'TRUE')
+   ('year_released' 2003)
+   (
+      'album_name'
+      "Shock'n Y'All"
+   )
+   ('album_track_number' 1)
+   (
+      'pack_name'
+      "Toby Keith Pack 01"
+   )
+   ('base_points' 587401)
+)
+(
+   'imageoftheinvisible'
+   (
+      'name'
+      "Image of the Invisible"
+   )
+   (
+      'artist'
+      "Thrice"
+   )
+   ('master' 'TRUE')
+   ('context' 762)
+   (
+      'song'
+      ('name' 'songs/imageoftheinvisible/imageoftheinvisible')
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1 2 3 4)
+            )
+            ('bass' 5)
+            (
+               'guitar'
+               (6 7)
+            )
+            (
+               'vocals'
+               (8 9)
+            )
+         )
+      )
+      (
+         'pans'
+         (0.0 -1.0 1.0 -1.0 1.0 0.0 -1.0 1.0 -1.0 1.0 -1.0 1.0)
+      )
+      (
+         'vols'
+         (-1.0 -4.5 -4.5 -5.0 -5.0 -1.5 -4.5 -4.5 -4.3 -4.3 -5.0 -5.0)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 -1 -1 1 1 -1 -1 -1 -1)
+      )
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+      ('midi_file' 'songs/imageoftheinvisible/imageoftheinvisible.mid')
+   )
+   ('song_scroll_speed' 2300)
+   ('bank' 'sfx/tambourine_bank.milo')
+   ('anim_tempo' 'kTempoMedium')
+   ('preview' 37000 67000)
+   (
+      'rank'
+      ('drum' 347)
+      ('guitar' 299)
+      ('bass' 306)
+      ('vocals' 181)
+      ('band' 311)
+   )
+   ('genre' 'rock')
+   ('decade' 'the00s')
+   ('vocal_gender' 'male')
+   ('format' 4)
+   ('version' 3)
+   (
+      'fake'
+      {'==' $SONG_VERSION 0}
+   )
+   ('downloaded' 'TRUE')
+   ('game_origin' 'rb1')
+   ('song_id' 1005688)
+   ('rating' 1)
+   ('short_version' 0)
+   ('album_art' 'TRUE')
+   ('year_released' 2005)
+   (
+      'album_name'
+      "Vheissu"
+   )
+   ('album_track_number' 1)
+   (
+      'pack_name'
+      "Warped Tour 2009 Pack 02"
+   )
+   ('base_points' 542157)
+)
+(
+   'imustnotthink'
+   (
+      'name'
+      "I Must Not Think Bad Thoughts"
+   )
+   (
+      'artist'
+      "X"
+   )
+   ('master' 'TRUE')
+   ('context' 1165)
+   (
+      'song'
+      (
+         'name'
+         "songs/imustnotthink/imustnotthink"
+      )
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1 2)
+            )
+            ('bass' 3)
+            (
+               'guitar'
+               (4 5)
+            )
+            (
+               'vocals'
+               (6 7)
+            )
+         )
+      )
+      ('vocal_parts' 1)
+      (
+         'pans'
+         (0.0 -1.0 1.0 0.0 -1.0 1.0 -1.0 1.0 -1.0 1.0)
+      )
+      (
+         'vols'
+         (-0.2 -2.2 -2.2 -3.2 -3.2 -3.2 -1.7 -1.7 -2.3 -2.3)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 1 1 -1 -1 -1 -1)
+      )
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+      (midi_file "songs/imustnotthink/imustnotthink.mid")
+   )
+   ('song_scroll_speed' 2300)
+   ('bank' 'sfx/tambourine_bank.milo')
+   ('anim_tempo' 'kTempoMedium')
+   ('preview' 159939 189939)
+   (
+      'rank'
+      ('drum' 361)
+      ('guitar' 298)
+      ('bass' 285)
+      ('vocals' 213)
+      ('band' 340)
+   )
+   ('genre' 'punk')
+   ('decade' 'the80s')
+   ('vocal_gender' 'male')
+   ('vocal_tonic_note' 4)
+   ('format' 5)
+   ('version' 3)
+   (
+      'fake'
+      {'==' $SONG_VERSION 0}
+   )
+   ('downloaded' 'TRUE')
+   ('game_origin' 'rb1_dlc')
+   ('song_id' 1005972)
+   ('rating' 2)
+   ('short_version' 116523)
+   ('song_length' 284185)
+   ('album_art' 'TRUE')
+   ('year_released' 1983)
+   (
+      'album_name'
+      "More Fun in the New World"
+   )
+   ('album_track_number' 7)
+   (
+      'pack_name'
+      "X Pack 01"
+   )
+   ('base_points' 879976)
+)
+(
+   'itsmylife'
+   (
+      'name'
+      "It's My Life"
+   )
+   (
+      'artist'
+      "No Doubt"
+   )
+   ('master' 'TRUE')
+   ('context' 520)
+   (
+      'song'
+      ('name' 'songs/itsmylife/itsmylife')
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1 2 3 4 5)
+            )
+            ('bass' 6)
+            (
+               'guitar'
+               (7 8)
+            )
+            (
+               'vocals'
+               (9 10)
+            )
+         )
+      )
+      (
+         'pans'
+         (-1.0 1.0 -1.0 1.0 -1.0 1.0 0.0 -1.0 1.0 -1.0 1.0 -1.0 1.0)
+      )
+      (
+         'vols'
+         (-1.0 -1.0 -0.5 -0.5 -1.5 -1.5 -3.0 -4.0 -4.0 -3.0 -3.0 -4.5 -4.5)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 -1 -1 -1 1 1 -1 -1 -1 -1)
+      )
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+      ('midi_file' 'songs/itsmylife/itsmylife.mid')
+   )
+   ('song_scroll_speed' 2300)
+   ('bank' 'sfx/tambourine_bank.milo')
+   ('anim_tempo' 'kTempoMedium')
+   ('preview' 47275 76300)
+   (
+      'rank'
+      ('drum' 139)
+      ('guitar' 163)
+      ('bass' 140)
+      ('vocals' 96)
+      ('band' 136)
+   )
+   ('genre' 'poprock')
+   ('decade' 'the00s')
+   ('vocal_gender' 'female')
+   ('format' 3)
+   ('version' 2)
+   (
+      'fake'
+      {'==' $SONG_VERSION 0}
+   )
+   ('downloaded' 'TRUE')
+   ('album_art' 'TRUE')
+   ('year_released' 2003)
+   (
+      'album_name'
+      "The Singles 1992-2003"
+   )
+   ('album_track_number' 2)
+   (
+      'video_venues'
+      ('video_04')
+   )
+   ('base_points' 344619)
+)
+(
+   'iv'
+   (
+      'name'
+      "I.V."
+   )
+   (
+      'artist'
+      "X Japan"
+   )
+   ('master' 'TRUE')
+   ('context' 456)
+   (
+      'song'
+      ('name' 'songs/iv/iv')
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1 2 3 4)
+            )
+            ('bass' 5)
+            (
+               'guitar'
+               (6 7)
+            )
+            (
+               'vocals'
+               (8 9)
+            )
+         )
+      )
+      (
+         'pans'
+         (0.0 -1.0 1.0 -1.0 1.0 0.0 -1.0 1.0 -1.0 1.0 -1.0 1.0)
+      )
+      (
+         'vols'
+         (-1.0 -1.0 -1.0 -3.0 -3.0 -3.0 -3.0 -3.0 -3.0 -3.0 -2.0 -2.0)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 -1 -1 1 1 -1 -1 -1 -1)
+      )
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+      ('midi_file' 'songs/iv/iv.mid')
+   )
+   ('song_scroll_speed' 2300)
+   ('bank' 'sfx/tambourine_bank.milo')
+   ('anim_tempo' 'kTempoSlow')
+   ('preview' 81839 111839)
+   (
+      'rank'
+      ('drum' 318)
+      ('guitar' 275)
+      ('bass' 201)
+      ('vocals' 175)
+      ('band' 306)
+   )
+   ('genre' 'metal')
+   ('decade' 'the00s')
+   ('vocal_gender' 'male')
+   ('format' 3)
+   ('version' 2)
+   (
+      'fake'
+      {'==' $SONG_VERSION 0}
+   )
+   ('downloaded' 'TRUE')
+   ('album_art' 'TRUE')
+   ('year_released' 2008)
+   (
+      'album_name'
+      "I.V."
+   )
+   ('album_track_number' 1)
+   ('base_points' 516536)
+)
+(
+   'iwantyouto'
+   (
+      'name'
+      "(If You're Wondering If I Want You To) I Want You To"
+   )
+   (
+      'artist'
+      "Weezer"
+   )
+   ('master' 'TRUE')
+   ('context' 1036)
+   (
+      'song'
+      (
+         'name'
+         "songs/iwantyouto/iwantyouto"
+      )
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1 2)
+            )
+            ('bass' 3)
+            (
+               'guitar'
+               (4 5)
+            )
+            (
+               'vocals'
+               (6 7)
+            )
+         )
+      )
+      ('vocal_parts' 1)
+      (
+         'pans'
+         (0.0 -1.0 1.0 0.0 -1.0 1.0 -1.0 1.0 -1.0 1.0)
+      )
+      (
+         'vols'
+         (-0.2 -2.5 -2.5 -4.0 -6.0 -6.0 -5.0 -5.0 -3.0 -3.0)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 1 1 -1 -1 -1 -1)
+      )
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+      (midi_file "songs/iwantyouto/iwantyouto.mid")
+   )
+   ('song_scroll_speed' 2300)
+   ('bank' 'sfx/tambourine_bank.milo')
+   ('anim_tempo' 'kTempoMedium')
+   ('preview' 51500 69500)
+   (
+      'rank'
+      ('drum' 285)
+      ('guitar' 295)
+      ('bass' 315)
+      ('vocals' 188)
+      ('band' 290)
+   )
+   ('genre' 'rock')
+   ('decade' 'the00s')
+   ('vocal_gender' 'male')
+   ('format' 5)
+   ('version' 3)
+   (
+      'fake'
+      {'==' $SONG_VERSION 0}
+   )
+   ('downloaded' 'TRUE')
+   ('game_origin' 'rb1_dlc')
+   ('song_id' 1005864)
+   ('rating' 1)
+   ('short_version' 147800)
+   ('song_length' 211363)
+   ('album_art' 'TRUE')
+   ('year_released' 2009)
+   (
+      'album_name'
+      "Raditude"
+   )
+   ('album_track_number' 1)
+   (
+      'pack_name'
+      "Weezer Pack 03"
+   )
+   ('base_points' 590607)
+)
+(
+   'iwontbackdown'
+   (
+      'name'
+      "I Won't Back Down"
+   )
+   (
+      'artist'
+      "Tom Petty"
+   )
+   ('master' 'TRUE')
+   ('context' 844)
+   (
+      'song'
+      ('name' 'songs/iwontbackdown/iwontbackdown')
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1 2 3 4)
+            )
+            ('bass' 5)
+            (
+               'guitar'
+               (6 7)
+            )
+            (
+               'vocals'
+               (8 9)
+            )
+         )
+      )
+      (
+         'pans'
+         (0.0 -1.0 1.0 -1.0 1.0 0.0 -1.0 1.0 -1.0 1.0 -1.0 1.0)
+      )
+      (
+         'vols'
+         (-1.0 -2.0 -2.0 -8.2 -8.2 -3.5 -5.0 -5.0 -3.4 -3.4 -5.0 -5.0)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 -1 -1 1 1 -1 -1 -1 -1)
+      )
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+      ('midi_file' 'songs/iwontbackdown/iwontbackdown.mid')
+   )
+   ('song_scroll_speed' 2300)
+   ('bank' 'sfx/tambourine_bank.milo')
+   ('anim_tempo' 'kTempoMedium')
+   ('preview' 36780 66780)
+   (
+      'rank'
+      ('drum' 126)
+      ('guitar' 135)
+      ('bass' 149)
+      ('vocals' 178)
+      ('band' 146)
+   )
+   ('genre' 'classicrock')
+   ('decade' 'the80s')
+   ('vocal_gender' 'male')
+   ('format' 4)
+   ('version' 3)
+   (
+      'fake'
+      {'==' $SONG_VERSION 0}
+   )
+   ('downloaded' 'TRUE')
+   ('game_origin' 'rb1')
+   ('song_id' 1005748)
+   ('rating' 1)
+   ('short_version' 0)
+   ('album_art' 'TRUE')
+   ('year_released' 1989)
+   (
+      'album_name'
+      "Full Moon Fever"
+   )
+   ('album_track_number' 2)
+   ('base_points' 377332)
+)
+(
+   'jailbreak_lizzy'
+   (
+      'name'
+      "Jailbreak (Live)"
+   )
+   (
+      'artist'
+      "Thin Lizzy"
+   )
+   ('master' 'TRUE')
+   ('context' 578)
+   (
+      'song'
+      ('name' 'songs/jailbreak_lizzy/jailbreak_lizzy')
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1 2 3 4 5)
+            )
+            ('bass' 6)
+            (
+               'guitar'
+               (7 8)
+            )
+            (
+               'vocals'
+               (9 10)
+            )
+         )
+      )
+      (
+         'pans'
+         (-1.0 1.0 -1.0 1.0 -1.0 1.0 0.0 -1.0 1.0 -1.0 1.0 -1.0 1.0)
+      )
+      (
+         'vols'
+         (-0.5 -0.5 -1.0 -1.0 -3.0 -3.0 -3.5 -6.0 -6.0 -2.0 -2.0 -3.0 -3.0)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 -1 -1 -1 1 1 -1 -1 -1 -1)
+      )
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+      ('midi_file' 'songs/jailbreak_lizzy/jailbreak_lizzy.mid')
+   )
+   ('song_scroll_speed' 2300)
+   ('bank' 'sfx/handclap_bank.milo')
+   ('anim_tempo' 'kTempoFast')
+   ('preview' 50900 72100)
+   (
+      'rank'
+      ('drum' 290)
+      ('guitar' 326)
+      ('bass' 226)
+      ('vocals' 175)
+      ('band' 316)
+   )
+   ('genre' 'classicrock')
+   ('decade' 'the70s')
+   ('vocal_gender' 'male')
+   ('format' 3)
+   ('version' 3)
+   (
+      'fake'
+      {'==' $SONG_VERSION 0}
+   )
+   ('downloaded' 'TRUE')
+   ('album_art' 'TRUE')
+   ('year_released' 2009)
+   (
+      'album_name'
+      "Still Dangerous - Live At the Tower Theatre Philadelphia 1977"
+   )
+   ('album_track_number' 2)
+   (
+      'pack_name'
+      "Thin Lizzy Pack 01"
+   )
+   ('base_points' 670591)
+)
+(
+   'jamminme'
+   (
+      'name'
+      "Jammin' Me (Live)"
+   )
+   (
+      'artist'
+      "Tom Petty and the Heartbreakers"
+   )
+   ('master' 'TRUE')
+   ('context' 1056)
+   (
+      'song'
+      (
+         'name'
+         "songs/jamminme/jamminme"
+      )
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1 2 3 4)
+            )
+            ('bass' 5)
+            (
+               'guitar'
+               (6 7)
+            )
+            (
+               'vocals'
+               (8 9)
+            )
+         )
+      )
+      ('vocal_parts' 1)
+      (
+         'pans'
+         (0.0 -1.0 1.0 -1.0 1.0 0.0 -1.0 1.0 -1.0 1.0 -1.0 1.0)
+      )
+      (
+         'vols'
+         (-1.5 -4.5 -4.5 -4.5 -4.5 -1.7 -4.0 -4.0 -4.3 -4.3 -4.5 -4.5)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 -1 -1 1 1 -1 -1 -1 -1)
+      )
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+      (midi_file "songs/jamminme/jamminme.mid")
+   )
+   ('song_scroll_speed' 2300)
+   ('bank' 'sfx/tambourine_bank.milo')
+   ('anim_tempo' 'kTempoMedium')
+   ('preview' 47879 77879)
+   (
+      'rank'
+      ('drum' 223)
+      ('guitar' 225)
+      ('bass' 218)
+      ('vocals' 229)
+      ('band' 258)
+   )
+   ('genre' 'rock')
+   ('decade' 'the00s')
+   ('vocal_gender' 'male')
+   ('format' 5)
+   ('version' 3)
+   (
+      'fake'
+      {'==' $SONG_VERSION 0}
+   )
+   ('downloaded' 'TRUE')
+   ('game_origin' 'rb1_dlc')
+   ('song_id' 1005879)
+   ('rating' 2)
+   ('short_version' 136536)
+   ('song_length' 260454)
+   ('album_art' 'TRUE')
+   ('year_released' 2009)
+   (
+      'album_name'
+      "The Live Anthology"
+   )
+   ('album_track_number' 25)
+   (
+      'pack_name'
+      "Tom Petty & the Heartbreakers Live Anthology Pack 02"
+   )
+   ('base_points' 596766)
+)
+(
+   'jokerandthe'
+   (
+      'name'
+      "Joker & The Thief"
+   )
+   (
+      'artist'
+      "Wolfmother"
+   )
+   ('master' 'TRUE')
+   ('context' 91)
+   (
+      'song'
+      ('name' 'songs/jokerandthe/jokerandthe')
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1 2 3)
+            )
+            (
+               'bass'
+               (4 5)
+            )
+            (
+               'guitar'
+               (6 7)
+            )
+            (
+               'vocals'
+               (8 9)
+            )
+         )
+      )
+      (
+         'pans'
+         (0.0 0.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0)
+      )
+      (
+         'vols'
+         (-1.0 -1.5 -2.0 -2.0 -1.5 -1.5 -3.0 -3.0 -4.5 -4.5 -4.5 -4.5)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 -1 -1 1 1 -1 -1 -1 -1)
+      )
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+      ('midi_file' 'songs/jokerandthe/jokerandthe.mid')
+   )
+   ('song_scroll_speed' 2300)
+   ('bank' 'sfx/tambourine_bank.milo')
+   ('anim_tempo' 'kTempoMedium')
+   ('preview' 98000 126000)
+   (
+      'rank'
+      ('drum' 230)
+      ('guitar' 375)
+      ('bass' 375)
+      ('vocals' 240)
+      ('band' 305)
+   )
+   ('genre' 'rock')
+   ('decade' 'the00s')
+   ('downloaded' 'TRUE')
+   ('vocal_gender' 'male')
+)
+(
+   'letitallhangout'
+   (
+      'name'
+      "Let It All Hang Out"
+   )
+   (
+      'artist'
+      "Weezer"
+   )
+   ('master' 'TRUE')
+   ('context' 1037)
+   (
+      'song'
+      (
+         'name'
+         "songs/letitallhangout/letitallhangout"
+      )
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1 2 3 4 5)
+            )
+            ('bass' 6)
+            (
+               'guitar'
+               (7 8)
+            )
+            (
+               'vocals'
+               (9 10)
+            )
+         )
+      )
+      ('vocal_parts' 1)
+      (
+         'pans'
+         (-1.0 1.0 -1.0 1.0 -1.0 1.0 0.0 -1.0 1.0 -1.0 1.0 -1.0 1.0)
+      )
+      (
+         'vols'
+         (-0.4 -0.4 -2.3 -2.3 -2.3 -2.3 -2.0 -2.5 -2.5 -2.9 -2.9 -1.8 -1.8)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 -1 -1 -1 1 1 -1 -1 -1 -1)
+      )
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+      (midi_file "songs/letitallhangout/letitallhangout.mid")
+   )
+   ('song_scroll_speed' 2300)
+   ('bank' 'sfx/tambourine_bank.milo')
+   ('anim_tempo' 'kTempoMedium')
+   ('preview' 47840 77340)
+   (
+      'rank'
+      ('drum' 180)
+      ('guitar' 195)
+      ('bass' 152)
+      ('vocals' 136)
+      ('band' 187)
+   )
+   ('genre' 'rock')
+   ('decade' 'the00s')
+   ('vocal_gender' 'male')
+   ('format' 5)
+   ('version' 3)
+   (
+      'fake'
+      {'==' $SONG_VERSION 0}
+   )
+   ('downloaded' 'TRUE')
+   ('game_origin' 'rb1_dlc')
+   ('song_id' 1005863)
+   ('rating' 2)
+   ('short_version' 127250)
+   ('song_length' 207272)
+   ('album_art' 'TRUE')
+   ('year_released' 2009)
+   (
+      'album_name'
+      "Raditude"
+   )
+   ('album_track_number' 8)
+   (
+      'pack_name'
+      "Weezer Pack 03"
+   )
+   ('base_points' 443402)
+)
+(
+   'losangeles'
+   (
+      'name'
+      "Los Angeles"
+   )
+   (
+      'artist'
+      "X"
+   )
+   ('master' 'TRUE')
+   ('context' 1166)
+   (
+      'song'
+      (
+         'name'
+         "songs/losangeles/losangeles"
+      )
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1 2 3 4)
+            )
+            ('bass' 5)
+            (
+               'guitar'
+               (6 7)
+            )
+            (
+               'vocals'
+               (8 9)
+            )
+         )
+      )
+      ('vocal_parts' 1)
+      (
+         'pans'
+         (0.0 -1.0 1.0 -1.0 1.0 0.3 -1.0 1.0 -1.0 1.0 -1.0 1.0)
+      )
+      (
+         'vols'
+         (-4.5 -7.5 -7.5 -7.5 -7.5 -3.0 -7.5 -7.5 -6.0 -6.0 -7.5 -7.5)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 -1 -1 1 1 -1 -1 -1 -1)
+      )
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+      (midi_file "songs/losangeles/losangeles.mid")
+   )
+   ('song_scroll_speed' 2300)
+   ('bank' 'sfx/tambourine_bank.milo')
+   ('anim_tempo' 'kTempoFast')
+   ('preview' 36825 66825)
+   (
+      'rank'
+      ('drum' 280)
+      ('guitar' 244)
+      ('bass' 291)
+      ('vocals' 278)
+      ('band' 287)
+   )
+   ('genre' 'punk')
+   ('decade' 'the80s')
+   ('vocal_gender' 'male')
+   ('vocal_tonic_note' 9)
+   ('format' 5)
+   ('version' 3)
+   (
+      'fake'
+      {'==' $SONG_VERSION 0}
+   )
+   ('downloaded' 'TRUE')
+   ('game_origin' 'rb1_dlc')
+   ('song_id' 1005980)
+   ('rating' 2)
+   ('short_version' 0)
+   ('song_length' 145749)
+   ('album_art' 'TRUE')
+   ('year_released' 1980)
+   (
+      'album_name'
+      "Los Angeles"
+   )
+   ('album_track_number' 6)
+   (
+      'pack_name'
+      "X Pack 01"
+   )
+   ('base_points' 481576)
+)
+(
+   'maryjane'
+   (
+      'name'
+      "Mary Jane's Last Dance (Live)"
+   )
+   (
+      'artist'
+      "Tom Petty and the Heartbreakers"
+   )
+   ('master' 'TRUE')
+   ('context' 1012)
+   (
+      'song'
+      (
+         'name'
+         "songs/maryjane/maryjane"
+      )
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1 2)
+            )
+            ('bass' 3)
+            (
+               'guitar'
+               (4 5)
+            )
+            (
+               'vocals'
+               (6 7)
+            )
+         )
+      )
+      (
+         'pans'
+         (0.0 -1.0 1.0 0.0 -1.0 1.0 -1.0 1.0 -1.0 1.0)
+      )
+      (
+         'vols'
+         (-0.7 -2.0 -2.0 -2.3 -1.5 -1.5 -1.9 -1.9 -2.0 -2.0)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 1 1 -1 -1 -1 -1)
+      )
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+      (midi_file "songs/maryjane/maryjane.mid")
+   )
+   ('song_scroll_speed' 2300)
+   ('bank' 'sfx/tambourine_bank.milo')
+   ('anim_tempo' 'kTempoSlow')
+   ('preview' 122972 152972)
+   (
+      'rank'
+      ('drum' 283)
+      ('guitar' 330)
+      ('bass' 223)
+      ('vocals' 175)
+      ('band' 298)
+   )
+   ('genre' 'rock')
+   ('decade' 'the00s')
+   ('vocal_gender' 'male')
+   ('format' 4)
+   ('version' 3)
+   (
+      'fake'
+      {'==' $SONG_VERSION 0}
+   )
+   ('downloaded' 'TRUE')
+   ('game_origin' 'rb1')
+   ('song_id' 1005787)
+   ('rating' 2)
+   ('short_version' 150950)
+   ('album_art' 'TRUE')
+   ('year_released' 2009)
+   (
+      'album_name'
+      "The Live Anthology"
+   )
+   ('album_track_number' 23)
+   (
+      'pack_name'
+      "Tom Petty & The Heartbreakers Live Anthology Pack 01"
+   )
+   ('base_points' 571538)
+)
+(
+   'monsoon'
+   (
+      'name'
+      "Monsoon"
+   )
+   (
+      'artist'
+      "Tokio Hotel"
+   )
+   ('master' 'TRUE')
+   ('context' 130)
+   (
+      'song'
+      ('name' 'songs/monsoon/monsoon')
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1)
+            )
+            ('bass' 2)
+            (
+               'guitar'
+               (3 4)
+            )
+            (
+               'vocals'
+               (5 6)
+            )
+         )
+      )
+      (
+         'pans'
+         (-1.0 1.0 0.0 -1.0 1.0 -1.0 1.0 -1.0 1.0)
+      )
+      (
+         'vols'
+         (0.0 0.0 -3.0 -3.0 -3.0 -4.0 -4.0 -4.0 -4.0)
+      )
+      (
+         'cores'
+         (-1 -1 -1 1 1 -1 -1 -1 -1)
+      )
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+      ('midi_file' 'songs/monsoon/monsoon.mid')
+   )
+   ('song_scroll_speed' 2300)
+   ('bank' 'sfx/tambourine_bank.milo')
+   ('anim_tempo' 'kTempoMedium')
+   ('preview' 44907 74489)
+   (
+      'rank'
+      ('drum' 160)
+      ('guitar' 169)
+      ('bass' 169)
+      ('vocals' 210)
+      ('band' 180)
+   )
+   ('genre' 'glam')
+   ('decade' 'the00s')
+   ('vocal_gender' 'male')
+   ('downloaded' 'TRUE')
+)
+(
+   'morehumanthanhuman'
+   (
+      'name'
+      "More Human Than Human"
+   )
+   (
+      'artist'
+      "White Zombie"
+   )
+   ('master' 'TRUE')
+   ('context' 585)
+   (
+      'song'
+      ('name' 'songs/morehumanthanhuman/morehumanthanhuman')
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1 2 3)
+            )
+            ('bass' 4)
+            (
+               'guitar'
+               (5 6)
+            )
+            (
+               'vocals'
+               (7 8)
+            )
+         )
+      )
+      ('crowd_channels' 11 12)
+      (
+         'pans'
+         (0.0 0.0 -1.0 1.0 0.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -2.5 2.5)
+      )
+      (
+         'vols'
+         (-2.0 -2.0 -4.0 -4.0 -3.6 -4.0 -4.0 -3.5 -3.5 -4.0 -4.0 -4.5 -4.5)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 -1 1 1 -1 -1 -1 -1 -1 -1)
+      )
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+      ('midi_file' 'songs/morehumanthanhuman/morehumanthanhuman.mid')
+   )
+   ('song_scroll_speed' 2300)
+   ('bank' 'sfx/tambourine_bank.milo')
+   ('anim_tempo' 'kTempoSlow')
+   ('preview' 100000 130000)
+   (
+      'rank'
+      ('drum' 355)
+      ('guitar' 133)
+      ('bass' 230)
+      ('vocals' 160)
+      ('band' 238)
+   )
+   ('genre' 'metal')
+   ('decade' 'the90s')
+   ('vocal_gender' 'male')
+   ('format' 3)
+   ('version' 3)
+   (
+      'fake'
+      {'==' $SONG_VERSION 0}
+   )
+   ('downloaded' 'TRUE')
+   ('album_art' 'TRUE')
+   ('year_released' 1995)
+   (
+      'album_name'
+      "Astro-Creep:2000"
+   )
+   ('album_track_number' 7)
+   ('base_points' 580425)
+)
+(
+   'mynameisjonas'
+   (
+      'name'
+      "My Name Is Jonas"
+   )
+   (
+      'artist'
+      "Weezer"
+   )
+   ('master' 'TRUE')
+   ('context' 812)
+   (
+      'song'
+      ('name' 'songs/mynameisjonas/mynameisjonas')
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1 2 3 4 5)
+            )
+            ('bass' 6)
+            (
+               'guitar'
+               (7 8)
+            )
+            (
+               'vocals'
+               (9 10)
+            )
+         )
+      )
+      (
+         'pans'
+         (-1.0 1.0 -1.0 1.0 -1.0 1.0 0.0 -1.0 1.0 -1.0 1.0 -1.0 1.0)
+      )
+      (
+         'vols'
+         (-1.0 -1.0 -1.5 -1.5 -2.5 -2.5 -3.0 -3.0 -3.0 -2.1 -2.1 -4.0 -4.0)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 -1 -1 -1 1 1 -1 -1 -1 -1)
+      )
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+      ('midi_file' 'songs/mynameisjonas/mynameisjonas.mid')
+   )
+   ('song_scroll_speed' 2300)
+   ('bank' 'sfx/tambourine_bank.milo')
+   ('anim_tempo' 'kTempoSlow')
+   ('preview' 58693 87160)
+   (
+      'rank'
+      ('drum' 241)
+      ('guitar' 315)
+      ('bass' 170)
+      ('vocals' 195)
+      ('band' 270)
+   )
+   ('genre' 'alternative')
+   ('decade' 'the90s')
+   ('vocal_gender' 'male')
+   ('format' 4)
+   ('version' 3)
+   (
+      'fake'
+      {'==' $SONG_VERSION 0}
+   )
+   ('downloaded' 'TRUE')
+   ('game_origin' 'rb1')
+   ('song_id' 1005717)
+   ('rating' 1)
+   ('short_version' 0)
+   ('album_art' 'TRUE')
+   ('year_released' 1994)
+   (
+      'album_name'
+      "Weezer (The Blue Album)"
+   )
+   ('album_track_number' 1)
+   (
+      'pack_name'
+      "Weezer Pack 02"
+   )
+   ('base_points' 456553)
+)
+(
+   'newfang'
+   (
+      'name'
+      "New Fang"
+   )
+   (
+      'artist'
+      "Them Crooked Vultures"
+   )
+   ('master' 'TRUE')
+   ('context' 1019)
+   (
+      'song'
+      (
+         'name'
+         "songs/newfang/newfang"
+      )
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1 2 3 4)
+            )
+            ('bass' 5)
+            (
+               'guitar'
+               (6 7)
+            )
+            (
+               'vocals'
+               (8 9)
+            )
+         )
+      )
+      (
+         'pans'
+         (0.0 -1.0 1.0 -1.0 1.0 0.0 -1.0 1.0 -1.0 1.0 -1.0 1.0)
+      )
+      (
+         'vols'
+         (-0.5 -2.8 -2.8 -2.8 -2.8 -2.8 -2.0 -2.0 -2.8 -2.8 -2.9 -2.9)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 -1 -1 1 1 -1 -1 -1 -1)
+      )
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+      (midi_file "songs/newfang/newfang.mid")
+   )
+   ('song_scroll_speed' 2300)
+   ('bank' 'sfx/tambourine_bank.milo')
+   ('anim_tempo' 'kTempoSlow')
+   ('preview' 51083 81083)
+   (
+      'rank'
+      ('drum' 361)
+      ('guitar' 225)
+      ('bass' 265)
+      ('vocals' 269)
+      ('band' 316)
+   )
+   ('genre' 'rock')
+   ('decade' 'the00s')
+   ('vocal_gender' 'male')
+   ('format' 4)
+   ('version' 3)
+   (
+      'fake'
+      {'==' $SONG_VERSION 0}
+   )
+   ('downloaded' 'TRUE')
+   ('game_origin' 'rb1')
+   ('song_id' 1005858)
+   ('rating' 1)
+   ('short_version' 94084)
+   ('album_art' 'TRUE')
+   ('year_released' 2009)
+   (
+      'album_name'
+      "Them Crooked Vultures"
+   )
+   ('album_track_number' 3)
+   ('base_points' 473297)
+)
+(
+   'newmoonrising'
+   (
+      'name'
+      "New Moon Rising"
+   )
+   (
+      'artist'
+      "Wolfmother"
+   )
+   ('master' 'TRUE')
+   ('context' 977)
+   (
+      'song'
+      ('name' 'songs/newmoonrising/newmoonrising')
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1 2 3 4 5)
+            )
+            ('bass' 6)
+            (
+               'guitar'
+               (7 8)
+            )
+            (
+               'vocals'
+               (9 10)
+            )
+         )
+      )
+      (
+         'pans'
+         (-1.0 1.0 -1.0 1.0 -1.0 1.0 0.0 -1.0 1.0 -1.0 1.0 -1.0 1.0)
+      )
+      (
+         'vols'
+         (-2.0 -2.0 -2.0 -2.0 -3.0 -3.0 -3.5 -3.5 -3.5 -4.0 -4.0 -4.5 -4.5)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 -1 -1 -1 1 1 -1 -1 -1 -1)
+      )
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+      ('midi_file' 'songs/newmoonrising/newmoonrising.mid')
+   )
+   ('song_scroll_speed' 2300)
+   ('bank' 'sfx/tambourine_bank.milo')
+   ('anim_tempo' 'kTempoMedium')
+   ('preview' 46534 75418)
+   (
+      'rank'
+      ('drum' 302)
+      ('guitar' 271)
+      ('bass' 293)
+      ('vocals' 294)
+      ('band' 291)
+   )
+   ('genre' 'rock')
+   ('decade' 'the00s')
+   ('vocal_gender' 'male')
+   ('format' 4)
+   ('version' 3)
+   (
+      'fake'
+      {'==' $SONG_VERSION 0}
+   )
+   ('downloaded' 'TRUE')
+   ('game_origin' 'rb1')
+   ('song_id' 1005812)
+   ('rating' 1)
+   ('short_version' 115670)
+   ('album_art' 'TRUE')
+   ('year_released' 2009)
+   (
+      'album_name'
+      "Cosmic Egg"
+   )
+   ('album_track_number' 2)
+   (
+      'pack_name'
+      "Wolfmother Pack 01"
+   )
+   ('base_points' 509271)
+)
+(
+   'nightwatchmanlive'
+   (
+      'name'
+      "Nightwatchman (Live)"
+   )
+   (
+      'artist'
+      "Tom Petty and the Heartbreakers"
+   )
+   ('master' 'TRUE')
+   ('context' 1060)
+   (
+      'song'
+      (
+         'name'
+         "songs/nightwatchmanlive/nightwatchmanlive"
+      )
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1 2 3)
+            )
+            ('bass' 4)
+            (
+               'guitar'
+               (5 6)
+            )
+            (
+               'vocals'
+               (7 8)
+            )
+         )
+      )
+      ('vocal_parts' 1)
+      (
+         'pans'
+         (0.0 0.0 -1.0 1.0 0.0 -1.0 1.0 -1.0 1.0 -1.0 1.0)
+      )
+      (
+         'vols'
+         (-1.5 -2.0 -4.0 -4.0 -4.0 -4.5 -4.5 -2.5 -2.5 -3.5 -3.5)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 -1 1 1 -1 -1 -1 -1)
+      )
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+      (midi_file "songs/nightwatchmanlive/nightwatchmanlive.mid")
+   )
+   ('song_scroll_speed' 2300)
+   ('bank' 'sfx/handclap_bank.milo')
+   ('anim_tempo' 'kTempoSlow')
+   ('preview' 76323 106323)
+   (
+      'rank'
+      ('drum' 248)
+      ('guitar' 280)
+      ('bass' 249)
+      ('vocals' 188)
+      ('band' 275)
+   )
+   ('genre' 'rock')
+   ('decade' 'the00s')
+   ('vocal_gender' 'male')
+   ('vocal_tonic_note' 4)
+   ('format' 5)
+   ('version' 3)
+   (
+      'fake'
+      {'==' $SONG_VERSION 0}
+   )
+   ('downloaded' 'TRUE')
+   ('game_origin' 'rb1_dlc')
+   ('song_id' 1005878)
+   ('rating' 2)
+   ('short_version' 140230)
+   ('song_length' 283181)
+   ('album_art' 'TRUE')
+   ('year_released' 2009)
+   (
+      'album_name'
+      "The Live Anthology"
+   )
+   ('album_track_number' 2)
+   (
+      'pack_name'
+      "Tom Petty & the Heartbreakers Live Anthology Pack 02"
+   )
+   ('base_points' 463875)
+)
+(
+   'oceanavenue'
+   (
+      'name'
+      "Ocean Avenue"
+   )
+   (
+      'artist'
+      "Yellowcard"
+   )
+   ('master' 'TRUE')
+   ('context' 1033)
+   (
+      'song'
+      (
+         'name'
+         "songs/oceanavenue/oceanavenue"
+      )
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1 2 3)
+            )
+            ('bass' 4)
+            (
+               'guitar'
+               (5 6)
+            )
+            (
+               'vocals'
+               (7 8)
+            )
+         )
+      )
+      ('vocal_parts' 1)
+      (
+         'pans'
+         (0.0 0.0 -1.0 1.0 0.0 -1.0 1.0 -1.0 1.0 -1.0 1.0)
+      )
+      (
+         'vols'
+         (-1.0 -2.0 -3.0 -3.0 -2.0 -4.0 -4.0 -3.0 -3.0 -3.0 -3.0)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 -1 1 1 -1 -1 -1 -1)
+      )
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+      (midi_file "songs/oceanavenue/oceanavenue.mid")
+   )
+   ('song_scroll_speed' 2300)
+   ('bank' 'sfx/tambourine_bank.milo')
+   ('anim_tempo' 'kTempoFast')
+   ('preview' 52221 82221)
+   (
+      'rank'
+      ('drum' 288)
+      ('guitar' 250)
+      ('bass' 190)
+      ('vocals' 194)
+      ('band' 269)
+   )
+   ('genre' 'emo')
+   ('decade' 'the00s')
+   ('vocal_gender' 'male')
+   ('format' 5)
+   ('version' 3)
+   (
+      'fake'
+      {'==' $SONG_VERSION 0}
+   )
+   ('downloaded' 'TRUE')
+   ('game_origin' 'rb1_dlc')
+   ('song_id' 1005834)
+   ('rating' 1)
+   ('short_version' 125500)
+   ('song_length' 247272)
+   ('album_art' 'TRUE')
+   ('year_released' 2003)
+   (
+      'album_name'
+      "Ocean Avenue"
+   )
+   ('album_track_number' 3)
+   ('base_points' 571070)
+)
+(
+   'ontheroadagain'
+   (
+      'name'
+      "On the Road Again"
+   )
+   (
+      'artist'
+      "Willie Nelson"
+   )
+   ('master' 'TRUE')
+   ('context' 740)
+   (
+      'song'
+      ('name' 'songs/ontheroadagain/ontheroadagain')
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1 2)
+            )
+            ('bass' 3)
+            (
+               'guitar'
+               (4 5)
+            )
+            (
+               'vocals'
+               (6 7)
+            )
+         )
+      )
+      (
+         'pans'
+         (0.0 -1.0 1.0 0.0 -1.0 1.0 -1.0 1.0 -1.0 1.0)
+      )
+      (
+         'vols'
+         (-1.0 -1.0 -1.0 -3.0 -3.0 -3.0 -2.5 -2.5 -3.0 -3.0)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 1 1 -1 -1 -1 -1)
+      )
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+      ('midi_file' 'songs/ontheroadagain/ontheroadagain.mid')
+   )
+   ('song_scroll_speed' 2300)
+   ('bank' 'sfx/tambourine_bank.milo')
+   ('anim_tempo' 'kTempoMedium')
+   ('preview' 42600 66130)
+   (
+      'rank'
+      ('drum' 289)
+      ('guitar' 266)
+      ('bass' 134)
+      ('vocals' 139)
+      ('band' 275)
+   )
+   ('genre' 'country')
+   ('decade' 'the80s')
+   ('vocal_gender' 'male')
+   ('format' 3)
+   ('version' 3)
+   (
+      'fake'
+      {'==' $SONG_VERSION 0}
+   )
+   ('downloaded' 'TRUE')
+   ('album_art' 'TRUE')
+   ('year_released' 1980)
+   (
+      'album_name'
+      "Honeysuckle Rose"
+   )
+   ('album_track_number' 1)
+   ('base_points' 350862)
+)
+(
+   'pilgrim'
+   (
+      'name'
+      "Pilgrim"
+   )
+   (
+      'artist'
+      "Wolfmother"
+   )
+   ('master' 'TRUE')
+   ('context' 976)
+   (
+      'song'
+      ('name' 'songs/pilgrim/pilgrim')
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1 2 3 4 5)
+            )
+            ('bass' 6)
+            (
+               'guitar'
+               (7 8)
+            )
+            (
+               'vocals'
+               (9 10)
+            )
+         )
+      )
+      (
+         'pans'
+         (-1.0 1.0 -1.0 1.0 -1.0 1.0 0.0 -1.0 1.0 -1.0 1.0 -1.0 1.0)
+      )
+      (
+         'vols'
+         (-1.7 -1.7 -2.0 -2.0 -1.5 -1.5 -1.0 -1.5 -1.5 -1.0 -1.0 -1.5 -1.5)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 -1 -1 -1 1 1 -1 -1 -1 -1)
+      )
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+      ('midi_file' 'songs/pilgrim/pilgrim.mid')
+   )
+   ('song_scroll_speed' 2300)
+   ('bank' 'sfx/tambourine_bank.milo')
+   ('anim_tempo' 'kTempoMedium')
+   ('preview' 123530 153530)
+   (
+      'rank'
+      ('drum' 276)
+      ('guitar' 370)
+      ('bass' 267)
+      ('vocals' 256)
+      ('band' 308)
+   )
+   ('genre' 'rock')
+   ('decade' 'the00s')
+   ('vocal_gender' 'male')
+   ('format' 4)
+   ('version' 3)
+   (
+      'fake'
+      {'==' $SONG_VERSION 0}
+   )
+   ('downloaded' 'TRUE')
+   ('game_origin' 'rb1')
+   ('song_id' 1005817)
+   ('rating' 1)
+   ('short_version' 109157)
+   ('album_art' 'TRUE')
+   ('year_released' 2009)
+   (
+      'album_name'
+      "Cosmic Egg"
+   )
+   ('album_track_number' 9)
+   (
+      'pack_name'
+      "Wolfmother Pack 01"
+   )
+   ('base_points' 532268)
+)
+(
+   'porkandbeans'
+   (
+      'name'
+      "Pork and Beans"
+   )
+   (
+      'artist'
+      "Weezer"
+   )
+   ('master' 'TRUE')
+   ('context' 813)
+   (
+      'song'
+      ('name' 'songs/porkandbeans/porkandbeans')
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1 2 3 4)
+            )
+            ('bass' 5)
+            (
+               'guitar'
+               (6 7)
+            )
+            (
+               'vocals'
+               (8 9)
+            )
+         )
+      )
+      (
+         'pans'
+         (0.0 -1.0 1.0 -1.0 1.0 0.0 -1.0 1.0 -1.0 1.0 -1.0 1.0)
+      )
+      (
+         'vols'
+         (-1.3 -3.8 -3.8 -3.7 -3.7 -3.8 -1.6 -1.6 -2.0 -2.0 -2.7 -2.7)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 -1 -1 1 1 -1 -1 -1 -1)
+      )
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+      ('midi_file' 'songs/porkandbeans/porkandbeans.mid')
+   )
+   ('song_scroll_speed' 2300)
+   ('bank' 'sfx/tambourine_bank.milo')
+   ('anim_tempo' 'kTempoMedium')
+   ('preview' 39310 69310)
+   (
+      'rank'
+      ('drum' 129)
+      ('guitar' 113)
+      ('bass' 150)
+      ('vocals' 153)
+      ('band' 130)
+   )
+   ('genre' 'alternative')
+   ('decade' 'the00s')
+   ('vocal_gender' 'male')
+   ('format' 4)
+   ('version' 3)
+   (
+      'fake'
+      {'==' $SONG_VERSION 0}
+   )
+   ('downloaded' 'TRUE')
+   ('game_origin' 'rb1')
+   ('song_id' 1005716)
+   ('rating' 1)
+   ('short_version' 0)
+   ('album_art' 'TRUE')
+   ('year_released' 2008)
+   (
+      'album_name'
+      "Weezer (The Red Album)"
+   )
+   ('album_track_number' 3)
+   (
+      'pack_name'
+      "Weezer Pack 02"
+   )
+   ('base_points' 378543)
+)
+(
+   'promisedland'
+   (
+      'name'
+      "Promised Land"
+   )
+   (
+      'artist'
+      "Vesuvius"
+   )
+   ('master' 'TRUE')
+   ('context' 238)
+   (
+      'song'
+      ('name' 'songs/promisedland/promisedland')
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1 2 3 4)
+            )
+            ('bass' 5)
+            (
+               'guitar'
+               (6 7)
+            )
+            (
+               'vocals'
+               (8 9)
+            )
+         )
+      )
+      (
+         'pans'
+         (0.0 -1.0 1.0 -1.0 1.0 0.0 -1.0 1.0 -1.0 1.0 -1.0 1.0)
+      )
+      (
+         'vols'
+         (-1.5 -2.5 -2.5 -3.5 -3.5 -5.5 -3.5 -3.5 -3.5 -3.5 -3.5 -3.5)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 -1 -1 1 1 -1 -1 -1 -1)
+      )
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+      ('midi_file' 'songs/promisedland/promisedland.mid')
+   )
+   ('song_scroll_speed' 2300)
+   ('bank' 'sfx/cowbell_bank.milo')
+   ('anim_tempo' 'kTempoMedium')
+   ('preview' 63000 93000)
+   (
+      'rank'
+      ('drum' 175)
+      ('guitar' 210)
+      ('bass' 210)
+      ('vocals' 175)
+      ('band' 190)
+   )
+   ('genre' 'rock')
+   ('decade' 'the00s')
+   ('downloaded' 'TRUE')
+   ('vocal_gender' 'male')
+   ('format' 2)
+   ('version' 1)
+   ('album_art' 'FALSE')
+   ('year_released' 2008)
+)
+(
+   'rbnmegamix01'
+   (
+      'name'
+      "Rock Band Network Megamix 01"
+   )
+   (
+      'artist'
+      "Various Artists"
+   )
+   ('master' 'TRUE')
+   ('context' 0)
+   (
+      'song'
+      (
+         'name'
+         "songs/rbnmegamix01/rbnmegamix01"
+      )
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1 2 3 4 5)
+            )
+            (
+               'bass'
+               (6 7)
+            )
+            (
+               'guitar'
+               (8 9)
+            )
+            (
+               'vocals'
+               (10 11)
+            )
+         )
+      )
+      ('vocal_parts' 1)
+      (
+         'pans'
+         (-1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0)
+      )
+      (
+         'vols'
+         (-0.5 -0.5 -0.8 -0.8 -1.2 -1.2 -1.2 -1.2 -1.3 -1.3 -1.6 -1.6 -1.6 -1.6)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1)
+      )
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+      (midi_file "songs/rbnmegamix01/rbnmegamix01.mid")
+   )
+   ('song_scroll_speed' 2300)
+   ('bank' 'sfx/tambourine_bank.milo')
+   ('anim_tempo' 'kTempoMedium')
+   ('preview' 46000 76000)
+   (
+      'rank'
+      ('drum' 349)
+      ('guitar' 354)
+      ('bass' 298)
+      ('vocals' 220)
+      ('band' 328)
+   )
+   (solo (vocal_percussion))
+   ('genre' 'other')
+   ('decade' 'the10s')
+   ('vocal_gender' 'female')
+   ('format' 6)
+   ('version' 3)
+   (
+      'fake'
+      {'==' $SONG_VERSION 0}
+   )
+   ('downloaded' 'TRUE')
+   ('game_origin' 'rb1_dlc')
+   ('song_id' 1006134)
+   ('rating' 2)
+   ('short_version' 0)
+   ('song_length' 578744)
+   ('album_art' 'TRUE')
+   ('year_released' 2010)
+   (
+      'album_name'
+      "Rock Band Network Megamixes"
+   )
+   ('album_track_number' 1)
+   ('base_points' 0)
+)
+(
+   'readysetgo'
+   (
+      'name'
+      "Ready, Set, Go!"
+   )
+   (
+      'artist'
+      "Tokio Hotel"
+   )
+   ('master' 'TRUE')
+   ('context' 516)
+   (
+      'song'
+      ('name' 'songs/readysetgo/readysetgo')
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1)
+            )
+            ('bass' 2)
+            (
+               'guitar'
+               (3 4)
+            )
+            (
+               'vocals'
+               (5 6)
+            )
+         )
+      )
+      (
+         'pans'
+         (-1.0 1.0 0.0 -1.0 1.0 -1.0 1.0 -1.0 1.0)
+      )
+      (
+         'vols'
+         (-2.0 -2.0 -4.5 -4.0 -4.0 -4.0 -4.0 -3.5 -3.5)
+      )
+      (
+         'cores'
+         (-1 -1 -1 1 1 -1 -1 -1 -1)
+      )
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+      ('midi_file' 'songs/readysetgo/readysetgo.mid')
+   )
+   ('song_scroll_speed' 2300)
+   ('bank' 'sfx/tambourine_bank.milo')
+   ('anim_tempo' 'kTempoFast')
+   ('preview' 45800 66700)
+   (
+      'rank'
+      ('drum' 190)
+      ('guitar' 168)
+      ('bass' 125)
+      ('vocals' 198)
+      ('band' 182)
+   )
+   ('genre' 'poprock')
+   ('decade' 'the00s')
+   ('vocal_gender' 'male')
+   ('format' 3)
+   ('version' 2)
+   (
+      'fake'
+      {'==' $SONG_VERSION 0}
+   )
+   ('downloaded' 'TRUE')
+   ('album_art' 'TRUE')
+   ('year_released' 2007)
+   (
+      'album_name'
+      "Scream"
+   )
+   ('album_track_number' 2)
+   ('base_points' 538132)
+)
+(
+   'reddevil'
+   (
+      'name'
+      "Red Devil"
+   )
+   (
+      'artist'
+      "Yngwie Malmsteen's Rising Force"
+   )
+   ('master' 'TRUE')
+   ('context' 501)
+   (
+      'song'
+      ('name' 'songs/reddevil/reddevil')
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1 2 3 4 5)
+            )
+            ('bass' 6)
+            (
+               'guitar'
+               (7 8)
+            )
+            (
+               'vocals'
+               (9 10)
+            )
+         )
+      )
+      (
+         'pans'
+         (-1.0 1.0 -1.0 1.0 -1.0 1.0 0.0 -1.0 1.0 -1.0 1.0 -1.0 1.0)
+      )
+      (
+         'vols'
+         (-0.6 -0.6 -2.0 -2.0 -3.0 -3.0 -2.5 -3.5 -3.5 -2.0 -2.0 -4.0 -4.0)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 -1 -1 -1 1 1 -1 -1 -1 -1)
+      )
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+      ('midi_file' 'songs/reddevil/reddevil.mid')
+   )
+   ('song_scroll_speed' 2300)
+   ('bank' 'sfx/tambourine_bank.milo')
+   ('anim_tempo' 'kTempoFast')
+   ('preview' 145811 173975)
+   (
+      'rank'
+      ('drum' 257)
+      ('guitar' 493)
+      ('bass' 288)
+      ('vocals' 138)
+      ('band' 343)
+   )
+   ('genre' 'metal')
+   ('decade' 'the00s')
+   ('vocal_gender' 'male')
+   ('format' 3)
+   ('version' 2)
+   (
+      'fake'
+      {'==' $SONG_VERSION 0}
+   )
+   ('downloaded' 'TRUE')
+   ('album_art' 'TRUE')
+   ('year_released' 2008)
+   (
+      'album_name'
+      "Perpetual Flame"
+   )
+   ('album_track_number' 4)
+   (
+      'pack_name'
+      "Yngwie Malmsteen Pack 01"
+   )
+   ('base_points' 563105)
+)
+(
+   'refugee'
+   (
+      'name'
+      "Refugee (Live)"
+   )
+   (
+      'artist'
+      "Tom Petty and the Heartbreakers"
+   )
+   ('master' 'TRUE')
+   ('context' 1013)
+   (
+      'song'
+      (
+         'name'
+         "songs/refugee/refugee"
+      )
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1 2 3 4)
+            )
+            ('bass' 5)
+            (
+               'guitar'
+               (6 7)
+            )
+            (
+               'vocals'
+               (8 9)
+            )
+         )
+      )
+      (
+         'pans'
+         (0.0 -1.0 1.0 -1.0 1.0 0.0 -1.0 1.0 -1.0 1.0 -1.0 1.0)
+      )
+      (
+         'vols'
+         (-1.8 -2.0 -2.0 -2.0 -2.0 -2.0 -2.0 -2.0 -2.0 -2.0 -2.0 -2.0)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 -1 -1 1 1 -1 -1 -1 -1)
+      )
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+      (midi_file "songs/refugee/refugee.mid")
+   )
+   ('song_scroll_speed' 2300)
+   ('bank' 'sfx/tambourine_bank.milo')
+   ('anim_tempo' 'kTempoMedium')
+   ('preview' 68777 98777)
+   (
+      'rank'
+      ('drum' 270)
+      ('guitar' 333)
+      ('bass' 193)
+      ('vocals' 204)
+      ('band' 301)
+   )
+   ('genre' 'rock')
+   ('decade' 'the00s')
+   ('vocal_gender' 'male')
+   ('format' 4)
+   ('version' 3)
+   (
+      'fake'
+      {'==' $SONG_VERSION 0}
+   )
+   ('downloaded' 'TRUE')
+   ('game_origin' 'rb1')
+   ('song_id' 1005731)
+   ('rating' 1)
+   ('short_version' 125619)
+   ('album_art' 'TRUE')
+   ('year_released' 2009)
+   (
+      'album_name'
+      "The Live Anthology"
+   )
+   ('album_track_number' 14)
+   (
+      'pack_name'
+      "Tom Petty & The Heartbreakers Live Anthology Pack 01"
+   )
+   ('base_points' 677410)
+)
+(
+   'reinventingyourexit'
+   (
+      'name'
+      "Reinventing Your Exit"
+   )
+   (
+      'artist'
+      "Underoath"
+   )
+   ('master' 'TRUE')
+   ('context' 759)
+   (
+      'song'
+      ('name' 'songs/reinventingyourexit/reinventingyourexit')
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1 2 3 4 5)
+            )
+            ('bass' 6)
+            (
+               'guitar'
+               (7 8)
+            )
+            (
+               'vocals'
+               (9 10)
+            )
+         )
+      )
+      (
+         'pans'
+         (-1.0 1.0 -1.0 1.0 -1.0 1.0 0.0 -1.0 1.0 -1.0 1.0 -1.0 1.0)
+      )
+      (
+         'vols'
+         (-1.0 -1.0 -1.5 -1.5 -2.5 -2.5 -4.0 -4.0 -4.0 -3.0 -3.0 -5.0 -5.0)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 -1 -1 -1 1 1 -1 -1 -1 -1)
+      )
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+      ('midi_file' 'songs/reinventingyourexit/reinventingyourexit.mid')
+   )
+   ('song_scroll_speed' 2300)
+   ('bank' 'sfx/tambourine_bank.milo')
+   ('anim_tempo' 'kTempoMedium')
+   ('preview' 85135 115135)
+   (
+      'rank'
+      ('drum' 221)
+      ('guitar' 202)
+      ('bass' 204)
+      ('vocals' 181)
+      ('band' 206)
+   )
+   ('genre' 'emo')
+   ('decade' 'the00s')
+   ('vocal_gender' 'male')
+   ('format' 3)
+   ('version' 3)
+   (
+      'fake'
+      {'==' $SONG_VERSION 0}
+   )
+   ('downloaded' 'TRUE')
+   ('album_art' 'TRUE')
+   ('year_released' 2004)
+   (
+      'album_name'
+      "They're Only Chasing Safety"
+   )
+   ('album_track_number' 4)
+   (
+      'pack_name'
+      "Warped Tour 2009 Pack 01"
+   )
+   ('base_points' 627430)
+)
+(
+   'rideadkins'
+   (
+      'name'
+      "Ride"
+   )
+   (
+      'artist'
+      "Trace Adkins"
+   )
+   ('master' 'TRUE')
+   ('context' 0)
+   (
+      'song'
+      (
+         'name'
+         "songs/rideadkins/rideadkins"
+      )
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1 2 3 4)
+            )
+            ('bass' 5)
+            (
+               'guitar'
+               (6 7)
+            )
+            (
+               'vocals'
+               (8 9)
+            )
+         )
+      )
+      ('vocal_parts' 3)
+      (
+         'pans'
+         (0.0 -1.0 1.0 -1.0 1.0 0.0 -1.0 1.0 -1.0 1.0 -1.0 1.0)
+      )
+      (
+         'vols'
+         (-1.5 -4.5 -4.5 -4.5 -4.5 -4.8 -4.5 -4.5 -4.2 -4.2 -4.8 -4.8)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 -1 -1 1 1 -1 -1 -1 -1)
+      )
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+      (midi_file "songs/rideadkins/rideadkins.mid")
+   )
+   ('song_scroll_speed' 2300)
+   ('bank' 'sfx/tambourine_bank.milo')
+   ('anim_tempo' 'kTempoMedium')
+   ('preview' 179200 209000)
+   (
+      'rank'
+      ('drum' 276)
+      ('guitar' 300)
+      ('bass' 268)
+      ('vocals' 263)
+      ('band' 287)
+   )
+   (solo (guitar))
+   ('genre' 'country')
+   ('decade' 'the00s')
+   ('vocal_gender' 'male')
+   ('vocal_tonic_note' 9)
+   ('song_tonality' 0)
+   ('format' 6)
+   ('version' 3)
+   (
+      'fake'
+      {'==' $SONG_VERSION 0}
+   )
+   ('downloaded' 'TRUE')
+   ('game_origin' 'rb1_dlc')
+   ('song_id' 1006096)
+   ('rating' 2)
+   ('short_version' 141520)
+   ('song_length' 230323)
+   ('album_art' 'TRUE')
+   ('year_released' 2006)
+   (
+      'album_name'
+      "Dangerous Man"
+   )
+   ('album_track_number' 11)
+   ('base_points' 551733)
+)
+(
+   'rockandrollstar'
+   (
+      'name'
+      "Rock 'n' Roll Star"
+   )
+   (
+      'artist'
+      "Oasis"
+   )
+   ('master' 'TRUE')
+   ('context' 128)
+   (
+      'song'
+      ('name' 'songs/rockandrollstar/rockandrollstar')
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1 2 3 4 5)
+            )
+            ('bass' 6)
+            (
+               'guitar'
+               (7 8)
+            )
+            (
+               'vocals'
+               (9 10)
+            )
+         )
+      )
+      (
+         'pans'
+         (-1.0 1.0 -1.0 1.0 -1.0 1.0 0.0 -1.0 1.0 -1.0 1.0 -1.0 1.0)
+      )
+      (
+         'vols'
+         (-2.0 -2.0 -1.0 -1.0 -1.5 -1.5 -3.0 -4.5 -4.5 -4.5 -4.5 -6.0 -6.0)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 -1 -1 -1 1 1 -1 -1 -1 -1)
+      )
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+      ('midi_file' 'songs/rockandrollstar/rockandrollstar.mid')
+      ('hopo_threshold' 250)
+   )
+   ('song_scroll_speed' 2300)
+   ('bank' 'sfx/tambourine_bank.milo')
+   ('anim_tempo' 'kTempoMedium')
+   ('preview' 83034 111455)
+   (
+      'rank'
+      ('drum' 255)
+      ('guitar' 275)
+      ('bass' 225)
+      ('vocals' 221)
+      ('band' 230)
+   )
+   ('genre' 'rock')
+   ('decade' 'the90s')
+   ('vocal_gender' 'male')
+   ('downloaded' 'TRUE')
+)
+(
+   'runnindownadream'
+   (
+      'name'
+      "Runnin' Down a Dream"
+   )
+   (
+      'artist'
+      "Tom Petty"
+   )
+   ('master' 'TRUE')
+   ('context' 843)
+   (
+      'song'
+      ('name' 'songs/runnindownadream/runnindownadream')
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1 2 3 4)
+            )
+            ('bass' 5)
+            (
+               'guitar'
+               (6 7)
+            )
+            (
+               'vocals'
+               (8 9)
+            )
+         )
+      )
+      (
+         'pans'
+         (0.0 -1.0 1.0 -1.0 1.0 0.0 -1.0 1.0 -1.0 1.0 -1.0 1.0)
+      )
+      (
+         'vols'
+         (-1.0 -4.5 -4.5 -4.0 -4.0 -1.0 -4.5 -4.5 -3.5 -3.5 -4.0 -4.0)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 -1 -1 1 1 -1 -1 -1 -1)
+      )
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+      ('midi_file' 'songs/runnindownadream/runnindownadream.mid')
+   )
+   ('song_scroll_speed' 2300)
+   ('bank' 'sfx/tambourine_bank.milo')
+   ('anim_tempo' 'kTempoFast')
+   ('preview' 31000 59000)
+   (
+      'rank'
+      ('drum' 231)
+      ('guitar' 404)
+      ('bass' 175)
+      ('vocals' 158)
+      ('band' 285)
+   )
+   ('genre' 'classicrock')
+   ('decade' 'the80s')
+   ('vocal_gender' 'male')
+   ('format' 4)
+   ('version' 3)
+   (
+      'fake'
+      {'==' $SONG_VERSION 0}
+   )
+   ('downloaded' 'TRUE')
+   ('game_origin' 'rb1')
+   ('song_id' 1005760)
+   ('rating' 1)
+   ('short_version' 0)
+   ('album_art' 'TRUE')
+   ('year_released' 1989)
+   (
+      'album_name'
+      "Full Moon Fever"
+   )
+   ('album_track_number' 5)
+   ('base_points' 686705)
+)
+(
+   'running'
+   (
+      'name'
+      "Running"
+   )
+   (
+      'artist'
+      "No Doubt"
+   )
+   ('master' 'TRUE')
+   ('context' 528)
+   (
+      'song'
+      ('name' 'songs/running/running')
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1 2 3)
+            )
+            (
+               'bass'
+               (4 5)
+            )
+            (
+               'guitar'
+               (6 7)
+            )
+            (
+               'vocals'
+               (8 9)
+            )
+         )
+      )
+      (
+         'pans'
+         (0.0 0.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0)
+      )
+      (
+         'vols'
+         (-0.5 -0.5 -2.3 -2.3 -2.9 -2.9 -5.0 -5.0 -2.5 -2.5 -4.0 -4.0)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 -1 -1 1 1 -1 -1 -1 -1)
+      )
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+      ('midi_file' 'songs/running/running.mid')
+   )
+   ('song_scroll_speed' 2300)
+   ('bank' 'sfx/tambourine_bank.milo')
+   ('anim_tempo' 'kTempoMedium')
+   ('preview' 138000 174000)
+   (
+      'rank'
+      ('drum' 105)
+      ('guitar' 157)
+      ('bass' 112)
+      ('vocals' 173)
+      ('band' 119)
+   )
+   ('genre' 'poprock')
+   ('decade' 'the00s')
+   ('vocal_gender' 'female')
+   ('format' 3)
+   ('version' 2)
+   (
+      'fake'
+      {'==' $SONG_VERSION 0}
+   )
+   ('downloaded' 'TRUE')
+   ('album_art' 'TRUE')
+   ('year_released' 2003)
+   (
+      'album_name'
+      "The Singles 1992-2003"
+   )
+   ('album_track_number' 10)
+   ('base_points' 369088)
+)
+(
+   'shesahottie'
+   (
+      'name'
+      "She's a Hottie"
+   )
+   (
+      'artist'
+      "Toby Keith"
+   )
+   ('master' 'TRUE')
+   ('context' 643)
+   (
+      'song'
+      ('name' 'songs/shesahottie/shesahottie')
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1 2 3 4 5)
+            )
+            ('bass' 6)
+            (
+               'guitar'
+               (7 8)
+            )
+            (
+               'vocals'
+               (9 10)
+            )
+         )
+      )
+      (
+         'pans'
+         (-1.0 1.0 -1.0 1.0 -1.0 1.0 0.0 -1.0 1.0 -1.0 1.0 -1.0 1.0)
+      )
+      (
+         'vols'
+         (-1.0 -1.0 -1.0 -1.0 -3.0 -3.0 -2.0 -3.5 -3.5 -3.0 -3.0 -2.0 -2.0)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 -1 -1 -1 1 1 -1 -1 -1 -1)
+      )
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+      ('midi_file' 'songs/shesahottie/shesahottie.mid')
+   )
+   ('song_scroll_speed' 2300)
+   ('bank' 'sfx/tambourine_bank.milo')
+   ('anim_tempo' 'kTempoMedium')
+   ('preview' 35058 63322)
+   (
+      'rank'
+      ('drum' 201)
+      ('guitar' 223)
+      ('bass' 159)
+      ('vocals' 153)
+      ('band' 184)
+   )
+   ('genre' 'country')
+   ('decade' 'the00s')
+   ('vocal_gender' 'male')
+   ('format' 3)
+   ('version' 3)
+   (
+      'fake'
+      {'==' $SONG_VERSION 0}
+   )
+   ('downloaded' 'TRUE')
+   ('album_art' 'TRUE')
+   ('year_released' 2008)
+   (
+      'album_name'
+      "35 Biggest Hits"
+   )
+   ('album_track_number' 17)
+   (
+      'pack_name'
+      "Toby Keith Pack 01"
+   )
+   ('base_points' 408980)
+)
+(
+   'shesnotthere'
+   (
+      'name'
+      "She's Not There"
+   )
+   (
+      'artist'
+      "The Zombies"
+   )
+   ('master' 'TRUE')
+   ('context' 713)
+   (
+      'song'
+      ('name' 'songs/shesnotthere/shesnotthere')
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1)
+            )
+            ('bass' 2)
+            (
+               'guitar'
+               (3 4)
+            )
+            (
+               'vocals'
+               (5 6)
+            )
+         )
+      )
+      (
+         'pans'
+         (-1.0 1.0 0.0 -1.0 1.0 -1.0 1.0 -1.0 1.0)
+      )
+      (
+         'vols'
+         (-3.5 -3.5 -1.5 -3.5 -3.5 -3.5 -3.5 -3.5 -3.5)
+      )
+      (
+         'cores'
+         (-1 -1 -1 1 1 -1 -1 -1 -1)
+      )
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+      ('midi_file' 'songs/shesnotthere/shesnotthere.mid')
+   )
+   ('song_scroll_speed' 2300)
+   ('bank' 'sfx/tambourine_bank.milo')
+   ('anim_tempo' 'kTempoMedium')
+   ('preview' 24500 54500)
+   (
+      'rank'
+      ('drum' 227)
+      ('guitar' 196)
+      ('bass' 167)
+      ('vocals' 181)
+      ('band' 198)
+   )
+   ('genre' 'poprock')
+   ('decade' 'the60s')
+   ('vocal_gender' 'male')
+   ('format' 3)
+   ('version' 3)
+   (
+      'fake'
+      {'==' $SONG_VERSION 0}
+   )
+   ('downloaded' 'TRUE')
+   ('album_art' 'TRUE')
+   ('year_released' 1965)
+   (
+      'album_name'
+      "The Zombies"
+   )
+   ('album_track_number' 1)
+   ('base_points' 348617)
+)
+(
+   'shouldvebeenacowboy'
+   (
+      'name'
+      "Should've Been a Cowboy"
+   )
+   (
+      'artist'
+      "Toby Keith"
+   )
+   ('master' 'TRUE')
+   ('context' 642)
+   (
+      'song'
+      ('name' 'songs/shouldvebeenacowboy/shouldvebeenacowboy')
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1 2 3 4 5)
+            )
+            ('bass' 6)
+            (
+               'guitar'
+               (7 8)
+            )
+            (
+               'vocals'
+               (9 10)
+            )
+         )
+      )
+      (
+         'pans'
+         (-1.0 1.0 -1.0 1.0 -1.0 1.0 0.0 -1.0 1.0 -1.0 1.0 -1.0 1.0)
+      )
+      (
+         'vols'
+         (-0.5 -0.5 -0.5 -0.5 -4.0 -4.0 -2.5 -2.0 -2.0 -1.0 -1.0 -3.0 -3.0)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 -1 -1 -1 1 1 -1 -1 -1 -1)
+      )
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+      ('midi_file' 'songs/shouldvebeenacowboy/shouldvebeenacowboy.mid')
+   )
+   ('song_scroll_speed' 2300)
+   ('bank' 'sfx/tambourine_bank.milo')
+   ('anim_tempo' 'kTempoMedium')
+   ('preview' 51000 81300)
+   (
+      'rank'
+      ('drum' 222)
+      ('guitar' 191)
+      ('bass' 140)
+      ('vocals' 133)
+      ('band' 188)
+   )
+   ('genre' 'country')
+   ('decade' 'the90s')
+   ('vocal_gender' 'male')
+   ('format' 3)
+   ('version' 3)
+   (
+      'fake'
+      {'==' $SONG_VERSION 0}
+   )
+   ('downloaded' 'TRUE')
+   ('album_art' 'TRUE')
+   ('year_released' 1993)
+   (
+      'album_name'
+      "Toby Keith"
+   )
+   ('album_track_number' 1)
+   (
+      'pack_name'
+      "Toby Keith Pack 01"
+   )
+   ('base_points' 468765)
+)
+(
+   'simplekindoflife'
+   (
+      'name'
+      "Simple Kind of Life"
+   )
+   (
+      'artist'
+      "No Doubt"
+   )
+   ('master' 'TRUE')
+   ('context' 530)
+   (
+      'song'
+      ('name' 'songs/simplekindoflife/simplekindoflife')
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1 2 3 4 5)
+            )
+            ('bass' 6)
+            (
+               'guitar'
+               (7 8)
+            )
+            (
+               'vocals'
+               (9 10)
+            )
+         )
+      )
+      (
+         'pans'
+         (-1.0 1.0 -1.0 1.0 -1.0 1.0 0.0 -1.0 1.0 -1.0 1.0 -1.0 1.0)
+      )
+      (
+         'vols'
+         (-0.5 -0.5 -0.5 -0.5 -3.0 -3.0 -2.0 -3.0 -3.0 -2.0 -2.0 -2.0 -2.0)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 -1 -1 -1 1 1 -1 -1 -1 -1)
+      )
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+      ('midi_file' 'songs/simplekindoflife/simplekindoflife.mid')
+   )
+   ('song_scroll_speed' 2300)
+   ('bank' 'sfx/tambourine_bank.milo')
+   ('anim_tempo' 'kTempoMedium')
+   ('preview' 36083 66083)
+   (
+      'rank'
+      ('drum' 215)
+      ('guitar' 194)
+      ('bass' 118)
+      ('vocals' 237)
+      ('band' 165)
+   )
+   ('genre' 'poprock')
+   ('decade' 'the00s')
+   ('vocal_gender' 'female')
+   ('format' 3)
+   ('version' 2)
+   (
+      'fake'
+      {'==' $SONG_VERSION 0}
+   )
+   ('downloaded' 'TRUE')
+   ('album_art' 'TRUE')
+   ('year_released' 2003)
+   (
+      'album_name'
+      "The Singles 1992-2003"
+   )
+   ('album_track_number' 12)
+   ('base_points' 547422)
+)
+(
+   'sundial'
+   (
+      'name'
+      "Sundial"
+   )
+   (
+      'artist'
+      "Wolfmother"
+   )
+   ('master' 'TRUE')
+   ('context' 978)
+   (
+      'song'
+      ('name' 'songs/sundial/sundial')
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1 2 3 4 5)
+            )
+            ('bass' 6)
+            (
+               'guitar'
+               (7 8)
+            )
+            (
+               'vocals'
+               (9 10)
+            )
+         )
+      )
+      (
+         'pans'
+         (-1.0 1.0 -1.0 1.0 -1.0 1.0 0.0 -1.0 1.0 -1.0 1.0 -1.0 1.0)
+      )
+      (
+         'vols'
+         (-1.0 -1.0 -1.0 -1.0 -1.0 -1.0 -1.0 -0.9 -0.9 -0.9 -0.9 -1.0 -1.0)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 -1 -1 -1 1 1 -1 -1 -1 -1)
+      )
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+      ('midi_file' 'songs/sundial/sundial.mid')
+   )
+   ('song_scroll_speed' 2300)
+   ('bank' 'sfx/cowbell_bank.milo')
+   ('anim_tempo' 'kTempoSlow')
+   ('preview' 66130 96130)
+   (
+      'rank'
+      ('drum' 245)
+      ('guitar' 311)
+      ('bass' 315)
+      ('vocals' 274)
+      ('band' 274)
+   )
+   ('genre' 'rock')
+   ('decade' 'the00s')
+   ('vocal_gender' 'male')
+   ('format' 4)
+   ('version' 3)
+   (
+      'fake'
+      {'==' $SONG_VERSION 0}
+   )
+   ('downloaded' 'TRUE')
+   ('game_origin' 'rb1')
+   ('song_id' 1005810)
+   ('rating' 1)
+   ('short_version' 104954)
+   ('album_art' 'TRUE')
+   ('year_released' 2009)
+   (
+      'album_name'
+      "Cosmic Egg"
+   )
+   ('album_track_number' 4)
+   (
+      'pack_name'
+      "Wolfmother Pack 01"
+   )
+   ('base_points' 398200)
+)
+(
+   'swing'
+   (
+      'name'
+      "Swing"
+   )
+   (
+      'artist'
+      "Trace Adkins"
+   )
+   ('master' 'TRUE')
+   ('context' 742)
+   (
+      'song'
+      ('name' 'songs/swing/swing')
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1 2 3 4)
+            )
+            ('bass' 5)
+            (
+               'guitar'
+               (6 7)
+            )
+            (
+               'vocals'
+               (8 9)
+            )
+         )
+      )
+      (
+         'pans'
+         (0.0 -1.0 1.0 -1.0 1.0 0.0 -1.0 1.0 -1.0 1.0 -1.0 1.0)
+      )
+      (
+         'vols'
+         (-0.5 -1.0 -1.0 -3.0 -3.0 -3.0 -3.5 -3.5 -3.0 -3.0 -4.0 -4.0)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 -1 -1 1 1 -1 -1 -1 -1)
+      )
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+      ('midi_file' 'songs/swing/swing.mid')
+   )
+   ('song_scroll_speed' 2300)
+   ('bank' 'sfx/tambourine_bank.milo')
+   ('anim_tempo' 'kTempoMedium')
+   ('preview' 57028 87028)
+   (
+      'rank'
+      ('drum' 265)
+      ('guitar' 293)
+      ('bass' 141)
+      ('vocals' 199)
+      ('band' 248)
+   )
+   ('genre' 'country')
+   ('decade' 'the00s')
+   ('vocal_gender' 'male')
+   ('format' 3)
+   ('version' 3)
+   (
+      'fake'
+      {'==' $SONG_VERSION 0}
+   )
+   ('downloaded' 'TRUE')
+   ('album_art' 'TRUE')
+   ('year_released' 2006)
+   (
+      'album_name'
+      "Dangerous Man"
+   )
+   ('album_track_number' 4)
+   ('base_points' 495441)
+)
+(
+   'tellherno'
+   (
+      'name'
+      "Tell Her No"
+   )
+   (
+      'artist'
+      "The Zombies"
+   )
+   ('master' 'TRUE')
+   ('context' 712)
+   (
+      'song'
+      ('name' 'songs/tellherno/tellherno')
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1)
+            )
+            ('bass' 2)
+            ('guitar' 3)
+            (
+               'vocals'
+               (4 5)
+            )
+         )
+      )
+      (
+         'pans'
+         (-1.0 1.0 0.0 -0.5 -1.0 1.0 0.7)
+      )
+      (
+         'vols'
+         (-3.5 -3.5 -1.3 -4.0 -3.0 -3.0 -3.5)
+      )
+      (
+         'cores'
+         (-1 -1 -1 1 -1 -1 -1)
+      )
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+      ('midi_file' 'songs/tellherno/tellherno.mid')
+   )
+   ('song_scroll_speed' 2300)
+   ('bank' 'sfx/tambourine_bank.milo')
+   ('anim_tempo' 'kTempoMedium')
+   ('preview' 41000 71000)
+   (
+      'rank'
+      ('drum' 211)
+      ('guitar' 204)
+      ('bass' 152)
+      ('vocals' 194)
+      ('band' 201)
+   )
+   ('genre' 'poprock')
+   ('decade' 'the60s')
+   ('vocal_gender' 'male')
+   ('format' 3)
+   ('version' 3)
+   (
+      'fake'
+      {'==' $SONG_VERSION 0}
+   )
+   ('downloaded' 'TRUE')
+   ('album_art' 'TRUE')
+   ('year_released' 1965)
+   (
+      'album_name'
+      "The Zombies"
+   )
+   ('album_track_number' 7)
+   (
+      'video_venues'
+      ('video_01')
+   )
+   ('base_points' 275939)
+)
+(
+   'testify_srv'
+   (
+      'name'
+      "Testify"
+   )
+   (
+      'artist'
+      "Stevie Ray Vaughan and Double Trouble"
+   )
+   ('master' 'TRUE')
+   ('context' 600)
+   (
+      'song'
+      ('name' 'songs/testify_srv/testify_srv')
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1 2 3 4 5)
+            )
+            ('bass' 6)
+            (
+               'guitar'
+               (7 8)
+            )
+         )
+      )
+      (
+         'pans'
+         (-1.0 1.0 -1.0 1.0 -1.0 1.0 0.0 -1.0 1.0 -1.0 1.0)
+      )
+      (
+         'vols'
+         (-3.0 -3.0 -4.0 -4.0 -4.0 -4.0 -2.5 -4.0 -4.0 -5.0 -5.0)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 -1 -1 -1 1 1 -1 -1)
+      )
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+      ('midi_file' 'songs/testify_srv/testify_srv.mid')
+   )
+   ('song_scroll_speed' 2300)
+   ('bank' 'sfx/tambourine_bank.milo')
+   ('anim_tempo' 'kTempoFast')
+   ('preview' 17000 47000)
+   (
+      'rank'
+      ('drum' 335)
+      ('guitar' 427)
+      ('bass' 390)
+      ('vocals' 0)
+      ('band' 438)
+   )
+   ('genre' 'blues')
+   ('decade' 'the80s')
+   ('vocal_gender' 'male')
+   ('format' 3)
+   ('version' 3)
+   (
+      'fake'
+      {'==' $SONG_VERSION 0}
+   )
+   ('downloaded' 'TRUE')
+   ('album_art' 'TRUE')
+   ('year_released' 1983)
+   (
+      'album_name'
+      "Texas Flood"
+   )
+   ('album_track_number' 5)
+   ('base_points' 511054)
+)
+(
+   'thegreatestman'
+   (
+      'name'
+      "The Greatest Man That Ever Lived"
+   )
+   (
+      'artist'
+      "Weezer"
+   )
+   ('master' 'TRUE')
+   ('context' 0)
+   (
+      'song'
+      ('name' 'songs/thegreatestman/thegreatestman')
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1 2)
+            )
+            ('bass' 3)
+            (
+               'guitar'
+               (4 5)
+            )
+            (
+               'vocals'
+               (6 7)
+            )
+         )
+      )
+      (
+         'pans'
+         (0.0 -1.0 1.0 0.0 -1.0 1.0 -1.0 1.0 -1.0 1.0)
+      )
+      (
+         'vols'
+         (-3.0 -1.0 -1.0 -5.0 -6.0 -6.0 -3.0 -3.0 -4.5 -4.5)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 1 1 -1 -1 -1 -1)
+      )
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+      ('midi_file' 'songs/thegreatestman/thegreatestman.mid')
+   )
+   ('song_scroll_speed' 2300)
+   ('bank' 'sfx/cowbell_bank.milo')
+   ('anim_tempo' 'kTempoSlow')
+   ('preview' 123000 150000)
+   (
+      'rank'
+      ('drum' 178)
+      ('guitar' 225)
+      ('bass' 225)
+      ('vocals' 190)
+      ('band' 175)
+   )
+   ('genre' 'alternative')
+   ('decade' 'the00s')
+   ('downloaded' 'TRUE')
+   ('vocal_gender' 'male')
+   ('format' 2)
+   ('version' 1)
+   ('album_art' 'TRUE')
+   ('year_released' 2008)
+   (
+      'album_name'
+      "Weezer (The Red Album)"
+   )
+   ('album_track_number' 2)
+   (
+      'pack_name'
+      "Weezer Pack 01"
+   )
+)
+(
+   'thetimeiswrong'
+   (
+      'name'
+      "The Time Is Wrong"
+   )
+   (
+      'artist'
+      "Tickle Me Pink"
+   )
+   ('master' 'TRUE')
+   ('context' 458)
+   (
+      'song'
+      ('name' 'songs/thetimeiswrong/thetimeiswrong')
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1 2 3 4 5)
+            )
+            ('bass' 6)
+            (
+               'guitar'
+               (7 8)
+            )
+            (
+               'vocals'
+               (9 10)
+            )
+         )
+      )
+      (
+         'pans'
+         (-1.0 1.0 -1.0 1.0 -1.0 1.0 0.0 -1.0 1.0 -1.0 1.0 -1.0 1.0)
+      )
+      (
+         'vols'
+         (-1.0 -1.0 -1.0 -1.0 -3.0 -3.0 -4.0 -3.0 -3.0 -2.0 -2.0 -4.0 -4.0)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 -1 -1 -1 1 1 -1 -1 -1 -1)
+      )
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+      ('midi_file' 'songs/thetimeiswrong/thetimeiswrong.mid')
+      ('hopo_threshold' 125)
+   )
+   ('song_scroll_speed' 2300)
+   ('bank' 'sfx/tambourine_bank.milo')
+   ('anim_tempo' 'kTempoFast')
+   ('preview' 42760 72340)
+   (
+      'rank'
+      ('drum' 242)
+      ('guitar' 280)
+      ('bass' 202)
+      ('vocals' 190)
+      ('band' 261)
+   )
+   ('genre' 'emo')
+   ('decade' 'the00s')
+   ('vocal_gender' 'male')
+   ('format' 3)
+   ('version' 2)
+   (
+      'fake'
+      {'==' $SONG_VERSION 0}
+   )
+   ('downloaded' 'TRUE')
+   ('album_art' 'TRUE')
+   ('year_released' 2008)
+   (
+      'album_name'
+      "Madeline"
+   )
+   ('album_track_number' 2)
+   ('base_points' 407616)
+)
+(
+   'thewaitinglive'
+   (
+      'name'
+      "The Waiting (Live)"
+   )
+   (
+      'artist'
+      "Tom Petty and the Heartbreakers"
+   )
+   ('master' 'TRUE')
+   ('context' 1057)
+   (
+      'song'
+      (
+         'name'
+         "songs/thewaitinglive/thewaitinglive"
+      )
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1 2 3)
+            )
+            ('bass' 4)
+            (
+               'guitar'
+               (5 6)
+            )
+            (
+               'vocals'
+               (7 8)
+            )
+         )
+      )
+      ('vocal_parts' 1)
+      (
+         'pans'
+         (0.0 0.0 -1.0 1.0 0.0 -1.0 1.0 -1.0 1.0 -1.0 1.0)
+      )
+      (
+         'vols'
+         (-1.5 -1.5 -4.5 -4.5 -1.0 -4.5 -4.5 -4.5 -4.5 -4.5 -4.5)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 -1 1 1 -1 -1 -1 -1)
+      )
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+      (midi_file "songs/thewaitinglive/thewaitinglive.mid")
+   )
+   ('song_scroll_speed' 2300)
+   ('bank' 'sfx/tambourine_bank.milo')
+   ('anim_tempo' 'kTempoMedium')
+   ('preview' 40000 70000)
+   (
+      'rank'
+      ('drum' 263)
+      ('guitar' 198)
+      ('bass' 213)
+      ('vocals' 181)
+      ('band' 235)
+   )
+   ('genre' 'rock')
+   ('decade' 'the00s')
+   ('vocal_gender' 'male')
+   ('vocal_tonic_note' 2)
+   ('format' 5)
+   ('version' 3)
+   (
+      'fake'
+      {'==' $SONG_VERSION 0}
+   )
+   ('downloaded' 'TRUE')
+   ('game_origin' 'rb1_dlc')
+   ('song_id' 1005880)
+   ('rating' 1)
+   ('short_version' 143927)
+   ('song_length' 252727)
+   ('album_art' 'TRUE')
+   ('year_released' 2009)
+   (
+      'album_name'
+      "The Live Anthology"
+   )
+   ('album_track_number' 45)
+   (
+      'pack_name'
+      "Tom Petty & the Heartbreakers Live Anthology Pack 02"
+   )
+   ('base_points' 487061)
+)
+(
+   'thisisexile'
+   (
+      'name'
+      "This Is Exile"
+   )
+   (
+      'artist'
+      "Whitechapel"
+   )
+   ('master' 'TRUE')
+   ('context' 776)
+   (
+      'song'
+      ('name' 'songs/thisisexile/thisisexile')
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1 2 3 4)
+            )
+            ('bass' 5)
+            (
+               'guitar'
+               (6 7)
+            )
+            (
+               'vocals'
+               (8 9)
+            )
+         )
+      )
+      (
+         'pans'
+         (0.0 -1.0 1.0 -1.0 1.0 0.0 -1.0 1.0 -1.0 1.0 -1.0 1.0)
+      )
+      (
+         'vols'
+         (-1.5 -3.0 -3.0 -2.0 -2.0 -2.0 -2.7 -2.7 -2.5 -2.5 -3.8 -3.8)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 -1 -1 1 1 -1 -1 -1 -1)
+      )
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+      ('midi_file' 'songs/thisisexile/thisisexile.mid')
+   )
+   ('song_scroll_speed' 2150)
+   ('bank' 'sfx/cowbell3_bank.milo')
+   ('anim_tempo' 'kTempoMedium')
+   ('preview' 39009 69009)
+   (
+      'rank'
+      ('drum' 600)
+      ('guitar' 394)
+      ('bass' 390)
+      ('vocals' 120)
+      ('band' 520)
+   )
+   ('genre' 'metal')
+   ('decade' 'the00s')
+   ('vocal_gender' 'male')
+   ('format' 4)
+   ('version' 3)
+   (
+      'fake'
+      {'==' $SONG_VERSION 0}
+   )
+   ('downloaded' 'TRUE')
+   ('game_origin' 'rb1')
+   ('song_id' 1005694)
+   ('rating' 2)
+   ('short_version' 0)
+   ('album_art' 'TRUE')
+   ('year_released' 2008)
+   (
+      'album_name'
+      "This Is Exile"
+   )
+   ('album_track_number' 2)
+   (
+      'pack_name'
+      "Mayhem Tour 2009 Pack 01"
+   )
+   ('base_points' 610733)
+)
+(
+   'troublemaker'
+   (
+      'name'
+      "Troublemaker"
+   )
+   (
+      'artist'
+      "Weezer"
+   )
+   ('master' 'TRUE')
+   ('context' 0)
+   (
+      'song'
+      ('name' 'songs/troublemaker/troublemaker')
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1 2)
+            )
+            ('bass' 3)
+            (
+               'guitar'
+               (4 5)
+            )
+            (
+               'vocals'
+               (6 7)
+            )
+         )
+      )
+      (
+         'pans'
+         (0.0 -1.0 1.0 0.0 -1.0 1.0 -1.0 1.0 -1.0 1.0)
+      )
+      (
+         'vols'
+         (-2.0 -3.0 -3.0 -3.0 -3.0 -3.0 -2.0 -2.0 -4.0 -4.0)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 1 1 -1 -1 -1 -1)
+      )
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+      ('midi_file' 'songs/troublemaker/troublemaker.mid')
+   )
+   ('song_scroll_speed' 2300)
+   ('bank' 'sfx/tambourine_bank.milo')
+   ('anim_tempo' 'kTempoMedium')
+   ('preview' 36000 66000)
+   (
+      'rank'
+      ('drum' 95)
+      ('guitar' 159)
+      ('bass' 159)
+      ('vocals' 95)
+      ('band' 120)
+   )
+   ('genre' 'alternative')
+   ('decade' 'the00s')
+   ('downloaded' 'TRUE')
+   ('vocal_gender' 'male')
+   ('format' 2)
+   ('version' 1)
+   ('album_art' 'TRUE')
+   ('year_released' 2008)
+   (
+      'album_name'
+      "Weezer (The Red Album)"
+   )
+   ('album_track_number' 1)
+   (
+      'pack_name'
+      "Weezer Pack 01"
+   )
+)
+(
+   'underneathitall'
+   (
+      'name'
+      "Underneath It All"
+   )
+   (
+      'artist'
+      "No Doubt"
+   )
+   ('master' 'TRUE')
+   ('context' 526)
+   (
+      'song'
+      ('name' 'songs/underneathitall/underneathitall')
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1 2 3 4)
+            )
+            ('bass' 5)
+            (
+               'guitar'
+               (6 7)
+            )
+            (
+               'vocals'
+               (8 9)
+            )
+         )
+      )
+      (
+         'pans'
+         (0.0 -1.0 1.0 -1.0 1.0 0.0 -1.0 1.0 -1.0 1.0 -1.0 1.0)
+      )
+      (
+         'vols'
+         (-0.5 -1.0 -1.0 -2.5 -2.5 -3.0 -3.0 -3.0 -4.5 -4.5 -3.5 -3.5)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 -1 -1 1 1 -1 -1 -1 -1)
+      )
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+      ('midi_file' 'songs/underneathitall/underneathitall.mid')
+   )
+   ('song_scroll_speed' 2300)
+   ('bank' 'sfx/tambourine_bank.milo')
+   ('anim_tempo' 'kTempoFast')
+   ('preview' 90789 118623)
+   (
+      'rank'
+      ('drum' 217)
+      ('guitar' 179)
+      ('bass' 115)
+      ('vocals' 141)
+      ('band' 177)
+   )
+   ('genre' 'poprock')
+   ('decade' 'the00s')
+   ('vocal_gender' 'female')
+   ('format' 3)
+   ('version' 2)
+   (
+      'fake'
+      {'==' $SONG_VERSION 0}
+   )
+   ('downloaded' 'TRUE')
+   ('album_art' 'TRUE')
+   ('year_released' 2003)
+   (
+      'album_name'
+      "The Singles 1992-2003"
+   )
+   ('album_track_number' 8)
+   ('base_points' 613526)
+)
+(
+   'undone'
+   (
+      'name'
+      "Undone - The Sweater Song"
+   )
+   (
+      'artist'
+      "Weezer"
+   )
+   ('master' 'TRUE')
+   ('context' 814)
+   (
+      'song'
+      ('name' 'songs/undone/undone')
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1 2 3 4)
+            )
+            ('bass' 5)
+            (
+               'guitar'
+               (6 7)
+            )
+            (
+               'vocals'
+               (8 9)
+            )
+         )
+      )
+      (
+         'pans'
+         (0.0 -1.0 1.0 -1.0 1.0 0.0 -1.0 1.0 -1.0 1.0 -1.0 1.0)
+      )
+      (
+         'vols'
+         (-0.5 -3.0 -3.0 -4.5 -4.5 -3.5 -4.5 -4.5 -4.0 -4.0 -4.5 -4.5)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 -1 -1 1 1 -1 -1 -1 -1)
+      )
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+      ('midi_file' 'songs/undone/undone.mid')
+   )
+   ('song_scroll_speed' 2300)
+   ('bank' 'sfx/tambourine_bank.milo')
+   ('anim_tempo' 'kTempoSlow')
+   ('preview' 57306 87306)
+   (
+      'rank'
+      ('drum' 243)
+      ('guitar' 142)
+      ('bass' 147)
+      ('vocals' 201)
+      ('band' 190)
+   )
+   ('genre' 'alternative')
+   ('decade' 'the90s')
+   ('vocal_gender' 'male')
+   ('format' 4)
+   ('version' 3)
+   (
+      'fake'
+      {'==' $SONG_VERSION 0}
+   )
+   ('downloaded' 'TRUE')
+   ('game_origin' 'rb1')
+   ('song_id' 1005718)
+   ('rating' 2)
+   ('short_version' 0)
+   ('album_art' 'TRUE')
+   ('year_released' 1994)
+   (
+      'album_name'
+      "Weezer (The Blue Album)"
+   )
+   ('album_track_number' 5)
+   (
+      'pack_name'
+      "Weezer Pack 02"
+   )
+   ('base_points' 621425)
+)
+(
+   'wastedagain'
+   (
+      'name'
+      "Wasted Again"
+   )
+   (
+      'artist'
+      "Turbonegro"
+   )
+   ('master' 'TRUE')
+   ('context' 586)
+   (
+      'song'
+      ('name' 'songs/wastedagain/wastedagain')
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1 2 3 4)
+            )
+            ('bass' 5)
+            (
+               'guitar'
+               (6 7)
+            )
+            (
+               'vocals'
+               (8 9)
+            )
+         )
+      )
+      (
+         'pans'
+         (0.0 -1.0 1.0 -1.0 1.0 0.0 -1.0 1.0 -1.0 1.0 -1.0 1.0)
+      )
+      (
+         'vols'
+         (-0.5 -1.0 -1.0 -4.0 -4.0 -3.5 -4.0 -4.0 -3.0 -3.0 -5.0 -5.0)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 -1 -1 1 1 -1 -1 -1 -1)
+      )
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+      ('midi_file' 'songs/wastedagain/wastedagain.mid')
+   )
+   ('song_scroll_speed' 2300)
+   ('bank' 'sfx/handclap_bank.milo')
+   ('anim_tempo' 'kTempoFast')
+   ('preview' 39938 68173)
+   (
+      'rank'
+      ('drum' 252)
+      ('guitar' 261)
+      ('bass' 195)
+      ('vocals' 167)
+      ('band' 235)
+   )
+   ('genre' 'punk')
+   ('decade' 'the00s')
+   ('vocal_gender' 'male')
+   ('format' 3)
+   ('version' 3)
+   (
+      'fake'
+      {'==' $SONG_VERSION 0}
+   )
+   ('downloaded' 'TRUE')
+   ('album_art' 'TRUE')
+   ('year_released' 2005)
+   (
+      'album_name'
+      "Party Animals"
+   )
+   ('album_track_number' 6)
+   ('base_points' 546685)
+)
+(
+   'whiteunicorn'
+   (
+      'name'
+      "White Unicorn"
+   )
+   (
+      'artist'
+      "Wolfmother"
+   )
+   ('master' 'TRUE')
+   ('context' 975)
+   (
+      'song'
+      ('name' 'songs/whiteunicorn/whiteunicorn')
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1 2 3 4)
+            )
+            ('bass' 5)
+            (
+               'guitar'
+               (6 7)
+            )
+            (
+               'vocals'
+               (8 9)
+            )
+         )
+      )
+      (
+         'pans'
+         (0.0 -1.0 1.0 -1.0 1.0 0.0 -1.0 1.0 -1.0 1.0 -1.0 1.0)
+      )
+      (
+         'vols'
+         (-1.0 -4.5 -4.5 -4.5 -4.5 -2.5 -4.5 -4.5 -4.5 -4.5 -4.5 -4.5)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 -1 -1 1 1 -1 -1 -1 -1)
+      )
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+      ('midi_file' 'songs/whiteunicorn/whiteunicorn.mid')
+   )
+   ('song_scroll_speed' 2300)
+   ('bank' 'sfx/handclap_bank.milo')
+   ('anim_tempo' 'kTempoSlow')
+   ('preview' 31000 61000)
+   (
+      'rank'
+      ('drum' 327)
+      ('guitar' 309)
+      ('bass' 263)
+      ('vocals' 212)
+      ('band' 316)
+   )
+   ('genre' 'rock')
+   ('decade' 'the00s')
+   ('vocal_gender' 'male')
+   ('format' 4)
+   ('version' 3)
+   (
+      'fake'
+      {'==' $SONG_VERSION 0}
+   )
+   ('downloaded' 'TRUE')
+   ('game_origin' 'rb1')
+   ('song_id' 1005821)
+   ('rating' 2)
+   ('short_version' 150000)
+   ('album_art' 'TRUE')
+   ('year_released' 2005)
+   (
+      'album_name'
+      "Wolfmother"
+   )
+   ('album_track_number' 3)
+   (
+      'pack_name'
+      "Wolfmother Pack 01"
+   )
+   ('base_points' 611185)
+)
+(
+   'whosgoinghome'
+   (
+      'name'
+      "Who's Going Home with You Tonight?"
+   )
+   (
+      'artist'
+      "Trapt"
+   )
+   ('master' 'TRUE')
+   ('context' 237)
+   (
+      'song'
+      ('name' 'songs/whosgoinghome/whosgoinghome')
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1 2 3)
+            )
+            ('bass' 4)
+            (
+               'guitar'
+               (5 6)
+            )
+            (
+               'vocals'
+               (7 8)
+            )
+         )
+      )
+      (
+         'pans'
+         (0.0 0.0 -1.0 1.0 0.0 -1.0 1.0 -1.0 1.0 -1.0 1.0)
+      )
+      (
+         'vols'
+         (-0.5 -1.0 -2.5 -2.5 -5.0 -5.0 -5.0 -5.0 -5.0 -4.0 -4.0)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 -1 1 1 -1 -1 -1 -1)
+      )
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+      ('midi_file' 'songs/whosgoinghome/whosgoinghome.mid')
+   )
+   ('song_scroll_speed' 2300)
+   ('bank' 'sfx/handclap_bank.milo')
+   ('anim_tempo' 'kTempoMedium')
+   ('preview' 53846 83846)
+   (
+      'rank'
+      ('drum' 285)
+      ('guitar' 190)
+      ('bass' 190)
+      ('vocals' 124)
+      ('band' 197)
+   )
+   ('genre' 'numetal')
+   ('decade' 'the00s')
+   ('downloaded' 'TRUE')
+   ('vocal_gender' 'male')
+   ('format' 2)
+   ('version' 1)
+   ('album_art' 'TRUE')
+   ('year_released' 2008)
+   (
+      'album_name'
+      "Only Through the Pain"
+   )
+   ('album_track_number' 2)
+   (
+      'pack_name'
+      "Crüe Fest Pack 01"
+   )
+)
+(
+   'whosyourdaddy'
+   (
+      'name'
+      "Who's Your Daddy?"
+   )
+   (
+      'artist'
+      "Toby Keith"
+   )
+   ('master' 'TRUE')
+   ('context' 641)
+   (
+      'song'
+      ('name' 'songs/whosyourdaddy/whosyourdaddy')
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1 2 3 4)
+            )
+            ('bass' 5)
+            (
+               'guitar'
+               (6 7)
+            )
+            (
+               'vocals'
+               (8 9)
+            )
+         )
+      )
+      (
+         'pans'
+         (0.0 -1.0 1.0 -1.0 1.0 0.0 -1.0 1.0 -1.0 1.0 -1.0 1.0)
+      )
+      (
+         'vols'
+         (-1.0 -1.0 -1.0 -2.0 -2.0 -3.0 -5.2 -5.2 -2.0 -2.0 -2.5 -2.5)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 -1 -1 1 1 -1 -1 -1 -1)
+      )
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+      ('midi_file' 'songs/whosyourdaddy/whosyourdaddy.mid')
+   )
+   ('song_scroll_speed' 2300)
+   ('bank' 'sfx/handclap_bank.milo')
+   ('anim_tempo' 'kTempoMedium')
+   ('preview' 77945 107945)
+   (
+      'rank'
+      ('drum' 204)
+      ('guitar' 235)
+      ('bass' 145)
+      ('vocals' 162)
+      ('band' 207)
+   )
+   ('genre' 'country')
+   ('decade' 'the00s')
+   ('vocal_gender' 'male')
+   ('format' 3)
+   ('version' 3)
+   (
+      'fake'
+      {'==' $SONG_VERSION 0}
+   )
+   ('downloaded' 'TRUE')
+   ('album_art' 'TRUE')
+   ('year_released' 2002)
+   (
+      'album_name'
+      "Unleashed"
+   )
+   ('album_track_number' 2)
+   (
+      'pack_name'
+      "Toby Keith Pack 01"
+   )
+   ('base_points' 471043)
+)
+(
+   'wolflikeme'
+   (
+      'name'
+      "Wolf Like Me"
+   )
+   (
+      'artist'
+      "TV on the Radio"
+   )
+   ('master' 'TRUE')
+   ('context' 719)
+   (
+      'song'
+      ('name' 'songs/wolflikeme/wolflikeme')
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1 2 3 4)
+            )
+            ('bass' 5)
+            (
+               'guitar'
+               (6 7)
+            )
+            (
+               'vocals'
+               (8 9)
+            )
+         )
+      )
+      (
+         'pans'
+         (0.0 -1.0 1.0 -1.0 1.0 0.0 -1.0 1.0 -1.0 1.0 -1.0 1.0)
+      )
+      (
+         'vols'
+         (-2.0 -3.0 -3.0 -2.0 -2.0 -1.0 -3.0 -3.0 -3.5 -3.5 -4.0 -4.0)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 -1 -1 1 1 -1 -1 -1 -1)
+      )
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+      ('midi_file' 'songs/wolflikeme/wolflikeme.mid')
+   )
+   ('song_scroll_speed' 2300)
+   ('bank' 'sfx/tambourine_bank.milo')
+   ('anim_tempo' 'kTempoFast')
+   ('preview' 52848 82848)
+   (
+      'rank'
+      ('drum' 285)
+      ('guitar' 206)
+      ('bass' 185)
+      ('vocals' 226)
+      ('band' 244)
+   )
+   ('genre' 'indierock')
+   ('decade' 'the00s')
+   ('vocal_gender' 'male')
+   ('format' 3)
+   ('version' 3)
+   (
+      'fake'
+      {'==' $SONG_VERSION 0}
+   )
+   ('downloaded' 'TRUE')
+   ('album_art' 'TRUE')
+   ('year_released' 2006)
+   (
+      'album_name'
+      "Return to Cookie Mountain"
+   )
+   ('album_track_number' 5)
+   ('base_points' 842183)
+)
+(
+   'woman'
+   (
+      'name'
+      "Woman"
+   )
+   (
+      'artist'
+      "Wolfmother"
+   )
+   ('master' 'TRUE')
+   ('context' 979)
+   (
+      'song'
+      ('name' 'songs/woman/woman')
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1 2)
+            )
+            ('bass' 3)
+            (
+               'guitar'
+               (4 5)
+            )
+            (
+               'vocals'
+               (6 7)
+            )
+         )
+      )
+      (
+         'pans'
+         (0.0 -1.0 1.0 0.0 -1.0 1.0 -1.0 1.0 -1.0 1.0)
+      )
+      (
+         'vols'
+         (-0.5 -3.0 -3.0 -0.7 -2.0 -2.0 -3.0 -3.0 -2.0 -2.0)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 1 1 -1 -1 -1 -1)
+      )
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+      ('midi_file' 'songs/woman/woman.mid')
+   )
+   ('song_scroll_speed' 2300)
+   ('bank' 'sfx/tambourine_bank.milo')
+   ('anim_tempo' 'kTempoMedium')
+   ('preview' 20735 50735)
+   (
+      'rank'
+      ('drum' 254)
+      ('guitar' 362)
+      ('bass' 320)
+      ('vocals' 266)
+      ('band' 308)
+   )
+   ('genre' 'rock')
+   ('decade' 'the00s')
+   ('vocal_gender' 'male')
+   ('format' 4)
+   ('version' 3)
+   (
+      'fake'
+      {'==' $SONG_VERSION 0}
+   )
+   ('downloaded' 'TRUE')
+   ('game_origin' 'rb1')
+   ('song_id' 1005809)
+   ('rating' 1)
+   ('short_version' 94180)
+   ('album_art' 'TRUE')
+   ('year_released' 2005)
+   (
+      'album_name'
+      "Wolfmother"
+   )
+   ('album_track_number' 2)
+   (
+      'pack_name'
+      "Wolfmother Pack 01"
+   )
+   ('base_points' 411094)
+)
+(
+   'writingonthewall'
+   (
+      'name'
+      "Writing on the Walls"
+   )
+   (
+      'artist'
+      "Underoath"
+   )
+   ('master' 'TRUE')
+   ('context' 1382)
+   (
+      'song'
+      (
+         'name'
+         "songs/writingonthewall/writingonthewall"
+      )
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1 2)
+            )
+            (
+               'bass'
+               (3 4)
+            )
+            (
+               'guitar'
+               (5 6)
+            )
+            (
+               'vocals'
+               (7 8)
+            )
+         )
+      )
+      ('vocal_parts' 1)
+      (
+         'pans'
+         (0.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0)
+      )
+      (
+         'vols'
+         (-3.0 -6.0 -6.0 -7.0 -7.0 -5.2 -5.2 -6.0 -6.0 -6.1 -6.1)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 -1 1 1 -1 -1 -1 -1)
+      )
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+      (midi_file "songs/writingonthewall/writingonthewall.mid")
+   )
+   ('song_scroll_speed' 2300)
+   ('bank' 'sfx/tambourine_bank.milo')
+   ('anim_tempo' 'kTempoSlow')
+   ('preview' 49000 79000)
+   (
+      'rank'
+      ('drum' 321)
+      ('guitar' 280)
+      ('bass' 190)
+      ('vocals' 193)
+      ('band' 301)
+   )
+   ('genre' 'emo')
+   ('decade' 'the00s')
+   ('vocal_gender' 'male')
+   ('vocal_tonic_note' 2)
+   ('format' 6)
+   ('version' 3)
+   (
+      'fake'
+      {'==' $SONG_VERSION 0}
+   )
+   ('downloaded' 'TRUE')
+   ('game_origin' 'rb1_dlc')
+   ('song_id' 1005952)
+   ('rating' 2)
+   ('short_version' 120750)
+   ('song_length' 245454)
+   ('album_art' 'TRUE')
+   ('year_released' 2006)
+   (
+      'album_name'
+      "Define the Great Line"
+   )
+   ('album_track_number' 9)
+   ('base_points' 421587)
+)
+(
+   'yomp'
+   (
+      'name'
+      "Yomp"
+   )
+   (
+      'artist'
+      "thenewno2"
+   )
+   ('master' 'TRUE')
+   ('context' 261)
+   (
+      'song'
+      ('name' 'songs/yomp/yomp')
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1 2 3)
+            )
+            ('bass' 4)
+            (
+               'guitar'
+               (5 6)
+            )
+            (
+               'vocals'
+               (7 8)
+            )
+         )
+      )
+      (
+         'pans'
+         (0.0 0.0 -1.0 1.0 0.0 -1.0 1.0 -1.0 1.0 -1.0 1.0)
+      )
+      (
+         'vols'
+         (-0.5 -2.0 -2.5 -2.5 -3.0 -2.5 -2.5 -4.5 -4.5 -5.0 -5.0)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 -1 1 1 -1 -1 -1 -1)
+      )
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+      ('midi_file' 'songs/yomp/yomp.mid')
+   )
+   ('song_scroll_speed' 2300)
+   ('bank' 'sfx/handclap_bank.milO')
+   ('anim_tempo' 'kTempoMedium')
+   ('preview' 68140 98140)
+   (
+      'rank'
+      ('drum' 220)
+      ('guitar' 184)
+      ('bass' 184)
+      ('vocals' 218)
+      ('band' 202)
+   )
+   ('genre' 'poprock')
+   ('decade' 'the00s')
+   ('downloaded' 'TRUE')
+   ('vocal_gender' 'male')
+   ('format' 2)
+   ('version' 1)
+   ('album_art' 'TRUE')
+   ('year_released' 2008)
+   (
+      'album_name'
+      "You Are Here"
+   )
+   ('album_track_number' 5)
+)

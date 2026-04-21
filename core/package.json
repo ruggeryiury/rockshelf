@@ -17,9 +17,12 @@
   "dependencies": {
     "@electron-toolkit/utils": "^4.0.0",
     "@xhayper/discord-rpc": "^1.3.3",
+    "axios": "1.13.6",
+    "crc": "4.3.2",
     "electron": "^41.0.1",
+    "file-type": "21.3.1",
+    "jschardet": "3.1.4",
     "node-lib": "link:..\\..\\node-lib",
-    "rbtools": "link:..\\..\\rbtools",
     "tempy": "^3.2.0",
     "use-default-options": "link:..\\..\\use-default-options",
     "yaml": "^2.8.2"

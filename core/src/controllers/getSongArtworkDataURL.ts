@@ -1,13 +1,13 @@
-import { isRPCS3Devhdd0PathValid, type RB3CompatibleDTAFile } from 'rbtools/lib'
-import { readUserConfigFile, sendMessageBox, useHandler } from '../core.exports'
-import type { RPCS3SongPackagesObjectExtra } from '../lib.exports'
+import { readUserConfigFile, sendDialog, sendMessageBox, useHandler } from '../core.exports'
+import { type RPCS3SongPackagesObjectExtra } from '../lib.exports'
 import { DirPath } from 'node-lib'
-import { TextureFile } from 'rbtools'
+import { TextureFile } from '../lib/rbtools'
+import type { RB3CompatibleDTAFile } from '../lib/rbtools/lib.exports'
 
 export const getSongArtworkDataURL = useHandler(async (win, _, packageDetails: RPCS3SongPackagesObjectExtra, songDetails: RB3CompatibleDTAFile) => {
   const userConfig = await readUserConfigFile()
   if (!userConfig) {
-    sendMessageBox(win, { method: 'getSongArtworkDataURL', type: 'error', code: 'noUserConfigFile' })
+    sendDialog(win, 'corruptedUserConfig')
     return false
   }
 

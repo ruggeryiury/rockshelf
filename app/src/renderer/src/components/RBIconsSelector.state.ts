@@ -1,7 +1,7 @@
 import { create } from 'zustand'
 
 export interface RBIconsSelectorStateProps {
-  active: 'editPackage' | null
+  active: 'editPackage' | 'createNewPackage' | null
   selIcon: number
 }
 

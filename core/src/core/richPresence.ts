@@ -2,10 +2,8 @@ import { Client, type SetActivity } from '@xhayper/discord-rpc'
 import { BrowserWindow, ipcMain } from 'electron'
 import { getBrowserWindowFromEvent, getDiscordRPJSONFile, getLocaleStringFromRenderer, sendMessageBox, type UserConfigObject } from '../core.exports'
 import { DirPath, pathLikeToDirPath, type FilePath } from 'node-lib'
-import { slashQToQuote } from 'rbtools/utils'
-import { underlineToCamelCase } from '../lib.exports'
-
-const sleep = (ms: number) => new Promise((r) => setTimeout(r, ms))
+import { sleep, underlineToCamelCase } from '../lib.exports'
+import { slashQToQuote } from '../lib/rbtools/utils.exports'
 
 const clientId = '1125571051607298190'
 const interval = 3000 // 3 seconds
@@ -44,9 +42,8 @@ const instrumentNameMap = {
   VOCALS: 'vocals',
 } as const
 
-export const initRichPresence = async () => {
+export const initRichPresence = async (): Promise<never> => {
   let isStarted = false
-  let userConfig: UserConfigObject | undefined
   let devhdd0Path: DirPath | undefined
   let rpJSONPath: FilePath | undefined
   let rpJSONData: RB3DeluxeRichPresenteObject | undefined
@@ -58,7 +55,6 @@ export const initRichPresence = async () => {
   } catch (err) {}
 
   ipcMain.handle('discordRPSetUserConfig', (_, userCnfg: UserConfigObject) => {
-    userConfig = userCnfg
     devhdd0Path = pathLikeToDirPath(userCnfg.devhdd0Path)
     rpJSONPath = getDiscordRPJSONFile(devhdd0Path)
     return true
@@ -76,7 +72,6 @@ export const initRichPresence = async () => {
       const win = getBrowserWindowFromEvent(event)
       sendMessageBox(win, { type: 'error', method: 'initRichPresence', code: 'login' })
       isStarted = false
-      throw err
       return false
     }
   })

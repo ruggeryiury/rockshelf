@@ -2,6 +2,7 @@ import type { CropImageCoordinatesObject } from 'rockshelf-core'
 import { create } from 'zustand'
 
 export interface ImageCropScreenStateProps {
+  func: 'packageDetails' | 'createNewPackage' | null
   imgPath: string | null
   imgDataURL: string | null
   imgCropOptions: CropImageCoordinatesObject | null
@@ -29,6 +30,7 @@ export interface ImageCropScreenStateActions {
 export type ImageCropScreenStateHook = ImageCropScreenStateProps & ImageCropScreenStateActions
 
 const defaultState: ImageCropScreenStateProps = {
+  func: null,
   imgPath: null,
   imgDataURL: null,
   imgCropOptions: null,

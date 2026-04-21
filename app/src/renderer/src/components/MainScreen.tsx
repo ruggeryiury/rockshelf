@@ -11,18 +11,18 @@ import { useDeluxeInstallScreenState } from './DeluxeInstallScreen.state'
 import { useMessageBoxState } from './MessageBox.state'
 import { useConfigScreenState } from './ConfigScreen.state'
 import { useMyPackagesScreenState } from './MyPackagesScreen.state'
-import { useInstallPKGScreenState } from './InstallPKGScreen.state'
 import { useShallow } from 'zustand/shallow'
+import { useCreateNewPackageScreenState } from './CreateNewPackageScreen.state'
 
 export function MainScreen() {
   const { t } = useTranslation()
   const active = useMainScreenState((x) => x.active)
   const { disableButtons, saveData, setWindowState, rb3Stats, instrumentScores, packages, richPresence } = useWindowState(useShallow((x) => ({ disableButtons: x.disableButtons, saveData: x.saveData, setWindowState: x.setWindowState, rb3Stats: x.rb3Stats, instrumentScores: x.instrumentScores, packages: x.packages, richPresence: x.richPresence })))
-  const setMessageBoxState = useMessageBoxState((x) => x.setMessageBoxState)
-  const setDeluxeInstallScreenState = useDeluxeInstallScreenState((x) => x.setDeluxeInstallScreenState)
-  const setConfigScreenState = useConfigScreenState((x) => x.setConfigScreenState)
-  const setMyPackagesScreenState = useMyPackagesScreenState((x) => x.setMyPackagesScreenState)
-  const setInstallPKGScreenState = useInstallPKGScreenState((x) => x.setInstallPKGScreenState)
+  const { setMessageBoxState } = useMessageBoxState(useShallow((x) => ({ setMessageBoxState: x.setMessageBoxState })))
+  const { setDeluxeInstallScreenState } = useDeluxeInstallScreenState(useShallow((x) => ({ setDeluxeInstallScreenState: x.setDeluxeInstallScreenState })))
+  const { setConfigScreenState } = useConfigScreenState(useShallow((x) => ({ setConfigScreenState: x.setConfigScreenState })))
+  const { setMyPackagesScreenState } = useMyPackagesScreenState(useShallow((x) => ({ setMyPackagesScreenState: x.setMyPackagesScreenState })))
+  const { setCreateNewPackageScreenState } = useCreateNewPackageScreenState(useShallow((x) => ({ setCreateNewPackageScreenState: x.setCreateNewPackageScreenState })))
 
   return (
     <AnimatedSection id="MainScreen" condition={active} className="z-0 h-full max-h-full w-full max-w-full overflow-y-hidden p-8">
@@ -129,23 +129,31 @@ export function MainScreen() {
                   onClick={async () => {
                     setWindowState({ disableButtons: true })
                     if (richPresence) {
-                      const rpDestroySuccess = await window.api.discordRPDestroy()
-                      if (!rpDestroySuccess) {
+                      try {
+                        const rpDestroySuccess = await window.api.discordRPDestroy()
+                        if (!rpDestroySuccess) {
+                          setWindowState({ disableButtons: false, richPresence: true })
+                          return
+                        }
+                        setWindowState({ disableButtons: false, richPresence: false })
+                        setMessageBoxState({ message: { type: 'info', method: 'discordRP', code: 'stopped' } })
+                        return
+                      } catch (err) {
                         setWindowState({ disableButtons: false, richPresence: true })
+                      }
+                    }
+                    try {
+                      const rpStartSuccess = await window.api.discordRPStart()
+                      if (!rpStartSuccess) {
+                        setWindowState({ disableButtons: false, richPresence: false })
                         return
                       }
-                      setWindowState({ disableButtons: false, richPresence: false })
-                      setMessageBoxState({ message: { type: 'info', method: 'discordRP', code: 'stopped' } })
+                      setWindowState({ disableButtons: false, richPresence: true })
+                      setMessageBoxState({ message: { type: 'info', method: 'discordRP', code: 'started' } })
                       return
+                    } catch (err) {
+                      setWindowState({ disableButtons: false, richPresence: true })
                     }
-                    const rpStartSuccess = await window.api.discordRPStart()
-                    if (!rpStartSuccess) {
-                      setWindowState({ disableButtons: false, richPresence: false })
-                      return
-                    }
-                    setWindowState({ disableButtons: false, richPresence: true })
-                    setMessageBoxState({ message: { type: 'info', method: 'discordRP', code: 'started' } })
-                    return
                   }}
                 >
                   {richPresence ? t('stopRichPresence') : t('startRichPresence')}
@@ -159,40 +167,17 @@ export function MainScreen() {
                 >
                   {t('installDeluxe')}
                 </button>
-                {/* <button
+                <button
                   className="mb-2 w-full self-start rounded-xs border border-neutral-700 bg-neutral-900 px-1 py-0.5 text-xs! uppercase duration-100 last:mb-0 hover:bg-neutral-700 active:bg-neutral-600 disabled:text-neutral-700 disabled:hover:bg-neutral-900"
                   disabled={disableButtons}
                   onClick={async () => {
                     setWindowState({ disableButtons: true })
-                    const selectedPKG = await window.api.selectPKGFileToInstall()
-                    console.log('struct SelectPKGFileReturnObject [core/src/controllers/selectPKGFileToInstall.ts]', selectedPKG)
-
-                    if (selectedPKG) {
-                      if (selectedPKG.pkgType === 'tu5') {
-                        setMessageBoxState({ message: { type: 'error', method: 'selectPKG', code: 'TU5NotSupported' } })
-                      } else if (selectedPKG.pkgType === 'dx') {
-                        setDeluxeInstallScreenState({ active: true, selectedPKG })
-                      } else {
-                        setInstallPKGScreenState({ selectedPKG })
-                      }
-                    }
-                    setWindowState({ disableButtons: false })
-                  }}
-                >
-                  {t('installPackage')}
-                </button> */}
-                {/* <button
-                  className="mb-2 w-full self-start rounded-xs border border-neutral-700 bg-neutral-900 px-1 py-0.5 text-xs! uppercase duration-100 last:mb-0 hover:bg-neutral-700 active:bg-neutral-600 disabled:text-neutral-700 disabled:hover:bg-neutral-900"
-                  disabled={disableButtons}
-                  onClick={async () => {
-                    setWindowState({ disableButtons: true })
-                    // if (!packages) {
-                    // }
+                    setCreateNewPackageScreenState({ active: true })
                     setWindowState({ disableButtons: false })
                   }}
                 >
                   {t('createNewPackage')}
-                </button> */}
+                </button>
                 <button
                   className="mb-2 w-full self-start rounded-xs border border-neutral-700 bg-neutral-900 px-1 py-0.5 text-xs! uppercase duration-100 last:mb-0 hover:bg-neutral-700 active:bg-neutral-600 disabled:text-neutral-700 disabled:hover:bg-neutral-900"
                   disabled={disableButtons}

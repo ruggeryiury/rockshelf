@@ -1,5 +1,3 @@
-// #region Message Box
-
 import type { BrowserWindow } from 'electron'
 
 export interface MessageBoxObject {

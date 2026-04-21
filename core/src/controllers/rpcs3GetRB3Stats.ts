@@ -1,5 +1,5 @@
-import { rpcs3GetRB3Stats as getStats, isRPCS3Devhdd0PathValid, isRPCS3ExePathValid, type RockBand3Data } from 'rbtools/lib'
-import { readUserConfigFile, sendDialog, sendMessageBox, useHandler } from '../core.exports'
+import { readUserConfigFile, sendDialog, useHandler } from '../core.exports'
+import { rpcs3GetRB3Stats as getStats, type RockBand3Data, isRPCS3Devhdd0PathValid, isRPCS3ExePathValid } from '../lib/rbtools/lib.exports'
 
 /**
  * Retrieves data from Rock Band 3 installation on the RPCS3 emulator.

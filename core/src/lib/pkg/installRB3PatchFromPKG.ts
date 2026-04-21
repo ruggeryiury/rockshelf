@@ -3,7 +3,7 @@ import { temporaryDirectory } from 'tempy'
 import { DirPath, type DirPathLikeTypes } from 'node-lib'
 import { getRB3USRDIR, sendBuzyLoad } from '../../core.exports'
 import type { BrowserWindow } from 'electron'
-import { BinaryAPI } from '../../lib.exports'
+import { BinaryAPI } from '../rbtools'
 
 export const installRB3PatchFromPKG = async (win: BrowserWindow, devhdd0Path: DirPathLikeTypes, selectedPKG: SelectPKGFileReturnObject): Promise<boolean> => {
   sendBuzyLoad(win, { code: 'init', title: selectedPKG.pkgType === 'dx' ? 'installingRB3DX' : 'installingTU5', steps: selectedPKG.pkgType === 'dx' ? ['extractingDeluxePKG', 'installingRB3DX'] : ['extractingTU5PKG', 'installingTU5'], onCompleted: ['refreshRB3Stats', 'resetDeluxeInstallScreenState'] })
@@ -17,15 +17,9 @@ export const installRB3PatchFromPKG = async (win: BrowserWindow, devhdd0Path: Di
     if (err instanceof Error)
       sendBuzyLoad(win, {
         code: 'throwError',
-        errorName: 'errorUnpackingPKGFile',
+        key: 'errorUnpackingPKGFile',
         messageValues: {
           path: selectedPKG.pkgPath,
-        },
-        error: {
-          message: err.message,
-          stack: err.stack,
-          name: err.name,
-          cause: err.cause,
         },
       })
     return false

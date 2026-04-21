@@ -6,6 +6,7 @@ import { useWindowState } from '@renderer/stores/Window.state'
 import clsx from 'clsx'
 import { useMyPackagesScreenState } from './MyPackagesScreen.state'
 import { useMessageBoxState } from './MessageBox.state'
+import { useCreateNewPackageScreenState } from './CreateNewPackageScreen.state'
 
 const allIcons: string[] = [
   'custom',
@@ -37,6 +38,7 @@ export function RBIconsSelector() {
   const { active, resetRBIconsSelectorState, selIcon, setRBIconsSelectorState } = useRBIconsSelectorState(useShallow((x) => ({ active: x.active, resetRBIconsSelectorState: x.resetRBIconsSelectorState, selIcon: x.selIcon, setRBIconsSelectorState: x.setRBIconsSelectorState })))
   const { setMessageBoxState } = useMessageBoxState(useShallow((x) => ({ setMessageBoxState: x.setMessageBoxState })))
   const { disableButtons, setWindowState } = useWindowState(useShallow((x) => ({ disableButtons: x.disableButtons, setWindowState: x.setWindowState })))
+  const { setCreateNewPackageScreenState } = useCreateNewPackageScreenState(useShallow((x) => ({ setCreateNewPackageScreenState: x.setCreateNewPackageScreenState })))
   return (
     <AnimatedSection id="RBIconsSelector" condition={active !== null} {...animate({ opacity: true })} className="absolute! z-15 h-full max-h-full w-full max-w-full bg-black/90 p-8 backdrop-blur-lg">
       <div className="mb-2 flex-row! items-center border-b border-white/25 pb-1">
@@ -49,15 +51,24 @@ export function RBIconsSelector() {
               setWindowState({ disableButtons: true })
 
               setMessageBoxState({ message: { type: 'loading', method: 'rbIconsSelector', code: '' } })
-              try {
-                const newPackages = await window.api.editPackageData(selPKG, { imgPath: `rbicons://${allIcons[selIcon]}` })
-                console.log('struct RPCS3SongPackagesDataExtra ["rbtools/src/lib/rpcs3/rpcs3GetSongPackagesStatsExtra.ts"]:', newPackages)
+              const rbIconURL = `rbicons://${allIcons[selIcon]}`
+              if (active === 'editPackage') {
+                try {
+                  const newPackages = await window.api.editPackageData(selPKG, { imgPath: rbIconURL })
+                  console.log('struct RPCS3SongPackagesDataExtra ["rbtools/src/lib/rpcs3/rpcs3GetSongPackagesStatsExtra.ts"]:', newPackages)
 
-                if (newPackages) setWindowState({ packages: newPackages, disableImg: selPKG })
+                  if (newPackages) setWindowState({ packages: newPackages, disableImg: selPKG })
+                  setMessageBoxState({ message: { type: 'success', method: 'editPackageImage', code: '' } })
+                  resetRBIconsSelectorState()
+                } catch (err) {
+                  if (err instanceof Error) setWindowState({ err })
+                }
+              } else if (active === 'createNewPackage') {
+                setCreateNewPackageScreenState({ packageArtwork: `rbicons://custom` })
+                await window.api.cropImageAndSaveToTemp({ imgPath: rbIconURL, name: 'thumbnail' })
                 setMessageBoxState({ message: { type: 'success', method: 'editPackageImage', code: '' } })
                 resetRBIconsSelectorState()
-              } catch (err) {
-                if (err instanceof Error) setWindowState({ err })
+                setCreateNewPackageScreenState({ packageArtwork: `tempjpg://thumbnail` })
               }
               setWindowState({ disableButtons: false })
             }}

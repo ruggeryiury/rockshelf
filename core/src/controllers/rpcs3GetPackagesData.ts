@@ -1,7 +1,7 @@
 import { utimes } from 'node:fs/promises'
 import { getPackagesCacheFile, readUserConfigFile, sendDialog, sendMessageBox, useHandler } from '../core.exports'
 import { genPackImageToAllPackages, rpcs3GetSongPackagesStatsExtra, type RPCS3SongPackagesDataExtra } from '../lib.exports'
-import { isRPCS3Devhdd0PathValid } from 'rbtools/lib'
+import { isRPCS3Devhdd0PathValid } from '../lib/rbtools/lib.exports'
 
 /**
  * Retrieves data from all installed song packages.

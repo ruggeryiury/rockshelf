@@ -1,7 +1,7 @@
-import { isRPCS3Devhdd0PathValid, isRPCS3ExePathValid, rpcs3GetRB3Stats, type RockBand3Data } from 'rbtools/lib'
 import { getRPCS3UserConfigFile, readUserConfigFile, sendDialog, useHandler } from '../core.exports'
-import { execAsync, pathLikeToDirPath, type DirPath, type FilePath } from 'node-lib'
+import { pathLikeToDirPath, type DirPath, type FilePath } from 'node-lib'
 import { exec } from 'node:child_process'
+import { type RockBand3Data, isRPCS3Devhdd0PathValid, isRPCS3ExePathValid, rpcs3GetRB3Stats } from '../lib/rbtools/lib.exports'
 
 export const playRockBand3 = useHandler(async (win, _) => {
   const userConfig = await readUserConfigFile()

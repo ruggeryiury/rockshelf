@@ -5,7 +5,10 @@ export default defineConfig({
   fixedExtension: false,
   minify: false,
   unbundle: true,
-  copy: { from: 'src/bin', to: 'dist' },
+  copy: [
+    { from: 'src/bin', to: 'dist' },
+    { from: 'src/lib/rbtools/bin', to: 'dist/lib/rbtools' },
+  ],
   deps: {
     neverBundle: ['type-fest'],
   },

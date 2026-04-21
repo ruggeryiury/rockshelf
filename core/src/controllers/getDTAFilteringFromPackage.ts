@@ -1,6 +1,6 @@
-import { filterDTAByArtist, filterDTAByDecade, filterDTAByGenre, filterDTAByInstrumentDifficulty, filterDTAByTitle, filterDTAByYearReleased, type DTAFilterByArtistObject, type DTAFilterByDifficultyObject, type DTAFilterGenericObject, type DTAFilterOptions, type DTAFilterTypes } from 'rbtools/lib'
 import { getPackagesCacheFile, sendDialog, useHandler } from '../core.exports'
 import { type RPCS3SongPackagesDataExtra } from '../lib.exports'
+import { filterDTAByArtist, filterDTAByDecade, filterDTAByGenre, filterDTAByInstrumentDifficulty, filterDTAByTitle, filterDTAByYearReleased, type DTAFilterByArtistObject, type DTAFilterByDifficultyObject, type DTAFilterGenericObject, type DTAFilterOptions, type DTAFilterTypes } from '../lib/rbtools/lib.exports'
 
 export const getDTAFilteringFromPackage = useHandler(async (win, _, packageIndex: number, type: DTAFilterTypes = 'title', options?: DTAFilterOptions): Promise<false | DTAFilterGenericObject | DTAFilterByArtistObject | DTAFilterByDifficultyObject> => {
   const cache = getPackagesCacheFile()

@@ -1,0 +1,6527 @@
+(
+   'atnightindreams'
+   (
+      'name'
+      "At Night in Dreams"
+   )
+   (
+      'artist'
+      "White Denim"
+   )
+   ('master' 1)
+   (
+      'song'
+      ('name' 'songs/atnightindreams/atnightindreams')
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1)
+            )
+            (
+               'bass'
+               (2 3)
+            )
+            (
+               'guitar'
+               (4 5)
+            )
+            (
+               'vocals'
+               (6 7)
+            )
+         )
+      )
+      ('vocal_parts' 2)
+      (
+         'pans'
+         (-1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0)
+      )
+      (
+         'vols'
+         (-4.0 -4.0 -4.0 -4.0 -4.0 -4.0 -4.0 -4.0 -4.0 -4.0)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 1 1 -1 -1 -1 -1)
+      )
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+      ('midi_file' 'songs/atnightindreams/atnightindreams.mid')
+   )
+   ('song_scroll_speed' 2300)
+   ('bank' 'sfx/handclap_bank.milo')
+   ('anim_tempo' 64)
+   ('song_length' 247892)
+   ('preview' 79867 109867)
+   (
+      'rank'
+      ('vocals' 262)
+      ('bass' 454)
+      ('guitar' 400)
+      ('drum' 468)
+      ('band' 326)
+   )
+   ('genre' 'indierock')
+   ('vocal_gender' 'male')
+   ('version' 0)
+   ('format' 4)
+   ('album_art' 1)
+   ('year_released' 2013)
+   ('rating' 2)
+   ('sub_genre' 'subgenre_indierock')
+   ('song_id' 5046)
+   ('tuning_offset_cents' 0.0)
+   ('game_origin' 'rb4')
+   (
+      'album_name'
+      "Corsicana Lemonade"
+   )
+   ('album_track_number' 1)
+   ('context' 2000)
+   ('decade' 'the10s')
+   ('downloaded' 'TRUE')
+   ('base_points' 0)
+   ('vocal_tonic_note' 8)
+)
+
+(
+   'browneyedgirl'
+   (
+      'name'
+      "Brown Eyed Girl"
+   )
+   (
+      'artist'
+      "Van Morrison"
+   )
+   ('master' 1)
+   (
+      'song'
+      ('name' 'songs/browneyedgirl/browneyedgirl')
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1)
+            )
+            (
+               'bass'
+               (2 3)
+            )
+            (
+               'guitar'
+               (4 5)
+            )
+            (
+               'vocals'
+               (6 7)
+            )
+         )
+      )
+      ('vocal_parts' 3)
+      ('crowd_channels' 10 11)
+      (
+         'pans'
+         (-1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0)
+      )
+      (
+         'vols'
+         (-1.5 -1.5 -1.5 -1.5 -1.5 -1.5 -1.5 -1.5 -1.5 -1.5 -2.5 -2.5)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 1 1 -1 -1 -1 -1 -1 -1)
+      )
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+      ('midi_file' 'songs/browneyedgirl/browneyedgirl.mid')
+   )
+   ('song_scroll_speed' 2300)
+   ('bank' 'sfx/tambourine_bank.milo')
+   ('anim_tempo' 64)
+   ('song_length' 188590)
+   ('preview' 68452 98452)
+   (
+      'rank'
+      ('vocals' 361)
+      ('bass' 272)
+      ('guitar' 239)
+      ('drum' 130)
+      ('band' 221)
+   )
+   ('genre' 'rbsoulfunk')
+   ('vocal_gender' 'male')
+   ('version' 0)
+   ('format' 4)
+   ('album_art' 1)
+   ('year_released' 1967)
+   ('rating' 2)
+   ('sub_genre' 'subgenre_pop')
+   ('song_id' 5050)
+   ('tuning_offset_cents' 0.0)
+   ('game_origin' 'rb4')
+   (
+      'album_name'
+      "Blowin' Your Mind!"
+   )
+   ('album_track_number' 1)
+   ('context' 2000)
+   ('decade' 'the60s')
+   ('downloaded' 'TRUE')
+   ('base_points' 0)
+   ('vocal_tonic_note' 7)
+)
+
+(
+   'panama'
+   (
+      'name'
+      "Panama"
+   )
+   (
+      'artist'
+      "Van Halen"
+   )
+   ('master' 1)
+   (
+      'song'
+      ('name' 'songs/panama/panama')
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1)
+            )
+            (
+               'bass'
+               (2)
+            )
+            (
+               'guitar'
+               (3 4)
+            )
+            (
+               'vocals'
+               (5 6)
+            )
+         )
+      )
+      (
+         'pans'
+         (-1.0 1.0 0.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -2.5 2.5)
+      )
+      (
+         'vols'
+         (-4.0 -4.0 -2.0 -4.0 -4.0 -4.0 -4.0 -4.0 -4.0 -4.0 -4.0)
+      )
+      ('vocal_parts' 3)
+      (
+         'cores'
+         (-1 -1 -1 1 1 -1 -1 -1 -1 -1 -1)
+      )
+      ('crowd_channels' 9 10)
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+      ('midi_file' 'songs/panama/panama.mid')
+   )
+   ('song_scroll_speed' 2300)
+   ('bank' 'sfx/tambourine_bank.milo')
+   ('anim_tempo' 32)
+   ('song_length' 211660)
+   ('preview' 70144 100144)
+   (
+      'rank'
+      ('vocals' 180)
+      ('bass' 403)
+      ('guitar' 341)
+      ('drum' 177)
+      ('band' 251)
+   )
+   ('genre' 'rock')
+   ('vocal_gender' 'male')
+   ('version' 0)
+   ('format' 4)
+   ('album_art' 1)
+   ('year_released' 1984)
+   ('rating' 2)
+   ('sub_genre' 'subgenre_rock')
+   ('song_id' 5065)
+   ('tuning_offset_cents' 30)
+   ('game_origin' 'rb4')
+   (
+      'album_name'
+      "1984"
+   )
+   ('album_track_number' 3)
+   ('context' 2000)
+   ('decade' 'the80s')
+   ('downloaded' 'TRUE')
+   ('base_points' 0)
+   ('vocal_tonic_note' 3)
+)
+
+(
+   'iwillfollow'
+   (
+      'name'
+      "I Will Follow"
+   )
+   (
+      'artist'
+      "U2"
+   )
+   ('master' 1)
+   (
+      'song'
+      ('name' 'songs/iwillfollow/iwillfollow')
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1)
+            )
+            (
+               'bass'
+               (2 3)
+            )
+            (
+               'guitar'
+               (4 5)
+            )
+            (
+               'vocals'
+               (6 7)
+            )
+         )
+      )
+      ('vocal_parts' 2)
+      ('crowd_channels' 9 10)
+      (
+         'pans'
+         (-1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 0.0 -2.5 2.5)
+      )
+      (
+         'vols'
+         (-4.0 -4.0 -4.0 -4.0 -5.0 -5.0 -4.0 -4.0 -5.0 -4.0 -4.0)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 1 1 -1 -1 -1 -1 -1 -1)
+      )
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+      ('midi_file' 'songs/iwillfollow/iwillfollow.mid')
+   )
+   ('song_scroll_speed' 2300)
+   ('bank' 'sfx/tambourine_bank.milo')
+   ('anim_tempo' 64)
+   ('song_length' 218104)
+   ('preview' 66430 96430)
+   (
+      'rank'
+      ('vocals' 106)
+      ('bass' 128)
+      ('guitar' 112)
+      ('drum' 169)
+      ('band' 124)
+   )
+   ('genre' 'rock')
+   ('vocal_gender' 'male')
+   ('version' 0)
+   ('format' 4)
+   ('album_art' 1)
+   ('year_released' 1980)
+   ('rating' 2)
+   ('sub_genre' 'subgenre_rock')
+   ('song_id' 5066)
+   ('tuning_offset_cents' 0.0)
+   ('game_origin' 'rb4')
+   (
+      'album_name'
+      "Boy"
+   )
+   ('album_track_number' 1)
+   ('context' 2000)
+   ('decade' 'the80s')
+   ('downloaded' 'TRUE')
+   ('base_points' 0)
+   ('vocal_tonic_note' 3)
+)
+
+(
+   'cedarwoodroad'
+   (
+      'name'
+      "Cedarwood Road"
+   )
+   (
+      'artist'
+      "U2"
+   )
+   ('master' 1)
+   (
+      'song'
+      ('name' 'songs/cedarwoodroad/cedarwoodroad')
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1)
+            )
+            (
+               'bass'
+               (2 3)
+            )
+            (
+               'guitar'
+               (4 5)
+            )
+            (
+               'vocals'
+               (6 7)
+            )
+         )
+      )
+      ('vocal_parts' 3)
+      (
+         'pans'
+         (-1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0)
+      )
+      (
+         'vols'
+         (-3.0 -3.0 -3.0 -3.0 -3.0 -3.0 -3.0 -3.0 -3.0 -3.0)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 1 1 -1 -1 -1 -1)
+      )
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+      ('midi_file' 'songs/cedarwoodroad/cedarwoodroad.mid')
+   )
+   ('song_scroll_speed' 2300)
+   ('bank' 'sfx/tambourine_bank.milo')
+   ('anim_tempo' 16)
+   ('song_length' 270056)
+   ('preview' 83109 113109)
+   (
+      'rank'
+      ('vocals' 137)
+      ('bass' 108)
+      ('guitar' 116)
+      ('drum' 117)
+      ('band' 108)
+   )
+   ('genre' 'rock')
+   ('vocal_gender' 'male')
+   ('version' 0)
+   ('format' 4)
+   ('album_art' 1)
+   ('year_released' 2014)
+   ('rating' 2)
+   ('sub_genre' 'subgenre_rock')
+   ('song_id' 5067)
+   ('tuning_offset_cents' 0.0)
+   ('game_origin' 'rb4')
+   (
+      'album_name'
+      "Songs of Innocence"
+   )
+   ('album_track_number' 8)
+   ('context' 2000)
+   ('decade' 'the10s')
+   ('downloaded' 'TRUE')
+   ('base_points' 0)
+   ('vocal_tonic_note' 4)
+)
+
+(
+   'pistolwhipped'
+   (
+      'name'
+      "Pistol Whipped"
+   )
+   (
+      'artist'
+      "Tijuana Sweetheart"
+   )
+   ('master' 1)
+   (
+      'song'
+      ('name' 'songs/pistolwhipped/pistolwhipped')
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1)
+            )
+            (
+               'bass'
+               (2)
+            )
+            (
+               'guitar'
+               (3 4)
+            )
+            (
+               'vocals'
+               (5 6)
+            )
+         )
+      )
+      ('vocal_parts' 3)
+      (
+         'pans'
+         (-1.0 1.0 0.0 -1.0 1.0 -1.0 1.0 -1.0 1.0)
+      )
+      (
+         'vols'
+         (-5.0 -5.0 -6.0 -5.0 -5.0 -5.0 -5.0 -5.0 -5.0)
+      )
+      (
+         'cores'
+         (-1 -1 -1 1 1 -1 -1 -1 -1)
+      )
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+      ('midi_file' 'songs/pistolwhipped/pistolwhipped.mid')
+   )
+   ('song_scroll_speed' 2300)
+   ('bank' 'sfx/tambourine_bank.milo')
+   ('anim_tempo' 32)
+   ('song_length' 151990)
+   ('preview' 52988 82988)
+   (
+      'rank'
+      ('vocals' 174)
+      ('bass' 186)
+      ('guitar' 389)
+      ('drum' 345)
+      ('band' 315)
+   )
+   ('genre' 'punk')
+   ('vocal_gender' 'female')
+   ('version' 0)
+   ('format' 4)
+   ('album_art' 1)
+   ('year_released' 2012)
+   ('rating' 2)
+   ('sub_genre' 'subgenre_punk')
+   ('song_id' 5054)
+   ('tuning_offset_cents' 0.0)
+   ('game_origin' 'rb4')
+   (
+      'album_name'
+      "Under the Gun"
+   )
+   ('album_track_number' 6)
+   ('context' 2000)
+   ('decade' 'the10s')
+   ('downloaded' 'TRUE')
+   ('base_points' 0)
+   ('vocal_tonic_note' 8)
+)
+
+(
+   'theseeker'
+   (
+      'name'
+      "The Seeker"
+   )
+   (
+      'artist'
+      "The Who"
+   )
+   ('master' 1)
+   (
+      'song'
+      ('name' 'songs/theseeker/theseeker')
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1)
+            )
+            (
+               'bass'
+               (2)
+            )
+            (
+               'guitar'
+               (3 4)
+            )
+            (
+               'vocals'
+               (5 6)
+            )
+         )
+      )
+      ('vocal_parts' 3)
+      ('crowd_channels' 9 10)
+      (
+         'pans'
+         (-1.0 1.0 0.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -2.5 2.5)
+      )
+      (
+         'vols'
+         (-2.0 -2.0 -0.0 -2.0 -2.0 -2.0 -2.0 -2.0 -2.0 -2.5 -2.5)
+      )
+      (
+         'cores'
+         (-1 -1 -1 1 1 -1 -1 -1 -1 -1 -1)
+      )
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+      ('midi_file' 'songs/theseeker/theseeker.mid')
+   )
+   ('song_scroll_speed' 2300)
+   ('bank' 'sfx/tambourine_bank.milo')
+   ('anim_tempo' 16)
+   ('song_length' 201072)
+   ('preview' 22191 52191)
+   (
+      'rank'
+      ('vocals' 175)
+      ('bass' 336)
+      ('guitar' 332)
+      ('drum' 224)
+      ('band' 267)
+   )
+   ('genre' 'classicrock')
+   ('vocal_gender' 'male')
+   ('version' 0)
+   ('format' 4)
+   ('album_art' 1)
+   ('year_released' 1971)
+   ('rating' 2)
+   ('sub_genre' 'subgenre_rock')
+   ('song_id' 5022)
+   ('tuning_offset_cents' 0.0)
+   ('game_origin' 'rb4')
+   (
+      'album_name'
+      "Meaty Beaty Big and Bouncy"
+   )
+   ('album_track_number' 7)
+   ('context' 2000)
+   ('decade' 'the70s')
+   ('downloaded' 'TRUE')
+   ('base_points' 0)
+   ('vocal_tonic_note' 9)
+)
+
+(
+   'freefallingwarning'
+   (
+      'name'
+      "Free Falling"
+   )
+   (
+      'artist'
+      "The Warning"
+   )
+   ('master' 1)
+   (
+      'song'
+      ('name' 'songs/freefallingwarning/freefallingwarning')
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1)
+            )
+            (
+               'bass'
+               (2 3)
+            )
+            (
+               'guitar'
+               (4 5)
+            )
+            (
+               'vocals'
+               (6 7)
+            )
+         )
+      )
+      ('vocal_parts' 3)
+      (
+         'pans'
+         (-1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0)
+      )
+      (
+         'vols'
+         (-3.5 -3.5 -3.5 -3.5 -3.5 -3.5 -3.5 -3.5 -3.5 -3.5)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 1 1 -1 -1 -1 -1)
+      )
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+      ('midi_file' 'songs/freefallingwarning/freefallingwarning.mid')
+   )
+   ('song_scroll_speed' 2300)
+   ('bank' 'sfx/cowbell_bank.milo')
+   ('anim_tempo' 32)
+   ('song_length' 237622)
+   ('preview' 61782 91782)
+   (
+      'rank'
+      ('vocals' 121)
+      ('bass' 127)
+      ('guitar' 104)
+      ('drum' 103)
+      ('band' 100)
+   )
+   ('genre' 'rock')
+   ('vocal_gender' 'female')
+   ('version' 0)
+   ('format' 4)
+   ('album_art' 1)
+   ('year_released' 2015)
+   ('rating' 2)
+   ('sub_genre' 'subgenre_rock')
+   ('song_id' 5064)
+   ('tuning_offset_cents' 0.0)
+   ('game_origin' 'rb4')
+   (
+      'album_name'
+      "Escape the Mind"
+   )
+   ('album_track_number' 5)
+   ('context' 2000)
+   ('decade' 'the10s')
+   ('downloaded' 'TRUE')
+   ('base_points' 0)
+   ('vocal_tonic_note' 5)
+)
+
+(
+   'lightupthenight'
+   (
+      'name'
+      "Light Up the Night"
+   )
+   (
+      'artist'
+      "The Protomen"
+   )
+   ('master' 1)
+   (
+      'song'
+      ('name' 'songs/lightupthenight/lightupthenight')
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1)
+            )
+            (
+               'bass'
+               (2 3)
+            )
+            (
+               'guitar'
+               (4 5)
+            )
+            (
+               'vocals'
+               (6 7)
+            )
+         )
+      )
+      ('vocal_parts' 3)
+      (
+         'pans'
+         (-1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0)
+      )
+      (
+         'vols'
+         (0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 1 1 -1 -1 -1 -1)
+      )
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+      ('midi_file' 'songs/lightupthenight/lightupthenight.mid')
+   )
+   ('song_scroll_speed' 2300)
+   ('bank' 'sfx/tambourine_bank.milo')
+   ('anim_tempo' 64)
+   ('song_length' 254284)
+   ('preview' 65714 95714)
+   (
+      'rank'
+      ('vocals' 485)
+      ('bass' 165)
+      ('guitar' 182)
+      ('drum' 218)
+      ('band' 225)
+   )
+   ('genre' 'rock')
+   ('vocal_gender' 'male')
+   ('version' 0)
+   ('format' 4)
+   ('album_art' 1)
+   ('year_released' 2009)
+   ('rating' 2)
+   ('sub_genre' 'subgenre_rock')
+   ('song_id' 5061)
+   ('tuning_offset_cents' 0.0)
+   ('game_origin' 'rb4')
+   (
+      'album_name'
+      "Act II: The Father of Death"
+   )
+   ('album_track_number' 10)
+   ('context' 2000)
+   ('decade' 'the00s')
+   ('downloaded' 'TRUE')
+   ('base_points' 0)
+   ('vocal_tonic_note' 1)
+)
+
+(
+   'yourlove'
+   (
+      'name'
+      "Your Love"
+   )
+   (
+      'artist'
+      "The Outfield"
+   )
+   ('master' 1)
+   (
+      'song'
+      ('name' 'songs/yourlove/yourlove')
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1)
+            )
+            (
+               'bass'
+               (2)
+            )
+            (
+               'guitar'
+               (3 4)
+            )
+            (
+               'vocals'
+               (5 6)
+            )
+         )
+      )
+      (
+         'pans'
+         (-1.0 1.0 0.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -2.5 2.5)
+      )
+      (
+         'vols'
+         (-1.2 -1.2 -1.2 -1.2 -1.2 -1.2 -1.2 -1.2 -1.2 -1.7 -1.7)
+      )
+      (
+         'cores'
+         (-1 -1 -1 1 1 -1 -1 -1 -1 -1 -1)
+      )
+      ('vocal_parts' 3)
+      ('crowd_channels' 9 10)
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+      ('midi_file' 'songs/yourlove/yourlove.mid')
+   )
+   ('song_scroll_speed' 2300)
+   ('bank' 'sfx/tambourine_bank.milo')
+   ('anim_tempo' 32)
+   ('song_length' 218745)
+   ('preview' 32486 62486)
+   (
+      'rank'
+      ('vocals' 295)
+      ('bass' 112)
+      ('guitar' 227)
+      ('drum' 139)
+      ('band' 183)
+   )
+   ('genre' 'poprock')
+   ('vocal_gender' 'male')
+   ('version' 0)
+   ('format' 4)
+   ('album_art' 1)
+   ('year_released' 1985)
+   ('rating' 1)
+   ('sub_genre' 'subgenre_other')
+   ('song_id' 5004)
+   ('tuning_offset_cents' 0.0)
+   ('game_origin' 'rb4')
+   (
+      'album_name'
+      "Play Deep"
+   )
+   ('album_track_number' 2)
+   ('context' 2000)
+   ('decade' 'the80s')
+   ('downloaded' 'TRUE')
+   ('base_points' 0)
+   ('vocal_tonic_note' 4)
+)
+
+(
+   'theimpressionthatiget'
+   (
+      'name'
+      "The Impression That I Get"
+   )
+   (
+      'artist'
+      "The Mighty Mighty Bosstones"
+   )
+   ('master' 1)
+   (
+      'song'
+      ('name' 'songs/theimpressionthatiget/theimpressionthatiget')
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1)
+            )
+            (
+               'bass'
+               (2)
+            )
+            (
+               'guitar'
+               (3 4)
+            )
+            (
+               'vocals'
+               (5 6)
+            )
+         )
+      )
+      ('vocal_parts' 2)
+      ('crowd_channels' 9 10)
+      (
+         'pans'
+         (-1.0 1.0 0.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -2.5 2.5)
+      )
+      (
+         'vols'
+         (-1.5 -1.5 -1.0 -1.5 -1.5 -1.5 -1.5 -1.5 -1.5 -3.5 -3.5)
+      )
+      (
+         'cores'
+         (-1 -1 -1 1 1 -1 -1 -1 -1 -1 -1)
+      )
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+      ('midi_file' 'songs/theimpressionthatiget/theimpressionthatiget.mid')
+   )
+   ('song_scroll_speed' 2300)
+   ('bank' 'sfx/tambourine_bank.milo')
+   ('anim_tempo' 64)
+   ('song_length' 196167)
+   ('preview' 39955 69955)
+   (
+      'rank'
+      ('vocals' 212)
+      ('bass' 442)
+      ('guitar' 323)
+      ('drum' 411)
+      ('band' 338)
+   )
+   ('genre' 'reggaeska')
+   ('vocal_gender' 'male')
+   ('version' 0)
+   ('format' 4)
+   ('album_art' 1)
+   ('year_released' 1997)
+   ('rating' 2)
+   ('sub_genre' 'subgenre_ska')
+   ('song_id' 5037)
+   ('tuning_offset_cents' 0.0)
+   ('game_origin' 'rb4')
+   (
+      'album_name'
+      "Let's Face It"
+   )
+   ('album_track_number' 4)
+   ('context' 2000)
+   ('decade' 'the90s')
+   ('downloaded' 'TRUE')
+   ('base_points' 0)
+   ('vocal_tonic_note' 4)
+)
+
+(
+   'somebodytoldme'
+   (
+      'name'
+      "Somebody Told Me"
+   )
+   (
+      'artist'
+      "The Killers"
+   )
+   ('master' 1)
+   (
+      'song'
+      ('name' 'songs/somebodytoldme/somebodytoldme')
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1)
+            )
+            (
+               'bass'
+               (2)
+            )
+            (
+               'guitar'
+               (3 4)
+            )
+            (
+               'vocals'
+               (5 6)
+            )
+         )
+      )
+      (
+         'pans'
+         (-1.0 1.0 0.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -2.5 2.5)
+      )
+      ('crowd_channels' 9 10)
+      ('vocal_parts' 3)
+      (
+         'vols'
+         (-0.0 -0.0 -3.0 -2.3 -2.3 -2.0 -2.0 -2.5 -2.5 -1.9 -1.9)
+      )
+      (
+         'cores'
+         (-1 -1 -1 1 1 -1 -1 -1 -1 -1 -1)
+      )
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+      ('midi_file' 'songs/somebodytoldme/somebodytoldme.mid')
+   )
+   ('song_scroll_speed' 2300)
+   ('bank' 'sfx/tambourine_bank.milo')
+   ('anim_tempo' 32)
+   ('song_length' 201809)
+   ('preview' 67823 97823)
+   (
+      'rank'
+      ('vocals' 190)
+      ('bass' 364)
+      ('guitar' 221)
+      ('drum' 464)
+      ('band' 310)
+   )
+   ('genre' 'alternative')
+   ('vocal_gender' 'male')
+   ('version' 0)
+   ('format' 4)
+   ('album_art' 1)
+   ('year_released' 2004)
+   ('rating' 2)
+   ('sub_genre' 'subgenre_alternative')
+   ('song_id' 5011)
+   ('tuning_offset_cents' 0.0)
+   ('game_origin' 'rb4')
+   (
+      'album_name'
+      "Hot Fuss"
+   )
+   ('album_track_number' 4)
+   ('context' 2000)
+   ('decade' 'the00s')
+   ('downloaded' 'TRUE')
+   ('base_points' 0)
+   ('vocal_tonic_note' 10)
+)
+
+(
+   'fridayiminlove'
+   (
+      'name'
+      "Friday I'm in Love"
+   )
+   (
+      'artist'
+      "The Cure"
+   )
+   ('master' 1)
+   (
+      'song'
+      ('name' 'songs/fridayiminlove/fridayiminlove')
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1)
+            )
+            (
+               'bass'
+               (2 3)
+            )
+            (
+               'guitar'
+               (4 5)
+            )
+            (
+               'vocals'
+               (6 7)
+            )
+         )
+      )
+      ('vocal_parts' 3)
+      ('crowd_channels' 10 11)
+      (
+         'pans'
+         (-1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -2.5 2.5)
+      )
+      (
+         'vols'
+         (-2.5 -2.5 -2.5 -2.5 -2.5 -2.5 -2.5 -2.5 -2.5 -2.5 -3.5 -3.5)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 1 1 -1 -1 -1 -1 -1 -1)
+      )
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+      ('midi_file' 'songs/fridayiminlove/fridayiminlove.mid')
+   )
+   ('song_scroll_speed' 2300)
+   ('bank' 'sfx/tambourine_bank.milo')
+   ('anim_tempo' 32)
+   ('song_length' 215315)
+   ('preview' 46752 76752)
+   (
+      'rank'
+      ('vocals' 270)
+      ('bass' 104)
+      ('guitar' 188)
+      ('drum' 145)
+      ('band' 165)
+   )
+   ('genre' 'new_wave')
+   ('vocal_gender' 'male')
+   ('version' 0)
+   ('format' 4)
+   ('album_art' 1)
+   ('year_released' 1992)
+   ('rating' 2)
+   ('sub_genre' 'subgenre_other')
+   ('song_id' 5031)
+   ('tuning_offset_cents' 50)
+   ('game_origin' 'rb4')
+   (
+      'album_name'
+      "Wish"
+   )
+   ('album_track_number' 7)
+   ('context' 2000)
+   ('decade' 'the90s')
+   ('downloaded' 'TRUE')
+   ('base_points' 0)
+   ('vocal_tonic_note' 2)
+)
+
+(
+   'milwaukee'
+   (
+      'name'
+      "Milwaukee"
+   )
+   (
+      'artist'
+      "The Both"
+   )
+   ('master' 1)
+   (
+      'song'
+      ('name' 'songs/milwaukee/milwaukee')
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1)
+            )
+            (
+               'bass'
+               (2)
+            )
+            (
+               'guitar'
+               (3 4)
+            )
+            (
+               'vocals'
+               (5 6)
+            )
+         )
+      )
+      ('vocal_parts' 2)
+      (
+         'pans'
+         (-1.0 1.0 0.0 -1.0 1.0 -1.0 1.0 -1.0 1.0)
+      )
+      (
+         'vols'
+         (-4.0 -4.0 -2.5 -4.0 -4.0 -4.0 -4.0 -4.0 -4.0)
+      )
+      (
+         'cores'
+         (-1 -1 -1 1 1 -1 -1 -1 -1)
+      )
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+      ('midi_file' 'songs/milwaukee/milwaukee.mid')
+   )
+   ('song_scroll_speed' 2300)
+   ('bank' 'sfx/tambourine_bank.milo')
+   ('anim_tempo' 64)
+   ('song_length' 263291)
+   ('preview' 44964 74964)
+   (
+      'rank'
+      ('vocals' 195)
+      ('bass' 334)
+      ('guitar' 333)
+      ('drum' 210)
+      ('band' 234)
+   )
+   ('genre' 'poprock')
+   ('vocal_gender' 'female')
+   ('version' 0)
+   ('format' 4)
+   ('album_art' 1)
+   ('year_released' 2014)
+   ('rating' 2)
+   ('sub_genre' 'subgenre_pop')
+   ('song_id' 5058)
+   ('tuning_offset_cents' 0.0)
+   ('game_origin' 'rb4')
+   (
+      'album_name'
+      "The Both"
+   )
+   ('album_track_number' 2)
+   ('context' 2000)
+   ('decade' 'the10s')
+   ('downloaded' 'TRUE')
+   ('base_points' 0)
+   ('vocal_tonic_note' 9)
+)
+
+(
+   'fever_bk'
+   (
+      'name'
+      "Fever"
+   )
+   (
+      'artist'
+      "The Black Keys"
+   )
+   ('master' 1)
+   (
+      'song'
+      ('name' 'songs/fever_bk/fever_bk')
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1)
+            )
+            (
+               'bass'
+               (2 3)
+            )
+            (
+               'guitar'
+               (4 5)
+            )
+            (
+               'vocals'
+               (6 7)
+            )
+         )
+      )
+      ('vocal_parts' 2)
+      ('crowd_channels' 10 11)
+      (
+         'pans'
+         (-1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -2.5 2.5)
+      )
+      (
+         'vols'
+         (-1.0 -1.0 -1.0 -1.0 -1.0 -1.0 -1.0 -1.0 -1.0 -1.0 -3.0 -3.0)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 1 1 -1 -1 -1 -1 -1 -1)
+      )
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+      ('midi_file' 'songs/fever_bk/fever_bk.mid')
+   )
+   ('song_scroll_speed' 2300)
+   ('bank' 'sfx/tambourine_bank.milo')
+   ('anim_tempo' 32)
+   ('song_length' 250647)
+   ('preview' 63898 93898)
+   (
+      'rank'
+      ('vocals' 109)
+      ('bass' 181)
+      ('guitar' 108)
+      ('drum' 111)
+      ('band' 116)
+   )
+   ('genre' 'rock')
+   ('vocal_gender' 'male')
+   ('version' 0)
+   ('format' 4)
+   ('album_art' 1)
+   ('year_released' 2014)
+   ('rating' 2)
+   ('sub_genre' 'subgenre_rock')
+   ('song_id' 5006)
+   ('tuning_offset_cents' 0.0)
+   ('game_origin' 'rb4')
+   (
+      'album_name'
+      "Turn Blue"
+   )
+   ('album_track_number' 4)
+   ('context' 2000)
+   ('decade' 'the10s')
+   ('downloaded' 'TRUE')
+   ('base_points' 0)
+   ('vocal_tonic_note' 9)
+)
+
+(
+   'spiders'
+   (
+      'name'
+      "Spiders"
+   )
+   (
+      'artist'
+      "System of a Down"
+   )
+   ('master' 1)
+   (
+      'song'
+      ('name' 'songs/spiders/spiders')
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1)
+            )
+            (
+               'bass'
+               (2 3)
+            )
+            (
+               'guitar'
+               (4 5)
+            )
+            (
+               'vocals'
+               (6 7)
+            )
+         )
+      )
+      ('vocal_parts' 3)
+      (
+         'pans'
+         (-1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0)
+      )
+      (
+         'vols'
+         (-1.0 -1.0 -1.0 -1.0 -1.0 -1.0 -1.0 -1.0 -1.0 -1.0)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 1 1 -1 -1 -1 -1)
+      )
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+      ('midi_file' 'songs/spiders/spiders.mid')
+   )
+   ('song_scroll_speed' 2300)
+   ('bank' 'sfx/handclap_bank.milo')
+   ('anim_tempo' 32)
+   ('song_length' 222498)
+   ('preview' 43163 73163)
+   (
+      'rank'
+      ('vocals' 342)
+      ('bass' 155)
+      ('guitar' 144)
+      ('drum' 163)
+      ('band' 189)
+   )
+   ('genre' 'numetal')
+   ('vocal_gender' 'male')
+   ('version' 0)
+   ('format' 4)
+   ('album_art' 1)
+   ('year_released' 1998)
+   ('rating' 2)
+   ('sub_genre' 'subgenre_metal')
+   ('song_id' 5060)
+   ('tuning_offset_cents' 0.0)
+   ('game_origin' 'rb4')
+   (
+      'album_name'
+      "System of a Down"
+   )
+   ('album_track_number' 5)
+   ('context' 2000)
+   ('decade' 'the90s')
+   ('downloaded' 'TRUE')
+   ('base_points' 0)
+   ('vocal_tonic_note' 0)
+)
+
+(
+   'birthinreverse'
+   (
+      'name'
+      "Birth in Reverse"
+   )
+   (
+      'artist'
+      "St. Vincent"
+   )
+   ('master' 1)
+   (
+      'song'
+      ('name' 'songs/birthinreverse/birthinreverse')
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1)
+            )
+            (
+               'bass'
+               (2 3)
+            )
+            (
+               'guitar'
+               (4 5)
+            )
+            (
+               'vocals'
+               (6 7)
+            )
+         )
+      )
+      (
+         'pans'
+         (-1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 0.0)
+      )
+      (
+         'vols'
+         (-4.0 -4.0 -4.0 -4.0 -4.0 -4.0 -4.0 -4.0 -5.0)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 1 1 -1 -1 -1)
+      )
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+      ('midi_file' 'songs/birthinreverse/birthinreverse.mid')
+   )
+   ('song_scroll_speed' 2300)
+   ('bank' 'sfx/tambourine_bank.milo')
+   ('anim_tempo' 64)
+   ('song_length' 201410)
+   ('preview' 41525 71525)
+   (
+      'rank'
+      ('vocals' 185)
+      ('bass' 228)
+      ('guitar' 309)
+      ('drum' 448)
+      ('band' 283)
+   )
+   ('genre' 'indierock')
+   ('vocal_gender' 'female')
+   ('version' 0)
+   ('format' 4)
+   ('album_art' 1)
+   ('year_released' 2014)
+   ('rating' 2)
+   ('sub_genre' 'subgenre_indierock')
+   ('song_id' 5062)
+   ('tuning_offset_cents' 0.0)
+   ('game_origin' 'rb4')
+   (
+      'album_name'
+      "St. Vincent"
+   )
+   ('album_track_number' 2)
+   ('context' 2000)
+   ('decade' 'the10s')
+   ('downloaded' 'TRUE')
+   ('base_points' 0)
+   ('vocal_tonic_note' 4)
+)
+
+(
+   'littlemisscantbewrong'
+   (
+      'name'
+      "Little Miss Can't Be Wrong"
+   )
+   (
+      'artist'
+      "Spin Doctors"
+   )
+   ('master' 1)
+   (
+      'song'
+      ('name' 'songs/littlemisscantbewrong/littlemisscantbewrong')
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1)
+            )
+            (
+               'bass'
+               (2)
+            )
+            (
+               'guitar'
+               (3 4)
+            )
+            (
+               'vocals'
+               (5 6)
+            )
+         )
+      )
+      ('vocal_parts' 3)
+      ('crowd_channels' 9 10)
+      (
+         'pans'
+         (-1.0 1.0 0.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -2.5 2.5)
+      )
+      (
+         'vols'
+         (-0.5 -0.5 -0.5 -1.5 -1.5 -0.5 -0.5 -1.5 -1.5 -3.0 -3.0)
+      )
+      (
+         'cores'
+         (-1 -1 -1 1 1 -1 -1 -1 -1 -1 -1)
+      )
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+      ('midi_file' 'songs/littlemisscantbewrong/littlemisscantbewrong.mid')
+   )
+   ('song_scroll_speed' 2300)
+   ('bank' 'sfx/tambourine_bank.milo')
+   ('anim_tempo' 32)
+   ('song_length' 236838)
+   ('preview' 49644 79644)
+   (
+      'rank'
+      ('vocals' 378)
+      ('bass' 466)
+      ('guitar' 349)
+      ('drum' 120)
+      ('band' 377)
+   )
+   ('genre' 'alternative')
+   ('vocal_gender' 'male')
+   ('version' 0)
+   ('format' 4)
+   ('album_art' 1)
+   ('year_released' 1991)
+   ('rating' 2)
+   ('sub_genre' 'subgenre_alternative')
+   ('song_id' 5002)
+   ('tuning_offset_cents' 20)
+   ('game_origin' 'rb4')
+   (
+      'album_name'
+      "Pocket Full of Kryptonite"
+   )
+   ('album_track_number' 3)
+   ('context' 2000)
+   ('decade' 'the90s')
+   ('downloaded' 'TRUE')
+   ('base_points' 0)
+   ('vocal_tonic_note' 7)
+)
+
+(
+   'superunknownrb4'
+   (
+      'name'
+      "Superunknown"
+   )
+   (
+      'artist'
+      "Soundgarden"
+   )
+   ('master' 1)
+   (
+      'song'
+      ('name' 'songs/superunknownrb4/superunknownrb4')
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1)
+            )
+            (
+               'bass'
+               (2)
+            )
+            (
+               'guitar'
+               (3 4)
+            )
+            (
+               'vocals'
+               (5 6)
+            )
+         )
+      )
+      ('vocal_parts' 2)
+      (
+         'pans'
+         (-1.0 1.0 0.0 -1.0 1.0 -1.0 1.0 -1.0 1.0)
+      )
+      (
+         'vols'
+         (-1.5 -1.5 -0.0 -1.5 -1.5 -1.0 -1.0 -1.5 -1.5)
+      )
+      (
+         'cores'
+         (-1 -1 -1 1 1 -1 -1 -1 -1)
+      )
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+      ('midi_file' 'songs/superunknownrb4/superunknownrb4.mid')
+   )
+   ('song_scroll_speed' 2300)
+   ('bank' 'sfx/tambourine_bank.milo')
+   ('anim_tempo' 32)
+   ('song_length' 312224)
+   ('preview' 97293 127293)
+   (
+      'rank'
+      ('vocals' 313)
+      ('bass' 234)
+      ('guitar' 409)
+      ('drum' 194)
+      ('band' 281)
+   )
+   ('genre' 'grunge')
+   ('vocal_gender' 'male')
+   ('version' 0)
+   ('format' 4)
+   ('album_art' 1)
+   ('year_released' 1994)
+   ('rating' 2)
+   ('sub_genre' 'subgenre_grunge')
+   ('song_id' 5048)
+   ('tuning_offset_cents' 15)
+   ('game_origin' 'rb4')
+   (
+      'album_name'
+      "Superunknown"
+   )
+   ('album_track_number' 5)
+   ('context' 2000)
+   ('decade' 'the90s')
+   ('downloaded' 'TRUE')
+   ('base_points' 0)
+   ('vocal_tonic_note' 7)
+)
+
+(
+   'deadblack'
+   (
+      'name'
+      "Dead Black (Heart of Ice)"
+   )
+   (
+      'artist'
+      "Soul Remnants"
+   )
+   ('master' 1)
+   (
+      'song'
+      ('name' 'songs/deadblack/deadblack')
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1)
+            )
+            (
+               'bass'
+               (2)
+            )
+            (
+               'guitar'
+               (3 4)
+            )
+            (
+               'vocals'
+               (5 6)
+            )
+         )
+      )
+      (
+         'pans'
+         (-1.0 1.0 0.0 -1.0 1.0 -1.0 1.0 -1.0 1.0)
+      )
+      (
+         'vols'
+         (-3.5 -3.5 -4.5 -3.5 -3.5 -3.5 -3.5 -3.5 -3.5)
+      )
+      (
+         'cores'
+         (-1 -1 -1 1 1 -1 -1 -1 -1)
+      )
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+      ('midi_file' 'songs/deadblack/deadblack.mid')
+   )
+   ('song_scroll_speed' 2300)
+   ('bank' 'sfx/tambourine_bank.milo')
+   ('anim_tempo' 64)
+   ('song_length' 481364)
+   ('preview' 139840 169840)
+   (
+      'rank'
+      ('vocals' 100)
+      ('bass' 472)
+      ('guitar' 420)
+      ('drum' 490)
+      ('band' 457)
+   )
+   ('genre' 'metal')
+   ('vocal_gender' 'male')
+   ('version' 0)
+   ('format' 4)
+   ('album_art' 1)
+   ('year_released' 2013)
+   ('rating' 2)
+   ('sub_genre' 'subgenre_death')
+   ('song_id' 5056)
+   ('tuning_offset_cents' 0.0)
+   ('game_origin' 'rb4')
+   (
+      'album_name'
+      "Black & Blood"
+   )
+   ('album_track_number' 5)
+   ('context' 2000)
+   ('decade' 'the10s')
+   ('downloaded' 'TRUE')
+   ('base_points' 0)
+   ('vocal_tonic_note' 9)
+)
+
+(
+   'lightthefuse'
+   (
+      'name'
+      "Light the Fuse"
+   )
+   (
+      'artist'
+      "Slydigs"
+   )
+   ('master' 1)
+   (
+      'song'
+      ('name' 'songs/lightthefuse/lightthefuse')
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1)
+            )
+            (
+               'bass'
+               (2)
+            )
+            (
+               'guitar'
+               (3 4)
+            )
+            (
+               'vocals'
+               (5 6)
+            )
+         )
+      )
+      ('vocal_parts' 2)
+      (
+         'pans'
+         (-1.0 1.0 0.0 -1.0 1.0 -1.0 1.0 -1.0 1.0)
+      )
+      (
+         'vols'
+         (-1.5 -1.5 -1.5 -1.5 -1.5 -2.0 -2.0 -1.5 -1.5)
+      )
+      (
+         'cores'
+         (-1 -1 -1 1 1 -1 -1 -1 -1)
+      )
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+      ('midi_file' 'songs/lightthefuse/lightthefuse.mid')
+   )
+   ('song_scroll_speed' 2300)
+   ('bank' 'sfx/tambourine_bank.milo')
+   ('anim_tempo' 32)
+   ('song_length' 246373)
+   ('preview' 67862 97862)
+   (
+      'rank'
+      ('vocals' 147)
+      ('bass' 145)
+      ('guitar' 233)
+      ('drum' 308)
+      ('band' 218)
+   )
+   ('genre' 'rock')
+   ('vocal_gender' 'male')
+   ('version' 0)
+   ('format' 4)
+   ('album_art' 1)
+   ('year_released' 2015)
+   ('rating' 2)
+   ('sub_genre' 'subgenre_rock')
+   ('song_id' 5043)
+   ('tuning_offset_cents' 0.0)
+   ('game_origin' 'rb4')
+   (
+      'album_name'
+      "Light the Fuse"
+   )
+   ('album_track_number' 1)
+   ('context' 2000)
+   ('decade' 'the10s')
+   ('downloaded' 'TRUE')
+   ('base_points' 0)
+   ('vocal_tonic_note' 11)
+)
+
+(
+   'noonelikeyou'
+   (
+      'name'
+      "No One Like You"
+   )
+   (
+      'artist'
+      "Scorpions"
+   )
+   ('master' 1)
+   (
+      'song'
+      ('name' 'songs/noonelikeyou/noonelikeyou')
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1)
+            )
+            (
+               'bass'
+               (2 3)
+            )
+            (
+               'guitar'
+               (4 5)
+            )
+            (
+               'vocals'
+               (6 7)
+            )
+         )
+      )
+      ('vocal_parts' 3)
+      (
+         'pans'
+         (-1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0)
+      )
+      (
+         'vols'
+         (-3.5 -3.5 -3.5 -3.5 -3.5 -3.5 -3.5 -3.5 -3.5 -3.5)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 1 1 -1 -1 -1 -1)
+      )
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+      ('midi_file' 'songs/noonelikeyou/noonelikeyou.mid')
+   )
+   ('song_scroll_speed' 2300)
+   ('bank' 'sfx/tambourine_bank.milo')
+   ('anim_tempo' 32)
+   ('song_length' 250343)
+   ('preview' 160086 190086)
+   (
+      'rank'
+      ('vocals' 131)
+      ('bass' 135)
+      ('guitar' 365)
+      ('drum' 136)
+      ('band' 231)
+   )
+   ('genre' 'metal')
+   ('vocal_gender' 'male')
+   ('version' 0)
+   ('format' 4)
+   ('album_art' 1)
+   ('year_released' 2011)
+   ('rating' 2)
+   ('sub_genre' 'subgenre_metal')
+   ('song_id' 5033)
+   ('tuning_offset_cents' 0.0)
+   ('game_origin' 'rb4')
+   (
+      'album_name'
+      "Comeblack"
+   )
+   ('album_track_number' 2)
+   ('context' 2000)
+   ('decade' 'the80s')
+   ('downloaded' 'TRUE')
+   ('base_points' 0)
+   ('vocal_tonic_note' 7)
+)
+
+(
+   'thewarrior'
+   (
+      'name'
+      "The Warrior"
+   )
+   (
+      'artist'
+      "Scandal"
+   )
+   ('master' 1)
+   (
+      'song'
+      ('name' 'songs/thewarrior/thewarrior')
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1)
+            )
+            (
+               'bass'
+               (2)
+            )
+            (
+               'guitar'
+               (3 4)
+            )
+            (
+               'vocals'
+               (5 6)
+            )
+         )
+      )
+      (
+         'pans'
+         (-1.0 1.0 0.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -2.5 2.5)
+      )
+      ('crowd_channels' 9 10)
+      (
+         'vols'
+         (-1.7 -1.7 -0.7 -1.7 -1.7 -1.7 -1.7 -1.7 -1.7 -3.2 -3.2)
+      )
+      (
+         'cores'
+         (-1 -1 -1 1 1 -1 -1 -1 -1 -1 -1)
+      )
+      ('vocal_parts' 3)
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+      ('midi_file' 'songs/thewarrior/thewarrior.mid')
+   )
+   ('song_scroll_speed' 2300)
+   ('bank' 'sfx/tambourine_bank.milo')
+   ('anim_tempo' 32)
+   ('song_length' 249534)
+   ('preview' 54310 84310)
+   (
+      'rank'
+      ('vocals' 233)
+      ('bass' 140)
+      ('guitar' 149)
+      ('drum' 172)
+      ('band' 164)
+   )
+   ('genre' 'rock')
+   ('vocal_gender' 'female')
+   ('version' 0)
+   ('format' 4)
+   ('album_art' 1)
+   ('year_released' 1984)
+   ('rating' 1)
+   ('sub_genre' 'subgenre_rock')
+   ('song_id' 5029)
+   ('tuning_offset_cents' 0.0)
+   ('game_origin' 'rb4')
+   (
+      'album_name'
+      "Warrior"
+   )
+   ('album_track_number' 1)
+   ('context' 2000)
+   ('decade' 'the80s')
+   ('downloaded' 'TRUE')
+   ('base_points' 0)
+   ('vocal_tonic_note' 2)
+)
+
+(
+   'apassagetobangkok'
+   (
+      'name'
+      "A Passage to Bangkok"
+   )
+   (
+      'artist'
+      "Rush"
+   )
+   ('master' 1)
+   (
+      'song'
+      ('name' 'songs/apassagetobangkok/apassagetobangkok')
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1)
+            )
+            (
+               'bass'
+               (2 3)
+            )
+            (
+               'guitar'
+               (4 5)
+            )
+            (
+               'vocals'
+               (6 7)
+            )
+         )
+      )
+      (
+         'pans'
+         (-1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0)
+      )
+      (
+         'vols'
+         (-4.0 -4.0 -4.0 -4.0 -4.0 -4.0 -4.5 -4.5 -4.0 -4.0)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 1 1 -1 -1 -1 -1)
+      )
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+      ('midi_file' 'songs/apassagetobangkok/apassagetobangkok.mid')
+   )
+   ('song_scroll_speed' 2300)
+   ('bank' 'sfx/tambourine_bank.milo')
+   ('anim_tempo' 16)
+   ('song_length' 215656)
+   ('preview' 94782 124782)
+   (
+      'rank'
+      ('vocals' 402)
+      ('bass' 436)
+      ('guitar' 288)
+      ('drum' 238)
+      ('band' 291)
+   )
+   ('genre' 'prog')
+   ('vocal_gender' 'male')
+   ('version' 0)
+   ('format' 4)
+   ('album_art' 1)
+   ('year_released' 1976)
+   ('rating' 2)
+   ('sub_genre' 'subgenre_prog')
+   ('song_id' 5025)
+   ('tuning_offset_cents' 0.0)
+   ('game_origin' 'rb4')
+   (
+      'album_name'
+      "2112"
+   )
+   ('album_track_number' 4)
+   ('context' 2000)
+   ('decade' 'the70s')
+   ('downloaded' 'TRUE')
+   ('base_points' 0)
+   ('vocal_tonic_note' 4)
+)
+
+(
+   'rockandrollhoochiekoo'
+   (
+      'name'
+      "Rock and Roll, Hoochie Koo"
+   )
+   (
+      'artist'
+      "Rick Derringer"
+   )
+   ('master' 1)
+   (
+      'song'
+      ('name' 'songs/rockandrollhoochiekoo/rockandrollhoochiekoo')
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1)
+            )
+            (
+               'bass'
+               (2)
+            )
+            (
+               'guitar'
+               (3 4)
+            )
+            (
+               'vocals'
+               (5 6)
+            )
+         )
+      )
+      ('vocal_parts' 3)
+      ('crowd_channels' 9 10)
+      (
+         'pans'
+         (-1.0 1.0 0.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -2.5 2.5)
+      )
+      (
+         'vols'
+         (-1.0 -1.0 -0.5 -1.0 -1.0 -1.0 -1.0 -1.0 -1.0 -2.0 -2.0)
+      )
+      (
+         'cores'
+         (-1 -1 -1 1 1 -1 -1 -1 -1 -1 -1)
+      )
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+      ('midi_file' 'songs/rockandrollhoochiekoo/rockandrollhoochiekoo.mid')
+   )
+   ('song_scroll_speed' 2300)
+   ('bank' 'sfx/tambourine_bank.milo')
+   ('anim_tempo' 32)
+   ('song_length' 227132)
+   ('preview' 36097 66097)
+   (
+      'rank'
+      ('vocals' 448)
+      ('bass' 486)
+      ('guitar' 430)
+      ('drum' 367)
+      ('band' 441)
+   )
+   ('genre' 'classicrock')
+   ('vocal_gender' 'male')
+   ('version' 0)
+   ('format' 4)
+   ('album_art' 1)
+   ('year_released' 1973)
+   ('rating' 2)
+   ('sub_genre' 'subgenre_classicrock')
+   ('song_id' 5018)
+   ('tuning_offset_cents' 0.0)
+   ('game_origin' 'rb4')
+   (
+      'album_name'
+      "All American Boy"
+   )
+   ('album_track_number' 1)
+   ('context' 2000)
+   ('decade' 'the70s')
+   ('downloaded' 'TRUE')
+   ('base_points' 0)
+   ('vocal_tonic_note' 9)
+)
+
+(
+   'theoneilove'
+   (
+      'name'
+      "The One I Love"
+   )
+   (
+      'artist'
+      "R.E.M."
+   )
+   ('master' 1)
+   (
+      'song'
+      ('name' 'songs/theoneilove/theoneilove')
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1)
+            )
+            (
+               'bass'
+               (2)
+            )
+            (
+               'guitar'
+               (3 4)
+            )
+            (
+               'vocals'
+               (5 6)
+            )
+         )
+      )
+      ('vocal_parts' 3)
+      (
+         'pans'
+         (-1.0 1.0 0.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0)
+      )
+      (
+         'vols'
+         (-2.0 -2.0 -1.0 -2.0 -2.0 -2.0 -2.0 -2.0 -2.0 -3.0 -3.0)
+      )
+      (
+         'cores'
+         (-1 -1 -1 1 1 -1 -1 -1 -1 -1 -1)
+      )
+      ('crowd_channels' 9 10)
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+      ('midi_file' 'songs/theoneilove/theoneilove.mid')
+   )
+   ('song_scroll_speed' 2300)
+   ('bank' 'sfx/tambourine_bank.milo')
+   ('anim_tempo' 32)
+   ('song_length' 200874)
+   ('preview' 16819 46819)
+   (
+      'rank'
+      ('vocals' 117)
+      ('bass' 134)
+      ('guitar' 138)
+      ('drum' 150)
+      ('band' 132)
+   )
+   ('genre' 'alternative')
+   ('vocal_gender' 'male')
+   ('version' 1)
+   ('format' 3)
+   ('album_art' 1)
+   ('year_released' 1987)
+   ('rating' 2)
+   ('sub_genre' 'subgenre_alternative')
+   ('song_id' 5039)
+   ('tuning_offset_cents' 0.0)
+   ('game_origin' 'rb4')
+   (
+      'album_name'
+      "Document"
+   )
+   ('album_track_number' 7)
+   ('context' 2000)
+   ('decade' 'the80s')
+   ('downloaded' 'TRUE')
+   ('base_points' 0)
+   ('vocal_tonic_note' 4)
+)
+
+(
+   'mygodisthesun'
+   (
+      'name'
+      "My God is the Sun"
+   )
+   (
+      'artist'
+      "Queens of the Stone Age"
+   )
+   ('master' 1)
+   (
+      'song'
+      ('name' 'songs/mygodisthesun/mygodisthesun')
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1)
+            )
+            (
+               'bass'
+               (2)
+            )
+            (
+               'guitar'
+               (3 4)
+            )
+            (
+               'vocals'
+               (5 6)
+            )
+         )
+      )
+      ('vocal_parts' 2)
+      (
+         'pans'
+         (-1.0 1.0 0.0 -1.0 1.0 -1.0 1.0 -1.0 1.0)
+      )
+      (
+         'vols'
+         (-4.0 -4.0 -3.5 -4.5 -4.5 -4.5 -4.5 -5.0 -5.0)
+      )
+      (
+         'cores'
+         (-1 -1 -1 1 1 -1 -1 -1 -1)
+      )
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+      ('midi_file' 'songs/mygodisthesun/mygodisthesun.mid')
+   )
+   ('song_scroll_speed' 2300)
+   ('bank' 'sfx/tambourine_bank.milo')
+   ('anim_tempo' 64)
+   ('song_length' 224240)
+   ('preview' 52764 82764)
+   (
+      'rank'
+      ('band' 275)
+      ('guitar' 252)
+      ('bass' 363)
+      ('drum' 389)
+      ('vocals' 303)
+   )
+   ('genre' 'alternative')
+   ('vocal_gender' 'male')
+   ('version' 0)
+   ('format' 4)
+   ('album_art' 1)
+   ('year_released' 2013)
+   ('rating' 1)
+   ('sub_genre' 'subgenre_alternative')
+   ('song_id' 380990074)
+   ('tuning_offset_cents' 0.0)
+   ('game_origin' 'rb4')
+   (
+      'album_name'
+      "...Like Clockwork"
+   )
+   ('album_track_number' 5)
+   (
+      'video_venues'
+      ('video_03')
+   )
+   ('context' 2000)
+   ('decade' 'the10s')
+   ('downloaded' 'TRUE')
+   ('base_points' 0)
+   ('vocal_tonic_note' 4)
+)
+
+(
+   'stillintoyou'
+   (
+      'name'
+      "Still Into You"
+   )
+   (
+      'artist'
+      "Paramore"
+   )
+   ('master' 1)
+   (
+      'song'
+      ('name' 'songs/stillintoyou/stillintoyou')
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1)
+            )
+            (
+               'bass'
+               (2)
+            )
+            (
+               'guitar'
+               (3 4)
+            )
+            (
+               'vocals'
+               (5 6)
+            )
+         )
+      )
+      (
+         'pans'
+         (-1.0 1.0 0.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -2.5 2.5)
+      )
+      (
+         'vols'
+         (-2.0 -2.0 -1.5 -2.0 -2.0 -2.0 -2.0 -2.0 -2.0 -0.0 -0.0)
+      )
+      (
+         'cores'
+         (-1 -1 -1 1 1 -1 -1 -1 -1 -1 -1)
+      )
+      ('crowd_channels' 9 10)
+      ('vocal_parts' 2)
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+      ('midi_file' 'songs/stillintoyou/stillintoyou.mid')
+   )
+   ('song_scroll_speed' 2300)
+   ('bank' 'sfx/tambourine_bank.milo')
+   ('anim_tempo' 32)
+   ('song_length' 212645)
+   ('preview' 42352 72352)
+   (
+      'rank'
+      ('vocals' 427)
+      ('drum' 241)
+      ('bass' 372)
+      ('guitar' 172)
+      ('band' 279)
+   )
+   ('genre' 'poprock')
+   ('vocal_gender' 'female')
+   ('version' 0)
+   ('format' 4)
+   ('album_art' 1)
+   ('year_released' 2013)
+   ('rating' 1)
+   ('sub_genre' 'subgenre_other')
+   ('song_id' 5034)
+   ('tuning_offset_cents' 0.0)
+   ('game_origin' 'rb4')
+   (
+      'album_name'
+      "Paramore"
+   )
+   ('album_track_number' 9)
+   ('context' 2000)
+   ('decade' 'the10s')
+   (
+      'video_venues'
+      ('video_04')
+   )
+   ('downloaded' 'TRUE')
+   ('base_points' 0)
+   ('vocal_tonic_note' 5)
+)
+
+(
+   'miracleman'
+   (
+      'name'
+      "Miracle Man"
+   )
+   (
+      'artist'
+      "Ozzy Osbourne"
+   )
+   ('master' 1)
+   (
+      'song'
+      ('name' 'songs/miracleman/miracleman')
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1)
+            )
+            (
+               'bass'
+               (2)
+            )
+            (
+               'guitar'
+               (3 4)
+            )
+            (
+               'vocals'
+               (5 6)
+            )
+         )
+      )
+      ('vocal_parts' 2)
+      (
+         'pans'
+         (-1.0 1.0 0.0 -1.0 1.0 -1.0 1.0 -1.0 1.0)
+      )
+      (
+         'vols'
+         (-2.0 -2.0 -1.0 -2.0 -2.0 -2.0 -2.0 -2.0 -2.0)
+      )
+      (
+         'cores'
+         (-1 -1 -1 1 1 -1 -1 -1 -1)
+      )
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+      ('midi_file' 'songs/miracleman/miracleman.mid')
+   )
+   ('song_scroll_speed' 2300)
+   ('bank' 'sfx/tambourine_bank.milo')
+   ('anim_tempo' 32)
+   ('song_length' 228843)
+   ('preview' 25439 55439)
+   (
+      'rank'
+      ('vocals' 158)
+      ('bass' 428)
+      ('guitar' 408)
+      ('drum' 460)
+      ('band' 345)
+   )
+   ('genre' 'metal')
+   ('vocal_gender' 'male')
+   ('version' 0)
+   ('format' 4)
+   ('album_art' 1)
+   ('year_released' 1988)
+   ('rating' 2)
+   ('sub_genre' 'subgenre_metal')
+   ('song_id' 5059)
+   ('tuning_offset_cents' 0.0)
+   ('game_origin' 'rb4')
+   (
+      'album_name'
+      "No Rest for the Wicked"
+   )
+   ('album_track_number' 1)
+   ('context' 2000)
+   ('decade' 'the80s')
+   ('downloaded' 'TRUE')
+   ('base_points' 0)
+   ('vocal_tonic_note' 5)
+)
+
+(
+   'thewolf'
+   (
+      'name'
+      "The Wolf"
+   )
+   (
+      'artist'
+      "Mumford & Sons"
+   )
+   ('master' 1)
+   (
+      'song'
+      ('name' 'songs/thewolf/thewolf')
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1)
+            )
+            (
+               'bass'
+               (2)
+            )
+            (
+               'guitar'
+               (3 4)
+            )
+            (
+               'vocals'
+               (5 6)
+            )
+         )
+      )
+      ('vocal_parts' 3)
+      ('crowd_channels' 9 10)
+      (
+         'pans'
+         (-1.0 1.0 0.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -2.5 2.5)
+      )
+      (
+         'vols'
+         (-4.0 -4.0 -5.0 -4.0 -4.0 -4.0 -4.0 -4.0 -4.0 -3.0 -3.0)
+      )
+      (
+         'cores'
+         (-1 -1 -1 1 1 -1 -1 -1 -1 -1 -1)
+      )
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+      ('midi_file' 'songs/thewolf/thewolf.mid')
+   )
+   ('song_scroll_speed' 2300)
+   ('bank' 'sfx/tambourine_bank.milo')
+   ('anim_tempo' 64)
+   ('song_length' 221175)
+   ('preview' 46960 76960)
+   (
+      'rank'
+      ('vocals' 169)
+      ('bass' 197)
+      ('guitar' 125)
+      ('drum' 264)
+      ('band' 171)
+   )
+   ('genre' 'rock')
+   ('vocal_gender' 'male')
+   ('version' 0)
+   ('format' 4)
+   ('album_art' 1)
+   ('year_released' 2015)
+   ('rating' 2)
+   ('sub_genre' 'subgenre_rock')
+   ('song_id' 5044)
+   ('tuning_offset_cents' 0.0)
+   ('game_origin' 'rb4')
+   (
+      'album_name'
+      "Wilder Mind"
+   )
+   ('album_track_number' 3)
+   ('context' 2000)
+   ('decade' 'the10s')
+   ('downloaded' 'TRUE')
+   ('base_points' 0)
+   ('vocal_tonic_note' 2)
+)
+
+(
+   'uptownfunk'
+   (
+      'name'
+      "Uptown Funk (ft. Bruno Mars)"
+   )
+   (
+      'artist'
+      "Mark Ronson"
+   )
+   ('master' 1)
+   (
+      'song'
+      ('name' 'songs/uptownfunk/uptownfunk')
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1)
+            )
+            (
+               'bass'
+               (2)
+            )
+            (
+               'guitar'
+               (3 4)
+            )
+            (
+               'vocals'
+               (5 6)
+            )
+         )
+      )
+      (
+         'pans'
+         (-1.0 1.0 0.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -2.5 2.5)
+      )
+      (
+         'vols'
+         (-1.0 -1.0 -1.5 -2.0 -2.0 0.0 0.0 -1.0 -1.0 -3.5 -3.5)
+      )
+      ('crowd_channels' 9 10)
+      ('vocal_parts' 3)
+      (
+         'cores'
+         (-1 -1 -1 1 1 -1 -1 -1 -1 -1 -1)
+      )
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+      ('midi_file' 'songs/uptownfunk/uptownfunk.mid')
+   )
+   ('song_scroll_speed' 2300)
+   ('bank' 'sfx/tambourine_bank.milo')
+   ('anim_tempo' 32)
+   ('song_length' 275472)
+   ('preview' 18782 48782)
+   (
+      'rank'
+      ('vocals' 462)
+      ('bass' 250)
+      ('guitar' 154)
+      ('drum' 157)
+      ('band' 243)
+   )
+   ('genre' 'rbsoulfunk')
+   ('vocal_gender' 'male')
+   ('version' 0)
+   ('format' 4)
+   ('album_art' 1)
+   ('year_released' 2015)
+   ('rating' 2)
+   ('sub_genre' 'subgenre_other')
+   ('song_id' 5021)
+   ('tuning_offset_cents' 0.0)
+   ('game_origin' 'rb4')
+   (
+      'album_name'
+      "Uptown Special"
+   )
+   ('album_track_number' 4)
+   ('decade' 'the10s')
+   ('downloaded' 'TRUE')
+   ('base_points' 0)
+   ('vocal_tonic_note' 2)
+)
+
+(
+   'thatsmell'
+   (
+      'name'
+      "That Smell"
+   )
+   (
+      'artist'
+      "Lynyrd Skynyrd"
+   )
+   ('master' 1)
+   (
+      'song'
+      ('name' 'songs/thatsmell/thatsmell')
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1)
+            )
+            (
+               'bass'
+               (2)
+            )
+            (
+               'guitar'
+               (3 4)
+            )
+            (
+               'vocals'
+               (5 6)
+            )
+         )
+      )
+      (
+         'pans'
+         (-1.0 1.0 0.0 -1.0 1.0 -1.0 1.0 -1.0 1.0)
+      )
+      (
+         'vols'
+         (-1.5 -1.5 -0.0 -0.5 -1.5 -1.5 -1.5 -1.5 -1.5)
+      )
+      (
+         'cores'
+         (-1 -1 -1 1 1 -1 -1 -1 -1)
+      )
+      ('vocal_parts' 3)
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+      ('midi_file' 'songs/thatsmell/thatsmell.mid')
+   )
+   ('song_scroll_speed' 2300)
+   ('bank' 'sfx/tambourine_bank.milo')
+   ('anim_tempo' 32)
+   ('song_length' 347552)
+   ('preview' 41775 71775)
+   (
+      'rank'
+      ('vocals' 455)
+      ('bass' 411)
+      ('guitar' 417)
+      ('drum' 242)
+      ('band' 409)
+   )
+   ('genre' 'southernrock')
+   ('vocal_gender' 'male')
+   ('version' 0)
+   ('format' 4)
+   ('album_art' 1)
+   ('year_released' 1977)
+   ('rating' 3)
+   ('sub_genre' 'subgenre_southernrock')
+   ('song_id' 5014)
+   ('tuning_offset_cents' 19)
+   ('game_origin' 'rb4')
+   (
+      'album_name'
+      "Street Survivors"
+   )
+   ('album_track_number' 2)
+   ('context' 2000)
+   ('decade' 'the70s')
+   ('downloaded' 'TRUE')
+   ('base_points' 0)
+   ('vocal_tonic_note' 9)
+)
+
+(
+   'turnitaround'
+   (
+      'name'
+      "Turn It Around"
+   )
+   (
+      'artist'
+      "Lucius"
+   )
+   ('master' 1)
+   (
+      'song'
+      ('name' 'songs/turnitaround/turnitaround')
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1)
+            )
+            (
+               'bass'
+               (2 3)
+            )
+            (
+               'guitar'
+               (4 5)
+            )
+            (
+               'vocals'
+               (6 7)
+            )
+         )
+      )
+      ('vocal_parts' 3)
+      ('crowd_channels' 10 11)
+      (
+         'pans'
+         (-1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -2.5 2.5)
+      )
+      (
+         'vols'
+         (-3.0 -3.0 -6.0 -6.0 -5.0 -5.0 -3.0 -3.0 -6.0 -6.0 -3.0 -3.0)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 1 1 -1 -1 -1 -1 -1 -1)
+      )
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+      ('midi_file' 'songs/turnitaround/turnitaround.mid')
+   )
+   ('song_scroll_speed' 2300)
+   ('bank' 'sfx/tambourine_bank.milo')
+   ('anim_tempo' 32)
+   ('song_length' 215304)
+   ('preview' 35616 65616)
+   (
+      'rank'
+      ('vocals' 330)
+      ('bass' 319)
+      ('guitar' 133)
+      ('drum' 160)
+      ('band' 208)
+   )
+   ('genre' 'indierock')
+   ('vocal_gender' 'female')
+   ('version' 0)
+   ('format' 4)
+   ('album_art' 1)
+   ('year_released' 2013)
+   ('rating' 2)
+   ('sub_genre' 'subgenre_indierock')
+   ('song_id' 5049)
+   ('tuning_offset_cents' 0.0)
+   ('game_origin' 'rb4')
+   (
+      'album_name'
+      "Wildewoman"
+   )
+   ('album_track_number' 2)
+   ('context' 2000)
+   ('decade' 'the10s')
+   ('downloaded' 'TRUE')
+   ('base_points' 0)
+   ('vocal_tonic_note' 2)
+)
+
+(
+   'alloveryou'
+   (
+      'name'
+      "All Over You"
+   )
+   (
+      'artist'
+      "Live"
+   )
+   ('master' 1)
+   (
+      'song'
+      ('name' 'songs/alloveryou/alloveryou')
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1)
+            )
+            (
+               'bass'
+               (2 3)
+            )
+            (
+               'guitar'
+               (4 5)
+            )
+            (
+               'vocals'
+               (6 7)
+            )
+         )
+      )
+      (
+         'pans'
+         (-1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 0.0)
+      )
+      (
+         'vols'
+         (-0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -1.0)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 1 1 -1 -1 -1)
+      )
+      ('vocal_parts' 2)
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+      ('midi_file' 'songs/alloveryou/alloveryou.mid')
+   )
+   ('song_scroll_speed' 2300)
+   ('bank' 'sfx/tambourine_bank.milo')
+   ('anim_tempo' 32)
+   ('song_length' 242948)
+   ('preview' 42738 72738)
+   (
+      'rank'
+      ('vocals' 278)
+      ('bass' 258)
+      ('guitar' 210)
+      ('drum' 297)
+      ('band' 264)
+   )
+   ('genre' 'alternative')
+   ('vocal_gender' 'male')
+   ('version' 0)
+   ('format' 4)
+   ('album_art' 1)
+   ('year_released' 1994)
+   ('rating' 2)
+   ('sub_genre' 'subgenre_alternative')
+   ('song_id' 5057)
+   ('tuning_offset_cents' 0.0)
+   ('game_origin' 'rb4')
+   (
+      'album_name'
+      "Throwing Copper"
+   )
+   ('album_track_number' 7)
+   ('context' 2000)
+   ('decade' 'the90s')
+   ('downloaded' 'TRUE')
+   ('base_points' 0)
+   ('vocal_tonic_note' 1)
+)
+
+(
+   'littlewhitechurch'
+   (
+      'name'
+      "Little White Church"
+   )
+   (
+      'artist'
+      "Little Big Town"
+   )
+   ('master' 1)
+   (
+      'song'
+      ('name' 'songs/littlewhitechurch/littlewhitechurch')
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1)
+            )
+            (
+               'bass'
+               (2)
+            )
+            (
+               'guitar'
+               (3 4)
+            )
+            (
+               'vocals'
+               (5 6)
+            )
+         )
+      )
+      ('vocal_parts' 3)
+      ('crowd_channels' 9 10)
+      (
+         'pans'
+         (-1.0 1.0 0.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -2.5 2.5)
+      )
+      (
+         'vols'
+         (-4.0 -4.0 -5.0 -4.0 -4.0 -4.0 -4.0 -4.0 -4.0 -4.0 -4.0)
+      )
+      (
+         'cores'
+         (-1 -1 -1 1 1 -1 -1 -1 -1 -1 -1)
+      )
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+      ('midi_file' 'songs/littlewhitechurch/littlewhitechurch.mid')
+   )
+   ('song_scroll_speed' 2300)
+   ('bank' 'sfx/tambourine_bank.milo')
+   ('anim_tempo' 32)
+   ('song_length' 190648)
+   ('preview' 71215 101215)
+   (
+      'rank'
+      ('vocals' 225)
+      ('bass' 180)
+      ('guitar' 175)
+      ('drum' 108)
+      ('band' 148)
+   )
+   ('genre' 'country')
+   ('vocal_gender' 'female')
+   ('version' 0)
+   ('format' 4)
+   ('album_art' 1)
+   ('year_released' 2010)
+   ('rating' 2)
+   ('sub_genre' 'subgenre_country')
+   ('song_id' 5013)
+   ('tuning_offset_cents' 0.0)
+   ('game_origin' 'rb4')
+   (
+      'album_name'
+      "The Reason Why"
+   )
+   ('album_track_number' 6)
+   ('context' 2000)
+   ('decade' 'the10s')
+   ('downloaded' 'TRUE')
+   ('base_points' 0)
+   ('vocal_tonic_note' 5)
+)
+
+(
+   'dreamgenie'
+   (
+      'name'
+      "Dream Genie"
+   )
+   (
+      'artist'
+      "Lightning Bolt"
+   )
+   ('master' 1)
+   (
+      'song'
+      ('name' 'songs/dreamgenie/dreamgenie')
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1)
+            )
+            (
+               'bass'
+               (2 3)
+            )
+            (
+               'guitar'
+               (4 5)
+            )
+            (
+               'vocals'
+               (6 7)
+            )
+         )
+      )
+      (
+         'pans'
+         (-1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 0.0)
+      )
+      (
+         'vols'
+         (-1.0 -1.0 -4.5 -4.5 -4.5 -4.5 -3.0 -3.0 -4.0)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 1 1 -1 -1 -1)
+      )
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+      ('midi_file' 'songs/dreamgenie/dreamgenie.mid')
+   )
+   ('song_scroll_speed' 2300)
+   ('bank' 'sfx/tambourine_bank.milo')
+   ('anim_tempo' 64)
+   ('song_length' 386302)
+   ('preview' 57381 87382)
+   (
+      'rank'
+      ('vocals' 441)
+      ('drum' 500)
+      ('bass' 480)
+      ('guitar' 422)
+      ('band' 474)
+   )
+   ('genre' 'rock')
+   ('vocal_gender' 'male')
+   ('version' 0)
+   ('format' 4)
+   ('album_art' 1)
+   ('year_released' 2015)
+   ('rating' 2)
+   ('sub_genre' 'subgenre_other')
+   ('song_id' 5068)
+   ('tuning_offset_cents' 0.0)
+   ('game_origin' 'rb4')
+   (
+      'album_name'
+      "Fantasy Empire"
+   )
+   ('album_track_number' 7)
+   ('context' 2000)
+   ('decade' 'the10s')
+   ('downloaded' 'TRUE')
+   ('base_points' 0)
+   ('vocal_tonic_note' 2)
+)
+
+(
+   'hallsofvalhalla'
+   (
+      'name'
+      "Halls of Valhalla"
+   )
+   (
+      'artist'
+      "Judas Priest"
+   )
+   ('master' 1)
+   (
+      'song'
+      ('name' 'songs/hallsofvalhalla/hallsofvalhalla')
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1)
+            )
+            (
+               'bass'
+               (2)
+            )
+            (
+               'guitar'
+               (3 4)
+            )
+            (
+               'vocals'
+               (5 6)
+            )
+         )
+      )
+      ('vocal_parts' 3)
+      (
+         'pans'
+         (-1.0 1.0 0.0 -1.0 1.0 -1.0 1.0 -1.0 1.0)
+      )
+      (
+         'vols'
+         (-1.0 -1.0 -2.0 -1.0 -1.0 -1.0 -1.0 -1.0 -1.0)
+      )
+      (
+         'cores'
+         (-1 -1 -1 1 1 -1 -1 -1 -1)
+      )
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+      ('midi_file' 'songs/hallsofvalhalla/hallsofvalhalla.mid')
+   )
+   ('song_scroll_speed' 2300)
+   ('bank' 'sfx/cowbell_bank.milo')
+   ('anim_tempo' 16)
+   ('song_length' 361126)
+   ('preview' 109153 139153)
+   (
+      'rank'
+      ('vocals' 434)
+      ('bass' 419)
+      ('guitar' 445)
+      ('drum' 330)
+      ('band' 425)
+   )
+   ('genre' 'metal')
+   ('vocal_gender' 'male')
+   ('version' 0)
+   ('format' 4)
+   ('album_art' 1)
+   ('year_released' 2014)
+   ('rating' 2)
+   ('sub_genre' 'subgenre_metal')
+   ('song_id' 5009)
+   ('tuning_offset_cents' 0.0)
+   ('game_origin' 'rb4')
+   (
+      'album_name'
+      "Redeemer of Souls"
+   )
+   ('album_track_number' 3)
+   ('context' 2000)
+   ('decade' 'the10s')
+   ('downloaded' 'TRUE')
+   ('base_points' 0)
+   ('vocal_tonic_note' 3)
+)
+
+(
+   'coldclearlight'
+   (
+      'name'
+      "Cold Clear Light"
+   )
+   (
+      'artist'
+      "Johnny Blazes and The Pretty Boys"
+   )
+   ('master' 1)
+   (
+      'song'
+      ('name' 'songs/coldclearlight/coldclearlight')
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1)
+            )
+            (
+               'bass'
+               (2)
+            )
+            (
+               'guitar'
+               (3 4)
+            )
+            (
+               'vocals'
+               (5 6)
+            )
+         )
+      )
+      ('vocal_parts' 3)
+      (
+         'pans'
+         (-1.0 1.0 0.0 -1.0 1.0 -1.0 1.0 -1.0 1.0)
+      )
+      (
+         'vols'
+         (-3.0 -3.0 -2.0 -3.0 -3.0 -3.0 -3.0 -3.0 -3.0)
+      )
+      (
+         'cores'
+         (-1 -1 -1 1 1 -1 -1 -1 -1)
+      )
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+      ('midi_file' 'songs/coldclearlight/coldclearlight.mid')
+   )
+   ('song_scroll_speed' 2300)
+   ('bank' 'sfx/tambourine_bank.milo')
+   ('anim_tempo' 16)
+   ('song_length' 277017)
+   ('preview' 81587 111587)
+   (
+      'rank'
+      ('vocals' 469)
+      ('bass' 214)
+      ('guitar' 295)
+      ('drum' 166)
+      ('band' 277)
+   )
+   ('genre' 'rbsoulfunk')
+   ('vocal_gender' 'male')
+   ('version' 0)
+   ('format' 4)
+   ('album_art' 1)
+   ('year_released' 2015)
+   ('rating' 2)
+   ('sub_genre' 'subgenre_funk')
+   ('song_id' 5063)
+   ('tuning_offset_cents' 0.0)
+   ('game_origin' 'rb4')
+   (
+      'album_name'
+      "Soul Vernacular"
+   )
+   ('album_track_number' 1)
+   ('context' 2000)
+   ('decade' 'the10s')
+   ('downloaded' 'TRUE')
+   ('base_points' 0)
+   ('vocal_tonic_note' 9)
+)
+
+(
+   'recession'
+   (
+      'name'
+      "Recession (ft. Noelle LeBlanc and Naoko Takamoto)"
+   )
+   (
+      'artist'
+      "Jeff Allen"
+   )
+   ('master' 1)
+   (
+      'song'
+      ('name' 'songs/recession/recession')
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1)
+            )
+            (
+               'bass'
+               (2 3)
+            )
+            (
+               'guitar'
+               (4 5)
+            )
+            (
+               'vocals'
+               (6 7)
+            )
+         )
+      )
+      (
+         'pans'
+         (-1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0)
+      )
+      (
+         'vols'
+         (-1.7 -1.7 -1.7 -1.7 -1.7 -1.7 -2.7 -2.7 -2.7 -2.7)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 1 1 -1 -1 -1 -1)
+      )
+      ('vocal_parts' 3)
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+      ('midi_file' 'songs/recession/recession.mid')
+   )
+   ('song_scroll_speed' 2300)
+   ('bank' 'sfx/tambourine_bank.milo')
+   ('anim_tempo' 32)
+   ('song_length' 228968)
+   ('preview' 59006 89007)
+   (
+      'rank'
+      ('band' 393)
+      ('guitar' 357)
+      ('bass' 460)
+      ('drum' 472)
+      ('vocals' 287)
+   )
+   ('genre' 'other')
+   ('vocal_gender' 'female')
+   ('version' 0)
+   ('format' 4)
+   ('album_art' 1)
+   ('year_released' 2015)
+   ('rating' 1)
+   ('sub_genre' 'subgenre_electronica')
+   ('song_id' 5001)
+   ('tuning_offset_cents' 0.0)
+   ('game_origin' 'rb4')
+   (
+      'album_name'
+      "As featured in Amplitude"
+   )
+   ('album_track_number' 1)
+   ('context' 2000)
+   ('decade' 'the10s')
+   ('downloaded' 'TRUE')
+   ('base_points' 0)
+   ('vocal_tonic_note' 6)
+)
+
+(
+   'lazaretto'
+   (
+      'name'
+      "Lazaretto"
+   )
+   (
+      'artist'
+      "Jack White"
+   )
+   ('master' 1)
+   (
+      'song'
+      ('name' 'songs/lazaretto/lazaretto')
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1)
+            )
+            (
+               'bass'
+               (2 3)
+            )
+            (
+               'guitar'
+               (4 5)
+            )
+            (
+               'vocals'
+               (6 7)
+            )
+         )
+      )
+      ('vocal_parts' 2)
+      (
+         'pans'
+         (-1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0)
+      )
+      (
+         'vols'
+         (-2.0 -2.0 -2.0 -2.0 -2.0 -2.0 -2.0 -2.0 -2.0 -2.0)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 1 1 -1 -1 -1 -1)
+      )
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+      ('midi_file' 'songs/lazaretto/lazaretto.mid')
+   )
+   ('song_scroll_speed' 2300)
+   ('bank' 'sfx/tambourine_bank.milo')
+   ('anim_tempo' 16)
+   ('song_length' 222943)
+   ('preview' 35087 65087)
+   (
+      'rank'
+      ('vocals' 217)
+      ('bass' 395)
+      ('guitar' 281)
+      ('drum' 319)
+      ('band' 296)
+   )
+   ('genre' 'rock')
+   ('vocal_gender' 'male')
+   ('version' 0)
+   ('format' 4)
+   ('album_art' 1)
+   ('year_released' 2014)
+   ('rating' 2)
+   ('sub_genre' 'subgenre_rock')
+   ('song_id' 5017)
+   ('tuning_offset_cents' 0.0)
+   ('game_origin' 'rb4')
+   (
+      'album_name'
+      "Lazaretto"
+   )
+   ('album_track_number' 2)
+   ('context' 2000)
+   ('decade' 'the10s')
+   ('downloaded' 'TRUE')
+   ('base_points' 0)
+   ('vocal_tonic_note' 6)
+)
+
+(
+   'ibetmylife'
+   (
+      'name'
+      "I Bet My Life"
+   )
+   (
+      'artist'
+      "Imagine Dragons"
+   )
+   ('master' 1)
+   (
+      'song'
+      ('name' 'songs/ibetmylife/ibetmylife')
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1)
+            )
+            (
+               'bass'
+               (2 3)
+            )
+            (
+               'guitar'
+               (4 5)
+            )
+            (
+               'vocals'
+               (6 7)
+            )
+         )
+      )
+      ('vocal_parts' 3)
+      ('crowd_channels' 10 11)
+      (
+         'pans'
+         (-1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -2.5 2.5)
+      )
+      (
+         'vols'
+         (-1.0 -1.0 -1.0 -1.0 -1.0 -1.0 -1.0 -1.0 -1.0 -1.0 -0.5 -0.5)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 1 1 -1 -1 -1 -1 -1 -1)
+      )
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+      ('midi_file' 'songs/ibetmylife/ibetmylife.mid')
+   )
+   ('song_scroll_speed' 2300)
+   ('bank' 'sfx/tambourine_bank.milo')
+   ('anim_tempo' 32)
+   ('song_length' 196663)
+   ('preview' 49999 79999)
+   (
+      'rank'
+      ('vocals' 426)
+      ('bass' 100)
+      ('guitar' 260)
+      ('drum' 148)
+      ('band' 214)
+   )
+   ('genre' 'alternative')
+   ('vocal_gender' 'male')
+   ('version' 0)
+   ('format' 4)
+   ('album_art' 1)
+   ('year_released' 2015)
+   ('rating' 2)
+   ('sub_genre' 'subgenre_alternative')
+   ('song_id' 5003)
+   ('tuning_offset_cents' 0.0)
+   ('game_origin' 'rb4')
+   (
+      'album_name'
+      "Smoke + Mirrors"
+   )
+   ('album_track_number' 5)
+   ('context' 2000)
+   ('decade' 'the10s')
+   ('downloaded' 'TRUE')
+   ('base_points' 0)
+   ('vocal_tonic_note' 1)
+)
+
+(
+   'iamelectric'
+   (
+      'name'
+      "I Am Electric"
+   )
+   (
+      'artist'
+      "Heaven's Basement"
+   )
+   ('master' 1)
+   (
+      'song'
+      ('name' 'songs/iamelectric/iamelectric')
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1)
+            )
+            (
+               'bass'
+               (2)
+            )
+            (
+               'guitar'
+               (3 4)
+            )
+            (
+               'vocals'
+               (5 6)
+            )
+         )
+      )
+      ('vocal_parts' 2)
+      (
+         'pans'
+         (-1.0 1.0 0.0 -1.0 1.0 -1.0 1.0 -1.0 1.0)
+      )
+      (
+         'vols'
+         (-4.0 -4.0 -5.0 -4.0 -4.0 -5.0 -5.0 -4.0 -4.0)
+      )
+      (
+         'cores'
+         (-1 -1 -1 1 1 -1 -1 -1 -1)
+      )
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+      ('midi_file' 'songs/iamelectric/iamelectric.mid')
+   )
+   ('song_scroll_speed' 2300)
+   ('bank' 'sfx/tambourine_bank.milo')
+   ('anim_tempo' 64)
+   ('song_length' 184508)
+   ('preview' 21156 51156)
+   (
+      'rank'
+      ('vocals' 132)
+      ('bass' 191)
+      ('guitar' 168)
+      ('drum' 452)
+      ('band' 242)
+   )
+   ('genre' 'rock')
+   ('vocal_gender' 'male')
+   ('version' 0)
+   ('format' 4)
+   ('album_art' 1)
+   ('year_released' 2013)
+   ('rating' 3)
+   ('sub_genre' 'subgenre_rock')
+   ('song_id' 5053)
+   ('tuning_offset_cents' 0.0)
+   ('game_origin' 'rb4')
+   (
+      'album_name'
+      "Filthy Empire"
+   )
+   ('album_track_number' 5)
+   ('context' 2000)
+   ('decade' 'the10s')
+   ('downloaded' 'TRUE')
+   ('base_points' 0)
+   ('vocal_tonic_note' 5)
+)
+
+(
+   'kickitout'
+   (
+      'name'
+      "Kick It Out"
+   )
+   (
+      'artist'
+      "Heart"
+   )
+   ('master' 1)
+   (
+      'song'
+      ('name' 'songs/kickitout/kickitout')
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1)
+            )
+            (
+               'bass'
+               (2)
+            )
+            (
+               'guitar'
+               (3 4)
+            )
+            (
+               'vocals'
+               (5 6)
+            )
+         )
+      )
+      ('vocal_parts' 2)
+      (
+         'pans'
+         (-1.0 1.0 0.0 -1.0 1.0 -1.0 1.0 -1.0 1.0)
+      )
+      (
+         'vols'
+         (-3.5 -3.5 -1.5 -3.5 -3.5 -3.5 -3.5 -3.5 -3.5)
+      )
+      (
+         'cores'
+         (-1 -1 -1 1 1 -1 -1 -1 -1)
+      )
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+      ('midi_file' 'songs/kickitout/kickitout.mid')
+   )
+   ('song_scroll_speed' 2300)
+   ('bank' 'sfx/tambourine_bank.milo')
+   ('anim_tempo' 64)
+   ('song_length' 165385)
+   ('preview' 34931 64931)
+   (
+      'rank'
+      ('vocals' 417)
+      ('bass' 328)
+      ('guitar' 266)
+      ('drum' 275)
+      ('band' 320)
+   )
+   ('genre' 'classicrock')
+   ('vocal_gender' 'female')
+   ('version' 0)
+   ('format' 4)
+   ('album_art' 1)
+   ('year_released' 1977)
+   ('rating' 2)
+   ('sub_genre' 'subgenre_classicrock')
+   ('song_id' 5032)
+   ('tuning_offset_cents' 0.0)
+   ('game_origin' 'rb4')
+   (
+      'album_name'
+      "Little Queen"
+   )
+   ('album_track_number' 5)
+   ('context' 2000)
+   ('decade' 'the70s')
+   ('downloaded' 'TRUE')
+   ('base_points' 0)
+   ('vocal_tonic_note' 9)
+)
+
+(
+   'imissthemisery'
+   (
+      'name'
+      "I Miss the Misery"
+   )
+   (
+      'artist'
+      "Halestorm"
+   )
+   ('master' 1)
+   (
+      'song'
+      ('name' 'songs/imissthemisery/imissthemisery')
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1)
+            )
+            (
+               'bass'
+               (2)
+            )
+            (
+               'guitar'
+               (3 4)
+            )
+            (
+               'vocals'
+               (5 6)
+            )
+         )
+      )
+      ('vocal_parts' 3)
+      ('crowd_channels' 9 10)
+      (
+         'pans'
+         (-1.0 1.0 0.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -2.5 2.5)
+      )
+      (
+         'vols'
+         (-4.0 -4.0 -3.0 -5.0 -5.0 -4.0 -4.0 -5.0 -5.0 -2.0 -2.0)
+      )
+      (
+         'cores'
+         (-1 -1 -1 1 1 -1 -1 -1 -1 -1 -1)
+      )
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+      ('midi_file' 'songs/imissthemisery/imissthemisery.mid')
+   )
+   ('song_scroll_speed' 2300)
+   ('bank' 'sfx/tambourine_bank.milo')
+   ('anim_tempo' 16)
+   ('song_length' 188778)
+   ('preview' 42439 72439)
+   (
+      'rank'
+      ('vocals' 352)
+      ('bass' 292)
+      ('guitar' 215)
+      ('drum' 232)
+      ('band' 266)
+   )
+   ('genre' 'rock')
+   ('vocal_gender' 'female')
+   ('version' 0)
+   ('format' 4)
+   ('album_art' 1)
+   ('year_released' 2012)
+   ('rating' 2)
+   ('sub_genre' 'subgenre_rock')
+   ('song_id' 5047)
+   ('tuning_offset_cents' 0.0)
+   ('game_origin' 'rb4')
+   (
+      'album_name'
+      "The Strange Case Of..."
+   )
+   ('album_track_number' 3)
+   ('context' 2000)
+   ('decade' 'the10s')
+   ('downloaded' 'TRUE')
+   ('base_points' 0)
+   ('vocal_tonic_note' 9)
+)
+
+(
+   'tonguetied'
+   (
+      'name'
+      "Tongue Tied"
+   )
+   (
+      'artist'
+      "Grouplove"
+   )
+   ('master' 1)
+   (
+      'song'
+      ('name' 'songs/tonguetied/tonguetied')
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1)
+            )
+            (
+               'bass'
+               (2 3)
+            )
+            (
+               'guitar'
+               (4 5)
+            )
+            (
+               'vocals'
+               (6 7)
+            )
+         )
+      )
+      ('vocal_parts' 3)
+      (
+         'pans'
+         (-1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0)
+      )
+      (
+         'vols'
+         (-4.5 -4.5 -5.5 -5.5 -4.5 -4.5 -4.5 -4.5 -4.5 -4.5)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 1 1 -1 -1 -1 -1)
+      )
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+      ('midi_file' 'songs/tonguetied/tonguetied.mid')
+   )
+   ('song_scroll_speed' 2300)
+   ('bank' 'sfx/tambourine_bank.milo')
+   ('anim_tempo' 32)
+   ('song_length' 220883)
+   ('preview' 49645 79645)
+   (
+      'rank'
+      ('vocals' 153)
+      ('bass' 208)
+      ('guitar' 139)
+      ('drum' 400)
+      ('band' 257)
+   )
+   ('genre' 'indierock')
+   ('vocal_gender' 'male')
+   ('version' 0)
+   ('format' 4)
+   ('album_art' 1)
+   ('year_released' 2011)
+   ('rating' 2)
+   ('sub_genre' 'subgenre_indierock')
+   ('song_id' 5069)
+   ('tuning_offset_cents' 0.0)
+   ('game_origin' 'rb4')
+   (
+      'album_name'
+      "Never Trust a Happy Song"
+   )
+   ('album_track_number' 2)
+   ('context' 2000)
+   ('decade' 'the10s')
+   ('downloaded' 'TRUE')
+   ('base_points' 0)
+   ('vocal_tonic_note' 3)
+)
+
+(
+   'followyoudown'
+   (
+      'name'
+      "Follow You Down"
+   )
+   (
+      'artist'
+      "Gin Blossoms"
+   )
+   ('master' 1)
+   (
+      'song'
+      ('name' 'songs/followyoudown/followyoudown')
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1)
+            )
+            (
+               'bass'
+               (2)
+            )
+            (
+               'guitar'
+               (3 4)
+            )
+            (
+               'vocals'
+               (5 6)
+            )
+         )
+      )
+      ('vocal_parts' 3)
+      ('crowd_channels' 9 10)
+      (
+         'pans'
+         (-1.0 1.0 0.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -2.5 2.5)
+      )
+      (
+         'vols'
+         (-4.0 -4.0 -5.0 -4.0 -4.0 -4.0 -4.0 -4.0 -4.0 -4.0 -4.0)
+      )
+      (
+         'cores'
+         (-1 -1 -1 1 1 -1 -1 -1 -1 -1 -1)
+      )
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+      ('midi_file' 'songs/followyoudown/followyoudown.mid')
+   )
+   ('song_scroll_speed' 2300)
+   ('bank' 'sfx/tambourine_bank.milo')
+   ('anim_tempo' 64)
+   ('song_length' 270401)
+   ('preview' 53934 83934)
+   (
+      'rank'
+      ('vocals' 142)
+      ('bass' 380)
+      ('guitar' 194)
+      ('drum' 286)
+      ('band' 228)
+   )
+   ('genre' 'alternative')
+   ('vocal_gender' 'male')
+   ('version' 0)
+   ('format' 4)
+   ('album_art' 1)
+   ('year_released' 1996)
+   ('rating' 2)
+   ('sub_genre' 'subgenre_alternative')
+   ('song_id' 5035)
+   ('tuning_offset_cents' 0.0)
+   ('game_origin' 'rb4')
+   (
+      'album_name'
+      "Congratulations I'm Sorry"
+   )
+   ('album_track_number' 3)
+   ('context' 2000)
+   ('decade' 'the90s')
+   ('downloaded' 'TRUE')
+   ('base_points' 0)
+   ('vocal_tonic_note' 7)
+)
+
+(
+   'aintmessinround'
+   (
+      'name'
+      "Ain't Messin 'Round"
+   )
+   (
+      'artist'
+      "Gary Clark Jr."
+   )
+   ('master' 1)
+   (
+      'song'
+      ('name' 'songs/aintmessinround/aintmessinround')
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1)
+            )
+            (
+               'bass'
+               (2 3)
+            )
+            (
+               'guitar'
+               (4 5)
+            )
+            (
+               'vocals'
+               (6 7)
+            )
+         )
+      )
+      (
+         'pans'
+         (-1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0)
+      )
+      (
+         'vols'
+         (-1.5 -1.5 -1.5 -1.5 -1.5 -1.5 -1.5 -1.5 -2.0 -2.0)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 1 1 -1 -1 -1 -1)
+      )
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+      ('midi_file' 'songs/aintmessinround/aintmessinround.mid')
+   )
+   ('song_scroll_speed' 2300)
+   ('bank' 'sfx/tambourine_bank.milo')
+   ('anim_tempo' 32)
+   ('song_length' 247179)
+   ('preview' 43296 73296)
+   (
+      'rank'
+      ('vocals' 410)
+      ('bass' 150)
+      ('guitar' 267)
+      ('drum' 447)
+      ('band' 292)
+   )
+   ('genre' 'rock')
+   ('vocal_gender' 'male')
+   ('version' 0)
+   ('format' 4)
+   ('album_art' 1)
+   ('year_released' 2012)
+   ('rating' 2)
+   ('sub_genre' 'subgenre_rock')
+   ('song_id' 5045)
+   ('tuning_offset_cents' 0.0)
+   ('game_origin' 'rb4')
+   (
+      'album_name'
+      "Blak and Blu"
+   )
+   ('album_track_number' 1)
+   ('context' 2000)
+   ('decade' 'the10s')
+   ('downloaded' 'TRUE')
+   ('base_points' 0)
+   ('vocal_tonic_note' 4)
+)
+
+(
+   'feastandthefamine'
+   (
+      'name'
+      "The Feast and the Famine"
+   )
+   (
+      'artist'
+      "Foo Fighters"
+   )
+   ('master' 1)
+   (
+      'song'
+      ('name' 'songs/feastandthefamine/feastandthefamine')
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1)
+            )
+            (
+               'bass'
+               (2)
+            )
+            (
+               'guitar'
+               (3 4)
+            )
+            (
+               'vocals'
+               (5 6)
+            )
+         )
+      )
+      ('vocal_parts' 3)
+      ('crowd_channels' 9 10)
+      (
+         'pans'
+         (-1.0 1.0 0.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -2.5 2.5)
+      )
+      (
+         'vols'
+         (-3.0 -3.0 -4.0 -3.0 -3.0 -3.0 -3.0 -3.0 -3.0 -5.0 -5.0)
+      )
+      (
+         'cores'
+         (-1 -1 -1 1 1 -1 -1 -1 -1 -1 -1)
+      )
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+      ('midi_file' 'songs/feastandthefamine/feastandthefamine.mid')
+   )
+   ('song_scroll_speed' 2300)
+   ('bank' 'sfx/tambourine_bank.milo')
+   ('anim_tempo' 64)
+   ('song_length' 233147)
+   ('preview' 42925 72925)
+   (
+      'rank'
+      ('vocals' 255)
+      ('bass' 242)
+      ('guitar' 220)
+      ('drum' 344)
+      ('band' 254)
+   )
+   ('genre' 'alternative')
+   ('vocal_gender' 'male')
+   ('version' 0)
+   ('format' 4)
+   ('album_art' 1)
+   ('year_released' 2014)
+   ('rating' 2)
+   ('sub_genre' 'subgenre_alternative')
+   ('song_id' 5020)
+   ('tuning_offset_cents' 0.0)
+   ('game_origin' 'rb4')
+   (
+      'album_name'
+      "Sonic Highways"
+   )
+   ('album_track_number' 2)
+   ('context' 2000)
+   ('decade' 'the10s')
+   ('downloaded' 'TRUE')
+   ('base_points' 0)
+   ('vocal_tonic_note' 11)
+)
+
+(
+   'youmakelovingfun'
+   (
+      'name'
+      "You Make Loving Fun"
+   )
+   (
+      'artist'
+      "Fleetwood Mac"
+   )
+   ('master' 1)
+   (
+      'song'
+      ('name' 'songs/youmakelovingfun/youmakelovingfun')
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1)
+            )
+            (
+               'bass'
+               (2)
+            )
+            (
+               'guitar'
+               (3 4)
+            )
+            (
+               'vocals'
+               (5 6)
+            )
+         )
+      )
+      ('vocal_parts' 3)
+      ('crowd_channels' 9 10)
+      (
+         'pans'
+         (-1.0 1.0 0.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -2.5 2.5)
+      )
+      (
+         'vols'
+         (-1.0 -1.0 -2.5 -0.0 -0.0 -0.0 -0.0 -0.5 -0.5 -1.5 -1.5)
+      )
+      (
+         'cores'
+         (-1 -1 -1 1 1 -1 -1 -1 -1 -1 -1)
+      )
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+      ('midi_file' 'songs/youmakelovingfun/youmakelovingfun.mid')
+   )
+   ('song_scroll_speed' 2300)
+   ('bank' 'sfx/tambourine_bank.milo')
+   ('anim_tempo' 32)
+   ('song_length' 221930)
+   ('preview' 51792 81792)
+   (
+      'rank'
+      ('vocals' 386)
+      ('bass' 220)
+      ('guitar' 176)
+      ('drum' 142)
+      ('band' 195)
+   )
+   ('genre' 'classicrock')
+   ('vocal_gender' 'female')
+   ('version' 0)
+   ('format' 4)
+   ('album_art' 1)
+   ('year_released' 1977)
+   ('rating' 2)
+   ('sub_genre' 'subgenre_rock')
+   ('song_id' 5015)
+   ('tuning_offset_cents' 0.0)
+   ('game_origin' 'rb4')
+   (
+      'album_name'
+      "Rumours"
+   )
+   ('album_track_number' 8)
+   ('context' 2000)
+   ('decade' 'the70s')
+   ('downloaded' 'TRUE')
+   ('base_points' 0)
+   ('vocal_tonic_note' 10)
+)
+
+(
+   'centuries'
+   (
+      'name'
+      "Centuries"
+   )
+   (
+      'artist'
+      "Fall Out Boy"
+   )
+   ('master' 1)
+   (
+      'song'
+      ('name' 'songs/centuries/centuries')
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1)
+            )
+            (
+               'bass'
+               (2)
+            )
+            (
+               'guitar'
+               (3 4)
+            )
+            (
+               'vocals'
+               (5 6)
+            )
+         )
+      )
+      (
+         'pans'
+         (-1.0 1.0 0.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -2.5 2.5)
+      )
+      (
+         'vols'
+         (-2.2 -2.2 -1.7 -2.2 -2.2 -2.2 -2.2 -2.2 -2.2 -5.2 -5.2)
+      )
+      (
+         'cores'
+         (-1 -1 -1 1 1 -1 -1 -1 -1)
+      )
+      ('vocal_parts' 3)
+      ('crowd_channels' 9 10)
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+      ('midi_file' 'songs/centuries/centuries.mid')
+   )
+   ('song_scroll_speed' 2300)
+   ('bank' 'sfx/tambourine_bank.milo')
+   ('anim_tempo' 16)
+   ('song_length' 242783)
+   ('preview' 29347 59347)
+   (
+      'rank'
+      ('vocals' 279)
+      ('bass' 160)
+      ('guitar' 100)
+      ('drum' 123)
+      ('band' 140)
+   )
+   ('genre' 'poprock')
+   ('vocal_gender' 'male')
+   ('version' 0)
+   ('format' 4)
+   ('album_art' 1)
+   ('year_released' 2015)
+   ('rating' 2)
+   ('sub_genre' 'subgenre_softrock')
+   ('song_id' 5030)
+   ('tuning_offset_cents' 0.0)
+   ('game_origin' 'rb4')
+   (
+      'album_name'
+      "American Beauty/American Psycho"
+   )
+   ('album_track_number' 3)
+   ('context' 2000)
+   ('decade' 'the10s')
+   ('downloaded' 'TRUE')
+   ('base_points' 0)
+   ('vocal_tonic_note' 4)
+)
+
+(
+   'suspiciousminds'
+   (
+      'name'
+      "Suspicious Minds"
+   )
+   (
+      'artist'
+      "Elvis Presley"
+   )
+   ('master' 1)
+   (
+      'song'
+      ('name' 'songs/suspiciousminds/suspiciousminds')
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1)
+            )
+            (
+               'bass'
+               (2 3)
+            )
+            (
+               'guitar'
+               (4 5)
+            )
+            (
+               'vocals'
+               (6 7)
+            )
+         )
+      )
+      ('vocal_parts' 3)
+      (
+         'pans'
+         (-1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -2.5 2.5)
+      )
+      (
+         'vols'
+         (-3.0 -3.0 -3.0 -3.0 -3.0 -3.0 -3.0 -3.0 -3.0 -3.0 -6.0 -6.0)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 1 1 -1 -1 -1 -1 -1 -1)
+      )
+      ('crowd_channels' 10 11)
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+      ('midi_file' 'songs/suspiciousminds/suspiciousminds.mid')
+   )
+   ('song_scroll_speed' 2300)
+   ('bank' 'sfx/tambourine_bank.milo')
+   ('anim_tempo' 32)
+   ('song_length' 270930)
+   ('preview' 42109 72111)
+   (
+      'rank'
+      ('band' 248)
+      ('guitar' 316)
+      ('bass' 435)
+      ('drum' 114)
+      ('vocals' 200)
+   )
+   ('genre' 'rock')
+   ('vocal_gender' 'male')
+   ('version' 0)
+   ('format' 4)
+   ('album_art' 1)
+   ('year_released' 1969)
+   ('rating' 1)
+   ('sub_genre' 'subgenre_rock')
+   ('song_id' 5012)
+   ('tuning_offset_cents' 0.0)
+   ('game_origin' 'rb4')
+   (
+      'album_name'
+      "From Elvis in Memphis"
+   )
+   ('album_track_number' 14)
+   ('context' 2000)
+   ('decade' 'the60s')
+   ('downloaded' 'TRUE')
+   ('base_points' 0)
+   ('vocal_tonic_note' 7)
+)
+
+(
+   'albert'
+   (
+      'name'
+      "Albert"
+   )
+   (
+      'artist'
+      "Eddie Japan"
+   )
+   ('master' 1)
+   (
+      'song'
+      ('name' 'songs/albert/albert')
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1)
+            )
+            (
+               'bass'
+               (2)
+            )
+            (
+               'guitar'
+               (3 4)
+            )
+            (
+               'vocals'
+               (5 6)
+            )
+         )
+      )
+      ('vocal_parts' 3)
+      (
+         'pans'
+         (-1.0 1.0 0.0 -1.0 1.0 -1.0 1.0 -1.0 1.0)
+      )
+      (
+         'vols'
+         (-4.0 -4.0 -4.0 -3.7 -3.7 -3.0 -3.0 -4.0 -4.0)
+      )
+      (
+         'cores'
+         (-1 -1 -1 1 1 -1 -1 -1 -1)
+      )
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+      ('midi_file' 'songs/albert/albert.mid')
+   )
+   ('song_scroll_speed' 2300)
+   ('bank' 'sfx/tambourine_bank.milo')
+   ('anim_tempo' 64)
+   ('song_length' 252433)
+   ('preview' 49451 79451)
+   (
+      'rank'
+      ('band' 263)
+      ('guitar' 200)
+      ('bass' 325)
+      ('drum' 422)
+      ('vocals' 163)
+   )
+   ('genre' 'indierock')
+   ('vocal_gender' 'male')
+   ('version' 0)
+   ('format' 4)
+   ('album_art' 1)
+   ('year_released' 2015)
+   ('rating' 1)
+   ('sub_genre' 'subgenre_indierock')
+   ('song_id' 1557880)
+   ('tuning_offset_cents' 0.0)
+   ('game_origin' 'rb4')
+   (
+      'album_name'
+      "Modern Desperation, Pt. II"
+   )
+   ('album_track_number' 1)
+   ('context' 2000)
+   ('decade' 'the10s')
+   ('downloaded' 'TRUE')
+   ('base_points' 0)
+   ('vocal_tonic_note' 7)
+)
+
+(
+   'knockemdown'
+   (
+      'name'
+      "Knock Em Down"
+   )
+   (
+      'artist'
+      "Duck & Cover"
+   )
+   ('master' 1)
+   (
+      'song'
+      ('name' 'songs/knockemdown/knockemdown')
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1)
+            )
+            (
+               'bass'
+               (2)
+            )
+            (
+               'guitar'
+               (3 4)
+            )
+            (
+               'vocals'
+               (5 6)
+            )
+         )
+      )
+      (
+         'pans'
+         (-1.0 1.0 0.0 -1.0 1.0 -1.0 1.0 -1.0 1.0)
+      )
+      (
+         'vols'
+         (-4.0 -4.0 -5.0 -4.5 -4.5 -4.0 -4.0 -4.0 -4.0)
+      )
+      (
+         'cores'
+         (-1 -1 -1 1 1 -1 -1 -1 -1)
+      )
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+      ('midi_file' 'songs/knockemdown/knockemdown.mid')
+   )
+   ('song_scroll_speed' 2300)
+   ('bank' 'sfx/tambourine_bank.milo')
+   ('anim_tempo' 64)
+   ('song_length' 155192)
+   ('preview' 29809 59809)
+   (
+      'rank'
+      ('vocals' 322)
+      ('bass' 310)
+      ('guitar' 302)
+      ('drum' 456)
+      ('band' 344)
+   )
+   ('genre' 'punk')
+   ('vocal_gender' 'male')
+   ('version' 0)
+   ('format' 4)
+   ('album_art' 1)
+   ('year_released' 2014)
+   ('rating' 2)
+   ('sub_genre' 'subgenre_punk')
+   ('song_id' 5042)
+   ('tuning_offset_cents' 0.0)
+   ('game_origin' 'rb4')
+   (
+      'album_name'
+      "Duck & Cover"
+   )
+   ('album_track_number' 8)
+   ('context' 2000)
+   ('decade' 'the10s')
+   ('downloaded' 'TRUE')
+   ('base_points' 0)
+   ('vocal_tonic_note' 11)
+)
+
+(
+   'metropolis'
+   (
+      'name'
+      "Metropolis - Part 1 \qThe Miracle and the Sleeper\q"
+   )
+   (
+      'artist'
+      "Dream Theater"
+   )
+   ('master' 1)
+   (
+      'song'
+      ('name' 'songs/metropolis/metropolis')
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1)
+            )
+            (
+               'bass'
+               (2)
+            )
+            (
+               'guitar'
+               (3 4)
+            )
+            (
+               'vocals'
+               (5 6)
+            )
+         )
+      )
+      ('vocal_parts' 2)
+      (
+         'pans'
+         (-1.0 1.0 0.0 -1.0 1.0 -1.0 1.0 -1.0 1.0)
+      )
+      (
+         'vols'
+         (-0.0 -0.0 -1.0 -0.5 -0.5 -0.0 -0.0 -0.0 -0.0)
+      )
+      (
+         'cores'
+         (-1 -1 -1 1 1 -1 -1 -1 -1)
+      )
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+      ('midi_file' 'songs/metropolis/metropolis.mid')
+   )
+   ('song_scroll_speed' 2300)
+   ('bank' 'sfx/tambourine_bank.milo')
+   ('anim_tempo' 32)
+   ('song_length' 573997)
+   ('preview' 109910 139910)
+   (
+      'rank'
+      ('band' 490)
+      ('guitar' 480)
+      ('bass' 495)
+      ('drum' 480)
+      ('vocals' 478)
+   )
+   ('genre' 'prog')
+   ('vocal_gender' 'male')
+   ('version' 0)
+   ('format' 4)
+   ('album_art' 1)
+   ('year_released' 1992)
+   ('rating' 1)
+   ('song_id' 5016)
+   ('tuning_offset_cents' 0.0)
+   ('game_origin' 'rb4')
+   (
+      'album_name'
+      "Images and Words"
+   )
+   ('album_track_number' 5)
+   ('context' 2000)
+   ('decade' 'the90s')
+   ('downloaded' 'TRUE')
+   ('base_points' 0)
+   ('vocal_tonic_note' 4)
+)
+
+(
+   'prayer'
+   (
+      'name'
+      "Prayer"
+   )
+   (
+      'artist'
+      "Disturbed"
+   )
+   ('master' 1)
+   (
+      'song'
+      ('name' 'songs/prayer/prayer')
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1)
+            )
+            (
+               'bass'
+               (2 3)
+            )
+            (
+               'guitar'
+               (4 5)
+            )
+            (
+               'vocals'
+               (6 7)
+            )
+         )
+      )
+      ('vocal_parts' 3)
+      (
+         'pans'
+         (-1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0)
+      )
+      (
+         'vols'
+         (-2.0 -2.0 -2.0 -2.0 -2.0 -2.0 -2.0 -2.0 -2.0 -2.0)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 1 1 -1 -1 -1 -1)
+      )
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+      ('midi_file' 'songs/prayer/prayer.mid')
+   )
+   ('song_scroll_speed' 2300)
+   ('bank' 'sfx/tambourine_bank.milo')
+   ('anim_tempo' 16)
+   ('song_length' 225406)
+   ('preview' 48530 78530)
+   (
+      'rank'
+      ('vocals' 206)
+      ('bass' 227)
+      ('guitar' 245)
+      ('drum' 433)
+      ('band' 273)
+   )
+   ('genre' 'numetal')
+   ('vocal_gender' 'male')
+   ('version' 0)
+   ('format' 4)
+   ('album_art' 1)
+   ('year_released' 2002)
+   ('rating' 2)
+   ('sub_genre' 'subgenre_numetal')
+   ('song_id' 5008)
+   ('tuning_offset_cents' 0.0)
+   ('game_origin' 'rb4')
+   (
+      'album_name'
+      "Believe"
+   )
+   ('album_track_number' 1)
+   ('context' 2000)
+   ('decade' 'the00s')
+   ('downloaded' 'TRUE')
+   ('base_points' 0)
+   ('vocal_tonic_note' 1)
+)
+
+(
+   'vbomb'
+   (
+      'name'
+      "V-Bomb"
+   )
+   (
+      'artist'
+      "Dark Wheels"
+   )
+   ('master' 1)
+   (
+      'song'
+      ('name' 'songs/vbomb/vbomb')
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1)
+            )
+            (
+               'bass'
+               (2)
+            )
+            (
+               'guitar'
+               (3 4)
+            )
+            (
+               'vocals'
+               (5 6)
+            )
+         )
+      )
+      ('vocal_parts' 3)
+      (
+         'pans'
+         (-1.0 1.0 0.0 -1.0 1.0 -1.0 1.0 -1.0 1.0)
+      )
+      (
+         'vols'
+         (-3.0 -3.0 -2.5 -4.0 -4.0 -5.0 -5.0 -4.0 -4.0)
+      )
+      (
+         'cores'
+         (-1 -1 -1 1 1 -1 -1 -1 -1)
+      )
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+      ('midi_file' 'songs/vbomb/vbomb.mid')
+   )
+   ('song_scroll_speed' 2300)
+   ('bank' 'sfx/tambourine_bank.milo')
+   ('anim_tempo' 32)
+   ('song_length' 277893)
+   ('preview' 33609 63609)
+   (
+      'rank'
+      ('vocals' 126)
+      ('bass' 264)
+      ('guitar' 159)
+      ('drum' 178)
+      ('band' 202)
+   )
+   ('genre' 'rock')
+   ('vocal_gender' 'male')
+   ('version' 0)
+   ('format' 4)
+   ('album_art' 1)
+   ('year_released' 2015)
+   ('rating' 2)
+   ('sub_genre' 'subgenre_rock')
+   ('song_id' 5041)
+   ('tuning_offset_cents' 0.0)
+   ('game_origin' 'rb4')
+   (
+      'album_name'
+      "Mighty Sky"
+   )
+   ('album_track_number' 1)
+   ('context' 2000)
+   ('decade' 'the10s')
+   ('downloaded' 'TRUE')
+   ('base_points' 0)
+   ('vocal_tonic_note' 4)
+)
+
+(
+   'shortskirtlongjacket'
+   (
+      'name'
+      "Short Skirt/Long Jacket"
+   )
+   (
+      'artist'
+      "Cake"
+   )
+   ('master' 1)
+   (
+      'song'
+      ('name' 'songs/shortskirtlongjacket/shortskirtlongjacket')
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1)
+            )
+            (
+               'bass'
+               (2)
+            )
+            (
+               'guitar'
+               (3 4)
+            )
+            (
+               'vocals'
+               (5 6)
+            )
+         )
+      )
+      ('vocal_parts' 3)
+      ('crowd_channels' 9 10)
+      (
+         'pans'
+         (-1.0 1.0 0.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -2.5 2.5)
+      )
+      (
+         'vols'
+         (-3.0 -3.0 -1.5 -3.0 -3.0 -3.0 -3.0 -3.0 -3.0 -4.0 -4.0)
+      )
+      (
+         'cores'
+         (-1 -1 -1 1 1 -1 -1 -1 -1 -1 -1)
+      )
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+      ('midi_file' 'songs/shortskirtlongjacket/shortskirtlongjacket.mid')
+   )
+   ('song_scroll_speed' 2300)
+   ('bank' 'sfx/tambourine_bank.milo')
+   ('anim_tempo' 32)
+   ('song_length' 204021)
+   ('preview' 93869 123869)
+   (
+      'rank'
+      ('vocals' 103)
+      ('bass' 345)
+      ('guitar' 205)
+      ('drum' 133)
+      ('band' 177)
+   )
+   ('genre' 'alternative')
+   ('vocal_gender' 'male')
+   ('version' 0)
+   ('format' 4)
+   ('album_art' 1)
+   ('year_released' 2001)
+   ('rating' 2)
+   ('sub_genre' 'subgenre_alternative')
+   ('song_id' 5028)
+   ('tuning_offset_cents' 0.0)
+   ('game_origin' 'rb4')
+   (
+      'album_name'
+      "Comfort Eagle"
+   )
+   ('album_track_number' 4)
+   ('context' 2000)
+   ('decade' 'the00s')
+   ('downloaded' 'TRUE')
+   ('base_points' 0)
+   ('vocal_tonic_note' 2)
+)
+
+(
+   'mainstreamkid'
+   (
+      'name'
+      "Mainstream Kid"
+   )
+   (
+      'artist'
+      "Brandi Carlile"
+   )
+   ('master' 1)
+   (
+      'song'
+      ('name' 'songs/mainstreamkid/mainstreamkid')
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1)
+            )
+            (
+               'bass'
+               (2)
+            )
+            (
+               'guitar'
+               (3 4)
+            )
+            (
+               'vocals'
+               (5 6)
+            )
+         )
+      )
+      ('vocal_parts' 3)
+      (
+         'pans'
+         (-1.0 1.0 0.0 -1.0 1.0 -1.0 1.0 -1.0 1.0)
+      )
+      (
+         'vols'
+         (-2.5 -2.5 -1.5 -2.5 -2.5 -2.5 -2.5 -2.5 -2.5)
+      )
+      (
+         'cores'
+         (-1 -1 -1 1 1 -1 -1 -1 -1)
+      )
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+      ('midi_file' 'songs/mainstreamkid/mainstreamkid.mid')
+   )
+   ('song_scroll_speed' 2300)
+   ('bank' 'sfx/tambourine_bank.milo')
+   ('anim_tempo' 32)
+   ('song_length' 262753)
+   ('preview' 51747 81747)
+   (
+      'rank'
+      ('vocals' 240)
+      ('bass' 288)
+      ('guitar' 373)
+      ('drum' 175)
+      ('band' 238)
+   )
+   ('genre' 'rock')
+   ('vocal_gender' 'female')
+   ('version' 0)
+   ('format' 4)
+   ('album_art' 1)
+   ('year_released' 2015)
+   ('rating' 2)
+   ('sub_genre' 'subgenre_blues')
+   ('song_id' 5051)
+   ('tuning_offset_cents' 0.0)
+   ('game_origin' 'rb4')
+   (
+      'album_name'
+      "The Firewatcher's Daughter"
+   )
+   ('album_track_number' 4)
+   ('context' 2000)
+   ('decade' 'the10s')
+   ('downloaded' 'TRUE')
+   ('base_points' 0)
+   ('vocal_tonic_note' 9)
+)
+
+(
+   'startaband'
+   (
+      'name'
+      "Start a Band (ft. Keith Urban)"
+   )
+   (
+      'artist'
+      "Brad Paisley"
+   )
+   ('master' 1)
+   (
+      'song'
+      ('name' 'songs/startaband/startaband')
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1)
+            )
+            (
+               'bass'
+               (2)
+            )
+            (
+               'guitar'
+               (3 4)
+            )
+            (
+               'vocals'
+               (5 6)
+            )
+         )
+      )
+      ('vocal_parts' 3)
+      (
+         'pans'
+         (-1.0 1.0 0.0 -1.0 1.0 -1.0 1.0 -1.0 1.0)
+      )
+      (
+         'vols'
+         (-2.5 -2.5 -1.5 -2.5 -2.5 -3.5 -3.5 -2.5 -2.5)
+      )
+      (
+         'cores'
+         (-1 -1 -1 1 1 -1 -1 -1 -1)
+      )
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+      ('midi_file' 'songs/startaband/startaband.mid')
+   )
+   ('song_scroll_speed' 2300)
+   ('bank' 'sfx/tambourine_bank.milo')
+   ('anim_tempo' 32)
+   ('song_length' 304955)
+   ('preview' 53339 83339)
+   (
+      'rank'
+      ('vocals' 379)
+      ('bass' 202)
+      ('guitar' 435)
+      ('drum' 202)
+      ('band' 332)
+   )
+   ('genre' 'country')
+   ('vocal_gender' 'male')
+   ('version' 0)
+   ('format' 4)
+   ('album_art' 1)
+   ('year_released' 2008)
+   ('rating' 2)
+   ('sub_genre' 'subgenre_country')
+   ('song_id' 5036)
+   ('tuning_offset_cents' 0.0)
+   ('game_origin' 'rb4')
+   (
+      'album_name'
+      "Play"
+   )
+   ('album_track_number' 3)
+   ('context' 2000)
+   ('decade' 'the00s')
+   ('downloaded' 'TRUE')
+   ('base_points' 0)
+   ('vocal_tonic_note' 5)
+)
+
+(
+   'violentshiver'
+   (
+      'name'
+      "Violent Shiver"
+   )
+   (
+      'artist'
+      "Benjamin Booker"
+   )
+   ('master' 1)
+   (
+      'song'
+      ('name' 'songs/violentshiver/violentshiver')
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1)
+            )
+            (
+               'bass'
+               (2)
+            )
+            (
+               'guitar'
+               (3 4)
+            )
+            (
+               'vocals'
+               (5 6)
+            )
+         )
+      )
+      ('vocal_parts' 3)
+      (
+         'pans'
+         (-1.0 1.0 0.0 -1.0 1.0 -1.0 1.0 -1.0 1.0)
+      )
+      (
+         'vols'
+         (-1.5 -1.5 -1.5 -2.5 -2.5 -2.0 -2.0 -2.5 -2.5)
+      )
+      (
+         'cores'
+         (-1 -1 -1 1 1 -1 -1 -1 -1)
+      )
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+      ('midi_file' 'songs/violentshiver/violentshiver.mid')
+   )
+   ('song_scroll_speed' 2300)
+   ('bank' 'sfx/tambourine_bank.milo')
+   ('anim_tempo' 64)
+   ('song_length' 171003)
+   ('preview' 48089 78089)
+   (
+      'rank'
+      ('vocals' 394)
+      ('bass' 293)
+      ('guitar' 263)
+      ('drum' 378)
+      ('band' 304)
+   )
+   ('genre' 'rock')
+   ('vocal_gender' 'male')
+   ('version' 0)
+   ('format' 4)
+   ('album_art' 1)
+   ('year_released' 2014)
+   ('rating' 2)
+   ('sub_genre' 'subgenre_rock')
+   ('song_id' 5052)
+   ('tuning_offset_cents' 0.0)
+   ('game_origin' 'rb4')
+   (
+      'album_name'
+      "Benjamin Booker"
+   )
+   ('album_track_number' 1)
+   ('context' 2000)
+   ('decade' 'the10s')
+   ('downloaded' 'TRUE')
+   ('base_points' 0)
+   ('vocal_tonic_note' 1)
+)
+
+(
+   'hailtotheking'
+   (
+      'name'
+      "Hail to the King"
+   )
+   (
+      'artist'
+      "Avenged Sevenfold"
+   )
+   ('master' 1)
+   (
+      'song'
+      ('name' 'songs/hailtotheking/hailtotheking')
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1)
+            )
+            (
+               'bass'
+               (2)
+            )
+            (
+               'guitar'
+               (3 4)
+            )
+            (
+               'vocals'
+               (5 6)
+            )
+         )
+      )
+      (
+         'pans'
+         (-1.0 1.0 0.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -2.5 2.5)
+      )
+      ('vocal_parts' 3)
+      ('crowd_channels' 9 10)
+      (
+         'vols'
+         (-1.0 -1.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -2.0 -2.0)
+      )
+      (
+         'cores'
+         (-1 -1 -1 1 1 -1 -1 -1 -1 -1 -1)
+      )
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+      ('midi_file' 'songs/hailtotheking/hailtotheking.mid')
+   )
+   ('song_scroll_speed' 2300)
+   ('bank' 'sfx/cowbell_bank.milo')
+   ('anim_tempo' 32)
+   ('song_length' 307117)
+   ('preview' 99661 129661)
+   (
+      'rank'
+      ('vocals' 113)
+      ('bass' 120)
+      ('guitar' 440)
+      ('drum' 100)
+      ('band' 286)
+   )
+   ('genre' 'metal')
+   ('vocal_gender' 'male')
+   ('version' 0)
+   ('format' 4)
+   ('album_art' 1)
+   ('year_released' 2013)
+   ('rating' 2)
+   ('sub_genre' 'subgenre_metal')
+   ('song_id' 5019)
+   ('tuning_offset_cents' 0.0)
+   ('game_origin' 'rb4')
+   (
+      'album_name'
+      "Hail to the King"
+   )
+   ('album_track_number' 2)
+   ('context' 2000)
+   ('decade' 'the10s')
+   ('downloaded' 'TRUE')
+   ('base_points' 0)
+   ('vocal_tonic_note' 3)
+)
+
+(
+   'arabella'
+   (
+      'name'
+      "Arabella"
+   )
+   (
+      'artist'
+      "Arctic Monkeys"
+   )
+   ('master' 1)
+   (
+      'song'
+      ('name' 'songs/arabella/arabella')
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1)
+            )
+            (
+               'bass'
+               (2)
+            )
+            (
+               'guitar'
+               (3 4)
+            )
+            (
+               'vocals'
+               (5 6)
+            )
+         )
+      )
+      ('vocal_parts' 3)
+      (
+         'pans'
+         (-1.0 1.0 0.0 -1.0 1.0 -1.0 1.0 -1.0 1.0)
+      )
+      (
+         'vols'
+         (-2.0 -2.0 -3.0 -2.0 -2.0 -2.0 -2.0 -2.0 -2.0)
+      )
+      (
+         'cores'
+         (-1 -1 -1 1 1 -1 -1 -1 -1)
+      )
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+      ('midi_file' 'songs/arabella/arabella.mid')
+   )
+   ('song_scroll_speed' 2300)
+   ('bank' 'sfx/tambourine_bank.milo')
+   ('anim_tempo' 16)
+   ('song_length' 211975)
+   ('preview' 69146 99146)
+   (
+      'rank'
+      ('vocals' 218)
+      ('bass' 388)
+      ('guitar' 164)
+      ('drum' 151)
+      ('band' 215)
+   )
+   ('genre' 'rock')
+   ('vocal_gender' 'male')
+   ('version' 0)
+   ('format' 4)
+   ('album_art' 1)
+   ('year_released' 2013)
+   ('rating' 2)
+   ('sub_genre' 'subgenre_rock')
+   ('song_id' 5038)
+   ('tuning_offset_cents' 0.0)
+   ('game_origin' 'rb4')
+   (
+      'album_name'
+      "AM"
+   )
+   ('album_track_number' 4)
+   ('context' 2000)
+   ('decade' 'the10s')
+   ('downloaded' 'TRUE')
+   ('base_points' 0)
+   ('vocal_tonic_note' 4)
+)
+
+(
+   'toysintheattic'
+   (
+      'name'
+      "Toys in the Attic"
+   )
+   (
+      'artist'
+      "Aerosmith"
+   )
+   ('master' 1)
+   (
+      'song'
+      ('name' 'songs/toysintheattic/toysintheattic')
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1)
+            )
+            (
+               'bass'
+               (2)
+            )
+            (
+               'guitar'
+               (3 4)
+            )
+            (
+               'vocals'
+               (5 6)
+            )
+         )
+      )
+      (
+         'pans'
+         (-1.0 1.0 0.0 -1.0 1.0 -1.0 1.0 -1.0 1.0)
+      )
+      (
+         'vols'
+         (-2.5 -2.5 -1.5 -2.5 -2.5 -2.5 -2.5 -2.5 -2.5)
+      )
+      ('vocal_parts' 3)
+      (
+         'cores'
+         (-1 -1 -1 1 1 -1 -1 -1 -1)
+      )
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+      ('midi_file' 'songs/toysintheattic/toysintheattic.mid')
+   )
+   ('song_scroll_speed' 2300)
+   ('bank' 'sfx/cowbell_bank.milo')
+   ('anim_tempo' 64)
+   ('song_length' 188080)
+   ('preview' 66195 96195)
+   (
+      'rank'
+      ('vocals' 353)
+      ('bass' 448)
+      ('guitar' 381)
+      ('drum' 356)
+      ('band' 361)
+   )
+   ('genre' 'rock')
+   ('vocal_gender' 'male')
+   ('version' 0)
+   ('format' 4)
+   ('album_art' 1)
+   ('year_released' 1975)
+   ('rating' 2)
+   ('sub_genre' 'subgenre_rock')
+   ('song_id' 5070)
+   ('tuning_offset_cents' 0.0)
+   ('game_origin' 'rb4')
+   (
+      'album_name'
+      "Toys in the Attic"
+   )
+   ('album_track_number' 1)
+   ('context' 2000)
+   ('decade' 'the70s')
+   ('downloaded' 'TRUE')
+   ('base_points' 0)
+   ('vocal_tonic_note' 4)
+)
+
+(
+   'whatsup'
+   (
+      'name'
+      "What's Up?"
+   )
+   (
+      'artist'
+      "4 Non Blondes"
+   )
+   ('master' 1)
+   (
+      'song'
+      ('name' 'songs/whatsup/whatsup')
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1)
+            )
+            (
+               'bass'
+               (2)
+            )
+            (
+               'guitar'
+               (3 4)
+            )
+            (
+               'vocals'
+               (5 6)
+            )
+         )
+      )
+      (
+         'pans'
+         (-1.0 1.0 0.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -2.5 2.5)
+      )
+      ('vocal_parts' 2)
+      ('crowd_channels' 9 10)
+      (
+         'vols'
+         (-1.0 -2.0 -0.0 -1.0 -1.0 -1.0 -1.0 -1.0 -1.0 -1.5 -1.5)
+      )
+      (
+         'cores'
+         (-1 -1 -1 1 1 -1 -1 -1 -1 -1 -1)
+      )
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+      ('midi_file' 'songs/whatsup/whatsup.mid')
+   )
+   ('song_scroll_speed' 2300)
+   ('bank' 'sfx/tambourine_bank.milo')
+   ('anim_tempo' 16)
+   ('song_length' 300471)
+   ('preview' 88883 118883)
+   (
+      'rank'
+      ('vocals' 492)
+      ('bass' 116)
+      ('guitar' 120)
+      ('drum' 105)
+      ('band' 156)
+   )
+   ('genre' 'alternative')
+   ('vocal_gender' 'female')
+   ('version' 0)
+   ('format' 4)
+   ('album_art' 1)
+   ('year_released' 1992)
+   ('rating' 1)
+   ('sub_genre' 'subgenre_alternative')
+   ('song_id' 5023)
+   ('tuning_offset_cents' -20)
+   ('game_origin' 'rb4')
+   (
+      'album_name'
+      "Bigger, Better, Faster, More!"
+   )
+   ('album_track_number' 3)
+   ('context' 2000)
+   ('decade' 'the90s')
+   ('downloaded' 'TRUE')
+   ('base_points' 0)
+   ('vocal_tonic_note' 9)
+)
+
+(
+   'caughtupinyou'
+   (
+      'name'
+      "Caught Up in You"
+   )
+   (
+      'artist'
+      ".38 Special"
+   )
+   ('master' 1)
+   (
+      'song'
+      ('name' 'songs/caughtupinyou/caughtupinyou')
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1)
+            )
+            (
+               'bass'
+               (2)
+            )
+            (
+               'guitar'
+               (3 4)
+            )
+            (
+               'vocals'
+               (5 6)
+            )
+         )
+      )
+      (
+         'pans'
+         (-1.0 1.0 0.0 -1.0 1.0 -1.0 1.0 -1.0 1.0)
+      )
+      (
+         'vols'
+         (-1.0 -1.0 -1.0 -1.0 -1.0 -1.0 -1.0 -1.0 -1.0)
+      )
+      (
+         'cores'
+         (-1 -1 -1 1 1 -1 -1 -1 -1)
+      )
+      ('vocal_parts' 2)
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+      ('midi_file' 'songs/caughtupinyou/caughtupinyou.mid')
+   )
+   ('song_scroll_speed' 2300)
+   ('bank' 'sfx/tambourine_bank.milo')
+   ('anim_tempo' 32)
+   ('song_length' 294865)
+   ('preview' 39008 69008)
+   (
+      'rank'
+      ('vocals' 248)
+      ('bass' 170)
+      ('guitar' 431)
+      ('drum' 124)
+      ('band' 260)
+   )
+   ('genre' 'southernrock')
+   ('vocal_gender' 'male')
+   ('version' 0)
+   ('format' 4)
+   ('album_art' 1)
+   ('year_released' 1982)
+   ('rating' 2)
+   ('sub_genre' 'subgenre_southernrock')
+   ('song_id' 5024)
+   ('tuning_offset_cents' 0.0)
+   ('game_origin' 'rb4')
+   (
+      'album_name'
+      "Special Forces"
+   )
+   ('album_track_number' 1)
+   ('context' 2000)
+   ('decade' 'the80s')
+   ('downloaded' 'TRUE')
+   ('base_points' 0)
+   ('vocal_tonic_note' 4)
+)

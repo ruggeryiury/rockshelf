@@ -6,18 +6,11 @@ export interface BuzyLoadScreenSenderObject {
 
 export interface BuzyLoadErrorObject {
   code: 'throwError'
-  errorIndex?: number
-  errorName: string
+  key?: string
   messageValues?: Record<string, string>
-  error: {
-    message: string
-    stack: string | undefined
-    name: string
-    cause: unknown
-  }
 }
 
-export type BuzyLoadOnCompleteActions = 'refreshRB3Stats' | 'resetDeluxeInstallScreenState'
+export type BuzyLoadOnCompleteActions = 'refreshRB3Stats' | 'resetDeluxeInstallScreenState' | 'resetCreateNewPackageScreenState'
 
 export interface BuzyLoadInitObject {
   code: 'init'
@@ -26,7 +19,13 @@ export interface BuzyLoadInitObject {
   onCompleted?: BuzyLoadOnCompleteActions[]
 }
 
-export const sendBuzyLoad = (win: BrowserWindow, func: BuzyLoadScreenSenderObject | BuzyLoadInitObject | BuzyLoadErrorObject): true => {
+export interface BuzyLoadSubtextObject {
+  code: 'subtext'
+  key: string
+  messageValues?: Record<string, string>
+}
+
+export const sendBuzyLoad = (win: BrowserWindow, func: BuzyLoadScreenSenderObject | BuzyLoadInitObject | BuzyLoadErrorObject | BuzyLoadSubtextObject): true => {
   win.webContents.send('sendBuzyLoad', func)
   return true
 }

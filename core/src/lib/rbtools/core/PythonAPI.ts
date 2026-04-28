@@ -370,15 +370,16 @@ export class PythonAPI {
    * @param {FilePathLikeTypes} moggPath The MOGG file path where the tracks will be extracted.
    * @param {RB3CompatibleDTAFile} songdata The parsed song data of the song where the MOGG belongs.
    * @param {DirPathLikeTypes} destFolderPath The destination folder path where the tracks audio files will be created.
+   * @param {boolean} extractCrowd Extracts the crowd audio from the MOGG file. Default is `false`.
    * @returns {Promise<DirPath>}
    */
-  static async moggTrackExtractor(moggPath: FilePathLikeTypes, songdata: RB3CompatibleDTAFile, destFolderPath: DirPathLikeTypes): Promise<DirPath> {
+  static async moggTrackExtractor(moggPath: FilePathLikeTypes, songdata: RB3CompatibleDTAFile, destFolderPath: DirPathLikeTypes, extractCrowd: boolean = false): Promise<DirPath> {
     const mogg = pathLikeToFilePath(moggPath)
     const dest = pathLikeToDirPath(destFolderPath)
     const tracksStr = JSON.stringify(genAudioFileStructure(songdata))
     const tracks = Buffer.from(tracksStr).toString('base64')
     const pythonScript = 'mogg_track_extractor.py'
-    const command = `${PythonAPI.getPythonExecName()} "${pythonScript}" "${mogg.path}" -t "${tracks}" -o "${dest.path}"`
+    const command = `${PythonAPI.getPythonExecName()} "${pythonScript}" "${mogg.path}" -t "${tracks}" -o "${dest.path}"${extractCrowd ? ' -c' : ''}`
     const cwd = is.dev ? RBTools.pyFolder.path : RBTools.pyFolder.path.replace(/(\.asar)([\\/])/, '.asar.unpacked$2')
     const { stderr } = await execAsync(command, { windowsHide: true, cwd })
     if (stderr) throw new Error(stderr)
@@ -488,6 +489,22 @@ export class PythonAPI {
     const cwd = is.dev ? RBTools.pyFolder.path : RBTools.pyFolder.path.replace(/(\.asar)([\\/])/, '.asar.unpacked$2')
     const { stderr } = await execAsync(command, { windowsHide: true, cwd })
     if (stderr) throw new Error(stderr)
+    return dest
+  }
+
+  // #region Rockshelf exclusive
+  static async extractSongAudioSingleTrack(moggFilePath: FilePathLikeTypes, destPath: FilePathLikeTypes, songdata: RB3CompatibleDTAFile) {
+    const mogg = pathLikeToFilePath(moggFilePath)
+    const dest = pathLikeToFilePath(destPath)
+    const tracksStr = JSON.stringify(genAudioFileStructure(songdata))
+    const tracks = Buffer.from(tracksStr).toString('base64')
+    const pythonScript = 'extract_song_audio_from_single_track.py'
+
+    const command = `${PythonAPI.getPythonExecName()} "${pythonScript}" "${mogg.path}" "${dest.path}" --tracks "${tracks}"`
+    const cwd = is.dev ? RBTools.pyFolder.path : RBTools.pyFolder.path.replace(/(\.asar)([\\/])/, '.asar.unpacked$2')
+    const { stderr } = await execAsync(command, { windowsHide: true, cwd })
+    if (stderr) throw new Error(stderr)
+
     return dest
   }
 }

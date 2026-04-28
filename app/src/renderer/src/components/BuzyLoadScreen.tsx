@@ -105,7 +105,16 @@ export function BuzyLoadScreen() {
                     })}
                     className="mt-1 ml-8 origin-top"
                   >
-                    {subtextKey !== null && <p className="text-neutral-500 italic">{t(subtextKey, { ...(subtextValues || {}) })}</p>}
+                    {subtextKey !== null && (
+                      <p className="text-neutral-500 italic">
+                        {t(subtextKey, {
+                          ...(subtextValues || {}),
+                          interpolation: {
+                            escapeValue: false,
+                          },
+                        })}
+                      </p>
+                    )}
                   </AnimatedDiv>
                 </div>
               )

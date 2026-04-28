@@ -112,10 +112,11 @@ export class MOGGFile {
    * - - - -
    * @param {RB3CompatibleDTAFile} songdata The parsed song data of the song where the MOGG belongs.
    * @param {DirPathLikeTypes} destFolderPath The destination folder path where the tracks audio files will be created.
+   * @param {boolean} extractCrowd Extracts the crowd audio from the MOGG file. Default is `false`.
    * @returns {Promise<DirPath>}
    */
-  async extractTracks(songdata: RB3CompatibleDTAFile, destFolderPath: DirPathLikeTypes): Promise<DirPath> {
-    return await PythonAPI.moggTrackExtractor(this.path, songdata, destFolderPath)
+  async extractTracks(songdata: RB3CompatibleDTAFile, destFolderPath: DirPathLikeTypes, extractCrowd: boolean = false): Promise<DirPath> {
+    return await PythonAPI.moggTrackExtractor(this.path, songdata, destFolderPath, extractCrowd)
   }
 
   /**

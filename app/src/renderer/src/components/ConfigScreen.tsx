@@ -32,7 +32,7 @@ export function ConfigScreen() {
 
       <div className="h-full w-full flex-row! overflow-y-auto">
         <div>
-          <div className="group mb-2 rounded-xs p-3 duration-200 last:mb-0 hover:bg-white/5">
+          <div className="group rounded-xs p-2 duration-200 last:mb-0 hover:bg-white/5">
             <h1 className="mb-1 uppercase">{t('changeLang')}</h1>
             <p className="mb-4 text-xs italic">
               <TransComponent i18nKey="changeLangDesc" />
@@ -55,7 +55,7 @@ export function ConfigScreen() {
             </div>
           </div>
 
-          <div className="group mb-2 rounded-xs p-3 duration-200 last:mb-0 hover:bg-white/5">
+          <div className="group rounded-xs p-2 duration-200 last:mb-0 hover:bg-white/5">
             <h1 className="mb-1 uppercase">{t('devhdd0Dir')}</h1>
             <p className="mb-4 text-xs italic">
               <TransComponent i18nKey="devhdd0DirDesc" />
@@ -89,7 +89,7 @@ export function ConfigScreen() {
             </button>
           </div>
 
-          <div className="group mb-2 rounded-xs p-3 duration-200 last:mb-0 hover:bg-white/5">
+          <div className="group rounded-xs p-2 duration-200 last:mb-0 hover:bg-white/5">
             <h1 className="mb-1 uppercase">{t('rpcs3Exe')}</h1>
             <p className="mb-4 text-xs italic">
               <TransComponent i18nKey="rpcs3ExeDesc" />
@@ -122,7 +122,7 @@ export function ConfigScreen() {
             </button>
           </div>
 
-          <div className="group mb-2 rounded-xs p-3 duration-200 last:mb-0 hover:bg-white/5">
+          <div className="group rounded-xs p-2 duration-200 last:mb-0 hover:bg-white/5">
             <h1 className="mb-1 uppercase">{t('changeInstrumentScores')}</h1>
             <p className="mb-4 text-xs italic">
               <TransComponent i18nKey="changeInstrumentScoresDesc" />

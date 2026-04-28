@@ -28,7 +28,7 @@ export function StarsInline({ stars, width }: { stars: number; width?: number })
 export function PackageDetails() {
   const { t } = useTranslation()
   const { selPKG, catalog, setMyPackagesScreenState, catalogSortBy, packageDetailsTab, editPackageName, editPackageEdited } = useMyPackagesScreenState(useShallow((x) => ({ selPKG: x.selPKG, catalog: x.catalog, setMyPackagesScreenState: x.setMyPackagesScreenState, catalogSortBy: x.catalogSortBy, packageDetailsTab: x.packageDetailsTab, editPackageName: x.editPackageName, editPackageEdited: x.editPackageEdited })))
-  const { disableButtons, saveData, packages, instrumentScores, setWindowState, disableImg } = useWindowState(useShallow((x) => ({ disableButtons: x.disableButtons, saveData: x.saveData, packages: x.packages, instrumentScores: x.instrumentScores, setWindowState: x.setWindowState, disableImg: x.disableImg })))
+  const { disableButtons, saveData, packages, rb3Stats, setWindowState, disableImg } = useWindowState(useShallow((x) => ({ disableButtons: x.disableButtons, saveData: x.saveData, packages: x.packages, rb3Stats: x.rb3Stats, setWindowState: x.setWindowState, disableImg: x.disableImg })))
   const { mostPlayedInstrument, setUserConfigState } = useUserConfigState(useShallow((x) => ({ mostPlayedInstrument: x.mostPlayedInstrument, setUserConfigState: x.setUserConfigState })))
   const { setMessageBoxState } = useMessageBoxState(useShallow((x) => ({ setMessageBoxState: x.setMessageBoxState })))
   const { setRBIconsSelectorState } = useRBIconsSelectorState(useShallow((x) => ({ setRBIconsSelectorState: x.setRBIconsSelectorState })))
@@ -315,7 +315,7 @@ export function PackageDetails() {
               <div className="h-full w-full overflow-y-auto">
                 {active.official?.code !== 'rb3' && (
                   <>
-                    <div className="group mb-2 rounded-xs p-3 duration-200 last:mb-0 hover:bg-white/5">
+                    <div className="group rounded-xs p-2 duration-200 last:mb-0 hover:bg-white/5">
                       <h1 className="mb-1 uppercase">{t('packagePath')}</h1>
                       <p className="mb-4 font-mono text-xs italic">{active.path}</p>
                       <div className="flex-row! items-center">
@@ -332,13 +332,21 @@ export function PackageDetails() {
                     </div>
                   </>
                 )}
-                <div className="group mb-2 rounded-xs p-3 duration-200 last:mb-0 hover:bg-white/5">
+                <div className="group rounded-xs p-2 duration-200 last:mb-0 hover:bg-white/5">
                   <h1 className="mb-1 uppercase">{t('packageSize')}</h1>
                   <p className="text-xs italic">{getReadableBytesSize(active.packageSize)}</p>
                 </div>
                 {active.official?.code !== 'rb3' && (
                   <>
-                    <div className="group mb-2 rounded-xs p-3 duration-200 last:mb-0 hover:bg-white/5">
+                    <div className="group rounded-xs p-2 duration-200 last:mb-0 hover:bg-white/5">
+                      <h1 className="mb-1 uppercase">{t('encDecStatus')}</h1>
+                      <p className="text-xs italic">{t(`encDec${uppercaseFirstLetter(active.packageData.encryptionStatus)}`)}</p>
+                      <AnimatedDiv condition={typeof rb3Stats === 'object' && !rb3Stats.hasDeluxe && active.packageData.encryptionStatus === 'decrypted'}>
+                        <div className="h-2 w-full" />
+                        <p className="text-xs text-red-500 italic">{t('decryptedPackageWODeluxeWarningText')}</p>
+                      </AnimatedDiv>
+                    </div>
+                    <div className="group rounded-xs p-2 duration-200 last:mb-0 hover:bg-white/5">
                       <h1 className="mb-1 uppercase">{t('packageHash')}</h1>
                       <p className="mb-4 font-mono text-xs italic">{active.contentsHash}</p>
                       <button
@@ -365,7 +373,7 @@ export function PackageDetails() {
           {packageDetailsTab === PACKAGE_DETAILS_TABS.OPTIONS && (
             <>
               <div className="h-full w-full overflow-y-auto">
-                <div className="group mb-2 rounded-xs p-3 duration-200 last:mb-0 hover:bg-white/5">
+                <div className="group rounded-xs p-2 duration-200 last:mb-0 hover:bg-white/5">
                   <h1 className="mb-1 uppercase">{t('packageName')}</h1>
                   <p className="mb-4 text-xs italic">
                     <TransComponent i18nKey="changePackageNameDesc" />
@@ -373,7 +381,15 @@ export function PackageDetails() {
                   <input className="mb-1 rounded-xs border border-neutral-800 bg-neutral-900 px-1 py-0.5 text-sm! duration-100 last:mb-0 hover:bg-neutral-700 focus:border-white/25 active:bg-neutral-600 disabled:text-neutral-700 disabled:hover:bg-neutral-900" value={editPackageName} onChange={(ev) => setMyPackagesScreenState({ editPackageEdited: true, editPackageName: ev.target.value })} minLength={1} maxLength={64} />
                 </div>
 
-                <div className="group mb-2 rounded-xs p-3 duration-200 last:mb-0 hover:bg-white/5">
+                {/* <div className="group rounded-xs p-2 duration-200 last:mb-0 hover:bg-white/5">
+                  <h1 className="mb-1 uppercase">{t('packageFolderName')}</h1>
+                  <p className="mb-4 text-xs italic">
+                    <TransComponent i18nKey="packageFolderNameDesc" />
+                  </p>
+                  <input className="mb-1 rounded-xs border border-neutral-800 bg-neutral-900 px-1 py-0.5 text-sm! duration-100 last:mb-0 hover:bg-neutral-700 focus:border-white/25 active:bg-neutral-600 disabled:text-neutral-700 disabled:hover:bg-neutral-900" value={packageFolderName} onChange={(ev) => setCreateNewPackageScreenState({ packageFolderName: ev.target.value })} minLength={1} maxLength={64} />
+                </div> */}
+
+                <div className="group rounded-xs p-2 duration-200 last:mb-0 hover:bg-white/5">
                   <h1 className="mb-1 uppercase">{t('packageThumbnail')}</h1>
                   <p className="mb-4 text-xs italic">
                     <TransComponent i18nKey="changePackageThumbnailDesc" />
@@ -438,7 +454,7 @@ export function PackageDetails() {
           {packageDetailsTab === PACKAGE_DETAILS_TABS.FILTERS && (
             <>
               <div className="h-full w-full overflow-y-auto">
-                <div className="group mb-2 rounded-xs p-3 duration-200 last:mb-0 hover:bg-white/5">
+                <div className="group rounded-xs p-2 duration-200 last:mb-0 hover:bg-white/5">
                   <h1 className="mb-1 uppercase">{t('sortBy')}</h1>
                   <p className="mb-4 text-xs italic">{t('sortByDesc')}</p>
                   <div className="flex-row! items-center">
@@ -500,11 +516,12 @@ export function PackageDetails() {
                         setMyPackagesScreenState({ catalogSortBy: 'difficulty', catalog: false })
                       }}
                     >
+                      <img className="mr-1 w-4" src={`instrumenticons://${mostPlayedInstrument}`} />
                       {t('sortByDifficulty')}
                     </button>
                   </div>
                 </div>
-                <div className="group mb-2 rounded-xs p-3 duration-200 last:mb-0 hover:bg-white/5">
+                <div className="group rounded-xs p-2 duration-200 last:mb-0 hover:bg-white/5">
                   <h1 className="mb-1 uppercase">{t('instrument')}</h1>
                   <p className="mb-4 text-xs italic">
                     <TransComponent i18nKey="instrumentDesc" />

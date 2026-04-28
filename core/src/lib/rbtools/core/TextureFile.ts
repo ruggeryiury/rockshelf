@@ -125,7 +125,7 @@ export class TextureFile {
     writer.write(srcHeader.data)
     writer.write(srcContents)
 
-    const base64 = (await PythonAPI.imageBufferProcessor(writer.toBuffer(), 'webp', { height: 256, width: 256 })).toString('base64')
+    const base64 = (await PythonAPI.imageBufferProcessor(writer.toBuffer(), 'webp', { height: srcHeader.height, width: srcHeader.width })).toString('base64')
 
     return `data:image/webp;base64,${base64}`
   }

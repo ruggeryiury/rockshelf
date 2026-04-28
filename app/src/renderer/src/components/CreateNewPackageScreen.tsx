@@ -141,48 +141,6 @@ export function CreateNewPackageScreen() {
             >
               {t('addPackageFiles')}
             </button>
-            <button
-              disabled={disableButtons}
-              className="mr-2 w-fit self-start rounded-xs border border-neutral-700 bg-neutral-900 px-1 py-0.5 text-xs! uppercase duration-100 last:mr-0 hover:bg-neutral-700 active:bg-neutral-600 disabled:text-neutral-700 disabled:hover:bg-neutral-900"
-              onClick={async () => {
-                setWindowState({ disableButtons: true })
-                try {
-                  const newSelectedPKG = await window.api.selectPKGFile()
-                  console.log('struct SelectPKGFileReturnObject [core/src/controllers/selectPKGFile.ts]', newSelectedPKG)
-                  if (newSelectedPKG) {
-                    if (newSelectedPKG.pkgType === 'songPackage') {
-                      setMessageBoxState({ message: { type: 'error', code: 'createNewPackageUseCreationForUnnofficialPackage', timeout: 6000 } })
-                    }
-                    if (newSelectedPKG.pkgType === 'dx') {
-                      setDeluxeInstallScreenState({ active: true, selectedPKG: newSelectedPKG })
-                    }
-                  }
-                  // const selFiles = await window.api.selectPackageFiles(files)
-                  // console.log('struct SelectPackageFilesObject ["core/src/controllers/selectPackageFiles.ts"]:', selFiles)
-
-                  // if (selFiles) {
-                  //   const { selectedFiles, ignoredFiles, duplicatedFiles } = selFiles
-
-                  //   if (ignoredFiles.length === 0 && duplicatedFiles.length === 0) {
-                  //     setMessageBoxState({ message: { type: 'info', code: `selectPackageFilesPackagesAdded${selectedFiles.length === 1 ? '' : 'Plural'}`, messageValues: { selectedFiles: selectedFiles.length } } })
-                  //   } else if (selectedFiles.length > 0 && (ignoredFiles.length > 0 || duplicatedFiles.length > 0)) {
-                  //     if (ignoredFiles.length === selectedFiles.length) setMessageBoxState({ message: { type: 'warn', code: `selectPackageFilesAllIgnored${selectedFiles.length === 1 ? '' : 'Plural'}` } })
-                  //     else if (duplicatedFiles.length === selectedFiles.length) setMessageBoxState({ message: { type: 'warn', code: `selectPackageFilesAllDuplicated${selectedFiles.length === 1 ? '' : 'Plural'}` } })
-                  //     else if (selectedFiles.length === ignoredFiles.length + duplicatedFiles.length) setMessageBoxState({ message: { type: 'warn', code: `selectPackageFilesAllIgnoredOrDuplicated` } })
-                  //     else setMessageBoxState({ message: { type: 'warn', code: `selectPackageFilesSomeIgnoredOrDuplicated`, messageValues: { addedFiles: selectedFiles.length - (ignoredFiles.length + duplicatedFiles.length), ignoredFiles: ignoredFiles.length, duplicatedFiles: duplicatedFiles.length } } })
-                  //   }
-                  //   setCreateNewPackageScreenState((oldState) => {
-                  //     return { files: selFiles.stats, addedSongsCount: oldState.addedSongsCount + selFiles.addedSongsCount, addedStarsCount: oldState.addedStarsCount + selFiles.addedStarsCount }
-                  //   })
-                  // }
-                } catch (err) {
-                  if (err instanceof Error) setWindowState({ err })
-                }
-                setWindowState({ disableButtons: false })
-              }}
-            >
-              {t('installPKGFile')}
-            </button>
           </div>
 
           <div className="h-full w-full overflow-y-auto">
@@ -242,7 +200,7 @@ export function CreateNewPackageScreen() {
       {navIndex === CREATE_NEW_PACKAGE_TABS.OPTIONS && (
         <>
           <div className="h-full w-full overflow-y-auto">
-            <div className="group mb-2 rounded-xs p-3 duration-200 last:mb-0 hover:bg-white/5">
+            <div className="group rounded-xs p-2 duration-200 last:mb-0 hover:bg-white/5">
               <h1 className="mb-1 uppercase">{t('packageName')}</h1>
               <p className="mb-4 text-xs italic">
                 <TransComponent i18nKey="packageNameDesc" />
@@ -250,7 +208,7 @@ export function CreateNewPackageScreen() {
               <input className="mb-1 rounded-xs border border-neutral-800 bg-neutral-900 px-1 py-0.5 text-sm! duration-100 last:mb-0 hover:bg-neutral-700 focus:border-white/25 active:bg-neutral-600 disabled:text-neutral-700 disabled:hover:bg-neutral-900" value={packageName} onChange={(ev) => setCreateNewPackageScreenState({ packageName: ev.target.value })} minLength={1} maxLength={64} />
             </div>
 
-            <div className="group mb-2 rounded-xs p-3 duration-200 last:mb-0 hover:bg-white/5">
+            <div className="group rounded-xs p-2 duration-200 last:mb-0 hover:bg-white/5">
               <h1 className="mb-1 uppercase">{t('packageFolderName')}</h1>
               <p className="mb-4 text-xs italic">
                 <TransComponent i18nKey="packageFolderNameDesc" />
@@ -258,7 +216,7 @@ export function CreateNewPackageScreen() {
               <input className="mb-1 rounded-xs border border-neutral-800 bg-neutral-900 px-1 py-0.5 text-sm! duration-100 last:mb-0 hover:bg-neutral-700 focus:border-white/25 active:bg-neutral-600 disabled:text-neutral-700 disabled:hover:bg-neutral-900" value={packageFolderName} onChange={(ev) => setCreateNewPackageScreenState({ packageFolderName: ev.target.value })} minLength={1} maxLength={64} />
             </div>
 
-            <div className="group mb-2 rounded-xs p-3 duration-200 last:mb-0 hover:bg-white/5">
+            <div className="group rounded-xs p-2 duration-200 last:mb-0 hover:bg-white/5">
               <h1 className="mb-1 uppercase">{t('packageThumbnail')}</h1>
               <p className="mb-4 text-xs italic">
                 <TransComponent i18nKey="changePackageThumbnailDesc" />
@@ -295,7 +253,7 @@ export function CreateNewPackageScreen() {
               </div>
             </div>
 
-            <div className="group mb-2 rounded-xs p-3 duration-200 last:mb-0 hover:bg-white/5">
+            <div className="group rounded-xs p-2 duration-200 last:mb-0 hover:bg-white/5">
               <h1 className="mb-1 uppercase">{t('forceEncDec')}</h1>
               <p className="mb-4 text-xs italic">
                 <TransComponent i18nKey="packageEncryptionDesc" />

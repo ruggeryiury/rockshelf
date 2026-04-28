@@ -1,6 +1,6 @@
 import { shell, type BrowserWindow, type IpcMainInvokeEvent } from 'electron'
 import type { Promisable } from 'type-fest'
-import { deletePackage, deletePackageThumbnails, deleteUserConfigAndRestart, editPackageData, getDTAFilteringFromPackage, getSongArtworkDataURL, installHighMemoryPatch, installPKGFile, playRockBand3, refreshPackagesData, rpcs3GetInstrumentScores, rpcs3GetPackagesData, rpcs3GetRB3Stats, rpcs3GetSaveDataStats, selectAndParseDTAFile, selectDevhdd0Dir, loadImageForCrop, selectPackageFiles, selectPKGFile, selectRPCS3Exe, testUserConfig, cropImageAndSaveToTemp, createNewPackage, testBuzyLoad, getScoresFromGoCentral, extractMultitrackFromSong } from './controllers.exports'
+import { deletePackage, deletePackageThumbnails, deleteUserConfigAndRestart, editPackageData, getDTAFilteringFromPackage, getSongArtworkDataURL, installHighMemoryPatch, installPKGFile, playRockBand3, refreshPackagesData, rpcs3GetInstrumentScores, rpcs3GetPackagesData, rpcs3GetRB3Stats, rpcs3GetSaveDataStats, selectAndParseDTAFile, selectDevhdd0Dir, loadImageForCrop, selectPackageFiles, selectPKGFile, selectRPCS3Exe, testUserConfig, cropImageAndSaveToTemp, createNewPackage, testBuzyLoad, getScoresFromGoCentral, extractMultitrackOrSongAudioFromSong } from './controllers.exports'
 import { openUserDataFolder, readUserConfigFile, saveUserConfigFile, windowClose, windowMaximize, windowMinimize, type UserConfigObject } from './core.exports'
 import { addHandler } from './core/handler'
 
@@ -15,7 +15,7 @@ export const initMainProcessHandlers = (): void => {
     ['deletePackageThumbnails', deletePackageThumbnails],
     ['deleteUserConfigAndRestart', deleteUserConfigAndRestart],
     ['editPackageData', editPackageData],
-    ['extractMultitrackFromSong', extractMultitrackFromSong],
+    ['extractMultitrackOrSongAudioFromSong', extractMultitrackOrSongAudioFromSong],
     ['getDTAFilteringFromPackage', getDTAFilteringFromPackage],
     ['getScoresFromGoCentral', getScoresFromGoCentral],
     ['getSongArtworkDataURL', getSongArtworkDataURL],

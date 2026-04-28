@@ -209,8 +209,8 @@ export function MainScreen() {
                     <h1 className="mb-0.5 text-xs text-gray-400 uppercase">{t('patchVersion')}</h1>
                     <p className="mb-2">{rb3Stats.updateType === 'none' ? t('noPatchInstalled') : rb3Stats.updateType === 'tu5' ? t('tu5') : t('dx')}</p>
                     {rb3Stats.updateType === 'none' && (
-                      <p className="mb-4 text-xs text-neutral-600 italic">
-                        <TransComponent components={{ spanLink: <a className="cursor-pointer underline hover:text-neutral-400 active:text-neutral-300" href={DXNIGHTLYLINK} target="_blank" rel="noreferrer" />, spanLink2: <a className="cursor-pointer underline hover:text-neutral-400 active:text-neutral-300" href={TU5LINK} target="_blank" rel="noreferrer" /> }} i18nKey="noPatchInstalledText" />
+                      <p className="mb-4 text-xs text-yellow-500 italic">
+                        <TransComponent i18nKey="noPatchInstalledText" />
                       </p>
                     )}
 
@@ -259,8 +259,8 @@ export function MainScreen() {
                     )}
 
                     {rb3Stats.hasHighMemoryPatch && rb3Stats.updateType !== 'dx' && (
-                      <p className="mb-4 text-xs text-neutral-600 italic">
-                        <TransComponent components={{ spanLink: <a className="cursor-pointer underline hover:text-neutral-400 active:text-neutral-300" href={DXNIGHTLYLINK} target="_blank" rel="noreferrer" /> }} i18nKey="highMemoryPatchNoEffect" />
+                      <p className="mb-4 text-xs text-red-500 italic">
+                        <TransComponent i18nKey="highMemoryPatchNoEffect" />
                       </p>
                     )}
                   </>

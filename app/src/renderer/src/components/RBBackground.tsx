@@ -26,14 +26,14 @@ export function RBBackground() {
     void start()
   }, [])
   return (
-    <AnimatedSection id="RBBackground" condition={true} className="absolute! z-0 h-full w-full items-center justify-center">
-      {bgs.map((bg, bgI) => {
+    <AnimatedSection id="RBBackground" condition={true} className="absolute! z-0 bg-black h-full w-full items-center justify-center">
+      {/* {bgs.map((bg, bgI) => {
         return (
           <AnimatedDiv key={`rb3bg${bgI}`} {...animate({ opacity: true })} condition={imgIndex === bgI} className="relative! top-0 left-0">
             <img src={bg} className="bg-cover" />
           </AnimatedDiv>
         )
-      })}
+      })} */}
     </AnimatedSection>
   )
 }

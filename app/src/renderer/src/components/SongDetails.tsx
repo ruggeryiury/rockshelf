@@ -13,7 +13,6 @@ import { bandIcon, guitarIcon, bassIcon, drumsIcon, keysIcon, vocalsIcon, proGui
 
 export function DiffIconInline({ diff, width }: { diff: number; width?: number }) {
   const { t, i18n } = useTranslation()
-  console.log(i18n.language)
   return (
     <div className="mr-auto w-22.5 max-w-22.5 flex-row! items-center last:mr-0" title={t(diff === -1 ? 'noPart' : `diff${diff}`)}>
       {diff > -1 && (
@@ -484,17 +483,16 @@ export function SongDetails() {
           {songDetailsTab === SONG_DETAILS_TABS.OPTIONS && (
             <>
               <div className="h-full w-full overflow-y-auto">
-                <div className="group mb-2 rounded-xs p-3 duration-200 last:mb-0 hover:bg-white/5">
+                <div className="group rounded-xs p-2 duration-200 last:mb-0 hover:bg-white/5">
                   <div className="flex-row! items-center">
-                    <h1 className="mr-auto mb-1 uppercase">{t('audioTracks')}</h1>
-                    <p>{songDetails.multitrack === null || songDetails.multitrack === undefined ? 'mtSingleTrack' : `mt${underscoreToUppercaseLetter(songDetails.multitrack, true)}`}</p>
+                    <h1 className="mb-1 uppercase">{t('audioTracks')}</h1>
                   </div>
                   {allTracksCount !== undefined && (
-                    <p className="mb-4 text-xs italic">
-                      <TransComponent i18nKey={allTracksCount === 1 ? 'tracksCount' : 'tracksCountPlural'} values={{ allTracksCount }} />
+                    <p className="mb-1 text-xs italic">
+                      <TransComponent i18nKey={allTracksCount === 1 ? 'tracksCount' : 'tracksCountPlural'} values={{ allTracksCount, multitrack: t(songDetails.multitrack === null || !songDetails.multitrack ? 'mtSingleTrack' : `mt${underscoreToUppercaseLetter(songDetails.multitrack, true)}`) }} />
                     </p>
                   )}
-                  <div className="mb-2 h-8 w-full flex-row! items-center">
+                  <div className="mb-4 h-8 w-full flex-row! items-center">
                     {songDetails.tracks_count[0] > 0 && (
                       <div className="relative! h-full flex-row! rounded-sm border border-transparent duration-200 hover:border-neutral-300" title={t('drums')}>
                         {Array(songDetails.tracks_count[0])
@@ -587,12 +585,7 @@ export function SongDetails() {
                       setWindowState({ disableButtons: true })
                       if (packageDetails) {
                         try {
-                          await window.api.extractMultitrackFromSong(packageDetails.path, songDetails)
-                          // const newPackages = await window.api.editPackageData(selPKG, { packageName: editPackageName })
-                          // console.log('struct RPCS3SongPackagesDataExtra ["rbtools/src/lib/rpcs3/rpcs3GetSongPackagesStatsExtra.ts"]:', newPackages)
-                          // if (newPackages) setWindowState({ packages: newPackages })
-                          // setMyPackagesScreenState({ editPackageEdited: false })
-                          // setMessageBoxState({ message: { type: 'success', code: 'savePackageEditing' } })
+                          await window.api.extractMultitrackOrSongAudioFromSong(packageDetails.path, songDetails)
                         } catch (err) {
                           if (err instanceof Error) setWindowState({ err })
                         }
@@ -600,7 +593,7 @@ export function SongDetails() {
                       setWindowState({ disableButtons: false })
                     }}
                   >
-                    {t('extractTracks')}
+                    {t(!songDetails.multitrack || songDetails.multitrack === null ? 'extractSongAudioTrack' : 'extractTracks')}
                   </button>
                 </div>
               </div>

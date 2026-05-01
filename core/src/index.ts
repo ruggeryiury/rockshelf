@@ -23,39 +23,17 @@ export async function initRockshelfMainProcess(options: CreateWindowOptions): Pr
     let filePath = root.gotoFile(`bin/icons/${name}.webp`)
     if (!filePath.exists) filePath = root.gotoFile(`bin/icons/custom.webp`)
 
-    if (!filePath.exists) return new Response(null)
-
     const fileBuffer = await filePath.read()
 
     return new Response(fileBuffer, { headers: { 'Content-Type': 'image/webp' } })
   })
 
-  protocol.handle('instrumenticons', (request) => {
-    const root = getRockshelfModuleRootDir()
-    const code = request.url.slice('instrumenticons://'.length)
-    const filePath = root.gotoFile(`bin/icons/instrument-icons-${code}.webp`)
-
-    if (!filePath.exists) return new Response(null)
-
-    return net.fetch(pathToFileURL(filePath.path).toString())
-  })
-
-  protocol.handle('instrumenticonscolor', (request) => {
-    const root = getRockshelfModuleRootDir()
-    const code = request.url.slice('instrumenticonscolor://'.length)
-    const filePath = root.gotoFile(`bin/icons/instrument-icons-${code}-color.webp`)
-
-    if (!filePath.exists) return new Response(null)
-
-    return net.fetch(pathToFileURL(filePath.path).toString())
-  })
-
   protocol.handle('rb1packimg', async (request) => {
     const userConfig = await readUserConfigFile()
     if (!userConfig) throw new Error('User config file not found, aborting...')
-    const rb3usrdir = getRB1USRDIR(userConfig.devhdd0Path)
+    const rb1usrdir = getRB1USRDIR(userConfig.devhdd0Path)
     const packageFolderName = decodeURIComponent(request.url.slice('rb1packimg://'.length))
-    const filePath = rb3usrdir.gotoFile(`${packageFolderName}/folder.jpg`)
+    const filePath = rb1usrdir.gotoFile(`${packageFolderName}/folder.jpg`)
 
     if (!filePath.exists) return new Response(null)
 
@@ -86,9 +64,9 @@ export async function initRockshelfMainProcess(options: CreateWindowOptions): Pr
     })
   })
 
-  protocol.handle('rbart', async (request) => {
+  protocol.handle('artworks', async (request) => {
     const root = getRockshelfModuleRootDir()
-    const songShortname = request.url.slice('rbart://'.length)
+    const songShortname = request.url.slice('artworks://'.length)
     const artwork = root.gotoFile(`bin/artworks/${songShortname}_keep.png`)
 
     if (!artwork.exists) return new Response(null)

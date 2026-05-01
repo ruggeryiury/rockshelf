@@ -1,7 +1,7 @@
 import { animate, AnimatedDiv, AnimatedSection, TransComponent } from '@renderer/lib.exports'
 import { useLogoScreenState } from './LogoScreen.state'
 import { useTranslation } from 'react-i18next'
-import { APP_VERSION } from '@renderer/app/rockshelf'
+import { APP_VERSION } from '@renderer/app/rockshelf.globals'
 import { LoadingIcon } from '@renderer/assets/icons'
 import { useShallow } from 'zustand/shallow'
 

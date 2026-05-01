@@ -82,7 +82,7 @@ export interface RPCS3PackageExtractionObjectExtra {
  * @returns {Promise<RPCS3PackageExtractionObjectExtra | false>}
  */
 export const extractPackagesForRPCS3Extra = async (win: BrowserWindow, packages: RB3PackageLikeType[], destFolderPath: DirPathLikeTypes, packageFolderName: string, options?: RPCS3ExtractionOptionsExtra): Promise<RPCS3PackageExtractionObjectExtra | false> => {
-  const { forceEncryption, overwritePackFolder, songs, updates, updateAllSongs } = useDefaultOptions<RPCS3ExtractionOptionsExtra>(
+  const { forceEncryption, songs, updates, updateAllSongs } = useDefaultOptions<RPCS3ExtractionOptionsExtra>(
     {
       forceEncryption: 'disabled',
       overwritePackFolder: true,
@@ -291,7 +291,7 @@ export const extractPackagesForRPCS3Extra = async (win: BrowserWindow, packages:
           const newDevkLic = EDATFile.genDevKLicHash(packageFolderName)
           const newContentID = EDATFile.genContentID(packageFolderName.toUpperCase())
           sendBuzyLoad(win, { code: 'subtext', key: 'encryptingMIDIFileText', messageValues: { name: oldMIDIPath.fullname } })
-          await BinaryAPI.edatToolEncrypt(oldMIDIPath, newContentID, newDevkLic, newMIDIPath)
+          await BinaryAPI.makeNPDataEncrypt(oldMIDIPath, newContentID, newDevkLic, newMIDIPath)
         }
         // MIDI might be encrypted for PKG files
         else if (temp.type === 'pkg') {
@@ -303,7 +303,7 @@ export const extractPackagesForRPCS3Extra = async (win: BrowserWindow, packages:
             sendBuzyLoad(win, { code: 'subtext', key: 'decryptingMIDIFileText', messageValues: { name: oldMIDIPath.fullname } })
             const tempDecEDAT = pathLikeToFilePath(temporaryFile({ extension: 'mid' }))
             const oldDevklic = EDATFile.genDevKLicHash(temp.stat.folderName)
-            await BinaryAPI.edatToolDecrypt(oldMIDIPath, oldDevklic, tempDecEDAT)
+            await BinaryAPI.makeNPDataDecrypt(oldMIDIPath, oldDevklic, tempDecEDAT)
             await tempDecEDAT.move(oldMIDIPath, true)
           }
 
@@ -311,7 +311,7 @@ export const extractPackagesForRPCS3Extra = async (win: BrowserWindow, packages:
             const newDevkLic = EDATFile.genDevKLicHash(packageFolderName)
             const newContentID = EDATFile.genContentID(packageFolderName.toUpperCase())
             sendBuzyLoad(win, { code: 'subtext', key: 'encryptingMIDIFileText', messageValues: { name: oldMIDIPath.fullname } })
-            await BinaryAPI.edatToolEncrypt(oldMIDIPath, newContentID, newDevkLic, newMIDIPath)
+            await BinaryAPI.makeNPDataEncrypt(oldMIDIPath, newContentID, newDevkLic, newMIDIPath)
           } else await oldMIDIPath.move(newMIDIPath)
         }
       }
@@ -336,8 +336,8 @@ export const extractPackagesForRPCS3Extra = async (win: BrowserWindow, packages:
   if (updates.length > 0 || updateAllSongs !== null) parser.applyUpdatesToExistingSongs(true)
 
   parser.sort('ID')
-  parser.patchSongsEncodings()
   parser.patchCores()
+  parser.patchSongsEncodings()
 
   sendBuzyLoad(win, { code: 'incrementStep' })
 

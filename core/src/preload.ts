@@ -2,7 +2,7 @@
 import { ipcRenderer, shell, webUtils, type IpcRenderer, type IpcRendererEvent } from 'electron'
 import type { Promisable } from 'type-fest'
 import type { openUserDataFolder, readUserConfigFile, MessageBoxObject, saveUserConfigFile, UserConfigObject, windowClose, windowMaximize, windowMinimize, BuzyLoadInitObject, BuzyLoadScreenSenderObject, BuzyLoadErrorObject, DialogScreenPromptsTypes, BuzyLoadSubtextObject } from './core.exports'
-import type { deletePackage, deletePackageThumbnails, deleteUserConfigAndRestart, editPackageData, getDTAFilteringFromPackage, getSongArtworkDataURL, installHighMemoryPatch, installPKGFile, playRockBand3, refreshPackagesData, rpcs3GetInstrumentScores, rpcs3GetPackagesData, rpcs3GetRB3Stats, rpcs3GetSaveDataStats, selectAndParseDTAFile, selectDevhdd0Dir, loadImageForCrop, selectPackageFiles, SelectPackageFilesStatsTypes, SelectPKGFileReturnObject, selectPKGFile, selectRPCS3Exe, testUserConfig, cropImageAndSaveToTemp, CropImageAndSaveToTempOptions, createNewPackage, CreateNewPackageOptions, testBuzyLoad, getScoresFromGoCentral, extractMultitrackOrSongAudioFromSong } from './controllers.exports'
+import type { deletePackage, deletePackageThumbnails, deleteUserConfigAndRestart, editPackageData, sortAndFilterSongsFromPackage, getSongArtworkDataURL, installHighMemoryPatch, installPKGFile, playRockBand3, refreshPackagesData, rpcs3GetInstrumentScores, rpcs3GetPackagesData, rpcs3GetRB3Stats, rpcs3GetSaveDataStats, selectAndParseDTAFile, selectDevhdd0Dir, loadImageForCrop, selectPackageFiles, SelectPackageFilesStatsTypes, SelectPKGFileReturnObject, selectPKGFile, selectRPCS3Exe, testUserConfig, cropImageAndSaveToTemp, CropImageAndSaveToTempOptions, createNewPackage, CreateNewPackageOptions, testBuzyLoad, getScoresFromGoCentral, extractMultitrackOrSongAudioFromSong, encDecPackage, EncDecPackageFunctionTypes, verifyPackageEncryptionStatus, extractMIDIFromSong, batchDeleteSongs } from './controllers.exports'
 import type { ParsedRB3SaveData, ScoreDataInstrumentTypes } from 'rockshelf-core/rbtools'
 import type { EditPackageDataOptions, RPCS3SongPackagesObjectExtra } from './lib.exports'
 import type { FatalErrorObject } from './lib/senders/fatalError'
@@ -110,6 +110,7 @@ export const rockshelfAPI = {
    */
   windowMaximize: async (): Promise<ReturnType<typeof windowMaximize>> => await invoke('windowMaximize'),
 
+  batchDeleteSongs: async (pkgIndex: number, songs: string[]): ReturnType<typeof batchDeleteSongs> => await invoke('batchDeleteSongs', pkgIndex, songs),
   createNewPackage: async (options: CreateNewPackageOptions): ReturnType<typeof createNewPackage> => await invoke('createNewPackage', options),
   cropImageAndSaveToTemp: async (options: CropImageAndSaveToTempOptions): ReturnType<typeof cropImageAndSaveToTemp> => await invoke('cropImageAndSaveToTemp', options),
   deletePackage: async (pkgIndex: number): ReturnType<typeof deletePackage> => await invoke('deletePackage', pkgIndex),
@@ -119,14 +120,15 @@ export const rockshelfAPI = {
   discordRPSetUserConfig: async (userConfig: UserConfigObject): Promise<boolean> => await invoke('discordRPSetUserConfig', userConfig),
   discordRPStart: async (): Promise<boolean> => await invoke('discordRPStart'),
   editPackageData: async (pkgIndex: number, options: EditPackageDataOptions): ReturnType<typeof editPackageData> => await invoke('editPackageData', pkgIndex, options),
+  encDecPackage: async (func: EncDecPackageFunctionTypes, pkgIndex: number): ReturnType<typeof encDecPackage> => await invoke('encDecPackage', func, pkgIndex),
+  extractMIDIFromSong: async (packageDetails: RPCS3SongPackagesObjectExtra, song: RB3CompatibleDTAFile): ReturnType<typeof extractMIDIFromSong> => await invoke('extractMIDIFromSong', packageDetails, song),
   extractMultitrackOrSongAudioFromSong: async (packageDetails: RPCS3SongPackagesObjectExtra, song: RB3CompatibleDTAFile): ReturnType<typeof extractMultitrackOrSongAudioFromSong> => await invoke('extractMultitrackOrSongAudioFromSong', packageDetails, song),
-  getDTAFilteringFromPackage: async (selectedIndex: number, type?: DTAFilterTypes, options?: DTAFilterOptions): ReturnType<typeof getDTAFilteringFromPackage> => await invoke('getDTAFilteringFromPackage', selectedIndex, type, options),
   getScoresFromGoCentral: async (songID: number, instrument: ScoreDataInstrumentTypes = 'band'): ReturnType<typeof getScoresFromGoCentral> => await invoke('getScoresFromGoCentral', songID, instrument),
   getSongArtworkDataURL: async (packageDetails: RPCS3SongPackagesObjectExtra, songDetails: RB3CompatibleDTAFile): ReturnType<typeof getSongArtworkDataURL> => await invoke('getSongArtworkDataURL', packageDetails, songDetails),
   installHighMemoryPatch: async (): ReturnType<typeof installHighMemoryPatch> => await invoke('installHighMemoryPatch'),
   installPKGFile: async (selectedPKG: SelectPKGFileReturnObject): ReturnType<typeof installPKGFile> => await invoke('installPKGFile', selectedPKG),
   loadImageForCrop: async (defaultPath?: string): ReturnType<typeof loadImageForCrop> => await invoke('loadImageForCrop', defaultPath),
-  openFolderInExplorer: async (folderPath: string): ReturnType<typeof getDTAFilteringFromPackage> => await invoke('openFolderInExplorer', folderPath),
+  openFolderInExplorer: async (folderPath: string): ReturnType<typeof sortAndFilterSongsFromPackage> => await invoke('openFolderInExplorer', folderPath),
   openUserDataFolder: async (): ReturnType<typeof openUserDataFolder> => await invoke('openUserDataFolder'),
   playRockBand3: async (): ReturnType<typeof playRockBand3> => await invoke('playRockBand3'),
   readUserConfigFile: async (): ReturnType<typeof readUserConfigFile> => await invoke('readUserConfigFile'),
@@ -141,7 +143,9 @@ export const rockshelfAPI = {
   selectPackageFiles: async (files: SelectPackageFilesStatsTypes[]): ReturnType<typeof selectPackageFiles> => await invoke('selectPackageFiles', files),
   selectPKGFile: async (): ReturnType<typeof selectPKGFile> => await invoke('selectPKGFile'),
   selectRPCS3Exe: async (): ReturnType<typeof selectRPCS3Exe> => await invoke('selectRPCS3Exe'),
+  sortAndFilterSongsFromPackage: async (selectedIndex: number, type?: DTAFilterTypes, options?: DTAFilterOptions): ReturnType<typeof sortAndFilterSongsFromPackage> => await invoke('sortAndFilterSongsFromPackage', selectedIndex, type, options),
   testBuzyLoad: async (): ReturnType<typeof testBuzyLoad> => await invoke('testBuzyLoad'),
   testError: async (message?: string): ReturnType<typeof testUserConfig> => await invoke('testError', message),
   testUserConfig: async (): ReturnType<typeof testUserConfig> => await invoke('testUserConfig'),
+  verifyPackageEncryptionStatus: async (packageDetails: RPCS3SongPackagesObjectExtra): ReturnType<typeof verifyPackageEncryptionStatus> => await invoke('verifyPackageEncryptionStatus', packageDetails),
 } as const

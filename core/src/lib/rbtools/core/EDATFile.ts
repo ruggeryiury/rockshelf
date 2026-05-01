@@ -155,20 +155,16 @@ export class EDATFile {
    */
   async decrypt(options: EDATDecryptionOptions): Promise<MIDIFile> {
     const stat = await this.toJSON()
+    console.log(stat)
     if (!stat.isEncrypted) {
       const destPath = options.destPath ? pathLikeToFilePath(options.destPath) : FilePath.of(`${stat.root}/${stat.name}`)
       return new MIDIFile(await this.path.copy(destPath))
     }
-    const { destPath, devKLicHash } = useDefaultOptions(
-      {
-        destPath: FilePath.of(`${stat.root}/${stat.name}`),
-        devKLicHash: stat.devKLicHash ?? '',
-      },
-      options
-    )
-    const dest = pathLikeToFilePath(destPath)
+    const devKLicHash = stat.devKLicHash ?? ''
+    const dest = options.destPath ? pathLikeToFilePath(options.destPath) : FilePath.of(`${stat.root}/${stat.name}`)
+
     dest.changeThisFileExt('.mid')
-    await BinaryAPI.edatToolDecrypt(this.path, devKLicHash, dest)
+    await BinaryAPI.makeNPDataDecrypt(this.path, devKLicHash, dest)
     return new MIDIFile(dest)
   }
 }

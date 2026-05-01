@@ -1,4 +1,4 @@
-import { execAsync, type FilePath, pathLikeToFilePath, pathLikeToString, resolve, type FilePathLikeTypes, type DirPathLikeTypes, pathLikeToDirPath, DirPath } from 'node-lib'
+import { execAsync, type FilePath, pathLikeToFilePath, pathLikeToString, resolve, type FilePathLikeTypes, type DirPathLikeTypes, pathLikeToDirPath, DirPath, HexStr } from 'node-lib'
 import { EDATFile, ImageFile, MIDIFile, MOGGFile, RBTools } from '../core.exports'
 import { buildOSCommand } from '../lib.exports'
 import { is } from '@electron-toolkit/utils'
@@ -41,25 +41,26 @@ export class BinaryAPI {
   }
 
   /**
-   * Encrypts MIDI files using custom 16-bytes `devKLic` key hash and returns an instance of `EDATFile` pointing to the new encrypted EDAT file.
+   * Encrypts files using custom 16-bytes `devKLic` key hash and returns an instance of `EDATFile` pointing to the new encrypted EDAT file.
    * - - - -
-   * @param {FilePathLikeTypes} srcFile The path to the MIDI file to be encrypted.
+   * @param {FilePathLikeTypes} srcFile The path to the source file to be encrypted.
    * @param {string} contentID The Content ID to the encrypted EDAT file. You can generate formatted Content IDs using static `EDATFile.genContentID()`.
    * @param {string} devKLic A 16-bytes key used to encrypt the EDAT file. You can generated DevKLic for Rock Band games using the static `EDATFile.genDevKLic()`.
    * @param {FilePathLikeTypes} [destPath] `OPTIONAL` The destination path of the encrypted EDAT file. If no argument is provided, the new EDAT file will be placed on the same directory of the source MIDI file.
    * @returns {Promise<EDATFile>}
    */
-  static async edatToolEncrypt(srcFile: FilePathLikeTypes, contentID: string, devKLic: string, destPath?: FilePathLikeTypes): Promise<EDATFile> {
-    const exeName = RBTools.binFolder.gotoFile('edattool.exe').name
-    const midi = pathLikeToFilePath(srcFile)
+  static async makeNPDataEncrypt(srcFile: FilePathLikeTypes, contentID: string, devKLic: string, destPath?: FilePathLikeTypes): Promise<EDATFile> {
+    if (!HexStr.isHexString(devKLic)) throw new Error('Provided devklic must be a HEX string.')
+    if (devKLic.length !== 32) throw new Error('Provided devklic must be a fixed-length HEX string of 32 characters.')
+    const exeName = RBTools.binFolder.gotoFile('make_npdata.exe').name
+    const src = pathLikeToFilePath(srcFile)
     let dest: FilePath
     if (destPath) dest = pathLikeToFilePath(`${pathLikeToString(destPath)}${pathLikeToString(destPath).toLowerCase().endsWith('.edat') ? '' : '.edat'}`)
-    else dest = pathLikeToFilePath(`${midi.root}/${midi.fullname}${midi.fullname.toLowerCase().endsWith('.edat') ? '' : '.edat'}`)
-    const command = buildOSCommand(`${exeName} encrypt -custom:${devKLic} ${contentID.slice(0, 36).replaceAll('\x00', '')} 03 02 00 "${midi.path}" "${dest.path}"`)
+    else dest = pathLikeToFilePath(`${src.root}/${src.fullname}${src.fullname.toLowerCase().endsWith('.edat') ? '' : '.edat'}`)
+
     const cwd = is.dev ? RBTools.binFolder.path : RBTools.binFolder.path.replace(/(\.asar)([\\/])/, '.asar.unpacked$2')
-    const { stderr, stdout } = await execAsync(command, { windowsHide: true, cwd })
-    if (stderr) throw new Error(stderr.trim())
-    if (!stdout.split('\r\n').slice(-2)[0].startsWith('COMPLETE:')) throw new Error(stdout.split('\r\n').slice(-2)[0].slice(7))
+    const command = buildOSCommand(`${exeName} -e "${src.path}" "${dest.path}" 1 1 2 0 16 3 00 ${contentID.length > 0x30 ? contentID.slice(0, 0x30) : contentID} 8 ${devKLic.toLowerCase()}`)
+    await execAsync(command, { windowsHide: true, cwd })
 
     return new EDATFile(dest)
   }
@@ -76,17 +77,24 @@ export class BinaryAPI {
    * @param {FilePathLikeTypes} [destPath] `OPTIONAL` The destination path of the decrypted MIDI file. If no argument is provided, the new MIDI file will be placed on the same directory of the source EDAT file.
    * @returns {Promise<MIDIFile>}
    */
-  static async edatToolDecrypt(srcFile: FilePathLikeTypes, devKLicHash: string, destPath?: FilePathLikeTypes): Promise<MIDIFile> {
-    const exeName = RBTools.binFolder.gotoFile('edattool.exe').name
-    const edat = pathLikeToFilePath(srcFile)
+  static async makeNPDataDecrypt(srcFile: FilePathLikeTypes, devKLic: string, destPath?: FilePathLikeTypes): Promise<MIDIFile> {
+    if (!HexStr.isHexString(devKLic)) throw new Error('Provided devklic must be a HEX string.')
+    if (devKLic.length !== 32) throw new Error('Provided devklic must be a fixed-length HEX string of 32 characters.')
+    const exeName = RBTools.binFolder.gotoFile('make_npdata.exe').name
+    const src = pathLikeToFilePath(srcFile)
     let dest: FilePath
     if (destPath) dest = pathLikeToFilePath(destPath).changeFileExt('mid')
-    else dest = pathLikeToFilePath(resolve(edat.root, edat.name))
-    const command = buildOSCommand(`${exeName} decrypt -custom:${devKLicHash} "${edat.path}" "${dest.path}"`)
+    else dest = pathLikeToFilePath(resolve(src.root, src.name))
+    const command = buildOSCommand(`${exeName} -d "${src.path}" "${dest.path}" 8 ${devKLic.toLowerCase()}`)
     const cwd = is.dev ? RBTools.binFolder.path : RBTools.binFolder.path.replace(/(\.asar)([\\/])/, '.asar.unpacked$2')
     const { stderr, stdout } = await execAsync(command, { windowsHide: true, cwd })
+
     if (stderr) throw new Error(stderr.trim())
-    if (!stdout.split('\r\n').slice(-2)[0].startsWith('COMPLETE:')) throw new Error(stdout.split('\r\n').slice(-2)[0].slice(7))
+    const lastMessage = stdout.trim().split('\n').slice(-1)[0]
+    if (lastMessage.startsWith('ERROR: ')) {
+      const err = lastMessage.slice('ERROR: '.length)
+      throw new Error(err)
+    }
 
     return new MIDIFile(dest)
   }

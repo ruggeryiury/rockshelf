@@ -6,10 +6,10 @@ import { useTranslation } from 'react-i18next'
 import { DiamondIcon, LoadingIcon, PlaystationIcon, RPCS3Icon, WiiIcon, XboxIcon } from '@renderer/assets/icons'
 import clsx from 'clsx'
 import { useShallow } from 'zustand/shallow'
-import { SONG_DETAILS_TABS } from '@renderer/app/rockshelf'
+import { SONG_DETAILS_TABS, VERBOSE } from '@renderer/app/rockshelf.globals'
 import { useUserConfigState } from '@renderer/stores/UserConfig.state'
-import { StarsInline } from './PackageDetails'
 import { bandIcon, guitarIcon, bassIcon, drumsIcon, keysIcon, vocalsIcon, proGuitarIcon, proBassIcon, proDrumsIcon, proKeysIcon, harm3Icon, diffDotOn, diffDotOff, diffDotDevil } from '@renderer/assets/images'
+import { StarsInline } from '@renderer/components.exports'
 
 export function DiffIconInline({ diff, width }: { diff: number; width?: number }) {
   const { t, i18n } = useTranslation()
@@ -30,7 +30,7 @@ export function DiffIconInline({ diff, width }: { diff: number; width?: number }
 }
 export function SongDetails() {
   const { t } = useTranslation()
-  const { selPKG, selSong, isArtworkLoading, artworkURL, songDetailsTab, songLeaderboards, setMyPackagesScreenState } = useMyPackagesScreenState(useShallow((x) => ({ selPKG: x.selPKG, selSong: x.selSong, isArtworkLoading: x.isArtworkLoading, artworkURL: x.artworkURL, setMyPackagesScreenState: x.setMyPackagesScreenState, songDetailsTab: x.songDetailsTab, songLeaderboards: x.songLeaderboards })))
+  const { selPKG, selSong, isArtworkLoading, artworkURL, songDetailsTab, songLeaderboards, setMyPackagesScreenState, songsCatalogSortBy } = useMyPackagesScreenState(useShallow((x) => ({ selPKG: x.selPKG, selSong: x.selSong, isArtworkLoading: x.isArtworkLoading, artworkURL: x.artworkURL, setMyPackagesScreenState: x.setMyPackagesScreenState, songDetailsTab: x.songDetailsTab, songLeaderboards: x.songLeaderboards, songsCatalogSortBy: x.songsCatalogSortBy })))
   const { mostPlayedInstrument } = useUserConfigState(useShallow((x) => ({ mostPlayedInstrument: x.mostPlayedInstrument })))
   const { disableButtons, setWindowState, packages, saveData } = useWindowState(useShallow((x) => ({ disableButtons: x.disableButtons, setWindowState: x.setWindowState, packages: x.packages, saveData: x.saveData })))
   const packageDetails = useMemo(() => (typeof packages === 'object' && selPKG > -1 && selPKG in packages.packages ? packages.packages[selPKG] : null), [packages, selPKG])
@@ -51,14 +51,14 @@ export function SongDetails() {
         if (!packageDetails || !songDetails) return
 
         if (packageDetails.official?.code === 'rb3' || packageDetails.official?.code === 'rb1') {
-          setMyPackagesScreenState({ isArtworkLoading: false, artworkURL: `rbart://${songDetails.songname}` })
+          setMyPackagesScreenState({ isArtworkLoading: false, artworkURL: `artworks://${songDetails.songname}` })
           return
         }
 
         try {
           const artworkDataURL = await window.api.getSongArtworkDataURL(packageDetails, songDetails)
           if (artworkDataURL) setMyPackagesScreenState({ artworkURL: artworkDataURL, isArtworkLoading: false })
-            else  setMyPackagesScreenState({ artworkURL: packageDetails.thumbnailSrc, isArtworkLoading: false })
+          else setMyPackagesScreenState({ artworkURL: packageDetails.thumbnailSrc, isArtworkLoading: false })
         } catch (err) {
           if (err instanceof Error) setWindowState({ err })
         }
@@ -70,12 +70,12 @@ export function SongDetails() {
   )
 
   useEffect(
-    function () {
+    function fetchSongLeaderboardScores() {
       const start = async () => {
         if (songDetailsTab === SONG_DETAILS_TABS.LEADERBOARDS && songDetails !== null && typeof songDetails.song_id === 'number') {
           setMyPackagesScreenState({ songLeaderboards: 'loading' })
           const leaderboards = await window.api.getScoresFromGoCentral(songDetails.song_id, mostPlayedInstrument)
-          console.log('struct GoCentralLeaderboardResultObject [core/src/lib/rbtools/core/GoCentralAPI.ts]', leaderboards)
+          if (VERBOSE.STRUCT) console.log('struct GoCentralLeaderboardResultObject [core/src/lib/rbtools/core/GoCentralAPI.ts]', leaderboards)
           setMyPackagesScreenState({ songLeaderboards: leaderboards })
         }
       }
@@ -159,7 +159,7 @@ export function SongDetails() {
                 setMyPackagesScreenState({ songDetailsTab: SONG_DETAILS_TABS.LEADERBOARDS })
               }}
             >
-              <img src={`instrumenticons://${mostPlayedInstrument}`} className={clsx('mr-1 h-5 w-5', songDetailsTab === SONG_DETAILS_TABS.LEADERBOARDS ? 'opacity-100' : 'opacity-75')} />
+              <img src={`rbicons://instrument-icons-${mostPlayedInstrument.toLowerCase()}`} className={clsx('mr-1 h-5 w-5', songDetailsTab === SONG_DETAILS_TABS.LEADERBOARDS ? 'opacity-100' : 'opacity-75')} />
               {t('leaderboards')}
             </button>
             {packageDetails?.official?.code !== 'rb3' && (
@@ -182,35 +182,35 @@ export function SongDetails() {
                 <h1>Song Entry</h1>
                 <p>{songDetails.id}</p>
                 <h1>Internal name</h1>
-                <p className='select-text'>{songDetails.songname}</p>
-                <h1 className=''>Song ID</h1>
+                <p className="select-text">{songDetails.songname}</p>
+                <h1 className="">Song ID</h1>
                 <p className="">{songDetails.song_id}</p>
                 <h1>Tuning Offset</h1>
                 <p className="">{songDetails.tuning_offset_cents || 0}</p>
 
                 <div className="mt-auto px-16">
                   <div className="flex-row! items-center">
-                    <img src="instrumenticons://guitar" title={t('guitar')} className="mr-1 h-8 w-8" />
+                    <img src="rbicons://instrument-icons-guitar" title={t('guitar')} className="mr-1 h-8 w-8" />
                     <DiffIconInline width={1.1} diff={rankCalculator('guitar', songDetails.rank_guitar)} />
-                    <img src="instrumenticons://bass" title={t('bass')} className="mr-1 h-8 w-8" />
+                    <img src="rbicons://instrument-icons-bass" title={t('bass')} className="mr-1 h-8 w-8" />
                     <DiffIconInline width={1.1} diff={rankCalculator('bass', songDetails.rank_bass)} />
-                    <img src="instrumenticons://drums" title={t('drums')} className="mr-1 h-8 w-8" />
+                    <img src="rbicons://instrument-icons-drums" title={t('drums')} className="mr-1 h-8 w-8" />
                     <DiffIconInline width={1.1} diff={rankCalculator('drum', songDetails.rank_drum)} />
-                    <img src="instrumenticons://keys" title={t('keys')} className="mr-1 h-8 w-8" />
+                    <img src="rbicons://instrument-icons-keys" title={t('keys')} className="mr-1 h-8 w-8" />
                     <DiffIconInline width={1.1} diff={rankCalculator('keys', songDetails.rank_keys)} />
-                    <img src="instrumenticons://vocals" title={t('vocals')} className="mr-1 h-8 w-8" />
+                    <img src="rbicons://instrument-icons-vocals" title={t('vocals')} className="mr-1 h-8 w-8" />
                     <DiffIconInline width={1.1} diff={rankCalculator('vocals', songDetails.rank_vocals)} />
                   </div>
                   <div className="flex-row! items-center">
-                    <img src="instrumenticons://proGuitar" title={t('proGuitar')} className="mr-1 h-8 w-8" />
+                    <img src="rbicons://instrument-icons-proGuitar" title={t('proGuitar')} className="mr-1 h-8 w-8" />
                     <DiffIconInline width={1.1} diff={rankCalculator('real_guitar', songDetails.rank_real_guitar)} />
-                    <img src="instrumenticons://proBass" title={t('proBass')} className="mr-1 h-8 w-8" />
+                    <img src="rbicons://instrument-icons-proBass" title={t('proBass')} className="mr-1 h-8 w-8" />
                     <DiffIconInline width={1.1} diff={rankCalculator('real_bass', songDetails.rank_real_bass)} />
-                    <img src="instrumenticons://proDrums" title={t('proDrums')} className="mr-1 h-8 w-8" />
+                    <img src="rbicons://instrument-icons-proDrums" title={t('proDrums')} className="mr-1 h-8 w-8" />
                     <DiffIconInline width={1.1} diff={rankCalculator('drum', songDetails.rank_drum)} />
-                    <img src="instrumenticons://proKeys" title={t('proKeys')} className="mr-1 h-8 w-8" />
+                    <img src="rbicons://instrument-icons-proKeys" title={t('proKeys')} className="mr-1 h-8 w-8" />
                     <DiffIconInline width={1.1} diff={rankCalculator('real_keys', songDetails.rank_real_keys)} />
-                    <img src={songDetails.vocal_parts === 2 ? 'instrumenticons://harm2' : 'instrumenticons://harmonies'} title={t(songDetails.vocal_parts === 2 ? 'harm2' : 'harm3')} className="mr-1 h-8 w-8" />
+                    <img src={songDetails.vocal_parts === 2 ? 'rbicons://instrument-icons-harm2' : 'rbicons://instrument-icons-harmonies'} title={t(songDetails.vocal_parts === 2 ? 'harm2' : 'harm3')} className="mr-1 h-8 w-8" />
                     <DiffIconInline width={1.1} diff={rankCalculator('vocals', songDetails.rank_vocals)} />
                   </div>
                 </div>
@@ -231,10 +231,10 @@ export function SongDetails() {
                       await window.api.saveUserConfigFile({ mostPlayedInstrument: 'band' })
                       if (typeof saveData === 'object') {
                         const newInstrScores = await window.api.rpcs3GetInstrumentScores(saveData)
-                        console.log('struct InstrumentScoreData ["rbtools/src/lib/rpcs3/getInstrumentScoresData.ts"]:', newInstrScores)
+                        if (VERBOSE.STRUCT) console.log('struct InstrumentScoreData ["rbtools/src/lib/rpcs3/getInstrumentScoresData.ts"]:', newInstrScores)
                         setWindowState({ instrumentScores: newInstrScores })
                       }
-                      setMyPackagesScreenState({ catalog: false })
+                      setMyPackagesScreenState({ songsCatalog: false })
                       setWindowState({ disableButtons: false })
                     }}
                   >
@@ -250,10 +250,10 @@ export function SongDetails() {
                       await window.api.saveUserConfigFile({ mostPlayedInstrument: 'guitar' })
                       if (typeof saveData === 'object') {
                         const newInstrScores = await window.api.rpcs3GetInstrumentScores(saveData)
-                        console.log('struct InstrumentScoreData ["rbtools/src/lib/rpcs3/getInstrumentScoresData.ts"]:', newInstrScores)
+                        if (VERBOSE.STRUCT) console.log('struct InstrumentScoreData ["rbtools/src/lib/rpcs3/getInstrumentScoresData.ts"]:', newInstrScores)
                         setWindowState({ instrumentScores: newInstrScores })
                       }
-                      setMyPackagesScreenState({ catalog: false })
+                      setMyPackagesScreenState({ songsCatalog: false })
                       setWindowState({ disableButtons: false })
                     }}
                   >
@@ -269,10 +269,10 @@ export function SongDetails() {
                       await window.api.saveUserConfigFile({ mostPlayedInstrument: 'bass' })
                       if (typeof saveData === 'object') {
                         const newInstrScores = await window.api.rpcs3GetInstrumentScores(saveData)
-                        console.log('struct InstrumentScoreData ["rbtools/src/lib/rpcs3/getInstrumentScoresData.ts"]:', newInstrScores)
+                        if (VERBOSE.STRUCT) console.log('struct InstrumentScoreData ["rbtools/src/lib/rpcs3/getInstrumentScoresData.ts"]:', newInstrScores)
                         setWindowState({ instrumentScores: newInstrScores })
                       }
-                      setMyPackagesScreenState({ catalog: false })
+                      setMyPackagesScreenState({ songsCatalog: false })
                       setWindowState({ disableButtons: false })
                     }}
                   >
@@ -289,10 +289,10 @@ export function SongDetails() {
                       await window.api.saveUserConfigFile({ mostPlayedInstrument: 'drums' })
                       if (typeof saveData === 'object') {
                         const newInstrScores = await window.api.rpcs3GetInstrumentScores(saveData)
-                        console.log('struct InstrumentScoreData ["rbtools/src/lib/rpcs3/getInstrumentScoresData.ts"]:', newInstrScores)
+                        if (VERBOSE.STRUCT) console.log('struct InstrumentScoreData ["rbtools/src/lib/rpcs3/getInstrumentScoresData.ts"]:', newInstrScores)
                         setWindowState({ instrumentScores: newInstrScores })
                       }
-                      setMyPackagesScreenState({ catalog: false })
+                      setMyPackagesScreenState({ songsCatalog: false })
                       setWindowState({ disableButtons: false })
                     }}
                   >
@@ -308,10 +308,10 @@ export function SongDetails() {
                       await window.api.saveUserConfigFile({ mostPlayedInstrument: 'keys' })
                       if (typeof saveData === 'object') {
                         const newInstrScores = await window.api.rpcs3GetInstrumentScores(saveData)
-                        console.log('struct InstrumentScoreData ["rbtools/src/lib/rpcs3/getInstrumentScoresData.ts"]:', newInstrScores)
+                        if (VERBOSE.STRUCT) console.log('struct InstrumentScoreData ["rbtools/src/lib/rpcs3/getInstrumentScoresData.ts"]:', newInstrScores)
                         setWindowState({ instrumentScores: newInstrScores })
                       }
-                      setMyPackagesScreenState({ catalog: false })
+                      setMyPackagesScreenState({ songsCatalog: false })
                       setWindowState({ disableButtons: false })
                     }}
                   >
@@ -327,10 +327,10 @@ export function SongDetails() {
                       await window.api.saveUserConfigFile({ mostPlayedInstrument: 'vocals' })
                       if (typeof saveData === 'object') {
                         const newInstrScores = await window.api.rpcs3GetInstrumentScores(saveData)
-                        console.log('struct InstrumentScoreData ["rbtools/src/lib/rpcs3/getInstrumentScoresData.ts"]:', newInstrScores)
+                        if (VERBOSE.STRUCT) console.log('struct InstrumentScoreData ["rbtools/src/lib/rpcs3/getInstrumentScoresData.ts"]:', newInstrScores)
                         setWindowState({ instrumentScores: newInstrScores })
                       }
-                      setMyPackagesScreenState({ catalog: false })
+                      setMyPackagesScreenState({ songsCatalog: false })
                       setWindowState({ disableButtons: false })
                     }}
                   >
@@ -346,10 +346,10 @@ export function SongDetails() {
                       await window.api.saveUserConfigFile({ mostPlayedInstrument: 'proGuitar' })
                       if (typeof saveData === 'object') {
                         const newInstrScores = await window.api.rpcs3GetInstrumentScores(saveData)
-                        console.log('struct InstrumentScoreData ["rbtools/src/lib/rpcs3/getInstrumentScoresData.ts"]:', newInstrScores)
+                        if (VERBOSE.STRUCT) console.log('struct InstrumentScoreData ["rbtools/src/lib/rpcs3/getInstrumentScoresData.ts"]:', newInstrScores)
                         setWindowState({ instrumentScores: newInstrScores })
                       }
-                      setMyPackagesScreenState({ catalog: false })
+                      setMyPackagesScreenState({ songsCatalog: false })
                       setWindowState({ disableButtons: false })
                     }}
                   >
@@ -365,10 +365,10 @@ export function SongDetails() {
                       await window.api.saveUserConfigFile({ mostPlayedInstrument: 'proBass' })
                       if (typeof saveData === 'object') {
                         const newInstrScores = await window.api.rpcs3GetInstrumentScores(saveData)
-                        console.log('struct InstrumentScoreData ["rbtools/src/lib/rpcs3/getInstrumentScoresData.ts"]:', newInstrScores)
+                        if (VERBOSE.STRUCT) console.log('struct InstrumentScoreData ["rbtools/src/lib/rpcs3/getInstrumentScoresData.ts"]:', newInstrScores)
                         setWindowState({ instrumentScores: newInstrScores })
                       }
-                      setMyPackagesScreenState({ catalog: false })
+                      setMyPackagesScreenState({ songsCatalog: false })
                       setWindowState({ disableButtons: false })
                     }}
                   >
@@ -385,10 +385,10 @@ export function SongDetails() {
                       await window.api.saveUserConfigFile({ mostPlayedInstrument: 'proDrums' })
                       if (typeof saveData === 'object') {
                         const newInstrScores = await window.api.rpcs3GetInstrumentScores(saveData)
-                        console.log('struct InstrumentScoreData ["rbtools/src/lib/rpcs3/getInstrumentScoresData.ts"]:', newInstrScores)
+                        if (VERBOSE.STRUCT) console.log('struct InstrumentScoreData ["rbtools/src/lib/rpcs3/getInstrumentScoresData.ts"]:', newInstrScores)
                         setWindowState({ instrumentScores: newInstrScores })
                       }
-                      setMyPackagesScreenState({ catalog: false })
+                      setMyPackagesScreenState({ songsCatalog: false })
                       setWindowState({ disableButtons: false })
                     }}
                   >
@@ -404,10 +404,10 @@ export function SongDetails() {
                       await window.api.saveUserConfigFile({ mostPlayedInstrument: 'proKeys' })
                       if (typeof saveData === 'object') {
                         const newInstrScores = await window.api.rpcs3GetInstrumentScores(saveData)
-                        console.log('struct InstrumentScoreData ["rbtools/src/lib/rpcs3/getInstrumentScoresData.ts"]:', newInstrScores)
+                        if (VERBOSE.STRUCT) console.log('struct InstrumentScoreData ["rbtools/src/lib/rpcs3/getInstrumentScoresData.ts"]:', newInstrScores)
                         setWindowState({ instrumentScores: newInstrScores })
                       }
-                      setMyPackagesScreenState({ catalog: false })
+                      setMyPackagesScreenState({ songsCatalog: false })
                       setWindowState({ disableButtons: false })
                     }}
                   >
@@ -423,10 +423,10 @@ export function SongDetails() {
                       await window.api.saveUserConfigFile({ mostPlayedInstrument: 'harmonies' })
                       if (typeof saveData === 'object') {
                         const newInstrScores = await window.api.rpcs3GetInstrumentScores(saveData)
-                        console.log('struct InstrumentScoreData ["rbtools/src/lib/rpcs3/getInstrumentScoresData.ts"]:', newInstrScores)
+                        if (VERBOSE.STRUCT) console.log('struct InstrumentScoreData ["rbtools/src/lib/rpcs3/getInstrumentScoresData.ts"]:', newInstrScores)
                         setWindowState({ instrumentScores: newInstrScores })
                       }
-                      setMyPackagesScreenState({ catalog: false })
+                      setMyPackagesScreenState({ songsCatalog: false })
                       setWindowState({ disableButtons: false })
                     }}
                   >
@@ -486,10 +486,8 @@ export function SongDetails() {
           {songDetailsTab === SONG_DETAILS_TABS.OPTIONS && (
             <>
               <div className="h-full w-full overflow-y-auto">
-                <div className="group rounded-xs p-2 duration-200 last:mb-0 hover:bg-white/5">
-                  <div className="flex-row! items-center">
-                    <h1 className="mb-1 uppercase">{t('audioTracks')}</h1>
-                  </div>
+                <div className="group rounded-xs p-2 duration-200 hover:bg-white/5">
+                  <h1 className="mb-1 uppercase">{t('audioTracks')}</h1>
                   {allTracksCount !== undefined && (
                     <p className="mb-1 text-xs italic">
                       <TransComponent i18nKey={allTracksCount === 1 ? 'tracksCount' : 'tracksCountPlural'} values={{ allTracksCount, multitrack: t(typeof songDetails.multitrack !== 'string' && !packageDetails?.official ? 'mtSingleTrack' : `mt${underscoreToUppercaseLetter(songDetails.multitrack || 'full', true)}`) }} />
@@ -504,7 +502,7 @@ export function SongDetails() {
                             return <div key={`drumsAudio${arrIndex}`} className="h-full w-12 rounded-sm border border-neutral-800/80 bg-[#207818]"></div>
                           })}
                         <div className="absolute! h-full w-full items-center justify-center">
-                          <img src="instrumenticonscolor://drums" width={24} />
+                          <img src="rbicons://instrument-icons-drums-color" width={24} />
                         </div>
                       </div>
                     )}
@@ -516,7 +514,7 @@ export function SongDetails() {
                             return <div key={`bassAudio${arrIndex}`} className="h-full w-12 rounded-sm border border-neutral-800/80 bg-[#940000]"></div>
                           })}
                         <div className="absolute! h-full w-full items-center justify-center">
-                          <img src="instrumenticonscolor://bass" width={24} />
+                          <img src="rbicons://instrument-icons-bass-color" width={24} />
                         </div>
                       </div>
                     )}
@@ -528,7 +526,7 @@ export function SongDetails() {
                             return <div key={`guitarAudio${arrIndex}`} className="h-full w-12 rounded-sm border border-neutral-800/80 bg-[#bfa00b]"></div>
                           })}
                         <div className="absolute! h-full w-full items-center justify-center">
-                          <img src="instrumenticonscolor://guitar" width={24} />
+                          <img src="rbicons://instrument-icons-guitar-color" width={24} />
                         </div>
                       </div>
                     )}
@@ -540,7 +538,7 @@ export function SongDetails() {
                             return <div key={`vocalsAudio${arrIndex}`} className="h-full w-12 rounded-sm border border-neutral-800/80 bg-[#0561cb]"></div>
                           })}
                         <div className="absolute! h-full w-full items-center justify-center">
-                          <img src="instrumenticonscolor://vocals" width={24} />
+                          <img src="rbicons://instrument-icons-vocals-color" width={24} />
                         </div>
                       </div>
                     )}
@@ -552,7 +550,7 @@ export function SongDetails() {
                             return <div key={`keysAudio${arrIndex}`} className="h-full w-12 rounded-sm border border-neutral-800/80 bg-[#ca6400]"></div>
                           })}
                         <div className="absolute! h-full w-full items-center justify-center">
-                          <img src="instrumenticonscolor://keys" width={24} />
+                          <img src="rbicons://instrument-icons-keys-color" width={24} />
                         </div>
                       </div>
                     )}
@@ -564,7 +562,7 @@ export function SongDetails() {
                             return <div key={`backingAudio${arrIndex}`} className="h-full w-12 rounded-sm border border-neutral-800/80 bg-black"></div>
                           })}
                         <div className="absolute! h-full w-full items-center justify-center">
-                          <img src="instrumenticons://backing" width={24} />
+                          <img src="rbicons://instrument-icons-backing" width={24} />
                         </div>
                       </div>
                     )}
@@ -576,7 +574,7 @@ export function SongDetails() {
                             return <div key={`crowdAudio${arrIndex}`} className="h-full w-12 rounded-sm border border-neutral-800/80 bg-black"></div>
                           })}
                         <div className="absolute! h-full w-full items-center justify-center">
-                          <img src="instrumenticons://crowd" width={24} />
+                          <img src="rbicons://instrument-icons-crowd" width={24} />
                         </div>
                       </div>
                     )}
@@ -599,6 +597,42 @@ export function SongDetails() {
                     {t(typeof songDetails.multitrack !== 'string' && !packageDetails?.official ? 'extractSongAudioTrack' : 'extractTracks')}
                   </button>
                 </div>
+                {packageDetails?.official === undefined && (
+                  <>
+                    <div className="group rounded-xs p-2 duration-200 hover:bg-white/5">
+                      <h1 className="mb-1 uppercase">{t('deleteSong')}</h1>
+                      <p className="mb-2 text-xs italic">
+                        <TransComponent i18nKey="deleteSongDesc" />
+                      </p>
+                      <button
+                        disabled={disableButtons}
+                        className="mr-2 mb-1 w-fit self-start rounded-xs border border-red-500 bg-neutral-900 px-1 py-0.5 text-xs! text-red-500 uppercase duration-100 last:mr-0 last:mb-0 hover:bg-red-950/25 active:bg-neutral-600 disabled:text-neutral-700 disabled:hover:bg-neutral-900"
+                        onClick={async () => {
+                          setWindowState({ disableButtons: true })
+                          try {
+                            const newPackages = await window.api.batchDeleteSongs(selPKG, [songDetails.songname])
+                            if (VERBOSE.STRUCT) console.log('struct RPCS3SongPackagesDataExtra ["rbtools/src/lib/rpcs3/rpcs3GetSongPackagesStatsExtra.ts"]:', newPackages)
+                            if (newPackages) {
+                              const newCatalog = await window.api.sortAndFilterSongsFromPackage(selPKG, songsCatalogSortBy, { instrument: mostPlayedInstrument })
+                              if (!newCatalog) return
+                              if (newCatalog.type !== 'difficulty' && newCatalog.type !== 'artist') console.log('struct DTACatalogGenericObject [core/src/lib/dta/getDTACatalog.ts]', newCatalog)
+                              else if (newCatalog.type === 'artist') console.log('struct DTACatalogByArtistObject [core/src/lib/dta/getDTACatalog.ts]', newCatalog)
+                              else console.log('struct DTACatalogByDifficultyObject [core/src/lib/dta/getDTACatalog.ts]', newCatalog)
+                              resetSongDetailsState()
+                              setMyPackagesScreenState({ songsCatalog: newCatalog })
+                              setWindowState({ packages: newPackages })
+                            }
+                          } catch (err) {
+                            if (err instanceof Error) setWindowState({ err })
+                          }
+                          setWindowState({ disableButtons: false })
+                        }}
+                      >
+                        {t('deleteSong')}
+                      </button>
+                    </div>
+                  </>
+                )}
               </div>
             </>
           )}

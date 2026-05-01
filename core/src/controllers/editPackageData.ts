@@ -31,6 +31,7 @@ export const editPackageData = useHandler(async (win, _, pkgIndex: number, optio
   await editRSPackImage(thumbnail, options)
 
   if (options.packageName) cacheContents.packages[pkgIndex].packageData.packageName = options.packageName
+  if (options.encryptionStatus) cacheContents.packages[pkgIndex].packageData.encryptionStatus = options.encryptionStatus
 
   await cache.write(JSON.stringify(cacheContents))
   const now = new Date()

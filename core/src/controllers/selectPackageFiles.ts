@@ -38,6 +38,8 @@ export const selectPackageFiles = useHandler(async (win, _, files: SelectPackage
       await stfs.checkFileIntegrity()
       const data = await stfs.toJSON()
 
+      console.log(data.dta)
+
       if (data.dta.length === 0) {
         ignoredFiles.push(stfs.path.path)
         continue
@@ -48,6 +50,7 @@ export const selectPackageFiles = useHandler(async (win, _, files: SelectPackage
         data,
       })
     } catch (err) {
+      console.log(err)
       const pkg = new PKGFile(pkgPath)
 
       try {

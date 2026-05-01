@@ -7,6 +7,7 @@ import clsx from 'clsx'
 import { useMyPackagesScreenState } from './MyPackagesScreen.state'
 import { useMessageBoxState } from './MessageBox.state'
 import { useCreateNewPackageScreenState } from './CreateNewPackageScreen.state'
+import { VERBOSE } from '@renderer/app/rockshelf.globals'
 
 const allIcons: string[] = [
   'custom',
@@ -55,10 +56,10 @@ export function RBIconsSelector() {
               if (active === 'editPackage') {
                 try {
                   const newPackages = await window.api.editPackageData(selPKG, { imgPath: rbIconURL })
-                  console.log('struct RPCS3SongPackagesDataExtra ["rbtools/src/lib/rpcs3/rpcs3GetSongPackagesStatsExtra.ts"]:', newPackages)
+                  if (VERBOSE.STRUCT) console.log('struct RPCS3SongPackagesDataExtra ["rbtools/src/lib/rpcs3/rpcs3GetSongPackagesStatsExtra.ts"]:', newPackages)
 
                   if (newPackages) setWindowState({ packages: newPackages, disableImg: selPKG })
-                  setMessageBoxState({ message: { type: 'success',  code: 'editPackageImage' } })
+                  setMessageBoxState({ message: { type: 'success', code: 'editPackageImage' } })
                   resetRBIconsSelectorState()
                 } catch (err) {
                   if (err instanceof Error) setWindowState({ err })

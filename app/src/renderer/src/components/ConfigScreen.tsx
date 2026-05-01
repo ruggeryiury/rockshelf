@@ -8,6 +8,7 @@ import clsx from 'clsx'
 import { BRAFlag, MEXFlag, USAFlag, ARGFlag, BOLFlag, COLFlag, PARYFlag, PERUFlag, URUFlag, VEZFlag, bandIcon, guitarIcon, bassIcon, drumsIcon, keysIcon, vocalsIcon, proGuitarIcon, proBassIcon, proDrumsIcon, proKeysIcon, harm3Icon } from '@renderer/assets/images'
 import { useShallow } from 'zustand/shallow'
 import type { RockBand3Data } from 'rockshelf-core/rbtools/lib'
+import { VERBOSE } from '@renderer/app/rockshelf.globals'
 
 export function ConfigScreen() {
   const { i18n, t } = useTranslation()
@@ -32,7 +33,7 @@ export function ConfigScreen() {
 
       <div className="h-full w-full flex-row! overflow-y-auto">
         <div>
-          <div className="group rounded-xs p-2 duration-200 last:mb-0 hover:bg-white/5">
+          <div className="group rounded-xs p-2 duration-200 hover:bg-white/5">
             <h1 className="mb-1 uppercase">{t('changeLang')}</h1>
             <p className="mb-4 text-xs italic">
               <TransComponent i18nKey="changeLangDesc" />
@@ -55,7 +56,7 @@ export function ConfigScreen() {
             </div>
           </div>
 
-          <div className="group rounded-xs p-2 duration-200 last:mb-0 hover:bg-white/5">
+          <div className="group rounded-xs p-2 duration-200 hover:bg-white/5">
             <h1 className="mb-1 uppercase">{t('devhdd0Dir')}</h1>
             <p className="mb-4 text-xs italic">
               <TransComponent i18nKey="devhdd0DirDesc" />
@@ -89,7 +90,7 @@ export function ConfigScreen() {
             </button>
           </div>
 
-          <div className="group rounded-xs p-2 duration-200 last:mb-0 hover:bg-white/5">
+          <div className="group rounded-xs p-2 duration-200 hover:bg-white/5">
             <h1 className="mb-1 uppercase">{t('rpcs3Exe')}</h1>
             <p className="mb-4 text-xs italic">
               <TransComponent i18nKey="rpcs3ExeDesc" />
@@ -122,7 +123,7 @@ export function ConfigScreen() {
             </button>
           </div>
 
-          <div className="group rounded-xs p-2 duration-200 last:mb-0 hover:bg-white/5">
+          <div className="group rounded-xs p-2 duration-200 hover:bg-white/5">
             <h1 className="mb-1 uppercase">{t('changeInstrumentScores')}</h1>
             <p className="mb-4 text-xs italic">
               <TransComponent i18nKey="changeInstrumentScoresDesc" />
@@ -138,7 +139,7 @@ export function ConfigScreen() {
                   await window.api.saveUserConfigFile({ mostPlayedInstrument: 'band' })
                   if (typeof saveData === 'object') {
                     const newInstrScores = await window.api.rpcs3GetInstrumentScores(saveData)
-                    console.log('struct InstrumentScoreData ["rbtools/src/lib/rpcs3/getInstrumentScoresData.ts"]:', newInstrScores)
+                    if (VERBOSE.STRUCT) console.log('struct InstrumentScoreData ["rbtools/src/lib/rpcs3/getInstrumentScoresData.ts"]:', newInstrScores)
                     setWindowState({ instrumentScores: newInstrScores })
                   }
                   setWindowState({ disableButtons: false })
@@ -156,7 +157,7 @@ export function ConfigScreen() {
                   await window.api.saveUserConfigFile({ mostPlayedInstrument: 'guitar' })
                   if (typeof saveData === 'object') {
                     const newInstrScores = await window.api.rpcs3GetInstrumentScores(saveData)
-                    console.log('struct InstrumentScoreData ["rbtools/src/lib/rpcs3/getInstrumentScoresData.ts"]:', newInstrScores)
+                    if (VERBOSE.STRUCT) console.log('struct InstrumentScoreData ["rbtools/src/lib/rpcs3/getInstrumentScoresData.ts"]:', newInstrScores)
                     setWindowState({ instrumentScores: newInstrScores })
                   }
                   setWindowState({ disableButtons: false })
@@ -174,7 +175,7 @@ export function ConfigScreen() {
                   await window.api.saveUserConfigFile({ mostPlayedInstrument: 'bass' })
                   if (typeof saveData === 'object') {
                     const newInstrScores = await window.api.rpcs3GetInstrumentScores(saveData)
-                    console.log('struct InstrumentScoreData ["rbtools/src/lib/rpcs3/getInstrumentScoresData.ts"]:', newInstrScores)
+                    if (VERBOSE.STRUCT) console.log('struct InstrumentScoreData ["rbtools/src/lib/rpcs3/getInstrumentScoresData.ts"]:', newInstrScores)
                     setWindowState({ instrumentScores: newInstrScores })
                   }
                   setWindowState({ disableButtons: false })
@@ -193,7 +194,7 @@ export function ConfigScreen() {
                   await window.api.saveUserConfigFile({ mostPlayedInstrument: 'drums' })
                   if (typeof saveData === 'object') {
                     const newInstrScores = await window.api.rpcs3GetInstrumentScores(saveData)
-                    console.log('struct InstrumentScoreData ["rbtools/src/lib/rpcs3/getInstrumentScoresData.ts"]:', newInstrScores)
+                    if (VERBOSE.STRUCT) console.log('struct InstrumentScoreData ["rbtools/src/lib/rpcs3/getInstrumentScoresData.ts"]:', newInstrScores)
                     setWindowState({ instrumentScores: newInstrScores })
                   }
                   setWindowState({ disableButtons: false })
@@ -211,7 +212,7 @@ export function ConfigScreen() {
                   await window.api.saveUserConfigFile({ mostPlayedInstrument: 'keys' })
                   if (typeof saveData === 'object') {
                     const newInstrScores = await window.api.rpcs3GetInstrumentScores(saveData)
-                    console.log('struct InstrumentScoreData ["rbtools/src/lib/rpcs3/getInstrumentScoresData.ts"]:', newInstrScores)
+                    if (VERBOSE.STRUCT) console.log('struct InstrumentScoreData ["rbtools/src/lib/rpcs3/getInstrumentScoresData.ts"]:', newInstrScores)
                     setWindowState({ instrumentScores: newInstrScores })
                   }
                   setWindowState({ disableButtons: false })
@@ -229,7 +230,7 @@ export function ConfigScreen() {
                   await window.api.saveUserConfigFile({ mostPlayedInstrument: 'vocals' })
                   if (typeof saveData === 'object') {
                     const newInstrScores = await window.api.rpcs3GetInstrumentScores(saveData)
-                    console.log('struct InstrumentScoreData ["rbtools/src/lib/rpcs3/getInstrumentScoresData.ts"]:', newInstrScores)
+                    if (VERBOSE.STRUCT) console.log('struct InstrumentScoreData ["rbtools/src/lib/rpcs3/getInstrumentScoresData.ts"]:', newInstrScores)
                     setWindowState({ instrumentScores: newInstrScores })
                   }
                   setWindowState({ disableButtons: false })
@@ -247,7 +248,7 @@ export function ConfigScreen() {
                   await window.api.saveUserConfigFile({ mostPlayedInstrument: 'proGuitar' })
                   if (typeof saveData === 'object') {
                     const newInstrScores = await window.api.rpcs3GetInstrumentScores(saveData)
-                    console.log('struct InstrumentScoreData ["rbtools/src/lib/rpcs3/getInstrumentScoresData.ts"]:', newInstrScores)
+                    if (VERBOSE.STRUCT) console.log('struct InstrumentScoreData ["rbtools/src/lib/rpcs3/getInstrumentScoresData.ts"]:', newInstrScores)
                     setWindowState({ instrumentScores: newInstrScores })
                   }
                   setWindowState({ disableButtons: false })
@@ -265,7 +266,7 @@ export function ConfigScreen() {
                   await window.api.saveUserConfigFile({ mostPlayedInstrument: 'proBass' })
                   if (typeof saveData === 'object') {
                     const newInstrScores = await window.api.rpcs3GetInstrumentScores(saveData)
-                    console.log('struct InstrumentScoreData ["rbtools/src/lib/rpcs3/getInstrumentScoresData.ts"]:', newInstrScores)
+                    if (VERBOSE.STRUCT) console.log('struct InstrumentScoreData ["rbtools/src/lib/rpcs3/getInstrumentScoresData.ts"]:', newInstrScores)
                     setWindowState({ instrumentScores: newInstrScores })
                   }
                   setWindowState({ disableButtons: false })
@@ -284,7 +285,7 @@ export function ConfigScreen() {
                   await window.api.saveUserConfigFile({ mostPlayedInstrument: 'proDrums' })
                   if (typeof saveData === 'object') {
                     const newInstrScores = await window.api.rpcs3GetInstrumentScores(saveData)
-                    console.log('struct InstrumentScoreData ["rbtools/src/lib/rpcs3/getInstrumentScoresData.ts"]:', newInstrScores)
+                    if (VERBOSE.STRUCT) console.log('struct InstrumentScoreData ["rbtools/src/lib/rpcs3/getInstrumentScoresData.ts"]:', newInstrScores)
                     setWindowState({ instrumentScores: newInstrScores })
                   }
                   setWindowState({ disableButtons: false })
@@ -302,7 +303,7 @@ export function ConfigScreen() {
                   await window.api.saveUserConfigFile({ mostPlayedInstrument: 'proKeys' })
                   if (typeof saveData === 'object') {
                     const newInstrScores = await window.api.rpcs3GetInstrumentScores(saveData)
-                    console.log('struct InstrumentScoreData ["rbtools/src/lib/rpcs3/getInstrumentScoresData.ts"]:', newInstrScores)
+                    if (VERBOSE.STRUCT) console.log('struct InstrumentScoreData ["rbtools/src/lib/rpcs3/getInstrumentScoresData.ts"]:', newInstrScores)
                     setWindowState({ instrumentScores: newInstrScores })
                   }
                   setWindowState({ disableButtons: false })
@@ -320,7 +321,7 @@ export function ConfigScreen() {
                   await window.api.saveUserConfigFile({ mostPlayedInstrument: 'harmonies' })
                   if (typeof saveData === 'object') {
                     const newInstrScores = await window.api.rpcs3GetInstrumentScores(saveData)
-                    console.log('struct InstrumentScoreData ["rbtools/src/lib/rpcs3/getInstrumentScoresData.ts"]:', newInstrScores)
+                    if (VERBOSE.STRUCT) console.log('struct InstrumentScoreData ["rbtools/src/lib/rpcs3/getInstrumentScoresData.ts"]:', newInstrScores)
                     setWindowState({ instrumentScores: newInstrScores })
                   }
                   setWindowState({ disableButtons: false })
@@ -341,7 +342,7 @@ export function ConfigScreen() {
               setMessageBoxState({ message: { type: 'loading', code: 'recreatePackagesCacheFile' } })
               try {
                 const newPackagesData = await window.api.rpcs3GetPackagesData(true)
-                console.log('struct RPCS3SongPackagesDataExtra ["rbtools/src/lib/rpcs3/rpcs3GetSongPackagesStatsExtra.ts"]:', newPackagesData)
+                if (VERBOSE.STRUCT) console.log('struct RPCS3SongPackagesDataExtra ["rbtools/src/lib/rpcs3/rpcs3GetSongPackagesStatsExtra.ts"]:', newPackagesData)
                 setWindowState({ packages: newPackagesData, disableButtons: false })
                 setMessageBoxState({ message: { type: 'success', code: 'recreatePackagesCacheFile' } })
               } catch (err) {

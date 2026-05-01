@@ -5,8 +5,9 @@ import { create } from 'zustand'
 export interface MyPackagesScreenStateProps {
   active: boolean
   selPKG: number
-  catalog: DTAFilterGenericObject | DTAFilterByArtistObject | DTAFilterByDifficultyObject | false | 'loading'
-  catalogSortBy: DTAFilterTypes
+  songsCatalog: DTAFilterGenericObject | DTAFilterByArtistObject | DTAFilterByDifficultyObject | false | 'loading'
+  songsCatalogSortBy: DTAFilterTypes
+  myPackagesTab: number
   packageDetailsTab: number
   songDetailsTab: number
   songLeaderboards: false | 'loading' | GoCentralLeaderboardResultObject
@@ -42,8 +43,9 @@ export type MyPackagesScreenStateHook = MyPackagesScreenStateProps & MyPackagesS
 const defaultState: MyPackagesScreenStateProps = {
   active: false,
   selPKG: -1,
-  catalog: false,
-  catalogSortBy: 'title',
+  songsCatalog: false,
+  songsCatalogSortBy: 'title',
+  myPackagesTab: 0,
   packageDetailsTab: 0,
   songDetailsTab: 0,
   songLeaderboards: false,

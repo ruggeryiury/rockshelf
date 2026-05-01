@@ -10,6 +10,7 @@ import { InstrumentScoreData, ParsedRB3SaveData } from 'rockshelf-core/rbtools'
 import { useLogoScreenState } from './LogoScreen.state'
 import { useShallow } from 'zustand/shallow'
 import { useMessageBoxState } from './MessageBox.state'
+import { VERBOSE } from '@renderer/app/rockshelf.globals'
 
 export function FirstTimeScreen() {
   const { i18n, t } = useTranslation()
@@ -99,21 +100,21 @@ export function FirstTimeScreen() {
             })
 
             const rb3Stats = await window.api.rpcs3GetRB3Stats()
-            console.log('struct RockBand3Data ["rbtools/src/lib/rpcs3/rpcs3GetRB3Stats.ts"]:', rb3Stats)
+            if (VERBOSE.STRUCT) console.log('struct RockBand3Data ["rbtools/src/lib/rpcs3/rpcs3GetRB3Stats.ts"]:', rb3Stats)
             let saveData: ParsedRB3SaveData | false = false
             let instrumentScores: InstrumentScoreData | false = false
             let packagesData: RPCS3SongPackagesDataExtra | false = false
             if (typeof rb3Stats === 'object' && rb3Stats.hasSaveData) {
               saveData = await window.api.rpcs3GetSaveDataStats()
-              console.log('struct ParsedRB3SaveData ["rbtools/src/lib/rpsc3/getSaveData.ts"]:', saveData)
+              if (VERBOSE.STRUCT) console.log('struct ParsedRB3SaveData ["rbtools/src/lib/rpsc3/getSaveData.ts"]:', saveData)
               if (saveData) {
                 await window.api.saveUserConfigFile({ mostPlayedInstrument: saveData.mostPlayedInstrument })
                 setUserConfigState({ mostPlayedInstrument: saveData.mostPlayedInstrument })
                 instrumentScores = await window.api.rpcs3GetInstrumentScores(saveData)
-                console.log('struct InstrumentScoreData ["rbtools/src/lib/rpcs3/getInstrumentScoresData.ts"]:', instrumentScores)
+                if (VERBOSE.STRUCT) console.log('struct InstrumentScoreData ["rbtools/src/lib/rpcs3/getInstrumentScoresData.ts"]:', instrumentScores)
               }
               packagesData = await window.api.rpcs3GetPackagesData()
-              console.log('struct RPCS3SongPackagesDataExtra ["rbtools/src/lib/rpcs3/rpcs3GetSongPackagesStatsExtra.ts"]:', packagesData)
+              if (VERBOSE.STRUCT) console.log('struct RPCS3SongPackagesDataExtra ["rbtools/src/lib/rpcs3/rpcs3GetSongPackagesStatsExtra.ts"]:', packagesData)
             }
 
             setWindowState({

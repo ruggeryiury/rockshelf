@@ -23,7 +23,7 @@ export const extractMultitrackOrSongAudioFromSong = useHandler(async (win, __, p
   }
 
   if (typeof song.multitrack !== 'string' && !packageDetails?.official) {
-    const buttonLabel = await getLocaleStringFromRenderer(win, 'saveAudioFile')
+    const buttonLabel = await getLocaleStringFromRenderer(win, 'save')
     const wavExtName = await getLocaleStringFromRenderer(win, 'wavFile')
     const title = await getLocaleStringFromRenderer(win, 'saveSingleAudioTrackTitle')
 

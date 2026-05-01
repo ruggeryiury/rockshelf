@@ -25,7 +25,7 @@ export const installRB3PatchFromPKG = async (win: BrowserWindow, devhdd0Path: Di
     return false
   }
 
-  for (const entry of await tempFolderPath.readDir(true)) {
+  for (const entry of (await tempFolderPath.readDir(true)).toReversed()) {
     const relPath = entry.path.slice(tempFolderPath.path.length + 1)
     if (entry instanceof DirPath) {
       const newDirPath = rb3GameFolder.gotoDir(relPath)

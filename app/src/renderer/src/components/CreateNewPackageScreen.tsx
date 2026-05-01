@@ -4,7 +4,7 @@ import { useCreateNewPackageScreenState } from './CreateNewPackageScreen.state'
 import { useShallow } from 'zustand/shallow'
 import { useWindowState } from '@renderer/stores/Window.state'
 import { useTranslation } from 'react-i18next'
-import { CREATE_NEW_PACKAGE_TABS } from '@renderer/app/rockshelf'
+import { CREATE_NEW_PACKAGE_TABS, VERBOSE } from '@renderer/app/rockshelf.globals'
 import { useMessageBoxState } from './MessageBox.state'
 import { PlaystationIcon, XboxIcon } from '@renderer/assets/icons'
 import { useEffect, useMemo } from 'react'
@@ -52,9 +52,9 @@ export function CreateNewPackageScreen() {
               setWindowState({ disableButtons: true })
               try {
                 const results = await window.api.createNewPackage({ packages: files.map((file) => file.data.path.path), packageFolderName, packageName, forceEncryption, thumbnail: packageArtwork })
-                console.log('struct SerializedRPCS3PackageExtractionObject [core/src/controllers/createNewPackage.ts]', results)
+                if (VERBOSE.STRUCT) console.log('struct SerializedRPCS3PackageExtractionObject [core/src/controllers/createNewPackage.ts]', results)
                 if (results) {
-                  console.log('struct RPCS3SongPackagesDataExtra ["rbtools/src/lib/rpcs3/rpcs3GetSongPackagesStatsExtra.ts"]:', results.packagesData)
+                  if (VERBOSE.STRUCT) console.log('struct RPCS3SongPackagesDataExtra ["rbtools/src/lib/rpcs3/rpcs3GetSongPackagesStatsExtra.ts"]:', results.packagesData)
                   setWindowState({ packages: results.packagesData })
                 }
               } catch (err) {
@@ -116,7 +116,7 @@ export function CreateNewPackageScreen() {
                 setWindowState({ disableButtons: true })
                 try {
                   const selFiles = await window.api.selectPackageFiles(files)
-                  console.log('struct SelectPackageFilesObject ["core/src/controllers/selectPackageFiles.ts"]:', selFiles)
+                  if (VERBOSE.STRUCT) console.log('struct SelectPackageFilesObject ["core/src/controllers/selectPackageFiles.ts"]:', selFiles)
 
                   if (selFiles) {
                     const { selectedFiles, ignoredFiles, duplicatedFiles } = selFiles
@@ -200,7 +200,7 @@ export function CreateNewPackageScreen() {
       {navIndex === CREATE_NEW_PACKAGE_TABS.OPTIONS && (
         <>
           <div className="h-full w-full overflow-y-auto">
-            <div className="group rounded-xs p-2 duration-200 last:mb-0 hover:bg-white/5">
+            <div className="group rounded-xs p-2 duration-200 hover:bg-white/5">
               <h1 className="mb-1 uppercase">{t('packageName')}</h1>
               <p className="mb-4 text-xs italic">
                 <TransComponent i18nKey="packageNameDesc" />
@@ -208,7 +208,7 @@ export function CreateNewPackageScreen() {
               <input className="mb-1 rounded-xs border border-neutral-800 bg-neutral-900 px-1 py-0.5 text-sm! duration-100 last:mb-0 hover:bg-neutral-700 focus:border-white/25 active:bg-neutral-600 disabled:text-neutral-700 disabled:hover:bg-neutral-900" value={packageName} onChange={(ev) => setCreateNewPackageScreenState({ packageName: ev.target.value })} minLength={1} maxLength={64} />
             </div>
 
-            <div className="group rounded-xs p-2 duration-200 last:mb-0 hover:bg-white/5">
+            <div className="group rounded-xs p-2 duration-200 hover:bg-white/5">
               <h1 className="mb-1 uppercase">{t('packageFolderName')}</h1>
               <p className="mb-4 text-xs italic">
                 <TransComponent i18nKey="packageFolderNameDesc" />
@@ -216,7 +216,7 @@ export function CreateNewPackageScreen() {
               <input className="mb-1 rounded-xs border border-neutral-800 bg-neutral-900 px-1 py-0.5 text-sm! duration-100 last:mb-0 hover:bg-neutral-700 focus:border-white/25 active:bg-neutral-600 disabled:text-neutral-700 disabled:hover:bg-neutral-900" value={packageFolderName} onChange={(ev) => setCreateNewPackageScreenState({ packageFolderName: ev.target.value })} minLength={1} maxLength={64} />
             </div>
 
-            <div className="group rounded-xs p-2 duration-200 last:mb-0 hover:bg-white/5">
+            <div className="group rounded-xs p-2 duration-200 hover:bg-white/5">
               <h1 className="mb-1 uppercase">{t('packageThumbnail')}</h1>
               <p className="mb-4 text-xs italic">
                 <TransComponent i18nKey="changePackageThumbnailDesc" />
@@ -253,7 +253,7 @@ export function CreateNewPackageScreen() {
               </div>
             </div>
 
-            <div className="group rounded-xs p-2 duration-200 last:mb-0 hover:bg-white/5">
+            <div className="group rounded-xs p-2 duration-200 hover:bg-white/5">
               <h1 className="mb-1 uppercase">{t('forceEncDec')}</h1>
               <p className="mb-4 text-xs italic">
                 <TransComponent i18nKey="packageEncryptionDesc" />

@@ -4,7 +4,7 @@ import { useMainScreenState } from './MainScreen.state'
 import { useWindowState } from '@renderer/stores/Window.state'
 import { useTranslation } from 'react-i18next'
 import type { ParsedRB3SaveData, InstrumentScoreData } from 'rockshelf-core/rbtools'
-import { DXNIGHTLYLINK, TU5LINK } from '@renderer/app/rockshelf'
+import { DXNIGHTLYLINK, VERBOSE } from '@renderer/app/rockshelf.globals'
 import type { RockBand3Data } from 'rockshelf-core/rbtools/lib'
 import { useDeluxeInstallScreenState } from './DeluxeInstallScreen.state'
 import { useMessageBoxState } from './MessageBox.state'
@@ -30,7 +30,7 @@ export function MainScreen() {
           {typeof rb3Stats === 'object' && rb3Stats.userName && rb3Stats.hasSaveData && typeof saveData === 'object' && typeof instrumentScores === 'object' && (
             <>
               <div className="h-full flex-row! items-center">
-                <img title={t(instrumentScores.instrument)} src={`instrumenticons://${instrumentScores.instrument.toLowerCase()}`} className="mr-2 h-8 min-h-8 w-8 min-w-8 opacity-65" />
+                <img title={t(instrumentScores.instrument)} src={`rbicons://instrument-icons-${instrumentScores.instrument.toLowerCase()}`} className="mr-2 h-8 min-h-8 w-8 min-w-8 opacity-65" />
                 <div>
                   <h1 className="text-lg">{rb3Stats.userName}</h1>
                   <h2 className="text-xs">{saveData.profileName}</h2>
@@ -84,15 +84,15 @@ export function MainScreen() {
               try {
                 setTimeout(async () => {
                   const newRB3Stats = await window.api.rpcs3GetRB3Stats()
-                  console.log('struct RockBand3Data ["rbtools/src/lib/rpcs3/rpcs3GetRB3Stats.ts"]:', rb3Stats)
+                  if (VERBOSE.STRUCT) console.log('struct RockBand3Data ["rbtools/src/lib/rpcs3/rpcs3GetRB3Stats.ts"]:', rb3Stats)
                   let newSaveData: ParsedRB3SaveData | false = false
                   let newInstrumentScores: InstrumentScoreData | false = false
                   if (typeof rb3Stats === 'object' && (rb3Stats.hasSaveData || rb3Stats.userName !== null)) {
                     newSaveData = await window.api.rpcs3GetSaveDataStats()
-                    console.log('struct ParsedRB3SaveData ["rbtools/src/lib/rpsc3/getSaveData.ts"]:', newSaveData)
+                    if (VERBOSE.STRUCT) console.log('struct ParsedRB3SaveData ["rbtools/src/lib/rpsc3/getSaveData.ts"]:', newSaveData)
                     if (newSaveData) {
                       newInstrumentScores = await window.api.rpcs3GetInstrumentScores(newSaveData)
-                      console.log('struct InstrumentScoreData ["rbtools/src/lib/rpcs3/getInstrumentScoresData.ts"]:', newInstrumentScores)
+                      if (VERBOSE.STRUCT) console.log('struct InstrumentScoreData ["rbtools/src/lib/rpcs3/getInstrumentScoresData.ts"]:', newInstrumentScores)
                     }
                   }
                   setWindowState({ disableButtons: false, rb3Stats: newRB3Stats, saveData: newSaveData, instrumentScores: newInstrumentScores })

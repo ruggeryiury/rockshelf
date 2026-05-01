@@ -15,8 +15,11 @@
 <div align=center >
 <img src='front.webp'>
 </div>
+<br />
+<h1>Table of Contents</h1>
 
 - [About](#about)
+- [](#)
 - [Requirements](#requirements)
   - [System](#system)
   - [Python](#python)
@@ -24,7 +27,9 @@
 
 # About
 
-Rockshelf is a Rock Band 3 utility suite for RPCS3 users built with [Electron Vite](https://electron-vite.org/) framework. Rockshelf comes with a hand-made `core` package that features the main [NodeJS](https://nodejs.org/en) process and methods, as well as the Rockshelf preload script, and uses [ReactJS](https://react.dev/) as a renderer framework.
+Rockshelf is a Rock Band 3 Deluxe utility suite for RPCS3 users built with [Electron Vite](https://electron-vite.org/) framework. Rockshelf comes with a hand-made `core` package that features the main [NodeJS](https://nodejs.org/en) process and methods, and uses [ReactJS](https://react.dev/) as a renderer framework.
+
+# 
 
 # Requirements
 
@@ -48,10 +53,10 @@ Rockshelf is a Rock Band 3 utility suite for RPCS3 users built with [Electron Vi
 # Special Thanks
 
 - [Carl Mylo](https://github.com/carlmylo): Helping testing and providing the spanish translation.
+- [Aloquendiar](https://github.com/Aloquendiar)
+- [Emma](https://github.com/InvoxiPlayGames)
 - [raphaelgoulart](https://github.com/raphaelgoulart)
 - [TrojanNemo](https://github.com/trojannemo)
 - [Jnack](https://github.com/jnackmclain)
-- [Aloquendiar](https://github.com/Aloquendiar)
-- [Emma](https://github.com/InvoxiPlayGames)
 - [LocalH](https://github.com/LocalH)
 - [Onyxite](https://github.com/mtolly)

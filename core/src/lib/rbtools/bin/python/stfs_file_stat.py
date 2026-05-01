@@ -35,8 +35,8 @@ def stfs_file_stat(file_path: str) -> STFSFileStat:
         "files": [],
         "dta": "",
         "fileSize": os.path.getsize(file_path),
-        "thumbnail": f"data:image/png;base64,{base64.b64encode(con.thumbnail).decode()}",
-        "titleThumbnail": f"data:image/png;base64,{base64.b64encode(con.titleimage).decode()}",
+        "thumbnail": f"data:image/png;base64,{base64.standard_b64encode(con.thumbnail).decode()}",
+        "titleThumbnail": f"data:image/png;base64,{base64.standard_b64encode(con.titleimage).decode()}",
         "contentsHash": con.content_id.hex(),
     }
 
@@ -98,4 +98,4 @@ if __name__ == "__main__":
 
     status = stfs_file_stat(arg.stfs_file_path)
     if arg.print_results:
-        print(json.dumps(status, ensure_ascii=False))
+        print(json.dumps(status))

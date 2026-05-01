@@ -10,6 +10,7 @@ import { useDialogScreenState } from './components/DialogScreen.state'
 import { RPCS3SongPackagesDataExtra } from 'rockshelf-core'
 import { useShallow } from 'zustand/shallow'
 import type { InstrumentScoreData, ParsedRB3SaveData } from 'rockshelf-core/rbtools'
+import { VERBOSE } from './app/rockshelf.globals'
 
 export function App() {
   const { i18n } = useTranslation()
@@ -37,27 +38,27 @@ export function App() {
           return
         }
 
-        console.log('struct UserConfigObject ["core/src/core/userConfigData.ts"]:', hasUserConfig)
+        if (VERBOSE.STRUCT) console.log('struct UserConfigObject ["core/src/core/userConfigData.ts"]:', hasUserConfig)
         setUserConfigState(hasUserConfig)
 
         window.api.discordRPSetUserConfig(hasUserConfig)
 
         const rb3Stats = await window.api.rpcs3GetRB3Stats()
-        console.log('struct RockBand3Data ["rbtools/src/lib/rpcs3/rpcs3GetRB3Stats.ts"]:', rb3Stats)
+        if (VERBOSE.STRUCT) console.log('struct RockBand3Data ["rbtools/src/lib/rpcs3/rpcs3GetRB3Stats.ts"]:', rb3Stats)
 
         let saveData: ParsedRB3SaveData | false = false
         let instrumentScores: InstrumentScoreData | false = false
         let packagesData: RPCS3SongPackagesDataExtra | false = false
         if (typeof rb3Stats === 'object' && rb3Stats.hasSaveData) {
           saveData = await window.api.rpcs3GetSaveDataStats()
-          console.log('struct ParsedRB3SaveData ["rbtools/src/lib/rpsc3/getSaveData.ts"]:', saveData)
+          if (VERBOSE.STRUCT) console.log('struct ParsedRB3SaveData ["rbtools/src/lib/rpsc3/getSaveData.ts"]:', saveData)
           if (saveData) {
             instrumentScores = await window.api.rpcs3GetInstrumentScores(saveData)
-            console.log('struct InstrumentScoreData ["rbtools/src/lib/rpcs3/getInstrumentScoresData.ts"]:', instrumentScores)
+            if (VERBOSE.STRUCT) console.log('struct InstrumentScoreData ["rbtools/src/lib/rpcs3/getInstrumentScoresData.ts"]:', instrumentScores)
           }
 
           packagesData = await window.api.rpcs3GetPackagesData()
-          console.log('struct RPCS3SongPackagesDataExtra ["rbtools/src/lib/rpcs3/rpcs3GetSongPackagesStatsExtra.ts"]:', packagesData)
+          if (VERBOSE.STRUCT) console.log('struct RPCS3SongPackagesDataExtra ["rbtools/src/lib/rpcs3/rpcs3GetSongPackagesStatsExtra.ts"]:', packagesData)
         }
 
         setWindowState({
@@ -93,7 +94,7 @@ export function App() {
 
   useEffect(function initMessageListener() {
     window.api.onMessage((_, message) => {
-      console.log('struct MessageBoxObject [core/src/core/rendererSenders.ts]', message)
+      if (VERBOSE.STRUCT) console.log('struct MessageBoxObject [core/src/core/rendererSenders.ts]', message)
       setMessageBoxState({ message })
     })
   }, [])

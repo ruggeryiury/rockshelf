@@ -8,6 +8,7 @@ import { useWindowState } from '@renderer/stores/Window.state'
 import { useDeluxeInstallScreenState } from './DeluxeInstallScreen.state'
 import { useShallow } from 'zustand/shallow'
 import { useCreateNewPackageScreenState } from './CreateNewPackageScreen.state'
+import { VERBOSE } from '@renderer/app/rockshelf.globals'
 
 export function BuzyLoadScreen() {
   const { t } = useTranslation()
@@ -144,7 +145,7 @@ export function BuzyLoadScreen() {
                     case 'refreshRB3Stats':
                     default: {
                       const rb3Stats = await window.api.rpcs3GetRB3Stats()
-                      console.log('struct RockBand3Data ["rbtools/src/lib/rpcs3/rpcs3GetRB3Stats.ts"]:', rb3Stats)
+                      if (VERBOSE.STRUCT) console.log('struct RockBand3Data ["rbtools/src/lib/rpcs3/rpcs3GetRB3Stats.ts"]:', rb3Stats)
                       setWindowState({ rb3Stats })
                       break
                     }

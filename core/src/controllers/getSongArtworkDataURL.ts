@@ -14,7 +14,7 @@ export const getSongArtworkDataURL = useHandler(async (win, _, packageDetails: R
   const artworkPath = new TextureFile(DirPath.of(packageDetails.path).gotoFile(`songs/${songDetails.songname}/gen/${songDetails.songname}_keep.png_ps3`))
 
   if (!artworkPath.path.exists) {
-    sendMessageBox(win, { type: 'error', code: 'getSongArtworkDataURLNoArtworkFile', messageValues: { path: artworkPath.path.path } })
+    // sendMessageBox(win, { type: 'error', code: 'getSongArtworkDataURLNoArtworkFile', messageValues: { path: artworkPath.path.path } })
     return false
   }
 

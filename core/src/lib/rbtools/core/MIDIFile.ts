@@ -1,5 +1,4 @@
 import { BinaryReader, type FilePath, type FilePathJSONRepresentation, type FilePathLikeTypes, pathLikeToFilePath, randomByteFromRanges } from 'node-lib'
-import { useDefaultOptions } from 'use-default-options'
 import { BinaryAPI, EDATFile, PythonAPI, type MIDIFileStatPythonObject } from '../core.exports'
 
 // #region Types
@@ -10,7 +9,7 @@ export interface EDATEncryptionOptions {
   /**
    * The Content ID to the encrypted EDAT file. You can generate formatted Content IDs using static `EDATFile.genContentID()`.
    */
-  contentID: string
+  contentID?: string
   /**
    * The pack folder name where the song will be installed, to create a DevKLic based on the folder's name.
    */
@@ -47,7 +46,7 @@ export class MIDIFile {
    * Checks the integrity of the instantiated MIDI file by reading its signature (magic bytes).
    * - - - -
    * @returns {Promise<string>}
-   * @throws {Error} When it identifies file signature of a MIDI file or any unknown file format.
+   * @throws {Error} When it identifies file signature of an EDAT file or any unknown file format.
    */
   async checkFileIntegrity(): Promise<string> {
     if (!this.path.exists) throw new Error(`Provided MIDI file "${this.path.path}" does not exists`)
@@ -91,8 +90,10 @@ export class MIDIFile {
    * @returns {Promise<EDATFile>}
    */
   async encrypt(options: EDATEncryptionOptions): Promise<EDATFile> {
-    const { contentID, destPath, packFolderName } = useDefaultOptions({ contentID: EDATFile.genContentID(`RBTOOLSEDAT${randomByteFromRanges(6, ['numbers']).toString()}`), packFolderName: 'RBTOOLS', destPath: this.path.fullname }, options)
+    const contentID = options.contentID ?? EDATFile.genContentID(`RBTOOLSEDAT${randomByteFromRanges(6, ['numbers']).toString()}`)
+    const packFolderName = options.packFolderName
+    const destPath = options.destPath ? pathLikeToFilePath(options.destPath) : undefined
 
-    return await BinaryAPI.edatToolEncrypt(this.path, contentID, EDATFile.genDevKLicHash(packFolderName), destPath)
+    return await BinaryAPI.makeNPDataEncrypt(this.path, contentID, EDATFile.genDevKLicHash(packFolderName), destPath)
   }
 }

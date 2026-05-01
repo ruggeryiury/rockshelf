@@ -1,5 +1,5 @@
 import { BinaryReader, FilePath, pathLikeToFilePath, type FilePathLikeTypes } from 'node-lib'
-import { createRSPackImage, cropImageToTempPNG, isJPEGRockshelfPackImage, parseRSDATBuffer, type RSPackImageCreatorOptions } from '../../lib.exports'
+import { createRSPackImage, cropImageToTempPNG, isJPEGRockshelfPackImage, parseRSDATBuffer, type RSPackImageCreatorOptions, type RSPackImageEncryptionStatusValues } from '../../lib.exports'
 import { temporaryFile } from 'tempy'
 import { getRockshelfModuleRootDir } from '../../core.exports'
 import { TextureFile, PythonAPI } from '../rbtools'
@@ -28,17 +28,18 @@ export interface EditPackageDataOptions {
   packageName?: string
   imgPath?: string
   imgCropOptions?: CropImageCoordinatesObject
+  encryptionStatus?: RSPackImageEncryptionStatusValues
 }
 
 export const editRSPackImage = async (rsPackImagePath: FilePathLikeTypes, options: EditPackageDataOptions): Promise<FilePath> => {
-  const { imgCropOptions, imgPath, packageName } = options
+  const { imgCropOptions, imgPath, packageName, encryptionStatus } = options
   const src = pathLikeToFilePath(rsPackImagePath)
 
   const results = await isJPEGRockshelfPackImage(src)
   if (!results) throw new Error(`Provided JPEG image file "${src.path}" is not a valid Rockshelf Pack Image file.`)
 
   const rsDataBuffer = await parseRSDATBuffer(results.buffer)
-  const opts: RSPackImageCreatorOptions = { packageName: packageName || rsDataBuffer.packageName, source: rsDataBuffer.source, type: rsDataBuffer.type, encryptionStatus: rsDataBuffer.encryptionStatus }
+  const opts: RSPackImageCreatorOptions = { packageName: packageName || rsDataBuffer.packageName, source: rsDataBuffer.source, type: rsDataBuffer.type, encryptionStatus: encryptionStatus || rsDataBuffer.encryptionStatus }
 
   if (!imgPath) {
     const srcReader = await BinaryReader.fromFile(src)

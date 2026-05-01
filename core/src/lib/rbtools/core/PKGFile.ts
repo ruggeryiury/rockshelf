@@ -184,7 +184,7 @@ export class PKGFile {
     await BinaryAPI.ps3pPKGRipper(this.path, dest, songs.length > 0 ? files : undefined)
 
     if (extractOnRoot) {
-      const paths = await dest.readDir(true)
+      const paths = (await dest.readDir(true)).toReversed()
       const allFiles = paths.filter((p) => p instanceof FilePath)
       const allDirs = paths.filter((p) => p instanceof DirPath)
 

@@ -1,6 +1,6 @@
 import { animate, AnimatedSection, mountMessageBoxLocaleKey, TransComponent } from '@renderer/lib.exports'
 import { useMessageBoxState } from './MessageBox.state'
-import { useEffect, useMemo, useState } from 'react'
+import { useEffect, useMemo } from 'react'
 import { ErrorIcon, LoadingIcon, SuccessIcon } from '@renderer/assets/icons'
 import clsx from 'clsx'
 import { useTranslation } from 'react-i18next'

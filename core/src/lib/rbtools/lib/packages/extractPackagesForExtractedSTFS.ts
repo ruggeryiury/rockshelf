@@ -274,7 +274,7 @@ export const extractPackagesForExtractedSTFS = async (packages: RB3PackageLikeTy
             // Original MIDI must be decrypted anyway
             const tempDecEDAT = pathLikeToFilePath(temporaryFile({ extension: 'mid' }))
             const oldDevklic = EDATFile.genDevKLicHash(temp.stat.folderName)
-            await BinaryAPI.edatToolDecrypt(oldMIDIPath, oldDevklic, tempDecEDAT)
+            await BinaryAPI.makeNPDataDecrypt(oldMIDIPath, oldDevklic, tempDecEDAT)
             await tempDecEDAT.move(newMIDIPath, true)
           }
         }
@@ -301,8 +301,8 @@ export const extractPackagesForExtractedSTFS = async (packages: RB3PackageLikeTy
   if (updates.length > 0 || updateAllSongs !== null) parser.applyUpdatesToExistingSongs(true)
 
   parser.sort('ID')
-  parser.patchSongsEncodings()
   parser.patchCores()
+  parser.patchSongsEncodings()
 
   try {
     await parser.export(newDTAPath)

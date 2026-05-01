@@ -49,6 +49,9 @@ export interface ParsedRSPackImageObject {
    * The installation source of the song package.
    */
   source: RSPackImageSourceValues
+  /**
+   * The encryption status of the package files.
+   */
   encryptionStatus: RSPackImageEncryptionStatusValues
   /**
    * The display name of the song package on Rockshelf.

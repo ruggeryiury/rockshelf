@@ -35,7 +35,7 @@ const allIcons: string[] = [
 export function RBIconsSelector() {
   const { t } = useTranslation()
 
-  const { selPKG } = useMyPackagesScreenState(useShallow((x) => ({ selPKG: x.selPKG, catalog: x.catalog, setMyPackagesScreenState: x.setMyPackagesScreenState, catalogSortBy: x.catalogSortBy, packageDetailsTab: x.packageDetailsTab, editPackageName: x.editPackageName, editPackageEdited: x.editPackageEdited })))
+  const { selPKG } = useMyPackagesScreenState(useShallow((x) => ({ selPKG: x.selPKG })))
   const { active, resetRBIconsSelectorState, selIcon, setRBIconsSelectorState } = useRBIconsSelectorState(useShallow((x) => ({ active: x.active, resetRBIconsSelectorState: x.resetRBIconsSelectorState, selIcon: x.selIcon, setRBIconsSelectorState: x.setRBIconsSelectorState })))
   const { setMessageBoxState } = useMessageBoxState(useShallow((x) => ({ setMessageBoxState: x.setMessageBoxState })))
   const { disableButtons, setWindowState } = useWindowState(useShallow((x) => ({ disableButtons: x.disableButtons, setWindowState: x.setWindowState })))

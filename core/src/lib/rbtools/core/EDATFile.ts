@@ -53,7 +53,7 @@ export class EDATFile {
       const diff = 36 - (contentID + text).length
       contentID += text
       for (let i = 0; i < diff; i++) {
-        contentID += randomByteFromRanges(1).toString('hex').toUpperCase()
+        contentID += randomByteFromRanges(1).toString('hex')[0].toUpperCase()
       }
     } else contentID += text
 
@@ -155,12 +155,11 @@ export class EDATFile {
    */
   async decrypt(options: EDATDecryptionOptions): Promise<MIDIFile> {
     const stat = await this.toJSON()
-    console.log(stat)
     if (!stat.isEncrypted) {
       const destPath = options.destPath ? pathLikeToFilePath(options.destPath) : FilePath.of(`${stat.root}/${stat.name}`)
       return new MIDIFile(await this.path.copy(destPath))
     }
-    const devKLicHash = stat.devKLicHash ?? ''
+    const devKLicHash = options.devKLicHash
     const dest = options.destPath ? pathLikeToFilePath(options.destPath) : FilePath.of(`${stat.root}/${stat.name}`)
 
     dest.changeThisFileExt('.mid')

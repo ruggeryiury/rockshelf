@@ -16,7 +16,7 @@ import { StarsInline } from '@renderer/components.exports'
 
 export function PackageDetails() {
   const { t } = useTranslation()
-  const { selPKG, songsCatalog, setMyPackagesScreenState, songsCatalogSortBy, packageDetailsTab, editPackageName, editPackageEdited } = useMyPackagesScreenState(useShallow((x) => ({ selPKG: x.selPKG, songsCatalog: x.songsCatalog, setMyPackagesScreenState: x.setMyPackagesScreenState, songsCatalogSortBy: x.songsCatalogSortBy, packageDetailsTab: x.packageDetailsTab, editPackageName: x.editPackageName, editPackageEdited: x.editPackageEdited })))
+  const { selPKG, songsCatalog, setMyPackagesScreenState, songsCatalogSortBy, packageDetailsTab, editPackageName, editPackageEdited, packagesCatalogSortBy } = useMyPackagesScreenState(useShallow((x) => ({ selPKG: x.selPKG, songsCatalog: x.songsCatalog, setMyPackagesScreenState: x.setMyPackagesScreenState, songsCatalogSortBy: x.songsCatalogSortBy, packageDetailsTab: x.packageDetailsTab, editPackageName: x.editPackageName, editPackageEdited: x.editPackageEdited, packagesCatalogSortBy: x.packagesCatalogSortBy })))
   const { disableButtons, saveData, packages, rb3Stats, setWindowState, disableImg } = useWindowState(useShallow((x) => ({ disableButtons: x.disableButtons, saveData: x.saveData, packages: x.packages, rb3Stats: x.rb3Stats, setWindowState: x.setWindowState, disableImg: x.disableImg })))
   const { mostPlayedInstrument, setUserConfigState } = useUserConfigState(useShallow((x) => ({ mostPlayedInstrument: x.mostPlayedInstrument, setUserConfigState: x.setUserConfigState })))
   const { setMessageBoxState } = useMessageBoxState(useShallow((x) => ({ setMessageBoxState: x.setMessageBoxState })))
@@ -33,10 +33,10 @@ export function PackageDetails() {
           try {
             const newCatalog = await window.api.sortAndFilterSongsFromPackage(selPKG, songsCatalogSortBy, { instrument: mostPlayedInstrument })
             if (!newCatalog) return
-            if (import.meta.env.DEV) {
-              if (newCatalog.type !== 'difficulty' && newCatalog.type !== 'artist') console.log('struct DTACatalogGenericObject [core/src/lib/dta/getDTACatalog.ts]', newCatalog)
-              else if (newCatalog.type === 'artist') console.log('struct DTACatalogByArtistObject [core/src/lib/dta/getDTACatalog.ts]', newCatalog)
-              else console.log('struct DTACatalogByDifficultyObject [core/src/lib/dta/getDTACatalog.ts]', newCatalog)
+            if (VERBOSE.STRUCT) {
+              if (newCatalog.type !== 'difficulty' && newCatalog.type !== 'artist') console.log('struct DTACatalogGenericObject [core/src/lib/rbtools/lib/dta/filterDTA.ts]', newCatalog)
+              else if (newCatalog.type === 'artist') console.log('struct DTACatalogByArtistObject [core/src/lib/rbtools/lib/dta/filterDTA.ts]', newCatalog)
+              else console.log('struct DTACatalogByDifficultyObject [core/src/lib/rbtools/lib/dta/filterDTA.ts]', newCatalog)
             }
             setMyPackagesScreenState({ songsCatalog: newCatalog })
             setWindowState({ disableButtons: false })
@@ -46,7 +46,7 @@ export function PackageDetails() {
         }
       }
 
-      start()
+      void start()
     },
     [packages, selPKG, songsCatalog, songsCatalogSortBy, mostPlayedInstrument]
   )
@@ -467,7 +467,12 @@ export function PackageDetails() {
                         const newPackages = await window.api.editPackageData(selPKG, { packageName: editPackageName })
                         if (VERBOSE.STRUCT) console.log('struct RPCS3SongPackagesDataExtra ["rbtools/src/lib/rpcs3/rpcs3GetSongPackagesStatsExtra.ts"]:', newPackages)
 
-                        if (newPackages) setWindowState({ packages: newPackages })
+                        if (newPackages) {
+                          setWindowState({ packages: newPackages })
+                          const newCatalog = await window.api.sortAndFilterSongPackages(packagesCatalogSortBy)
+                          if (VERBOSE.STRUCT) console.log('struct SongPackagesFilterGenericObject [core/src/lib/dta/getDTACatalog.ts]', newCatalog)
+                          setMyPackagesScreenState({ packagesCatalog: newCatalog })
+                        }
                         setMyPackagesScreenState({ editPackageEdited: false })
                         setMessageBoxState({ message: { type: 'success', code: 'savePackageEditing' } })
                       } catch (err) {

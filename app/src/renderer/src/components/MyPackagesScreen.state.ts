@@ -1,6 +1,7 @@
+import { create } from 'zustand'
+import { SongPackagesFilterGenericObject, SongPackagesFilterTypes } from 'rockshelf-core'
 import type { DTAFilterGenericObject, DTAFilterByArtistObject, DTAFilterByDifficultyObject, DTAFilterTypes } from 'rockshelf-core/rbtools/lib'
 import type { GoCentralLeaderboardResultObject } from 'rockshelf-core/rbtools'
-import { create } from 'zustand'
 
 export interface MyPackagesScreenStateProps {
   active: boolean
@@ -8,6 +9,8 @@ export interface MyPackagesScreenStateProps {
   songsCatalog: DTAFilterGenericObject | DTAFilterByArtistObject | DTAFilterByDifficultyObject | false | 'loading'
   songsCatalogSortBy: DTAFilterTypes
   myPackagesTab: number
+  packagesCatalog: SongPackagesFilterGenericObject | false | 'loading'
+  packagesCatalogSortBy: SongPackagesFilterTypes
   packageDetailsTab: number
   songDetailsTab: number
   songLeaderboards: false | 'loading' | GoCentralLeaderboardResultObject
@@ -45,6 +48,8 @@ const defaultState: MyPackagesScreenStateProps = {
   selPKG: -1,
   songsCatalog: false,
   songsCatalogSortBy: 'title',
+  packagesCatalog: false,
+  packagesCatalogSortBy: 'name',
   myPackagesTab: 0,
   packageDetailsTab: 0,
   songDetailsTab: 0,

@@ -62,7 +62,7 @@ export const encDecPackage = useHandler(async (win, _, func: EncDecPackageFuncti
       const isEDATEncrypted = await edat.isEncrypted()
       if ((isEDATEncrypted && func === 'encryptAll') || (!isEDATEncrypted && func === 'decryptAll')) continue
 
-      const tempEDAT = pathLikeToFilePath(temporaryFile({ extension: 'edat' }))
+      const tempEDAT = pathLikeToFilePath(temporaryFile({ name: edat.path.fullname }))
       if (func === 'encryptAll') {
         const midi = new MIDIFile(file)
         await midi.encrypt({ packFolderName: cacheContents.packages[pkgIndex].name, destPath: tempEDAT })

@@ -440,7 +440,6 @@ export class PythonAPI {
     const stfs = pathLikeToFilePath(stfsFilePath)
     const pythonScript = 'stfs_file_stat.py'
     const command = `${PythonAPI.getPythonExecName()} "${pythonScript}" "${stfs.path}" -p`
-    console.log(command)
     const cwd = is.dev ? RBTools.pyFolder.path : RBTools.pyFolder.path.replace(/(\.asar)([\\/])/, '.asar.unpacked$2')
     const { stderr, stdout } = await execAsync(command, { windowsHide: true, cwd })
     if (stderr) throw new Error(stderr)

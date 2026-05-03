@@ -103,7 +103,7 @@ export const insertIndexOnSongsArray = (songs: RB3CompatibleDTAFile[]): RB3Compa
  * @param {RB3CompatibleDTAFileWithIndex} b Parsed song data B.
  * @returns {number}
  */
-export const useGenericCatalogSort = (a: RB3CompatibleDTAFileWithIndex, b: RB3CompatibleDTAFileWithIndex): number => {
+export const useSongGenericCatalogSort = (a: RB3CompatibleDTAFileWithIndex, b: RB3CompatibleDTAFileWithIndex): number => {
   if (leadingArticleToTrailing(a.name).toLowerCase() > leadingArticleToTrailing(b.name).toLowerCase()) return 1
   else if (leadingArticleToTrailing(a.name).toLowerCase() < leadingArticleToTrailing(b.name).toLowerCase()) return -1
   else if (leadingArticleToTrailing(a.artist).toLowerCase() > leadingArticleToTrailing(b.artist).toLowerCase()) return 1
@@ -120,7 +120,7 @@ export const useGenericCatalogSort = (a: RB3CompatibleDTAFileWithIndex, b: RB3Co
  */
 export const filterDTAByTitle = (songs: RB3CompatibleDTAFile[], options?: DTAFilterOptions): DTAFilterGenericObject => {
   const { filterEmptyHeader } = useDefaultOptions<DTAFilterOptions>({ filterEmptyHeader: true, instrument: 'band' }, options)
-  const sortedSongs = insertIndexOnSongsArray(songs).sort(useGenericCatalogSort)
+  const sortedSongs = insertIndexOnSongsArray(songs).sort(useSongGenericCatalogSort)
 
   const charZCode = 0x7a
   const headers: DTAFilterGenericHeaders[] = [
@@ -166,7 +166,7 @@ export const filterDTAByTitle = (songs: RB3CompatibleDTAFile[], options?: DTAFil
  */
 export const filterDTAByGenre = (songs: RB3CompatibleDTAFile[], options?: DTAFilterOptions): DTAFilterGenericObject => {
   const { filterEmptyHeader } = useDefaultOptions<DTAFilterOptions>({ filterEmptyHeader: true, instrument: 'band' }, options)
-  const sortedSongs = insertIndexOnSongsArray(songs).sort(useGenericCatalogSort)
+  const sortedSongs = insertIndexOnSongsArray(songs).sort(useSongGenericCatalogSort)
 
   const headers: DTAFilterGenericHeaders[] = [] as DTAFilterGenericHeaders[]
 
@@ -199,7 +199,7 @@ export const filterDTAByGenre = (songs: RB3CompatibleDTAFile[], options?: DTAFil
  */
 export const filterDTAByDecade = (songs: RB3CompatibleDTAFile[], options?: DTAFilterOptions): DTAFilterGenericObject => {
   const { filterEmptyHeader } = useDefaultOptions<DTAFilterOptions>({ filterEmptyHeader: true, instrument: 'band' }, options)
-  const sortedSongs = insertIndexOnSongsArray(songs).sort(useGenericCatalogSort)
+  const sortedSongs = insertIndexOnSongsArray(songs).sort(useSongGenericCatalogSort)
 
   const headers: DTAFilterGenericHeaders[] = []
 
@@ -246,7 +246,7 @@ export const filterDTAByDecade = (songs: RB3CompatibleDTAFile[], options?: DTAFi
  */
 export const filterDTAByYearReleased = (songs: RB3CompatibleDTAFile[], options?: DTAFilterOptions): DTAFilterGenericObject => {
   const { filterEmptyHeader } = useDefaultOptions<DTAFilterOptions>({ filterEmptyHeader: true, instrument: 'band' }, options)
-  const sortedSongs = insertIndexOnSongsArray(songs).sort(useGenericCatalogSort)
+  const sortedSongs = insertIndexOnSongsArray(songs).sort(useSongGenericCatalogSort)
 
   const headers: DTAFilterGenericHeaders[] = []
 
@@ -278,7 +278,7 @@ export const filterDTAByYearReleased = (songs: RB3CompatibleDTAFile[], options?:
  */
 export const filterDTAByInstrumentDifficulty = (songs: RB3CompatibleDTAFile[], options?: DTAFilterOptions): DTAFilterByDifficultyObject => {
   const { filterEmptyHeader, instrument } = useDefaultOptions<DTAFilterOptions>({ filterEmptyHeader: true, instrument: 'band' }, options)
-  const sortedSongs = insertIndexOnSongsArray(songs).sort(useGenericCatalogSort)
+  const sortedSongs = insertIndexOnSongsArray(songs).sort(useSongGenericCatalogSort)
 
   const headers: (Omit<DTAFilterGenericHeaders, 'songsIndexes'> & { songsIndexes: RB3CompatibleDTAFileWithIndex[] })[] = [
     { name: 'Warmup', code: 'diff0' },

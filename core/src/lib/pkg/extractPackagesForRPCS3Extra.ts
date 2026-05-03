@@ -1,4 +1,4 @@
-import { type DirPathLikeTypes, type DirPath, pathLikeToDirPath, pathLikeToFilePath } from 'node-lib'
+import { type DirPathLikeTypes, type DirPath, pathLikeToDirPath, pathLikeToFilePath, randomByteFromRanges } from 'node-lib'
 import { temporaryDirectory, temporaryFile } from 'tempy'
 import { useDefaultOptions } from 'use-default-options'
 import { sendBuzyLoad } from '../senders/buzyLoad'
@@ -289,7 +289,7 @@ export const extractPackagesForRPCS3Extra = async (win: BrowserWindow, packages:
           await oldMIDIPath.move(newMIDIPath, true)
         } else if (temp.type === 'stfs' && forceEncryption === 'enabled') {
           const newDevkLic = EDATFile.genDevKLicHash(packageFolderName)
-          const newContentID = EDATFile.genContentID(packageFolderName.toUpperCase())
+          const newContentID = EDATFile.genContentID(`RBTOOLSEDAT${randomByteFromRanges(6, ['numbers']).toString()}`)
           sendBuzyLoad(win, { code: 'subtext', key: 'encryptingMIDIFileText', messageValues: { name: oldMIDIPath.fullname } })
           await BinaryAPI.makeNPDataEncrypt(oldMIDIPath, newContentID, newDevkLic, newMIDIPath)
         }
@@ -309,7 +309,7 @@ export const extractPackagesForRPCS3Extra = async (win: BrowserWindow, packages:
 
           if (forceEncryption === 'enabled') {
             const newDevkLic = EDATFile.genDevKLicHash(packageFolderName)
-            const newContentID = EDATFile.genContentID(packageFolderName.toUpperCase())
+            const newContentID = EDATFile.genContentID(`RBTOOLSEDAT${randomByteFromRanges(6, ['numbers']).toString()}`)
             sendBuzyLoad(win, { code: 'subtext', key: 'encryptingMIDIFileText', messageValues: { name: oldMIDIPath.fullname } })
             await BinaryAPI.makeNPDataEncrypt(oldMIDIPath, newContentID, newDevkLic, newMIDIPath)
           } else await oldMIDIPath.move(newMIDIPath)

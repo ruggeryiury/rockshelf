@@ -6,7 +6,7 @@ export const VERBOSE = {
   /**
    * Allow logging of specific typed objects sent by the main process.
    */
-  STRUCT: false,
+  STRUCT: true,
 } as const
 
 export const DXNIGHTLYLINK = 'https://nightly.link/hmxmilohax/rock-band-3-deluxe/workflows/build/develop'
@@ -33,4 +33,8 @@ export const SONG_DETAILS_TABS = {
   DETAILS: 0,
   LEADERBOARDS: 1,
   OPTIONS: 2,
+} as const
+
+export const RHYTHMVERSE_SCREEN_TABS = {
+  BROWSE: 0,
 } as const

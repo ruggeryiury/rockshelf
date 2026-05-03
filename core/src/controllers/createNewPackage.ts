@@ -23,7 +23,6 @@ export interface SerializedRPCS3PackageExtractionObject {
 }
 
 export const createNewPackage = useHandler(async (win, __, options: CreateNewPackageOptions): Promise<SerializedRPCS3PackageExtractionObject | false> => {
-  if (VERBOSE.STRUCT) console.log('struct CreateNewPackageOptions', options)
   const userConfig = await readUserConfigFile()
   if (!userConfig) {
     sendDialog(win, 'corruptedUserConfig')

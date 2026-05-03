@@ -443,19 +443,20 @@ export function SongDetails() {
                           <div key={`score${scoreIndex}`} className={clsx('font-pentatonic mr-4 mb-1 flex-row! items-center rounded-sm border border-neutral-700 px-2 py-1 last:mb-0', scoreIndex === 0 && 'bg-linear-to-b from-yellow-500 to-yellow-600 text-neutral-950', scoreIndex === 1 && 'bg-linear-to-b from-neutral-400 to-neutral-500 text-neutral-950', scoreIndex === 2 && 'bg-linear-to-b from-[#CD7F32] to-[#a6472d] text-neutral-950')}>
                             <h1 className="mr-1 text-xs">{scoreIndex + 1}</h1>
                             <h2 className="mr-2 text-lg">{score.name}</h2>
-                            {(() => {
-                              switch (score.platform) {
-                                case 'rpcs3':
-                                default:
-                                  return <RPCS3Icon className="h-3.5 w-3.5" title="RPCS3" />
-                                case 'ps3':
-                                  return <PlaystationIcon className="text-lg" title="PlayStation® 3" />
-                                case 'wii':
-                                  return <WiiIcon className="h-6 w-6" title="Nintendo® Wii" />
-                                case 'xbox':
-                                  return <XboxIcon className="text-sm" title="Xbox® 360" />
-                              }
-                            })()}
+                            {songLeaderboards.instrument !== 'band' &&
+                              (() => {
+                                switch (score.platform) {
+                                  case 'rpcs3':
+                                  default:
+                                    return <RPCS3Icon className="h-3.5 w-3.5" title="RPCS3" />
+                                  case 'ps3':
+                                    return <PlaystationIcon className="text-lg" title="PlayStation® 3" />
+                                  case 'wii':
+                                    return <WiiIcon className="h-6 w-6" title="Nintendo® Wii" />
+                                  case 'xbox':
+                                    return <XboxIcon className="text-sm" title="Xbox® 360" />
+                                }
+                              })()}
                             <h2 className="mr-2 ml-auto font-mono text-base font-bold">{formatNumberWithDots(score.score)}</h2>
                             <div className={clsx('mr-2 rounded-xs bg-neutral-800 px-1 py-0.5', scoreIndex >= 0 && scoreIndex <= 2 ? 'text-neutral-200' : '')}>
                               {(() => {

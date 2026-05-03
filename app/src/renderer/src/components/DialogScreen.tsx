@@ -8,6 +8,8 @@ import { LoadingIcon } from '@renderer/assets/icons'
 import { useShallow } from 'zustand/shallow'
 import { useMessageBoxState } from './MessageBox.state'
 import { InstrumentScoreData } from 'rockshelf-core/rbtools'
+import { useMyPackagesScreenState } from './MyPackagesScreen.state'
+import { VERBOSE } from '@renderer/app/rockshelf.globals'
 
 function DialogButton({ children, className, ...props }: ButtonHTMLAttributes<HTMLButtonElement>) {
   return (
@@ -20,6 +22,7 @@ function DialogButton({ children, className, ...props }: ButtonHTMLAttributes<HT
 export function DialogScreen() {
   const { t } = useTranslation()
   const { active, deletePackageIndex, isLoadingAction, setDialogScreenState, resetDialogScreenState } = useDialogScreenState(useShallow((x) => ({ active: x.active, deletePackageIndex: x.deletePackageIndex, isLoadingAction: x.isLoadingAction, setDialogScreenState: x.setDialogScreenState, resetDialogScreenState: x.resetDialogScreenState })))
+  const { setMyPackagesScreenState, packagesCatalogSortBy } = useMyPackagesScreenState(useShallow((x) => ({ setMyPackagesScreenState: x.setMyPackagesScreenState, packagesCatalogSortBy: x.packagesCatalogSortBy })))
   const { disableButtons, packages, saveData, setWindowState } = useWindowState(useShallow((x) => ({ disableButtons: x.disableButtons, packages: x.packages, saveData: x.saveData, setWindowState: x.setWindowState })))
   const { setMessageBoxState } = useMessageBoxState(useShallow((x) => ({ setMessageBoxState: x.setMessageBoxState })))
 
@@ -121,8 +124,12 @@ export function DialogScreen() {
                     try {
                       setWindowState({ disableButtons: true })
                       const newPackages = await window.api.deletePackage(deletePackageIndex)
+                      if (VERBOSE.STRUCT) console.log('struct RPCS3SongPackagesDataExtra ["rbtools/src/lib/rpcs3/rpcs3GetSongPackagesStatsExtra.ts"]:', newPackages)
+                      const newCatalog = await window.api.sortAndFilterSongPackages(packagesCatalogSortBy)
+                      if (VERBOSE.STRUCT) console.log('struct SongPackagesFilterGenericObject [core/src/lib/dta/getDTACatalog.ts]', newCatalog)
                       let newInstrumentScores: false | InstrumentScoreData = false
                       if (typeof saveData === 'object') newInstrumentScores = await window.api.rpcs3GetInstrumentScores(saveData)
+                      setMyPackagesScreenState({ packagesCatalog: newCatalog })
                       setWindowState({ packages: newPackages, instrumentScores: newInstrumentScores })
                       setMessageBoxState({ message: { type: 'success', code: 'deletePackage' } })
                       resetDialogScreenState()

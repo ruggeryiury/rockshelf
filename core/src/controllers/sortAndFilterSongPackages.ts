@@ -1,9 +1,16 @@
 import { getPackagesCacheFile, useHandler } from '../core.exports'
-import type { RPCS3SongPackagesDataExtra } from '../lib.exports'
+import { filterSongPackagesByName, filterSongPackagesByOfficialPkg, type RPCS3SongPackagesDataExtra, type SongPackagesFilterOptions, type SongPackagesFilterTypes } from '../lib.exports'
 
-export const sortAndFilterSongPackages = useHandler(async (win, _) => {
+export const sortAndFilterSongPackages = useHandler(async (_, __, type: SongPackagesFilterTypes, options?: SongPackagesFilterOptions) => {
   const cache = getPackagesCacheFile()
   const cacheContents = await cache.readJSON<RPCS3SongPackagesDataExtra>()
 
-  const songs = cacheContents.packages
+  const packages = cacheContents.packages
+  switch (type) {
+    case 'name':
+    default:
+      return filterSongPackagesByName(packages, options)
+    case 'officialUnofficial':
+      return filterSongPackagesByOfficialPkg(packages, options)
+  }
 })

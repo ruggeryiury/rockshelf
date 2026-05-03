@@ -21,9 +21,11 @@ export function BuzyLoadScreen() {
 
   useEffect(function initBuzyLoadListener() {
     window.api.onBuzyLoad((_, func) => {
-      if (func.code === 'init') console.log('struct BuzyLoadInitObject [core/src/lib/senders/buzyLoad.ts]', func)
-      else if (func.code === 'throwError') console.log('struct BuzyLoadErrorObject [core/src/lib/senders/buzyLoad.ts]', func)
-      else console.log('struct BuzyLoadObject [core/src/lib/senders/buzyLoad.ts]', func)
+      if (VERBOSE.STRUCT) {
+        if (func.code === 'init') console.log('struct BuzyLoadInitObject [core/src/lib/senders/buzyLoad.ts]', func)
+        else if (func.code === 'throwError') console.log('struct BuzyLoadErrorObject [core/src/lib/senders/buzyLoad.ts]', func)
+        else console.log('struct BuzyLoadObject [core/src/lib/senders/buzyLoad.ts]', func)
+      }
 
       switch (func.code) {
         case 'init': {

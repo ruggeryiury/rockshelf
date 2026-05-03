@@ -12,6 +12,7 @@ import type { SelectPackageFilesStatsTypes } from 'rockshelf-core'
 import { useImageCropScreenState } from './ImageCropScreen.state'
 import { useRBIconsSelectorState } from './RBIconsSelector.state'
 import { useDeluxeInstallScreenState } from './DeluxeInstallScreen.state'
+import { useMyPackagesScreenState } from './MyPackagesScreen.state'
 
 export function CreateNewPackageScreen() {
   const { t } = useTranslation()
@@ -20,6 +21,7 @@ export function CreateNewPackageScreen() {
   const { setMessageBoxState } = useMessageBoxState(useShallow((x) => ({ setMessageBoxState: x.setMessageBoxState })))
   const { setImageCropScreenState } = useImageCropScreenState(useShallow((x) => ({ setImageCropScreenState: x.setImageCropScreenState })))
   const { setRBIconsSelectorState } = useRBIconsSelectorState(useShallow((x) => ({ setRBIconsSelectorState: x.setRBIconsSelectorState })))
+  const { packagesCatalogSortBy, setMyPackagesScreenState } = useMyPackagesScreenState(useShallow((x) => ({ packagesCatalogSortBy: x.packagesCatalogSortBy, setMyPackagesScreenState: x.setMyPackagesScreenState })))
   const { setDeluxeInstallScreenState } = useDeluxeInstallScreenState(useShallow((x) => ({ setDeluxeInstallScreenState: x.setDeluxeInstallScreenState })))
 
   const isReadyToInstall = useMemo(() => packageName.length > 0 && packageFolderName.length > 0 && files.length > 0, [packageName, packageFolderName, files])
@@ -54,7 +56,9 @@ export function CreateNewPackageScreen() {
                 const results = await window.api.createNewPackage({ packages: files.map((file) => file.data.path.path), packageFolderName, packageName, forceEncryption, thumbnail: packageArtwork })
                 if (VERBOSE.STRUCT) console.log('struct SerializedRPCS3PackageExtractionObject [core/src/controllers/createNewPackage.ts]', results)
                 if (results) {
-                  if (VERBOSE.STRUCT) console.log('struct RPCS3SongPackagesDataExtra ["rbtools/src/lib/rpcs3/rpcs3GetSongPackagesStatsExtra.ts"]:', results.packagesData)
+                  const newCatalog = await window.api.sortAndFilterSongPackages(packagesCatalogSortBy)
+                  if (VERBOSE.STRUCT) console.log('struct SongPackagesFilterGenericObject [core/src/lib/dta/getDTACatalog.ts]', newCatalog)
+                  setMyPackagesScreenState({ packagesCatalog: newCatalog })
                   setWindowState({ packages: results.packagesData })
                 }
               } catch (err) {

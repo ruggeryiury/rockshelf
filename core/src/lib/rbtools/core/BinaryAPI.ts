@@ -59,7 +59,8 @@ export class BinaryAPI {
     else dest = pathLikeToFilePath(`${src.root}/${src.fullname}${src.fullname.toLowerCase().endsWith('.edat') ? '' : '.edat'}`)
 
     const cwd = is.dev ? RBTools.binFolder.path : RBTools.binFolder.path.replace(/(\.asar)([\\/])/, '.asar.unpacked$2')
-    const command = buildOSCommand(`${exeName} -e "${src.path}" "${dest.path}" 1 1 2 0 16 3 00 ${contentID.length > 0x30 ? contentID.slice(0, 0x30) : contentID} 8 ${devKLic.toLowerCase()}`)
+    const command = buildOSCommand(`${exeName} -e "${src.path}" "${dest.path}" 1 1 2 0 16 3 00 ${contentID.length > 0x30 ? contentID.slice(0, 0x30) : contentID} 8 ${devKLic}`)
+    console.log(command)
     await execAsync(command, { windowsHide: true, cwd })
 
     return new EDATFile(dest)
@@ -85,7 +86,8 @@ export class BinaryAPI {
     let dest: FilePath
     if (destPath) dest = pathLikeToFilePath(destPath).changeFileExt('mid')
     else dest = pathLikeToFilePath(resolve(src.root, src.name))
-    const command = buildOSCommand(`${exeName} -d "${src.path}" "${dest.path}" 8 ${devKLic.toLowerCase()}`)
+    const command = buildOSCommand(`${exeName} -d "${src.path}" "${dest.path}" 8 ${devKLic}`)
+    console.log(command)
     const cwd = is.dev ? RBTools.binFolder.path : RBTools.binFolder.path.replace(/(\.asar)([\\/])/, '.asar.unpacked$2')
     const { stderr, stdout } = await execAsync(command, { windowsHide: true, cwd })
 

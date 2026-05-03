@@ -12,6 +12,7 @@ import { useConfigScreenState } from './ConfigScreen.state'
 import { useMyPackagesScreenState } from './MyPackagesScreen.state'
 import { useShallow } from 'zustand/shallow'
 import { useCreateNewPackageScreenState } from './CreateNewPackageScreen.state'
+import { useRhythmverseScreenState } from './RhythmverseScreen.state'
 
 export function MainScreen() {
   const { t } = useTranslation()
@@ -22,6 +23,7 @@ export function MainScreen() {
   const { setConfigScreenState } = useConfigScreenState(useShallow((x) => ({ setConfigScreenState: x.setConfigScreenState })))
   const { setMyPackagesScreenState } = useMyPackagesScreenState(useShallow((x) => ({ setMyPackagesScreenState: x.setMyPackagesScreenState })))
   const { setCreateNewPackageScreenState } = useCreateNewPackageScreenState(useShallow((x) => ({ setCreateNewPackageScreenState: x.setCreateNewPackageScreenState })))
+  const { setRhythmverseScreenState } = useRhythmverseScreenState(useShallow((x) => ({ setRhythmverseScreenState: x.setRhythmverseScreenState })))
 
   return (
     <AnimatedSection id="MainScreen" condition={active} className="z-1 h-full max-h-full w-full max-w-full overflow-y-hidden bg-black/90 p-8">
@@ -185,6 +187,15 @@ export function MainScreen() {
                   }}
                 >
                   {t('myPackages')}
+                </button>
+                <button
+                  className="mb-2 w-full self-start rounded-xs border border-neutral-700 bg-neutral-900 px-1 py-0.5 text-xs! uppercase duration-100 last:mb-0 hover:bg-neutral-700 active:bg-neutral-600 disabled:text-neutral-700 disabled:hover:bg-neutral-900"
+                  disabled={disableButtons}
+                  onClick={async () => {
+                    setRhythmverseScreenState({ active: true })
+                  }}
+                >
+                  {t('browseRhythmverse')}
                 </button>
                 <button
                   className="mb-2 w-full self-start rounded-xs border border-neutral-700 bg-neutral-900 px-1 py-0.5 text-xs! uppercase duration-100 last:mb-0 hover:bg-neutral-700 active:bg-neutral-600 disabled:text-neutral-700 disabled:hover:bg-neutral-900"

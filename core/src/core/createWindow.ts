@@ -46,7 +46,6 @@ export function createWindow(options: CreateWindowOptions): BrowserWindow {
 
   mainWindow.on('ready-to-show', () => {
     if (is.dev) mainWindow.webContents.openDevTools({ mode: 'detach' })
-    // else mainWindow.webContents.openDevTools({ mode: 'detach' })
     mainWindow.show()
   })
 

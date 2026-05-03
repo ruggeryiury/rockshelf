@@ -1,7 +1,7 @@
 import type { BinaryToTextEncoding } from 'node:crypto'
 import axios from 'axios'
 import { createHashFromBuffer, type FilePath, pathLikeToFilePath, type AllHashAlgorithms, type FilePathLikeTypes } from 'node-lib'
-import { depackDTAContents, detectDTABufferEncoding, genNumericSongID, genTracksCountArray, isRB3CompatibleDTA, parseDTA, patchDTAEncodingFromDTAFileObject, sortDTA, stringifyDTA, type RB3CompatibleDTAFile, type SongDataCreationObject, type DTAStringifyOptions, type SongSortingTypes, type DTAFileUpdateObject, type DTAFileBatchUpdateObject, createDTA } from '../lib.exports'
+import { depackDTAContents, genNumericSongID, genTracksCountArray, isRB3CompatibleDTA, parseDTA, patchDTAEncodingFromDTAFileObject, sortDTA, stringifyDTA, type RB3CompatibleDTAFile, type SongDataCreationObject, type DTAStringifyOptions, type SongSortingTypes, type DTAFileUpdateObject, type DTAFileBatchUpdateObject, createDTA } from '../lib.exports'
 import { RBTools } from './RBTools'
 import { inspect } from 'node:util'
 import { isValidURL } from '../utils.exports'
@@ -33,9 +33,7 @@ export class DTAParser {
    * @returns {DTAParser}
    */
   static fromBuffer(buffer: Buffer): DTAParser {
-    const enc = detectDTABufferEncoding(buffer)
-    const contents = buffer.toString(enc)
-    const depackedSongs = depackDTAContents(contents)
+    const depackedSongs = depackDTAContents(buffer)
     const songs = depackedSongs.map((val) => parseDTA(val))
     const parser = new DTAParser(songs)
     parser.patchCores()

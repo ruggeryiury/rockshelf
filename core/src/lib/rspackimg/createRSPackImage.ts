@@ -9,6 +9,8 @@ export interface RSPackImageCreatorOptions {
   source?: RSPackImageSourceValues
   encryptionStatus?: RSPackImageEncryptionStatusValues
   packageName?: string
+  creationDate?: string
+  modifiedDate?: string
 }
 
 export const removeRSDataFromBuffer = async (input: Buffer): Promise<Buffer> => {
@@ -42,6 +44,8 @@ export const createRSPackImage = async (imageFilePathOrBuffer: FilePathLikeTypes
       source: 'stfs',
       encryptionStatus: 'unknown',
       packageName: '',
+      creationDate: new Date().toISOString(),
+      modifiedDate: new Date().toISOString(),
     },
     options
   )

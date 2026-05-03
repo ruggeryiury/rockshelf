@@ -33,7 +33,7 @@ export type RSPackImageSourceValues = (typeof rsPackImage.source)[keyof typeof r
 export type RSPackImageEncryptionStatusNumbers = keyof typeof rsPackImage.encryptionStatus
 export type RSPackImageEncryptionStatusValues = (typeof rsPackImage.encryptionStatus)[keyof typeof rsPackImage.encryptionStatus]
 
-export interface ParsedRSPackImageObject {
+export interface ParsedRSPackImageBufferObject {
   /**
    * The version of the Rockshelf Pack Image. This is used internally to switch between different parser methods based on the version of the file.
    */
@@ -57,6 +57,17 @@ export interface ParsedRSPackImageObject {
    * The display name of the song package on Rockshelf.
    */
   packageName: string
+}
+
+export interface ParsedRSPackImageObject extends ParsedRSPackImageBufferObject {
+  /**
+   * The creation date of the file in ISO string format.
+   */
+  creationDate: string
+  /**
+   * The modified date of the file in ISO string format.
+   */
+  modifiedDate: string
 }
 /**
  * Checks if a provided image file is a valid Rockshelf Pack Image file. Returns `undefined` if the provided image file doesn't have a valid Rockshelf Pack Image file signature found on the file's footer, or an array with the Rockshelf Pack Image file version and a `Buffer` object of the additional data.
@@ -94,9 +105,9 @@ export const isJPEGRockshelfPackImage = async (srcPath: FilePathLikeTypes): Prom
  * Parses a version 1 Rockshelf Pack Image footer `Buffer` object.
  * - - - -
  * @param {Buffer} rsdatBuffer The footer bytes of a Rockshelf Pack Image as `Buffer`.
- * @returns {Promise<ParsedRSPackImageObject>}
+ * @returns {Promise<ParsedRSPackImageBufferObject>}
  */
-export const parseRSDATBuffer = async (rsdatBuffer: Buffer): Promise<ParsedRSPackImageObject> => {
+export const parseRSDATBuffer = async (rsdatBuffer: Buffer): Promise<ParsedRSPackImageBufferObject> => {
   const reader = BinaryReader.fromBuffer(rsdatBuffer)
   const type = (await reader.readUInt8()) as RSPackImageTypeNumbers
   const source = (await reader.readUInt8()) as RSPackImageSourceNumbers
@@ -125,6 +136,7 @@ export const parseRSDATBuffer = async (rsdatBuffer: Buffer): Promise<ParsedRSPac
  */
 export const parseRSPackImageFile = async (srcPath: FilePathLikeTypes): Promise<ParsedRSPackImageObject> => {
   const src = pathLikeToFilePath(srcPath)
+  const stat = await src.stat()
   const results = await isJPEGRockshelfPackImage(srcPath)
   if (!results) throw new Error(`Provided JPEG image file "${src.path}" is not a valid Rockshelf Pack Image file.`)
   const { buffer, fileVersion } = results
@@ -132,6 +144,10 @@ export const parseRSPackImageFile = async (srcPath: FilePathLikeTypes): Promise<
   switch (fileVersion) {
     case 1:
     default:
-      return await parseRSDATBuffer(buffer)
+      return {
+        ...(await parseRSDATBuffer(buffer)),
+        creationDate: stat.birthtime.toISOString(),
+        modifiedDate: stat.mtime.toISOString(),
+      }
   }
 }

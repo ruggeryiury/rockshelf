@@ -1,5 +1,5 @@
 import { useEffect } from 'react'
-import { BuzyLoadScreen, ConfigScreen, CreateNewPackageScreen, DeluxeInstallScreen, DialogScreen, FatalErrorScreen, FirstTimeScreen, ImageCropScreen, LogoScreen, MainScreen, MessageBox, MyPackagesScreen, RBBackground, RBIconsSelector, SongDetails, Topbar, WindowFrame } from './components.exports'
+import { BuzyLoadScreen, ConfigScreen, CreateNewPackageScreen, DeluxeInstallScreen, DialogScreen, FatalErrorScreen, FirstTimeScreen, ImageCropScreen, LogoScreen, MainScreen, MessageBox, MyPackagesScreen, RBBackground, RBIconsSelector, RhythmverseScreen, SongDetails, Topbar, WindowFrame } from './components.exports'
 import { useWindowState } from './stores/Window.state'
 import { useFirstTimeScreenState } from './components/FirstTimeScreen.state'
 import { useTranslation } from 'react-i18next'
@@ -11,6 +11,7 @@ import { RPCS3SongPackagesDataExtra } from 'rockshelf-core'
 import { useShallow } from 'zustand/shallow'
 import type { InstrumentScoreData, ParsedRB3SaveData } from 'rockshelf-core/rbtools'
 import { VERBOSE } from './app/rockshelf.globals'
+import { PackageDetails } from './components/PackageDetails'
 
 export function App() {
   const { i18n } = useTranslation()
@@ -134,6 +135,8 @@ export function App() {
         <RBBackground />
         <RBIconsSelector />
         <SongDetails />
+        <PackageDetails />
+        <RhythmverseScreen />
       </WindowFrame>
     </>
   )

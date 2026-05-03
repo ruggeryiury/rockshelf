@@ -2,9 +2,9 @@
 import { ipcRenderer, shell, webUtils, type IpcRenderer, type IpcRendererEvent } from 'electron'
 import type { Promisable } from 'type-fest'
 import type { openUserDataFolder, readUserConfigFile, MessageBoxObject, saveUserConfigFile, UserConfigObject, windowClose, windowMaximize, windowMinimize, BuzyLoadInitObject, BuzyLoadScreenSenderObject, BuzyLoadErrorObject, DialogScreenPromptsTypes, BuzyLoadSubtextObject } from './core.exports'
-import type { deletePackage, deletePackageThumbnails, deleteUserConfigAndRestart, editPackageData, sortAndFilterSongsFromPackage, getSongArtworkDataURL, installHighMemoryPatch, installPKGFile, playRockBand3, refreshPackagesData, rpcs3GetInstrumentScores, rpcs3GetPackagesData, rpcs3GetRB3Stats, rpcs3GetSaveDataStats, selectAndParseDTAFile, selectDevhdd0Dir, loadImageForCrop, selectPackageFiles, SelectPackageFilesStatsTypes, SelectPKGFileReturnObject, selectPKGFile, selectRPCS3Exe, testUserConfig, cropImageAndSaveToTemp, CropImageAndSaveToTempOptions, createNewPackage, CreateNewPackageOptions, testBuzyLoad, getScoresFromGoCentral, extractMultitrackOrSongAudioFromSong, encDecPackage, EncDecPackageFunctionTypes, verifyPackageEncryptionStatus, extractMIDIFromSong, batchDeleteSongs } from './controllers.exports'
+import type { deletePackage, deletePackageThumbnails, deleteUserConfigAndRestart, editPackageData, sortAndFilterSongsFromPackage, getSongArtworkDataURL, installHighMemoryPatch, installPKGFile, playRockBand3, refreshPackagesData, rpcs3GetInstrumentScores, rpcs3GetPackagesData, rpcs3GetRB3Stats, rpcs3GetSaveDataStats, selectAndParseDTAFile, selectDevhdd0Dir, loadImageForCrop, selectPackageFiles, SelectPackageFilesStatsTypes, SelectPKGFileReturnObject, selectPKGFile, selectRPCS3Exe, testUserConfig, cropImageAndSaveToTemp, CropImageAndSaveToTempOptions, createNewPackage, CreateNewPackageOptions, testBuzyLoad, getScoresFromGoCentral, extractMultitrackOrSongAudioFromSong, encDecPackage, EncDecPackageFunctionTypes, verifyPackageEncryptionStatus, extractMIDIFromSong, batchDeleteSongs, sortAndFilterSongPackages, RhythmverseDataFetchingTypes, fetchRhythmverseData } from './controllers.exports'
 import type { ParsedRB3SaveData, ScoreDataInstrumentTypes } from 'rockshelf-core/rbtools'
-import type { EditPackageDataOptions, RPCS3SongPackagesObjectExtra } from './lib.exports'
+import type { EditPackageDataOptions, RPCS3SongPackagesObjectExtra, SongPackagesFilterOptions, SongPackagesFilterTypes } from './lib.exports'
 import type { FatalErrorObject } from './lib/senders/fatalError'
 import type { DTAFilterOptions, DTAFilterTypes, RB3CompatibleDTAFile } from 'rockshelf-core/rbtools/lib'
 
@@ -148,4 +148,6 @@ export const rockshelfAPI = {
   testError: async (message?: string): ReturnType<typeof testUserConfig> => await invoke('testError', message),
   testUserConfig: async (): ReturnType<typeof testUserConfig> => await invoke('testUserConfig'),
   verifyPackageEncryptionStatus: async (packageDetails: RPCS3SongPackagesObjectExtra): ReturnType<typeof verifyPackageEncryptionStatus> => await invoke('verifyPackageEncryptionStatus', packageDetails),
+  sortAndFilterSongPackages: async (type: SongPackagesFilterTypes, options?: SongPackagesFilterOptions): ReturnType<typeof sortAndFilterSongPackages> => await invoke('sortAndFilterSongPackages', type, options),
+  fetchRhythmverseData: async (type: RhythmverseDataFetchingTypes, searchField: string): ReturnType<typeof fetchRhythmverseData> => await invoke('fetchRhythmverseData', type, searchField),
 } as const

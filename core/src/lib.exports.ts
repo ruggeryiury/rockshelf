@@ -1,6 +1,7 @@
 export * from './lib/image/cropImageToTempPNG'
 
 export * from './lib/pkg/extractPackagesForRPCS3Extra'
+export * from './lib/pkg/filterSongPackages'
 export * from './lib/pkg/installRB3PatchFromPKG'
 
 export * from './lib/rspackimg/createRSPackImage'

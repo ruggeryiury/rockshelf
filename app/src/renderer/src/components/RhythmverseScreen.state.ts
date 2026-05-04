@@ -6,6 +6,10 @@ export interface RhythmverseScreenStateProps {
   searchField: string
   selectedTab: number
   searchResults: false | 'loading' | ProcessedRhythmverseObject
+
+  fullBand: boolean
+  multitrack: boolean
+  pitchedVocals: boolean
 }
 
 export interface RhythmverseScreenStateActions {
@@ -34,6 +38,10 @@ const defaultState: RhythmverseScreenStateProps = {
   searchField: '',
   selectedTab: 0,
   searchResults: false,
+
+  fullBand: true,
+  multitrack: false,
+  pitchedVocals: true,
 }
 
 export const useRhythmverseScreenState = create<RhythmverseScreenStateHook>()((set, get) => ({

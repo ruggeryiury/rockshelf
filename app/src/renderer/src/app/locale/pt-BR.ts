@@ -322,7 +322,7 @@ export const appPTBRLocale = {
   songs: 'Músicas',
   songsCount: '{{count}} música',
   songsCountPlural: '{{count}} músicas',
-  sortArtist: 'pelo(a) artista/banda',
+  sortArtist: 'por artista/banda',
   sortBy: 'Ordenado Por',
   sortByArtist: 'Artista',
   sortByDecade: 'Década',
@@ -452,4 +452,5 @@ export const appPTBRLocale = {
   unofficial: 'Não-Oficial',
   merge: 'Juntar',
   infoEncDecPackageIsAlreadyEncrypted: 'Os arquivos deste pacote de música já estão encriptados.',
+  rhythmverseNoResultsReturned: 'Nenhuma música encontrada',
 } as const

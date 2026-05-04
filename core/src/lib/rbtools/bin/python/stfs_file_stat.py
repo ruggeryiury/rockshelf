@@ -167,9 +167,19 @@ if __name__ == "__main__":
         action=argparse.BooleanOptionalAction,
         default=False,
     )
+    parser.add_argument(
+        "-s",
+        "--save-path",
+        help="Save the results from stdout to a file",
+        type=str
+    )
 
     arg = parser.parse_args()
 
     status = stfs_file_stat(arg.stfs_file_path)
+    if arg.save_path:
+        with open(arg.save_path, "w", encoding="utf-8") as f:
+            f.write(json.dumps(status))
+
     if arg.print_results:
         print(json.dumps(status, ensure_ascii=False))

@@ -97,9 +97,9 @@ export async function initRockshelfMainProcess(options: CreateWindowOptions): Pr
     optimizer.watchWindowShortcuts(window)
   })
 
-  createWindow(options)
-  initMainProcessHandlers()
   void initRichPresence()
+  void initMainProcessHandlers()
+  void createWindow(options)
 
   app.on('activate', function (event, hasVisibleWindows) {
     if (BrowserWindow.getAllWindows().length === 0) createWindow(options)

@@ -452,4 +452,5 @@ export const appENUSLocale = {
   unofficial: 'Unofficial',
   merge: 'Merge',
   infoEncDecPackageIsAlreadyEncrypted: 'This package files are already encrypted.',
+  rhythmverseNoResultsReturned: 'No songs found'
 } as const

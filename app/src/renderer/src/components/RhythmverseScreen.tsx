@@ -7,6 +7,7 @@ import { useRhythmverseScreenState } from './RhythmverseScreen.state'
 import { RHYTHMVERSE_SCREEN_TABS, VERBOSE } from '@renderer/app/rockshelf.globals'
 import { useMessageBoxState } from './MessageBox.state'
 import { DiffIconInline } from './SongDetails'
+import { LoadingIcon } from '@renderer/assets/icons'
 
 export function RhythmverseScreen() {
   const { t } = useTranslation()
@@ -73,89 +74,66 @@ export function RhythmverseScreen() {
             </div>
           </form>
           <div className="h-full w-full overflow-y-auto">
-            {searchResults === 'loading' && <p>{t('searchingRhythmverse')}</p>}
+            {searchResults === 'loading' && (
+              <div className="flex-row! items-center">
+                <LoadingIcon className="mr-1 min-w-6 animate-spin" />
+                <p>{t('searchingRhythmverse')}</p>
+              </div>
+            )}
             {typeof searchResults === 'object' && (
               <>
-                {searchResults.songs.map((song, songI) => {
-                  return (
-                    <div key={`rhythmverseResultsSong${songI}`} className="mr-4 mb-2 flex-row! items-center rounded-sm border p-2 last:mb-0">
-                      <img
-                        src={song.album_art}
-                        className="mr-2 h-24 min-h-24 w-24 min-w-24 border-2 border-neutral-700"
-                        onError={(ev) => {
-                          ev.currentTarget.onerror = null
-                          ev.currentTarget.src = 'rbicons://rockshelf'
-                        }}
-                      />
-                      <div className="h-full">
-                        <h1 className="text-xl">{song.name || ''}</h1>
-                        <h2>{song.artist || ''}</h2>
-                        <div className="mt-auto">
-                          <div className="flex-row! items-center">
-                            <img src="rbicons://instrument-icons-guitar" title={t('guitar')} className="mr-1 h-4 w-4" />
-                            <DiffIconInline width={0.8} diff={song.rank_guitar || -1} />
-                            <img src="rbicons://instrument-icons-bass" title={t('bass')} className="mr-1 h-4 w-4" />
-                            <DiffIconInline width={0.8} diff={song.rank_bass || -1} />
-                            <img src="rbicons://instrument-icons-drums" title={t('drums')} className="mr-1 h-4 w-4" />
-                            <DiffIconInline width={0.8} diff={song.rank_drum || -1} />
-                            <img src="rbicons://instrument-icons-keys" title={t('keys')} className="mr-1 h-4 w-4" />
-                            <DiffIconInline width={0.8} diff={song.rank_keys || -1} />
-                            <img src="rbicons://instrument-icons-vocals" title={t('vocals')} className="mr-1 h-4 w-4" />
-                            <DiffIconInline width={0.8} diff={song.rank_vocals || -1} />
-                          </div>
-                          <div className="flex-row! items-center">
-                            <img src="rbicons://instrument-icons-proGuitar" title={t('proGuitar')} className="mr-1 h-4 w-4" />
-                            <DiffIconInline width={0.8} diff={song.rank_real_guitar || -1} />
-                            <img src="rbicons://instrument-icons-proBass" title={t('proBass')} className="mr-1 h-4 w-4" />
-                            <DiffIconInline width={0.8} diff={song.rank_real_bass || -1} />
-                            <img src="rbicons://instrument-icons-proDrums" title={t('proDrums')} className="mr-1 h-4 w-4" />
-                            <DiffIconInline width={0.8} diff={song.rank_drum || -1} />
-                            <img src="rbicons://instrument-icons-proKeys" title={t('proKeys')} className="mr-1 h-4 w-4" />
-                            <DiffIconInline width={0.8} diff={song.rank_real_keys || -1} />
-                            <img src={song.vocal_parts === 2 ? 'rbicons://instrument-icons-harm2' : 'rbicons://instrument-icons-harmonies'} title={t(song.vocal_parts === 2 ? 'harm2' : 'harm3')} className="mr-1 h-4 w-4" />
-                            <DiffIconInline width={0.8} diff={song.rank_vocals || -1} />
+                {searchResults.songs.length === 0 && <p>{t('rhythmverseNoResultsReturned')}</p>}
+                {searchResults.songs.length > 0 &&
+                  searchResults.songs.map((song, songI) => {
+                    return (
+                      <div className="group flex-row! items-center rounded-xs p-2 duration-200 hover:bg-white/5" key={`rhythmverseResultsSong${songI}`}>
+                        {/* <div className="mr-4 mb-2 flex-row! items-center rounded-sm border p-2 last:mb-0"> */}
+                        <img
+                          src={song.album_art}
+                          className="mr-2 h-20 min-h-20 w-20 min-w-20 border-2 border-neutral-700"
+                          onError={(ev) => {
+                            ev.currentTarget.onerror = null
+                            ev.currentTarget.src = 'rbicons://rockshelf'
+                          }}
+                        />
+                        <div className="h-full">
+                          <h1 className="text-xl">{song.name || ''}</h1>
+                          <h2 className="text-xs text-neutral-500 italic">{song.artist || ''}</h2>
+                          <div className="mt-auto">
+                            <div className="flex-row! items-center">
+                              <img src="rbicons://instrument-icons-guitar" title={t('guitar')} className="mr-1 h-4 w-4" />
+                              <DiffIconInline width={0.8} diff={song.rank_guitar || -1} />
+                              <img src="rbicons://instrument-icons-bass" title={t('bass')} className="mr-1 h-4 w-4" />
+                              <DiffIconInline width={0.8} diff={song.rank_bass || -1} />
+                              <img src="rbicons://instrument-icons-drums" title={t('drums')} className="mr-1 h-4 w-4" />
+                              <DiffIconInline width={0.8} diff={song.rank_drum || -1} />
+                              <img src="rbicons://instrument-icons-keys" title={t('keys')} className="mr-1 h-4 w-4" />
+                              <DiffIconInline width={0.8} diff={song.rank_keys || -1} />
+                              <img src="rbicons://instrument-icons-vocals" title={t('vocals')} className="mr-1 h-4 w-4" />
+                              <DiffIconInline width={0.8} diff={song.rank_vocals || -1} />
+                            </div>
+                            <div className="flex-row! items-center">
+                              <img src="rbicons://instrument-icons-proGuitar" title={t('proGuitar')} className="mr-1 h-4 w-4" />
+                              <DiffIconInline width={0.8} diff={song.rank_real_guitar || -1} />
+                              <img src="rbicons://instrument-icons-proBass" title={t('proBass')} className="mr-1 h-4 w-4" />
+                              <DiffIconInline width={0.8} diff={song.rank_real_bass || -1} />
+                              <img src="rbicons://instrument-icons-proDrums" title={t('proDrums')} className="mr-1 h-4 w-4" />
+                              <DiffIconInline width={0.8} diff={song.rank_drum || -1} />
+                              <img src="rbicons://instrument-icons-proKeys" title={t('proKeys')} className="mr-1 h-4 w-4" />
+                              <DiffIconInline width={0.8} diff={song.rank_real_keys || -1} />
+                              <img src={song.vocal_parts === 2 ? 'rbicons://instrument-icons-harm2' : 'rbicons://instrument-icons-harmonies'} title={t(song.vocal_parts === 2 ? 'harm2' : 'harm3')} className="mr-1 h-4 w-4" />
+                              <DiffIconInline width={0.8} diff={song.rank_vocals || -1} />
+                            </div>
                           </div>
                         </div>
                       </div>
-                    </div>
-                  )
-                })}
+                    )
+                  })}
               </>
             )}
           </div>
         </>
       )}
-      {/* <input value={field} onChange={(ev) => setField(ev.target.value)} />
-      <button
-        onClick={async () => {
-          const results = await window.api.fetchRhythmverseData('text', field)
-          setData(results)
-        }}
-      >
-        search
-      </button>
-      <div className="h-full w-full overflow-y-auto">
-        {data && (
-          <>
-            {data.songs.map((song, songI) => {
-              return (
-                <div key={`rhythmverseSong${songI}`}>
-                  <img
-                    src={song.album_art}
-                    className="w-16"
-                    onError={(ev) => {
-                      ev.currentTarget.onerror = null
-                      ev.currentTarget.src = 'rbicons://rockshelf'
-                    }}
-                  />
-                  <h1>{song.name}</h1>
-                  <h2>{song.artist}</h2>
-                </div>
-              )
-            })}
-          </>
-        )}
-      </div> */}
     </AnimatedSection>
   )
 }

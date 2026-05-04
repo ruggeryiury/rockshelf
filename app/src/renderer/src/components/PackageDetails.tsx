@@ -77,7 +77,7 @@ export function PackageDetails() {
             <div className="mr-auto h-full">
               <h1 className="font-pentatonicalt! text-[2rem]">{active.packageData.packageName}</h1>
               <p>{t(active.songs.length === 1 ? 'songsCount' : 'songsCountPlural', { count: active.songs.length })}</p>
-              <p>{t('sortText', { sortType: t(`sort${uppercaseFirstLetter(songsCatalogSortBy)}`) })}</p>
+              <p>{t('sortText', { sortType: t(`sort${uppercaseFirstLetter(songsCatalogSortBy)}`), interpolation: { escapeValue: false } })}</p>
             </div>
             <button
               disabled={disableButtons}

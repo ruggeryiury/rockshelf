@@ -48,6 +48,7 @@ export const selectPackageFiles = useHandler(async (win, _, files: SelectPackage
         data,
       })
     } catch (err) {
+      console.log(err)
       const pkg = new PKGFile(pkgPath)
 
       try {

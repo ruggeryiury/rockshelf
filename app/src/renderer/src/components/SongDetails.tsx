@@ -14,7 +14,7 @@ import { StarsInline } from '@renderer/components.exports'
 export function DiffIconInline({ diff, width }: { diff: number; width?: number }) {
   const { t, i18n } = useTranslation()
   return (
-    <div className="mr-auto w-22.5 max-w-22.5 flex-row! items-center last:mr-0" title={t(diff === -1 ? 'noPart' : `diff${diff}`)}>
+    <div style={{ width: `${5.625 * (width || 1)}rem` }} className="mr-auto w-22.5 max-w-22.5 flex-row! items-center last:mr-0" title={t(diff === -1 ? 'noPart' : `diff${diff}`)}>
       {diff > -1 && (
         <>
           <img src={diff === 6 ? diffDotDevil : diff >= 1 ? diffDotOn : diffDotOff} style={{ width: `${width || 4}rem` }} />
@@ -24,7 +24,11 @@ export function DiffIconInline({ diff, width }: { diff: number; width?: number }
           <img src={diff === 6 ? diffDotDevil : diff >= 5 ? diffDotOn : diffDotOff} style={{ width: `${width || 4}rem` }} />
         </>
       )}
-      {diff === -1 && <h1 className={clsx('uppercase', i18n.language === 'pt-BR' && 'text-[0.87rem]', i18n.language === 'en-US' && 'text-lg', i18n.language === 'es-419' && 'text-[0.95rem]')}>{t('noPart')}</h1>}
+      {diff === -1 && (
+        <h1 style={{ fontSize: `${i18n.language === 'pt-BR' ? 0.79 * (width || 1) : i18n.language === 'en-US' ? 1.05 * (width || 1) : 0.88 * (width || 1)}rem` }} className="uppercase">
+          {t('noPart')}
+        </h1>
+      )}
     </div>
   )
 }

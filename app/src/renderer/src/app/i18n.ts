@@ -21,5 +21,8 @@ i18n
         translation: appES419Locale,
       },
     },
+    interpolation: {
+      escapeValue: false,
+    },
     // fallbackLng: 'en-US',
   })

@@ -452,5 +452,18 @@ export const appENUSLocale = {
   unofficial: 'Unofficial',
   merge: 'Merge',
   infoEncDecPackageIsAlreadyEncrypted: 'This package files are already encrypted.',
-  rhythmverseNoResultsReturned: 'No songs found'
+  rhythmverseNoResultsReturned: 'No songs found',
+  errorNoSongsSelectedToCreatePackageFrom: 'You must select at least one song to install.',
+  createNewPackageAllSongsSelectedPlural: 'All {{count}} songs selected',
+  someSongsSelectedCount: '{{selected}} of {{count}} songs selected',
+  selectAll: 'Select All',
+  selectNone: 'Select None',
+
+  encryptedPKGForFolderNameChangingText: "Encrypted packages can't have their folder names changed. To enable this option, decrypt all the package files first.",
+  changePackageFolderNameDesc: 'Change the folder name of the package.',
+  mixedEncPKGForFolderNameChangingText: 'The encryption status of this package is inconsistent. To enable this option, force decrypt all the package files first.',
+  unknownEncPKGForFolderNameChangingText: 'The encryption status of this package is unknown. To enable this option, force decrypt all the package files first.',
+  saveChanges: 'Save Changes',
+  getArtworkFromSong: 'Get Artwork from "{{songTitle}}"',
+  loadingProcessingSongArtworkTextureFile: 'Processing song artwork texture file...',
 } as const

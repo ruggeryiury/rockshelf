@@ -1,6 +1,6 @@
 import { shell, type BrowserWindow, type IpcMainInvokeEvent } from 'electron'
 import type { Promisable } from 'type-fest'
-import { deletePackage, deletePackageThumbnails, deleteUserConfigAndRestart, editPackageData, sortAndFilterSongsFromPackage, getSongArtworkDataURL, installHighMemoryPatch, installPKGFile, playRockBand3, refreshPackagesData, rpcs3GetInstrumentScores, rpcs3GetPackagesData, rpcs3GetRB3Stats, rpcs3GetSaveDataStats, selectAndParseDTAFile, selectDevhdd0Dir, loadImageForCrop, selectPackageFiles, selectPKGFile, selectRPCS3Exe, testUserConfig, cropImageAndSaveToTemp, createNewPackage, testBuzyLoad, getScoresFromGoCentral, extractMultitrackOrSongAudioFromSong, encDecPackage, verifyPackageEncryptionStatus, extractMIDIFromSong, batchDeleteSongs, sortAndFilterSongPackages, fetchRhythmverseData } from './controllers.exports'
+import { deletePackage, deletePackageThumbnails, deleteUserConfigAndRestart, editPackageData, sortAndFilterSongsFromPackage, getSongArtworkDataURL, installHighMemoryPatch, installPKGFile, playRockBand3, refreshPackagesData, rpcs3GetInstrumentScores, rpcs3GetPackagesData, rpcs3GetRB3Stats, rpcs3GetSaveDataStats, selectAndParseDTAFile, selectDevhdd0Dir, loadImageForCrop, selectPackageFiles, selectPKGFile, selectRPCS3Exe, testUserConfig, cropImageAndSaveToTemp, createNewPackage, testBuzyLoad, getScoresFromGoCentral, extractMultitrackOrSongAudioFromSong, encDecPackage, verifyPackageEncryptionStatus, extractMIDIFromSong, batchDeleteSongs, sortAndFilterSongPackages, fetchRhythmverseData, useSongArtworkFromUniqueSongPKG, changeDecryptedPackageFolderName } from './controllers.exports'
 import { openUserDataFolder, readUserConfigFile, saveUserConfigFile, windowClose, windowMaximize, windowMinimize, type UserConfigObject } from './core.exports'
 import { addHandler } from './core/handler'
 
@@ -49,6 +49,8 @@ export const initMainProcessHandlers = (): void => {
     ['windowClose', windowClose],
     ['windowMaximize', windowMaximize],
     ['windowMinimize', windowMinimize],
+    ['useSongArtworkFromUniqueSongPKG', useSongArtworkFromUniqueSongPKG],
+    ['changeDecryptedPackageFolderName', changeDecryptedPackageFolderName],
   ]
   for (const [channel, listeners] of handlers) addHandler(channel, listeners)
 }

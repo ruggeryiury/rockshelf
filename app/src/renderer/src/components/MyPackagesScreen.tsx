@@ -121,7 +121,7 @@ export function MyPackagesScreen() {
                           const pkg = packages.packages[packageIndex]
 
                           return (
-                            <div className="flex-row!" key={`package__${pkg.contentsHash}`}>
+                            <div className="flex-row!" key={`${packageIndexKey}package__${pkg.contentsHash}`}>
                               <div
                                 className="mb-1 w-full flex-row! rounded-sm border-2 border-white/5 p-2 duration-150 last:mb-0 hover:bg-white/5 active:bg-white/10"
                                 onMouseOver={() => setMyPackagesScreenState({ hoveredPKG: packageIndex })}

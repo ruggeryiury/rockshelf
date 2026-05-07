@@ -26,7 +26,8 @@ export const PACKAGE_DETAILS_TABS = {
 
 export const CREATE_NEW_PACKAGE_TABS = {
   FILES: 0,
-  OPTIONS: 1,
+  SONGS: 1,
+  OPTIONS: 2,
 } as const
 
 export const SONG_DETAILS_TABS = {

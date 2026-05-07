@@ -8,9 +8,6 @@ export const fetchRhythmverseData = useHandler(async (_, __, type: RhythmverseDa
     case 'text':
     default: {
       const searchResults = await RhythmverseAPI.searchText(searchField)
-      if (searchResults.data.songs) {
-        searchResults.data.songs.forEach((entry) => console.log(entry))
-      }
       return RhythmverseAPI.processRawData(searchResults)
     }
     case 'artist': {

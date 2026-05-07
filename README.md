@@ -29,7 +29,7 @@
 
 Rockshelf is a Rock Band 3 Deluxe utility suite for RPCS3 users built with [Electron Vite](https://electron-vite.org/) framework. Rockshelf comes with a hand-made `core` package that features the main [NodeJS](https://nodejs.org/en) process and methods, and uses [ReactJS](https://react.dev/) as a renderer framework.
 
-# 
+#
 
 # Requirements
 
@@ -49,15 +49,17 @@ Rockshelf is a Rock Band 3 Deluxe utility suite for RPCS3 users built with [Elec
 | `mido`         | `pip install mido`         | MIDI Objects for Python.                                                            | [[link]](https://pypi.org/project/mido/)         |
 | `puremagic`    | `pip install puremagic`    | Pure python implementation of magic file detection.                                 | [[link]](https://pypi.org/project/mido/)         |
 | `pillow`       | `pip install pillow`       | Python Imaging Library (fork).                                                      | [[link]](https://pypi.org/project/pillow/)       |
+| `pycryptodome` | `pip install pycryptodome` | Cryptographic library for Python                                                    | [[link]](https://pypi.org/project/pycryptodome/) |
 | `pydub`        | `pip install pydub`        | Manipulate audio with an simple and easy high level interface.                      | [[link]](https://pypi.org/project/pydub/)        |
 
 # Special Thanks
 
 - [Carl Mylo](https://github.com/carlmylo): Helping testing and providing the spanish translation.
+- Ganso: Helping with general testing.
 - [Aloquendiar](https://github.com/Aloquendiar)
 - [Emma](https://github.com/InvoxiPlayGames)
 - [raphaelgoulart](https://github.com/raphaelgoulart)
 - [TrojanNemo](https://github.com/trojannemo)
 - [Jnack](https://github.com/jnackmclain)
-- [LocalH](https://github.com/LocalH)
+- [LocalH](https://github.com/LocalH): Providing the Moggulator python script.
 - [Onyxite](https://github.com/mtolly)

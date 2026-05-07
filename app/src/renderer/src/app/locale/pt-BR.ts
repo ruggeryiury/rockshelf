@@ -453,4 +453,17 @@ export const appPTBRLocale = {
   merge: 'Juntar',
   infoEncDecPackageIsAlreadyEncrypted: 'Os arquivos deste pacote de música já estão encriptados.',
   rhythmverseNoResultsReturned: 'Nenhuma música encontrada',
+  errorNoSongsSelectedToCreatePackageFrom: 'Você deve selecionar pelo menos uma música para instalar.',
+  createNewPackageAllSongsSelectedPlural: 'Todas as {{count}} músicas selecionadas',
+  someSongsSelectedCount: '{{selected}} de {{count}} músicas selecionadas',
+  selectAll: 'Selecionar Todas',
+  selectNone: 'Selecionar Nenhuma',
+
+  encryptedPKGForFolderNameChangingText: 'Não é possível mudar o nome da pasta do pacote de músicas em pacotes encriptados. Para habilitar esta opção, decripte todos os arquivos do pacote primeiro.',
+  changePackageFolderNameDesc: 'Mude o nome da pasta do pacote de músicas.',
+  mixedEncPKGForFolderNameChangingText: 'O status de encriptação deste pacote é inconsistente. Para habilitar esta opção, decripte todos os arquivos do pacote primeiro.',
+  unknownEncPKGForFolderNameChangingText: 'O status de encriptação deste pacote é desconhecido. Para habilitar esta opção, decripte todos os arquivos do pacote primeiro.',
+  saveChanges: 'Salvar Alterações',
+  getArtworkFromSong: 'Pegar Capa de Álbum da Música "{{songTitle}}"',
+  loadingProcessingSongArtworkTextureFile: 'Processando arquivo de textura da capa de álbum da música...',
 } as const

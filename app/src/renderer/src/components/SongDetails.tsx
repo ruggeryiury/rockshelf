@@ -183,16 +183,132 @@ export function SongDetails() {
           {songDetailsTab === SONG_DETAILS_TABS.DETAILS && (
             <>
               <div className="h-full w-full overflow-y-auto">
-                <h1>Song Entry</h1>
-                <p>{songDetails.id}</p>
-                <h1>Internal name</h1>
-                <p className="select-text">{songDetails.songname}</p>
-                <h1 className="">Song ID</h1>
-                <p className="">{songDetails.song_id}</p>
-                <h1>Tuning Offset</h1>
-                <p className="">{songDetails.tuning_offset_cents || 0}</p>
+                <div className="w-full pr-2">
+                  <div className="group rounded-xs p-2 duration-200 hover:bg-white/5">
+                    <h1 className="uppercase">{t('songEntryID')}</h1>
+                    <p>{songDetails.id}</p>
+                  </div>
+                  <div className="group rounded-xs p-2 duration-200 hover:bg-white/5">
+                    <h1 className="uppercase">{t('songTitle')}</h1>
+                    <p>{songDetails.name}</p>
+                  </div>
+                  <div className="group rounded-xs p-2 duration-200 hover:bg-white/5">
+                    <h1 className="uppercase">{t('artist')}</h1>
+                    <p>{songDetails.artist}</p>
+                  </div>
+                  <div className="group rounded-xs p-2 duration-200 hover:bg-white/5">
+                    <h1 className="uppercase">{t('isMaster')}</h1>
+                    <p>{String(songDetails.master)}</p>
+                  </div>
+                  <div className="group rounded-xs p-2 duration-200 hover:bg-white/5">
+                    <h1 className="uppercase">{t('songID')}</h1>
+                    <p>{String(songDetails.song_id)}</p>
+                  </div>
+                  <div className="group rounded-xs p-2 duration-200 hover:bg-white/5">
+                    <h1 className="uppercase">{t('internalName')}</h1>
+                    <p>{String(songDetails.songname)}</p>
+                  </div>
+                </div>
+                <div className="group rounded-xs p-2 duration-200 hover:bg-white/5">
+                  <h1 className="mb-1 uppercase">{t('audioTracks')}</h1>
+                  {allTracksCount !== undefined && (
+                    <p className="mb-1 text-xs italic">
+                      <TransComponent i18nKey={allTracksCount === 1 ? 'tracksCount' : 'tracksCountPlural'} values={{ allTracksCount, multitrack: t(typeof songDetails.multitrack !== 'string' && !packageDetails?.official ? 'mtSingleTrack' : `mt${underscoreToUppercaseLetter(songDetails.multitrack || 'full', true)}`) }} />
+                    </p>
+                  )}
+                  <div className="h-8 w-full flex-row! items-center">
+                    {songDetails.tracks_count[0] > 0 && (
+                      <div className="relative! h-full flex-row! rounded-sm border border-transparent duration-200 hover:border-neutral-300" title={t('drums')}>
+                        {Array(songDetails.tracks_count[0])
+                          .fill(0)
+                          .map((_, arrIndex) => {
+                            return <div key={`drumsAudio${arrIndex}`} className="h-full w-12 rounded-sm border border-neutral-800/80 bg-[#207818]"></div>
+                          })}
+                        <div className="absolute! h-full w-full items-center justify-center">
+                          <img src="rbicons://instrument-icons-drums-color" width={24} />
+                        </div>
+                      </div>
+                    )}
+                    {songDetails.tracks_count[1] > 0 && (
+                      <div className="relative! h-full flex-row! rounded-sm border border-transparent duration-200 hover:border-neutral-300" title={t('bass')}>
+                        {Array(songDetails.tracks_count[1])
+                          .fill(0)
+                          .map((_, arrIndex) => {
+                            return <div key={`bassAudio${arrIndex}`} className="h-full w-12 rounded-sm border border-neutral-800/80 bg-[#940000]"></div>
+                          })}
+                        <div className="absolute! h-full w-full items-center justify-center">
+                          <img src="rbicons://instrument-icons-bass-color" width={24} />
+                        </div>
+                      </div>
+                    )}
+                    {songDetails.tracks_count[2] > 0 && (
+                      <div className="relative! h-full flex-row! rounded-sm border border-transparent duration-200 hover:border-neutral-300" title={t('guitar')}>
+                        {Array(songDetails.tracks_count[2])
+                          .fill(0)
+                          .map((_, arrIndex) => {
+                            return <div key={`guitarAudio${arrIndex}`} className="h-full w-12 rounded-sm border border-neutral-800/80 bg-[#bfa00b]"></div>
+                          })}
+                        <div className="absolute! h-full w-full items-center justify-center">
+                          <img src="rbicons://instrument-icons-guitar-color" width={24} />
+                        </div>
+                      </div>
+                    )}
+                    {songDetails.tracks_count[3] > 0 && (
+                      <div className="relative! h-full flex-row! rounded-sm border border-transparent duration-200 hover:border-neutral-300" title={t('vocals2')}>
+                        {Array(songDetails.tracks_count[3])
+                          .fill(0)
+                          .map((_, arrIndex) => {
+                            return <div key={`vocalsAudio${arrIndex}`} className="h-full w-12 rounded-sm border border-neutral-800/80 bg-[#0561cb]"></div>
+                          })}
+                        <div className="absolute! h-full w-full items-center justify-center">
+                          <img src="rbicons://instrument-icons-vocals-color" width={24} />
+                        </div>
+                      </div>
+                    )}
+                    {songDetails.tracks_count[4] > 0 && (
+                      <div className="relative! h-full flex-row! rounded-sm border border-transparent duration-200 hover:border-neutral-300" title={t('keys')}>
+                        {Array(songDetails.tracks_count[4])
+                          .fill(0)
+                          .map((_, arrIndex) => {
+                            return <div key={`keysAudio${arrIndex}`} className="h-full w-12 rounded-sm border border-neutral-800/80 bg-[#ca6400]"></div>
+                          })}
+                        <div className="absolute! h-full w-full items-center justify-center">
+                          <img src="rbicons://instrument-icons-keys-color" width={24} />
+                        </div>
+                      </div>
+                    )}
+                    {songDetails.tracks_count[5] > 0 && (
+                      <div className="relative! h-full flex-row! rounded-sm border border-transparent duration-200 hover:border-neutral-300" title={t('backing')}>
+                        {Array(songDetails.tracks_count[5])
+                          .fill(0)
+                          .map((_, arrIndex) => {
+                            return <div key={`backingAudio${arrIndex}`} className="h-full w-12 rounded-sm border border-neutral-800/80 bg-black"></div>
+                          })}
+                        <div className="absolute! h-full w-full items-center justify-center">
+                          <img src="rbicons://instrument-icons-backing" width={24} />
+                        </div>
+                      </div>
+                    )}
+                    {songDetails.tracks_count[6] && songDetails.tracks_count[6] > 0 && (
+                      <div className="relative! h-full flex-row! rounded-sm border border-transparent duration-200 hover:border-neutral-300" title={t('crowd')}>
+                        {Array(songDetails.tracks_count[6])
+                          .fill(0)
+                          .map((_, arrIndex) => {
+                            return <div key={`crowdAudio${arrIndex}`} className="h-full w-12 rounded-sm border border-neutral-800/80 bg-black"></div>
+                          })}
+                        <div className="absolute! h-full w-full items-center justify-center">
+                          <img src="rbicons://instrument-icons-crowd" width={24} />
+                        </div>
+                      </div>
+                    )}
+                  </div>
+                </div>
 
-                <div className="mt-auto px-16">
+                  <div className="group rounded-xs p-2 duration-200 hover:bg-white/5">
+                    <h1 className="uppercase">{t('vocalParts')}</h1>
+                    <p>{String(songDetails.vocal_parts)}</p>
+                  </div>
+                <div>
                   <div className="flex-row! items-center">
                     <img src="rbicons://instrument-icons-guitar" title={t('guitar')} className="mr-1 h-8 w-8" />
                     <DiffIconInline width={1.1} diff={rankCalculator('guitar', songDetails.rank_guitar)} />
@@ -620,9 +736,11 @@ export function SongDetails() {
                             if (newPackages) {
                               const newCatalog = await window.api.sortAndFilterSongsFromPackage(selPKG, songsCatalogSortBy, { instrument: mostPlayedInstrument })
                               if (!newCatalog) return
-                              if (newCatalog.type !== 'difficulty' && newCatalog.type !== 'artist') console.log('struct DTACatalogGenericObject [core/src/lib/dta/getDTACatalog.ts]', newCatalog)
-                              else if (newCatalog.type === 'artist') console.log('struct DTACatalogByArtistObject [core/src/lib/dta/getDTACatalog.ts]', newCatalog)
-                              else console.log('struct DTACatalogByDifficultyObject [core/src/lib/dta/getDTACatalog.ts]', newCatalog)
+                              if (VERBOSE.STRUCT) {
+                                if (newCatalog.type !== 'difficulty' && newCatalog.type !== 'artist') console.log('struct DTACatalogGenericObject [core/src/lib/dta/getDTACatalog.ts]', newCatalog)
+                                else if (newCatalog.type === 'artist') console.log('struct DTACatalogByArtistObject [core/src/lib/dta/getDTACatalog.ts]', newCatalog)
+                                else console.log('struct DTACatalogByDifficultyObject [core/src/lib/dta/getDTACatalog.ts]', newCatalog)
+                              }
                               resetSongDetailsState()
                               setMyPackagesScreenState({ songsCatalog: newCatalog })
                               setWindowState({ packages: newPackages })

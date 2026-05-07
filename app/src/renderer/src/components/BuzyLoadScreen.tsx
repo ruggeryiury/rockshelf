@@ -112,9 +112,6 @@ export function BuzyLoadScreen() {
                       <p className="text-neutral-500 italic">
                         {t(subtextKey, {
                           ...(subtextValues || {}),
-                          interpolation: {
-                            escapeValue: false,
-                          },
                         })}
                       </p>
                     )}

@@ -16,7 +16,7 @@ import { StarsInline } from '@renderer/components.exports'
 
 export function PackageDetails() {
   const { t } = useTranslation()
-  const { selPKG, songsCatalog, setMyPackagesScreenState, songsCatalogSortBy, packageDetailsTab, editPackageName, editPackageEdited, packagesCatalogSortBy } = useMyPackagesScreenState(useShallow((x) => ({ selPKG: x.selPKG, songsCatalog: x.songsCatalog, setMyPackagesScreenState: x.setMyPackagesScreenState, songsCatalogSortBy: x.songsCatalogSortBy, packageDetailsTab: x.packageDetailsTab, editPackageName: x.editPackageName, editPackageEdited: x.editPackageEdited, packagesCatalogSortBy: x.packagesCatalogSortBy })))
+  const { selPKG, songsCatalog, setMyPackagesScreenState, songsCatalogSortBy, packageDetailsTab, editPackageName, hasPackageNameChanged, packagesCatalogSortBy, hasPackageFolderNameChanged, editPackageFolderName } = useMyPackagesScreenState(useShallow((x) => ({ selPKG: x.selPKG, songsCatalog: x.songsCatalog, setMyPackagesScreenState: x.setMyPackagesScreenState, songsCatalogSortBy: x.songsCatalogSortBy, packageDetailsTab: x.packageDetailsTab, editPackageName: x.editPackageName, hasPackageNameChanged: x.hasPackageNameChanged, packagesCatalogSortBy: x.packagesCatalogSortBy, hasPackageFolderNameChanged: x.hasPackageFolderNameChanged, editPackageFolderName: x.editPackageFolderName })))
   const { disableButtons, saveData, packages, rb3Stats, setWindowState, disableImg } = useWindowState(useShallow((x) => ({ disableButtons: x.disableButtons, saveData: x.saveData, packages: x.packages, rb3Stats: x.rb3Stats, setWindowState: x.setWindowState, disableImg: x.disableImg })))
   const { mostPlayedInstrument, setUserConfigState } = useUserConfigState(useShallow((x) => ({ mostPlayedInstrument: x.mostPlayedInstrument, setUserConfigState: x.setUserConfigState })))
   const { setMessageBoxState } = useMessageBoxState(useShallow((x) => ({ setMessageBoxState: x.setMessageBoxState })))
@@ -54,7 +54,7 @@ export function PackageDetails() {
   useEffect(
     function resetEditPackageState() {
       if (typeof active === 'object' && active && packageDetailsTab === PACKAGE_DETAILS_TABS.OPTIONS) {
-        setMyPackagesScreenState({ editPackageName: active.packageData.packageName, editPackageEdited: false })
+        setMyPackagesScreenState({ editPackageName: active.packageData.packageName, hasPackageNameChanged: false, hasPackageFolderNameChanged: false, editPackageFolderName: active.name })
       }
     },
     [packageDetailsTab]
@@ -62,7 +62,7 @@ export function PackageDetails() {
 
   useEffect(
     function warnNonSavedChangesOnPackageEdit() {
-      if (packageDetailsTab !== PACKAGE_DETAILS_TABS.OPTIONS && editPackageEdited) setMessageBoxState({ message: { type: 'warn', code: 'nonSavedChangesOnEditPackage' } })
+      if (packageDetailsTab !== PACKAGE_DETAILS_TABS.OPTIONS && (hasPackageNameChanged || hasPackageFolderNameChanged)) setMessageBoxState({ message: { type: 'warn', code: 'nonSavedChangesOnEditPackage' } })
     },
     [packageDetailsTab]
   )
@@ -77,13 +77,13 @@ export function PackageDetails() {
             <div className="mr-auto h-full">
               <h1 className="font-pentatonicalt! text-[2rem]">{active.packageData.packageName}</h1>
               <p>{t(active.songs.length === 1 ? 'songsCount' : 'songsCountPlural', { count: active.songs.length })}</p>
-              <p>{t('sortText', { sortType: t(`sort${uppercaseFirstLetter(songsCatalogSortBy)}`), interpolation: { escapeValue: false } })}</p>
+              <p>{t('sortText', { sortType: t(`sort${uppercaseFirstLetter(songsCatalogSortBy)}`) })}</p>
             </div>
             <button
               disabled={disableButtons}
               className="w-fit self-start rounded-xs border border-neutral-700 bg-neutral-900 px-1 py-0.5 text-xs! uppercase duration-100 hover:bg-neutral-700 active:bg-neutral-600 disabled:text-neutral-700 disabled:hover:bg-neutral-900"
               onClick={async () => {
-                setMyPackagesScreenState({ selPKG: -1, songsCatalog: false, packageDetailsTab: 0, editPackageName: '', editPackageEdited: false, isArtworkLoading: true, artworkURL: '' })
+                setMyPackagesScreenState({ selPKG: -1, songsCatalog: false, packageDetailsTab: 0, editPackageName: '', hasPackageNameChanged: false, hasPackageFolderNameChanged: false, isArtworkLoading: true, artworkURL: '' })
               }}
             >
               {t('goBack')}
@@ -355,11 +355,88 @@ export function PackageDetails() {
             <>
               <div className="h-full w-full overflow-y-auto">
                 <div className="group rounded-xs p-2 duration-200 hover:bg-white/5">
-                  <h1 className="mb-1 uppercase">{t('packageName')}</h1>
-                  <p className="mb-4 text-xs italic">
-                    <TransComponent i18nKey="changePackageNameDesc" />
-                  </p>
-                  <input className="mb-1 rounded-xs border border-neutral-800 bg-neutral-900 px-1 py-0.5 text-sm! duration-100 last:mb-0 hover:bg-neutral-700 focus:border-white/25 active:bg-neutral-600 disabled:text-neutral-700 disabled:hover:bg-neutral-900" value={editPackageName} onChange={(ev) => setMyPackagesScreenState({ editPackageEdited: true, editPackageName: ev.target.value })} minLength={1} maxLength={64} />
+                  <div className="flex-row! items-start">
+                    <div className="mr-auto">
+                      <h1 className="mb-1 uppercase">{t('packageName')}</h1>
+                      <p className="mb-4 text-xs italic">
+                        <TransComponent i18nKey="changePackageNameDesc" />
+                      </p>
+                    </div>
+                    {hasPackageNameChanged && (
+                      <button
+                        className="w-fit rounded-xs border border-neutral-800 bg-neutral-900 px-1 py-0.5 text-xs! uppercase duration-100 last:mb-0 hover:bg-neutral-700 active:bg-neutral-600 disabled:text-neutral-700 disabled:hover:bg-neutral-900"
+                        disabled={disableButtons}
+                        onClick={async (ev) => {
+                          ev.stopPropagation()
+                          setWindowState({ disableButtons: true })
+                          try {
+                            const newPackages = await window.api.editPackageData(selPKG, { packageName: editPackageName })
+                            if (VERBOSE.STRUCT) console.log('struct RPCS3SongPackagesDataExtra ["rbtools/src/lib/rpcs3/rpcs3GetSongPackagesStatsExtra.ts"]:', newPackages)
+
+                            if (newPackages) {
+                              setWindowState({ packages: newPackages })
+                              const newCatalog = await window.api.sortAndFilterSongPackages(packagesCatalogSortBy)
+                              if (VERBOSE.STRUCT) console.log('struct SongPackagesFilterGenericObject [core/src/lib/dta/getDTACatalog.ts]', newCatalog)
+                              setMyPackagesScreenState({ packagesCatalog: newCatalog })
+                              setMyPackagesScreenState({ hasPackageNameChanged: false })
+                              setMessageBoxState({ message: { type: 'success', code: 'savePackageEditing' } })
+                            }
+                          } catch (err) {
+                            if (err instanceof Error) setWindowState({ err })
+                          }
+                          setWindowState({ disableButtons: false })
+                        }}
+                      >
+                        {t('saveChanges')}
+                      </button>
+                    )}
+                  </div>
+                  <input className="mb-1 rounded-xs border border-neutral-800 bg-neutral-900 px-1 py-0.5 text-sm! duration-100 last:mb-0 hover:bg-neutral-700 focus:border-white/25 active:bg-neutral-600 disabled:text-neutral-700 disabled:hover:bg-neutral-900" value={editPackageName} onChange={(ev) => setMyPackagesScreenState({ hasPackageNameChanged: true, editPackageName: ev.target.value })} minLength={1} maxLength={64} disabled={disableButtons} />
+                </div>
+
+                <div className="group rounded-xs p-2 duration-200 hover:bg-white/5">
+                  <div className="flex-row! items-start">
+                    <div className="mr-auto">
+                      <h1 className="mb-1 uppercase">{t('packageFolderName')}</h1>
+                      <p className="text-xs italic">
+                        <TransComponent i18nKey="changePackageFolderNameDesc" />
+                      </p>
+                      <AnimatedDiv condition={active.packageData.encryptionStatus !== 'decrypted'} {...animate({ opacity: true, scaleY: true, height: true })}>
+                        <div className="h-1" />
+                        <p className="text-xs text-yellow-500 italic">{t(active.packageData.encryptionStatus === 'encrypted' ? 'encryptedPKGForFolderNameChangingText' : active.packageData.encryptionStatus === 'mixed' ? 'mixedEncPKGForFolderNameChangingText' : 'unknownEncPKGForFolderNameChangingText')}</p>
+                      </AnimatedDiv>
+                    </div>
+                    {hasPackageFolderNameChanged && (
+                      <button
+                        className="w-fit rounded-xs border border-neutral-800 bg-neutral-900 px-1 py-0.5 text-xs! uppercase duration-100 last:mb-0 hover:bg-neutral-700 active:bg-neutral-600 disabled:text-neutral-700 disabled:hover:bg-neutral-900"
+                        disabled={disableButtons || active.packageData.encryptionStatus !== 'decrypted'}
+                        onClick={async (ev) => {
+                          ev.stopPropagation()
+                          setWindowState({ disableButtons: true })
+                          try {
+                            const newPackages = await window.api.changeDecryptedPackageFolderName(selPKG, editPackageFolderName)
+                            if (VERBOSE.STRUCT) console.log('struct RPCS3SongPackagesDataExtra ["rbtools/src/lib/rpcs3/rpcs3GetSongPackagesStatsExtra.ts"]:', newPackages)
+
+                            if (newPackages) {
+                              setWindowState({ packages: newPackages })
+                              const newCatalog = await window.api.sortAndFilterSongPackages(packagesCatalogSortBy)
+                              if (VERBOSE.STRUCT) console.log('struct SongPackagesFilterGenericObject [core/src/lib/dta/getDTACatalog.ts]', newCatalog)
+                              setMyPackagesScreenState({ packagesCatalog: newCatalog })
+                              setMyPackagesScreenState({ hasPackageFolderNameChanged: false })
+                              setMessageBoxState({ message: { type: 'success', code: 'savePackageEditing' } })
+                            }
+                          } catch (err) {
+                            if (err instanceof Error) setWindowState({ err })
+                          }
+                          setWindowState({ disableButtons: false })
+                        }}
+                      >
+                        {t('saveChanges')}
+                      </button>
+                    )}
+                  </div>
+
+                  <input className="mt-4 mb-1 rounded-xs border border-neutral-800 bg-neutral-900 px-1 py-0.5 text-sm! duration-100 last:mb-0 hover:bg-neutral-700 focus:border-white/25 active:bg-neutral-600 disabled:text-neutral-700 disabled:hover:bg-neutral-900" value={editPackageFolderName} onChange={(ev) => setMyPackagesScreenState({ hasPackageFolderNameChanged: true, editPackageFolderName: ev.target.value })} minLength={1} maxLength={64} disabled={disableButtons || active.packageData.encryptionStatus !== 'decrypted'} />
                 </div>
 
                 <div className="group rounded-xs p-2 duration-200 hover:bg-white/5">
@@ -396,6 +473,24 @@ export function PackageDetails() {
                     >
                       {t('selectRBIcons')}
                     </button>
+                    {active.songs.length === 1 && (
+                      <button
+                        disabled={disableButtons}
+                        className="mr-2 w-fit self-start rounded-xs border border-neutral-700 bg-neutral-900 px-1 py-0.5 text-xs! uppercase duration-100 last:mr-0 hover:bg-neutral-700 active:bg-neutral-600 disabled:text-neutral-700 disabled:hover:bg-neutral-900"
+                        onClick={async () => {
+                          try {
+                            setMessageBoxState({ message: { type: 'loading', code: 'processingSongArtworkTextureFile' } })
+                            await window.api.useSongArtworkFromUniqueSongPKG(selPKG)
+                            setWindowState({ disableImg: selPKG })
+                            setMessageBoxState({ message: { type: 'success', code: 'editPackageImage' } })
+                          } catch (err) {
+                            if (err instanceof Error) setWindowState({ err })
+                          }
+                        }}
+                      >
+                        {t('getArtworkFromSong', { songTitle: active.songs[0].name })}
+                      </button>
+                    )}
                   </div>
                 </div>
 
@@ -457,33 +552,6 @@ export function PackageDetails() {
                     </button>
                   </div>
                 </div>
-
-                <AnimatedDiv condition={editPackageEdited} {...animate({ opacity: true })}>
-                  <button
-                    className="mb-1 w-fit rounded-xs border border-neutral-800 bg-neutral-900 px-1 py-0.5 text-xs! uppercase duration-100 last:mb-0 hover:bg-neutral-700 active:bg-neutral-600 disabled:text-neutral-700 disabled:hover:bg-neutral-900"
-                    onClick={async (ev) => {
-                      setWindowState({ disableButtons: true })
-                      try {
-                        const newPackages = await window.api.editPackageData(selPKG, { packageName: editPackageName })
-                        if (VERBOSE.STRUCT) console.log('struct RPCS3SongPackagesDataExtra ["rbtools/src/lib/rpcs3/rpcs3GetSongPackagesStatsExtra.ts"]:', newPackages)
-
-                        if (newPackages) {
-                          setWindowState({ packages: newPackages })
-                          const newCatalog = await window.api.sortAndFilterSongPackages(packagesCatalogSortBy)
-                          if (VERBOSE.STRUCT) console.log('struct SongPackagesFilterGenericObject [core/src/lib/dta/getDTACatalog.ts]', newCatalog)
-                          setMyPackagesScreenState({ packagesCatalog: newCatalog })
-                        }
-                        setMyPackagesScreenState({ editPackageEdited: false })
-                        setMessageBoxState({ message: { type: 'success', code: 'savePackageEditing' } })
-                      } catch (err) {
-                        if (err instanceof Error) setWindowState({ err })
-                      }
-                      setWindowState({ disableButtons: false })
-                    }}
-                  >
-                    {t('save')}
-                  </button>
-                </AnimatedDiv>
               </div>
             </>
           )}

@@ -2,9 +2,9 @@ import { dialog } from 'electron'
 import { sendMessageBox, useHandler } from '../core.exports'
 import { pathLikeToFilePath } from 'node-lib'
 import { type STFSFileJSONRepresentation, type PKGFileJSONRepresentation, STFSFile, PKGFile } from '../lib/rbtools'
-import { getOfficialSongPackageStatsFromHash } from '../lib/rbtools/lib.exports'
+import { getOfficialSongPackageStatsFromHash, sortDTA } from '../lib/rbtools/lib.exports'
 
-export type SelectPackageFilesStatsTypes = { type: 'stfs'; data: STFSFileJSONRepresentation } | { type: 'pkg'; data: PKGFileJSONRepresentation }
+export type SelectPackageFilesStatsTypes = { type: 'stfs'; data: STFSFileJSONRepresentation; selectedSongs: string[] } | { type: 'pkg'; data: PKGFileJSONRepresentation; selectedSongs: string[] }
 
 export interface SelectPackageFilesObject {
   selectedFiles: string[]
@@ -43,9 +43,12 @@ export const selectPackageFiles = useHandler(async (win, _, files: SelectPackage
         continue
       }
 
+      data.dta = sortDTA(data.dta, 'Song Title')
+
       allStats.push({
         type: 'stfs',
         data,
+        selectedSongs: [...data.dta.map((data) => data.songname)],
       })
     } catch (err) {
       console.log(err)
@@ -61,9 +64,12 @@ export const selectPackageFiles = useHandler(async (win, _, files: SelectPackage
           continue
         }
 
+        data.dta = sortDTA(data.dta, 'Song Title')
+
         allStats.push({
           type: 'pkg',
           data,
+          selectedSongs: [...data.dta.map((data) => data.songname)],
         })
       } catch (err) {
         const path = pathLikeToFilePath(pkgPath)

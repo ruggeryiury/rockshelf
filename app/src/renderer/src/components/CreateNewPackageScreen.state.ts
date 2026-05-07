@@ -9,6 +9,9 @@ export interface CreateNewPackageScreenStateProps {
   addedSongsCount: number
   addedStarsCount: number
   hoveredFile: number
+  expandedFileSongsView: boolean[]
+  seeSelectedSongsOnly: boolean[]
+
   packageName: string
   packageFolderName: string
   forceEncryption: NonNullable<RPCS3ExtractionOptions['forceEncryption']>
@@ -43,6 +46,9 @@ const defaultState: CreateNewPackageScreenStateProps = {
   addedSongsCount: 0,
   addedStarsCount: 0,
   hoveredFile: -1,
+  expandedFileSongsView: [],
+  seeSelectedSongsOnly: [],
+
   packageName: '',
   packageFolderName: '',
   forceEncryption: 'disabled',

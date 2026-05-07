@@ -87,7 +87,6 @@ export function RhythmverseScreen() {
                   searchResults.songs.map((song, songI) => {
                     return (
                       <div className="group flex-row! items-center rounded-xs p-2 duration-200 hover:bg-white/5" key={`rhythmverseResultsSong${songI}`}>
-                        {/* <div className="mr-4 mb-2 flex-row! items-center rounded-sm border p-2 last:mb-0"> */}
                         <img
                           src={song.album_art}
                           className="mr-2 h-20 min-h-20 w-20 min-w-20 border-2 border-neutral-700"

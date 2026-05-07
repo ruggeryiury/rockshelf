@@ -22,14 +22,15 @@ export const batchDeleteSongs = useHandler(async (win, _, pkgIndex: number, song
   }
   const { path } = cacheContents.packages[pkgIndex]
   const pkgPath = DirPath.of(path)
-  const dtaPath = pathLikeToFilePath(cacheContents.packages[pkgIndex].dtaFilePath)
-  const oldDTASize = (await dtaPath.stat()).size
-  const parser = await DTAParser.fromFile(dtaPath)
 
   if (!pkgPath.exists) {
     sendMessageBox(win, { type: 'error', code: 'editPackageDataPackageNotFound' })
     return false
   }
+
+  const dtaPath = pathLikeToFilePath(cacheContents.packages[pkgIndex].dtaFilePath)
+  const oldDTASize = (await dtaPath.stat()).size
+  const parser = await DTAParser.fromFile(dtaPath)
 
   const firstSelectedSong = cacheContents.packages[pkgIndex].songs.find((val) => val.songname === songs[0])
   if (songs.length === 1) {
@@ -55,6 +56,8 @@ export const batchDeleteSongs = useHandler(async (win, _, pkgIndex: number, song
 
     songsDeleted++
   }
+
+  parser.removeSongs(songs)
 
   parser.sort('ID')
   parser.patchCores()

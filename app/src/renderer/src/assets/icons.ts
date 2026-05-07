@@ -10,5 +10,8 @@ export { IoMdReturnRight as GoBackToRightIcon, IoMdCheckmarkCircle as SuccessIco
 export { FaRegCheckCircle as CheckedCircleIcon } from 'react-icons/fa'
 export { IoDiamondOutline as DiamondIcon } from 'react-icons/io5'
 export { BsPlaystation as PlaystationIcon, BsXbox as XboxIcon } from 'react-icons/bs'
+export { GrSquare as HalfCheckedBox } from 'react-icons/gr'
 export { RPCS3Icon } from './images/svg/RPCS3Icon'
 export { WiiIcon } from './images/svg/WiiIcon'
+export { FaChevronDown as ChevronDownIcon, FaChevronUp as ChevronUpIcon } from 'react-icons/fa'
+export { FaEye as EyeIcon,  FaEyeSlash as EyeSlashIcon } from "react-icons/fa";

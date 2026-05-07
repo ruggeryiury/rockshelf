@@ -19,7 +19,9 @@ export interface MyPackagesScreenStateProps {
   isArtworkLoading: boolean
   artworkURL: string | null
   editPackageName: string
-  editPackageEdited: boolean
+  hasPackageNameChanged: boolean
+  editPackageFolderName: string
+  hasPackageFolderNameChanged: boolean
 }
 
 export interface MyPackagesScreenStateActions {
@@ -59,7 +61,9 @@ const defaultState: MyPackagesScreenStateProps = {
   isArtworkLoading: true,
   artworkURL: null,
   editPackageName: '',
-  editPackageEdited: false,
+  hasPackageNameChanged: false,
+  editPackageFolderName: '',
+  hasPackageFolderNameChanged: false,
 }
 
 export const useMyPackagesScreenState = create<MyPackagesScreenStateHook>()((set, get) => ({

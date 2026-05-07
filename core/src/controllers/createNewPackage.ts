@@ -10,6 +10,7 @@ export interface CreateNewPackageOptions {
   packageFolderName: string
   forceEncryption: NonNullable<RPCS3ExtractionOptions['forceEncryption']>
   thumbnail: string | null
+  selectedSongs?: string[]
 }
 
 export interface SerializedRPCS3PackageExtractionObject {
@@ -23,13 +24,14 @@ export interface SerializedRPCS3PackageExtractionObject {
 }
 
 export const createNewPackage = useHandler(async (win, __, options: CreateNewPackageOptions): Promise<SerializedRPCS3PackageExtractionObject | false> => {
+  console.log(options)
   const userConfig = await readUserConfigFile()
   if (!userConfig) {
     sendDialog(win, 'corruptedUserConfig')
     return false
   }
 
-  const { packageFolderName, forceEncryption, packages, thumbnail, packageName } = options
+  const { packageFolderName, forceEncryption, packages, thumbnail, packageName, selectedSongs } = options
 
   let devhdd0: DirPath
   try {
@@ -80,7 +82,7 @@ export const createNewPackage = useHandler(async (win, __, options: CreateNewPac
   sendBuzyLoad(win, { code: 'incrementStep' })
 
   try {
-    const results = await extractPackagesForRPCS3Extra(win, packages, devhdd0, packageFolderName, { forceEncryption })
+    const results = await extractPackagesForRPCS3Extra(win, packages, devhdd0, packageFolderName, { forceEncryption, songs: selectedSongs })
     if (!results) return false
 
     sendBuzyLoad(win, { code: 'incrementStep' })

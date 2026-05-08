@@ -68,7 +68,7 @@ export const officialPackages: OfficialSongPackageStats[] = [
     },
   },
   {
-    name: 'Rock Band 1',
+    name: 'Rock Band',
     code: 'rb1',
     folderName: 'RB1FULLEXPORTPS3',
     packageType: 'rb1',

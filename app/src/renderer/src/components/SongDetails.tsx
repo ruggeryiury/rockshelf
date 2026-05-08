@@ -1,4 +1,4 @@
-import { AnimatedDiv, AnimatedSection, TransComponent, animate, formatNumberWithDots, rankCalculator, underscoreToUppercaseLetter } from '@renderer/lib.exports'
+import { AnimatedDiv, AnimatedSection, TransComponent, animate, formatMillisecondsToTimeDuration, formatNumberWithDots, rankCalculator, underscoreToUppercaseLetter } from '@renderer/lib.exports'
 import { useMyPackagesScreenState } from './MyPackagesScreen.state'
 import { useWindowState } from '@renderer/stores/Window.state'
 import { useEffect, useMemo } from 'react'
@@ -11,10 +11,10 @@ import { useUserConfigState } from '@renderer/stores/UserConfig.state'
 import { bandIcon, guitarIcon, bassIcon, drumsIcon, keysIcon, vocalsIcon, proGuitarIcon, proBassIcon, proDrumsIcon, proKeysIcon, harm3Icon, diffDotOn, diffDotOff, diffDotDevil } from '@renderer/assets/images'
 import { StarsInline } from '@renderer/components.exports'
 
-export function DiffIconInline({ diff, width }: { diff: number; width?: number }) {
+export function DiffIconInline({ diff, width, mr }: { diff: number; width?: number; mr?: 'auto' | number }) {
   const { t, i18n } = useTranslation()
   return (
-    <div style={{ width: `${5.625 * (width || 1)}rem` }} className="mr-auto w-22.5 max-w-22.5 flex-row! items-center last:mr-0" title={t(diff === -1 ? 'noPart' : `diff${diff}`)}>
+    <div style={{ width: `${5.625 * (width || 1)}rem`, marginRight: mr === 'auto' || !mr ? 'auto' : `${mr}rem` }} className="w-22.5 max-w-22.5 flex-row! items-center last:mr-0" title={t(diff === -1 ? 'noPart' : `diff${diff}`)}>
       {diff > -1 && (
         <>
           <img src={diff === 6 ? diffDotDevil : diff >= 1 ? diffDotOn : diffDotOff} style={{ width: `${width || 4}rem` }} />
@@ -36,7 +36,7 @@ export function SongDetails() {
   const { t } = useTranslation()
   const { selPKG, selSong, isArtworkLoading, artworkURL, songDetailsTab, songLeaderboards, setMyPackagesScreenState, songsCatalogSortBy } = useMyPackagesScreenState(useShallow((x) => ({ selPKG: x.selPKG, selSong: x.selSong, isArtworkLoading: x.isArtworkLoading, artworkURL: x.artworkURL, setMyPackagesScreenState: x.setMyPackagesScreenState, songDetailsTab: x.songDetailsTab, songLeaderboards: x.songLeaderboards, songsCatalogSortBy: x.songsCatalogSortBy })))
   const { mostPlayedInstrument } = useUserConfigState(useShallow((x) => ({ mostPlayedInstrument: x.mostPlayedInstrument })))
-  const { disableButtons, setWindowState, packages, saveData } = useWindowState(useShallow((x) => ({ disableButtons: x.disableButtons, setWindowState: x.setWindowState, packages: x.packages, saveData: x.saveData })))
+  const { disableButtons, setWindowState, packages, saveData, rb3Stats } = useWindowState(useShallow((x) => ({ disableButtons: x.disableButtons, setWindowState: x.setWindowState, packages: x.packages, saveData: x.saveData, rb3Stats: x.rb3Stats })))
   const packageDetails = useMemo(() => (typeof packages === 'object' && selPKG > -1 && selPKG in packages.packages ? packages.packages[selPKG] : null), [packages, selPKG])
   const songDetails = useMemo(() => (typeof packages === 'object' && selPKG > -1 && selPKG in packages.packages && selSong > -1 && packageDetails !== null && selSong in packageDetails.songs ? packageDetails.songs[selSong] : null), [packages, selPKG, selSong])
   const { setUserConfigState } = useUserConfigState(useShallow((x) => ({ setUserConfigState: x.setUserConfigState })))
@@ -101,7 +101,10 @@ export function SongDetails() {
             </div>
 
             <div className="mr-auto h-full w-full">
-              <h1 className="font-pentatonicalt! mb-2 text-[2rem]">{songDetails.name}</h1>
+              <h1 className="font-pentatonicalt! mb-2 text-[2rem]">
+                {songDetails.name}
+                <span className="ml-2 text-base">{formatMillisecondsToTimeDuration(songDetails.song_length)}</span>
+              </h1>
               <div className="w-full flex-row! items-start">
                 <div className="w-[75%] max-w-[75%]">
                   <h2 className="font-bold text-gray-300 uppercase">{t('artist')}</h2>
@@ -195,10 +198,6 @@ export function SongDetails() {
                   <div className="group rounded-xs p-2 duration-200 hover:bg-white/5">
                     <h1 className="uppercase">{t('artist')}</h1>
                     <p>{songDetails.artist}</p>
-                  </div>
-                  <div className="group rounded-xs p-2 duration-200 hover:bg-white/5">
-                    <h1 className="uppercase">{t('isMaster')}</h1>
-                    <p>{String(songDetails.master)}</p>
                   </div>
                   <div className="group rounded-xs p-2 duration-200 hover:bg-white/5">
                     <h1 className="uppercase">{t('songID')}</h1>
@@ -304,36 +303,73 @@ export function SongDetails() {
                   </div>
                 </div>
 
-                  <div className="group rounded-xs p-2 duration-200 hover:bg-white/5">
-                    <h1 className="uppercase">{t('vocalParts')}</h1>
-                    <p>{String(songDetails.vocal_parts)}</p>
+                <div className="group rounded-xs p-2 duration-200 hover:bg-white/5">
+                  <h1 className="uppercase">{t('vocalParts')}</h1>
+                  <div className="flex-row! items-center">
+                    <div className={clsx('mr-1 h-full w-2 rounded-xs border border-neutral-600 last:mr-0', songDetails.vocal_parts >= 1 && 'bg-[#10a7dd]')} />
+                    <div className={clsx('mr-1 h-full w-2 rounded-xs border border-neutral-600 last:mr-0', songDetails.vocal_parts >= 2 && 'bg-[#9b4211]')} />
+                    <div className={clsx('mr-1 h-full w-2 rounded-xs border border-neutral-600 last:mr-0', songDetails.vocal_parts === 3 && 'bg-[#d48218]')} />
+                    <p className="ml-1">{songDetails.vocal_parts}</p>
                   </div>
-                <div>
+                </div>
+
+                <div className="group rounded-xs p-2 duration-200 hover:bg-white/5">
+                  <h1 className="mb-1 uppercase">{t('difficulties')}</h1>
+                  <div className="mb-2 flex-row! items-center">
+                    <img src="rbicons://instrument-icons-band" title={t('band')} className="mr-1 h-8 w-8" />
+                    <DiffIconInline mr={1.5} width={1.1} diff={rankCalculator('band', songDetails.rank_band)} />
+                  </div>
                   <div className="flex-row! items-center">
                     <img src="rbicons://instrument-icons-guitar" title={t('guitar')} className="mr-1 h-8 w-8" />
-                    <DiffIconInline width={1.1} diff={rankCalculator('guitar', songDetails.rank_guitar)} />
+                    <DiffIconInline mr={1.5} width={1.1} diff={rankCalculator('guitar', songDetails.rank_guitar)} />
                     <img src="rbicons://instrument-icons-bass" title={t('bass')} className="mr-1 h-8 w-8" />
-                    <DiffIconInline width={1.1} diff={rankCalculator('bass', songDetails.rank_bass)} />
+                    <DiffIconInline mr={1.5} width={1.1} diff={rankCalculator('bass', songDetails.rank_bass)} />
                     <img src="rbicons://instrument-icons-drums" title={t('drums')} className="mr-1 h-8 w-8" />
-                    <DiffIconInline width={1.1} diff={rankCalculator('drum', songDetails.rank_drum)} />
+                    <DiffIconInline mr={1.5} width={1.1} diff={rankCalculator('drum', songDetails.rank_drum)} />
                     <img src="rbicons://instrument-icons-keys" title={t('keys')} className="mr-1 h-8 w-8" />
-                    <DiffIconInline width={1.1} diff={rankCalculator('keys', songDetails.rank_keys)} />
+                    <DiffIconInline mr={1.5} width={1.1} diff={rankCalculator('keys', songDetails.rank_keys)} />
                     <img src="rbicons://instrument-icons-vocals" title={t('vocals')} className="mr-1 h-8 w-8" />
-                    <DiffIconInline width={1.1} diff={rankCalculator('vocals', songDetails.rank_vocals)} />
+                    <DiffIconInline mr={1.5} width={1.1} diff={rankCalculator('vocals', songDetails.rank_vocals)} />
                   </div>
                   <div className="flex-row! items-center">
                     <img src="rbicons://instrument-icons-proGuitar" title={t('proGuitar')} className="mr-1 h-8 w-8" />
-                    <DiffIconInline width={1.1} diff={rankCalculator('real_guitar', songDetails.rank_real_guitar)} />
+                    <DiffIconInline mr={1.5} width={1.1} diff={rankCalculator('real_guitar', songDetails.rank_real_guitar)} />
                     <img src="rbicons://instrument-icons-proBass" title={t('proBass')} className="mr-1 h-8 w-8" />
-                    <DiffIconInline width={1.1} diff={rankCalculator('real_bass', songDetails.rank_real_bass)} />
+                    <DiffIconInline mr={1.5} width={1.1} diff={rankCalculator('real_bass', songDetails.rank_real_bass)} />
                     <img src="rbicons://instrument-icons-proDrums" title={t('proDrums')} className="mr-1 h-8 w-8" />
-                    <DiffIconInline width={1.1} diff={rankCalculator('drum', songDetails.rank_drum)} />
+                    <DiffIconInline mr={1.5} width={1.1} diff={rankCalculator('drum', songDetails.rank_drum)} />
                     <img src="rbicons://instrument-icons-proKeys" title={t('proKeys')} className="mr-1 h-8 w-8" />
-                    <DiffIconInline width={1.1} diff={rankCalculator('real_keys', songDetails.rank_real_keys)} />
+                    <DiffIconInline mr={1.5} width={1.1} diff={rankCalculator('real_keys', songDetails.rank_real_keys)} />
                     <img src={songDetails.vocal_parts === 2 ? 'rbicons://instrument-icons-harm2' : 'rbicons://instrument-icons-harmonies'} title={t(songDetails.vocal_parts === 2 ? 'harm2' : 'harm3')} className="mr-1 h-8 w-8" />
-                    <DiffIconInline width={1.1} diff={rankCalculator('vocals', songDetails.rank_vocals)} />
+                    <DiffIconInline mr={1.5} width={1.1} diff={songDetails.vocal_parts <= 1 ? -1 : rankCalculator('vocals', songDetails.rank_vocals)} />
                   </div>
                 </div>
+
+                <div className="group rounded-xs p-2 duration-200 hover:bg-white/5">
+                  <h1 className="uppercase">{t('gameOrigin')}</h1>
+                  <div className="flex-row! items-center">
+                    <p>{t(typeof rb3Stats === 'object' && rb3Stats.hasDeluxe && (songDetails.customsource?.game_origin || songDetails.game_origin).startsWith('ugc') ? `dx_${songDetails.customsource?.game_origin || songDetails.game_origin}` : `gameOrigin__${songDetails.customsource?.game_origin || songDetails.game_origin}`)}</p>
+                    {songDetails.customsource?.game_origin && <DiamondIcon className="relative top-[0.1rem] ml-1 rotate-45 cursor-help text-gray-700 duration-100 hover:text-gray-300" title={t('dxGameOriginOnly')} />}
+                  </div>
+                </div>
+
+                <div className="group rounded-xs p-2 duration-200 hover:bg-white/5">
+                  <h1 className="uppercase">{t('genre')}</h1>
+                  <div className="flex-row! items-center">
+                    <p>{t(`${songDetails.customsource?.genre || songDetails.genre}`)}</p>
+                    {songDetails.customsource?.genre && <DiamondIcon className="relative top-[0.1rem] ml-1 rotate-45 cursor-help text-gray-700 duration-100 hover:text-gray-300" title={t('dxGameOriginOnly')} />}
+                  </div>
+                </div>
+
+                {songDetails.sub_genre && (
+                  <div className="group rounded-xs p-2 duration-200 hover:bg-white/5">
+                    <h1 className="uppercase">{t('subGenre')}</h1>
+                    <div className="flex-row! items-center">
+                      <p>{t(`${songDetails.customsource?.sub_genre?.slice(9) || songDetails.sub_genre.slice(9)}`)}</p>
+                      {songDetails.customsource?.sub_genre && <DiamondIcon className="relative top-[0.1rem] ml-1 rotate-45 cursor-help text-gray-700 duration-100 hover:text-gray-300" title={t('dxGameOriginOnly')} />}
+                    </div>
+                  </div>
+                )}
               </div>
             </>
           )}
@@ -344,7 +380,7 @@ export function SongDetails() {
                   <button
                     title={t('band')}
                     disabled={disableButtons}
-                    className={clsx('mr-2 flex-row! items-center rounded-xs border border-neutral-800 px-2 py-1 font-sans! text-xs! uppercase duration-200 last:mr-0', mostPlayedInstrument === 'band' ? 'bg-neutral-400 text-neutral-900 hover:bg-neutral-300 active:bg-neutral-200' : 'bg-neutral-900 hover:bg-neutral-800 active:bg-neutral-700')}
+                    className={clsx('mr-2 flex-row! items-center rounded-xs border border-neutral-800 px-2 py-1 text-xs! uppercase duration-200 last:mr-0', mostPlayedInstrument === 'band' ? 'bg-neutral-400 text-neutral-900 hover:bg-neutral-300 active:bg-neutral-200' : 'bg-neutral-900 hover:bg-neutral-800 active:bg-neutral-700')}
                     onClick={async () => {
                       setWindowState({ disableButtons: true })
                       setUserConfigState({ mostPlayedInstrument: 'band' })
@@ -363,7 +399,7 @@ export function SongDetails() {
                   <button
                     title={t('guitar')}
                     disabled={disableButtons}
-                    className={clsx('mr-2 flex-row! items-center rounded-xs border border-neutral-800 px-2 py-1 font-sans! text-xs! uppercase duration-200 last:mr-0', mostPlayedInstrument === 'guitar' ? 'bg-neutral-400 text-neutral-900 hover:bg-neutral-300 active:bg-neutral-200' : 'bg-neutral-900 hover:bg-neutral-800 active:bg-neutral-700')}
+                    className={clsx('mr-2 flex-row! items-center rounded-xs border border-neutral-800 px-2 py-1 text-xs! uppercase duration-200 last:mr-0', mostPlayedInstrument === 'guitar' ? 'bg-neutral-400 text-neutral-900 hover:bg-neutral-300 active:bg-neutral-200' : 'bg-neutral-900 hover:bg-neutral-800 active:bg-neutral-700')}
                     onClick={async () => {
                       setWindowState({ disableButtons: true })
                       setUserConfigState({ mostPlayedInstrument: 'guitar' })
@@ -382,7 +418,7 @@ export function SongDetails() {
                   <button
                     title={t('bass')}
                     disabled={disableButtons}
-                    className={clsx('mr-2 flex-row! items-center rounded-xs border border-neutral-800 px-2 py-1 font-sans! text-xs! uppercase duration-200 last:mr-0', mostPlayedInstrument === 'bass' ? 'bg-neutral-400 text-neutral-900 hover:bg-neutral-300 active:bg-neutral-200' : 'bg-neutral-900 hover:bg-neutral-800 active:bg-neutral-700')}
+                    className={clsx('mr-2 flex-row! items-center rounded-xs border border-neutral-800 px-2 py-1 text-xs! uppercase duration-200 last:mr-0', mostPlayedInstrument === 'bass' ? 'bg-neutral-400 text-neutral-900 hover:bg-neutral-300 active:bg-neutral-200' : 'bg-neutral-900 hover:bg-neutral-800 active:bg-neutral-700')}
                     onClick={async () => {
                       setWindowState({ disableButtons: true })
                       setUserConfigState({ mostPlayedInstrument: 'bass' })
@@ -402,7 +438,7 @@ export function SongDetails() {
                   <button
                     title={t('drums')}
                     disabled={disableButtons}
-                    className={clsx('mr-2 flex-row! items-center rounded-xs border border-neutral-800 px-2 py-1 font-sans! text-xs! uppercase duration-200 last:mr-0', mostPlayedInstrument === 'drums' ? 'bg-neutral-400 text-neutral-900 hover:bg-neutral-300 active:bg-neutral-200' : 'bg-neutral-900 hover:bg-neutral-800 active:bg-neutral-700')}
+                    className={clsx('mr-2 flex-row! items-center rounded-xs border border-neutral-800 px-2 py-1 text-xs! uppercase duration-200 last:mr-0', mostPlayedInstrument === 'drums' ? 'bg-neutral-400 text-neutral-900 hover:bg-neutral-300 active:bg-neutral-200' : 'bg-neutral-900 hover:bg-neutral-800 active:bg-neutral-700')}
                     onClick={async () => {
                       setWindowState({ disableButtons: true })
                       setUserConfigState({ mostPlayedInstrument: 'drums' })
@@ -421,7 +457,7 @@ export function SongDetails() {
                   <button
                     title={t('keys')}
                     disabled={disableButtons}
-                    className={clsx('mr-2 flex-row! items-center rounded-xs border border-neutral-800 px-2 py-1 font-sans! text-xs! uppercase duration-200 last:mr-0', mostPlayedInstrument === 'keys' ? 'bg-neutral-400 text-neutral-900 hover:bg-neutral-300 active:bg-neutral-200' : 'bg-neutral-900 hover:bg-neutral-800 active:bg-neutral-700')}
+                    className={clsx('mr-2 flex-row! items-center rounded-xs border border-neutral-800 px-2 py-1 text-xs! uppercase duration-200 last:mr-0', mostPlayedInstrument === 'keys' ? 'bg-neutral-400 text-neutral-900 hover:bg-neutral-300 active:bg-neutral-200' : 'bg-neutral-900 hover:bg-neutral-800 active:bg-neutral-700')}
                     onClick={async () => {
                       setWindowState({ disableButtons: true })
                       setUserConfigState({ mostPlayedInstrument: 'keys' })
@@ -440,7 +476,7 @@ export function SongDetails() {
                   <button
                     title={t('vocals')}
                     disabled={disableButtons}
-                    className={clsx('mr-2 flex-row! items-center rounded-xs border border-neutral-800 px-2 py-1 font-sans! text-xs! uppercase duration-200 last:mr-0', mostPlayedInstrument === 'vocals' ? 'bg-neutral-400 text-neutral-900 hover:bg-neutral-300 active:bg-neutral-200' : 'bg-neutral-900 hover:bg-neutral-800 active:bg-neutral-700')}
+                    className={clsx('mr-2 flex-row! items-center rounded-xs border border-neutral-800 px-2 py-1 text-xs! uppercase duration-200 last:mr-0', mostPlayedInstrument === 'vocals' ? 'bg-neutral-400 text-neutral-900 hover:bg-neutral-300 active:bg-neutral-200' : 'bg-neutral-900 hover:bg-neutral-800 active:bg-neutral-700')}
                     onClick={async () => {
                       setWindowState({ disableButtons: true })
                       setUserConfigState({ mostPlayedInstrument: 'vocals' })
@@ -459,7 +495,7 @@ export function SongDetails() {
                   <button
                     title={t('proGuitar')}
                     disabled={disableButtons}
-                    className={clsx('mr-2 flex-row! items-center rounded-xs border border-neutral-800 px-2 py-1 font-sans! text-xs! uppercase duration-200 last:mr-0', mostPlayedInstrument === 'proGuitar' ? 'bg-neutral-400 text-neutral-900 hover:bg-neutral-300 active:bg-neutral-200' : 'bg-neutral-900 hover:bg-neutral-800 active:bg-neutral-700')}
+                    className={clsx('mr-2 flex-row! items-center rounded-xs border border-neutral-800 px-2 py-1 text-xs! uppercase duration-200 last:mr-0', mostPlayedInstrument === 'proGuitar' ? 'bg-neutral-400 text-neutral-900 hover:bg-neutral-300 active:bg-neutral-200' : 'bg-neutral-900 hover:bg-neutral-800 active:bg-neutral-700')}
                     onClick={async () => {
                       setWindowState({ disableButtons: true })
                       setUserConfigState({ mostPlayedInstrument: 'proGuitar' })
@@ -478,7 +514,7 @@ export function SongDetails() {
                   <button
                     title={t('proBass')}
                     disabled={disableButtons}
-                    className={clsx('mr-2 flex-row! items-center rounded-xs border border-neutral-800 px-2 py-1 font-sans! text-xs! uppercase duration-200 last:mr-0', mostPlayedInstrument === 'proBass' ? 'bg-neutral-400 text-neutral-900 hover:bg-neutral-300 active:bg-neutral-200' : 'bg-neutral-900 hover:bg-neutral-800 active:bg-neutral-700')}
+                    className={clsx('mr-2 flex-row! items-center rounded-xs border border-neutral-800 px-2 py-1 text-xs! uppercase duration-200 last:mr-0', mostPlayedInstrument === 'proBass' ? 'bg-neutral-400 text-neutral-900 hover:bg-neutral-300 active:bg-neutral-200' : 'bg-neutral-900 hover:bg-neutral-800 active:bg-neutral-700')}
                     onClick={async () => {
                       setWindowState({ disableButtons: true })
                       setUserConfigState({ mostPlayedInstrument: 'proBass' })
@@ -498,7 +534,7 @@ export function SongDetails() {
                   <button
                     title={t('proDrums')}
                     disabled={disableButtons}
-                    className={clsx('mr-2 flex-row! items-center rounded-xs border border-neutral-800 px-2 py-1 font-sans! text-xs! uppercase duration-200 last:mr-0', mostPlayedInstrument === 'proDrums' ? 'bg-neutral-400 text-neutral-900 hover:bg-neutral-300 active:bg-neutral-200' : 'bg-neutral-900 hover:bg-neutral-800 active:bg-neutral-700')}
+                    className={clsx('mr-2 flex-row! items-center rounded-xs border border-neutral-800 px-2 py-1 text-xs! uppercase duration-200 last:mr-0', mostPlayedInstrument === 'proDrums' ? 'bg-neutral-400 text-neutral-900 hover:bg-neutral-300 active:bg-neutral-200' : 'bg-neutral-900 hover:bg-neutral-800 active:bg-neutral-700')}
                     onClick={async () => {
                       setWindowState({ disableButtons: true })
                       setUserConfigState({ mostPlayedInstrument: 'proDrums' })
@@ -517,7 +553,7 @@ export function SongDetails() {
                   <button
                     title={t('proKeys')}
                     disabled={disableButtons}
-                    className={clsx('mr-2 flex-row! items-center rounded-xs border border-neutral-800 px-2 py-1 font-sans! text-xs! uppercase duration-200 last:mr-0', mostPlayedInstrument === 'proKeys' ? 'bg-neutral-400 text-neutral-900 hover:bg-neutral-300 active:bg-neutral-200' : 'bg-neutral-900 hover:bg-neutral-800 active:bg-neutral-700')}
+                    className={clsx('mr-2 flex-row! items-center rounded-xs border border-neutral-800 px-2 py-1 text-xs! uppercase duration-200 last:mr-0', mostPlayedInstrument === 'proKeys' ? 'bg-neutral-400 text-neutral-900 hover:bg-neutral-300 active:bg-neutral-200' : 'bg-neutral-900 hover:bg-neutral-800 active:bg-neutral-700')}
                     onClick={async () => {
                       setWindowState({ disableButtons: true })
                       setUserConfigState({ mostPlayedInstrument: 'proKeys' })
@@ -536,7 +572,7 @@ export function SongDetails() {
                   <button
                     title={t('harmonies')}
                     disabled={disableButtons}
-                    className={clsx('mr-2 flex-row! items-center rounded-xs border border-neutral-800 px-2 py-1 font-sans! text-xs! uppercase duration-200 last:mr-0', mostPlayedInstrument === 'harmonies' ? 'bg-neutral-400 text-neutral-900 hover:bg-neutral-300 active:bg-neutral-200' : 'bg-neutral-900 hover:bg-neutral-800 active:bg-neutral-700')}
+                    className={clsx('mr-2 flex-row! items-center rounded-xs border border-neutral-800 px-2 py-1 text-xs! uppercase duration-200 last:mr-0', mostPlayedInstrument === 'harmonies' ? 'bg-neutral-400 text-neutral-900 hover:bg-neutral-300 active:bg-neutral-200' : 'bg-neutral-900 hover:bg-neutral-800 active:bg-neutral-700')}
                     onClick={async () => {
                       setWindowState({ disableButtons: true })
                       setUserConfigState({ mostPlayedInstrument: 'harmonies' })

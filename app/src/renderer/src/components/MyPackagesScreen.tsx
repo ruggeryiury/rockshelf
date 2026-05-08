@@ -138,7 +138,7 @@ export function MyPackagesScreen() {
                                   <h3 className="mb-2 text-xs text-neutral-500 italic">
                                     {t(pkg.songs.length === 1 ? 'songsCount' : 'songsCountPlural', { count: pkg.songs.length })} / {getReadableBytesSize(pkg.packageSize)}
                                   </h3>
-                                  {pkg.official?.code !== 'rb3' && <p className="absolute! bottom-0 rounded-xs bg-neutral-950 px-2 py-0.5 font-mono text-xs whitespace-nowrap">{`${pkg.packageType === 'rb1' ? 'BLUS30050' : 'BLUS30463'}/${pkg.name}`}</p>}
+                                  {pkg.official?.code !== 'rb3' && <p className="absolute! bottom-0 rounded-xs bg-neutral-950 px-2 py-0.5 font-mono! text-sm whitespace-nowrap">{`${pkg.packageType === 'rb1' ? 'BLUS30050' : 'BLUS30463'}/${pkg.name}`}</p>}
                                 </div>
                                 <AnimatedDiv condition={hoveredPKG === packageIndex} {...animate({ opacity: true, duration: 0.1 })}>
                                   {pkg.official?.code !== 'rb3' && (

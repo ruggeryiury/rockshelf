@@ -10,5 +10,7 @@ export * from './app/lib/strnum/bytesSize'
 export * from './app/lib/strnum/camelCase'
 export * from './app/lib/strnum/formatNumberWithDots'
 export * from './app/lib/strnum/rng'
+export * from './app/lib/strnum/time'
+export * from './app/lib/strnum/tonality'
 
 export * from './app/lib/utils/sleep'

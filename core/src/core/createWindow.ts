@@ -28,10 +28,10 @@ export function createWindow(options: CreateWindowOptions): BrowserWindow {
   const main = pathLikeToDirPath(mainScriptRootFolder)
 
   const mainWindow = new BrowserWindow({
-    width: 900,
-    height: 670,
-    minWidth: 900,
-    minHeight: 670,
+    width: 1280,
+    height: 800,
+    minWidth: 1280,
+    minHeight: 800,
     show: false,
     autoHideMenuBar: true,
     fullscreenable: false,

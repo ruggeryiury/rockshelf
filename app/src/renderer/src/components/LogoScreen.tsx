@@ -10,7 +10,7 @@ export function LogoScreen() {
   const { active, showText } = useLogoScreenState(useShallow((x) => ({ active: x.active, showText: x.showText })))
   return (
     <AnimatedSection id="LogoScreen" condition={active} {...animate({ opacityInit: true })} className="absolute! z-2 h-full w-full items-center justify-center bg-neutral-800">
-      <h1 className="text-[3rem] uppercase">{t('appTitle')}</h1>
+      <h1 className="text-[4rem] uppercase">{t('appTitle')}</h1>
       <AnimatedDiv condition={showText} {...animate({ opacity: true, height: true, scaleY: true })}>
         <div className="h-3"></div>
         <div className="flex-row! items-center">

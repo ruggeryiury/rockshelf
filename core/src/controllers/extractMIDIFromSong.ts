@@ -33,7 +33,8 @@ export const extractMIDIFromSong = useHandler(async (win, _, packageDetails: RPC
   if (await edat.isEncrypted()) {
     const tempMIDI = pathLikeToFilePath(temporaryFile({ extension: 'mid' }))
     await edat.decrypt({ destPath: tempMIDI, devKLicHash: packageDetails.devklic })
-    await tempMIDI.move(newFilePath)
+    await tempMIDI.copy(newFilePath, true)
+    await tempMIDI.delete()
   } else await edat.path.copy(newFilePath)
 
   return true

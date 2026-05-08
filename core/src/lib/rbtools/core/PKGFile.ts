@@ -190,7 +190,10 @@ export class PKGFile {
 
       for (const file of allFiles) {
         const rootFile = dest.gotoFile(file.fullname)
-        if (!rootFile.exists) await file.move(rootFile)
+        if (!rootFile.exists) {
+          await file.copy(rootFile, true)
+          await file.delete()
+        }
       }
 
       for (const dir of allDirs) {

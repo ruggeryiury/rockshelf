@@ -71,7 +71,8 @@ export class ImageFile {
     await temp.path.write(imgBuf)
     const tempFileStat = await temp.stat()
     const dest = pathLikeToFilePath(destPath).changeFileExt(tempFileStat.ext)
-    await temp.path.rename(dest.path, true)
+    await temp.path.copy(dest.path, true)
+    await temp.path.delete()
     return new ImageFile(dest.path)
   }
 

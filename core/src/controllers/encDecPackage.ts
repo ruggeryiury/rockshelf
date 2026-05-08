@@ -56,7 +56,8 @@ export const encDecPackage = useHandler(async (win, _, func: EncDecPackageFuncti
       if (func === 'encryptAll') await mogg.encrypt(tempMOGG)
       else await mogg.decrypt(tempMOGG)
 
-      await tempMOGG.move(mogg.path, true)
+      await tempMOGG.copy(mogg.path, true)
+      await tempMOGG.delete()
     } else {
       const edat = new EDATFile(file)
       const isEDATEncrypted = await edat.isEncrypted()
@@ -70,7 +71,8 @@ export const encDecPackage = useHandler(async (win, _, func: EncDecPackageFuncti
         await edat.decrypt({ devKLicHash: cacheContents.packages[pkgIndex].devklic, destPath: tempEDAT })
       }
 
-      await tempEDAT.move(edat.path, true)
+      await tempEDAT.copy(edat.path, true)
+      await tempEDAT.delete()
     }
   }
 

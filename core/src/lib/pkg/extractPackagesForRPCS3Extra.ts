@@ -231,13 +231,15 @@ export const extractPackagesForRPCS3Extra = async (win: BrowserWindow, packages:
         // MILO
         const oldMiloPath = song.files.milo
         const newMiloPath = mainTempFolder.gotoFile(`${song.files.milo.name}.milo_ps3`)
-        await oldMiloPath.move(newMiloPath, true)
+        await oldMiloPath.copy(newMiloPath, true)
+        await oldMiloPath.delete()
 
         // PNG
         const oldPNGPath = song.files.png
         const newPNGPath = mainTempFolder.gotoFile(`${song.files.png.name}.png_ps3`)
         if (temp.type === 'pkg') {
-          await oldPNGPath.move(newPNGPath, true)
+          await oldPNGPath.copy(newPNGPath, true)
+          await oldPNGPath.delete()
         } else {
           // Xbox PNGs must be converted to PS3
           sendBuzyLoad(win, { code: 'subtext', key: 'convertingXboxPNGText', messageValues: { name: oldPNGPath.fullname } })
@@ -256,7 +258,8 @@ export const extractPackagesForRPCS3Extra = async (win: BrowserWindow, packages:
 
           sendBuzyLoad(win, { code: 'subtext', key: 'decryptingMOGGText', messageValues: { name: oldMOGGPath.path.fullname } })
           await PythonAPI.decryptMOGG(oldMOGGPath.path, decMOGGPath)
-          await decMOGGPath.move(oldMOGGPath.path, true)
+          await decMOGGPath.copy(oldMOGGPath.path, true)
+          await decMOGGPath.delete()
         } else if (forceEncryption === 'enabled' && moggEncVersion === 11) {
           // Do nothing, the MOGG file is encrypted
         } else if (forceEncryption === 'enabled' && moggEncVersion === 10) {
@@ -265,7 +268,8 @@ export const extractPackagesForRPCS3Extra = async (win: BrowserWindow, packages:
 
           sendBuzyLoad(win, { code: 'subtext', key: 'encryptingMOGGText', messageValues: { name: oldMOGGPath.path.fullname } })
           await BinaryAPI.makeMoggEncrypt(oldMOGGPath.path, encMOGGPath)
-          await encMOGGPath.move(oldMOGGPath.path, true)
+          await encMOGGPath.copy(oldMOGGPath.path, true)
+          await encMOGGPath.delete()
         } else if (forceEncryption === 'enabled' && moggEncVersion > 11) {
           // MOGG is encrypted, but not for PS3 use
           const decMOGGPath = pathLikeToFilePath(temporaryFile({ extension: 'mogg' }))
@@ -278,7 +282,8 @@ export const extractPackagesForRPCS3Extra = async (win: BrowserWindow, packages:
         }
         const newMOGGPath = mainTempFolder.gotoFile(song.files.mogg.fullname)
 
-        await oldMOGGPath.path.move(newMOGGPath, true)
+        await oldMOGGPath.path.copy(newMOGGPath, true)
+        await oldMOGGPath.path.delete()
 
         // MIDI
         const oldMIDIPath = song.files.mid
@@ -286,7 +291,8 @@ export const extractPackagesForRPCS3Extra = async (win: BrowserWindow, packages:
 
         // MIDI is decrypted, just move changing the extension to EDAT
         if (temp.type === 'stfs' && forceEncryption === 'disabled') {
-          await oldMIDIPath.move(newMIDIPath, true)
+          await oldMIDIPath.copy(newMIDIPath, true)
+          await oldMIDIPath.delete()
         } else if (temp.type === 'stfs' && forceEncryption === 'enabled') {
           const newDevkLic = EDATFile.genDevKLicHash(packageFolderName)
           const newContentID = EDATFile.genContentID(`RBTOOLSEDAT${randomByteFromRanges(6, ['numbers']).toString()}`)
@@ -304,7 +310,8 @@ export const extractPackagesForRPCS3Extra = async (win: BrowserWindow, packages:
             const tempDecEDAT = pathLikeToFilePath(temporaryFile({ extension: 'mid' }))
             const oldDevklic = EDATFile.genDevKLicHash(temp.stat.folderName)
             await BinaryAPI.makeNPDataDecrypt(oldMIDIPath, oldDevklic, tempDecEDAT)
-            await tempDecEDAT.move(oldMIDIPath, true)
+            await tempDecEDAT.copy(oldMIDIPath, true)
+            await tempDecEDAT.delete()
           }
 
           if (forceEncryption === 'enabled') {
@@ -312,7 +319,10 @@ export const extractPackagesForRPCS3Extra = async (win: BrowserWindow, packages:
             const newContentID = EDATFile.genContentID(`RBTOOLSEDAT${randomByteFromRanges(6, ['numbers']).toString()}`)
             sendBuzyLoad(win, { code: 'subtext', key: 'encryptingMIDIFileText', messageValues: { name: oldMIDIPath.fullname } })
             await BinaryAPI.makeNPDataEncrypt(oldMIDIPath, newContentID, newDevkLic, newMIDIPath)
-          } else await oldMIDIPath.move(newMIDIPath)
+          } else {
+            await oldMIDIPath.copy(newMIDIPath)
+            await oldMIDIPath.delete()
+          }
         }
       }
 
@@ -390,10 +400,14 @@ export const extractPackagesForRPCS3Extra = async (win: BrowserWindow, packages:
         const newPNG = songGenFolder.gotoFile(`${newUsedSongname}_keep.png_ps3`)
         const newMILO = songGenFolder.gotoFile(`${newUsedSongname}.milo_ps3`)
 
-        await mainTempMOGG.move(newMOGG)
-        await mainTempMIDI.move(newMIDI)
-        await mainTempPNG.move(newPNG)
-        await mainTempMILO.move(newMILO)
+        await mainTempMOGG.copy(newMOGG, true)
+        await mainTempMOGG.delete()
+        await mainTempMIDI.copy(newMIDI, true)
+        await mainTempMIDI.delete()
+        await mainTempPNG.copy(newPNG, true)
+        await mainTempPNG.delete()
+        await mainTempMILO.copy(newMILO, true)
+        await mainTempMILO.delete()
 
         const moggStat = await newMOGG.stat()
         packSize += moggStat.size

@@ -149,23 +149,27 @@ export const extractPackagesForSTFSFile = async (packages: RB3PackageLikeType[],
       const tex = new TextureFile(tempExtractionFolder.gotoFile(`songs/${firstSong.songname}/gen/${firstSong.songname}_keep.png_xbox`))
       await tex.convertToImage(tempPNG, 'png')
       await PythonAPI.imageConverter(tempPNG, tempPNG2, 'png', { width: 64, height: 64 })
-      await tempPNG2.move(thumbnailPath, true)
+      await tempPNG2.copy(thumbnailPath, true)
+      await tempPNG2.delete()
       await tempPNG.delete()
     } else {
       // Normal image path.
       const tempPNG = pathLikeToFilePath(temporaryFile({ extension: 'png' }))
       await PythonAPI.imageConverter(thumbnail, tempPNG, 'png', { width: 64, height: 64 })
-      await tempPNG.move(thumbnailPath, true)
+      await tempPNG.copy(thumbnailPath, true)
+      await tempPNG.delete()
     }
   } else if (thumbnail instanceof ImageFile) {
     const tempPNG = pathLikeToFilePath(temporaryFile({ extension: 'png' }))
     await PythonAPI.imageConverter(thumbnail.path, tempPNG, 'png', { width: 64, height: 64 })
-    await tempPNG.move(thumbnailPath, true)
+    await tempPNG.copy(thumbnailPath, true)
+    await tempPNG.delete()
   } else {
     const tempPNG = pathLikeToFilePath(temporaryFile({ extension: 'png' }))
     const thumbPath = pathLikeToFilePath(thumbnail as FilePathLikeTypes)
     await PythonAPI.imageConverter(thumbPath, tempPNG, 'png', { width: 64, height: 64 })
-    await tempPNG.move(thumbnailPath, true)
+    await tempPNG.copy(thumbnailPath, true)
+    await tempPNG.delete()
   }
 
   if (typeof titleThumbnail === 'string') {
@@ -175,17 +179,20 @@ export const extractPackagesForSTFSFile = async (packages: RB3PackageLikeType[],
       // Normal image path.
       const tempPNG = pathLikeToFilePath(temporaryFile({ extension: 'png' }))
       await PythonAPI.imageConverter(titleThumbnail, tempPNG, 'png', { width: 64, height: 64 })
-      await tempPNG.move(titleThumbnailPath, true)
+      await tempPNG.copy(titleThumbnailPath, true)
+      await tempPNG.delete()
     }
   } else if (titleThumbnail instanceof ImageFile) {
     const tempPNG = pathLikeToFilePath(temporaryFile({ extension: 'png' }))
     await PythonAPI.imageConverter(titleThumbnail.path, tempPNG, 'png', { width: 64, height: 64 })
-    await tempPNG.move(titleThumbnailPath, true)
+    await tempPNG.copy(titleThumbnailPath, true)
+    await tempPNG.delete()
   } else {
     const tempPNG = pathLikeToFilePath(temporaryFile({ extension: 'png' }))
     const thumbPath = pathLikeToFilePath(titleThumbnail as FilePathLikeTypes)
     await PythonAPI.imageConverter(thumbPath, tempPNG, 'png', { width: 64, height: 64 })
-    await tempPNG.move(titleThumbnailPath, true)
+    await tempPNG.copy(titleThumbnailPath, true)
+    await tempPNG.delete()
   }
 
   let stfs: STFSFile

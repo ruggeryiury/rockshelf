@@ -16,7 +16,7 @@ export function RhythmverseScreen() {
   const { setMessageBoxState } = useMessageBoxState(useShallow((x) => ({ setMessageBoxState: x.setMessageBoxState })))
 
   return (
-    <AnimatedSection id="RhythmverseScreen" condition={active} {...animate({ opacity: true })} className="absolute! z-10 h-full max-h-full w-full max-w-full bg-black/90 p-8 backdrop-blur-lg">
+    <AnimatedSection id="RhythmverseScreen" condition={active} {...animate({ opacity: true })} className="absolute! z-10 h-full max-h-full w-full max-w-full bg-black p-8">
       <div className="mb-2 flex-row! border-b border-white/25 pb-1">
         <div className="mr-auto">
           <h1 className="font-pentatonicalt! mr-auto text-[2rem] uppercase">{t('browseRhythmverse')}</h1>
@@ -60,6 +60,7 @@ export function RhythmverseScreen() {
                   setRhythmverseScreenState({ searchResults: 'loading' })
                   if (searchField.length <= 3) {
                     setMessageBoxState({ message: { type: 'error', code: 'rhythmverseSearchFieldTooSmall' } })
+                    setRhythmverseScreenState({ searchResults: false })
                     setWindowState({ disableButtons: false })
                     return
                   }

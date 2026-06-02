@@ -9,12 +9,16 @@ import { useShallow } from 'zustand/shallow'
 import { MYPACKAGES_TABS, VERBOSE } from '@renderer/app/rockshelf.globals'
 import { LoadingIcon } from '@renderer/assets/icons'
 import { useEffect } from 'react'
+import { useUserConfigState } from '@renderer/stores/UserConfig.state'
+import { useMergePackageModalState } from './MergePackageModal.state'
 
 export function MyPackagesScreen() {
   const { t } = useTranslation()
-  const { active, hoveredPKG, setMyPackagesScreenState, resetMyPackagesScreenState, myPackagesTab, packagesCatalog, packagesCatalogSortBy } = useMyPackagesScreenState(useShallow((x) => ({ active: x.active, hoveredPKG: x.hoveredPKG, setMyPackagesScreenState: x.setMyPackagesScreenState, resetMyPackagesScreenState: x.resetMyPackagesScreenState, myPackagesTab: x.myPackagesTab, packagesCatalog: x.packagesCatalog, packagesCatalogSortBy: x.packagesCatalogSortBy })))
+  const { active, hoveredPKG, setMyPackagesScreenState, resetMyPackagesScreenState, myPackagesTab, packagesCatalog } = useMyPackagesScreenState(useShallow((x) => ({ active: x.active, hoveredPKG: x.hoveredPKG, setMyPackagesScreenState: x.setMyPackagesScreenState, resetMyPackagesScreenState: x.resetMyPackagesScreenState, myPackagesTab: x.myPackagesTab, packagesCatalog: x.packagesCatalog })))
   const { disableButtons, packages, setWindowState, disableImg } = useWindowState(useShallow((x) => ({ disableButtons: x.disableButtons, packages: x.packages, setWindowState: x.setWindowState, disableImg: x.disableImg })))
   const { setDialogScreenState } = useDialogScreenState(useShallow((x) => ({ setDialogScreenState: x.setDialogScreenState })))
+  const { packagesCatalogSortBy, setUserConfigState, getUserConfigState } = useUserConfigState(useShallow((x) => ({ packagesCatalogSortBy: x.packagesCatalogSortBy, setUserConfigState: x.setUserConfigState, getUserConfigState: x.getUserConfigState })))
+  const { setMergePackageModalState } = useMergePackageModalState(useShallow((x) => ({ setMergePackageModalState: x.setMergePackageModalState })))
 
   useEffect(
     function fetchCatalogObject() {
@@ -40,7 +44,7 @@ export function MyPackagesScreen() {
 
   return (
     <>
-      <AnimatedSection id="MyPackagesScreen" condition={active} {...animate({ opacity: true })} className="absolute! z-3 h-full max-h-full w-full max-w-full bg-black/90 p-8 backdrop-blur-lg">
+      <AnimatedSection id="MyPackagesScreen" condition={active} {...animate({ opacity: true })} className="absolute! z-3 h-full max-h-full w-full max-w-full bg-black p-8">
         <div className="mb-2 flex-row! items-center border-b border-white/25 pb-1">
           <h1 className="font-pentatonicalt! mr-auto text-[2rem] uppercase">{t('myPackages')}</h1>
           <button
@@ -100,10 +104,10 @@ export function MyPackagesScreen() {
         {myPackagesTab === MYPACKAGES_TABS.PACKAGES && (
           <>
             <div className="h-full w-full overflow-y-auto">
-              {packagesCatalog === 'loading' && (
+              {(packagesCatalog === 'loading' || packages === 'loading') && (
                 <>
-                  <div className="flex-row! items-center">
-                    <LoadingIcon className="mr-1 animate-spin" />
+                  <div className="mt-2 flex-row! items-center">
+                    <LoadingIcon className="mr-2 animate-spin" />
                     <p>{t('loadingPackagesData')}</p>
                   </div>
                 </>
@@ -132,15 +136,18 @@ export function MyPackagesScreen() {
                                   setWindowState({ disableButtons: false })
                                 }}
                               >
-                                <img src={disableImg === packageIndex ? undefined : pkg.thumbnailSrc} className="mr-2 h-20 min-h-20 w-20 min-w-20 border-2 border-neutral-700" />
-                                <div className="mr-auto">
-                                  <h2 className="font-pentatonic text-xl">{pkg.packageData.packageName}</h2>
-                                  <h3 className="mb-2 text-xs text-neutral-500 italic">
+                                <img src={disableImg === packageIndex ? undefined : pkg.thumbnailSrc} className="mr-2 h-24 min-h-24 w-24 min-w-24 border-2 border-neutral-700" />
+                                <div className="mr-auto w-full">
+                                  <h2 className="font-pentatonic w-full text-[1.5rem]">{pkg.packageData.packageName}</h2>
+                                  <h3 className="mb-2 text-sm text-neutral-500 italic">
                                     {t(pkg.songs.length === 1 ? 'songsCount' : 'songsCountPlural', { count: pkg.songs.length })} / {getReadableBytesSize(pkg.packageSize)}
                                   </h3>
-                                  {pkg.official?.code !== 'rb3' && <p className="absolute! bottom-0 rounded-xs bg-neutral-950 px-2 py-0.5 font-mono! text-sm whitespace-nowrap">{`${pkg.packageType === 'rb1' ? 'BLUS30050' : 'BLUS30463'}/${pkg.name}`}</p>}
+                                  <div className="flex-row! items-center">
+                                    <code className="mr-1 w-fit rounded-sm bg-neutral-900 px-1 py-0.5 font-semibold uppercase">{pkg.packageType}</code>
+                                    {pkg.official?.code !== 'rb3' && <code className="w-fit rounded-sm bg-neutral-900 px-1 py-0.5">{pkg.name}</code>}
+                                  </div>
                                 </div>
-                                <AnimatedDiv condition={hoveredPKG === packageIndex} {...animate({ opacity: true, duration: 0.1 })}>
+                                <AnimatedDiv className="w-[15%] min-w-[15%]" condition={hoveredPKG === packageIndex} {...animate({ opacity: true, duration: 0.1 })}>
                                   {pkg.official?.code !== 'rb3' && (
                                     <>
                                       <button
@@ -153,6 +160,20 @@ export function MyPackagesScreen() {
                                       >
                                         {t('openPackageFolder')}
                                       </button>
+                                      {!pkg.official && (
+                                        <>
+                                          <button
+                                            disabled={disableButtons}
+                                            className="mr-2 mb-1 w-full self-start rounded-xs border border-green-500 bg-neutral-900 px-1 py-0.5 text-[0.65rem]! text-green-500 uppercase duration-100 last:mr-0 last:mb-0 hover:bg-green-950/25 active:bg-neutral-600 disabled:text-neutral-700 disabled:hover:bg-neutral-900"
+                                            onClick={async (ev) => {
+                                              ev.stopPropagation()
+                                              setMergePackageModalState({ selPKG: packageIndex, index: -1 })
+                                            }}
+                                          >
+                                            {t('mergePackage')}
+                                          </button>
+                                        </>
+                                      )}
                                       <button
                                         disabled={disableButtons}
                                         className="mr-2 mb-1 w-full self-start rounded-xs border border-red-500 bg-neutral-900 px-1 py-0.5 text-[0.65rem]! text-red-500 uppercase duration-100 last:mr-0 last:mb-0 hover:bg-red-950/25 active:bg-neutral-600 disabled:text-neutral-700 disabled:hover:bg-neutral-900"
@@ -163,20 +184,6 @@ export function MyPackagesScreen() {
                                       >
                                         {t('deletePackage')}
                                       </button>
-                                      {/* {!pkg.official && (
-                                        <>
-                                          <button
-                                            disabled={disableButtons}
-                                            className="mr-2 mb-1 w-full self-start rounded-xs border border-green-600 bg-neutral-900 px-1 py-0.5 text-[0.65rem]! text-green-600 uppercase duration-100 last:mr-0 last:mb-0 hover:bg-green-950/25 active:bg-neutral-600 disabled:text-neutral-700 disabled:hover:bg-neutral-900"
-                                            onClick={async (ev) => {
-                                              ev.stopPropagation()
-                                              setDialogScreenState({ active: 'confirmDeletePackage', deletePackageIndex: packageIndex })
-                                            }}
-                                          >
-                                            {t('merge')}
-                                          </button>
-                                        </>
-                                      )} */}
                                     </>
                                   )}
                                 </AnimatedDiv>
@@ -204,7 +211,16 @@ export function MyPackagesScreen() {
                     disabled={disableButtons}
                     className={clsx('font-pentatonic mr-2 flex-row! items-center rounded-xs border border-neutral-800 px-2 py-1 text-xs! uppercase duration-200 last:mr-0', packagesCatalogSortBy === 'name' ? 'bg-neutral-400 text-neutral-900 hover:bg-neutral-300 active:bg-neutral-200' : 'bg-neutral-900 hover:bg-neutral-800 active:bg-neutral-700')}
                     onClick={async () => {
-                      setMyPackagesScreenState({ packagesCatalogSortBy: 'name', packagesCatalog: false })
+                      setWindowState({ disableButtons: true })
+                      setUserConfigState({ packagesCatalogSortBy: 'name' })
+                      const newConfig = getUserConfigState()
+                      try {
+                        await window.api.saveUserConfigFile(newConfig)
+                        setMyPackagesScreenState({ packagesCatalog: false })
+                      } catch (err) {
+                        if (err instanceof Error) setWindowState({ err })
+                      }
+                      setWindowState({ disableButtons: false })
                     }}
                   >
                     {t('sortByName')}
@@ -213,7 +229,16 @@ export function MyPackagesScreen() {
                     disabled={disableButtons}
                     className={clsx('font-pentatonic mr-2 flex-row! items-center rounded-xs border border-neutral-800 px-2 py-1 text-xs! uppercase duration-200 last:mr-0', packagesCatalogSortBy === 'officialUnofficial' ? 'bg-neutral-400 text-neutral-900 hover:bg-neutral-300 active:bg-neutral-200' : 'bg-neutral-900 hover:bg-neutral-800 active:bg-neutral-700')}
                     onClick={async () => {
-                      setMyPackagesScreenState({ packagesCatalogSortBy: 'officialUnofficial', packagesCatalog: false })
+                      setWindowState({ disableButtons: true })
+                      setUserConfigState({ packagesCatalogSortBy: 'officialUnofficial' })
+                      const newConfig = getUserConfigState()
+                      try {
+                        await window.api.saveUserConfigFile(newConfig)
+                        setMyPackagesScreenState({ packagesCatalog: false })
+                      } catch (err) {
+                        if (err instanceof Error) setWindowState({ err })
+                      }
+                      setWindowState({ disableButtons: false })
                     }}
                   >
                     {t('sortByOfficialUnofficial')}

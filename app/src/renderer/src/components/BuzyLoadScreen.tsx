@@ -78,7 +78,7 @@ export function BuzyLoadScreen() {
   }, [active, isCompleted, hasError])
 
   return (
-    <AnimatedSection id="BuzyLoadScreen" condition={condition} {...animate({ opacity: true })} className="absolute! z-10 h-full max-h-full w-full max-w-full bg-black/90 p-8 backdrop-blur-lg">
+    <AnimatedSection id="BuzyLoadScreen" condition={condition} {...animate({ opacity: true })} className="absolute! z-10 h-full max-h-full w-full max-w-full bg-black p-8">
       {active && (
         <>
           <div className="mb-6 flex-row! items-center border-b border-white/25 pb-1">

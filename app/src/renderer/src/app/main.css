@@ -1,5 +1,6 @@
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap');
 @import 'tailwindcss';
+@import './githubMarkdownDark.css';
 
 @font-face {
   font-family: 'Pentatonic';
@@ -36,6 +37,7 @@
   --font-pentatonic: 'Pentatonic', sans-serif;
   --font-pentatonicalt: 'Pentatonic Alt', sans-serif;
   --font-open: 'Open Sans', sans-serif;
+  --font-mono: 'Space Mono', monospace;
 
   /* Animations */
   --animate-move-pattern: movePattern 48s linear infinite;

@@ -1,15 +1,16 @@
-import { AnimatedDiv, AnimatedSection, TransComponent, animate, formatMillisecondsToTimeDuration, formatNumberWithDots, rankCalculator, underscoreToUppercaseLetter } from '@renderer/lib.exports'
+import { AnimatedDiv, AnimatedSection, TransComponent, animate, formatMillisecondsToTimeDuration, formatNumberWithDots, formatSongKeyString, rankCalculator, sleep, underscoreToUppercaseLetter } from '@renderer/lib.exports'
 import { useMyPackagesScreenState } from './MyPackagesScreen.state'
 import { useWindowState } from '@renderer/stores/Window.state'
 import { useEffect, useMemo } from 'react'
 import { useTranslation } from 'react-i18next'
-import { DiamondIcon, LoadingIcon, PlaystationIcon, RPCS3Icon, WiiIcon, XboxIcon } from '@renderer/assets/icons'
+import { ChevronLeftIcon, ChevronRightIcon, DiamondIcon, LoadingIcon, PlaystationIcon, RPCS3Icon, WiiIcon, XboxIcon } from '@renderer/assets/icons'
 import clsx from 'clsx'
 import { useShallow } from 'zustand/shallow'
 import { SONG_DETAILS_TABS, VERBOSE } from '@renderer/app/rockshelf.globals'
 import { useUserConfigState } from '@renderer/stores/UserConfig.state'
 import { bandIcon, guitarIcon, bassIcon, drumsIcon, keysIcon, vocalsIcon, proGuitarIcon, proBassIcon, proDrumsIcon, proKeysIcon, harm3Icon, diffDotOn, diffDotOff, diffDotDevil } from '@renderer/assets/images'
 import { StarsInline } from '@renderer/components.exports'
+import { useEditSongScreenState } from './EditSongScreen.state'
 
 export function DiffIconInline({ diff, width, mr }: { diff: number; width?: number; mr?: 'auto' | number }) {
   const { t, i18n } = useTranslation()
@@ -34,20 +35,42 @@ export function DiffIconInline({ diff, width, mr }: { diff: number; width?: numb
 }
 export function SongDetails() {
   const { t } = useTranslation()
-  const { selPKG, selSong, isArtworkLoading, artworkURL, songDetailsTab, songLeaderboards, setMyPackagesScreenState, songsCatalogSortBy } = useMyPackagesScreenState(useShallow((x) => ({ selPKG: x.selPKG, selSong: x.selSong, isArtworkLoading: x.isArtworkLoading, artworkURL: x.artworkURL, setMyPackagesScreenState: x.setMyPackagesScreenState, songDetailsTab: x.songDetailsTab, songLeaderboards: x.songLeaderboards, songsCatalogSortBy: x.songsCatalogSortBy })))
-  const { mostPlayedInstrument } = useUserConfigState(useShallow((x) => ({ mostPlayedInstrument: x.mostPlayedInstrument })))
+  const { selPKG, selSong, isArtworkLoading, artworkURL, songDetailsTab, songLeaderboards, setMyPackagesScreenState } = useMyPackagesScreenState(useShallow((x) => ({ selPKG: x.selPKG, selSong: x.selSong, isArtworkLoading: x.isArtworkLoading, artworkURL: x.artworkURL, setMyPackagesScreenState: x.setMyPackagesScreenState, songDetailsTab: x.songDetailsTab, songLeaderboards: x.songLeaderboards })))
+
+  const { songsCatalogSortBy, mostPlayedInstrument } = useUserConfigState(useShallow((x) => ({ mostPlayedInstrument: x.mostPlayedInstrument, songsCatalogSortBy: x.songsCatalogSortBy })))
+
   const { disableButtons, setWindowState, packages, saveData, rb3Stats } = useWindowState(useShallow((x) => ({ disableButtons: x.disableButtons, setWindowState: x.setWindowState, packages: x.packages, saveData: x.saveData, rb3Stats: x.rb3Stats })))
-  const packageDetails = useMemo(() => (typeof packages === 'object' && selPKG > -1 && selPKG in packages.packages ? packages.packages[selPKG] : null), [packages, selPKG])
-  const songDetails = useMemo(() => (typeof packages === 'object' && selPKG > -1 && selPKG in packages.packages && selSong > -1 && packageDetails !== null && selSong in packageDetails.songs ? packageDetails.songs[selSong] : null), [packages, selPKG, selSong])
+
+  const { startEditingSong } = useEditSongScreenState(useShallow((x) => ({ startEditingSong: x.startEditingSong })))
+
   const { setUserConfigState } = useUserConfigState(useShallow((x) => ({ setUserConfigState: x.setUserConfigState })))
 
+  const packageDetails = useMemo(() => (typeof packages === 'object' && selPKG > -1 && selPKG in packages.packages ? packages.packages[selPKG] : null), [packages, selPKG])
+
+  const songDetails = useMemo(() => (typeof packages === 'object' && selPKG > -1 && selPKG in packages.packages && selSong > -1 && packageDetails !== null && selSong in packageDetails.songs ? packageDetails.songs[selSong] : null), [packages, selPKG, selSong])
+
   const allTracksCount = useMemo(() => songDetails?.tracks_count.reduce<number>((prev, curr) => (curr ? prev + curr : prev), 0), [songDetails])
+
+  const songSubGenre = useMemo(() => {
+    if (songDetails) {
+      if (songDetails.customsource?.sub_genre) return songDetails.customsource.sub_genre
+      else if (songDetails.sub_genre) return songDetails.sub_genre
+      else return null
+    } else return null
+  }, [songDetails])
+
+  const songKey = useMemo(() => {
+    if (songDetails) return formatSongKeyString(songDetails)
+    return null
+  }, [songDetails])
+
+  const songsCount = useMemo(() => {
+    return packageDetails?.songs.length ?? 0
+  }, [packageDetails])
 
   const resetSongDetailsState = () => {
     setMyPackagesScreenState({ selSong: -1, isArtworkLoading: true, artworkURL: '', songDetailsTab: 0, songLeaderboards: false })
   }
-
-  console.log()
 
   useEffect(
     function getArtworkFromSong() {
@@ -89,12 +112,12 @@ export function SongDetails() {
   )
 
   return (
-    <AnimatedSection id="SongDetails" {...animate({ opacity: true })} condition={songDetails !== null} className="absolute! z-7 h-full max-h-full w-full max-w-full bg-black/90 p-8 backdrop-blur-lg">
-      {songDetails !== null && (
+    <AnimatedSection id="SongDetails" {...animate({ opacity: true })} condition={songDetails !== null} className="absolute! z-7 h-full max-h-full w-full max-w-full bg-black p-8">
+      {packageDetails !== null && songDetails !== null && (
         <>
           <div className="mb-2 flex-row! items-start border-b border-white/25 pb-2">
             <div className={clsx('mr-2 h-32 min-h-32 w-32 min-w-32', isArtworkLoading && 'border border-neutral-800')}>
-              <AnimatedDiv condition={isArtworkLoading} className="absolute! h-full w-full items-center justify-center bg-black/95 backdrop-blur-lg">
+              <AnimatedDiv condition={isArtworkLoading} className="absolute! h-full w-full items-center justify-center bg-black">
                 <LoadingIcon className="animate-spin text-xl" style={{ animationTimingFunction: '0.1s !important' }} />
               </AnimatedDiv>
               <img src={artworkURL || 'rbicons://website'} className="h-full w-full border-2 border-neutral-700" />
@@ -140,13 +163,57 @@ export function SongDetails() {
             <div className="ml-24">
               <button
                 disabled={disableButtons}
-                className="w-full self-start rounded-xs border border-neutral-700 bg-neutral-900 px-1 py-0.5 text-xs! text-nowrap uppercase duration-100 hover:bg-neutral-700 active:bg-neutral-600 disabled:text-neutral-700 disabled:hover:bg-neutral-900"
+                className="mb-1 w-full self-start rounded-xs border border-neutral-700 bg-neutral-900 px-1 py-0.5 text-xs! text-nowrap uppercase duration-100 hover:bg-neutral-700 active:bg-neutral-600 disabled:text-neutral-700 disabled:hover:bg-neutral-900"
                 onClick={async () => {
                   resetSongDetailsState()
                 }}
               >
                 {t('goBack')}
               </button>
+              <div className="flex-row! items-center">
+                <button
+                  disabled={disableButtons || songDetailsTab === SONG_DETAILS_TABS.LEADERBOARDS}
+                  className="w-1/2 items-center rounded-xs border border-neutral-700 bg-neutral-900 px-1 py-0.5 text-xs! text-nowrap uppercase duration-100 hover:bg-neutral-700 active:bg-neutral-600 disabled:text-neutral-700 disabled:hover:bg-neutral-900"
+                  onClick={async () => {
+                    setWindowState({ disableButtons: true })
+                    if (selSong === 0) {
+                      setMyPackagesScreenState({
+                        selSong: songsCount - 1,
+                      })
+                    } else {
+                      setMyPackagesScreenState({
+                        selSong: selSong - 1,
+                      })
+                    }
+
+                    await sleep(1000)
+                    setWindowState({ disableButtons: false })
+                  }}
+                >
+                  <ChevronLeftIcon />
+                </button>
+                <button
+                  disabled={disableButtons || songDetailsTab === SONG_DETAILS_TABS.LEADERBOARDS}
+                  className="w-1/2 items-center rounded-xs border border-neutral-700 bg-neutral-900 px-1 py-0.5 text-xs! text-nowrap uppercase duration-100 hover:bg-neutral-700 active:bg-neutral-600 disabled:text-neutral-700 disabled:hover:bg-neutral-900"
+                  onClick={async () => {
+                    setWindowState({ disableButtons: true })
+                    if (selSong === songsCount - 1) {
+                      setMyPackagesScreenState({
+                        selSong: 0,
+                      })
+                    } else {
+                      setMyPackagesScreenState({
+                        selSong: selSong + 1,
+                      })
+                    }
+
+                    await sleep(1000)
+                    setWindowState({ disableButtons: false })
+                  }}
+                >
+                  <ChevronRightIcon />
+                </button>
+              </div>
             </div>
           </div>
           <div className="mb-2 h-6 min-h-6 w-full flex-row! items-center rounded-b-sm bg-white/15 px-4">
@@ -186,28 +253,82 @@ export function SongDetails() {
           {songDetailsTab === SONG_DETAILS_TABS.DETAILS && (
             <>
               <div className="h-full w-full overflow-y-auto">
-                <div className="w-full pr-2">
-                  <div className="group rounded-xs p-2 duration-200 hover:bg-white/5">
+                <div className="flex-row! flex-wrap items-start">
+                  <div className="group w-1/2 rounded-xs p-2 duration-200 hover:bg-white/5">
                     <h1 className="uppercase">{t('songEntryID')}</h1>
                     <p>{songDetails.id}</p>
                   </div>
-                  <div className="group rounded-xs p-2 duration-200 hover:bg-white/5">
-                    <h1 className="uppercase">{t('songTitle')}</h1>
-                    <p>{songDetails.name}</p>
-                  </div>
-                  <div className="group rounded-xs p-2 duration-200 hover:bg-white/5">
-                    <h1 className="uppercase">{t('artist')}</h1>
-                    <p>{songDetails.artist}</p>
-                  </div>
-                  <div className="group rounded-xs p-2 duration-200 hover:bg-white/5">
-                    <h1 className="uppercase">{t('songID')}</h1>
-                    <p>{String(songDetails.song_id)}</p>
-                  </div>
-                  <div className="group rounded-xs p-2 duration-200 hover:bg-white/5">
+
+                  <div className="group w-1/2 rounded-xs p-2 duration-200 hover:bg-white/5">
                     <h1 className="uppercase">{t('internalName')}</h1>
                     <p>{String(songDetails.songname)}</p>
                   </div>
+
+                  <div className="group w-1/2 rounded-xs p-2 duration-200 hover:bg-white/5">
+                    <h1 className="uppercase">{t('songID')}</h1>
+                    <p>{String(songDetails.song_id)}</p>
+                  </div>
+
+                  <div className="group w-1/2 rounded-xs p-2 duration-200 hover:bg-white/5">
+                    <h1 className="uppercase">{t('gameOrigin')}</h1>
+                    <div className="flex-row! items-center">
+                      <p>{t(typeof rb3Stats === 'object' && rb3Stats.hasDeluxe && (songDetails.customsource?.game_origin || songDetails.game_origin).startsWith('ugc') ? `gameOriginDX__${songDetails.customsource?.game_origin || songDetails.game_origin}` : `gameOrigin__${songDetails.customsource?.game_origin || songDetails.game_origin}`)}</p>
+                      {songDetails.customsource?.game_origin && <DiamondIcon className="relative top-[0.1rem] ml-1 rotate-45 cursor-help text-gray-700 duration-100 hover:text-gray-300" title={t('dxGameOriginOnly')} />}
+                    </div>
+                  </div>
+
+                  <div className="group h-16 w-1/2 rounded-xs p-2 duration-200 hover:bg-white/5">
+                    <h1 className="mb-1 uppercase">{t('songRating')}</h1>
+                    <div className="flex-row! items-center">
+                      <div className={clsx('mr-1 rounded-xs px-1 py-0.5', songDetails.rating === 1 && 'bg-green-600 text-neutral-900', songDetails.rating === 2 && 'bg-yellow-500 text-neutral-900', (songDetails.rating === 3 || songDetails.rating === 4) && 'bg-red-500 text-neutral-900')}>
+                        <h1>{t(songDetails.rating === 1 ? 'songRating1Small' : songDetails.rating === 2 ? 'songRating2Small' : songDetails.rating === 3 ? 'songRating3Small' : 'songRating4Small')}</h1>
+                      </div>
+                      <p>{t(songDetails.rating === 1 ? 'songRating1' : songDetails.rating === 2 ? 'songRating2' : songDetails.rating === 3 ? 'songRating3' : 'songRating4')}</p>
+                    </div>
+                  </div>
+
+                  <div className="group h-16 w-1/2 rounded-xs p-2 duration-200 hover:bg-white/5">
+                    <h1 className="mb-1 uppercase">{t('author')}</h1>
+                    <div className="flex-row! items-center">
+                      {/* <p className={clsx(songDetails.author === undefined && 'text-neutral-500 italic')}>{songDetails.author !== undefined ? packageDetails.official !== undefined ? 'Harmonix' : songDetails.author : t('notSpecified')}</p> */}
+                      <p className={clsx(!packageDetails.official && !songDetails.author && 'text-neutral-500 italic')}>{packageDetails.official && !songDetails.author ? 'Harmonix' : !packageDetails.official && !songDetails.author ? t('notSpecified') : songDetails.author}</p>
+                    </div>
+                  </div>
+
+                  <div className="group w-1/2 rounded-xs p-2 duration-200 hover:bg-white/5">
+                    <h1 className="uppercase">{t('genre')}</h1>
+                    <div className="flex-row! items-center">
+                      <p>{t(`${songDetails.customsource?.genre || songDetails.genre}`)}</p>
+                      {songDetails.customsource?.genre && <DiamondIcon className="relative top-[0.1rem] ml-1 rotate-45 cursor-help text-gray-700 duration-100 hover:text-gray-300" title={t('dxGameOriginOnly')} />}
+                    </div>
+                  </div>
+
+                  <div className="group w-1/2 rounded-xs p-2 duration-200 hover:bg-white/5">
+                    <h1 className="uppercase">{t('subGenre')}</h1>
+                    <div className="flex-row! items-center">
+                      <p className={clsx(songSubGenre === null && 'text-neutral-500 italic')}>{t(songSubGenre ?? 'notSpecified')}</p>
+                      {songDetails.customsource?.sub_genre && <DiamondIcon className="relative top-[0.1rem] ml-1 rotate-45 cursor-help text-gray-700 duration-100 hover:text-gray-300" title={t('dxGameOriginOnly')} />}
+                    </div>
+                  </div>
+
+                  <div className="group h-16 w-1/2 rounded-xs p-2 duration-200 hover:bg-white/5">
+                    <h1 className="mb-1 uppercase">{t('vocalParts')}</h1>
+                    <div className="flex-row! items-center">
+                      <div className={clsx('mr-1 h-5 w-3 rounded-xs border border-neutral-600 last:mr-0', songDetails.vocal_parts >= 1 && 'bg-[#10a7dd]')} />
+                      <div className={clsx('mr-1 h-5 w-3 rounded-xs border border-neutral-600 last:mr-0', songDetails.vocal_parts >= 2 && 'bg-[#9b4211]')} />
+                      <div className={clsx('mr-1 h-5 w-3 rounded-xs border border-neutral-600 last:mr-0', songDetails.vocal_parts === 3 && 'bg-[#d48218]')} />
+                      <p className="ml-1">{songDetails.vocal_parts}</p>
+                    </div>
+                  </div>
+
+                  <div className="group h-16 w-1/2 rounded-xs p-2 duration-200 hover:bg-white/5">
+                    <h1 className="uppercase">{t('songKey')}</h1>
+                    <div className="flex-row! items-center">
+                      <p className={clsx(songKey === null && 'text-neutral-500 italic')}>{songKey ?? t('notSpecified')}</p>
+                    </div>
+                  </div>
                 </div>
+
                 <div className="group rounded-xs p-2 duration-200 hover:bg-white/5">
                   <h1 className="mb-1 uppercase">{t('audioTracks')}</h1>
                   {allTracksCount !== undefined && (
@@ -303,73 +424,46 @@ export function SongDetails() {
                   </div>
                 </div>
 
-                <div className="group rounded-xs p-2 duration-200 hover:bg-white/5">
-                  <h1 className="uppercase">{t('vocalParts')}</h1>
-                  <div className="flex-row! items-center">
-                    <div className={clsx('mr-1 h-full w-2 rounded-xs border border-neutral-600 last:mr-0', songDetails.vocal_parts >= 1 && 'bg-[#10a7dd]')} />
-                    <div className={clsx('mr-1 h-full w-2 rounded-xs border border-neutral-600 last:mr-0', songDetails.vocal_parts >= 2 && 'bg-[#9b4211]')} />
-                    <div className={clsx('mr-1 h-full w-2 rounded-xs border border-neutral-600 last:mr-0', songDetails.vocal_parts === 3 && 'bg-[#d48218]')} />
-                    <p className="ml-1">{songDetails.vocal_parts}</p>
-                  </div>
-                </div>
+                {songDetails.loading_phrase && (
+                  <>
+                    <div className="group rounded-xs p-2 duration-200 hover:bg-white/5">
+                      <h1 className="mb-1 uppercase">{t('loadingPhrase')}</h1>
+                      <p className="italic">{songDetails.loading_phrase}</p>
+                    </div>
+                  </>
+                )}
 
                 <div className="group rounded-xs p-2 duration-200 hover:bg-white/5">
                   <h1 className="mb-1 uppercase">{t('difficulties')}</h1>
                   <div className="mb-2 flex-row! items-center">
-                    <img src="rbicons://instrument-icons-band" title={t('band')} className="mr-1 h-8 w-8" />
-                    <DiffIconInline mr={1.5} width={1.1} diff={rankCalculator('band', songDetails.rank_band)} />
+                    <img src="rbicons://instrument-icons-band" title={t('band')} className="mr-1 h-6 w-6" />
+                    <DiffIconInline mr={0} width={1.1} diff={rankCalculator('band', songDetails.rank_band)} />
                   </div>
                   <div className="flex-row! items-center">
-                    <img src="rbicons://instrument-icons-guitar" title={t('guitar')} className="mr-1 h-8 w-8" />
-                    <DiffIconInline mr={1.5} width={1.1} diff={rankCalculator('guitar', songDetails.rank_guitar)} />
-                    <img src="rbicons://instrument-icons-bass" title={t('bass')} className="mr-1 h-8 w-8" />
-                    <DiffIconInline mr={1.5} width={1.1} diff={rankCalculator('bass', songDetails.rank_bass)} />
-                    <img src="rbicons://instrument-icons-drums" title={t('drums')} className="mr-1 h-8 w-8" />
-                    <DiffIconInline mr={1.5} width={1.1} diff={rankCalculator('drum', songDetails.rank_drum)} />
-                    <img src="rbicons://instrument-icons-keys" title={t('keys')} className="mr-1 h-8 w-8" />
-                    <DiffIconInline mr={1.5} width={1.1} diff={rankCalculator('keys', songDetails.rank_keys)} />
-                    <img src="rbicons://instrument-icons-vocals" title={t('vocals')} className="mr-1 h-8 w-8" />
-                    <DiffIconInline mr={1.5} width={1.1} diff={rankCalculator('vocals', songDetails.rank_vocals)} />
+                    <img src="rbicons://instrument-icons-guitar" title={t('guitar')} className="mr-1 h-6 w-6" />
+                    <DiffIconInline mr={1.2} width={1.1} diff={rankCalculator('guitar', songDetails.rank_guitar)} />
+                    <img src="rbicons://instrument-icons-bass" title={t('bass')} className="mr-1 h-6 w-6" />
+                    <DiffIconInline mr={1.2} width={1.1} diff={rankCalculator('bass', songDetails.rank_bass)} />
+                    <img src="rbicons://instrument-icons-drums" title={t('drums')} className="mr-1 h-6 w-6" />
+                    <DiffIconInline mr={1.2} width={1.1} diff={rankCalculator('drum', songDetails.rank_drum)} />
+                    <img src="rbicons://instrument-icons-keys" title={t('keys')} className="mr-1 h-6 w-6" />
+                    <DiffIconInline mr={1.2} width={1.1} diff={rankCalculator('keys', songDetails.rank_keys)} />
+                    <img src="rbicons://instrument-icons-vocals" title={t('vocals')} className="mr-1 h-6 w-6" />
+                    <DiffIconInline mr={0} width={1.1} diff={rankCalculator('vocals', songDetails.rank_vocals)} />
                   </div>
                   <div className="flex-row! items-center">
-                    <img src="rbicons://instrument-icons-proGuitar" title={t('proGuitar')} className="mr-1 h-8 w-8" />
-                    <DiffIconInline mr={1.5} width={1.1} diff={rankCalculator('real_guitar', songDetails.rank_real_guitar)} />
-                    <img src="rbicons://instrument-icons-proBass" title={t('proBass')} className="mr-1 h-8 w-8" />
-                    <DiffIconInline mr={1.5} width={1.1} diff={rankCalculator('real_bass', songDetails.rank_real_bass)} />
-                    <img src="rbicons://instrument-icons-proDrums" title={t('proDrums')} className="mr-1 h-8 w-8" />
-                    <DiffIconInline mr={1.5} width={1.1} diff={rankCalculator('drum', songDetails.rank_drum)} />
-                    <img src="rbicons://instrument-icons-proKeys" title={t('proKeys')} className="mr-1 h-8 w-8" />
-                    <DiffIconInline mr={1.5} width={1.1} diff={rankCalculator('real_keys', songDetails.rank_real_keys)} />
-                    <img src={songDetails.vocal_parts === 2 ? 'rbicons://instrument-icons-harm2' : 'rbicons://instrument-icons-harmonies'} title={t(songDetails.vocal_parts === 2 ? 'harm2' : 'harm3')} className="mr-1 h-8 w-8" />
-                    <DiffIconInline mr={1.5} width={1.1} diff={songDetails.vocal_parts <= 1 ? -1 : rankCalculator('vocals', songDetails.rank_vocals)} />
+                    <img src="rbicons://instrument-icons-proGuitar" title={t('proGuitar')} className="mr-1 h-6 w-6" />
+                    <DiffIconInline mr={1.2} width={1.1} diff={rankCalculator('real_guitar', songDetails.rank_real_guitar)} />
+                    <img src="rbicons://instrument-icons-proBass" title={t('proBass')} className="mr-1 h-6 w-6" />
+                    <DiffIconInline mr={1.2} width={1.1} diff={rankCalculator('real_bass', songDetails.rank_real_bass)} />
+                    <img src="rbicons://instrument-icons-proDrums" title={t('proDrums')} className="mr-1 h-6 w-6" />
+                    <DiffIconInline mr={1.2} width={1.1} diff={rankCalculator('drum', songDetails.rank_drum)} />
+                    <img src="rbicons://instrument-icons-proKeys" title={t('proKeys')} className="mr-1 h-6 w-6" />
+                    <DiffIconInline mr={1.2} width={1.1} diff={rankCalculator('real_keys', songDetails.rank_real_keys)} />
+                    <img src={songDetails.vocal_parts === 2 ? 'rbicons://instrument-icons-harm2' : 'rbicons://instrument-icons-harmonies'} title={t(songDetails.vocal_parts === 2 ? 'harm2' : 'harm3')} className="mr-1 h-6 w-6" />
+                    <DiffIconInline mr={0} width={1.1} diff={songDetails.vocal_parts <= 1 ? -1 : rankCalculator('vocals', songDetails.rank_vocals)} />
                   </div>
                 </div>
-
-                <div className="group rounded-xs p-2 duration-200 hover:bg-white/5">
-                  <h1 className="uppercase">{t('gameOrigin')}</h1>
-                  <div className="flex-row! items-center">
-                    <p>{t(typeof rb3Stats === 'object' && rb3Stats.hasDeluxe && (songDetails.customsource?.game_origin || songDetails.game_origin).startsWith('ugc') ? `dx_${songDetails.customsource?.game_origin || songDetails.game_origin}` : `gameOrigin__${songDetails.customsource?.game_origin || songDetails.game_origin}`)}</p>
-                    {songDetails.customsource?.game_origin && <DiamondIcon className="relative top-[0.1rem] ml-1 rotate-45 cursor-help text-gray-700 duration-100 hover:text-gray-300" title={t('dxGameOriginOnly')} />}
-                  </div>
-                </div>
-
-                <div className="group rounded-xs p-2 duration-200 hover:bg-white/5">
-                  <h1 className="uppercase">{t('genre')}</h1>
-                  <div className="flex-row! items-center">
-                    <p>{t(`${songDetails.customsource?.genre || songDetails.genre}`)}</p>
-                    {songDetails.customsource?.genre && <DiamondIcon className="relative top-[0.1rem] ml-1 rotate-45 cursor-help text-gray-700 duration-100 hover:text-gray-300" title={t('dxGameOriginOnly')} />}
-                  </div>
-                </div>
-
-                {songDetails.sub_genre && (
-                  <div className="group rounded-xs p-2 duration-200 hover:bg-white/5">
-                    <h1 className="uppercase">{t('subGenre')}</h1>
-                    <div className="flex-row! items-center">
-                      <p>{t(`${songDetails.customsource?.sub_genre?.slice(9) || songDetails.sub_genre.slice(9)}`)}</p>
-                      {songDetails.customsource?.sub_genre && <DiamondIcon className="relative top-[0.1rem] ml-1 rotate-45 cursor-help text-gray-700 duration-100 hover:text-gray-300" title={t('dxGameOriginOnly')} />}
-                    </div>
-                  </div>
-                )}
               </div>
             </>
           )}
@@ -589,10 +683,17 @@ export function SongDetails() {
                     <img src={harm3Icon} width={24} />
                   </button>
                 </div>
-                {songLeaderboards === 'loading' && <p>{t('loadingSongLeaderboards')}</p>}
+                {songLeaderboards === 'loading' && (
+                  <>
+                    <div className="flex-row! items-center">
+                      <LoadingIcon className="mr-1 animate-spin" />
+                      <p>{t('loadingSongLeaderboards')}</p>
+                    </div>
+                  </>
+                )}
                 {typeof songLeaderboards === 'object' && (
                   <>
-                    {songLeaderboards.scores === false && <h1>{t('noScoresForSong', { instrument: t(songLeaderboards.instrument) })}</h1>}
+                    {songLeaderboards.scores === false && <h1 className="font-open!">{t('noScoresForSong', { instrument: t(songLeaderboards.instrument) })}</h1>}
                     {songLeaderboards.scores !== false &&
                       songLeaderboards.scores.map((score, scoreIndex) => {
                         return (
@@ -756,6 +857,25 @@ export function SongDetails() {
                 </div>
                 {packageDetails?.official === undefined && (
                   <>
+                    <div className="group rounded-xs p-2 duration-200 hover:bg-white/5">
+                      <h1 className="mb-1 uppercase">{t('editSong')}</h1>
+                      <p className="mb-2 text-xs italic">
+                        <TransComponent i18nKey="editSongDesc" />
+                      </p>
+                      <button
+                        disabled={disableButtons}
+                        className="mr-2 mb-1 w-fit self-start rounded-xs border border-green-500 bg-neutral-900 px-1 py-0.5 text-xs! text-green-500 uppercase duration-100 last:mr-0 last:mb-0 hover:bg-green-950/25 active:bg-neutral-600 disabled:text-neutral-700 disabled:hover:bg-neutral-900"
+                        onClick={async () => {
+                          // setWindowState({ disableButtons: true })
+
+                          startEditingSong(songDetails)
+
+                          // setWindowState({ disableButtons: false })
+                        }}
+                      >
+                        {t('editSong')}
+                      </button>
+                    </div>
                     <div className="group rounded-xs p-2 duration-200 hover:bg-white/5">
                       <h1 className="mb-1 uppercase">{t('deleteSong')}</h1>
                       <p className="mb-2 text-xs italic">

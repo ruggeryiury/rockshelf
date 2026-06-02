@@ -170,7 +170,7 @@ export const parseDTA = (songContent: string): RB3CompatibleDTAFile | PartialDTA
         processedSongObject.songname = true
       }
       // This is strings that's captured on "allStrings" variable
-      else if (key === 'name' || key === 'artist' || key === 'album_name' || key === 'pack_name' || key === 'author' || key === 'loading_phrase' || key === 'strings_author' || key === 'keys_author') {
+      else if (key === 'name' || key === 'artist' || key === 'album_name' || key === 'pack_name' || key === 'author' || key === 'loading_phrase' || key === 'strings_author' || key === 'keys_author' || key === 'covered_by') {
         if (key === 'name' && allStrings[stringIndex] === undefined) {
           // Wrong capture because of "song_vocals" object found on RB1 songs
         } else {

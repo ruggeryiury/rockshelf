@@ -30,7 +30,7 @@ export function MessageBox() {
       id="MessageBox"
       condition={active}
       {...animate({ opacity: true })}
-      className={clsx('absolute! top-3 right-3 z-50 ml-auto w-[30%] max-w-[30%] flex-row! items-start border bg-black/90 p-3 backdrop-blur-md', message && message.type === 'warn' ? 'border-yellow-500' : message && message.type === 'error' ? 'border-red-500' : message && message.type === 'success' ? 'border-green-500' : '')}
+      className={clsx('absolute! top-3 right-3 z-50 ml-auto w-[30%] max-w-[30%] flex-row! items-start border bg-black p-3', message && message.type === 'warn' ? 'border-yellow-500' : message && message.type === 'error' ? 'border-red-500' : message && message.type === 'success' ? 'border-green-500' : '')}
       onClick={() => {
         if (message && message.type !== 'loading' && message.type !== 'debug' && timeout !== null) {
           clearTimeout(timeout)

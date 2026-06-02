@@ -18,7 +18,7 @@ export interface DTAFilterGenericHeaders {
   songsIndexes: number[]
 }
 
-export type DTAFilterTypes = 'title' | 'artist' | 'genre' | 'decade' | 'yearReleased' | 'difficulty'
+export type DTAFilterTypes = 'title' | 'artist' | 'genre' | 'decade' | 'yearReleased' | 'difficulty' | 'songRating'
 
 export interface DTAFilterGenericObject {
   /**
@@ -448,6 +448,51 @@ export const filterDTAByArtist = (songs: RB3CompatibleDTAFile[], options?: DTAFi
   return {
     type: 'artist',
     headers,
+    songsCount: sortedSongs.length,
+  }
+}
+
+/**
+ * Filters and catalogs an array of parsed songs data by song rating into a header-based sorting object used in-game.
+ * - - - -
+ * @param {RB3CompatibleDTAFile[]} songs An array of parsed songs data to be filtered and cataloged.
+ * @param {DTAFilterOptions | undefined} options `OPTIONAL` An object with parameters that tweaks the filtering functionality.
+ * @returns {DTAFilterGenericObject}
+ */
+export const filterDTABySongRating = (songs: RB3CompatibleDTAFile[], options?: DTAFilterOptions): DTAFilterGenericObject => {
+  const { filterEmptyHeader } = useDefaultOptions<DTAFilterOptions>({ filterEmptyHeader: true, instrument: 'band' }, options)
+  const sortedSongs = insertIndexOnSongsArray(songs).sort(useSongGenericCatalogSort)
+
+  const headers: DTAFilterGenericHeaders[] = [
+    {
+      code: 'songRating1',
+      name: 'Family Friendly',
+      songsIndexes: [],
+    },
+    {
+      code: 'songRating2',
+      name: 'Supervision Recommended',
+      songsIndexes: [],
+    },
+    {
+      code: 'songRating3',
+      name: 'Mature Content',
+      songsIndexes: [],
+    },
+    {
+      code: 'songRating4',
+      name: 'No Rating',
+      songsIndexes: [],
+    },
+  ]
+
+  for (const song of sortedSongs) {
+    headers[song.rating - 1].songsIndexes.push(song.index)
+  }
+
+  return {
+    type: 'songRating',
+    headers: filterEmptyHeader ? headers.filter((val) => val.songsIndexes.length > 0) : headers,
     songsCount: sortedSongs.length,
   }
 }

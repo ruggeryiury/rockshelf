@@ -6,12 +6,13 @@ import { useWindowState } from '@renderer/stores/Window.state'
 import { useTranslation } from 'react-i18next'
 import { CREATE_NEW_PACKAGE_TABS, VERBOSE } from '@renderer/app/rockshelf.globals'
 import { useMessageBoxState } from './MessageBox.state'
-import { CheckedBoxIcon, ChevronDownIcon, EyeIcon, EyeSlashIcon, PlaystationIcon, UncheckedBoxIcon, XboxIcon } from '@renderer/assets/icons'
-import { useEffect, useMemo, useState } from 'react'
+import { ChevronDownIcon, EyeIcon, EyeSlashIcon, PlaystationIcon, XboxIcon } from '@renderer/assets/icons'
+import { useEffect, useMemo } from 'react'
 import type { SelectPackageFilesStatsTypes } from 'rockshelf-core'
 import { useImageCropScreenState } from './ImageCropScreen.state'
 import { useRBIconsSelectorState } from './RBIconsSelector.state'
 import { useMyPackagesScreenState } from './MyPackagesScreen.state'
+import { useUserConfigState } from '@renderer/stores/UserConfig.state'
 
 export function CreateNewPackageScreen() {
   const { t } = useTranslation()
@@ -20,7 +21,8 @@ export function CreateNewPackageScreen() {
   const { setMessageBoxState } = useMessageBoxState(useShallow((x) => ({ setMessageBoxState: x.setMessageBoxState })))
   const { setImageCropScreenState } = useImageCropScreenState(useShallow((x) => ({ setImageCropScreenState: x.setImageCropScreenState })))
   const { setRBIconsSelectorState } = useRBIconsSelectorState(useShallow((x) => ({ setRBIconsSelectorState: x.setRBIconsSelectorState })))
-  const { packagesCatalogSortBy, setMyPackagesScreenState } = useMyPackagesScreenState(useShallow((x) => ({ packagesCatalogSortBy: x.packagesCatalogSortBy, setMyPackagesScreenState: x.setMyPackagesScreenState })))
+  const { setMyPackagesScreenState } = useMyPackagesScreenState(useShallow((x) => ({ setMyPackagesScreenState: x.setMyPackagesScreenState })))
+  const { packagesCatalogSortBy } = useUserConfigState(useShallow((x) => ({ packagesCatalogSortBy: x.packagesCatalogSortBy })))
 
   const allSelectedSongs = useMemo(() => {
     const allSongs: string[] = []
@@ -41,7 +43,7 @@ export function CreateNewPackageScreen() {
   )
 
   return (
-    <AnimatedSection id="CreateNewPackageScreen" condition={active} {...animate({ opacity: true })} className="absolute! z-3 h-full max-h-full w-full max-w-full bg-black/90 p-8 backdrop-blur-lg">
+    <AnimatedSection id="CreateNewPackageScreen" condition={active} {...animate({ opacity: true })} className="absolute! z-3 h-full max-h-full w-full max-w-full bg-black p-8">
       <div className="mb-2 flex-row! border-b border-white/25 pb-1">
         <img src={packageArtwork ?? 'rbicons://custom'} className="mr-2 h-32 min-h-32 w-32 min-w-32 border-2 border-neutral-700" />
         <div className="mr-auto">
@@ -332,8 +334,8 @@ export function CreateNewPackageScreen() {
                                   })
                                 }}
                               >
-                                <h2 className={clsx('font-pentatonic mr-2 text-xl max-w-[65%]', isSongSelected ? '' : 'text-neutral-800 group-hover:text-neutral-600')}>{song.name}</h2>
-                                <p className={clsx('text-sm font-semibold italic relative! top-1', isSongSelected ? '' : 'text-neutral-800 group-hover:text-neutral-600')}>{song.artist}</p>
+                                <h2 className={clsx('font-pentatonic mr-2 max-w-[65%] text-xl', isSongSelected ? '' : 'text-neutral-800 group-hover:text-neutral-600')}>{song.name}</h2>
+                                <p className={clsx('relative! top-1 text-sm font-semibold italic', isSongSelected ? '' : 'text-neutral-800 group-hover:text-neutral-600')}>{song.artist}</p>
                               </div>
                             )
                         })}

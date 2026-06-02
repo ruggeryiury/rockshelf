@@ -3,7 +3,7 @@ import { pathLikeToDirPath, type DirPath, type FilePath } from 'node-lib'
 import { exec } from 'node:child_process'
 import { type RockBand3Data, isRPCS3Devhdd0PathValid, isRPCS3ExePathValid, rpcs3GetRB3Stats } from '../lib/rbtools/lib.exports'
 
-export const playRockBand3 = useHandler(async (win, _) => {
+export const playRockBand3 = useHandler(async (win): Promise<boolean> => {
   const userConfig = await readUserConfigFile()
   if (!userConfig) {
     sendDialog(win, 'corruptedUserConfig')

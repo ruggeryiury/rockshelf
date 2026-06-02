@@ -1,9 +1,9 @@
 import { useHandler } from '../core.exports'
-import { RhythmverseAPI } from '../lib/rbtools'
+import { RhythmverseAPI, type ProcessedRhythmverseObject } from '../lib/rbtools'
 
 export type RhythmverseDataFetchingTypes = 'text' | 'artist'
 
-export const fetchRhythmverseData = useHandler(async (_, __, type: RhythmverseDataFetchingTypes, searchField: string) => {
+export const fetchRhythmverseData = useHandler(async (_, __, type: RhythmverseDataFetchingTypes, searchField: string): Promise<ProcessedRhythmverseObject> => {
   switch (type) {
     case 'text':
     default: {

@@ -1,8 +1,8 @@
 import { dialog } from 'electron'
 import { getLocaleStringFromRenderer, sendMessageBox, useHandler } from '../core.exports'
-import { DTAParser } from '../lib/rbtools'
+import { DTAParser, type DTAParserJSONRepresentation } from '../lib/rbtools'
 
-export const selectAndParseDTAFile = useHandler(async (win, _) => {
+export const selectAndParseDTAFile = useHandler(async (win): Promise<false | DTAParserJSONRepresentation> => {
   const selection = await dialog.showOpenDialog({ properties: ['openFile'], filters: [{ name: await getLocaleStringFromRenderer(win, 'dtaFile'), extensions: ['dta'] }] })
 
   if (selection.canceled) {

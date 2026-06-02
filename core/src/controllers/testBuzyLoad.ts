@@ -1,7 +1,7 @@
 import { sendBuzyLoad, useHandler } from '../core.exports'
 import { sleep } from '../lib.exports'
 
-export const testBuzyLoad = useHandler(async (win) => {
+export const testBuzyLoad = useHandler(async (win): Promise<boolean> => {
   sendBuzyLoad(win, { code: 'init', steps: ['Testing Step 1', 'Testing Step 2', 'Testing Step 3', 'Testing Step 4 (Will give Error)'], title: 'Testing Buzy Load Components' })
 
   await sleep(1500)

@@ -21,7 +21,7 @@ export function ImageCropScreen() {
   const [zoom, setZoom] = useState(1)
 
   return (
-    <AnimatedSection id="ImageCropScreen" condition={imgPath !== null && imgDataURL !== null} {...animate({ opacity: true })} className="absolute! z-10 h-full max-h-full w-full max-w-full bg-black/90 p-8 backdrop-blur-lg">
+    <AnimatedSection id="ImageCropScreen" condition={imgPath !== null && imgDataURL !== null} {...animate({ opacity: true })} className="absolute! z-10 h-full max-h-full w-full max-w-full bg-black p-8">
       {imgPath !== null && imgDataURL !== null && (
         <>
           <div className="mb-2 flex-row! items-center border-b border-white/25 pb-1">

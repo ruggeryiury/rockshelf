@@ -29,6 +29,8 @@ const defaultState: UserConfigStateProps = {
   rpcs3ExePath: '',
   mostPlayedDifficulty: 3,
   mostPlayedInstrument: 'band',
+  packagesCatalogSortBy: 'name',
+  songsCatalogSortBy: 'title',
   rpcs3NoGUI: false,
 }
 

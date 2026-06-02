@@ -79,7 +79,7 @@ export const stringifyDTA = (songsAndUpdates: SongsAndUpdatesObject, options?: D
     io.options = { ...io.options, object: { ...io.options.object, closeParenthesisInline: true } }
 
     for (const upd of updates) {
-      const { album_art, anim_tempo, artist, bank, drum_bank, game_origin, genre, id, master, name, preview, rank_band, rating, song_id, song_length, songname, tracks_count, vocal_gender, vocal_parts, year_released, album_name, album_track_number, alternate_path, author, band_fail_cue, base_points, context, cores, customsource, encoding, extra_authoring, fake, format, guide_pitch_volume, hopo_threshold, keys_author, loading_phrase, mute_volume, mute_volume_vocals, pack_name, pans, rank_bass, rank_drum, rank_guitar, rank_keys, rank_real_bass, rank_real_guitar, rank_real_keys, rank_vocals, real_bass_tuning, real_guitar_tuning, solo, song_key, song_scroll_speed, song_tonality, strings_author, sub_genre, tuning_offset_cents, upgrade_version, version, vocal_tonic_note, vols, year_recorded, newID } = upd
+      const { album_art, anim_tempo, artist, bank, drum_bank, game_origin, genre, id, master, name, preview, rank_band, rating, song_id, song_length, songname, tracks_count, vocal_gender, vocal_parts, year_released, album_name, album_track_number, alternate_path, author, band_fail_cue, base_points, context, cores, customsource, encoding, extra_authoring, fake, format, guide_pitch_volume, hopo_threshold, keys_author, covered_by, loading_phrase, mute_volume, mute_volume_vocals, pack_name, pans, rank_bass, rank_drum, rank_guitar, rank_keys, rank_real_bass, rank_real_guitar, rank_real_keys, rank_vocals, real_bass_tuning, real_guitar_tuning, solo, song_key, song_scroll_speed, song_tonality, strings_author, sub_genre, tuning_offset_cents, upgrade_version, version, vocal_tonic_note, vols, year_recorded, newID } = upd
       const map = new MyObject()
 
       const allValuesKeys = Object.keys(upd) as DTAFileKeys[]
@@ -237,6 +237,7 @@ export const stringifyDTA = (songsAndUpdates: SongsAndUpdatesObject, options?: D
       if (author !== undefined) map.set('author', DTAIO.useString(quoteToSlashQ(author), io.options.string))
       if (strings_author !== undefined) map.set('strings_author', DTAIO.useString(quoteToSlashQ(strings_author), io.options.string))
       if (keys_author !== undefined) map.set('keys_author', DTAIO.useString(quoteToSlashQ(keys_author), io.options.string))
+      if (covered_by !== undefined) map.set('covered_by', DTAIO.useString(quoteToSlashQ(covered_by), io.options.string))
       if (loading_phrase !== undefined) map.set('loading_phrase', DTAIO.useString(quoteToSlashQ(loading_phrase), io.options.string))
       if (pack_name !== undefined) map.set('pack_name', DTAIO.useString(quoteToSlashQ(pack_name), io.options.string))
 
@@ -247,7 +248,7 @@ export const stringifyDTA = (songsAndUpdates: SongsAndUpdatesObject, options?: D
     // Songs only
     if (sortBy) songs = sortDTA(songs, sortBy)
     for (const song of songs) {
-      const { album_art, anim_tempo, artist, bank, drum_bank, game_origin, genre, id, master, name, preview, rank_band, rating, song_id, song_length, songname, tracks_count, vocal_gender, vocal_parts, year_released, album_name, album_track_number, alternate_path, author, band_fail_cue, base_points, context, convert, cores, customsource, doubleKick, emh, encoding, extra_authoring, fake, format, guide_pitch_volume, hopo_threshold, keys_author, languages, loading_phrase, multitrack, mute_volume, mute_volume_vocals, pack_name, pans, rank_bass, rank_drum, rank_guitar, rank_keys, rank_real_bass, rank_real_guitar, rank_real_keys, rank_vocals, real_bass_tuning, real_guitar_tuning, rhythmOn, solo, song_key, song_scroll_speed, song_tonality, strings_author, sub_genre, tuning_offset_cents, unpitchedVocals, upgrade_version, version, vocal_tonic_note, vols, year_recorded, original_id, newID } = song as DTAFileUpdateObject
+      const { album_art, anim_tempo, artist, bank, drum_bank, game_origin, genre, id, master, name, preview, rank_band, rating, song_id, song_length, songname, tracks_count, vocal_gender, vocal_parts, year_released, album_name, album_track_number, alternate_path, author, band_fail_cue, base_points, context, convert, cores, customsource, doubleKick, emh, encoding, extra_authoring, fake, format, guide_pitch_volume, hopo_threshold, keys_author, languages, covered_by, loading_phrase, multitrack, mute_volume, mute_volume_vocals, pack_name, pans, rank_bass, rank_drum, rank_guitar, rank_keys, rank_real_bass, rank_real_guitar, rank_real_keys, rank_vocals, real_bass_tuning, real_guitar_tuning, rhythmOn, solo, song_key, song_scroll_speed, song_tonality, strings_author, sub_genre, tuning_offset_cents, unpitchedVocals, upgrade_version, version, vocal_tonic_note, vols, year_recorded, original_id, newID } = song as DTAFileUpdateObject
       const map = new MyObject()
 
       if (fake && ignoreFakeSongs) continue
@@ -435,6 +436,7 @@ export const stringifyDTA = (songsAndUpdates: SongsAndUpdatesObject, options?: D
       if (author !== undefined) map.set('author', DTAIO.useString(quoteToSlashQ(author), io.options.string))
       if (strings_author !== undefined) map.set('strings_author', DTAIO.useString(quoteToSlashQ(strings_author), io.options.string))
       if (keys_author !== undefined) map.set('keys_author', DTAIO.useString(quoteToSlashQ(keys_author), io.options.string))
+      if (covered_by !== undefined) map.set('covered_by', DTAIO.useString(quoteToSlashQ(covered_by), io.options.string))
       if (loading_phrase !== undefined) map.set('loading_phrase', DTAIO.useString(quoteToSlashQ(loading_phrase), io.options.string))
       if (pack_name !== undefined) map.set('pack_name', DTAIO.useString(quoteToSlashQ(pack_name), io.options.string))
 
@@ -446,7 +448,7 @@ export const stringifyDTA = (songsAndUpdates: SongsAndUpdatesObject, options?: D
 
       if (addMAGMAValues) {
         let content = ''
-        content += '{n};DO NOT EDIT THE FOLLOWING LINES MANUALLY{n};Created using Magma: Rok On Edition v4.0.3{n}'
+        content += '{n};DO NOT EDIT THE FOLLOWING LINES MANUALLY{n};Created using Magma: Rok On Edition v4.1.0{n}'
         content += `;Song authored by ${author ?? 'Unknown Charter'}{n}`
         content += `;Song=${name ?? ''}{n}`
         if (!languages || languages.length === 0) content += `;Language(s)=English,{n}`

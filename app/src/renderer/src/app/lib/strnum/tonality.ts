@@ -31,9 +31,9 @@ const minor = {
 } as const
 
 export const formatSongKeyString = (song: RB3CompatibleDTAFile): string | null => {
-  if (!song.song_key && !song.vocal_tonic_note) return null
-  const tonic = song.song_key || song.vocal_tonic_note || 0
-  const tonality = song.song_tonality || 0
+  if (song.song_key === undefined && song.vocal_tonic_note === undefined) return null
+  const tonic = song.song_key ?? song.vocal_tonic_note ?? 0
+  const tonality = song.song_tonality ?? 0
   let value = ''
 
   value += (tonality === 0 ? major : minor)[tonic]

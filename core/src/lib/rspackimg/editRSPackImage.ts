@@ -29,6 +29,8 @@ export interface EditPackageDataOptions {
   imgPath?: string
   imgCropOptions?: CropImageCoordinatesObject
   encryptionStatus?: RSPackImageEncryptionStatusValues
+  creationDate?: string
+  modifiedDate?: string
 }
 
 export const editRSPackImage = async (rsPackImagePath: FilePathLikeTypes, options: EditPackageDataOptions): Promise<FilePath> => {

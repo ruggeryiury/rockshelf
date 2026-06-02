@@ -5,16 +5,17 @@ import type { GoCentralLeaderboardResultObject } from 'rockshelf-core/rbtools'
 
 export interface MyPackagesScreenStateProps {
   active: boolean
-  selPKG: number
-  songsCatalog: DTAFilterGenericObject | DTAFilterByArtistObject | DTAFilterByDifficultyObject | false | 'loading'
-  songsCatalogSortBy: DTAFilterTypes
   myPackagesTab: number
   packagesCatalog: SongPackagesFilterGenericObject | false | 'loading'
-  packagesCatalogSortBy: SongPackagesFilterTypes
+  packageDescription: string | undefined | 1 // 1 = 'loading'
+
+  selPKG: number
   packageDetailsTab: number
+  hoveredPKG: number
+
+  songsCatalog: DTAFilterGenericObject | DTAFilterByArtistObject | DTAFilterByDifficultyObject | false | 'loading'
   songDetailsTab: number
   songLeaderboards: false | 'loading' | GoCentralLeaderboardResultObject
-  hoveredPKG: number
   selSong: number
   isArtworkLoading: boolean
   artworkURL: string | null
@@ -47,16 +48,17 @@ export type MyPackagesScreenStateHook = MyPackagesScreenStateProps & MyPackagesS
 
 const defaultState: MyPackagesScreenStateProps = {
   active: false,
-  selPKG: -1,
-  songsCatalog: false,
-  songsCatalogSortBy: 'title',
-  packagesCatalog: false,
-  packagesCatalogSortBy: 'name',
   myPackagesTab: 0,
+  packagesCatalog: false,
+  packageDescription: undefined,
+
+  selPKG: -1,
   packageDetailsTab: 0,
+  hoveredPKG: -1,
+
+  songsCatalog: false,
   songDetailsTab: 0,
   songLeaderboards: false,
-  hoveredPKG: -1,
   selSong: -1,
   isArtworkLoading: true,
   artworkURL: null,

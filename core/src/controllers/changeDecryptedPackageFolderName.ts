@@ -5,7 +5,7 @@ import { isRB3FolderNameFreeOnRPCS3, officialPackages } from '../lib/rbtools/lib
 import { utimes } from 'node:fs/promises'
 import { EDATFile } from '../lib/rbtools'
 
-export const changeDecryptedPackageFolderName = useHandler(async (win, __, pkgIndex: number, newPackageFolderName: string) => {
+export const changeDecryptedPackageFolderName = useHandler(async (win, __, pkgIndex: number, newPackageFolderName: string): Promise<false | RPCS3SongPackagesDataExtra> => {
   const cache = getPackagesCacheFile()
   if (!cache.exists) {
     sendDialog(win, 'corruptedPackagesCache')
@@ -51,7 +51,14 @@ export const changeDecryptedPackageFolderName = useHandler(async (win, __, pkgIn
     return false
   }
 
-  const newPKGPath = await oldPKGPath.renameDir(oldPKGPath.changeDirName(newPackageFolderName))
+  let newPKGPath: DirPath
+
+  try {
+    newPKGPath = await oldPKGPath.renameDir(oldPKGPath.changeDirName(newPackageFolderName))
+  } catch (err) {
+    if (err instanceof Error && err.message.includes('EPERM: operation not permitted')) sendMessageBox(win, { type: 'error', code: 'changeFolderNamePermissionDenied', timeout: 5000 })
+    return false
+  }
 
   cacheContents.packages[pkgIndex].path = newPKGPath.path
   cacheContents.packages[pkgIndex].name = newPKGPath.name
@@ -60,7 +67,6 @@ export const changeDecryptedPackageFolderName = useHandler(async (win, __, pkgIn
   cacheContents.packages[pkgIndex].thumbnailSrc = `rb3packimg://${encodeURIComponent(newPKGPath.name)}`
   cacheContents.packages[pkgIndex].packageFiles = cacheContents.packages[pkgIndex].packageFiles.map((p) => {
     const relativePath = p.slice(oldPKGPath.path.length + 1)
-    console.log(relativePath)
     return newPKGPath.gotoFile(relativePath).path
   })
 

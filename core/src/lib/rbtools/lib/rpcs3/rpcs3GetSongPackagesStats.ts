@@ -138,7 +138,7 @@ export const rpcs3GenSongPackageManifest = async (packageDirPath: DirPathLikeTyp
     .filter((entry) => entry instanceof FilePath)
     .map((entry) => entry.path.slice(packagePath.gotoDir('songs').path.length + 1).replace(/\\/g, '/'))
     .toReversed()
-    .filter((val) => val !== 'songs.dta' && val !== 'folder.jpg')
+    .filter((val) => val.toLowerCase() !== 'songs.dta' && val.toLowerCase() !== 'folder.jpg' && val.toLowerCase() !== 'package.md')
     .map((file) => FilePath.of(insideSongsFolderPath, file))
   let manifest = ''
   let packageSize = 0

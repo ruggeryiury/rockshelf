@@ -3,7 +3,7 @@ import { getPackagesCacheFile, sendDialog, sendMessageBox, useHandler } from '..
 import { editRSPackImage, type EditPackageDataOptions, type RPCS3SongPackagesDataExtra } from '../lib.exports'
 import { utimes } from 'node:fs/promises'
 
-export const editPackageData = useHandler(async (win, _, pkgIndex: number, options: EditPackageDataOptions) => {
+export const editPackageData = useHandler(async (win, _, pkgIndex: number, options: EditPackageDataOptions): Promise<false | RPCS3SongPackagesDataExtra> => {
   const cache = getPackagesCacheFile()
   if (!cache.exists) {
     sendDialog(win, 'corruptedPackagesCache')

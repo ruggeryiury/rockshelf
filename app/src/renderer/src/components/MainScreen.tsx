@@ -1,5 +1,5 @@
 import clsx from 'clsx'
-import { animate, AnimatedDiv, AnimatedSection, TransComponent } from '@renderer/lib.exports'
+import { animate, AnimatedDiv, AnimatedSection, formatNumberWithDots, TransComponent } from '@renderer/lib.exports'
 import { useMainScreenState } from './MainScreen.state'
 import { useWindowState } from '@renderer/stores/Window.state'
 import { useTranslation } from 'react-i18next'
@@ -13,6 +13,7 @@ import { useMyPackagesScreenState } from './MyPackagesScreen.state'
 import { useShallow } from 'zustand/shallow'
 import { useCreateNewPackageScreenState } from './CreateNewPackageScreen.state'
 import { useRhythmverseScreenState } from './RhythmverseScreen.state'
+import { useQuickConfigScreenState } from './QuickConfigScreen.state'
 
 export function MainScreen() {
   const { t } = useTranslation()
@@ -24,6 +25,7 @@ export function MainScreen() {
   const { setMyPackagesScreenState } = useMyPackagesScreenState(useShallow((x) => ({ setMyPackagesScreenState: x.setMyPackagesScreenState })))
   const { setCreateNewPackageScreenState } = useCreateNewPackageScreenState(useShallow((x) => ({ setCreateNewPackageScreenState: x.setCreateNewPackageScreenState })))
   const { setRhythmverseScreenState } = useRhythmverseScreenState(useShallow((x) => ({ setRhythmverseScreenState: x.setRhythmverseScreenState })))
+  const { setQuickConfigScreenState } = useQuickConfigScreenState(useShallow((x) => ({ setQuickConfigScreenState: x.setQuickConfigScreenState })))
 
   return (
     <AnimatedSection id="MainScreen" condition={active} className="z-1 h-full max-h-full w-full max-w-full overflow-y-hidden bg-black/90 p-8">
@@ -40,15 +42,15 @@ export function MainScreen() {
                 <div className="mx-4 h-full w-0.5 bg-white/50" />
                 <div className="mr-4">
                   <h1 className="text-[0.65rem] uppercase">{t('totalScore')}</h1>
-                  <h2 className="font-pentatonic text-sm">{instrumentScores.scoreCount}</h2>
+                  <h2 className="font-pentatonic text-lg">{formatNumberWithDots(instrumentScores.scoreCount)}</h2>
                 </div>
                 {typeof packages === 'object' && (
                   <>
                     <div className="mr-4">
                       <h1 className="text-[0.65rem] uppercase">{t('starsCount')}</h1>
                       <div className="flex-row! items-center">
-                        <img src="rbicons://rb4-stars" className="relative! top-[0.05rem] mr-1 h-3 min-h-3 w-3 min-w-3" />
-                        <h2 className="font-pentatonic text-sm">
+                        <img src="rbicons://rb4-stars" className="relative! top-[0.05rem] mr-1 h-5 min-h-5 w-5 min-w-5" />
+                        <h2 className="font-pentatonic text-lg">
                           {instrumentScores.starsCount}/{packages.starsCount}
                         </h2>
                       </div>
@@ -56,8 +58,8 @@ export function MainScreen() {
                     <div>
                       <h1 className="text-[0.65rem] uppercase">{t('goldStars')}</h1>
                       <div className="flex-row! items-center">
-                        <img src="rbicons://rb4-stars-gold" className="relative! top-[0.05rem] mr-1 h-3 min-h-3 w-3 min-w-3" />
-                        <h2 className="font-pentatonic text-sm">
+                        <img src="rbicons://rb4-stars-gold" className="relative! top-[0.05rem] mr-1 h-5 min-h-5 w-5 min-w-5" />
+                        <h2 className="font-pentatonic text-lg">
                           {instrumentScores.goldStars}/{packages.allSongsPlusRB3}
                         </h2>
                       </div>
@@ -128,6 +130,24 @@ export function MainScreen() {
                   className="mb-2 w-full self-start rounded-xs border border-neutral-700 bg-neutral-900 px-1 py-0.5 text-xs! uppercase duration-100 last:mb-0 hover:bg-neutral-700 active:bg-neutral-600 disabled:text-neutral-700 disabled:hover:bg-neutral-900"
                   disabled={disableButtons}
                   onClick={async () => {
+                    setDeluxeInstallScreenState({ active: true })
+                  }}
+                >
+                  {t('installDeluxe')}
+                </button>
+                <button
+                  className="mb-2 w-full self-start rounded-xs border border-neutral-700 bg-neutral-900 px-1 py-0.5 text-xs! uppercase duration-100 last:mb-0 hover:bg-neutral-700 active:bg-neutral-600 disabled:text-neutral-700 disabled:hover:bg-neutral-900"
+                  disabled={disableButtons}
+                  onClick={() => {
+                    setQuickConfigScreenState({ active: true })
+                  }}
+                >
+                  {t('installQuickConfigurations')}
+                </button>
+                <button
+                  className="mb-2 w-full self-start rounded-xs border border-neutral-700 bg-neutral-900 px-1 py-0.5 text-xs! uppercase duration-100 last:mb-0 hover:bg-neutral-700 active:bg-neutral-600 disabled:text-neutral-700 disabled:hover:bg-neutral-900"
+                  disabled={disableButtons}
+                  onClick={async () => {
                     setWindowState({ disableButtons: true })
                     if (richPresence) {
                       try {
@@ -158,15 +178,6 @@ export function MainScreen() {
                   }}
                 >
                   {richPresence ? t('stopRichPresence') : t('startRichPresence')}
-                </button>
-                <button
-                  className="mb-2 w-full self-start rounded-xs border border-neutral-700 bg-neutral-900 px-1 py-0.5 text-xs! uppercase duration-100 last:mb-0 hover:bg-neutral-700 active:bg-neutral-600 disabled:text-neutral-700 disabled:hover:bg-neutral-900"
-                  disabled={disableButtons}
-                  onClick={async () => {
-                    setDeluxeInstallScreenState({ active: true })
-                  }}
-                >
-                  {t('installDeluxe')}
                 </button>
                 <button
                   className="mb-2 w-full self-start rounded-xs border border-neutral-700 bg-neutral-900 px-1 py-0.5 text-xs! uppercase duration-100 last:mb-0 hover:bg-neutral-700 active:bg-neutral-600 disabled:text-neutral-700 disabled:hover:bg-neutral-900"

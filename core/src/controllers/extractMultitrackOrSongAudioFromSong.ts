@@ -5,7 +5,7 @@ import { MOGGFile, PythonAPI } from '../lib/rbtools'
 import type { RB3CompatibleDTAFile } from '../lib/rbtools/lib.exports'
 import type { RPCS3SongPackagesObjectExtra } from '../lib.exports'
 
-export const extractMultitrackOrSongAudioFromSong = useHandler(async (win, __, packageDetails: RPCS3SongPackagesObjectExtra, song: RB3CompatibleDTAFile) => {
+export const extractMultitrackOrSongAudioFromSong = useHandler(async (win, __, packageDetails: RPCS3SongPackagesObjectExtra, song: RB3CompatibleDTAFile): Promise<boolean> => {
   const packPath = pathLikeToDirPath(packageDetails.path)
 
   const mogg = new MOGGFile(packPath.gotoFile(`songs/${song.songname}/${song.songname}.mogg`))
@@ -37,6 +37,7 @@ export const extractMultitrackOrSongAudioFromSong = useHandler(async (win, __, p
     sendMessageBox(win, { type: 'loading', code: 'extractingSingleTrackFromSong', messageValues: { path: mogg.path.path } })
     await PythonAPI.extractSongAudioSingleTrack(mogg.path, selection.filePath, song)
     sendMessageBox(win, { type: 'success', code: 'extractSingleTrackFromSong' })
+    return true
   } else {
     const buttonLabel = await getLocaleStringFromRenderer(win, 'selectFolder')
     const selection = await dialog.showOpenDialog({ buttonLabel, properties: ['openDirectory'] })

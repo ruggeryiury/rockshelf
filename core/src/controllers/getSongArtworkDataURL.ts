@@ -1,10 +1,10 @@
-import { readUserConfigFile, sendDialog, sendMessageBox, useHandler } from '../core.exports'
+import { readUserConfigFile, sendDialog, useHandler } from '../core.exports'
 import { type RPCS3SongPackagesObjectExtra } from '../lib.exports'
 import { DirPath } from 'node-lib'
 import { TextureFile } from '../lib/rbtools'
 import type { RB3CompatibleDTAFile } from '../lib/rbtools/lib.exports'
 
-export const getSongArtworkDataURL = useHandler(async (win, _, packageDetails: RPCS3SongPackagesObjectExtra, songDetails: RB3CompatibleDTAFile) => {
+export const getSongArtworkDataURL = useHandler(async (win, _, packageDetails: RPCS3SongPackagesObjectExtra, songDetails: RB3CompatibleDTAFile): Promise<string | false> => {
   const userConfig = await readUserConfigFile()
   if (!userConfig) {
     sendDialog(win, 'corruptedUserConfig')

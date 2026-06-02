@@ -2,11 +2,12 @@
 import { ipcRenderer, shell, webUtils, type IpcRenderer, type IpcRendererEvent } from 'electron'
 import type { Promisable } from 'type-fest'
 import type { openUserDataFolder, readUserConfigFile, MessageBoxObject, saveUserConfigFile, UserConfigObject, windowClose, windowMaximize, windowMinimize, BuzyLoadInitObject, BuzyLoadScreenSenderObject, BuzyLoadErrorObject, DialogScreenPromptsTypes, BuzyLoadSubtextObject } from './core.exports'
-import type { deletePackage, deletePackageThumbnails, deleteUserConfigAndRestart, editPackageData, sortAndFilterSongsFromPackage, getSongArtworkDataURL, installHighMemoryPatch, installPKGFile, playRockBand3, refreshPackagesData, rpcs3GetInstrumentScores, rpcs3GetPackagesData, rpcs3GetRB3Stats, rpcs3GetSaveDataStats, selectAndParseDTAFile, selectDevhdd0Dir, loadImageForCrop, selectPackageFiles, SelectPackageFilesStatsTypes, SelectPKGFileReturnObject, selectPKGFile, selectRPCS3Exe, testUserConfig, cropImageAndSaveToTemp, CropImageAndSaveToTempOptions, createNewPackage, CreateNewPackageOptions, testBuzyLoad, getScoresFromGoCentral, extractMultitrackOrSongAudioFromSong, encDecPackage, EncDecPackageFunctionTypes, verifyPackageEncryptionStatus, extractMIDIFromSong, batchDeleteSongs, sortAndFilterSongPackages, RhythmverseDataFetchingTypes, fetchRhythmverseData, useSongArtworkFromUniqueSongPKG, changeDecryptedPackageFolderName } from './controllers.exports'
+import type { deletePackage, deletePackageThumbnails, deleteUserConfigAndRestart, editPackageData, sortAndFilterSongsFromPackage, getSongArtworkDataURL, installHighMemoryPatch, installPKGFile, playRockBand3, refreshPackagesData, rpcs3GetInstrumentScores, rpcs3GetPackagesData, rpcs3GetRB3Stats, rpcs3GetSaveDataStats, selectAndParseDTAFile, selectDevhdd0Dir, loadImageForCrop, selectPackageFiles, SelectPackageFilesStatsTypes, SelectPKGFileReturnObject, selectPKGFile, selectRPCS3Exe, testUserConfig, cropImageAndSaveToTemp, CropImageAndSaveToTempOptions, createNewPackage, CreateNewPackageOptions, testBuzyLoad, getScoresFromGoCentral, extractMultitrackOrSongAudioFromSong, encDecPackage, EncDecPackageFunctionTypes, verifyPackageEncryptionStatus, extractMIDIFromSong, batchDeleteSongs, sortAndFilterSongPackages, RhythmverseDataFetchingTypes, fetchRhythmverseData, useSongArtworkFromUniqueSongPKG, changeDecryptedPackageFolderName, installQuickConfig, mergePackages } from './controllers.exports'
 import type { ParsedRB3SaveData, ScoreDataInstrumentTypes } from 'rockshelf-core/rbtools'
 import type { EditPackageDataOptions, RPCS3SongPackagesObjectExtra, SongPackagesFilterOptions, SongPackagesFilterTypes } from './lib.exports'
 import type { FatalErrorObject } from './lib/senders/fatalError'
-import type { DTAFilterOptions, DTAFilterTypes, RB3CompatibleDTAFile } from 'rockshelf-core/rbtools/lib'
+import type { DTAFilterOptions, DTAFilterTypes, QuickConfigType, RB3CompatibleDTAFile } from 'rockshelf-core/rbtools/lib'
+import type { getSongPackageDescriptionFileFromFolderHandler } from './controllers/getSongPackageDescriptionFileFromFolder'
 
 const invoke = ipcRenderer.invoke.bind(ipcRenderer)
 const on = ipcRenderer.on.bind(ipcRenderer)
@@ -111,11 +112,12 @@ export const rockshelfAPI = {
   windowMaximize: async (): Promise<ReturnType<typeof windowMaximize>> => await invoke('windowMaximize'),
 
   batchDeleteSongs: async (pkgIndex: number, songs: string[]): ReturnType<typeof batchDeleteSongs> => await invoke('batchDeleteSongs', pkgIndex, songs),
+  changeDecryptedPackageFolderName: async (pkgIndex: number, newPackageFolderName: string): ReturnType<typeof changeDecryptedPackageFolderName> => await invoke('changeDecryptedPackageFolderName', pkgIndex, newPackageFolderName),
   createNewPackage: async (options: CreateNewPackageOptions): ReturnType<typeof createNewPackage> => await invoke('createNewPackage', options),
   cropImageAndSaveToTemp: async (options: CropImageAndSaveToTempOptions): ReturnType<typeof cropImageAndSaveToTemp> => await invoke('cropImageAndSaveToTemp', options),
   deletePackage: async (pkgIndex: number): ReturnType<typeof deletePackage> => await invoke('deletePackage', pkgIndex),
   deletePackageThumbnails: async (): ReturnType<typeof deletePackageThumbnails> => await invoke('deletePackageThumbnails'),
-  deleteUserConfigAndRestart: async (): ReturnType<typeof deleteUserConfigAndRestart> => await invoke('deleteUserConfigAndRestart'),
+  deleteUserConfigAndRestart: async (restartOnly: boolean = false): ReturnType<typeof deleteUserConfigAndRestart> => await invoke('deleteUserConfigAndRestart', restartOnly),
   discordRPDestroy: async (): Promise<boolean> => await invoke('discordRPDestroy'),
   discordRPSetUserConfig: async (userConfig: UserConfigObject): Promise<boolean> => await invoke('discordRPSetUserConfig', userConfig),
   discordRPStart: async (): Promise<boolean> => await invoke('discordRPStart'),
@@ -128,6 +130,7 @@ export const rockshelfAPI = {
   getSongArtworkDataURL: async (packageDetails: RPCS3SongPackagesObjectExtra, songDetails: RB3CompatibleDTAFile): ReturnType<typeof getSongArtworkDataURL> => await invoke('getSongArtworkDataURL', packageDetails, songDetails),
   installHighMemoryPatch: async (): ReturnType<typeof installHighMemoryPatch> => await invoke('installHighMemoryPatch'),
   installPKGFile: async (selectedPKG: SelectPKGFileReturnObject): ReturnType<typeof installPKGFile> => await invoke('installPKGFile', selectedPKG),
+  installQuickConfig: async (rpcs3ExePath: string, configType: QuickConfigType): ReturnType<typeof installQuickConfig> => await invoke('installQuickConfig', rpcs3ExePath, configType),
   loadImageForCrop: async (defaultPath?: string): ReturnType<typeof loadImageForCrop> => await invoke('loadImageForCrop', defaultPath),
   openFolderInExplorer: async (folderPath: string): ReturnType<typeof sortAndFilterSongsFromPackage> => await invoke('openFolderInExplorer', folderPath),
   openUserDataFolder: async (): ReturnType<typeof openUserDataFolder> => await invoke('openUserDataFolder'),
@@ -151,5 +154,6 @@ export const rockshelfAPI = {
   testUserConfig: async (): ReturnType<typeof testUserConfig> => await invoke('testUserConfig'),
   useSongArtworkFromUniqueSongPKG: async (pkgIndex: number): ReturnType<typeof useSongArtworkFromUniqueSongPKG> => await invoke('useSongArtworkFromUniqueSongPKG', pkgIndex),
   verifyPackageEncryptionStatus: async (packageDetails: RPCS3SongPackagesObjectExtra): ReturnType<typeof verifyPackageEncryptionStatus> => await invoke('verifyPackageEncryptionStatus', packageDetails),
-  changeDecryptedPackageFolderName: async (pkgIndex: number, newPackageFolderName: string): ReturnType<typeof changeDecryptedPackageFolderName> => await invoke('changeDecryptedPackageFolderName', pkgIndex, newPackageFolderName),
+  mergePackages: async (selectedPackageIndex: number, mainPackageIndex: number): ReturnType<typeof mergePackages> => await invoke('mergePackages', selectedPackageIndex, mainPackageIndex),
+  getSongPackageDescriptionFileFromFolder: async (packagePath: string): ReturnType<typeof getSongPackageDescriptionFileFromFolderHandler> => await invoke('getSongPackageDescriptionFileFromFolder', packagePath),
 } as const

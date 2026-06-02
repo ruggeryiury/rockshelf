@@ -38,14 +38,15 @@ export const createRSPackImage = async (imageFilePathOrBuffer: FilePathLikeTypes
   if (Buffer.isBuffer(imageFilePathOrBuffer)) img = await removeRSDataFromBuffer(imageFilePathOrBuffer)
   else img = pathLikeToFilePath(imageFilePathOrBuffer)
   const dest = pathLikeToFilePath(destPath)
-  const { type, source, encryptionStatus, packageName } = useDefaultOptions<RSPackImageCreatorOptions>(
+  const nowDate = new Date().toISOString()
+  const { type, source, encryptionStatus, packageName, creationDate, modifiedDate } = useDefaultOptions<RSPackImageCreatorOptions>(
     {
       type: 'rockshelf',
       source: 'stfs',
       encryptionStatus: 'unknown',
       packageName: '',
-      creationDate: new Date().toISOString(),
-      modifiedDate: new Date().toISOString(),
+      creationDate: nowDate,
+      modifiedDate: nowDate,
     },
     options
   )
@@ -80,6 +81,10 @@ export const createRSPackImage = async (imageFilePathOrBuffer: FilePathLikeTypes
   extraData.writeUInt8(getKeyFromMapValue(rsPackImage.source, source) ?? 0)
   extraData.writeUInt8(getKeyFromMapValue(rsPackImage.encryptionStatus, encryptionStatus) ?? 0)
   extraData.write(Buffer.alloc(13))
+  extraData.writeUInt8(creationDate.length)
+  extraData.writeASCII(creationDate)
+  extraData.writeUInt8(modifiedDate.length)
+  extraData.writeASCII(modifiedDate)
   extraData.writeUInt8(packageName.length)
   extraData.writeUTF8(packageName)
 

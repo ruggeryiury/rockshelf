@@ -9,6 +9,7 @@ export * from './lib/rspackimg/editRSPackImage'
 export * from './lib/rspackimg/genPackImageToAllPackages'
 export * from './lib/rspackimg/parseRSPackImage'
 
+export * from './lib/rpcs3/getSongPackageDescriptionFileFromFolder'
 export * from './lib/rpcs3/getSongPackageStatsFromFolder'
 export * from './lib/rpcs3/rpcs3GetSongPackagesStatsExtra'
 

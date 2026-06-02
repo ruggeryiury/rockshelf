@@ -32,7 +32,6 @@ export const rpcs3GetPackagesData = useHandler(async (win, _, forceUpdate: boole
 
   // 7 days * 24 hours/day * 60 minutes/hour * 60 seconds/minute * 1000 milliseconds/second
   const oneWeekInMilliseconds = 7 * 24 * 60 * 60 * 1000
-
   if (new Date().getTime() - stat.mtime.getTime() > oneWeekInMilliseconds) forceCacheUpdate = true
 
   if (!forceCacheUpdate) {

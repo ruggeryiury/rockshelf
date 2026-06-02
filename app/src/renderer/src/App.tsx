@@ -1,5 +1,5 @@
 import { useEffect } from 'react'
-import { BuzyLoadScreen, ConfigScreen, CreateNewPackageScreen, DeluxeInstallScreen, DialogScreen, FatalErrorScreen, FirstTimeScreen, ImageCropScreen, LogoScreen, MainScreen, MessageBox, MyPackagesScreen, RBBackground, RBIconsSelector, RhythmverseScreen, SongDetails, Topbar, WindowFrame } from './components.exports'
+import { BuzyLoadScreen, ConfigScreen, CreateNewPackageScreen, DeluxeInstallScreen, DialogScreen, EditSongScreen, FatalErrorScreen, FirstTimeScreen, ImageCropScreen, LogoScreen, MainScreen, MergePackageModal, MessageBox, MyPackagesScreen, QuickConfigScreen, RBBackground, RBIconsSelector, RhythmverseScreen, SongDetails, Topbar, WindowFrame } from './components.exports'
 import { useWindowState } from './stores/Window.state'
 import { useFirstTimeScreenState } from './components/FirstTimeScreen.state'
 import { useTranslation } from 'react-i18next'
@@ -42,7 +42,7 @@ export function App() {
         if (VERBOSE.STRUCT) console.log('struct UserConfigObject ["core/src/core/userConfigData.ts"]:', hasUserConfig)
         setUserConfigState(hasUserConfig)
 
-        window.api.discordRPSetUserConfig(hasUserConfig)
+        await window.api.discordRPSetUserConfig(hasUserConfig)
 
         const rb3Stats = await window.api.rpcs3GetRB3Stats()
         if (VERBOSE.STRUCT) console.log('struct RockBand3Data ["rbtools/src/lib/rpcs3/rpcs3GetRB3Stats.ts"]:', rb3Stats)
@@ -125,18 +125,21 @@ export function App() {
         <CreateNewPackageScreen />
         <DeluxeInstallScreen />
         <DialogScreen />
+        <EditSongScreen />
         <FatalErrorScreen />
         <FirstTimeScreen />
         <ImageCropScreen />
         <LogoScreen />
         <MainScreen />
+        <MergePackageModal />
         <MessageBox />
         <MyPackagesScreen />
+        <PackageDetails />
+        <QuickConfigScreen />
         <RBBackground />
         <RBIconsSelector />
-        <SongDetails />
-        <PackageDetails />
         <RhythmverseScreen />
+        <SongDetails />
       </WindowFrame>
     </>
   )

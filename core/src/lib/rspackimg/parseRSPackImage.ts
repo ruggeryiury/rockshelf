@@ -33,7 +33,7 @@ export type RSPackImageSourceValues = (typeof rsPackImage.source)[keyof typeof r
 export type RSPackImageEncryptionStatusNumbers = keyof typeof rsPackImage.encryptionStatus
 export type RSPackImageEncryptionStatusValues = (typeof rsPackImage.encryptionStatus)[keyof typeof rsPackImage.encryptionStatus]
 
-export interface ParsedRSPackImageBufferObject {
+export interface ParsedRSPackImageObject {
   /**
    * The version of the Rockshelf Pack Image. This is used internally to switch between different parser methods based on the version of the file.
    */
@@ -57,9 +57,6 @@ export interface ParsedRSPackImageBufferObject {
    * The display name of the song package on Rockshelf.
    */
   packageName: string
-}
-
-export interface ParsedRSPackImageObject extends ParsedRSPackImageBufferObject {
   /**
    * The creation date of the file in ISO string format.
    */
@@ -69,13 +66,20 @@ export interface ParsedRSPackImageObject extends ParsedRSPackImageBufferObject {
    */
   modifiedDate: string
 }
+
+export interface RSPackImageValidationResults {
+  fileVersion: RSPackImageFileVersionNumbers
+  buffer: Buffer
+  footerSizeLength: number
+}
+
 /**
  * Checks if a provided image file is a valid Rockshelf Pack Image file. Returns `undefined` if the provided image file doesn't have a valid Rockshelf Pack Image file signature found on the file's footer, or an array with the Rockshelf Pack Image file version and a `Buffer` object of the additional data.
  * - - - -
  * @param {FilePathLikeTypes} srcPath The path to the JPEG image to be evaluated.
- * @returns {Promise<[RSPackImageFileVersionNumbers, Buffer] | undefined>}
+ * @returns {Promise<RSPackImageValidationResults | undefined>}
  */
-export const isJPEGRockshelfPackImage = async (srcPath: FilePathLikeTypes): Promise<{ fileVersion: RSPackImageFileVersionNumbers; buffer: Buffer; footerSizeLength: number } | undefined> => {
+export const isJPEGRockshelfPackImage = async (srcPath: FilePathLikeTypes): Promise<RSPackImageValidationResults | undefined> => {
   const src = pathLikeToFilePath(srcPath)
   const reader = await src.openReader()
   const imageFileSize = reader.length
@@ -105,15 +109,18 @@ export const isJPEGRockshelfPackImage = async (srcPath: FilePathLikeTypes): Prom
  * Parses a version 1 Rockshelf Pack Image footer `Buffer` object.
  * - - - -
  * @param {Buffer} rsdatBuffer The footer bytes of a Rockshelf Pack Image as `Buffer`.
- * @returns {Promise<ParsedRSPackImageBufferObject>}
+ * @returns {Promise<ParsedRSPackImageObject>}
  */
-export const parseRSDATBuffer = async (rsdatBuffer: Buffer): Promise<ParsedRSPackImageBufferObject> => {
+export const parseRSDATBuffer = async (rsdatBuffer: Buffer): Promise<ParsedRSPackImageObject> => {
   const reader = BinaryReader.fromBuffer(rsdatBuffer)
   const type = (await reader.readUInt8()) as RSPackImageTypeNumbers
   const source = (await reader.readUInt8()) as RSPackImageSourceNumbers
   const encryptionStatus = (await reader.readUInt8()) as RSPackImageEncryptionStatusNumbers
-
   reader.padding(13)
+  const creationDateLength = await reader.readUInt8()
+  const creationDate = await reader.readASCII(creationDateLength)
+  const modifiedDateLength = await reader.readUInt8()
+  const modifiedDate = await reader.readASCII(modifiedDateLength)
 
   const packageNameLength = await reader.readUInt8()
   const packageName = await reader.readUTF8(packageNameLength)
@@ -123,6 +130,8 @@ export const parseRSDATBuffer = async (rsdatBuffer: Buffer): Promise<ParsedRSPac
     type: (rsPackImage.type[type] as RSPackImageTypeValues | undefined) ?? 'rockshelf',
     source: (rsPackImage.source[source] as RSPackImageSourceValues | undefined) ?? 'stfs',
     encryptionStatus: (rsPackImage.encryptionStatus[encryptionStatus] as RSPackImageEncryptionStatusValues | undefined) ?? 'unknown',
+    creationDate,
+    modifiedDate,
     packageName,
   }
 }
@@ -136,7 +145,6 @@ export const parseRSDATBuffer = async (rsdatBuffer: Buffer): Promise<ParsedRSPac
  */
 export const parseRSPackImageFile = async (srcPath: FilePathLikeTypes): Promise<ParsedRSPackImageObject> => {
   const src = pathLikeToFilePath(srcPath)
-  const stat = await src.stat()
   const results = await isJPEGRockshelfPackImage(srcPath)
   if (!results) throw new Error(`Provided JPEG image file "${src.path}" is not a valid Rockshelf Pack Image file.`)
   const { buffer, fileVersion } = results
@@ -144,10 +152,6 @@ export const parseRSPackImageFile = async (srcPath: FilePathLikeTypes): Promise<
   switch (fileVersion) {
     case 1:
     default:
-      return {
-        ...(await parseRSDATBuffer(buffer)),
-        creationDate: stat.birthtime.toISOString(),
-        modifiedDate: stat.mtime.toISOString(),
-      }
+      return await parseRSDATBuffer(buffer)
   }
 }

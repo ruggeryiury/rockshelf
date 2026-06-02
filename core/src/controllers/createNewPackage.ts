@@ -24,7 +24,6 @@ export interface SerializedRPCS3PackageExtractionObject {
 }
 
 export const createNewPackage = useHandler(async (win, __, options: CreateNewPackageOptions): Promise<SerializedRPCS3PackageExtractionObject | false> => {
-  console.log(options)
   const userConfig = await readUserConfigFile()
   if (!userConfig) {
     sendDialog(win, 'corruptedUserConfig')
@@ -32,6 +31,8 @@ export const createNewPackage = useHandler(async (win, __, options: CreateNewPac
   }
 
   const { packageFolderName, forceEncryption, packages, thumbnail, packageName, selectedSongs } = options
+  const now = new Date()
+  const nowDate = now.toISOString()
 
   let devhdd0: DirPath
   try {
@@ -93,13 +94,12 @@ export const createNewPackage = useHandler(async (win, __, options: CreateNewPac
       else packageSource = 'stfs'
     } else packageSource = 'merged'
 
-    await createRSPackImage(thumbnail !== null ? tempjpgToPath('tempjpg://thumbnail') : rbiconsToPath('rbicons://custom').gotoFile('custom.jpg'), packageFolder.gotoFile('folder.jpg'), { packageName, type: 'rockshelf', source: packageSource, encryptionStatus: forceEncryption === 'enabled' ? 'encrypted' : 'decrypted' })
+    await createRSPackImage(thumbnail !== null ? tempjpgToPath('tempjpg://thumbnail') : rbiconsToPath('rbicons://custom').gotoFile('custom.jpg'), packageFolder.gotoFile('folder.jpg'), { packageName, type: 'rockshelf', source: packageSource, encryptionStatus: forceEncryption === 'enabled' ? 'encrypted' : 'decrypted', creationDate: nowDate, modifiedDate: nowDate })
     sendBuzyLoad(win, { code: 'incrementStep' })
 
     const cache = getPackagesCacheFile()
     const packagesData = await rpcs3GetSongPackagesStatsExtra(devhdd0)
     await cache.write(JSON.stringify(packagesData))
-    const now = new Date()
     await utimes(cache.path, now, now)
     if (packagesData.parsingErrors.length > 0) sendDialog(win, 'parsingErrorsOnPackagesDTA')
 

@@ -41,7 +41,7 @@ export function RBIconsSelector() {
   const { disableButtons, setWindowState } = useWindowState(useShallow((x) => ({ disableButtons: x.disableButtons, setWindowState: x.setWindowState })))
   const { setCreateNewPackageScreenState } = useCreateNewPackageScreenState(useShallow((x) => ({ setCreateNewPackageScreenState: x.setCreateNewPackageScreenState })))
   return (
-    <AnimatedSection id="RBIconsSelector" condition={active !== null} {...animate({ opacity: true })} className="absolute! z-15 h-full max-h-full w-full max-w-full bg-black/90 p-8 backdrop-blur-lg">
+    <AnimatedSection id="RBIconsSelector" condition={active !== null} {...animate({ opacity: true })} className="absolute! z-15 h-full max-h-full w-full max-w-full bg-black p-8">
       <div className="mb-2 flex-row! items-center border-b border-white/25 pb-1">
         <h1 className="font-pentatonicalt! mr-auto text-[2rem] uppercase">{t('selectRBIcons')}</h1>
         <AnimatedDiv condition={selIcon > -1} {...animate({ opacity: true })} className="mr-2 self-start">

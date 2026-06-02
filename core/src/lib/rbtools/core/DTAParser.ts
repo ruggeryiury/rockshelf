@@ -1,10 +1,13 @@
 import type { BinaryToTextEncoding } from 'node:crypto'
 import axios from 'axios'
 import { createHashFromBuffer, type FilePath, pathLikeToFilePath, type AllHashAlgorithms, type FilePathLikeTypes } from 'node-lib'
-import { depackDTAContents, genNumericSongID, genTracksCountArray, isRB3CompatibleDTA, parseDTA, patchDTAEncodingFromDTAFileObject, sortDTA, stringifyDTA, type RB3CompatibleDTAFile, type SongDataCreationObject, type DTAStringifyOptions, type SongSortingTypes, type DTAFileUpdateObject, type DTAFileBatchUpdateObject, createDTA } from '../lib.exports'
+import { depackDTAContents, genNumericSongID, genTracksCountArray, isRB3CompatibleDTA, parseDTA, sortDTA, stringifyDTA, type RB3CompatibleDTAFile, type SongDataCreationObject, type DTAStringifyOptions, type SongSortingTypes, type DTAFileUpdateObject, type DTAFileBatchUpdateObject, createDTA } from '../lib.exports'
 import { RBTools } from './RBTools'
 import { inspect } from 'node:util'
 import { isValidURL } from '../utils.exports'
+import { encode as iconvEncode } from 'iconv-lite'
+import type { WriteStream } from 'node:fs'
+import { temporaryFile } from 'tempy'
 
 export interface DTAParserJSONRepresentation {
   /**
@@ -36,6 +39,7 @@ export class DTAParser {
     const depackedSongs = depackDTAContents(buffer)
     const songs = depackedSongs.map((val) => parseDTA(val))
     const parser = new DTAParser(songs)
+    parser.patchInvalidValues()
     parser.patchCores()
     parser.patchSongsEncodings()
     parser.patchIDs()
@@ -62,10 +66,22 @@ export class DTAParser {
    */
   static async fromURL(url: string): Promise<DTAParser> {
     if (!isValidURL(url)) throw new Error(`Provided DTA URL "${url}" is not a valid HTTP/HTTPS URL`)
-    const response = await axios.get<ArrayBuffer>(url, { responseType: 'arraybuffer' })
+    const response = await axios.get<WriteStream>(url, { responseType: 'stream' })
     if (response.status !== 200) throw new Error(`GET method fetching DTA file data on URL "${url}" returned with status ${response.status.toString()}: ${response.statusText}`)
-    const buf = response.data
-    return DTAParser.fromBuffer(Buffer.from(buf))
+
+    const tempDTA = pathLikeToFilePath(temporaryFile({ extension: 'dta' }))
+
+    response.data.pipe(await tempDTA.createWriteStream())
+
+    await new Promise((resolve, reject) => {
+      response.data.on('finish', resolve)
+      response.data.on('error', reject)
+    })
+
+    const parser = await DTAParser.fromFile(tempDTA)
+    await tempDTA.delete()
+
+    return parser
   }
 
   /**
@@ -247,13 +263,17 @@ export class DTAParser {
    * @returns {Promise<string[]>}
    */
   async applyDXUpdatesOnSongs(deleteNonAppliedUpdates: boolean = true, fetchUpdates: boolean = false): Promise<string[]> {
+    const upatesLinks = ['https://raw.githubusercontent.com/hmxmilohax/rock-band-3-deluxe/refs/heads/develop/_ark/dx/song_updates/official_additional_metadata.dta', 'https://raw.githubusercontent.com/hmxmilohax/rock-band-3-deluxe/refs/heads/develop/_ark/dx/song_updates/unofficial_additional_metadata.dta', 'https://raw.githubusercontent.com/hmxmilohax/rock-band-3-deluxe/refs/heads/develop/_ark/dx/song_updates/metadata_updates.dta', 'https://raw.githubusercontent.com/hmxmilohax/rock-band-3-deluxe/refs/heads/develop/_ark/dx/song_updates/rbhp_upgrades.dta', 'https://raw.githubusercontent.com/hmxmilohax/rock-band-3-deluxe/refs/heads/develop/_ark/dx/song_updates/harms_and_updates.dta', 'https://raw.githubusercontent.com/hmxmilohax/rock-band-3-deluxe/refs/heads/develop/_ark/dx/song_updates/rb_plus_upgrades.dta', 'https://raw.githubusercontent.com/hmxmilohax/rock-band-3-deluxe/refs/heads/develop/_ark/dx/song_updates/vanilla.dta', 'https://raw.githubusercontent.com/hmxmilohax/rock-band-3-deluxe/refs/heads/develop/_ark/dx/song_updates/loading_phrases.dta']
     const localUpdates = RBTools.dbFolder.gotoFile('updates.json')
     if (!localUpdates.exists) fetchUpdates = true
     if (fetchUpdates) {
       const dta = await DTAParser.fromURL('https://raw.githubusercontent.com/hmxmilohax/rock-band-3-deluxe/refs/heads/develop/_ark/dx/song_updates/harmonix_upgrades.dta')
-      for (const link of ['https://raw.githubusercontent.com/hmxmilohax/rock-band-3-deluxe/refs/heads/develop/_ark/dx/song_updates/official_additional_metadata.dta', 'https://raw.githubusercontent.com/hmxmilohax/rock-band-3-deluxe/refs/heads/develop/_ark/dx/song_updates/unofficial_additional_metadata.dta', 'https://raw.githubusercontent.com/hmxmilohax/rock-band-3-deluxe/refs/heads/develop/_ark/dx/song_updates/metadata_updates.dta', 'https://raw.githubusercontent.com/hmxmilohax/rock-band-3-deluxe/refs/heads/develop/_ark/dx/song_updates/harms_and_updates.dta', 'https://raw.githubusercontent.com/hmxmilohax/rock-band-3-deluxe/refs/heads/develop/_ark/dx/song_updates/rbhp_upgrades.dta', 'https://raw.githubusercontent.com/hmxmilohax/rock-band-3-deluxe/refs/heads/develop/_ark/dx/song_updates/rb_plus_upgrades.dta', 'https://raw.githubusercontent.com/hmxmilohax/rock-band-3-deluxe/refs/heads/develop/_ark/dx/song_updates/vanilla.dta', 'https://raw.githubusercontent.com/hmxmilohax/rock-band-3-deluxe/refs/heads/develop/_ark/dx/song_updates/loading_phrases.dta']) {
-        dta.addUpdates((await DTAParser.fromURL(link)).updates)
+      for (const link of upatesLinks) {
+        const parsedData = await DTAParser.fromURL(link)
+        dta.addUpdates(parsedData.updates)
       }
+
+      for (let i = 0; i < dta.updates.length - 1; i++) dta.updates[i].author = 'Harmonix'
       await localUpdates.write(JSON.stringify(dta.updates))
     }
     if (localUpdates.exists) {
@@ -320,8 +340,10 @@ export class DTAParser {
     return appliedUpdSongsIDs
   }
 
+  // #region Patches
+
   /**
-   * Patches song encodings and returns an array with IDs of songs where the encoding patch were applied. This function iterates through all songs' entries inside the `songs` array and searches for non-ASCII characters on every string value of the song. With this, all DTA files used on this class must be imported using `utf-8` encoding, and all characters will be displayed correctly.
+   * Patches song encodings and returns an array with IDs of songs where the encoding patch was applied. This function iterates through all songs' entries inside the `songs` array and searches for non-ASCII characters on every string value of the song. With this, all DTA files used on this class must be imported using `utf-8` encoding, and all characters will be displayed correctly.
    * - - - -
    * @returns {string[]}
    */
@@ -329,7 +351,7 @@ export class DTAParser {
     const patchedSongsID: string[] = []
     const newSongs: RB3CompatibleDTAFile[] = []
     for (const song of this.songs) {
-      const newEnc = patchDTAEncodingFromDTAFileObject(song)
+      const newEnc = 'latin1'
       if (song.encoding === newEnc) newSongs.push(song)
       else {
         patchedSongsID.push(song.id)
@@ -342,7 +364,33 @@ export class DTAParser {
   }
 
   /**
-   * Patches songs with string songs IDs to a numeric one and returns an array with IDs of songs where the ID patch were applied.
+   * Patches invalid values and returns an array with IDs of songs where the patch was applied.
+   * - - - -
+   * @returns {string[]}
+   */
+  patchInvalidValues(): string[] {
+    const patchedSongsID: string[] = []
+    const newSongs: RB3CompatibleDTAFile[] = []
+
+    for (const song of this.songs) {
+      const newSong = { ...song }
+      let isSongPatched: boolean = false
+      if (song.anim_tempo !== 16 && song.anim_tempo !== 32 && song.anim_tempo !== 64) {
+        newSong.anim_tempo = 32
+        isSongPatched = true
+      }
+
+      if (isSongPatched) {
+        patchedSongsID.push(song.id)
+        newSongs.push(newSong)
+      } else newSongs.push(song)
+    }
+
+    return patchedSongsID
+  }
+
+  /**
+   * Patches songs with string songs IDs to a numeric one and returns an array with IDs of songs where the patch was applied.
    * - - - -
    * @returns {string[]}
    */
@@ -362,7 +410,7 @@ export class DTAParser {
   }
 
   /**
-   * Patches the `cores` array of each song on the `songs` array and returns an array with IDs of songs where the encoding patch were applied.
+   * Patches the `cores` array of each song on the `songs` array and returns an array with IDs of songs where the patch was applied.
    * - - - -
    * @returns {string[]}
    */
@@ -404,6 +452,49 @@ export class DTAParser {
     this.songs = newSongs
     return patchedSongsID
   }
+
+  // patchFeaturingTexts(): string[] {
+  //   const patchedSongsID: string[] = []
+  //   const newSongs: RB3CompatibleDTAFile[] = []
+
+  //   const FEAT_REGEX = /\s*(?:\(|\[)?\s*(feat\.?|ft\.?)\s+([^)|\]]+)(?:\)|\])?/i
+
+  //   for (const song of this.songs) {
+  //     let title = song.name.trim()
+  //     let artist = song.artist.trim()
+  //     let featuredArtist: string | null = null
+
+  //     const titleMatch = title.match(FEAT_REGEX)
+
+  //     if (titleMatch) {
+  //       featuredArtist = titleMatch[2].trim()
+
+  //       title = title.replace(titleMatch[0], '').trim()
+  //     }
+
+  //     if (!featuredArtist) {
+  //       const artistMatch = artist.match(FEAT_REGEX)
+
+  //       if (artistMatch) {
+  //         featuredArtist = artistMatch[2].trim()
+
+  //         // Remove featuring from artist
+  //         artist = artist.replace(artistMatch[0], '').trim()
+  //       }
+  //     }
+  //     if (featuredArtist) {
+  //       title = `${title} (ft. ${featuredArtist})`
+  //     }
+
+  //     if (song.name.toLowerCase() !== title.toLowerCase()) patchedSongsID.push(song.id)
+  //     if (song.artist.toLowerCase() !== artist.toLowerCase()) patchedSongsID.push(song.id)
+
+  //     newSongs.push({ ...song, name: title, artist })
+  //   }
+
+  //   this.songs = newSongs
+  //   return patchedSongsID
+  // }
 
   /**
    * Sorts the `songs` array based on a song data value.
@@ -453,7 +544,7 @@ export class DTAParser {
    */
   async export(destPath: FilePathLikeTypes, options?: DTAStringifyOptions): Promise<FilePath> {
     const dest = pathLikeToFilePath(destPath)
-    return await dest.write(this.stringify(options), 'utf8')
+    return await dest.write(iconvEncode(this.stringify(options), 'win1252'))
   }
 
   [inspect.custom]() {

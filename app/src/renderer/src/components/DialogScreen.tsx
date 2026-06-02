@@ -10,6 +10,7 @@ import { useMessageBoxState } from './MessageBox.state'
 import { InstrumentScoreData } from 'rockshelf-core/rbtools'
 import { useMyPackagesScreenState } from './MyPackagesScreen.state'
 import { VERBOSE } from '@renderer/app/rockshelf.globals'
+import { useUserConfigState } from '@renderer/stores/UserConfig.state'
 
 function DialogButton({ children, className, ...props }: ButtonHTMLAttributes<HTMLButtonElement>) {
   return (
@@ -22,12 +23,13 @@ function DialogButton({ children, className, ...props }: ButtonHTMLAttributes<HT
 export function DialogScreen() {
   const { t } = useTranslation()
   const { active, deletePackageIndex, isLoadingAction, setDialogScreenState, resetDialogScreenState } = useDialogScreenState(useShallow((x) => ({ active: x.active, deletePackageIndex: x.deletePackageIndex, isLoadingAction: x.isLoadingAction, setDialogScreenState: x.setDialogScreenState, resetDialogScreenState: x.resetDialogScreenState })))
-  const { setMyPackagesScreenState, packagesCatalogSortBy } = useMyPackagesScreenState(useShallow((x) => ({ setMyPackagesScreenState: x.setMyPackagesScreenState, packagesCatalogSortBy: x.packagesCatalogSortBy })))
+  const { setMyPackagesScreenState } = useMyPackagesScreenState(useShallow((x) => ({ setMyPackagesScreenState: x.setMyPackagesScreenState })))
   const { disableButtons, packages, saveData, setWindowState } = useWindowState(useShallow((x) => ({ disableButtons: x.disableButtons, packages: x.packages, saveData: x.saveData, setWindowState: x.setWindowState })))
   const { setMessageBoxState } = useMessageBoxState(useShallow((x) => ({ setMessageBoxState: x.setMessageBoxState })))
+  const { packagesCatalogSortBy } = useUserConfigState(useShallow((x) => ({ packagesCatalogSortBy: x.packagesCatalogSortBy })))
 
   return (
-    <AnimatedSection id="DialogScreen" condition={active !== null} {...animate({ opacity: true })} className="absolute! z-40 h-full w-full items-center justify-center bg-black/90 p-16 backdrop-blur-lg">
+    <AnimatedSection id="DialogScreen" condition={active !== null} {...animate({ opacity: true })} className="absolute! z-40 h-full w-full items-center justify-center bg-black p-16">
       {active !== null && (
         <>
           <h1 className="mb-2 text-center text-[2rem] uppercase">{t(`${active}Title`)}</h1>

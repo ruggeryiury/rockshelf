@@ -14,11 +14,18 @@ import { useImageCropScreenState } from './ImageCropScreen.state'
 import { PACKAGE_DETAILS_TABS, VERBOSE } from '@renderer/app/rockshelf.globals'
 import { StarsInline } from '@renderer/components.exports'
 
+// Markdown
+import Markdown from 'react-markdown'
+import remarkGfm from 'remark-gfm'
+import rehypeRaw from 'rehype-raw'
+import rehypeSlug from 'rehype-slug'
+
 export function PackageDetails() {
   const { t } = useTranslation()
-  const { selPKG, songsCatalog, setMyPackagesScreenState, songsCatalogSortBy, packageDetailsTab, editPackageName, hasPackageNameChanged, packagesCatalogSortBy, hasPackageFolderNameChanged, editPackageFolderName } = useMyPackagesScreenState(useShallow((x) => ({ selPKG: x.selPKG, songsCatalog: x.songsCatalog, setMyPackagesScreenState: x.setMyPackagesScreenState, songsCatalogSortBy: x.songsCatalogSortBy, packageDetailsTab: x.packageDetailsTab, editPackageName: x.editPackageName, hasPackageNameChanged: x.hasPackageNameChanged, packagesCatalogSortBy: x.packagesCatalogSortBy, hasPackageFolderNameChanged: x.hasPackageFolderNameChanged, editPackageFolderName: x.editPackageFolderName })))
+
+  const { selPKG, songsCatalog, setMyPackagesScreenState, packageDetailsTab, editPackageName, hasPackageNameChanged, hasPackageFolderNameChanged, editPackageFolderName, packageDescription } = useMyPackagesScreenState(useShallow((x) => ({ selPKG: x.selPKG, songsCatalog: x.songsCatalog, setMyPackagesScreenState: x.setMyPackagesScreenState, packageDetailsTab: x.packageDetailsTab, editPackageName: x.editPackageName, hasPackageNameChanged: x.hasPackageNameChanged, hasPackageFolderNameChanged: x.hasPackageFolderNameChanged, editPackageFolderName: x.editPackageFolderName, packageDescription: x.packageDescription })))
   const { disableButtons, saveData, packages, rb3Stats, setWindowState, disableImg } = useWindowState(useShallow((x) => ({ disableButtons: x.disableButtons, saveData: x.saveData, packages: x.packages, rb3Stats: x.rb3Stats, setWindowState: x.setWindowState, disableImg: x.disableImg })))
-  const { mostPlayedInstrument, setUserConfigState } = useUserConfigState(useShallow((x) => ({ mostPlayedInstrument: x.mostPlayedInstrument, setUserConfigState: x.setUserConfigState })))
+  const { packagesCatalogSortBy, songsCatalogSortBy, mostPlayedInstrument, setUserConfigState, getUserConfigState } = useUserConfigState(useShallow((x) => ({ mostPlayedInstrument: x.mostPlayedInstrument, setUserConfigState: x.setUserConfigState, songsCatalogSortBy: x.songsCatalogSortBy, packagesCatalogSortBy: x.packagesCatalogSortBy, getUserConfigState: x.getUserConfigState })))
   const { setMessageBoxState } = useMessageBoxState(useShallow((x) => ({ setMessageBoxState: x.setMessageBoxState })))
   const { setRBIconsSelectorState } = useRBIconsSelectorState(useShallow((x) => ({ setRBIconsSelectorState: x.setRBIconsSelectorState })))
   const { setImageCropScreenState } = useImageCropScreenState(useShallow((x) => ({ setImageCropScreenState: x.setImageCropScreenState })))
@@ -67,21 +74,47 @@ export function PackageDetails() {
     [packageDetailsTab]
   )
 
+  useEffect(
+    function readDescriptionFile() {
+      const start = async () => {
+        if (active) {
+          setMyPackagesScreenState({ packageDescription: 1 })
+          let desc = await window.api.getSongPackageDescriptionFileFromFolder(active.path)
+          if (desc) {
+            const binString = atob(desc)
+
+            // Convert binary string to a typed array of bytes
+            const bytes = Uint8Array.from(binString, (m) => m.codePointAt(0) as number)
+
+            // Decode the bytes back into a UTF-8 text string
+            desc = new TextDecoder().decode(bytes)
+          }
+          setMyPackagesScreenState({ packageDescription: desc })
+        }
+      }
+
+      if (packageDetailsTab === PACKAGE_DETAILS_TABS.DESCRIPTION) void start()
+    },
+    [active, packageDetailsTab]
+  )
+
   return (
-    <AnimatedSection id="PackageDetails" condition={active !== null && songsCatalog !== false} {...animate({ opacity: true })} className="absolute! z-5 h-full max-h-full w-full max-w-full bg-black/90 p-8 backdrop-blur-lg">
+    <AnimatedSection id="PackageDetails" condition={active !== null && songsCatalog !== false} {...animate({ opacity: true })} className="absolute! z-5 h-full max-h-full w-full max-w-full bg-black p-8">
       {active !== null && songsCatalog !== false && (
         <>
           <div className="flex-row! items-center border-b border-white/15 pb-2">
             <img src={disableImg === selPKG ? undefined : active.thumbnailSrc} className="mr-2 h-32 min-h-32 w-32 min-w-32 border-2 border-neutral-700" />
 
             <div className="mr-auto h-full">
-              <h1 className="font-pentatonicalt! text-[2rem]">{active.packageData.packageName}</h1>
+              <h1 className="font-pentatonicalt! text-[2.25rem]">{active.packageData.packageName}</h1>
               <p>{t(active.songs.length === 1 ? 'songsCount' : 'songsCountPlural', { count: active.songs.length })}</p>
-              <p>{t('sortText', { sortType: t(`sort${uppercaseFirstLetter(songsCatalogSortBy)}`) })}</p>
+              <p>
+                <TransComponent i18nKey="sortText" values={{ sortType: songsCatalogSortBy === 'difficulty' ? t(`sortText${uppercaseFirstLetter(mostPlayedInstrument)}Diff`) : t(`sort${uppercaseFirstLetter(songsCatalogSortBy)}`) }} />
+              </p>
             </div>
             <button
               disabled={disableButtons}
-              className="w-fit self-start rounded-xs border border-neutral-700 bg-neutral-900 px-1 py-0.5 text-xs! uppercase duration-100 hover:bg-neutral-700 active:bg-neutral-600 disabled:text-neutral-700 disabled:hover:bg-neutral-900"
+              className="w-fit self-start rounded-xs border border-neutral-700 bg-neutral-900 px-1 py-0.5 text-xs! text-nowrap uppercase duration-100 hover:bg-neutral-700 active:bg-neutral-600 disabled:text-neutral-700 disabled:hover:bg-neutral-900"
               onClick={async () => {
                 setMyPackagesScreenState({ selPKG: -1, songsCatalog: false, packageDetailsTab: 0, editPackageName: '', hasPackageNameChanged: false, hasPackageFolderNameChanged: false, isArtworkLoading: true, artworkURL: '' })
               }}
@@ -99,6 +132,17 @@ export function PackageDetails() {
             >
               {t('songs')}
             </button>
+            {typeof active === 'object' && !active.official && (
+              <button
+                disabled={disableButtons}
+                className={clsx(packageDetailsTab === PACKAGE_DETAILS_TABS.DESCRIPTION ? 'bg-yellow-500 text-black/90 hover:bg-yellow-400 active:bg-yellow-300' : 'hover:text-neutral-300 active:text-neutral-200', 'h-full w-fit justify-center px-2 duration-200')}
+                onClick={() => {
+                  setMyPackagesScreenState({ packageDetailsTab: PACKAGE_DETAILS_TABS.DESCRIPTION })
+                }}
+              >
+                {t('description')}
+              </button>
+            )}
             <button
               disabled={disableButtons}
               className={clsx(packageDetailsTab === PACKAGE_DETAILS_TABS.DETAILS ? 'bg-yellow-500 text-black/90 hover:bg-yellow-400 active:bg-yellow-300' : 'hover:text-neutral-300 active:text-neutral-200', 'h-full w-fit justify-center px-2 duration-200')}
@@ -297,6 +341,56 @@ export function PackageDetails() {
                 </>
               )}
             </>
+          )}
+
+          {packageDetailsTab === PACKAGE_DETAILS_TABS.DESCRIPTION && (
+            <div className="h-full w-full overflow-y-auto">
+              {packageDescription === undefined && (
+                <>
+                  <p className="mb-2 text-neutral-500 italic">
+                    <TransComponent i18nKey="noDescriptionForPackageText" />
+                  </p>
+                  <button
+                    disabled={disableButtons}
+                    className="w-fit self-start rounded-xs border border-neutral-700 bg-neutral-900 px-1 py-0.5 text-xs! uppercase duration-100 hover:bg-neutral-700 active:bg-neutral-600 disabled:text-neutral-700 disabled:hover:bg-neutral-900"
+                    onClick={async () => {
+                      await window.api.openFolderInExplorer(active.path)
+                    }}
+                  >
+                    {t('openPackageFolder')}
+                  </button>
+                </>
+              )}
+              {packageDescription === 1 && (
+                <>
+                  <p className="mb-2 text-neutral-500 italic">{t('loadingPackageDescription')}</p>
+                </>
+              )}
+              {typeof packageDescription === 'string' && (
+                <div className="markdown-body h-fill zoom-90 pr-4 select-text">
+                  <Markdown
+                    remarkPlugins={[remarkGfm]}
+                    rehypePlugins={[rehypeRaw, [rehypeSlug, { prefix: 'MD__' }]]}
+                    components={{
+                      a: ({ href, children }) => {
+                        const isHeaderLink = href && href.startsWith('#') ? true : false
+                        const outsideLinkProps = {
+                          target: '_blank',
+                          rel: 'noreferrer',
+                        }
+                        return (
+                          <a href={href && isHeaderLink ? `#MD__${href.slice(1)}` : href} {...(!isHeaderLink ? outsideLinkProps : {})}>
+                            {children}
+                          </a>
+                        )
+                      },
+                    }}
+                  >
+                    {packageDescription}
+                  </Markdown>
+                </div>
+              )}
+            </div>
           )}
 
           {packageDetailsTab === PACKAGE_DETAILS_TABS.DETAILS && (
@@ -568,7 +662,15 @@ export function PackageDetails() {
                       className={clsx('font-pentatonic mr-2 flex-row! items-center rounded-xs border border-neutral-800 px-2 py-1 text-xs! uppercase duration-200 last:mr-0', songsCatalogSortBy === 'title' ? 'bg-neutral-400 text-neutral-900 hover:bg-neutral-300 active:bg-neutral-200' : 'bg-neutral-900 hover:bg-neutral-800 active:bg-neutral-700')}
                       onClick={async () => {
                         setWindowState({ disableButtons: true })
-                        setMyPackagesScreenState({ songsCatalogSortBy: 'title', songsCatalog: false })
+                        setUserConfigState({ songsCatalogSortBy: 'title' })
+                        const newConfig = getUserConfigState()
+                        try {
+                          await window.api.saveUserConfigFile(newConfig)
+                          setMyPackagesScreenState({ songsCatalog: false })
+                        } catch (err) {
+                          if (err instanceof Error) setWindowState({ err })
+                        }
+                        setWindowState({ disableButtons: false })
                       }}
                     >
                       {t('sortByTitle')}
@@ -578,7 +680,15 @@ export function PackageDetails() {
                       className={clsx('font-pentatonic mr-2 flex-row! items-center rounded-xs border border-neutral-800 px-2 py-1 text-xs! uppercase duration-200 last:mr-0', songsCatalogSortBy === 'artist' ? 'bg-neutral-400 text-neutral-900 hover:bg-neutral-300 active:bg-neutral-200' : 'bg-neutral-900 hover:bg-neutral-800 active:bg-neutral-700')}
                       onClick={async () => {
                         setWindowState({ disableButtons: true })
-                        setMyPackagesScreenState({ songsCatalogSortBy: 'artist', songsCatalog: false })
+                        setUserConfigState({ songsCatalogSortBy: 'artist' })
+                        const newConfig = getUserConfigState()
+                        try {
+                          await window.api.saveUserConfigFile(newConfig)
+                          setMyPackagesScreenState({ songsCatalog: false })
+                        } catch (err) {
+                          if (err instanceof Error) setWindowState({ err })
+                        }
+                        setWindowState({ disableButtons: false })
                       }}
                     >
                       {t('sortByArtist')}
@@ -588,7 +698,15 @@ export function PackageDetails() {
                       className={clsx('font-pentatonic mr-2 flex-row! items-center rounded-xs border border-neutral-800 px-2 py-1 text-xs! uppercase duration-200 last:mr-0', songsCatalogSortBy === 'genre' ? 'bg-neutral-400 text-neutral-900 hover:bg-neutral-300 active:bg-neutral-200' : 'bg-neutral-900 hover:bg-neutral-800 active:bg-neutral-700')}
                       onClick={async () => {
                         setWindowState({ disableButtons: true })
-                        setMyPackagesScreenState({ songsCatalogSortBy: 'genre', songsCatalog: false })
+                        setUserConfigState({ songsCatalogSortBy: 'genre' })
+                        const newConfig = getUserConfigState()
+                        try {
+                          await window.api.saveUserConfigFile(newConfig)
+                          setMyPackagesScreenState({ songsCatalog: false })
+                        } catch (err) {
+                          if (err instanceof Error) setWindowState({ err })
+                        }
+                        setWindowState({ disableButtons: false })
                       }}
                     >
                       {t('sortByGenre')}
@@ -598,7 +716,15 @@ export function PackageDetails() {
                       className={clsx('font-pentatonic mr-2 flex-row! items-center rounded-xs border border-neutral-800 px-2 py-1 text-xs! uppercase duration-200 last:mr-0', songsCatalogSortBy === 'decade' ? 'bg-neutral-400 text-neutral-900 hover:bg-neutral-300 active:bg-neutral-200' : 'bg-neutral-900 hover:bg-neutral-800 active:bg-neutral-700')}
                       onClick={async () => {
                         setWindowState({ disableButtons: true })
-                        setMyPackagesScreenState({ songsCatalogSortBy: 'decade', songsCatalog: false })
+                        setUserConfigState({ songsCatalogSortBy: 'decade' })
+                        const newConfig = getUserConfigState()
+                        try {
+                          await window.api.saveUserConfigFile(newConfig)
+                          setMyPackagesScreenState({ songsCatalog: false })
+                        } catch (err) {
+                          if (err instanceof Error) setWindowState({ err })
+                        }
+                        setWindowState({ disableButtons: false })
                       }}
                     >
                       {t('sortByDecade')}
@@ -608,17 +734,51 @@ export function PackageDetails() {
                       className={clsx('font-pentatonic mr-2 flex-row! items-center rounded-xs border border-neutral-800 px-2 py-1 text-xs! uppercase duration-200 last:mr-0', songsCatalogSortBy === 'yearReleased' ? 'bg-neutral-400 text-neutral-900 hover:bg-neutral-300 active:bg-neutral-200' : 'bg-neutral-900 hover:bg-neutral-800 active:bg-neutral-700')}
                       onClick={async () => {
                         setWindowState({ disableButtons: true })
-                        setMyPackagesScreenState({ songsCatalogSortBy: 'yearReleased', songsCatalog: false })
+                        setUserConfigState({ songsCatalogSortBy: 'yearReleased' })
+                        const newConfig = getUserConfigState()
+                        try {
+                          await window.api.saveUserConfigFile(newConfig)
+                          setMyPackagesScreenState({ songsCatalog: false })
+                        } catch (err) {
+                          if (err instanceof Error) setWindowState({ err })
+                        }
+                        setWindowState({ disableButtons: false })
                       }}
                     >
                       {t('sortByYearReleased')}
                     </button>
                     <button
                       disabled={disableButtons}
+                      className={clsx('font-pentatonic mr-2 flex-row! items-center rounded-xs border border-neutral-800 px-2 py-1 text-xs! uppercase duration-200 last:mr-0', songsCatalogSortBy === 'songRating' ? 'bg-neutral-400 text-neutral-900 hover:bg-neutral-300 active:bg-neutral-200' : 'bg-neutral-900 hover:bg-neutral-800 active:bg-neutral-700')}
+                      onClick={async () => {
+                        setWindowState({ disableButtons: true })
+                        setUserConfigState({ songsCatalogSortBy: 'songRating' })
+                        const newConfig = getUserConfigState()
+                        try {
+                          await window.api.saveUserConfigFile(newConfig)
+                          setMyPackagesScreenState({ songsCatalog: false })
+                        } catch (err) {
+                          if (err instanceof Error) setWindowState({ err })
+                        }
+                        setWindowState({ disableButtons: false })
+                      }}
+                    >
+                      {t('sortBySongRating')}
+                    </button>
+                    <button
+                      disabled={disableButtons}
                       className={clsx('font-pentatonic mr-2 flex-row! items-center rounded-xs border border-neutral-800 px-2 py-1 text-xs! uppercase duration-200 last:mr-0', songsCatalogSortBy === 'difficulty' ? 'bg-neutral-400 text-neutral-900 hover:bg-neutral-300 active:bg-neutral-200' : 'bg-neutral-900 hover:bg-neutral-800 active:bg-neutral-700')}
                       onClick={async () => {
                         setWindowState({ disableButtons: true })
-                        setMyPackagesScreenState({ songsCatalogSortBy: 'difficulty', songsCatalog: false })
+                        setUserConfigState({ songsCatalogSortBy: 'difficulty' })
+                        const newConfig = getUserConfigState()
+                        try {
+                          await window.api.saveUserConfigFile(newConfig)
+                          setMyPackagesScreenState({ songsCatalog: false })
+                        } catch (err) {
+                          if (err instanceof Error) setWindowState({ err })
+                        }
+                        setWindowState({ disableButtons: false })
                       }}
                     >
                       <img className="mr-1 w-4" src={`rbicons://instrument-icons-${mostPlayedInstrument.toLowerCase()}`} />

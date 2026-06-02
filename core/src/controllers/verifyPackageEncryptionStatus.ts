@@ -3,7 +3,7 @@ import { useHandler } from '../core.exports'
 import type { RPCS3SongPackagesObjectExtra, RSPackImageEncryptionStatusValues } from '../lib.exports'
 import { EDATFile, MOGGFile } from '../lib/rbtools'
 
-export const verifyPackageEncryptionStatus = useHandler(async (win, _, packageDetails: RPCS3SongPackagesObjectExtra) => {
+export const verifyPackageEncryptionStatus = useHandler(async (win, _, packageDetails: RPCS3SongPackagesObjectExtra): Promise<Exclude<RSPackImageEncryptionStatusValues, 'unknown'>> => {
   const packagePath = pathLikeToDirPath(packageDetails.path)
 
   if (packageDetails.packageData.encryptionStatus === 'encrypted' || packageDetails.packageData.encryptionStatus === 'decrypted') return packageDetails.packageData.encryptionStatus

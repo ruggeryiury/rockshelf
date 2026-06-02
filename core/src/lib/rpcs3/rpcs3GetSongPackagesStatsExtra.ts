@@ -1,4 +1,4 @@
-import { createHashFromBuffer, DirPath, FilePath, MyObject, parseReadableBytesSize, pathLikeToDirPath, type DirPathLikeTypes } from 'node-lib'
+import { createHashFromBuffer, DirPath, MyObject, parseReadableBytesSize, type DirPathLikeTypes } from 'node-lib'
 import { useDefaultOptions } from 'use-default-options'
 import { getRB1USRDIR, getRB3USRDIR, getRockshelfModuleRootDir } from '../../core.exports'
 import { createRSPackImage, parseRSPackImageFile, type ParsedRSPackImageObject } from '../../lib.exports'
@@ -50,23 +50,6 @@ export interface RPCS3SongPackagesObjectExtra {
    */
   songs: RB3CompatibleDTAFile[]
   /**
-   * An array with all song's entry IDs.
-   */
-  entriesIDs: string[]
-  /**
-   * An array with all song's internal names.
-   */
-  songnames: string[]
-  /**
-   * An array with all song's IDs (can have non-numerical IDs).
-   */
-  songIDs: (string | number)[]
-  // manifest: string
-  /**
-   * An array with relative paths of all package files (excluding the song package's DTA file itself).
-   */
-  packageFiles: string[]
-  /**
    * An object with values that will be used exclusively on Rockshelf.
    */
   packageData: ParsedRSPackImageObject
@@ -74,8 +57,6 @@ export interface RPCS3SongPackagesObjectExtra {
    * An object with known properties of the official song package where the installed song package belongs to. The value might be `undefined` if the song package contents hash does not match any official song package contents hash.
    */
   official?: OfficialSongPackageStats
-
-  // Rockshelf
 }
 
 export interface RPCS3SongPackagesDataExtra {
@@ -141,7 +122,7 @@ export interface RPCS3SongPackagesDataExtra {
 export const rpcs3GetSongPackagesStatsExtra = async (devhdd0Path: DirPathLikeTypes, options?: RPCS3SongPackageStatsOptions): Promise<RPCS3SongPackagesDataExtra> => {
   const { excludeRB3Songs } = useDefaultOptions<RPCS3SongPackageStatsOptions>({ excludeRB3Songs: false }, options)
   const devhdd0 = isRPCS3Devhdd0PathValid(devhdd0Path)
-  const now = new Date()
+  const nowDate = new Date().toISOString()
 
   const packages: RPCS3SongPackagesObjectExtra[] = []
   const parsingErrors: string[] = []
@@ -160,10 +141,6 @@ export const rpcs3GetSongPackagesStatsExtra = async (devhdd0Path: DirPathLikeTyp
       devklic: EDATFile.genDevKLicHash('_ark/songs'),
       contentsHash: Buffer.alloc(28).toString('hex'),
       songs: rb3SongsJSON,
-      entriesIDs: rb3SongsJSON.map((song) => song.id).toSorted(),
-      songnames: rb3SongsJSON.map((song) => song.songname).toSorted(),
-      songIDs: rb3SongsJSON.map((song) => song.song_id).toSorted(),
-      packageFiles: [],
       packageData: {
         fileVersion: 1,
         packageName: 'Rock Band 3',
@@ -214,22 +191,27 @@ export const rpcs3GetSongPackagesStatsExtra = async (devhdd0Path: DirPathLikeTyp
           continue
         }
 
+        await parsedData.applyDXUpdatesOnSongs(true)
         parsedData.sort('ID')
 
         const devklic = EDATFile.genDevKLicHash(packagePath.name)
-        const { manifest, packageSize, packageFiles } = await rpcs3GenSongPackageManifest(packagePath)
+        const { manifest, packageSize } = await rpcs3GenSongPackageManifest(packagePath)
         const contentsHash = createHashFromBuffer(Buffer.from(manifest))
         const official = getOfficialSongPackageStatsFromHash('extractedRPCS3', contentsHash)
         if (official?.isDuplicatedForRB3) continue
+
+        if (official) {
+          for (const song of parsedData.songs) {
+            song.multitrack = 'full'
+            song.author = song.author ?? 'Harmonix'
+          }
+        }
         rb3PackagesCount++
         rb3PackagesSongsCount += parsedData.songs.length
         allPackagesSize += packageSize
 
         const songsCount = parsedData.songs.length
         if (songsCount === 0) continue
-        const entriesIDs = parsedData.songs.map((song) => song.id).toSorted()
-        const songnames = parsedData.songs.map((song) => song.songname).toSorted()
-        const songIDs = parsedData.songs.map((song) => song.song_id).toSorted()
 
         const thumbnailSrc = packagePath.gotoFile('folder.jpg')
         let packageData: ParsedRSPackImageObject
@@ -240,20 +222,20 @@ export const rpcs3GetSongPackagesStatsExtra = async (devhdd0Path: DirPathLikeTyp
             const texture = new TextureFile(packagePath.gotoFile(`songs/${onlySong.songname}/gen/${onlySong.songname}_keep.png_ps3`))
             if (texture.path.exists) {
               const temp = await texture.convertToImage(temporaryFile({ extension: '.jpg' }), 'jpg')
-              packageData = { fileVersion: 1, source: 'merged', type: 'other', encryptionStatus: 'unknown', packageName: `${onlySong.name} - ${onlySong.artist}`, creationDate: now.toISOString(), modifiedDate: now.toISOString() }
+              packageData = { fileVersion: 1, source: 'merged', type: 'other', encryptionStatus: 'unknown', packageName: `${onlySong.name} - ${onlySong.artist}`, creationDate: nowDate, modifiedDate: nowDate }
               await createRSPackImage(temp.path, thumbnailSrc, packageData)
               await temp.path.delete()
             } else {
               const newPackageImage = getRockshelfModuleRootDir().gotoFile(`bin/icons/custom.jpg`)
 
-              packageData = { fileVersion: 1, source: 'merged', type: 'other', encryptionStatus: 'unknown', packageName: packagePath.name, creationDate: now.toISOString(), modifiedDate: now.toISOString() }
+              packageData = { fileVersion: 1, source: 'merged', type: 'other', encryptionStatus: 'unknown', packageName: packagePath.name, creationDate: nowDate, modifiedDate: nowDate }
               await createRSPackImage(newPackageImage, thumbnailSrc, packageData)
             }
           } else {
             let newPackageImage = getRockshelfModuleRootDir().gotoFile(`bin/icons/${official?.code}.jpg`)
             if (!newPackageImage.exists) newPackageImage = getRockshelfModuleRootDir().gotoFile(`bin/icons/custom.jpg`)
 
-            packageData = { fileVersion: 1, source: 'merged', type: 'other', encryptionStatus: 'unknown', packageName: official?.name || packagePath.name, creationDate: now.toISOString(), modifiedDate: now.toISOString() }
+            packageData = { fileVersion: 1, source: 'merged', type: 'other', encryptionStatus: 'unknown', packageName: official?.name || packagePath.name, creationDate: nowDate, modifiedDate: nowDate }
             await createRSPackImage(newPackageImage, thumbnailSrc, packageData)
           }
         } else {
@@ -271,10 +253,6 @@ export const rpcs3GetSongPackagesStatsExtra = async (devhdd0Path: DirPathLikeTyp
           devklic,
           contentsHash,
           songs: parsedData.songs,
-          entriesIDs,
-          songnames,
-          songIDs,
-          packageFiles,
           packageData,
           official,
         })
@@ -307,9 +285,16 @@ export const rpcs3GetSongPackagesStatsExtra = async (devhdd0Path: DirPathLikeTyp
         parsedData.sort('ID')
 
         const devklic = EDATFile.genDevKLicHash(packagePath.name)
-        const { manifest, packageSize, packageFiles } = await rpcs3GenSongPackageManifest(packagePath)
+        const { manifest, packageSize } = await rpcs3GenSongPackageManifest(packagePath)
         const contentsHash = createHashFromBuffer(Buffer.from(manifest))
         const official = getOfficialSongPackageStatsFromHash('extractedRPCS3', contentsHash)
+
+        if (official) {
+          for (const song of parsedData.songs) {
+            song.multitrack = 'full'
+            song.author = song.author ?? 'Harmonix'
+          }
+        }
 
         // Comment the next line if you want to see the extracted RPCS3 of unknown RB1 packages
         if (!official) continue
@@ -321,9 +306,6 @@ export const rpcs3GetSongPackagesStatsExtra = async (devhdd0Path: DirPathLikeTyp
 
         const songsCount = parsedData.songs.length
         if (songsCount === 0) continue
-        const entriesIDs = parsedData.songs.map((song) => song.id).toSorted()
-        const songnames = parsedData.songs.map((song) => song.songname).toSorted()
-        const songIDs = parsedData.songs.map((song) => song.song_id).toSorted()
 
         const thumbnailSrc = packagePath.gotoFile('folder.jpg')
         let packageData: ParsedRSPackImageObject
@@ -334,20 +316,20 @@ export const rpcs3GetSongPackagesStatsExtra = async (devhdd0Path: DirPathLikeTyp
             const texture = new TextureFile(packagePath.gotoFile(`songs/${onlySong.songname}/gen/${onlySong.songname}_keep.png_ps3`))
             if (texture.path.exists) {
               const temp = await texture.convertToImage(temporaryFile({ extension: '.jpg' }), 'jpg')
-              packageData = { fileVersion: 1, source: 'merged', type: 'other', encryptionStatus: 'unknown', packageName: `${onlySong.name} - ${onlySong.artist}`, creationDate: now.toISOString(), modifiedDate: now.toISOString() }
+              packageData = { fileVersion: 1, source: 'merged', type: 'other', encryptionStatus: 'unknown', packageName: `${onlySong.name} - ${onlySong.artist}`, creationDate: nowDate, modifiedDate: nowDate }
               await createRSPackImage(temp.path, thumbnailSrc, packageData)
               await temp.path.delete()
             } else {
               const newPackageImage = getRockshelfModuleRootDir().gotoFile(`bin/icons/custom.jpg`)
 
-              packageData = { fileVersion: 1, source: 'merged', type: 'other', encryptionStatus: 'unknown', packageName: packagePath.name, creationDate: now.toISOString(), modifiedDate: now.toISOString() }
+              packageData = { fileVersion: 1, source: 'merged', type: 'other', encryptionStatus: 'unknown', packageName: packagePath.name, creationDate: nowDate, modifiedDate: nowDate }
               await createRSPackImage(newPackageImage, thumbnailSrc, packageData)
             }
           } else {
             let newPackageImage = getRockshelfModuleRootDir().gotoFile(`bin/icons/${official?.code}.jpg`)
             if (!newPackageImage.exists) newPackageImage = getRockshelfModuleRootDir().gotoFile(`bin/icons/custom.jpg`)
 
-            packageData = { fileVersion: 1, source: 'merged', type: 'other', encryptionStatus: 'unknown', packageName: official?.name || packagePath.name, creationDate: now.toISOString(), modifiedDate: now.toISOString() }
+            packageData = { fileVersion: 1, source: 'merged', type: 'other', encryptionStatus: 'unknown', packageName: official?.name || packagePath.name, creationDate: nowDate, modifiedDate: nowDate }
             await createRSPackImage(newPackageImage, thumbnailSrc, packageData)
           }
         } else {
@@ -365,10 +347,6 @@ export const rpcs3GetSongPackagesStatsExtra = async (devhdd0Path: DirPathLikeTyp
           devklic,
           contentsHash,
           songs: parsedData.songs,
-          entriesIDs,
-          songnames,
-          songIDs,
-          packageFiles,
           packageData,
           official,
         })

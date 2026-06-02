@@ -2,7 +2,7 @@ import { DirPath } from 'node-lib'
 import { getPackagesCacheFile, sendDialog, sendMessageBox, useHandler } from '../core.exports'
 import { editRSPackImage, type RPCS3SongPackagesDataExtra } from '../lib.exports'
 
-export const useSongArtworkFromUniqueSongPKG = useHandler(async (win, __, pkgIndex: number) => {
+export const useSongArtworkFromUniqueSongPKG = useHandler(async (win, __, pkgIndex: number): Promise<boolean> => {
   const cache = getPackagesCacheFile()
   if (!cache.exists) {
     sendDialog(win, 'corruptedPackagesCache')

@@ -2,11 +2,11 @@ import { pathLikeToDirPath, pathLikeToFilePath } from 'node-lib'
 import { getLocaleStringFromRenderer, sendMessageBox, useHandler } from '../core.exports'
 import type { RPCS3SongPackagesObjectExtra } from '../lib.exports'
 import type { RB3CompatibleDTAFile } from '../lib/rbtools/lib.exports'
-import { EDATFile, MIDIFile } from '../lib/rbtools'
+import { EDATFile } from '../lib/rbtools'
 import { dialog } from 'electron'
 import { temporaryFile } from 'tempy'
 
-export const extractMIDIFromSong = useHandler(async (win, _, packageDetails: RPCS3SongPackagesObjectExtra, song: RB3CompatibleDTAFile) => {
+export const extractMIDIFromSong = useHandler(async (win, _, packageDetails: RPCS3SongPackagesObjectExtra, song: RB3CompatibleDTAFile): Promise<boolean> => {
   const packPath = pathLikeToDirPath(packageDetails.path)
 
   const edat = new EDATFile(packPath.gotoFile(`songs/${song.songname}/${song.songname}.mid.edat`))

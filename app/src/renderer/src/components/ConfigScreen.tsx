@@ -17,7 +17,7 @@ export function ConfigScreen() {
   const { disableButtons, saveData, setWindowState } = useWindowState(useShallow((x) => ({ disableButtons: x.disableButtons, saveData: x.saveData, setWindowState: x.setWindowState })))
   const setMessageBoxState = useMessageBoxState((x) => x.setMessageBoxState)
   return (
-    <AnimatedSection id="ConfigScreen" condition={active} {...animate({ opacity: true })} className="absolute! z-3 h-full max-h-full w-full max-w-full bg-black/90 p-8 backdrop-blur-lg">
+    <AnimatedSection id="ConfigScreen" condition={active} {...animate({ opacity: true })} className="absolute! z-3 h-full max-h-full w-full max-w-full bg-black p-8">
       <div className="mb-2 flex-row! items-center border-b border-white/25 pb-1">
         <h1 className="font-pentatonicalt! mr-auto text-[2rem] uppercase">{t('configurations')}</h1>
         <button
@@ -123,7 +123,7 @@ export function ConfigScreen() {
             </button>
           </div>
 
-          <div className="group rounded-xs p-2 duration-200 hover:bg-white/5">
+          <div className="group mb-2 rounded-xs p-2 duration-200 hover:bg-white/5">
             <h1 className="mb-1 uppercase">{t('changeInstrumentScores')}</h1>
             <p className="mb-4 text-xs italic">
               <TransComponent i18nKey="changeInstrumentScoresDesc" />

@@ -1,0 +1,8530 @@
+(
+   'iwannadancewithsomebody'
+   (
+      'name'
+      "I Wanna Dance with Somebody (Who Loves Me)"
+   )
+   (
+      'artist'
+      "Whitney Houston"
+   )
+   ('master' 1)
+   ('context' 2000)
+   (
+      'song'
+      ('name' 'songs/iwannadancewithsomebody/iwannadancewithsomebody')
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1)
+            )
+            (
+               'bass'
+               (2 3)
+            )
+            (
+               'guitar'
+               (4 5)
+            )
+            (
+               'vocals'
+               (6 7)
+            )
+         )
+      )
+      ('vocal_parts' 3)
+      (
+         'pans'
+         (-1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0)
+      )
+      (
+         'vols'
+         (-0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 1 1 -1 -1 -1 -1)
+      )
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+      ('midi_file' 'songs/iwannadancewithsomebody/iwannadancewithsomebody.mid')
+   )
+   ('song_scroll_speed' 2300)
+   ('bank' 'sfx/tambourine_bank.milo')
+   (drum_bank sfx/kit05_bank.milo)
+   ('anim_tempo' 32)
+   ('song_length' 282749)
+   ('preview' 66628 96628)
+   (
+      'rank'
+      ('drum' 337)
+      ('guitar' 218)
+      ('bass' 230)
+      ('vocals' 425)
+      ('band' 264)
+   )
+   ('genre' 'popdanceelectronic')
+   (
+      'author'
+      "Harmonix, Rhythm Authors"
+   )
+   ('vocal_gender' 'female')
+   ('version' 0)
+   ('format' 4)
+   ('album_art' 'TRUE')
+   ('year_released' 1987)
+   ('rating' 1)
+   ('song_id' 1020313)
+   ('tuning_offset_cents' 0.0)
+   ('game_origin' 'rb4_dlc')
+   ('album_track_number' 1)
+   (
+      'album_name'
+      "Whitney"
+   )
+   ('decade' 'the80s')
+   ('downloaded' 'TRUE')
+   ('base_points' 0)
+   ('vocal_tonic_note' 6)
+)
+
+(
+   'myowneyes'
+   (
+      'name'
+      "My Own Eyes"
+   )
+   (
+      'artist'
+      "\qWeird Al\q Yankovic"
+   )
+   ('master' 1)
+   ('context' 2000)
+   (
+      'song'
+      ('name' 'songs/myowneyes/myowneyes')
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1)
+            )
+            (
+               'bass'
+               (2)
+            )
+            (
+               'guitar'
+               (3 4)
+            )
+            (
+               'vocals'
+               (5 6)
+            )
+         )
+      )
+      ('vocal_parts' 3)
+      (
+         'pans'
+         (-1.0 1.0 0.0 -1.0 1.0 -1.0 1.0 -1.0 1.0)
+      )
+      (
+         'vols'
+         (-0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0)
+      )
+      (
+         'cores'
+         (-1 -1 -1 1 1 -1 -1 -1 -1)
+      )
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+      ('midi_file' 'songs/myowneyes/myowneyes.mid')
+   )
+   ('song_scroll_speed' 2300)
+   ('bank' 'sfx/tambourine_bank.milo')
+   ('band_fail_cue' 'band_fail_rock.cue')
+   ('anim_tempo' 64)
+   ('song_length' 225835)
+   ('preview' 44729 74729)
+   (
+      'rank'
+      ('drum' 247)
+      ('guitar' 179)
+      ('bass' 186)
+      ('vocals' 229)
+      ('band' 245)
+   )
+   ('genre' 'novelty')
+   (
+      'author'
+      "Harmonix, Rhythm Authors"
+   )
+   ('vocal_gender' 'male')
+   ('version' 0)
+   ('format' 4)
+   ('album_art' 'TRUE')
+   ('year_released' 2014)
+   ('rating' 2)
+   ('song_id' 1020023)
+   ('tuning_offset_cents' 0.0)
+   ('game_origin' 'rb4_dlc')
+   ('album_track_number' 6)
+   (
+      'album_name'
+      "Mandatory Fun"
+   )
+   ('decade' 'the10s')
+   ('downloaded' 'TRUE')
+   ('base_points' 0)
+   ('vocal_tonic_note' 9)
+)
+
+(
+   'dopenose'
+   (
+      'name'
+      "Dope Nose"
+   )
+   (
+      'artist'
+      "Weezer"
+   )
+   ('master' 1)
+   ('context' 2000)
+   (
+      'song'
+      ('name' 'songs/dopenose/dopenose')
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1)
+            )
+            (
+               'bass'
+               (2 3)
+            )
+            (
+               'guitar'
+               (4 5)
+            )
+            (
+               'vocals'
+               (6 7)
+            )
+         )
+      )
+      ('vocal_parts' 3)
+      ('crowd_channels' 10 11)
+      (
+         'pans'
+         (-1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -2.5 2.5)
+      )
+      (
+         'vols'
+         (-0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -3.0 -3.0)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 1 1 -1 -1 -1 -1 -1 -1)
+      )
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+      ('midi_file' 'songs/dopenose/dopenose.mid')
+   )
+   ('song_scroll_speed' 2300)
+   ('bank' 'sfx/tambourine_bank.milo')
+   ('band_fail_cue' 'band_fail_heavy.cue')
+   ('anim_tempo' 32)
+   ('song_length' 141080)
+   ('preview' 7070 37070)
+   (
+      'rank'
+      ('drum' 340)
+      ('guitar' 275)
+      ('bass' 294)
+      ('vocals' 281)
+      ('band' 270)
+   )
+   ('genre' 'alternative')
+   (
+      'author'
+      "Harmonix, Rhythm Authors"
+   )
+   ('vocal_gender' 'male')
+   ('version' 0)
+   ('format' 4)
+   ('album_art' 'TRUE')
+   ('year_released' 2002)
+   ('rating' 2)
+   ('song_id' 1020094)
+   ('tuning_offset_cents' 0.0)
+   ('game_origin' 'rb4_dlc')
+   ('album_track_number' 2)
+   (
+      'album_name'
+      "Maladroit"
+   )
+   ('decade' 'the00s')
+   ('downloaded' 'TRUE')
+   ('base_points' 0)
+   ('vocal_tonic_note' 10)
+)
+
+(
+   'riptide'
+   (
+      'name'
+      "Riptide"
+   )
+   (
+      'artist'
+      "Vance Joy"
+   )
+   ('master' 1)
+   ('context' 2000)
+   (
+      'song'
+      ('name' 'songs/riptide/riptide')
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1)
+            )
+            (
+               'bass'
+               (2 3)
+            )
+            (
+               'guitar'
+               (4 5)
+            )
+            (
+               'vocals'
+               (6 7)
+            )
+         )
+      )
+      ('vocal_parts' 3)
+      (
+         'pans'
+         (-1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0)
+      )
+      (
+         'vols'
+         (-0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 1 1 -1 -1 -1 -1)
+      )
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+      ('midi_file' 'songs/riptide/riptide.mid')
+   )
+   ('song_scroll_speed' 2300)
+   ('bank' 'sfx/tambourine_bank.milo')
+   ('anim_tempo' 32)
+   ('song_length' 205070)
+   ('preview' 43690 73690)
+   (
+      'rank'
+      ('drum' 170)
+      ('guitar' 260)
+      ('bass' 60)
+      ('vocals' 195)
+      ('band' 217)
+   )
+   ('genre' 'indierock')
+   (
+      'author'
+      "Harmonix, Rhythm Authors"
+   )
+   ('vocal_gender' 'male')
+   ('version' 0)
+   ('format' 4)
+   ('album_art' 'TRUE')
+   ('year_released' 2013)
+   ('rating' 2)
+   ('song_id' 1020068)
+   ('tuning_offset_cents' -18)
+   ('game_origin' 'rb4_dlc')
+   ('album_track_number' 2)
+   (
+      'album_name'
+      "God Loves You When You're Dancing"
+   )
+   ('decade' 'the10s')
+   ('downloaded' 'TRUE')
+   ('base_points' 0)
+   ('vocal_tonic_note' 1)
+)
+
+(
+   'dontdomelikethat'
+   (
+      'name'
+      "Don't Do Me Like That"
+   )
+   (
+      'artist'
+      "Tom Petty and the Heartbreakers"
+   )
+   ('master' 1)
+   ('context' 2000)
+   (
+      'song'
+      ('name' 'songs/dontdomelikethat/dontdomelikethat')
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1)
+            )
+            (
+               'bass'
+               (2)
+            )
+            (
+               'guitar'
+               (3 4)
+            )
+            (
+               'vocals'
+               (5 6)
+            )
+         )
+      )
+      ('vocal_parts' 2)
+      (
+         'pans'
+         (-1.0 1.0 0.0 -1.0 1.0 -1.0 1.0 -1.0 1.0)
+      )
+      (
+         'vols'
+         (-0.0 -0.0 -1.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0)
+      )
+      (
+         'cores'
+         (-1 -1 -1 1 1 -1 -1 -1 -1)
+      )
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+      ('midi_file' 'songs/dontdomelikethat/dontdomelikethat.mid')
+   )
+   ('song_scroll_speed' 2300)
+   ('bank' 'sfx/tambourine_bank.milo')
+   ('anim_tempo' 32)
+   ('song_length' 174333)
+   ('preview' 37432 67432)
+   (
+      'rank'
+      ('drum' 152)
+      ('guitar' 218)
+      ('bass' 138)
+      ('vocals' 220)
+      ('band' 220)
+   )
+   ('genre' 'rock')
+   (
+      'author'
+      "Harmonix, Rhythm Authors"
+   )
+   ('vocal_gender' 'male')
+   ('version' 0)
+   ('format' 4)
+   ('album_art' 'TRUE')
+   ('year_released' 1979)
+   ('rating' 1)
+   ('song_id' 1020082)
+   ('tuning_offset_cents' 0.0)
+   ('game_origin' 'rb4_dlc')
+   ('album_track_number' 6)
+   (
+      'album_name'
+      "Damn the Torpedoes"
+   )
+   ('decade' 'the70s')
+   ('downloaded' 'TRUE')
+   ('base_points' 0)
+   ('vocal_tonic_note' 7)
+)
+
+(
+   'imgonnabe500miles'
+   (
+      'name'
+      "I'm Gonna Be (500 Miles)"
+   )
+   (
+      'artist'
+      "The Proclaimers"
+   )
+   ('master' 1)
+   ('context' 2000)
+   (
+      'song'
+      ('name' 'songs/imgonnabe500miles/imgonnabe500miles')
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1)
+            )
+            (
+               'bass'
+               (2 3)
+            )
+            (
+               'guitar'
+               (4 5)
+            )
+            (
+               'vocals'
+               (6 7)
+            )
+         )
+      )
+      ('vocal_parts' 3)
+      (
+         'pans'
+         (-1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0)
+      )
+      (
+         'vols'
+         (-0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 1 1 -1 -1 -1 -1)
+      )
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+      ('midi_file' 'songs/imgonnabe500miles/imgonnabe500miles.mid')
+   )
+   ('song_scroll_speed' 2300)
+   ('bank' 'sfx/tambourine_bank.milo')
+   ('anim_tempo' 32)
+   ('song_length' 219207)
+   ('preview' 82918 112918)
+   (
+      'rank'
+      ('drum' 66)
+      ('guitar' 190)
+      ('bass' 150)
+      ('vocals' 401)
+      ('band' 229)
+   )
+   ('genre' 'rock')
+   (
+      'author'
+      "Harmonix, Rhythm Authors"
+   )
+   ('vocal_gender' 'male')
+   ('version' 0)
+   ('format' 4)
+   ('album_art' 'TRUE')
+   ('year_released' 1988)
+   ('rating' 1)
+   ('song_id' 1020435)
+   ('tuning_offset_cents' 0.0)
+   ('game_origin' 'rb4_dlc')
+   ('album_track_number' 1)
+   (
+      'album_name'
+      "Sunshine on Leith"
+   )
+   ('decade' 'the80s')
+   ('downloaded' 'TRUE')
+   ('base_points' 0)
+   ('vocal_tonic_note' 4)
+)
+
+(
+   'googoomuck'
+   (
+      'name'
+      "Goo Goo Muck"
+   )
+   (
+      'artist'
+      "The Cramps"
+   )
+   ('master' 1)
+   ('context' 2000)
+   (
+      'song'
+      ('name' 'songs/googoomuck/googoomuck')
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1)
+            )
+            (
+               'bass'
+               (2 3)
+            )
+            (
+               'guitar'
+               (4 5)
+            )
+            (
+               'vocals'
+               (6 7)
+            )
+         )
+      )
+      ('vocal_parts' 2)
+      (
+         'pans'
+         (-1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0)
+      )
+      (
+         'vols'
+         (-0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 1 1 -1 -1 -1 -1)
+      )
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+      ('midi_file' 'songs/googoomuck/googoomuck.mid')
+   )
+   ('song_scroll_speed' 2300)
+   ('bank' 'sfx/handclap_bank.milo')
+   (drum_bank sfx/kit04_bank.milo)
+   ('anim_tempo' 32)
+   ('song_length' 187393)
+   ('preview' 36250 66250)
+   (
+      'rank'
+      ('drum' 130)
+      ('guitar' 155)
+      ('bass' 160)
+      ('vocals' 135)
+      ('band' 170)
+   )
+   ('genre' 'rock')
+   (
+      'author'
+      "Harmonix, Rhythm Authors"
+   )
+   ('vocal_gender' 'male')
+   ('version' 0)
+   ('format' 4)
+   ('album_art' 'TRUE')
+   ('year_released' 1981)
+   ('rating' 2)
+   ('song_id' 1020782)
+   ('tuning_offset_cents' 0.0)
+   ('game_origin' 'rb4_dlc')
+   ('album_track_number' 2)
+   (
+      'album_name'
+      "Psychedelic Jungle"
+   )
+   ('decade' 'the80s')
+   ('downloaded' 'TRUE')
+   ('base_points' 0)
+   ('vocal_tonic_note' 4)
+)
+
+(
+   'somethingjustlikethis'
+   (
+      'name'
+      "Something Just Like This (ft. Coldplay)"
+   )
+   (
+      'artist'
+      "The Chainsmokers"
+   )
+   ('master' 1)
+   ('context' 2000)
+   (
+      'song'
+      ('name' 'songs/somethingjustlikethis/somethingjustlikethis')
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1)
+            )
+            (
+               'bass'
+               (2 3)
+            )
+            (
+               'guitar'
+               (4 5)
+            )
+            (
+               'vocals'
+               (6 7)
+            )
+         )
+      )
+      ('vocal_parts' 3)
+      (
+         'pans'
+         (-1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0)
+      )
+      (
+         'vols'
+         (-0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 1 1 -1 -1 -1 -1)
+      )
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+      ('midi_file' 'songs/somethingjustlikethis/somethingjustlikethis.mid')
+   )
+   ('song_scroll_speed' 2300)
+   ('bank' 'sfx/handclap_bank.milo')
+   (drum_bank sfx/kit05_bank.milo)
+   ('anim_tempo' 32)
+   ('song_length' 244659)
+   ('preview' 76893 106893)
+   (
+      'rank'
+      ('drum' 124)
+      ('guitar' 176)
+      ('bass' 135)
+      ('vocals' 218)
+      ('band' 215)
+   )
+   ('genre' 'popdanceelectronic')
+   (
+      'author'
+      "Harmonix, Rhythm Authors"
+   )
+   ('vocal_gender' 'male')
+   ('version' 0)
+   ('format' 4)
+   ('album_art' 'TRUE')
+   ('year_released' 2017)
+   ('rating' 2)
+   ('song_id' 1020519)
+   ('tuning_offset_cents' 0.0)
+   ('game_origin' 'rb4_dlc')
+   ('album_track_number' 5)
+   (
+      'album_name'
+      "Memories...Do Not Open"
+   )
+   ('decade' 'the10s')
+   ('downloaded' 'TRUE')
+   ('base_points' 0)
+   ('vocal_tonic_note' 2)
+)
+
+(
+   'whereveryouwillgo'
+   (
+      'name'
+      "Wherever You Will Go"
+   )
+   (
+      'artist'
+      "The Calling"
+   )
+   ('master' 1)
+   ('context' 2000)
+   (
+      'song'
+      ('name' 'songs/whereveryouwillgo/whereveryouwillgo')
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1)
+            )
+            (
+               'bass'
+               (2 3)
+            )
+            (
+               'guitar'
+               (4 5)
+            )
+            (
+               'vocals'
+               (6 7)
+            )
+         )
+      )
+      ('vocal_parts' 2)
+      (
+         'pans'
+         (-1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0)
+      )
+      (
+         'vols'
+         (-0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 1 1 -1 -1 -1 -1)
+      )
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+      ('midi_file' 'songs/whereveryouwillgo/whereveryouwillgo.mid')
+   )
+   ('song_scroll_speed' 2300)
+   ('bank' 'sfx/tambourine_bank.milo')
+   (drum_bank sfx/kit01_bank.milo)
+   ('anim_tempo' 32)
+   ('song_length' 211009)
+   ('preview' 47113 77113)
+   (
+      'rank'
+      ('drum' 163)
+      ('guitar' 223)
+      ('bass' 177)
+      ('vocals' 198)
+      ('band' 229)
+   )
+   ('genre' 'alternative')
+   (
+      'author'
+      "Harmonix, Rhythm Authors"
+   )
+   ('vocal_gender' 'male')
+   ('version' 0)
+   ('format' 4)
+   ('album_art' 'TRUE')
+   ('year_released' 2001)
+   ('rating' 1)
+   ('song_id' 1020826)
+   ('tuning_offset_cents' 0.0)
+   ('game_origin' 'rb4_dlc')
+   ('album_track_number' 3)
+   (
+      'album_name'
+      "Camino Palmero"
+   )
+   ('decade' 'the00s')
+   ('downloaded' 'TRUE')
+   ('base_points' 0)
+   ('vocal_tonic_note' 2)
+)
+
+(
+   'believe'
+   (
+      'name'
+      "Believe"
+   )
+   (
+      'artist'
+      "The Bravery"
+   )
+   ('master' 1)
+   ('context' 2000)
+   (
+      'song'
+      ('name' 'songs/believe/believe')
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1)
+            )
+            (
+               'bass'
+               (2 3)
+            )
+            (
+               'guitar'
+               (4 5)
+            )
+            (
+               'vocals'
+               (6 7)
+            )
+         )
+      )
+      ('vocal_parts' 3)
+      (
+         'pans'
+         (-1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0)
+      )
+      (
+         'vols'
+         (-0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 1 1 -1 -1 -1 -1)
+      )
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+      ('midi_file' 'songs/believe/believe.mid')
+   )
+   ('song_scroll_speed' 2300)
+   ('bank' 'sfx/tambourine_bank.milo')
+   ('anim_tempo' 64)
+   ('song_length' 229648)
+   ('preview' 67139 97139)
+   (
+      'rank'
+      ('drum' 180)
+      ('guitar' 245)
+      ('bass' 300)
+      ('vocals' 290)
+      ('band' 260)
+   )
+   ('genre' 'alternative')
+   (
+      'author'
+      "Harmonix, Rhythm Authors"
+   )
+   ('vocal_gender' 'male')
+   ('version' 0)
+   ('format' 4)
+   ('album_art' 'TRUE')
+   ('year_released' 2007)
+   ('rating' 2)
+   ('song_id' 1020763)
+   ('tuning_offset_cents' 0.0)
+   ('game_origin' 'rb4_dlc')
+   ('album_track_number' 2)
+   (
+      'album_name'
+      "The Sun and the Moon"
+   )
+   ('decade' 'the00s')
+   ('downloaded' 'TRUE')
+   ('base_points' 0)
+   ('vocal_tonic_note' 10)
+)
+
+(
+   'hungerstrike'
+   (
+      'name'
+      "Hunger Strike"
+   )
+   (
+      'artist'
+      "Temple of the Dog"
+   )
+   ('master' 1)
+   ('context' 2000)
+   (
+      'song'
+      ('name' 'songs/hungerstrike/hungerstrike')
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1)
+            )
+            (
+               'bass'
+               (2 3)
+            )
+            (
+               'guitar'
+               (4 5)
+            )
+            (
+               'vocals'
+               (6 7)
+            )
+         )
+      )
+      ('vocal_parts' 2)
+      (
+         'pans'
+         (-1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0)
+      )
+      (
+         'vols'
+         (-0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 1 1 -1 -1 -1 -1)
+      )
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+      ('midi_file' 'songs/hungerstrike/hungerstrike.mid')
+   )
+   ('song_scroll_speed' 2300)
+   ('bank' 'sfx/tambourine_bank.milo')
+   ('anim_tempo' 16)
+   ('song_length' 248319)
+   ('preview' 117803 147803)
+   (
+      'rank'
+      ('drum' 170)
+      ('guitar' 224)
+      ('bass' 178)
+      ('vocals' 358)
+      ('band' 245)
+   )
+   ('genre' 'grunge')
+   (
+      'author'
+      "Harmonix, Rhythm Authors"
+   )
+   ('vocal_gender' 'male')
+   ('version' 0)
+   ('format' 4)
+   ('album_art' 'TRUE')
+   ('year_released' 1991)
+   ('rating' 2)
+   ('song_id' 1020091)
+   ('tuning_offset_cents' 0.0)
+   ('game_origin' 'rb4_dlc')
+   ('album_track_number' 3)
+   (
+      'album_name'
+      "Temple of the Dog"
+   )
+   ('decade' 'the90s')
+   ('downloaded' 'TRUE')
+   ('base_points' 0)
+   ('vocal_tonic_note' 7)
+)
+
+(
+   'crossfire'
+   (
+      'name'
+      "Crossfire"
+   )
+   (
+      'artist'
+      "Stevie Ray Vaughan and Double Trouble"
+   )
+   ('master' 1)
+   ('context' 2000)
+   (
+      'song'
+      ('name' 'songs/crossfire/crossfire')
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1)
+            )
+            (
+               'bass'
+               (2 3)
+            )
+            (
+               'guitar'
+               (4 5)
+            )
+            (
+               'vocals'
+               (6 7)
+            )
+         )
+      )
+      ('vocal_parts' 1)
+      (
+         'pans'
+         (-1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0)
+      )
+      (
+         'vols'
+         (-0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 1 1 -1 -1 -1 -1)
+      )
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+      ('midi_file' 'songs/crossfire/crossfire.mid')
+   )
+   ('song_scroll_speed' 2300)
+   ('bank' 'sfx/tambourine_bank.milo')
+   ('anim_tempo' 32)
+   ('song_length' 252326)
+   ('preview' 54106 84106)
+   (
+      'rank'
+      ('drum' 155)
+      ('guitar' 345)
+      ('bass' 185)
+      ('vocals' 215)
+      ('band' 240)
+   )
+   ('genre' 'blues')
+   (
+      'author'
+      "Harmonix, Rhythm Authors"
+   )
+   ('vocal_gender' 'male')
+   ('version' 0)
+   ('format' 4)
+   ('album_art' 'TRUE')
+   ('year_released' 1989)
+   ('rating' 1)
+   ('song_id' 1020764)
+   ('tuning_offset_cents' 0.0)
+   ('game_origin' 'rb4_dlc')
+   ('album_track_number' 2)
+   (
+      'album_name'
+      "In Step"
+   )
+   ('decade' 'the80s')
+   ('downloaded' 'TRUE')
+   ('base_points' 0)
+   ('vocal_tonic_note' 3)
+)
+
+(
+   'untilifoundyou'
+   (
+      'name'
+      "Until I Found You"
+   )
+   (
+      'artist'
+      "Stephen Sanchez"
+   )
+   ('master' 1)
+   ('context' 2000)
+   (
+      'song'
+      ('name' 'songs/untilifoundyou/untilifoundyou')
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1)
+            )
+            (
+               'bass'
+               (2 3)
+            )
+            (
+               'guitar'
+               (4 5)
+            )
+            (
+               'vocals'
+               (6 7)
+            )
+         )
+      )
+      ('vocal_parts' 2)
+      (
+         'pans'
+         (-1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0)
+      )
+      (
+         'vols'
+         (-0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 1 1 -1 -1 -1 -1)
+      )
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+      ('midi_file' 'songs/untilifoundyou/untilifoundyou.mid')
+   )
+   ('song_scroll_speed' 2300)
+   ('bank' 'sfx/tambourine_bank.milo')
+   (drum_bank sfx/kit03_bank.milo)
+   ('anim_tempo' 16)
+   ('song_length' 177058)
+   ('preview' 40427 70427)
+   (
+      'rank'
+      ('drum' 105)
+      ('guitar' 180)
+      ('bass' 95)
+      ('vocals' 210)
+      ('band' 170)
+   )
+   ('genre' 'poprock')
+   (
+      'author'
+      "Harmonix, Rhythm Authors"
+   )
+   ('vocal_gender' 'male')
+   ('version' 0)
+   ('format' 4)
+   ('album_art' 'TRUE')
+   ('year_released' 2021)
+   ('rating' 1)
+   ('song_id' 1020760)
+   ('tuning_offset_cents' 0.0)
+   ('game_origin' 'rb4_dlc')
+   ('album_track_number' 6)
+   (
+      'album_name'
+      "Angel Face"
+   )
+   ('decade' 'the20s')
+   ('downloaded' 'TRUE')
+   ('base_points' 0)
+   ('vocal_tonic_note' 10)
+)
+
+(
+   'reelinintheyears'
+   (
+      'name'
+      "Reelin' in the Years"
+   )
+   (
+      'artist'
+      "Steely Dan"
+   )
+   ('master' 1)
+   ('context' 2000)
+   (
+      'song'
+      ('name' 'songs/reelinintheyears/reelinintheyears')
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1)
+            )
+            (
+               'bass'
+               (2 3)
+            )
+            (
+               'guitar'
+               (4 5)
+            )
+            (
+               'vocals'
+               (6 7)
+            )
+         )
+      )
+      ('vocal_parts' 3)
+      (
+         'pans'
+         (-1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0)
+      )
+      (
+         'vols'
+         (-0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 1 1 -1 -1 -1 -1)
+      )
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+      ('midi_file' 'songs/reelinintheyears/reelinintheyears.mid')
+   )
+   ('song_scroll_speed' 2300)
+   ('bank' 'sfx/tambourine_bank.milo')
+   (drum_bank sfx/kit03_bank.milo)
+   ('anim_tempo' 32)
+   ('song_length' 267716)
+   ('preview' 46174 76174)
+   (
+      'rank'
+      ('drum' 295)
+      ('guitar' 345)
+      ('bass' 330)
+      ('vocals' 245)
+      ('band' 280)
+   )
+   ('genre' 'classicrock')
+   (
+      'author'
+      "Harmonix, Rhythm Authors"
+   )
+   ('vocal_gender' 'male')
+   ('version' 0)
+   ('format' 4)
+   ('album_art' 'TRUE')
+   ('year_released' 1972)
+   ('rating' 1)
+   ('song_id' 1020734)
+   ('tuning_offset_cents' 0.0)
+   ('game_origin' 'rb4_dlc')
+   ('album_track_number' 1)
+   (
+      'album_name'
+      "Can't Buy a Thrill"
+   )
+   ('decade' 'the70s')
+   ('downloaded' 'TRUE')
+   ('base_points' 0)
+   ('vocal_tonic_note' 9)
+)
+
+(
+   'peg'
+   (
+      'name'
+      "Peg"
+   )
+   (
+      'artist'
+      "Steely Dan"
+   )
+   ('master' 1)
+   ('context' 2000)
+   (
+      'song'
+      ('name' 'songs/peg/peg')
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1)
+            )
+            (
+               'bass'
+               (2 3)
+            )
+            (
+               'guitar'
+               (4 5)
+            )
+            (
+               'vocals'
+               (6 7)
+            )
+         )
+      )
+      ('vocal_parts' 3)
+      (
+         'pans'
+         (-1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0)
+      )
+      (
+         'vols'
+         (-0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 1 1 -1 -1 -1 -1)
+      )
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+      ('midi_file' 'songs/peg/peg.mid')
+   )
+   ('song_scroll_speed' 2300)
+   ('bank' 'sfx/handclap_bank.milo')
+   (drum_bank sfx/kit03_bank.milo)
+   ('anim_tempo' 32)
+   ('song_length' 226665)
+   ('preview' 69486 99486)
+   (
+      'rank'
+      ('drum' 250)
+      ('guitar' 265)
+      ('bass' 380)
+      ('vocals' 285)
+      ('band' 270)
+   )
+   ('genre' 'classicrock')
+   (
+      'author'
+      "Harmonix, Rhythm Authors"
+   )
+   ('vocal_gender' 'male')
+   ('version' 0)
+   ('format' 4)
+   ('album_art' 'TRUE')
+   ('year_released' 1977)
+   ('rating' 1)
+   ('song_id' 1020623)
+   ('tuning_offset_cents' 0.0)
+   ('game_origin' 'rb4_dlc')
+   ('album_track_number' 4)
+   (
+      'album_name'
+      "Aja"
+   )
+   ('decade' 'the70s')
+   ('downloaded' 'TRUE')
+   ('base_points' 0)
+   ('vocal_tonic_note' 7)
+)
+
+(
+   'secretgarden'
+   (
+      'name'
+      "Secret Garden"
+   )
+   (
+      'artist'
+      "Spiritbox"
+   )
+   ('master' 1)
+   ('context' 2000)
+   (
+      'song'
+      ('name' 'songs/secretgarden/secretgarden')
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1)
+            )
+            (
+               'bass'
+               (2 3)
+            )
+            (
+               'guitar'
+               (4 5)
+            )
+            (
+               'vocals'
+               (6 7)
+            )
+         )
+      )
+      ('vocal_parts' 3)
+      (
+         'pans'
+         (-1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0)
+      )
+      (
+         'vols'
+         (-0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 1 1 -1 -1 -1 -1)
+      )
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+      ('midi_file' 'songs/secretgarden/secretgarden.mid')
+   )
+   ('song_scroll_speed' 2300)
+   ('bank' 'sfx/tambourine_bank.milo')
+   (drum_bank sfx/kit01_bank.milo)
+   ('anim_tempo' 32)
+   ('song_length' 224815)
+   ('preview' 68127 98127)
+   (
+      'rank'
+      ('drum' 395)
+      ('guitar' 375)
+      ('bass' 260)
+      ('vocals' 315)
+      ('band' 285)
+   )
+   ('genre' 'metal')
+   (
+      'author'
+      "Harmonix, Rhythm Authors"
+   )
+   ('vocal_gender' 'female')
+   ('version' 0)
+   ('format' 4)
+   ('album_art' 'TRUE')
+   ('year_released' 2021)
+   ('rating' 1)
+   ('song_id' 1020636)
+   ('tuning_offset_cents' 0.0)
+   ('game_origin' 'rb4_dlc')
+   ('album_track_number' 5)
+   (
+      'album_name'
+      "Eternal Blue"
+   )
+   ('decade' 'the20s')
+   ('downloaded' 'TRUE')
+   ('base_points' 0)
+   ('vocal_tonic_note' 1)
+)
+
+(
+   'thedevilini'
+   (
+      'name'
+      "The Devil in I"
+   )
+   (
+      'artist'
+      "Slipknot"
+   )
+   ('master' 1)
+   ('context' 2000)
+   (
+      'song'
+      ('name' 'songs/thedevilini/thedevilini')
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1)
+            )
+            (
+               'bass'
+               (2 3)
+            )
+            (
+               'guitar'
+               (4 5)
+            )
+            (
+               'vocals'
+               (6 7)
+            )
+         )
+      )
+      ('vocal_parts' 3)
+      (
+         'pans'
+         (-1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0)
+      )
+      (
+         'vols'
+         (-0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 1 1 -1 -1 -1 -1)
+      )
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+      ('midi_file' 'songs/thedevilini/thedevilini.mid')
+   )
+   ('song_scroll_speed' 2300)
+   ('bank' 'sfx/cowbell_bank.milo')
+   ('anim_tempo' 64)
+   ('song_length' 360632)
+   ('preview' 111551 141551)
+   (
+      'rank'
+      ('drum' 465)
+      ('guitar' 315)
+      ('bass' 405)
+      ('vocals' 188)
+      ('band' 325)
+   )
+   ('genre' 'numetal')
+   (
+      'author'
+      "Harmonix, Rhythm Authors"
+   )
+   ('vocal_gender' 'male')
+   #ifndef kControllerRealGuitar
+   ('version' 0)
+   ('format' 4)
+   #endif
+   #ifdef kControllerRealGuitar
+   ('version' 30)
+   ('format' 10)
+   #endif
+   ('album_art' 'TRUE')
+   ('year_released' 2014)
+   ('rating' 2)
+   ('song_id' 1020234)
+   ('tuning_offset_cents' 0.0)
+   ('game_origin' 'rb4_dlc')
+   ('album_track_number' 4)
+   (
+      'album_name'
+      ".5: The Gray Chapter"
+   )
+   ('decade' 'the10s')
+   ('downloaded' 'TRUE')
+   ('base_points' 0)
+   ('vocal_tonic_note' 9)
+)
+
+(
+   'crosses'
+   (
+      'name'
+      "Crosses (ft. Spencer Chamberlain)"
+   )
+   (
+      'artist'
+      "Sleeping with Sirens"
+   )
+   ('master' 1)
+   ('context' 2000)
+   (
+      'song'
+      ('name' 'songs/crosses/crosses')
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1)
+            )
+            (
+               'bass'
+               (2 3)
+            )
+            (
+               'guitar'
+               (4 5)
+            )
+            (
+               'vocals'
+               (6 7)
+            )
+         )
+      )
+      ('vocal_parts' 3)
+      (
+         'pans'
+         (-1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0)
+      )
+      (
+         'vols'
+         (-0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 1 1 -1 -1 -1 -1)
+      )
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+      ('midi_file' 'songs/crosses/crosses.mid')
+   )
+   ('song_scroll_speed' 2300)
+   ('bank' 'sfx/tambourine_bank.milo')
+   ('anim_tempo' 16)
+   ('song_length' 213749)
+   ('preview' 45000 75000)
+   (
+      'rank'
+      ('drum' 225)
+      ('guitar' 240)
+      ('bass' 220)
+      ('vocals' 240)
+      ('band' 250)
+   )
+   ('genre' 'emo')
+   (
+      'author'
+      "Harmonix, Rhythm Authors"
+   )
+   ('vocal_gender' 'male')
+   ('version' 0)
+   ('format' 4)
+   ('album_art' 'TRUE')
+   ('year_released' 2022)
+   ('rating' 3)
+   ('song_id' 1020740)
+   ('tuning_offset_cents' 0.0)
+   ('game_origin' 'rb4_dlc')
+   ('album_track_number' 3)
+   (
+      'album_name'
+      "Complete Collapse"
+   )
+   ('decade' 'the20s')
+   ('downloaded' 'TRUE')
+   ('base_points' 0)
+   ('vocal_tonic_note' 0)
+)
+
+(
+   'thesummoning'
+   (
+      'name'
+      "The Summoning"
+   )
+   (
+      'artist'
+      "Sleep Token"
+   )
+   ('master' 1)
+   ('context' 2000)
+   (
+      'song'
+      ('name' 'songs/thesummoning/thesummoning')
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1)
+            )
+            (
+               'bass'
+               (2 3)
+            )
+            (
+               'guitar'
+               (4 5)
+            )
+            (
+               'vocals'
+               (6 7)
+            )
+         )
+      )
+      ('vocal_parts' 3)
+      (
+         'pans'
+         (-1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0)
+      )
+      (
+         'vols'
+         (-0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 1 1 -1 -1 -1 -1)
+      )
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+      ('midi_file' 'songs/thesummoning/thesummoning.mid')
+   )
+   ('song_scroll_speed' 2300)
+   ('bank' 'sfx/tambourine_bank.milo')
+   ('anim_tempo' 64)
+   ('song_length' 395375)
+   ('preview' 54104 84104)
+   (
+      'rank'
+      ('drum' 340)
+      ('guitar' 260)
+      ('bass' 260)
+      ('vocals' 290)
+      ('band' 270)
+   )
+   ('genre' 'prog')
+   (
+      'author'
+      "Harmonix, Rhythm Authors"
+   )
+   ('vocal_gender' 'male')
+   ('version' 0)
+   ('format' 4)
+   ('album_art' 'TRUE')
+   ('year_released' 2023)
+   ('rating' 2)
+   ('song_id' 1020816)
+   ('tuning_offset_cents' 0.0)
+   ('game_origin' 'rb4_dlc')
+   ('album_track_number' 2)
+   (
+      'album_name'
+      "Take Me Back to Eden"
+   )
+   ('decade' 'the20s')
+   ('downloaded' 'TRUE')
+   ('base_points' 0)
+   ('vocal_tonic_note' 10)
+)
+
+(
+   'feelinvincible'
+   (
+      'name'
+      "Feel Invincible"
+   )
+   (
+      'artist'
+      "Skillet"
+   )
+   ('master' 1)
+   ('context' 2000)
+   (
+      'song'
+      ('name' 'songs/feelinvincible/feelinvincible')
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1)
+            )
+            (
+               'bass'
+               (2 3)
+            )
+            (
+               'guitar'
+               (4 5)
+            )
+            (
+               'vocals'
+               (6 7)
+            )
+         )
+      )
+      ('vocal_parts' 3)
+      (
+         'pans'
+         (-1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0)
+      )
+      (
+         'vols'
+         (-0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 1 1 -1 -1 -1 -1)
+      )
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+      ('midi_file' 'songs/feelinvincible/feelinvincible.mid')
+   )
+   ('song_scroll_speed' 2300)
+   ('bank' 'sfx/tambourine_bank.milo')
+   ('anim_tempo' 32)
+   ('song_length' 230475)
+   ('preview' 44762 74762)
+   (
+      'rank'
+      ('drum' 259)
+      ('guitar' 260)
+      ('bass' 108)
+      ('vocals' 316)
+      ('band' 269)
+   )
+   ('genre' 'rock')
+   (
+      'author'
+      "Harmonix, Rhythm Authors"
+   )
+   ('vocal_gender' 'male')
+   ('version' 0)
+   ('format' 4)
+   ('album_art' 'TRUE')
+   ('year_released' 2016)
+   ('rating' 2)
+   ('song_id' 1020195)
+   ('tuning_offset_cents' 0.0)
+   ('game_origin' 'rb4_dlc')
+   ('album_track_number' 1)
+   (
+      'album_name'
+      "Unleashed"
+   )
+   ('decade' 'the10s')
+   ('downloaded' 'TRUE')
+   ('base_points' 0)
+   ('vocal_tonic_note' 0)
+)
+
+(
+   'thegangsallhere'
+   (
+      'name'
+      "The Gang's All Here"
+   )
+   (
+      'artist'
+      "Skid Row"
+   )
+   ('master' 1)
+   ('context' 2000)
+   (
+      'song'
+      ('name' 'songs/thegangsallhere/thegangsallhere')
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1)
+            )
+            (
+               'bass'
+               (2 3)
+            )
+            (
+               'guitar'
+               (4 5)
+            )
+            (
+               'vocals'
+               (6 7)
+            )
+         )
+      )
+      ('vocal_parts' 3)
+      (
+         'pans'
+         (-1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0)
+      )
+      (
+         'vols'
+         (-0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 1 1 -1 -1 -1 -1)
+      )
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+      ('midi_file' 'songs/thegangsallhere/thegangsallhere.mid')
+   )
+   ('song_scroll_speed' 2300)
+   ('bank' 'sfx/cowbell_bank.milo')
+   (drum_bank sfx/kit02_bank.milo)
+   ('anim_tempo' 32)
+   ('song_length' 220012)
+   ('preview' 54413 84413)
+   (
+      'rank'
+      ('drum' 175)
+      ('guitar' 345)
+      ('bass' 375)
+      ('vocals' 360)
+      ('band' 280)
+   )
+   ('genre' 'glam')
+   (
+      'author'
+      "Harmonix, Rhythm Authors"
+   )
+   ('vocal_gender' 'male')
+   ('version' 0)
+   ('format' 4)
+   ('album_art' 'TRUE')
+   ('year_released' 2022)
+   ('rating' 1)
+   ('song_id' 1020756)
+   ('tuning_offset_cents' 0.0)
+   ('game_origin' 'rb4_dlc')
+   ('album_track_number' 2)
+   (
+      'album_name'
+      "The Gang's All Here"
+   )
+   ('decade' 'the20s')
+   ('downloaded' 'TRUE')
+   ('base_points' 0)
+   ('vocal_tonic_note' 4)
+)
+
+(
+   'bodylikeabackroad'
+   (
+      'name'
+      "Body Like a Back Road"
+   )
+   (
+      'artist'
+      "Sam Hunt"
+   )
+   ('master' 1)
+   ('context' 2000)
+   (
+      'song'
+      ('name' 'songs/bodylikeabackroad/bodylikeabackroad')
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1)
+            )
+            (
+               'bass'
+               (2 3)
+            )
+            (
+               'guitar'
+               (4 5)
+            )
+            (
+               'vocals'
+               (6 7)
+            )
+         )
+      )
+      ('vocal_parts' 3)
+      (
+         'pans'
+         (-1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0)
+      )
+      (
+         'vols'
+         (-0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 1 1 -1 -1 -1 -1)
+      )
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+      ('midi_file' 'songs/bodylikeabackroad/bodylikeabackroad.mid')
+   )
+   ('song_scroll_speed' 2300)
+   ('bank' 'sfx/tambourine_bank.milo')
+   ('anim_tempo' 32)
+   ('song_length' 166052)
+   ('preview' 32416 62416)
+   (
+      'rank'
+      ('drum' 110)
+      ('guitar' 160)
+      ('bass' 108)
+      ('vocals' 192)
+      ('band' 130)
+   )
+   ('genre' 'country')
+   (
+      'author'
+      "Harmonix, Rhythm Authors"
+   )
+   ('vocal_gender' 'male')
+   ('version' 0)
+   ('format' 4)
+   ('album_art' 'TRUE')
+   ('year_released' 2020)
+   ('rating' 2)
+   ('song_id' 1020351)
+   ('tuning_offset_cents' 0.0)
+   ('game_origin' 'rb4_dlc')
+   ('album_track_number' 5)
+   (
+      'album_name'
+      "Southside"
+   )
+   ('decade' 'the20s')
+   ('downloaded' 'TRUE')
+   ('base_points' 0)
+   ('vocal_tonic_note' 5)
+)
+
+(
+   'bigrig'
+   (
+      'name'
+      "Big Rig"
+   )
+   (
+      'artist'
+      "Pigs Pigs Pigs Pigs Pigs Pigs Pigs"
+   )
+   ('master' 1)
+   ('context' 2000)
+   (
+      'song'
+      ('name' 'songs/bigrig/bigrig')
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1)
+            )
+            (
+               'bass'
+               (2 3)
+            )
+            (
+               'guitar'
+               (4 5)
+            )
+            (
+               'vocals'
+               (6 7)
+            )
+         )
+      )
+      ('vocal_parts' 1)
+      (
+         'pans'
+         (-1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0)
+      )
+      (
+         'vols'
+         (-0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 1 1 -1 -1 -1 -1)
+      )
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+      ('midi_file' 'songs/bigrig/bigrig.mid')
+   )
+   ('song_scroll_speed' 2300)
+   ('bank' 'sfx/cowbell_bank.milo')
+   ('anim_tempo' 64)
+   ('song_length' 392586)
+   ('preview' 74346 104346)
+   (
+      'rank'
+      ('drum' 265)
+      ('guitar' 275)
+      ('bass' 300)
+      ('vocals' 100)
+      ('band' 270)
+   )
+   ('genre' 'metal')
+   (
+      'author'
+      "Harmonix, Rhythm Authors"
+   )
+   ('vocal_gender' 'male')
+   ('version' 0)
+   ('format' 4)
+   ('album_art' 'TRUE')
+   ('year_released' 2023)
+   ('rating' 1)
+   ('song_id' 1020783)
+   ('tuning_offset_cents' 0.0)
+   ('game_origin' 'rb4_dlc')
+   ('album_track_number' 3)
+   (
+      'album_name'
+      "Land of Sleeper"
+   )
+   ('decade' 'the20s')
+   ('downloaded' 'TRUE')
+   ('base_points' 0)
+   ('vocal_tonic_note' 0)
+)
+
+(
+   'thisiswhy'
+   (
+      'name'
+      "This Is Why"
+   )
+   (
+      'artist'
+      "Paramore"
+   )
+   ('master' 1)
+   ('context' 2000)
+   (
+      'song'
+      ('name' 'songs/thisiswhy/thisiswhy')
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1)
+            )
+            (
+               'bass'
+               (2 3)
+            )
+            (
+               'guitar'
+               (4 5)
+            )
+            (
+               'vocals'
+               (6 7)
+            )
+         )
+      )
+      ('vocal_parts' 3)
+      (
+         'pans'
+         (-1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0)
+      )
+      (
+         'vols'
+         (-0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 1 1 -1 -1 -1 -1)
+      )
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+      ('midi_file' 'songs/thisiswhy/thisiswhy.mid')
+   )
+   ('song_scroll_speed' 2300)
+   ('bank' 'sfx/tambourine_bank.milo')
+   ('anim_tempo' 32)
+   ('song_length' 208778)
+   ('preview' 58535 88535)
+   (
+      'rank'
+      ('drum' 365)
+      ('guitar' 275)
+      ('bass' 300)
+      ('vocals' 290)
+      ('band' 280)
+   )
+   ('genre' 'poprock')
+   (
+      'author'
+      "Harmonix, Rhythm Authors"
+   )
+   ('vocal_gender' 'female')
+   ('version' 0)
+   ('format' 4)
+   ('album_art' 'TRUE')
+   ('year_released' 2023)
+   ('rating' 1)
+   ('song_id' 1020757)
+   ('tuning_offset_cents' 0.0)
+   ('game_origin' 'rb4_dlc')
+   ('album_track_number' 1)
+   (
+      'album_name'
+      "This Is Why"
+   )
+   (
+      'video_venues'
+      ('video_02')
+   )
+   ('decade' 'the20s')
+   ('downloaded' 'TRUE')
+   ('base_points' 0)
+   ('vocal_tonic_note' 4)
+)
+
+(
+   'countingstars'
+   (
+      'name'
+      "Counting Stars"
+   )
+   (
+      'artist'
+      "OneRepublic"
+   )
+   ('master' 1)
+   ('context' 2000)
+   (
+      'song'
+      ('name' 'songs/countingstars/countingstars')
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1)
+            )
+            (
+               'bass'
+               (2 3)
+            )
+            (
+               'guitar'
+               (4 5)
+            )
+            (
+               'vocals'
+               (6 7)
+            )
+         )
+      )
+      ('vocal_parts' 3)
+      ('crowd_channels' 10 11)
+      (
+         'pans'
+         (-1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -2.5 2.5)
+      )
+      (
+         'vols'
+         (-0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -1.4 -1.4)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 1 1 -1 -1 -1 -1 -1 -1)
+      )
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+      ('midi_file' 'songs/countingstars/countingstars.mid')
+   )
+   ('song_scroll_speed' 2300)
+   ('bank' 'sfx/tambourine_bank.milo')
+   ('anim_tempo' 32)
+   ('song_length' 259761)
+   ('preview' 77795 107795)
+   (
+      'rank'
+      ('drum' 353)
+      ('guitar' 233)
+      ('bass' 159)
+      ('vocals' 321)
+      ('band' 269)
+   )
+   ('genre' 'poprock')
+   (
+      'author'
+      "Harmonix, Rhythm Authors"
+   )
+   ('vocal_gender' 'male')
+   ('version' 0)
+   ('format' 4)
+   ('album_art' 'TRUE')
+   ('year_released' 2013)
+   ('rating' 1)
+   ('song_id' 1020164)
+   ('tuning_offset_cents' 0.0)
+   ('game_origin' 'rb4_dlc')
+   ('album_track_number' 1)
+   (
+      'album_name'
+      "Native"
+   )
+   ('decade' 'the10s')
+   ('downloaded' 'TRUE')
+   ('base_points' 0)
+   ('vocal_tonic_note' 2)
+)
+
+(
+   'dragmedown'
+   (
+      'name'
+      "Drag Me Down"
+   )
+   (
+      'artist'
+      "One Direction"
+   )
+   ('master' 1)
+   ('context' 2000)
+   (
+      'song'
+      ('name' 'songs/dragmedown/dragmedown')
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1)
+            )
+            (
+               'bass'
+               (2 3)
+            )
+            (
+               'guitar'
+               (4 5)
+            )
+            (
+               'vocals'
+               (6 7)
+            )
+         )
+      )
+      ('vocal_parts' 3)
+      (
+         'pans'
+         (-1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0)
+      )
+      (
+         'vols'
+         (-0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 1 1 -1 -1 -1 -1)
+      )
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+      ('midi_file' 'songs/dragmedown/dragmedown.mid')
+   )
+   ('song_scroll_speed' 2300)
+   ('bank' 'sfx/tambourine_bank.milo')
+   (drum_bank sfx/kit01_bank.milo)
+   ('anim_tempo' 32)
+   ('song_length' 187825)
+   ('preview' 56891 86891)
+   (
+      'rank'
+      ('drum' 171)
+      ('guitar' 149)
+      ('bass' 170)
+      ('vocals' 361)
+      ('band' 195)
+   )
+   ('genre' 'popdanceelectronic')
+   (
+      'author'
+      "Harmonix, Rhythm Authors"
+   )
+   ('vocal_gender' 'male')
+   ('version' 0)
+   ('format' 4)
+   ('album_art' 'TRUE')
+   ('year_released' 2015)
+   ('rating' 1)
+   ('song_id' 1020103)
+   ('tuning_offset_cents' 0.0)
+   ('game_origin' 'rb4_dlc')
+   ('album_track_number' 2)
+   (
+      'album_name'
+      "Made in the A.M."
+   )
+   ('decade' 'the10s')
+   ('downloaded' 'TRUE')
+   ('base_points' 0)
+   ('vocal_tonic_note' 3)
+)
+
+(
+   'brutal'
+   (
+      'name'
+      "brutal"
+   )
+   (
+      'artist'
+      "Olivia Rodrigo"
+   )
+   ('master' 1)
+   ('context' 2000)
+   (
+      'song'
+      ('name' 'songs/brutal/brutal')
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1)
+            )
+            (
+               'bass'
+               (2 3)
+            )
+            (
+               'guitar'
+               (4 5)
+            )
+            (
+               'vocals'
+               (6 7)
+            )
+         )
+      )
+      ('vocal_parts' 1)
+      (
+         'pans'
+         (-1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0)
+      )
+      (
+         'vols'
+         (-0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 1 1 -1 -1 -1 -1)
+      )
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+      ('midi_file' 'songs/brutal/brutal.mid')
+   )
+   ('song_scroll_speed' 2300)
+   ('bank' 'sfx/tambourine_bank.milo')
+   ('anim_tempo' 32)
+   ('song_length' 146291)
+   ('preview' 56509 86509)
+   (
+      'rank'
+      ('drum' 155)
+      ('guitar' 180)
+      ('bass' 160)
+      ('vocals' 150)
+      ('band' 200)
+   )
+   ('genre' 'poprock')
+   (
+      'author'
+      "Harmonix, Rhythm Authors"
+   )
+   ('vocal_gender' 'female')
+   ('version' 0)
+   ('format' 4)
+   ('album_art' 'TRUE')
+   ('year_released' 2021)
+   ('rating' 2)
+   ('song_id' 1020631)
+   ('tuning_offset_cents' 0.0)
+   ('game_origin' 'rb4_dlc')
+   ('album_track_number' 1)
+   (
+      'album_name'
+      "Sour"
+   )
+   ('decade' 'the20s')
+   ('downloaded' 'TRUE')
+   ('base_points' 0)
+   ('vocal_tonic_note' 11)
+)
+
+(
+   'sugaryou'
+   (
+      'name'
+      "Sugar, You"
+   )
+   (
+      'artist'
+      "Oh Honey"
+   )
+   ('master' 1)
+   ('context' 2000)
+   (
+      'song'
+      ('name' 'songs/sugaryou/sugaryou')
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1)
+            )
+            (
+               'bass'
+               (2)
+            )
+            (
+               'guitar'
+               (3 4)
+            )
+            (
+               'vocals'
+               (5 6)
+            )
+         )
+      )
+      ('vocal_parts' 3)
+      (
+         'pans'
+         (-1.0 1.0 0.0 -1.0 1.0 -1.0 1.0 -1.0 1.0)
+      )
+      (
+         'vols'
+         (-0.0 -0.0 -1.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0)
+      )
+      (
+         'cores'
+         (-1 -1 -1 1 1 -1 -1 -1 -1)
+      )
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+      ('midi_file' 'songs/sugaryou/sugaryou.mid')
+   )
+   ('song_scroll_speed' 2300)
+   ('bank' 'sfx/tambourine_bank.milo')
+   (drum_bank sfx/kit03_bank.milo)
+   ('band_fail_cue' 'band_fail_rock.cue')
+   ('anim_tempo' 32)
+   ('song_length' 212931)
+   ('preview' 48722 78722)
+   (
+      'rank'
+      ('drum' 231)
+      ('guitar' 210)
+      ('bass' 188)
+      ('vocals' 220)
+      ('band' 244)
+   )
+   ('genre' 'indierock')
+   (
+      'author'
+      "Harmonix, Rhythm Authors"
+   )
+   ('vocal_gender' 'male')
+   ('version' 0)
+   ('format' 4)
+   ('album_art' 'TRUE')
+   ('year_released' 2015)
+   ('rating' 1)
+   ('song_id' 1020038)
+   ('tuning_offset_cents' 0.0)
+   ('game_origin' 'rb4_dlc')
+   ('album_track_number' 1)
+   (
+      'album_name'
+      "Wish You Were Here"
+   )
+   ('decade' 'the10s')
+   ('downloaded' 'TRUE')
+   ('base_points' 0)
+   ('vocal_tonic_note' 9)
+)
+
+(
+   'mountainsound'
+   (
+      'name'
+      "Mountain Sound"
+   )
+   (
+      'artist'
+      "Of Monsters and Men"
+   )
+   ('master' 1)
+   ('context' 2000)
+   (
+      'song'
+      ('name' 'songs/mountainsound/mountainsound')
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1)
+            )
+            (
+               'bass'
+               (2 3)
+            )
+            (
+               'guitar'
+               (4 5)
+            )
+            (
+               'vocals'
+               (6 7)
+            )
+         )
+      )
+      ('vocal_parts' 3)
+      ('crowd_channels' 10 11)
+      (
+         'pans'
+         (-1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -2.5 2.5)
+      )
+      (
+         'vols'
+         (-0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -3.2 -3.2)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 1 1 -1 -1 -1 -1 -1 -1)
+      )
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+      ('midi_file' 'songs/mountainsound/mountainsound.mid')
+   )
+   ('song_scroll_speed' 2300)
+   ('bank' 'sfx/tambourine_bank.milo')
+   ('anim_tempo' 32)
+   ('song_length' 216960)
+   ('preview' 51737 81737)
+   (
+      'rank'
+      ('drum' 155)
+      ('guitar' 225)
+      ('bass' 138)
+      ('vocals' 290)
+      ('band' 240)
+   )
+   ('genre' 'indierock')
+   (
+      'author'
+      "Harmonix, Rhythm Authors"
+   )
+   ('vocal_gender' 'male')
+   ('version' 0)
+   ('format' 4)
+   ('album_art' 'TRUE')
+   ('year_released' 2011)
+   ('rating' 1)
+   ('song_id' 1020762)
+   ('tuning_offset_cents' 0.0)
+   ('game_origin' 'rb4_dlc')
+   ('album_track_number' 3)
+   (
+      'album_name'
+      "My Head is an Animal"
+   )
+   ('decade' 'the10s')
+   ('downloaded' 'TRUE')
+   ('base_points' 0)
+   ('vocal_tonic_note' 5)
+)
+
+(
+   'tasteofregret'
+   (
+      'name'
+      "Taste of Regret"
+   )
+   (
+      'artist'
+      "Of Mice & Men"
+   )
+   ('master' 1)
+   ('context' 2000)
+   (
+      'song'
+      ('name' 'songs/tasteofregret/tasteofregret')
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1)
+            )
+            (
+               'bass'
+               (2 3)
+            )
+            (
+               'guitar'
+               (4 5)
+            )
+            (
+               'vocals'
+               (6 7)
+            )
+         )
+      )
+      ('vocal_parts' 3)
+      (
+         'pans'
+         (-1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0)
+      )
+      (
+         'vols'
+         (0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 1 1 -1 -1 -1 -1)
+      )
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+      ('midi_file' 'songs/tasteofregret/tasteofregret.mid')
+   )
+   ('song_scroll_speed' 2300)
+   ('bank' 'sfx/cowbell_bank.milo')
+   ('anim_tempo' 32)
+   ('song_length' 210282)
+   ('preview' 75997 105997)
+   (
+      'rank'
+      ('drum' 408)
+      ('guitar' 380)
+      ('bass' 328)
+      ('vocals' 152)
+      ('band' 303)
+   )
+   ('genre' 'metal')
+   (
+      'author'
+      "Harmonix, Rhythm Authors"
+   )
+   ('vocal_gender' 'male')
+   ('version' 0)
+   ('format' 4)
+   ('album_art' 'TRUE')
+   ('year_released' 2019)
+   ('rating' 2)
+   ('song_id' 1020472)
+   ('tuning_offset_cents' 0.0)
+   ('game_origin' 'rb4_dlc')
+   ('album_track_number' 3)
+   (
+      'album_name'
+      "EARTHANDSKY"
+   )
+   ('decade' 'the10s')
+   ('downloaded' 'TRUE')
+   ('base_points' 0)
+   ('vocal_tonic_note' 0)
+)
+
+(
+   'dontlethergo'
+   (
+      'name'
+      "Don't Let Her Go"
+   )
+   (
+      'artist'
+      "Newfane"
+   )
+   ('master' 1)
+   ('context' 2000)
+   (
+      'song'
+      ('name' 'songs/dontlethergo/dontlethergo')
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1)
+            )
+            (
+               'bass'
+               (2 3)
+            )
+            (
+               'guitar'
+               (4 5)
+            )
+            (
+               'vocals'
+               (6 7)
+            )
+         )
+      )
+      ('vocal_parts' 3)
+      (
+         'pans'
+         (-1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0)
+      )
+      (
+         'vols'
+         (-0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 1 1 -1 -1 -1 -1)
+      )
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+      ('midi_file' 'songs/dontlethergo/dontlethergo.mid')
+   )
+   ('song_scroll_speed' 2300)
+   ('bank' 'sfx/tambourine_bank.milo')
+   ('anim_tempo' 64)
+   ('song_length' 354605)
+   ('preview' 88656 118656)
+   (
+      'rank'
+      ('drum' 310)
+      ('guitar' 300)
+      ('bass' 320)
+      ('vocals' 200)
+      ('band' 275)
+   )
+   ('genre' 'alternative')
+   (
+      'author'
+      "Harmonix, Rhythm Authors"
+   )
+   ('vocal_gender' 'male')
+   ('version' 0)
+   ('format' 4)
+   ('album_art' 'TRUE')
+   ('year_released' 2019)
+   ('rating' 2)
+   ('song_id' 1020461)
+   ('tuning_offset_cents' 0.0)
+   ('game_origin' 'rb4_dlc')
+   ('album_track_number' 1)
+   (
+      'album_name'
+      "The End of Times"
+   )
+   ('decade' 'the10s')
+   ('downloaded' 'TRUE')
+   ('base_points' 0)
+   ('vocal_tonic_note' 9)
+)
+
+(
+   'alldownhillfromhere'
+   (
+      'name'
+      "All Downhill from Here"
+   )
+   (
+      'artist'
+      "New Found Glory"
+   )
+   ('master' 1)
+   ('context' 2000)
+   (
+      'song'
+      ('name' 'songs/alldownhillfromhere/alldownhillfromhere')
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1)
+            )
+            (
+               'bass'
+               (2 3)
+            )
+            (
+               'guitar'
+               (4 5)
+            )
+            (
+               'vocals'
+               (6 7)
+            )
+         )
+      )
+      ('vocal_parts' 3)
+      (
+         'pans'
+         (-1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0)
+      )
+      (
+         'vols'
+         (-0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 1 1 -1 -1 -1 -1)
+      )
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+      ('midi_file' 'songs/alldownhillfromhere/alldownhillfromhere.mid')
+   )
+   ('song_scroll_speed' 2300)
+   ('bank' 'sfx/tambourine_bank.milo')
+   ('anim_tempo' 64)
+   ('song_length' 194986)
+   ('preview' 38918 68918)
+   (
+      'rank'
+      ('drum' 352)
+      ('guitar' 227)
+      ('bass' 184)
+      ('vocals' 181)
+      ('band' 249)
+   )
+   ('genre' 'punk')
+   (
+      'author'
+      "Harmonix, Rhythm Authors"
+   )
+   ('vocal_gender' 'male')
+   ('version' 0)
+   ('format' 4)
+   ('album_art' 'TRUE')
+   ('year_released' 2004)
+   ('rating' 2)
+   ('song_id' 1020551)
+   ('tuning_offset_cents' 0.0)
+   ('game_origin' 'rb4_dlc')
+   ('album_track_number' 2)
+   (
+      'album_name'
+      "Catalyst"
+   )
+   ('decade' 'the00s')
+   ('downloaded' 'TRUE')
+   ('base_points' 0)
+   ('vocal_tonic_note' 9)
+)
+
+(
+   'everybodytalks'
+   (
+      'name'
+      "Everybody Talks"
+   )
+   (
+      'artist'
+      "Neon Trees"
+   )
+   ('master' 1)
+   ('context' 2000)
+   (
+      'song'
+      ('name' 'songs/everybodytalks/everybodytalks')
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1)
+            )
+            (
+               'bass'
+               (2)
+            )
+            (
+               'guitar'
+               (3 4)
+            )
+            (
+               'vocals'
+               (5 6)
+            )
+         )
+      )
+      ('vocal_parts' 3)
+      ('crowd_channels' 9 10)
+      (
+         'pans'
+         (-1.0 1.0 0.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -2.5 2.5)
+      )
+      (
+         'vols'
+         (-0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0)
+      )
+      (
+         'cores'
+         (-1 -1 -1 1 1 -1 -1 -1 -1 -1 -1)
+      )
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+      ('midi_file' 'songs/everybodytalks/everybodytalks.mid')
+   )
+   ('song_scroll_speed' 2300)
+   ('bank' 'sfx/tambourine_bank.milo')
+   (drum_bank sfx/kit01_bank.milo)
+   ('anim_tempo' 64)
+   ('song_length' 181925)
+   ('preview' 27452 57452)
+   (
+      'rank'
+      ('drum' 236)
+      ('guitar' 230)
+      ('bass' 238)
+      ('vocals' 275)
+      ('band' 255)
+   )
+   ('genre' 'poprock')
+   (
+      'author'
+      "Harmonix, Rhythm Authors"
+   )
+   ('vocal_gender' 'male')
+   ('version' 0)
+   ('format' 4)
+   ('album_art' 'TRUE')
+   ('year_released' 2012)
+   ('rating' 3)
+   ('song_id' 1020011)
+   ('tuning_offset_cents' 0.0)
+   ('game_origin' 'rb4_dlc')
+   ('album_track_number' 3)
+   (
+      'album_name'
+      "Picture Show"
+   )
+   ('decade' 'the10s')
+   ('downloaded' 'TRUE')
+   ('base_points' 0)
+   ('vocal_tonic_note' 1)
+)
+
+(
+   'alwayssomethingthere'
+   (
+      'name'
+      "Always Something There to Remind Me"
+   )
+   (
+      'artist'
+      "Naked Eyes"
+   )
+   ('master' 1)
+   ('context' 2000)
+   (
+      'song'
+      ('name' 'songs/alwayssomethingthere/alwayssomethingthere')
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1)
+            )
+            (
+               'bass'
+               (2 3)
+            )
+            (
+               'guitar'
+               (4 5)
+            )
+            (
+               'vocals'
+               (6 7)
+            )
+         )
+      )
+      ('vocal_parts' 3)
+      (
+         'pans'
+         (-1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0)
+      )
+      (
+         'vols'
+         (-0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 1 1 -1 -1 -1 -1)
+      )
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+      ('midi_file' 'songs/alwayssomethingthere/alwayssomethingthere.mid')
+   )
+   ('song_scroll_speed' 2300)
+   ('bank' 'sfx/tambourine_bank.milo')
+   (drum_bank sfx/kit05_bank.milo)
+   ('band_fail_cue' 'band_fail_electro.cue')
+   ('anim_tempo' 64)
+   ('song_length' 226563)
+   ('preview' 32470 62470)
+   (
+      'rank'
+      ('drum' 242)
+      ('guitar' 91)
+      ('bass' 140)
+      ('vocals' 240)
+      ('band' 218)
+   )
+   ('genre' 'new_wave')
+   (
+      'author'
+      "Harmonix, Rhythm Authors"
+   )
+   ('vocal_gender' 'male')
+   ('version' 0)
+   ('format' 4)
+   ('year_released' 1983)
+   ('rating' 1)
+   ('song_id' 1020046)
+   ('tuning_offset_cents' 0.0)
+   ('game_origin' 'rb4_dlc')
+   ('album_track_number' 4)
+   ('album_art' 'TRUE')
+   (
+      'album_name'
+      "Burning Bridges"
+   )
+   ('decade' 'the80s')
+   ('downloaded' 'TRUE')
+   ('base_points' 0)
+   ('vocal_tonic_note' 2)
+)
+
+(
+   'famouslastwords'
+   (
+      'name'
+      "Famous Last Words"
+   )
+   (
+      'artist'
+      "My Chemical Romance"
+   )
+   ('master' 1)
+   ('context' 2000)
+   (
+      'song'
+      ('name' 'songs/famouslastwords/famouslastwords')
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1)
+            )
+            (
+               'bass'
+               (2 3)
+            )
+            (
+               'guitar'
+               (4 5)
+            )
+            (
+               'vocals'
+               (6 7)
+            )
+         )
+      )
+      ('vocal_parts' 3)
+      (
+         'pans'
+         (-1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0)
+      )
+      (
+         'vols'
+         (-0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 1 1 -1 -1 -1 -1)
+      )
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+      ('midi_file' 'songs/famouslastwords/famouslastwords.mid')
+   )
+   ('song_scroll_speed' 2300)
+   ('bank' 'sfx/tambourine_bank.milo')
+   ('anim_tempo' 32)
+   ('song_length' 302320)
+   ('preview' 129376 159376)
+   (
+      'rank'
+      ('drum' 231)
+      ('guitar' 287)
+      ('bass' 164)
+      ('vocals' 339)
+      ('band' 264)
+   )
+   ('genre' 'emo')
+   (
+      'author'
+      "Harmonix, Rhythm Authors"
+   )
+   ('vocal_gender' 'male')
+   ('version' 0)
+   ('format' 4)
+   ('album_art' 'TRUE')
+   ('year_released' 2006)
+   ('rating' 2)
+   ('song_id' 1020159)
+   ('tuning_offset_cents' 0.0)
+   ('game_origin' 'rb4_dlc')
+   ('album_track_number' 13)
+   (
+      'album_name'
+      "The Black Parade"
+   )
+   ('decade' 'the00s')
+   ('downloaded' 'TRUE')
+   ('base_points' 0)
+   ('vocal_tonic_note' 5)
+)
+
+(
+   'dystopia'
+   (
+      'name'
+      "Dystopia"
+   )
+   (
+      'artist'
+      "Megadeth"
+   )
+   ('master' 1)
+   ('context' 2000)
+   (
+      'song'
+      ('name' 'songs/dystopia/dystopia')
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1)
+            )
+            (
+               'bass'
+               (2 3)
+            )
+            (
+               'guitar'
+               (4 5)
+            )
+            (
+               'vocals'
+               (6 7)
+            )
+         )
+      )
+      ('vocal_parts' 2)
+      (
+         'pans'
+         (-1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0)
+      )
+      (
+         'vols'
+         (-0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 1 1 -1 -1 -1 -1)
+      )
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+      ('midi_file' 'songs/dystopia/dystopia.mid')
+   )
+   ('song_scroll_speed' 2300)
+   ('bank' 'sfx/cowbell_bank.milo')
+   ('anim_tempo' 64)
+   ('song_length' 297256)
+   ('preview' 105600 135600)
+   (
+      'rank'
+      ('drum' 458)
+      ('guitar' 488)
+      ('bass' 345)
+      ('vocals' 148)
+      ('band' 330)
+   )
+   ('genre' 'metal')
+   (
+      'author'
+      "Harmonix, Rhythm Authors"
+   )
+   ('vocal_gender' 'male')
+   ('version' 0)
+   ('format' 4)
+   ('album_art' 'TRUE')
+   ('year_released' 2016)
+   ('rating' 2)
+   ('song_id' 1020233)
+   ('tuning_offset_cents' 0.0)
+   ('game_origin' 'rb4_dlc')
+   ('album_track_number' 2)
+   (
+      'album_name'
+      "Dystopia"
+   )
+   ('decade' 'the10s')
+   ('downloaded' 'TRUE')
+   ('base_points' 0)
+   ('vocal_tonic_note' 0)
+)
+
+(
+   'push'
+   (
+      'name'
+      "Push"
+   )
+   (
+      'artist'
+      "Matchbox Twenty"
+   )
+   ('master' 1)
+   ('context' 2000)
+   (
+      'song'
+      ('name' 'songs/push/push')
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1)
+            )
+            (
+               'bass'
+               (2 3)
+            )
+            (
+               'guitar'
+               (4 5)
+            )
+            (
+               'vocals'
+               (6 7)
+            )
+         )
+      )
+      ('vocal_parts' 3)
+      (
+         'pans'
+         (-1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0)
+      )
+      (
+         'vols'
+         (-0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 1 1 -1 -1 -1 -1)
+      )
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+      ('midi_file' 'songs/push/push.mid')
+   )
+   ('song_scroll_speed' 2300)
+   ('bank' 'sfx/tambourine_bank.milo')
+   ('anim_tempo' 64)
+   ('song_length' 242784)
+   ('preview' 61321 91321)
+   (
+      'rank'
+      ('drum' 138)
+      ('guitar' 205)
+      ('bass' 150)
+      ('vocals' 310)
+      ('band' 233)
+   )
+   ('genre' 'alternative')
+   (
+      'author'
+      "Harmonix, Rhythm Authors"
+   )
+   ('vocal_gender' 'male')
+   ('version' 0)
+   ('format' 4)
+   ('album_art' 'TRUE')
+   ('year_released' 1996)
+   ('rating' 2)
+   ('song_id' 1020424)
+   ('tuning_offset_cents' 0.0)
+   ('game_origin' 'rb4_dlc')
+   ('album_track_number' 4)
+   (
+      'album_name'
+      "Yourself or Someone Like You"
+   )
+   ('decade' 'the90s')
+   ('downloaded' 'TRUE')
+   ('base_points' 0)
+   ('vocal_tonic_note' 1)
+)
+
+(
+   'radioreject'
+   (
+      'name'
+      "Radio Reject"
+   )
+   (
+      'artist'
+      "Magnolia Park"
+   )
+   ('master' 1)
+   ('context' 2000)
+   (
+      'song'
+      ('name' 'songs/radioreject/radioreject')
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1)
+            )
+            (
+               'bass'
+               (2 3)
+            )
+            (
+               'guitar'
+               (4 5)
+            )
+            (
+               'vocals'
+               (6 7)
+            )
+         )
+      )
+      ('vocal_parts' 3)
+      (
+         'pans'
+         (-1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0)
+      )
+      (
+         'vols'
+         (-0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 1 1 -1 -1 -1 -1)
+      )
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+      ('midi_file' 'songs/radioreject/radioreject.mid')
+   )
+   ('song_scroll_speed' 2300)
+   ('bank' 'sfx/tambourine_bank.milo')
+   (drum_bank sfx/kit01_bank.milo)
+   ('anim_tempo' 64)
+   ('song_length' 144999)
+   ('preview' 41964 71964)
+   (
+      'rank'
+      ('drum' 240)
+      ('guitar' 245)
+      ('bass' 220)
+      ('vocals' 225)
+      ('band' 250)
+   )
+   ('genre' 'punk')
+   (
+      'author'
+      "Harmonix, Rhythm Authors"
+   )
+   ('vocal_gender' 'male')
+   ('version' 0)
+   ('format' 4)
+   ('album_art' 'TRUE')
+   ('year_released' 2022)
+   ('rating' 2)
+   ('song_id' 1020727)
+   ('tuning_offset_cents' 0.0)
+   ('game_origin' 'rb4_dlc')
+   ('album_track_number' 4)
+   (
+      'album_name'
+      "Baku's Revenge"
+   )
+   ('decade' 'the20s')
+   ('downloaded' 'TRUE')
+   ('base_points' 0)
+   ('vocal_tonic_note' 3)
+)
+
+(
+   'broken2'
+   (
+      'name'
+      "Broken"
+   )
+   (
+      'artist'
+      "lovelytheband"
+   )
+   ('master' 1)
+   ('context' 2000)
+   (
+      'song'
+      ('name' 'songs/broken2/broken2')
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1)
+            )
+            (
+               'bass'
+               (2 3)
+            )
+            (
+               'guitar'
+               (4 5)
+            )
+            (
+               'vocals'
+               (6 7)
+            )
+         )
+      )
+      ('vocal_parts' 3)
+      (
+         'pans'
+         (-1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0)
+      )
+      (
+         'vols'
+         (-0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 1 1 -1 -1 -1 -1)
+      )
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+      ('midi_file' 'songs/broken2/broken2.mid')
+   )
+   ('song_scroll_speed' 2300)
+   ('bank' 'sfx/tambourine_bank.milo')
+   (drum_bank sfx/kit01_bank.milo)
+   ('anim_tempo' 32)
+   ('song_length' 204864)
+   ('preview' 49743 79743)
+   (
+      'rank'
+      ('drum' 228)
+      ('guitar' 201)
+      ('bass' 110)
+      ('vocals' 165)
+      ('band' 222)
+   )
+   ('genre' 'alternative')
+   (
+      'author'
+      "Harmonix, Rhythm Authors"
+   )
+   ('vocal_gender' 'male')
+   ('version' 0)
+   ('format' 4)
+   ('album_art' 'TRUE')
+   ('year_released' 2017)
+   ('rating' 1)
+   ('song_id' 1020395)
+   ('tuning_offset_cents' 0.0)
+   ('game_origin' 'rb4_dlc')
+   ('album_track_number' 4)
+   (
+      'album_name'
+      "finding it hard to smile"
+   )
+   ('decade' 'the10s')
+   ('downloaded' 'TRUE')
+   ('base_points' 0)
+   ('vocal_tonic_note' 11)
+)
+
+(
+   'timewarp'
+   (
+      'name'
+      "Time Warp"
+   )
+   (
+      'artist'
+      "Little Nell, Patricia Quinn & Richard O'Brien"
+   )
+   ('master' 1)
+   ('context' 2000)
+   (
+      'song'
+      ('name' 'songs/timewarp/timewarp')
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1)
+            )
+            (
+               'bass'
+               (2 3)
+            )
+            (
+               'guitar'
+               (4 5)
+            )
+            (
+               'vocals'
+               (6 7)
+            )
+         )
+      )
+      ('vocal_parts' 3)
+      (
+         'pans'
+         (-1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0)
+      )
+      (
+         'vols'
+         (-0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 1 1 -1 -1 -1 -1)
+      )
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+      ('midi_file' 'songs/timewarp/timewarp.mid')
+   )
+   ('song_scroll_speed' 2300)
+   ('bank' 'sfx/tambourine_bank.milo')
+   ('anim_tempo' 64)
+   ('song_length' 200759)
+   ('preview' 47976 77976)
+   (
+      'rank'
+      ('drum' 235)
+      ('guitar' 240)
+      ('bass' 325)
+      ('vocals' 345)
+      ('band' 270)
+   )
+   ('genre' 'glam')
+   (
+      'author'
+      "Harmonix, Rhythm Authors"
+   )
+   ('vocal_gender' 'male')
+   ('version' 0)
+   ('format' 4)
+   ('album_art' 'TRUE')
+   ('year_released' 1975)
+   ('rating' 1)
+   ('song_id' 1020614)
+   ('tuning_offset_cents' -30)
+   ('game_origin' 'rb4_dlc')
+   ('album_track_number' 4)
+   (
+      'album_name'
+      "The Rocky Horror Picture Show (Soundtrack from the Motion Picture)"
+   )
+   ('decade' 'the70s')
+   ('downloaded' 'TRUE')
+   ('base_points' 0)
+   ('vocal_tonic_note' 9)
+)
+
+(
+   'kissmedeadly'
+   (
+      'name'
+      "Kiss Me Deadly"
+   )
+   (
+      'artist'
+      "Lita Ford"
+   )
+   ('master' 1)
+   ('context' 2000)
+   (
+      'song'
+      ('name' 'songs/kissmedeadly/kissmedeadly')
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1)
+            )
+            (
+               'bass'
+               (2 3)
+            )
+            (
+               'guitar'
+               (4 5)
+            )
+            (
+               'vocals'
+               (6 7)
+            )
+         )
+      )
+      ('vocal_parts' 2)
+      (
+         'pans'
+         (-1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0)
+      )
+      (
+         'vols'
+         (-0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 1 1 -1 -1 -1 -1)
+      )
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+      ('midi_file' 'songs/kissmedeadly/kissmedeadly.mid')
+   )
+   ('song_scroll_speed' 2300)
+   ('bank' 'sfx/cowbell_bank.milo')
+   (drum_bank sfx/kit02_bank.milo)
+   ('anim_tempo' 64)
+   ('song_length' 238268)
+   ('preview' 64288 94288)
+   (
+      'rank'
+      ('drum' 145)
+      ('guitar' 350)
+      ('bass' 225)
+      ('vocals' 250)
+      ('band' 250)
+   )
+   ('genre' 'glam')
+   (
+      'author'
+      "Harmonix, Rhythm Authors"
+   )
+   ('vocal_gender' 'female')
+   ('version' 0)
+   ('format' 4)
+   ('album_art' 'TRUE')
+   ('year_released' 1988)
+   ('rating' 2)
+   ('song_id' 1020725)
+   ('tuning_offset_cents' 0.0)
+   ('game_origin' 'rb4_dlc')
+   ('album_track_number' 4)
+   (
+      'album_name'
+      "Lita"
+   )
+   ('decade' 'the80s')
+   ('downloaded' 'TRUE')
+   ('base_points' 0)
+   ('vocal_tonic_note' 0)
+)
+
+(
+   'morethevictim'
+   (
+      'name'
+      "More the Victim"
+   )
+   (
+      'artist'
+      "Linkin Park"
+   )
+   ('master' 1)
+   ('context' 2000)
+   (
+      'song'
+      ('name' 'songs/morethevictim/morethevictim')
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1)
+            )
+            (
+               'bass'
+               (2 3)
+            )
+            (
+               'guitar'
+               (4 5)
+            )
+            (
+               'vocals'
+               (6 7)
+            )
+         )
+      )
+      ('vocal_parts' 3)
+      (
+         'pans'
+         (-1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0)
+      )
+      (
+         'vols'
+         (-0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 1 1 -1 -1 -1 -1)
+      )
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+      ('midi_file' 'songs/morethevictim/morethevictim.mid')
+   )
+   ('song_scroll_speed' 2300)
+   ('bank' 'sfx/tambourine_bank.milo')
+   ('anim_tempo' 32)
+   ('song_length' 165999)
+   ('preview' 42625 72625)
+   (
+      'rank'
+      ('drum' 175)
+      ('guitar' 200)
+      ('bass' 200)
+      ('vocals' 200)
+      ('band' 225)
+   )
+   ('genre' 'numetal')
+   (
+      'author'
+      "Harmonix, Rhythm Authors"
+   )
+   ('vocal_gender' 'male')
+   ('version' 0)
+   ('format' 4)
+   ('album_art' 'TRUE')
+   ('year_released' 2023)
+   ('rating' 1)
+   ('song_id' 1020765)
+   ('tuning_offset_cents' 0.0)
+   ('game_origin' 'rb4_dlc')
+   ('album_track_number' 1)
+   (
+      'album_name'
+      "Meteora20"
+   )
+   ('decade' 'the20s')
+   ('downloaded' 'TRUE')
+   ('base_points' 0)
+   ('vocal_tonic_note' 0)
+)
+
+(
+   'she_lf'
+   (
+      'name'
+      "She"
+   )
+   (
+      'artist'
+      "Legitimate Front"
+   )
+   ('master' 1)
+   ('context' 2000)
+   (
+      'song'
+      ('name' 'songs/she_lf/she_lf')
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1)
+            )
+            (
+               'bass'
+               (2)
+            )
+            (
+               'guitar'
+               (3 4)
+            )
+            (
+               'vocals'
+               (5 6)
+            )
+         )
+      )
+      ('vocal_parts' 3)
+      (
+         'pans'
+         (-1.0 1.0 0.0 -1.0 1.0 -1.0 1.0 -1.0 1.0)
+      )
+      (
+         'vols'
+         (-0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0)
+      )
+      (
+         'cores'
+         (-1 -1 -1 1 1 -1 -1 -1 -1)
+      )
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+      ('midi_file' 'songs/she_lf/she_lf.mid')
+   )
+   ('song_scroll_speed' 2300)
+   ('bank' 'sfx/tambourine_bank.milo')
+   ('band_fail_cue' 'band_fail_vintage.cue')
+   ('anim_tempo' 32)
+   ('song_length' 308615)
+   ('preview' 91010 121010)
+   (
+      'rank'
+      ('drum' 181)
+      ('guitar' 297)
+      ('bass' 376)
+      ('vocals' 176)
+      ('band' 269)
+   )
+   ('genre' 'rbsoulfunk')
+   (
+      'author'
+      "Harmonix, Rhythm Authors"
+   )
+   ('vocal_gender' 'male')
+   ('version' 0)
+   ('format' 4)
+   ('album_art' 'TRUE')
+   ('year_released' 2012)
+   ('rating' 1)
+   ('song_id' 1020093)
+   ('tuning_offset_cents' 0.0)
+   ('game_origin' 'rb4_dlc')
+   ('album_track_number' 1)
+   (
+      'album_name'
+      "Off the Hook"
+   )
+   ('decade' 'the10s')
+   ('downloaded' 'TRUE')
+   ('base_points' 0)
+   ('vocal_tonic_note' 9)
+)
+
+(
+   'celebration'
+   (
+      'name'
+      "Celebration"
+   )
+   (
+      'artist'
+      "Kool & the Gang"
+   )
+   ('master' 1)
+   ('context' 2000)
+   (
+      'song'
+      ('name' 'songs/celebration/celebration')
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1)
+            )
+            (
+               'bass'
+               (2 3)
+            )
+            (
+               'guitar'
+               (4 5)
+            )
+            (
+               'vocals'
+               (6 7)
+            )
+         )
+      )
+      ('vocal_parts' 3)
+      (
+         'pans'
+         (-1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0)
+      )
+      (
+         'vols'
+         (-0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 1 1 -1 -1 -1 -1)
+      )
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+      ('midi_file' 'songs/celebration/celebration.mid')
+   )
+   ('song_scroll_speed' 2300)
+   ('bank' 'sfx/tambourine_bank.milo')
+   (drum_bank sfx/kit03_bank.milo)
+   ('anim_tempo' 32)
+   ('song_length' 289710)
+   ('preview' 110165 140165)
+   (
+      'rank'
+      ('drum' 115)
+      ('guitar' 262)
+      ('bass' 146)
+      ('vocals' 250)
+      ('band' 235)
+   )
+   ('genre' 'rbsoulfunk')
+   (
+      'author'
+      "Harmonix, Rhythm Authors"
+   )
+   ('vocal_gender' 'male')
+   ('version' 0)
+   ('format' 4)
+   ('album_art' 'TRUE')
+   ('year_released' 1980)
+   ('rating' 1)
+   ('song_id' 1020262)
+   ('tuning_offset_cents' 0.0)
+   ('game_origin' 'rb4_dlc')
+   ('album_track_number' 1)
+   (
+      'album_name'
+      "Celebrate!"
+   )
+   ('decade' 'the80s')
+   ('downloaded' 'TRUE')
+   ('base_points' 0)
+   ('vocal_tonic_note' 9)
+)
+
+(
+   'estella'
+   (
+      'name'
+      "estella// (ft. Travis Barker)"
+   )
+   (
+      'artist'
+      "KennyHoopla"
+   )
+   ('master' 1)
+   ('context' 2000)
+   (
+      'song'
+      ('name' 'songs/estella/estella')
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1)
+            )
+            (
+               'bass'
+               (2 3)
+            )
+            (
+               'guitar'
+               (4 5)
+            )
+            (
+               'vocals'
+               (6 7)
+            )
+         )
+      )
+      ('vocal_parts' 3)
+      (
+         'pans'
+         (-1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0)
+      )
+      (
+         'vols'
+         (-0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 1 1 -1 -1 -1 -1)
+      )
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+      ('midi_file' 'songs/estella/estella.mid')
+   )
+   ('song_scroll_speed' 2300)
+   ('bank' 'sfx/tambourine_bank.milo')
+   ('anim_tempo' 64)
+   ('song_length' 121458)
+   ('preview' 37822 67822)
+   (
+      'rank'
+      ('drum' 390)
+      ('guitar' 199)
+      ('bass' 199)
+      ('vocals' 305)
+      ('band' 251)
+   )
+   ('genre' 'alternative')
+   (
+      'author'
+      "Harmonix, Rhythm Authors"
+   )
+   ('vocal_gender' 'male')
+   ('version' 0)
+   ('format' 4)
+   ('album_art' 'TRUE')
+   ('year_released' 2021)
+   ('rating' 2)
+   ('song_id' 1020599)
+   ('tuning_offset_cents' 0.0)
+   ('game_origin' 'rb4_dlc')
+   ('album_track_number' 2)
+   (
+      'album_name'
+      "Survivors Guilt: The Mixtape"
+   )
+   ('decade' 'the20s')
+   ('downloaded' 'TRUE')
+   ('base_points' 0)
+   ('vocal_tonic_note' 7)
+)
+
+(
+   'wakingupinvegas'
+   (
+      'name'
+      "Waking Up In Vegas"
+   )
+   (
+      'artist'
+      "Katy Perry"
+   )
+   ('master' 1)
+   ('context' 2000)
+   (
+      'song'
+      ('name' 'songs/wakingupinvegas/wakingupinvegas')
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1)
+            )
+            (
+               'bass'
+               (2 3)
+            )
+            (
+               'guitar'
+               (4 5)
+            )
+            (
+               'vocals'
+               (6 7)
+            )
+         )
+      )
+      ('vocal_parts' 3)
+      ('crowd_channels' 10 11)
+      (
+         'pans'
+         (-1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -2.5 2.5)
+      )
+      (
+         'vols'
+         (-0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -2.0 -2.0)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 1 1 -1 -1 -1 -1 -1 -1)
+      )
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+      ('midi_file' 'songs/wakingupinvegas/wakingupinvegas.mid')
+   )
+   ('song_scroll_speed' 2300)
+   ('bank' 'sfx/tambourine_bank.milo')
+   ('anim_tempo' 32)
+   ('song_length' 176074)
+   ('preview' 46195 76195)
+   (
+      'rank'
+      ('drum' 210)
+      ('guitar' 200)
+      ('bass' 190)
+      ('vocals' 290)
+      ('band' 220)
+   )
+   ('genre' 'popdanceelectronic')
+   (
+      'author'
+      "Harmonix, Rhythm Authors"
+   )
+   ('vocal_gender' 'female')
+   ('version' 0)
+   ('format' 4)
+   ('album_art' 'TRUE')
+   ('year_released' 2008)
+   ('rating' 2)
+   ('song_id' 1020653)
+   ('tuning_offset_cents' 0.0)
+   ('game_origin' 'rb4_dlc')
+   ('album_track_number' 3)
+   (
+      'album_name'
+      "One of the Boys"
+   )
+   ('decade' 'the00s')
+   ('downloaded' 'TRUE')
+   ('base_points' 0)
+   ('vocal_tonic_note' 9)
+)
+
+(
+   'takemehomecountry'
+   (
+      'name'
+      "Take Me Home, Country Roads '95"
+   )
+   (
+      'artist'
+      "John Denver"
+   )
+   ('master' 1)
+   ('context' 2000)
+   (
+      'song'
+      ('name' 'songs/takemehomecountry/takemehomecountry')
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1)
+            )
+            (
+               'bass'
+               (2 3)
+            )
+            (
+               'guitar'
+               (4 5)
+            )
+            (
+               'vocals'
+               (6 7)
+            )
+         )
+      )
+      ('vocal_parts' 3)
+      (
+         'pans'
+         (-1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0)
+      )
+      (
+         'vols'
+         (-0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 1 1 -1 -1 -1 -1)
+      )
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+      ('midi_file' 'songs/takemehomecountry/takemehomecountry.mid')
+   )
+   ('song_scroll_speed' 2300)
+   ('bank' 'sfx/tambourine_bank.milo')
+   (drum_bank sfx/kit01_bank.milo)
+   ('anim_tempo' 16)
+   ('song_length' 199793)
+   ('preview' 83398 113398)
+   (
+      'rank'
+      ('drum' 126)
+      ('guitar' 223)
+      ('bass' 137)
+      ('vocals' 177)
+      ('band' 217)
+   )
+   ('genre' 'country')
+   (
+      'author'
+      "Harmonix, Rhythm Authors"
+   )
+   ('vocal_gender' 'male')
+   ('version' 0)
+   ('format' 4)
+   ('album_art' 'TRUE')
+   ('year_released' 1995)
+   ('rating' 2)
+   ('song_id' 10205592)
+   ('tuning_offset_cents' 0.0)
+   ('album_track_number' 1)
+   (
+      'album_name'
+      "The John Denver Collection, Vol 1: Take Me Home Country Roads"
+   )
+   ('game_origin' 'rb4_dlc')
+   ('decade' 'the70s')
+   ('downloaded' 'TRUE')
+   ('base_points' 0)
+   ('vocal_tonic_note' 9)
+)
+
+(
+   'itsbeenalittleheavylately'
+   (
+      'name'
+      "It's Been a Little Heavy Lately"
+   )
+   (
+      'artist'
+      "Joesef"
+   )
+   ('master' 1)
+   (
+      'context'
+      {
+         'do'
+         {
+            $world
+            'iterate'
+            'PostProc'
+            $p
+            {$p 'set' 'saturation' 35}
+         }
+      }
+      {
+         'do'
+         {
+            $world
+            'iterate'
+            'PostProc'
+            $p
+            {$p 'set' 'bloom_intensity' 9}
+         }
+      }
+   )
+   (
+      'song'
+      ('name' 'songs/itsbeenalittleheavylately/itsbeenalittleheavylately')
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1)
+            )
+            (
+               'bass'
+               (2 3)
+            )
+            (
+               'guitar'
+               (4 5)
+            )
+            (
+               'vocals'
+               (6 7)
+            )
+         )
+      )
+      ('vocal_parts' 3)
+      (
+         'pans'
+         (-1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0)
+      )
+      (
+         'vols'
+         (-0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 1 1 -1 -1 -1 -1)
+      )
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+      ('midi_file' 'songs/itsbeenalittleheavylately/itsbeenalittleheavylately.mid')
+   )
+   ('song_scroll_speed' 2300)
+   ('bank' 'sfx/tambourine_bank.milo')
+   (drum_bank sfx/kit05_bank.milo)
+   ('anim_tempo' 32)
+   ('song_length' 217894)
+   ('preview' 54605 84605)
+   (
+      'rank'
+      ('drum' 145)
+      ('guitar' 225)
+      ('bass' 160)
+      ('vocals' 340)
+      ('band' 230)
+   )
+   ('genre' 'popdanceelectronic')
+   (
+      'author'
+      "Harmonix, Rhythm Authors"
+   )
+   ('vocal_gender' 'male')
+   ('version' 0)
+   ('format' 4)
+   ('album_art' 'TRUE')
+   ('year_released' 2022)
+   ('rating' 1)
+   ('song_id' 1020664)
+   ('tuning_offset_cents' 0.0)
+   ('game_origin' 'rb4_dlc')
+   ('album_track_number' 2)
+   (
+      'album_name'
+      "Permanent Damage"
+   )
+   ('decade' 'the20s')
+   ('downloaded' 'TRUE')
+   ('base_points' 0)
+   ('vocal_tonic_note' 3)
+)
+
+(
+   'yourethebest'
+   (
+      'name'
+      "You're the Best"
+   )
+   (
+      'artist'
+      "Joe \qBean\q Esposito"
+   )
+   ('master' 1)
+   ('context' 2000)
+   (
+      'song'
+      ('name' 'songs/yourethebest/yourethebest')
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1)
+            )
+            (
+               'bass'
+               (2 3)
+            )
+            (
+               'guitar'
+               (4 5)
+            )
+            (
+               'vocals'
+               (6 7)
+            )
+         )
+      )
+      ('vocal_parts' 3)
+      (
+         'pans'
+         (-1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0)
+      )
+      (
+         'vols'
+         (-0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 1 1 -1 -1 -1 -1)
+      )
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+      ('midi_file' 'songs/yourethebest/yourethebest.mid')
+   )
+   ('song_scroll_speed' 2300)
+   ('bank' 'sfx/tambourine_bank.milo')
+   (drum_bank sfx/kit01_bank.milo)
+   ('anim_tempo' 16)
+   ('song_length' 181629)
+   ('preview' 29145 59145)
+   (
+      'rank'
+      ('drum' 153)
+      ('guitar' 240)
+      ('bass' 201)
+      ('vocals' 365)
+      ('band' 241)
+   )
+   ('genre' 'poprock')
+   (
+      'author'
+      "Harmonix, Rhythm Authors"
+   )
+   ('vocal_gender' 'male')
+   ('version' 0)
+   ('format' 4)
+   ('album_art' 'TRUE')
+   ('year_released' 1984)
+   ('rating' 1)
+   ('song_id' 1020785)
+   ('tuning_offset_cents' 0.0)
+   ('game_origin' 'rb4_dlc')
+   ('album_track_number' 10)
+   (
+      'album_name'
+      "The Karate Kid: The Original Motion Picture Soundtrack"
+   )
+   ('decade' 'the80s')
+   ('downloaded' 'TRUE')
+   ('base_points' 0)
+   ('vocal_tonic_note' 2)
+)
+
+(
+   'thetriumph'
+   (
+      'name'
+      "The Triumph (ft. Casey Lee Williams)"
+   )
+   (
+      'artist'
+      "Jeff Williams"
+   )
+   ('master' 1)
+   ('context' 2000)
+   (
+      'song'
+      ('name' 'songs/thetriumph/thetriumph')
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1)
+            )
+            (
+               'bass'
+               (2 3)
+            )
+            (
+               'guitar'
+               (4 5)
+            )
+            (
+               'vocals'
+               (6 7)
+            )
+         )
+      )
+      ('vocal_parts' 3)
+      (
+         'pans'
+         (-1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0)
+      )
+      (
+         'vols'
+         (-0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 1 1 -1 -1 -1 -1)
+      )
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+      ('midi_file' 'songs/thetriumph/thetriumph.mid')
+   )
+   ('song_scroll_speed' 2300)
+   ('bank' 'sfx/cowbell_bank.milo')
+   ('anim_tempo' 64)
+   ('song_length' 254543)
+   ('preview' 144696 174696)
+   (
+      'rank'
+      ('drum' 440)
+      ('guitar' 419)
+      ('bass' 325)
+      ('vocals' 415)
+      ('band' 320)
+   )
+   ('genre' 'rock')
+   (
+      'author'
+      "Harmonix, Rhythm Authors"
+   )
+   ('vocal_gender' 'female')
+   ('version' 0)
+   ('format' 4)
+   ('album_art' 'TRUE')
+   ('year_released' 2018)
+   ('rating' 1)
+   ('song_id' 1020423)
+   ('tuning_offset_cents' 0.0)
+   ('game_origin' 'rb4_dlc')
+   ('album_track_number' 1)
+   (
+      'album_name'
+      "RWBY: Volume 5 Soundtrack"
+   )
+   ('decade' 'the10s')
+   ('downloaded' 'TRUE')
+   ('base_points' 0)
+   (
+      'pack_name'
+      "RBTHETRIUMPH2895"
+   )
+   ('vocal_tonic_note' 10)
+)
+
+(
+   'badthings'
+   (
+      'name'
+      "Bad Things"
+   )
+   (
+      'artist'
+      "I Prevail"
+   )
+   ('master' 1)
+   ('context' 2000)
+   (
+      'song'
+      ('name' 'songs/badthings/badthings')
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1)
+            )
+            (
+               'bass'
+               (2 3)
+            )
+            (
+               'guitar'
+               (4 5)
+            )
+            (
+               'vocals'
+               (6 7)
+            )
+         )
+      )
+      ('vocal_parts' 3)
+      (
+         'pans'
+         (-1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0)
+      )
+      (
+         'vols'
+         (-0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.8 -0.8 -0.0 -0.0)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 1 1 -1 -1 -1 -1)
+      )
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+      ('midi_file' 'songs/badthings/badthings.mid')
+   )
+   ('song_scroll_speed' 2300)
+   ('bank' 'sfx/tambourine_bank.milo')
+   ('anim_tempo' 64)
+   ('song_length' 232173)
+   ('preview' 67826 97826)
+   (
+      'rank'
+      ('drum' 175)
+      ('guitar' 260)
+      ('bass' 200)
+      ('vocals' 315)
+      ('band' 250)
+   )
+   ('genre' 'metal')
+   (
+      'author'
+      "Harmonix, Rhythm Authors"
+   )
+   ('vocal_gender' 'male')
+   ('version' 0)
+   ('format' 4)
+   ('album_art' 'TRUE')
+   ('year_released' 2022)
+   ('rating' 3)
+   ('song_id' 1020804)
+   ('tuning_offset_cents' 0.0)
+   ('game_origin' 'rb4_dlc')
+   ('album_track_number' 5)
+   (
+      'album_name'
+      "True Power"
+   )
+   ('decade' 'the20s')
+   ('downloaded' 'TRUE')
+   ('base_points' 0)
+   ('vocal_tonic_note' 7)
+)
+
+(
+   'uncomfortable'
+   (
+      'name'
+      "Uncomfortable"
+   )
+   (
+      'artist'
+      "Halestorm"
+   )
+   ('master' 1)
+   ('context' 2000)
+   (
+      'song'
+      ('name' 'songs/uncomfortable/uncomfortable')
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1)
+            )
+            (
+               'bass'
+               (2 3)
+            )
+            (
+               'guitar'
+               (4 5)
+            )
+            (
+               'vocals'
+               (6 7)
+            )
+         )
+      )
+      ('vocal_parts' 3)
+      (
+         'pans'
+         (-1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0)
+      )
+      (
+         'vols'
+         (-0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 1 1 -1 -1 -1 -1)
+      )
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+      ('midi_file' 'songs/uncomfortable/uncomfortable.mid')
+   )
+   ('song_scroll_speed' 2300)
+   ('bank' 'sfx/tambourine_bank.milo')
+   ('anim_tempo' 32)
+   ('song_length' 223682)
+   ('preview' 47521 77521)
+   (
+      'rank'
+      ('drum' 435)
+      ('guitar' 350)
+      ('bass' 380)
+      ('vocals' 502)
+      ('band' 330)
+   )
+   ('genre' 'rock')
+   (
+      'author'
+      "Harmonix, Rhythm Authors"
+   )
+   ('vocal_gender' 'male')
+   ('version' 0)
+   ('format' 4)
+   ('album_art' 'TRUE')
+   ('year_released' 2018)
+   ('rating' 2)
+   ('song_id' 1020401)
+   ('tuning_offset_cents' 0.0)
+   ('game_origin' 'rb4_dlc')
+   ('album_track_number' 1)
+   (
+      'album_name'
+      "Vicious"
+   )
+   ('decade' 'the10s')
+   ('downloaded' 'TRUE')
+   ('base_points' 0)
+   ('vocal_tonic_note' 2)
+)
+
+(
+   'mindrider'
+   (
+      'name'
+      "Mind Rider"
+   )
+   (
+      'artist'
+      "Hail the Sun"
+   )
+   ('master' 1)
+   ('context' 2000)
+   (
+      'song'
+      ('name' 'songs/mindrider/mindrider')
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1)
+            )
+            (
+               'bass'
+               (2 3)
+            )
+            (
+               'guitar'
+               (4 5)
+            )
+            (
+               'vocals'
+               (6 7)
+            )
+         )
+      )
+      ('vocal_parts' 3)
+      (
+         'pans'
+         (-1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0)
+      )
+      (
+         'vols'
+         (-0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 1 1 -1 -1 -1 -1)
+      )
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+      ('midi_file' 'songs/mindrider/mindrider.mid')
+   )
+   ('song_scroll_speed' 2300)
+   ('bank' 'sfx/tambourine_bank.milo')
+   ('anim_tempo' 32)
+   ('song_length' 203076)
+   ('preview' 46573 76573)
+   (
+      'rank'
+      ('drum' 440)
+      ('guitar' 350)
+      ('bass' 290)
+      ('vocals' 310)
+      ('band' 290)
+   )
+   ('genre' 'prog')
+   (
+      'author'
+      "Harmonix, Rhythm Authors"
+   )
+   ('vocal_gender' 'male')
+   ('version' 0)
+   ('format' 4)
+   ('album_art' 'TRUE')
+   ('year_released' 2023)
+   ('rating' 1)
+   ('sub_genre' 'subgenre_prog')
+   ('song_id' 1020794)
+   ('tuning_offset_cents' 0.0)
+   ('game_origin' 'rb4_dlc')
+   ('album_track_number' 1)
+   (
+      'album_name'
+      "Mind Rider"
+   )
+   ('decade' 'the20s')
+   ('downloaded' 'TRUE')
+   ('base_points' 0)
+   ('vocal_tonic_note' 0)
+)
+
+(
+   'maryonacross'
+   (
+      'name'
+      "Mary on a Cross"
+   )
+   (
+      'artist'
+      "Ghost"
+   )
+   ('master' 1)
+   ('context' 2000)
+   (
+      'song'
+      ('name' 'songs/maryonacross/maryonacross')
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1)
+            )
+            (
+               'bass'
+               (2 3)
+            )
+            (
+               'guitar'
+               (4 5)
+            )
+            (
+               'vocals'
+               (6 7)
+            )
+         )
+      )
+      ('vocal_parts' 3)
+      (
+         'pans'
+         (-1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0)
+      )
+      (
+         'vols'
+         (-0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 1 1 -1 -1 -1 -1)
+      )
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+      ('midi_file' 'songs/maryonacross/maryonacross.mid')
+   )
+   ('song_scroll_speed' 2300)
+   ('bank' 'sfx/tambourine_bank.milo')
+   ('anim_tempo' 32)
+   ('song_length' 247079)
+   ('preview' 81231 111231)
+   (
+      'rank'
+      ('drum' 190)
+      ('guitar' 200)
+      ('bass' 200)
+      ('vocals' 315)
+      ('band' 240)
+   )
+   ('genre' 'metal')
+   (
+      'author'
+      "Harmonix, Rhythm Authors"
+   )
+   ('vocal_gender' 'male')
+   ('version' 0)
+   ('format' 4)
+   ('album_art' 'TRUE')
+   ('year_released' 2019)
+   ('rating' 2)
+   ('song_id' 1020766)
+   ('tuning_offset_cents' 0.0)
+   ('game_origin' 'rb4_dlc')
+   ('album_track_number' 2)
+   (
+      'album_name'
+      "Seven Inches of Satanic Panic"
+   )
+   ('decade' 'the10s')
+   ('downloaded' 'TRUE')
+   ('base_points' 0)
+   ('vocal_tonic_note' 8)
+)
+
+(
+   'bakerstreet'
+   (
+      'name'
+      "Baker Street"
+   )
+   (
+      'artist'
+      "Gerry Rafferty"
+   )
+   ('master' 1)
+   ('context' 2000)
+   (
+      'song'
+      ('name' 'songs/bakerstreet/bakerstreet')
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1)
+            )
+            (
+               'bass'
+               (2 3)
+            )
+            (
+               'guitar'
+               (4 5)
+            )
+            (
+               'vocals'
+               (6 7)
+            )
+         )
+      )
+      ('vocal_parts' 1)
+      (
+         'pans'
+         (-1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0)
+      )
+      (
+         'vols'
+         (-0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 1 1 -1 -1 -1 -1)
+      )
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+      ('midi_file' 'songs/bakerstreet/bakerstreet.mid')
+   )
+   ('song_scroll_speed' 2300)
+   ('bank' 'sfx/tambourine_bank.milo')
+   (drum_bank sfx/kit03_bank.milo)
+   ('anim_tempo' 32)
+   ('song_length' 366846)
+   ('preview' 27642 57642)
+   (
+      'rank'
+      ('drum' 140)
+      ('guitar' 245)
+      ('bass' 235)
+      ('vocals' 200)
+      ('band' 235)
+   )
+   ('genre' 'classicrock')
+   (
+      'author'
+      "Harmonix, Rhythm Authors"
+   )
+   ('vocal_gender' 'male')
+   ('version' 0)
+   ('format' 4)
+   ('album_art' 'TRUE')
+   ('year_released' 1978)
+   ('rating' 1)
+   ('sub_genre' 'subgenre_classicrock')
+   ('song_id' 1020822)
+   ('tuning_offset_cents' 0.0)
+   ('game_origin' 'rb4_dlc')
+   ('album_track_number' 2)
+   (
+      'album_name'
+      "City to City"
+   )
+   ('decade' 'the70s')
+   ('downloaded' 'TRUE')
+   ('base_points' 0)
+   ('vocal_tonic_note' 2)
+)
+
+(
+   'voicesinmyhead'
+   (
+      'name'
+      "Voices in My Head"
+   )
+   (
+      'artist'
+      "Falling in Reverse"
+   )
+   ('master' 1)
+   ('context' 2000)
+   (
+      'song'
+      ('name' 'songs/voicesinmyhead/voicesinmyhead')
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1)
+            )
+            (
+               'bass'
+               (2 3)
+            )
+            (
+               'guitar'
+               (4 5)
+            )
+            (
+               'vocals'
+               (6 7)
+            )
+         )
+      )
+      ('vocal_parts' 3)
+      (
+         'pans'
+         (-1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0)
+      )
+      (
+         'vols'
+         (-0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 1 1 -1 -1 -1 -1)
+      )
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+      ('midi_file' 'songs/voicesinmyhead/voicesinmyhead.mid')
+   )
+   ('song_scroll_speed' 2300)
+   ('bank' 'sfx/tambourine_bank.milo')
+   ('anim_tempo' 64)
+   ('song_length' 194219)
+   ('preview' 47168 77168)
+   (
+      'rank'
+      ('drum' 230)
+      ('guitar' 180)
+      ('bass' 170)
+      ('vocals' 305)
+      ('band' 245)
+   )
+   ('genre' 'rock')
+   (
+      'author'
+      "Harmonix, Rhythm Authors"
+   )
+   ('vocal_gender' 'male')
+   ('version' 0)
+   ('format' 4)
+   ('album_art' 'TRUE')
+   ('year_released' 2024)
+   ('rating' 3)
+   ('song_id' 1020789)
+   ('tuning_offset_cents' 0.0)
+   ('game_origin' 'rb4_dlc')
+   ('album_track_number' 5)
+   (
+      'album_name'
+      "Popular Monster"
+   )
+   ('decade' 'the20s')
+   ('downloaded' 'TRUE')
+   ('base_points' 0)
+   ('vocal_tonic_note' 2)
+)
+
+(
+   'lightemup'
+   (
+      'name'
+      "My Songs Know What You Did in the Dark (Light Em Up)"
+   )
+   (
+      'artist'
+      "Fall Out Boy"
+   )
+   ('master' 1)
+   ('context' 2000)
+   (
+      'song'
+      ('name' 'songs/lightemup/lightemup')
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1)
+            )
+            (
+               'bass'
+               (2 3)
+            )
+            (
+               'guitar'
+               (4 5)
+            )
+            (
+               'vocals'
+               (6 7)
+            )
+         )
+      )
+      ('vocal_parts' 3)
+      ('crowd_channels' 10 11)
+      (
+         'pans'
+         (-1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -2.5 2.5)
+      )
+      (
+         'vols'
+         (-0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -1.2 -1.2)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 1 1 -1 -1 -1 -1 -1 -1)
+      )
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+      ('midi_file' 'songs/lightemup/lightemup.mid')
+   )
+   ('song_scroll_speed' 2300)
+   ('bank' 'sfx/tambourine_bank.milo')
+   ('anim_tempo' 64)
+   ('song_length' 191052)
+   ('preview' 54474 84474)
+   (
+      'rank'
+      ('drum' 236)
+      ('guitar' 188)
+      ('bass' 130)
+      ('vocals' 346)
+      ('band' 235)
+   )
+   ('genre' 'poprock')
+   (
+      'author'
+      "Harmonix, Rhythm Authors"
+   )
+   ('vocal_gender' 'male')
+   ('version' 0)
+   ('format' 4)
+   ('album_art' 'TRUE')
+   ('year_released' 2013)
+   ('rating' 2)
+   ('song_id' 1020144)
+   ('tuning_offset_cents' 0.0)
+   ('game_origin' 'rb4_dlc')
+   ('album_track_number' 2)
+   (
+      'album_name'
+      "Save Rock and Roll"
+   )
+   ('decade' 'the10s')
+   ('downloaded' 'TRUE')
+   ('base_points' 0)
+   ('vocal_tonic_note' 2)
+)
+
+(
+   'goodbyeyellowbrickroad'
+   (
+      'name'
+      "Goodbye Yellow Brick Road"
+   )
+   (
+      'artist'
+      "Elton John"
+   )
+   ('master' 1)
+   ('context' 2000)
+   (
+      'song'
+      ('name' 'songs/goodbyeyellowbrickroad/goodbyeyellowbrickroad')
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1)
+            )
+            (
+               'bass'
+               (2 3)
+            )
+            (
+               'guitar'
+               (4 5)
+            )
+            (
+               'vocals'
+               (6 7)
+            )
+         )
+      )
+      ('vocal_parts' 3)
+      (
+         'pans'
+         (-1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0)
+      )
+      (
+         'vols'
+         (-0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 1 1 -1 -1 -1 -1)
+      )
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+      ('midi_file' 'songs/goodbyeyellowbrickroad/goodbyeyellowbrickroad.mid')
+   )
+   ('song_scroll_speed' 2300)
+   ('bank' 'sfx/tambourine_bank.milo')
+   (drum_bank sfx/kit03_bank.milo)
+   ('anim_tempo' 32)
+   ('song_length' 198080)
+   ('preview' 54974 84974)
+   (
+      'rank'
+      ('drum' 130)
+      ('guitar' 230)
+      ('bass' 170)
+      ('vocals' 390)
+      ('band' 220)
+   )
+   ('genre' 'classicrock')
+   (
+      'author'
+      "Harmonix, Rhythm Authors"
+   )
+   ('vocal_gender' 'male')
+   ('version' 0)
+   ('format' 4)
+   ('album_art' 'TRUE')
+   ('year_released' 1973)
+   ('rating' 2)
+   ('song_id' 1020823)
+   ('tuning_offset_cents' 0.0)
+   ('game_origin' 'rb4_dlc')
+   ('album_track_number' 4)
+   (
+      'album_name'
+      "Goodbye Yellow Brick Road"
+   )
+   ('decade' 'the70s')
+   ('downloaded' 'TRUE')
+   ('base_points' 0)
+   ('vocal_tonic_note' 5)
+)
+
+(
+   'thankyou'
+   (
+      'name'
+      "Thank You"
+   )
+   (
+      'artist'
+      "Dido"
+   )
+   ('master' 1)
+   ('context' 2000)
+   (
+      'song'
+      ('name' 'songs/thankyou/thankyou')
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1)
+            )
+            (
+               'bass'
+               (2 3)
+            )
+            (
+               'guitar'
+               (4 5)
+            )
+            (
+               'vocals'
+               (6 7)
+            )
+         )
+      )
+      ('vocal_parts' 3)
+      (
+         'pans'
+         (-1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0)
+      )
+      (
+         'vols'
+         (-0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 1 1 -1 -1 -1 -1)
+      )
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+      ('midi_file' 'songs/thankyou/thankyou.mid')
+   )
+   ('song_scroll_speed' 2300)
+   ('bank' 'sfx/tambourine_bank.milo')
+   (drum_bank sfx/kit01_bank.milo)
+   ('anim_tempo' 16)
+   ('song_length' 220846)
+   ('preview' 92240 122240)
+   (
+      'rank'
+      ('drum' 135)
+      ('guitar' 180)
+      ('bass' 108)
+      ('vocals' 275)
+      ('band' 220)
+   )
+   ('genre' 'alternative')
+   (
+      'author'
+      "Harmonix, Rhythm Authors"
+   )
+   ('vocal_gender' 'female')
+   ('version' 0)
+   ('format' 4)
+   ('album_art' 'TRUE')
+   ('year_released' 1999)
+   ('rating' 1)
+   ('song_id' 1020825)
+   ('tuning_offset_cents' 0.0)
+   ('game_origin' 'rb4_dlc')
+   ('album_track_number' 6)
+   (
+      'album_name'
+      "No Angel"
+   )
+   ('decade' 'the90s')
+   ('downloaded' 'TRUE')
+   ('base_points' 0)
+   ('vocal_tonic_note' 8)
+)
+
+(
+   'sorrynotsorry'
+   (
+      'name'
+      "Sorry Not Sorry"
+   )
+   (
+      'artist'
+      "Demi Lovato"
+   )
+   ('master' 1)
+   ('context' 2000)
+   (
+      'song'
+      ('name' 'songs/sorrynotsorry/sorrynotsorry')
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1)
+            )
+            (
+               'bass'
+               (2 3)
+            )
+            (
+               'guitar'
+               (4 5)
+            )
+            (
+               'vocals'
+               (6 7)
+            )
+         )
+      )
+      ('vocal_parts' 3)
+      (
+         'pans'
+         (-1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0)
+      )
+      (
+         'vols'
+         (-0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 1 1 -1 -1 -1 -1)
+      )
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+      ('midi_file' 'songs/sorrynotsorry/sorrynotsorry.mid')
+   )
+   ('song_scroll_speed' 2300)
+   ('bank' 'sfx/tambourine_bank.milo')
+   (drum_bank sfx/kit05_bank.milo)
+   ('anim_tempo' 64)
+   ('song_length' 204984)
+   ('preview' 49151 79151)
+   (
+      'rank'
+      ('drum' 132)
+      ('guitar' 145)
+      ('bass' 115)
+      ('vocals' 440)
+      ('band' 225)
+   )
+   ('genre' 'popdanceelectronic')
+   (
+      'author'
+      "Harmonix, Rhythm Authors"
+   )
+   ('vocal_gender' 'female')
+   ('version' 0)
+   ('format' 4)
+   ('album_art' 'TRUE')
+   ('year_released' 2017)
+   ('rating' 3)
+   ('song_id' 1020347)
+   ('tuning_offset_cents' 0.0)
+   ('game_origin' 'rb4_dlc')
+   ('album_track_number' 1)
+   (
+      'album_name'
+      "Tell Me You Love Me"
+   )
+   ('decade' 'the10s')
+   ('downloaded' 'TRUE')
+   ('base_points' 0)
+   ('vocal_tonic_note' 2)
+)
+
+(
+   'karmachameleon'
+   (
+      'name'
+      "Karma Chameleon"
+   )
+   (
+      'artist'
+      "Culture Club"
+   )
+   ('master' 1)
+   ('context' 2000)
+   (
+      'song'
+      ('name' 'songs/karmachameleon/karmachameleon')
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1)
+            )
+            (
+               'bass'
+               (2 3)
+            )
+            (
+               'guitar'
+               (4 5)
+            )
+            (
+               'vocals'
+               (6 7)
+            )
+         )
+      )
+      ('vocal_parts' 3)
+      (
+         'pans'
+         (-1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0)
+      )
+      (
+         'vols'
+         (-0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 1 1 -1 -1 -1 -1)
+      )
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+      ('midi_file' 'songs/karmachameleon/karmachameleon.mid')
+   )
+   ('song_scroll_speed' 2300)
+   ('bank' 'sfx/tambourine_bank.milo')
+   ('anim_tempo' 64)
+   ('song_length' 225133)
+   ('preview' 46701 76701)
+   (
+      'rank'
+      ('drum' 255)
+      ('guitar' 167)
+      ('bass' 155)
+      ('vocals' 259)
+      ('band' 235)
+   )
+   ('genre' 'new_wave')
+   (
+      'author'
+      "Harmonix, Rhythm Authors"
+   )
+   ('vocal_gender' 'male')
+   ('version' 0)
+   ('format' 4)
+   ('album_art' 'TRUE')
+   ('year_released' 1983)
+   ('rating' 1)
+   ('song_id' 1020321)
+   ('tuning_offset_cents' 0.0)
+   ('game_origin' 'rb4_dlc')
+   ('album_track_number' 1)
+   (
+      'album_name'
+      "Colour by Numbers"
+   )
+   ('decade' 'the80s')
+   ('downloaded' 'TRUE')
+   ('base_points' 0)
+   ('vocal_tonic_note' 10)
+)
+
+(
+   'mrjones'
+   (
+      'name'
+      "Mr. Jones"
+   )
+   (
+      'artist'
+      "Counting Crows"
+   )
+   ('master' 1)
+   ('context' 2000)
+   (
+      'song'
+      ('name' 'songs/mrjones/mrjones')
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1)
+            )
+            (
+               'bass'
+               (2 3)
+            )
+            (
+               'guitar'
+               (4 5)
+            )
+            (
+               'vocals'
+               (6 7)
+            )
+         )
+      )
+      ('vocal_parts' 3)
+      (
+         'pans'
+         (-1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0)
+      )
+      (
+         'vols'
+         (-0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 1 1 -1 -1 -1 -1)
+      )
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+      ('midi_file' 'songs/mrjones/mrjones.mid')
+   )
+   ('song_scroll_speed' 2300)
+   ('bank' 'sfx/tambourine_bank.milo')
+   ('anim_tempo' 32)
+   ('song_length' 273525)
+   ('preview' 84629 114629)
+   (
+      'rank'
+      ('drum' 179)
+      ('guitar' 177)
+      ('bass' 258)
+      ('vocals' 400)
+      ('band' 252)
+   )
+   ('genre' 'alternative')
+   (
+      'author'
+      "Harmonix, Rhythm Authors"
+   )
+   ('vocal_gender' 'male')
+   ('version' 0)
+   ('format' 4)
+   ('album_art' 'TRUE')
+   ('year_released' 1993)
+   ('rating' 1)
+   ('song_id' 1020180)
+   ('tuning_offset_cents' 0.0)
+   ('game_origin' 'rb4_dlc')
+   ('album_track_number' 3)
+   (
+      'album_name'
+      "August and Everything After"
+   )
+   ('decade' 'the90s')
+   ('downloaded' 'TRUE')
+   ('base_points' 0)
+   ('vocal_tonic_note' 7)
+)
+
+(
+   'glycerine2'
+   (
+      'name'
+      "Glycerine"
+   )
+   (
+      'artist'
+      "Bush"
+   )
+   ('master' 1)
+   ('context' 2000)
+   (
+      'song'
+      ('name' 'songs/glycerine2/glycerine2')
+      (
+         'tracks'
+         (
+            (
+               'bass'
+               (0 1)
+            )
+            (
+               'guitar'
+               (2 3)
+            )
+            (
+               'vocals'
+               (4 5)
+            )
+         )
+      )
+      ('vocal_parts' 2)
+      (
+         'pans'
+         (-1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0)
+      )
+      (
+         'vols'
+         (-0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0)
+      )
+      (
+         'cores'
+         (-1 -1 1 1 -1 -1 -1 -1)
+      )
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+      ('midi_file' 'songs/glycerine2/glycerine2.mid')
+   )
+   ('song_scroll_speed' 2300)
+   ('bank' 'sfx/tambourine_bank.milo')
+   ('anim_tempo' 32)
+   ('song_length' 258841)
+   ('preview' 204195 234195)
+   (
+      'rank'
+      ('drum' 0)
+      ('guitar' 139)
+      ('bass' 30)
+      ('vocals' 240)
+      ('band' 170)
+   )
+   ('genre' 'grunge')
+   (
+      'author'
+      "Harmonix, Rhythm Authors"
+   )
+   ('vocal_gender' 'male')
+   ('version' 0)
+   ('format' 4)
+   ('album_art' 'TRUE')
+   ('year_released' 1994)
+   ('rating' 1)
+   ('song_id' 1020502)
+   ('tuning_offset_cents' 0.0)
+   ('game_origin' 'rb4_dlc')
+   ('album_track_number' 10)
+   (
+      'album_name'
+      "Sixteen Stone"
+   )
+   ('decade' 'the90s')
+   ('downloaded' 'TRUE')
+   ('base_points' 0)
+   ('vocal_tonic_note' 2)
+)
+
+(
+   'anthempart2'
+   (
+      'name'
+      "Anthem Part Two"
+   )
+   (
+      'artist'
+      "blink-182"
+   )
+   ('master' 1)
+   ('context' 2000)
+   (
+      'song'
+      ('name' 'songs/anthempart2/anthempart2')
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1)
+            )
+            (
+               'bass'
+               (2 3)
+            )
+            (
+               'guitar'
+               (4 5)
+            )
+            (
+               'vocals'
+               (6 7)
+            )
+         )
+      )
+      ('vocal_parts' 2)
+      (
+         'pans'
+         (-1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0)
+      )
+      (
+         'vols'
+         (-0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 1 1 -1 -1 -1 -1)
+      )
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+      ('midi_file' 'songs/anthempart2/anthempart2.mid')
+   )
+   ('song_scroll_speed' 2300)
+   ('bank' 'sfx/tambourine_bank.milo')
+   (drum_bank sfx/kit01_bank.milo)
+   ('anim_tempo' 32)
+   ('song_length' 232840)
+   ('preview' 97031 127031)
+   (
+      'rank'
+      ('drum' 348)
+      ('guitar' 224)
+      ('bass' 184)
+      ('vocals' 178)
+      ('band' 251)
+   )
+   ('genre' 'punk')
+   (
+      'author'
+      "Harmonix, Rhythm Authors"
+   )
+   ('vocal_gender' 'male')
+   ('version' 0)
+   ('format' 4)
+   ('album_art' 'TRUE')
+   ('year_released' 2001)
+   ('rating' 2)
+   ('song_id' 1020537)
+   ('tuning_offset_cents' 0.0)
+   ('game_origin' 'rb4_dlc')
+   ('album_track_number' 1)
+   (
+      'album_name'
+      "Take Off Your Pants and Jacket"
+   )
+   ('decade' 'the00s')
+   ('downloaded' 'TRUE')
+   ('base_points' 0)
+   ('vocal_tonic_note' 0)
+)
+
+(
+   'bombsaway'
+   (
+      'name'
+      "Bombs Away"
+   )
+   (
+      'artist'
+      "Blastergun"
+   )
+   ('master' 1)
+   ('context' 2000)
+   (
+      'song'
+      ('name' 'songs/bombsaway/bombsaway')
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1)
+            )
+            (
+               'bass'
+               (2 3)
+            )
+            (
+               'guitar'
+               (4 5)
+            )
+            (
+               'vocals'
+               (6 7)
+            )
+         )
+      )
+      ('vocal_parts' 3)
+      (
+         'pans'
+         (-1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0)
+      )
+      (
+         'vols'
+         (-0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 1 1 -1 -1 -1 -1)
+      )
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+      ('midi_file' 'songs/bombsaway/bombsaway.mid')
+   )
+   ('song_scroll_speed' 2300)
+   ('bank' 'sfx/tambourine_bank.milo')
+   ('anim_tempo' 32)
+   ('song_length' 185378)
+   ('preview' 45931 75931)
+   (
+      'rank'
+      ('drum' 210)
+      ('guitar' 200)
+      ('bass' 240)
+      ('vocals' 225)
+      ('band' 245)
+   )
+   ('genre' 'rock')
+   (
+      'author'
+      "Harmonix, Rhythm Authors"
+   )
+   ('vocal_gender' 'male')
+   ('version' 0)
+   ('format' 4)
+   ('album_art' 'TRUE')
+   ('year_released' 2022)
+   ('rating' 2)
+   ('song_id' 1020713)
+   ('tuning_offset_cents' 0.0)
+   ('game_origin' 'rb4_dlc')
+   ('album_track_number' 1)
+   (
+      'album_name'
+      "Bombs Away"
+   )
+   ('decade' 'the20s')
+   ('downloaded' 'TRUE')
+   ('base_points' 0)
+   ('vocal_tonic_note' 10)
+)
+
+(
+   'ithinkwerealonenow'
+   (
+      'name'
+      "I Think We're Alone Now"
+   )
+   (
+      'artist'
+      "Billie Joe Armstrong"
+   )
+   ('master' 1)
+   ('context' 2000)
+   (
+      'song'
+      ('name' 'songs/ithinkwerealonenow/ithinkwerealonenow')
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1)
+            )
+            (
+               'bass'
+               (2 3)
+            )
+            (
+               'guitar'
+               (4 5)
+            )
+            (
+               'vocals'
+               (6 7)
+            )
+         )
+      )
+      ('vocal_parts' 2)
+      (
+         'pans'
+         (-1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0)
+      )
+      (
+         'vols'
+         (-0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 1 1 -1 -1 -1 -1)
+      )
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+      ('midi_file' 'songs/ithinkwerealonenow/ithinkwerealonenow.mid')
+   )
+   ('song_scroll_speed' 2300)
+   ('bank' 'sfx/tambourine_bank.milo')
+   ('anim_tempo' 32)
+   ('song_length' 137266)
+   ('preview' 39664 69664)
+   (
+      'rank'
+      ('drum' 124)
+      ('guitar' 139)
+      ('bass' 181)
+      ('vocals' 175)
+      ('band' 165)
+   )
+   ('genre' 'alternative')
+   (
+      'author'
+      "Harmonix, Rhythm Authors"
+   )
+   ('vocal_gender' 'male')
+   ('version' 0)
+   ('format' 4)
+   ('album_art' 'TRUE')
+   ('year_released' 2020)
+   ('rating' 1)
+   ('song_id' 1020508)
+   ('tuning_offset_cents' 0.0)
+   ('game_origin' 'rb4_dlc')
+   ('album_track_number' 1)
+   (
+      'album_name'
+      "No Fun Mondays"
+   )
+   ('decade' 'the20s')
+   ('downloaded' 'TRUE')
+   ('base_points' 0)
+   ('vocal_tonic_note' 9)
+)
+
+(
+   'goodbyegoodluck'
+   (
+      'name'
+      "Goodbye, Good Luck"
+   )
+   (
+      'artist'
+      "BEGINNERS"
+   )
+   ('master' 1)
+   ('context' 2000)
+   (
+      'song'
+      ('name' 'songs/goodbyegoodluck/goodbyegoodluck')
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1)
+            )
+            (
+               'bass'
+               (2 3)
+            )
+            (
+               'guitar'
+               (4 5)
+            )
+            (
+               'vocals'
+               (6 7)
+            )
+         )
+      )
+      ('vocal_parts' 3)
+      (
+         'pans'
+         (-1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0)
+      )
+      (
+         'vols'
+         (-0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 1 1 -1 -1 -1 -1)
+      )
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+      ('midi_file' 'songs/goodbyegoodluck/goodbyegoodluck.mid')
+   )
+   ('song_scroll_speed' 2300)
+   ('bank' 'sfx/tambourine_bank.milo')
+   ('anim_tempo' 32)
+   ('song_length' 211525)
+   ('preview' 63051 93051)
+   (
+      'rank'
+      ('drum' 155)
+      ('guitar' 180)
+      ('bass' 200)
+      ('vocals' 200)
+      ('band' 220)
+   )
+   ('genre' 'indierock')
+   (
+      'author'
+      "Harmonix, Rhythm Authors"
+   )
+   ('vocal_gender' 'female')
+   ('version' 0)
+   ('format' 4)
+   ('album_art' 'TRUE')
+   ('year_released' 2022)
+   ('rating' 2)
+   ('song_id' 1020745)
+   ('tuning_offset_cents' 0.0)
+   ('game_origin' 'rb4_dlc')
+   ('album_track_number' 4)
+   (
+      'album_name'
+      "If the World is Ending"
+   )
+   ('decade' 'the20s')
+   ('downloaded' 'TRUE')
+   ('base_points' 0)
+   ('vocal_tonic_note' 9)
+)
+
+(
+   'pompeii'
+   (
+      'name'
+      "Pompeii"
+   )
+   (
+      'artist'
+      "Bastille"
+   )
+   ('master' 1)
+   ('context' 2000)
+   (
+      'song'
+      ('name' 'songs/pompeii/pompeii')
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1)
+            )
+            (
+               'bass'
+               (2 3)
+            )
+            (
+               'guitar'
+               (4 5)
+            )
+            (
+               'vocals'
+               (6 7)
+            )
+         )
+      )
+      ('vocal_parts' 3)
+      (
+         'pans'
+         (-1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0)
+      )
+      (
+         'vols'
+         (-0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 1 1 -1 -1 -1 -1)
+      )
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+      ('midi_file' 'songs/pompeii/pompeii.mid')
+   )
+   ('song_scroll_speed' 2300)
+   ('bank' 'sfx/tambourine_bank.milo')
+   (drum_bank sfx/kit01_bank.milo)
+   ('anim_tempo' 32)
+   ('song_length' 217796)
+   ('preview' 50890 80890)
+   (
+      'rank'
+      ('drum' 358)
+      ('guitar' 146)
+      ('bass' 201)
+      ('vocals' 248)
+      ('band' 244)
+   )
+   ('genre' 'indierock')
+   (
+      'author'
+      "Harmonix, Rhythm Authors"
+   )
+   ('vocal_gender' 'male')
+   ('version' 0)
+   ('format' 4)
+   ('album_art' 'TRUE')
+   ('year_released' 2013)
+   ('rating' 2)
+   ('song_id' 1020184)
+   ('tuning_offset_cents' 0.0)
+   ('game_origin' 'rb4_dlc')
+   ('album_track_number' 1)
+   (
+      'album_name'
+      "Bad Blood"
+   )
+   ('decade' 'the10s')
+   ('downloaded' 'TRUE')
+   ('base_points' 0)
+   ('vocal_tonic_note' 4)
+)
+
+(
+   'takincareofbusiness'
+   (
+      'name'
+      "Takin' Care of Business"
+   )
+   (
+      'artist'
+      "Bachman-Turner Overdrive"
+   )
+   ('master' 1)
+   ('context' 2000)
+   (
+      'song'
+      ('name' 'songs/takincareofbusiness/takincareofbusiness')
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1)
+            )
+            (
+               'bass'
+               (2 3)
+            )
+            (
+               'guitar'
+               (4 5)
+            )
+            (
+               'vocals'
+               (6 7)
+            )
+         )
+      )
+      ('vocal_parts' 3)
+      (
+         'pans'
+         (-1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0)
+      )
+      (
+         'vols'
+         (-0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 1 1 -1 -1 -1 -1)
+      )
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+      ('midi_file' 'songs/takincareofbusiness/takincareofbusiness.mid')
+   )
+   ('song_scroll_speed' 2300)
+   ('bank' 'sfx/handclap_bank.milo')
+   (drum_bank sfx/kit01_bank.milo)
+   ('anim_tempo' 32)
+   ('song_length' 280444)
+   ('preview' 62084 92084)
+   (
+      'rank'
+      ('drum' 159)
+      ('guitar' 287)
+      ('bass' 200)
+      ('vocals' 189)
+      ('band' 219)
+   )
+   ('genre' 'classicrock')
+   (
+      'author'
+      "Harmonix, Rhythm Authors"
+   )
+   ('vocal_gender' 'male')
+   ('version' 0)
+   ('format' 4)
+   ('album_art' 'TRUE')
+   ('year_released' 1974)
+   ('rating' 1)
+   ('song_id' 1020354)
+   ('tuning_offset_cents' 30.88)
+   ('game_origin' 'rb4_dlc')
+   ('album_track_number' 8)
+   (
+      'album_name'
+      "Bachman-Turner Overdrive II"
+   )
+   ('decade' 'the70s')
+   ('downloaded' 'TRUE')
+   ('base_points' 0)
+   ('vocal_tonic_note' 0)
+)
+
+(
+   'cannonball'
+   (
+      'name'
+      "Cannonball"
+   )
+   (
+      'artist'
+      "AWOLNATION"
+   )
+   ('master' 1)
+   ('context' 2000)
+   (
+      'song'
+      ('name' 'songs/cannonball/cannonball')
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1)
+            )
+            (
+               'bass'
+               (2 3)
+            )
+            (
+               'guitar'
+               (4 5)
+            )
+            (
+               'vocals'
+               (6 7)
+            )
+         )
+      )
+      ('vocal_parts' 3)
+      (
+         'pans'
+         (-1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0)
+      )
+      (
+         'vols'
+         (-0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 1 1 -1 -1 -1 -1)
+      )
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+      ('midi_file' 'songs/cannonball/cannonball.mid')
+   )
+   ('song_scroll_speed' 2300)
+   ('bank' 'sfx/tambourine_bank.milo')
+   ('anim_tempo' 32)
+   ('song_length' 189040)
+   ('preview' 28973 58973)
+   (
+      'rank'
+      ('drum' 175)
+      ('guitar' 375)
+      ('bass' 190)
+      ('vocals' 180)
+      ('band' 230)
+   )
+   ('genre' 'alternative')
+   (
+      'author'
+      "Harmonix, Rhythm Authors"
+   )
+   ('vocal_gender' 'male')
+   ('version' 0)
+   ('format' 4)
+   ('album_art' 'TRUE')
+   ('year_released' 2018)
+   ('rating' 3)
+   ('song_id' 1020771)
+   ('tuning_offset_cents' 0.0)
+   ('game_origin' 'rb4_dlc')
+   ('album_track_number' 11)
+   (
+      'album_name'
+      "Here Come the Runts"
+   )
+   ('decade' 'the10s')
+   ('downloaded' 'TRUE')
+   ('base_points' 0)
+   ('vocal_tonic_note' 10)
+)
+
+(
+   'nobody'
+   (
+      'name'
+      "Nobody"
+   )
+   (
+      'artist'
+      "Avenged Sevenfold"
+   )
+   ('master' 1)
+   ('context' 2000)
+   (
+      'song'
+      ('name' 'songs/nobody/nobody')
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1)
+            )
+            (
+               'bass'
+               (2 3)
+            )
+            (
+               'guitar'
+               (4 5)
+            )
+            (
+               'vocals'
+               (6 7)
+            )
+         )
+      )
+      ('vocal_parts' 3)
+      (
+         'pans'
+         (-1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0)
+      )
+      (
+         'vols'
+         (-0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 1 1 -1 -1 -1 -1)
+      )
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+      ('midi_file' 'songs/nobody/nobody.mid')
+   )
+   ('song_scroll_speed' 2300)
+   ('bank' 'sfx/tambourine_bank.milo')
+   ('anim_tempo' 64)
+   ('song_length' 357237)
+   ('preview' 80798 110798)
+   (
+      'rank'
+      ('drum' 420)
+      ('guitar' 460)
+      ('bass' 184)
+      ('vocals' 275)
+      ('band' 300)
+   )
+   ('genre' 'metal')
+   (
+      'author'
+      "Harmonix, Rhythm Authors"
+   )
+   ('vocal_gender' 'male')
+   ('version' 0)
+   ('format' 4)
+   ('album_art' 'TRUE')
+   ('year_released' 2023)
+   ('rating' 2)
+   ('song_id' 1020791)
+   ('tuning_offset_cents' 0.0)
+   ('game_origin' 'rb4_dlc')
+   ('album_track_number' 3)
+   (
+      'album_name'
+      "Life Is But a Dream..."
+   )
+   ('decade' 'the20s')
+   ('downloaded' 'TRUE')
+   ('base_points' 0)
+   ('vocal_tonic_note' 2)
+)
+
+(
+   'respect'
+   (
+      'name'
+      "Respect"
+   )
+   (
+      'artist'
+      "Aretha Franklin"
+   )
+   ('master' 1)
+   ('context' 2000)
+   (
+      'song'
+      ('name' 'songs/respect/respect')
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1)
+            )
+            (
+               'bass'
+               (2 3)
+            )
+            (
+               'guitar'
+               (4 5)
+            )
+            (
+               'vocals'
+               (6 7)
+            )
+         )
+      )
+      ('vocal_parts' 3)
+      (
+         'pans'
+         (-1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0)
+      )
+      (
+         'vols'
+         (-0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 1 1 -1 -1 -1 -1)
+      )
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+      ('midi_file' 'songs/respect/respect.mid')
+   )
+   ('song_scroll_speed' 2300)
+   ('bank' 'sfx/tambourine_bank.milo')
+   (drum_bank sfx/kit03_bank.milo)
+   ('anim_tempo' 32)
+   ('song_length' 144265)
+   ('preview' 24529 54529)
+   (
+      'rank'
+      ('drum' 175)
+      ('guitar' 210)
+      ('bass' 220)
+      ('vocals' 340)
+      ('band' 240)
+   )
+   ('genre' 'rbsoulfunk')
+   (
+      'author'
+      "Harmonix, Rhythm Authors"
+   )
+   ('vocal_gender' 'female')
+   ('version' 0)
+   ('format' 4)
+   ('album_art' 'TRUE')
+   ('year_released' 1967)
+   ('rating' 1)
+   ('song_id' 1020652)
+   ('tuning_offset_cents' 0.0)
+   ('game_origin' 'rb4_dlc')
+   ('album_track_number' 1)
+   (
+      'album_name'
+      "I Never Loved a Man the Way I Love You"
+   )
+   ('decade' 'the60s')
+   ('downloaded' 'TRUE')
+   ('base_points' 0)
+   ('vocal_tonic_note' 0)
+)
+
+(
+   'whenwewereyoung'
+   (
+      'name'
+      "when we were young"
+   )
+   (
+      'artist'
+      "Architects"
+   )
+   ('master' 1)
+   ('context' 2000)
+   (
+      'song'
+      ('name' 'songs/whenwewereyoung/whenwewereyoung')
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1)
+            )
+            (
+               'bass'
+               (2 3)
+            )
+            (
+               'guitar'
+               (4 5)
+            )
+            (
+               'vocals'
+               (6 7)
+            )
+         )
+      )
+      ('vocal_parts' 3)
+      (
+         'pans'
+         (-1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0)
+      )
+      (
+         'vols'
+         (-0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 1 1 -1 -1 -1 -1)
+      )
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+      ('midi_file' 'songs/whenwewereyoung/whenwewereyoung.mid')
+   )
+   ('song_scroll_speed' 2300)
+   ('bank' 'sfx/tambourine_bank.milo')
+   ('anim_tempo' 64)
+   ('song_length' 194117)
+   ('preview' 35647 65647)
+   (
+      'rank'
+      ('drum' 260)
+      ('guitar' 275)
+      ('bass' 285)
+      ('vocals' 180)
+      ('band' 265)
+   )
+   ('genre' 'metal')
+   (
+      'author'
+      "Harmonix, Rhythm Authors"
+   )
+   ('vocal_gender' 'male')
+   ('version' 0)
+   ('format' 4)
+   ('album_art' 'TRUE')
+   ('year_released' 2022)
+   ('rating' 2)
+   ('song_id' 1020689)
+   ('tuning_offset_cents' 0.0)
+   ('game_origin' 'rb4_dlc')
+   ('album_track_number' 6)
+   (
+      'album_name'
+      "the classic symptoms of a broken spirit"
+   )
+   ('decade' 'the20s')
+   ('downloaded' 'TRUE')
+   ('base_points' 0)
+   ('vocal_tonic_note' 3)
+)
+
+(
+   'whatifiwasnothing'
+   (
+      'name'
+      "What If I Was Nothing"
+   )
+   (
+      'artist'
+      "All That Remains"
+   )
+   ('master' 1)
+   ('context' 2000)
+   (
+      'song'
+      ('name' 'songs/whatifiwasnothing/whatifiwasnothing')
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1)
+            )
+            (
+               'bass'
+               (2)
+            )
+            (
+               'guitar'
+               (3 4)
+            )
+            (
+               'vocals'
+               (5 6)
+            )
+         )
+      )
+      ('vocal_parts' 3)
+      (
+         'pans'
+         (-1.0 1.0 0.0 -1.0 1.0 -1.0 1.0 -1.0 1.0)
+      )
+      (
+         'vols'
+         (-0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0)
+      )
+      (
+         'cores'
+         (-1 -1 -1 1 1 -1 -1 -1 -1)
+      )
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+      ('midi_file' 'songs/whatifiwasnothing/whatifiwasnothing.mid')
+   )
+   ('song_scroll_speed' 2300)
+   ('bank' 'sfx/tambourine_bank.milo')
+   ('band_fail_cue' 'band_fail_heavy.cue')
+   ('anim_tempo' 16)
+   ('song_length' 269999)
+   ('preview' 50000 80000)
+   (
+      'rank'
+      ('drum' 126)
+      ('guitar' 225)
+      ('bass' 137)
+      ('vocals' 137)
+      ('band' 210)
+   )
+   ('genre' 'metal')
+   (
+      'author'
+      "Harmonix, Rhythm Authors"
+   )
+   ('vocal_gender' 'male')
+   ('version' 0)
+   ('format' 4)
+   ('album_art' 'TRUE')
+   ('year_released' 2012)
+   ('rating' 1)
+   ('song_id' 1020020)
+   ('tuning_offset_cents' 0.0)
+   ('game_origin' 'rb4_dlc')
+   ('album_track_number' 8)
+   (
+      'album_name'
+      "A War You Cannot Win"
+   )
+   ('decade' 'the10s')
+   ('downloaded' 'TRUE')
+   ('base_points' 0)
+   ('vocal_tonic_note' 1)
+)
+
+(
+   'divide'
+   (
+      'name'
+      "Divide"
+   )
+   (
+      'artist'
+      "All That Remains"
+   )
+   ('master' 1)
+   ('context' 2000)
+   (
+      'song'
+      ('name' 'songs/divide/divide')
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1)
+            )
+            (
+               'bass'
+               (2)
+            )
+            (
+               'guitar'
+               (3 4)
+            )
+            (
+               'vocals'
+               (5 6)
+            )
+         )
+      )
+      ('vocal_parts' 3)
+      (
+         'pans'
+         (-1.0 1.0 0.0 -1.0 1.0 -1.0 1.0 -1.0 1.0)
+      )
+      (
+         'vols'
+         (-0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0)
+      )
+      (
+         'cores'
+         (-1 -1 -1 1 1 -1 -1 -1 -1)
+      )
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+      ('midi_file' 'songs/divide/divide.mid')
+   )
+   ('song_scroll_speed' 2300)
+   ('bank' 'sfx/tambourine_bank.milo')
+   ('band_fail_cue' 'band_fail_heavy.cue')
+   ('anim_tempo' 64)
+   ('song_length' 201379)
+   ('preview' 42069 72069)
+   (
+      'rank'
+      ('drum' 295)
+      ('guitar' 328)
+      ('bass' 269)
+      ('vocals' 270)
+      ('band' 277)
+   )
+   ('genre' 'metal')
+   (
+      'author'
+      "Harmonix, Rhythm Authors"
+   )
+   ('vocal_gender' 'male')
+   ('version' 0)
+   ('format' 4)
+   ('album_art' 'TRUE')
+   ('year_released' 2015)
+   ('rating' 2)
+   ('song_id' 1020024)
+   ('tuning_offset_cents' 0.0)
+   ('short_version' 0)
+   ('game_origin' 'rb4_dlc')
+   ('album_track_number' 3)
+   (
+      'album_name'
+      "The Order of Things"
+   )
+   ('decade' 'the10s')
+   ('downloaded' 'TRUE')
+   ('base_points' 0)
+   ('vocal_tonic_note' 5)
+)
+
+(
+   'mercyme'
+   (
+      'name'
+      "Mercy Me"
+   )
+   (
+      'artist'
+      "Alkaline Trio"
+   )
+   ('master' 1)
+   ('context' 2000)
+   (
+      'song'
+      ('name' 'songs/mercyme/mercyme')
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1)
+            )
+            (
+               'bass'
+               (2 3)
+            )
+            (
+               'guitar'
+               (4 5)
+            )
+            (
+               'vocals'
+               (6 7)
+            )
+         )
+      )
+      ('vocal_parts' 3)
+      (
+         'pans'
+         (-1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0)
+      )
+      (
+         'vols'
+         (-0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 1 1 -1 -1 -1 -1)
+      )
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+      ('midi_file' 'songs/mercyme/mercyme.mid')
+   )
+   ('song_scroll_speed' 2300)
+   ('bank' 'sfx/tambourine_bank.milo')
+   ('anim_tempo' 64)
+   ('song_length' 172585)
+   ('preview' 62223 92223)
+   (
+      'rank'
+      ('drum' 210)
+      ('guitar' 240)
+      ('bass' 260)
+      ('vocals' 220)
+      ('band' 250)
+   )
+   ('genre' 'punk')
+   (
+      'author'
+      "Harmonix, Rhythm Authors"
+   )
+   ('vocal_gender' 'male')
+   ('version' 0)
+   ('format' 4)
+   ('album_art' 'TRUE')
+   ('year_released' 2005)
+   ('rating' 2)
+   ('song_id' 1020704)
+   ('tuning_offset_cents' 0.0)
+   ('game_origin' 'rb4_dlc')
+   ('album_track_number' 4)
+   (
+      'album_name'
+      "Crimson"
+   )
+   ('decade' 'the00s')
+   ('downloaded' 'TRUE')
+   ('base_points' 0)
+   ('vocal_tonic_note' 9)
+)
+
+(
+   'feedmyfrankenstein'
+   (
+      'name'
+      "Feed My Frankenstein"
+   )
+   (
+      'artist'
+      "Alice Cooper"
+   )
+   ('master' 1)
+   ('context' 2000)
+   (
+      'song'
+      ('name' 'songs/feedmyfrankenstein/feedmyfrankenstein')
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1)
+            )
+            (
+               'bass'
+               (2 3)
+            )
+            (
+               'guitar'
+               (4 5)
+            )
+            (
+               'vocals'
+               (6 7)
+            )
+         )
+      )
+      ('vocal_parts' 3)
+      (
+         'pans'
+         (-1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0)
+      )
+      (
+         'vols'
+         (-0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 1 1 -1 -1 -1 -1)
+      )
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+      ('midi_file' 'songs/feedmyfrankenstein/feedmyfrankenstein.mid')
+   )
+   ('song_scroll_speed' 2300)
+   ('bank' 'sfx/cowbell_bank.milo')
+   ('anim_tempo' 32)
+   ('song_length' 276695)
+   ('preview' 72853 102853)
+   (
+      'rank'
+      ('drum' 320)
+      ('guitar' 375)
+      ('bass' 210)
+      ('vocals' 200)
+      ('band' 275)
+   )
+   ('genre' 'rock')
+   (
+      'author'
+      "Harmonix, Rhythm Authors"
+   )
+   ('vocal_gender' 'male')
+   ('version' 0)
+   ('format' 4)
+   ('album_art' 'TRUE')
+   ('year_released' 1991)
+   ('rating' 2)
+   ('song_id' 1020466)
+   ('tuning_offset_cents' 0.0)
+   ('game_origin' 'rb4_dlc')
+   ('album_track_number' 7)
+   (
+      'album_name'
+      "Hey Stoopid"
+   )
+   ('decade' 'the90s')
+   ('downloaded' 'TRUE')
+   ('base_points' 0)
+   ('vocal_tonic_note' 2)
+)
+
+(
+   'waylesssad'
+   (
+      'name'
+      "Way Less Sad"
+   )
+   (
+      'artist'
+      "AJR"
+   )
+   ('master' 1)
+   ('context' 2000)
+   (
+      'song'
+      ('name' 'songs/waylesssad/waylesssad')
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1)
+            )
+            (
+               'bass'
+               (2 3)
+            )
+            (
+               'guitar'
+               (4 5)
+            )
+            (
+               'vocals'
+               (6 7)
+            )
+         )
+      )
+      ('vocal_parts' 3)
+      (
+         'pans'
+         (-1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0)
+      )
+      (
+         'vols'
+         (-0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 1 1 -1 -1 -1 -1)
+      )
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+      ('midi_file' 'songs/waylesssad/waylesssad.mid')
+   )
+   ('song_scroll_speed' 2300)
+   ('bank' 'sfx/tambourine_bank.milo')
+   ('anim_tempo' 32)
+   ('song_length' 211711)
+   ('preview' 71891 101891)
+   (
+      'rank'
+      ('drum' 124)
+      ('guitar' 139)
+      ('bass' 135)
+      ('vocals' 279)
+      ('band' 165)
+   )
+   ('genre' 'poprock')
+   (
+      'author'
+      "Harmonix, Rhythm Authors"
+   )
+   ('vocal_gender' 'male')
+   ('version' 0)
+   ('format' 4)
+   ('album_art' 'TRUE')
+   ('year_released' 2021)
+   ('rating' 2)
+   ('song_id' 1020565)
+   ('tuning_offset_cents' 0.0)
+   ('game_origin' 'rb4_dlc')
+   ('album_track_number' 12)
+   (
+      'album_name'
+      "OK Orchestra"
+   )
+   ('decade' 'the20s')
+   ('downloaded' 'TRUE')
+   ('base_points' 0)
+   ('vocal_tonic_note' 2)
+)
+
+(
+   'seasonsofwither'
+   (
+      'name'
+      "Seasons of Wither"
+   )
+   (
+      'artist'
+      "Aerosmith"
+   )
+   ('master' 1)
+   ('context' 2000)
+   (
+      'song'
+      ('name' 'songs/seasonsofwither/seasonsofwither')
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1)
+            )
+            (
+               'bass'
+               (2)
+            )
+            (
+               'guitar'
+               (3 4)
+            )
+            (
+               'vocals'
+               (5 6)
+            )
+         )
+      )
+      ('vocal_parts' 3)
+      (
+         'pans'
+         (-1.0 1.0 0.0 -1.0 1.0 -1.0 1.0 -1.0 1.0)
+      )
+      (
+         'vols'
+         (-0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0)
+      )
+      (
+         'cores'
+         (-1 -1 -1 1 1 -1 -1 -1 -1)
+      )
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+      ('midi_file' 'songs/seasonsofwither/seasonsofwither.mid')
+   )
+   ('song_scroll_speed' 2300)
+   ('bank' 'sfx/tambourine_bank.milo')
+   (drum_bank sfx/kit01_bank.milo)
+   ('band_fail_cue' 'band_fail_rock.cue')
+   ('anim_tempo' 16)
+   ('song_length' 302759)
+   ('preview' 92774 122774)
+   (
+      'rank'
+      ('drum' 120)
+      ('guitar' 140)
+      ('bass' 100)
+      ('vocals' 200)
+      ('band' 166)
+   )
+   ('genre' 'rock')
+   (
+      'author'
+      "Harmonix, Rhythm Authors"
+   )
+   ('vocal_gender' 'male')
+   ('version' 0)
+   ('format' 4)
+   ('album_art' 'TRUE')
+   ('year_released' 1974)
+   ('rating' 2)
+   ('song_id' 1020042)
+   ('tuning_offset_cents' 0.0)
+   ('game_origin' 'rb4_dlc')
+   ('album_track_number' 7)
+   (
+      'album_name'
+      "Get Your Wings"
+   )
+   ('decade' 'the70s')
+   ('downloaded' 'TRUE')
+   ('base_points' 0)
+   ('vocal_tonic_note' 7)
+)
+
+(
+   'ratsinthecellar'
+   (
+      'name'
+      "Rats in the Cellar"
+   )
+   (
+      'artist'
+      "Aerosmith"
+   )
+   ('master' 1)
+   ('context' 2000)
+   (
+      'song'
+      ('name' 'songs/ratsinthecellar/ratsinthecellar')
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1)
+            )
+            (
+               'bass'
+               (2)
+            )
+            (
+               'guitar'
+               (3 4)
+            )
+            (
+               'vocals'
+               (5 6)
+            )
+         )
+      )
+      ('vocal_parts' 2)
+      (
+         'pans'
+         (-1.0 1.0 0.0 -1.0 1.0 -1.0 1.0 -1.0 1.0)
+      )
+      (
+         'vols'
+         (-0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0)
+      )
+      (
+         'cores'
+         (-1 -1 -1 1 1 -1 -1 -1 -1)
+      )
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+      ('midi_file' 'songs/ratsinthecellar/ratsinthecellar.mid')
+   )
+   ('song_scroll_speed' 2300)
+   ('bank' 'sfx/cowbell_bank.milo')
+   (drum_bank sfx/kit01_bank.milo)
+   ('band_fail_cue' 'band_fail_rock.cue')
+   ('anim_tempo' 32)
+   ('song_length' 249947)
+   ('preview' 19136 49136)
+   (
+      'rank'
+      ('drum' 440)
+      ('guitar' 380)
+      ('bass' 470)
+      ('vocals' 255)
+      ('band' 342)
+   )
+   ('genre' 'rock')
+   (
+      'author'
+      "Harmonix, Rhythm Authors"
+   )
+   ('vocal_gender' 'male')
+   ('version' 0)
+   ('format' 4)
+   ('album_art' 'TRUE')
+   ('year_released' 1976)
+   ('rating' 2)
+   ('song_id' 1020044)
+   ('tuning_offset_cents' 0.0)
+   ('game_origin' 'rb4_dlc')
+   ('album_track_number' 3)
+   (
+      'album_name'
+      "Rocks"
+   )
+   ('decade' 'the70s')
+   ('downloaded' 'TRUE')
+   ('base_points' 0)
+   ('vocal_tonic_note' 6)
+)
+
+(
+   'allthatshewants'
+   (
+      'name'
+      "All That She Wants"
+   )
+   (
+      'artist'
+      "Ace of Base"
+   )
+   ('master' 1)
+   ('context' 2000)
+   (
+      'song'
+      ('name' 'songs/allthatshewants/allthatshewants')
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1)
+            )
+            (
+               'bass'
+               (2 3)
+            )
+            (
+               'guitar'
+               (4 5)
+            )
+            (
+               'vocals'
+               (6 7)
+            )
+         )
+      )
+      ('vocal_parts' 2)
+      (
+         'pans'
+         (-1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0)
+      )
+      (
+         'vols'
+         (-0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 1 1 -1 -1 -1 -1)
+      )
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+      ('midi_file' 'songs/allthatshewants/allthatshewants.mid')
+   )
+   ('song_scroll_speed' 2300)
+   ('bank' 'sfx/tambourine_bank.milo')
+   (drum_bank sfx/kit05_bank.milo)
+   ('anim_tempo' 16)
+   ('song_length' 213706)
+   ('preview' 56295 86295)
+   (
+      'rank'
+      ('drum' 220)
+      ('guitar' 135)
+      ('bass' 140)
+      ('vocals' 275)
+      ('band' 210)
+   )
+   ('genre' 'popdanceelectronic')
+   (
+      'author'
+      "Harmonix, Rhythm Authors"
+   )
+   ('vocal_gender' 'female')
+   ('version' 0)
+   ('format' 4)
+   ('album_art' 'TRUE')
+   ('year_released' 1993)
+   ('rating' 2)
+   ('song_id' 1020767)
+   ('tuning_offset_cents' 0.0)
+   ('game_origin' 'rb4_dlc')
+   (
+      'video_venues'
+      ('video_02')
+   )
+   ('album_track_number' 2)
+   (
+      'album_name'
+      "The Sign"
+   )
+   ('decade' 'the90s')
+   ('downloaded' 'TRUE')
+   ('base_points' 0)
+   ('vocal_tonic_note' 1)
+)
+
+(
+   'shotinthedark'
+   (
+      'name'
+      "Shot in the Dark"
+   )
+   (
+      'artist'
+      "AC/DC"
+   )
+   ('master' 1)
+   ('context' 2000)
+   (
+      'song'
+      ('name' 'songs/shotinthedark/shotinthedark')
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1)
+            )
+            (
+               'bass'
+               (2 3)
+            )
+            (
+               'guitar'
+               (4 5)
+            )
+            (
+               'vocals'
+               (6 7)
+            )
+         )
+      )
+      ('vocal_parts' 3)
+      (
+         'pans'
+         (-1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0)
+      )
+      (
+         'vols'
+         (-0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 1 1 -1 -1 -1 -1)
+      )
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+      ('midi_file' 'songs/shotinthedark/shotinthedark.mid')
+   )
+   ('song_scroll_speed' 2300)
+   ('bank' 'sfx/tambourine_bank.milo')
+   ('anim_tempo' 32)
+   ('song_length' 189396)
+   ('preview' 62631 92631)
+   (
+      'rank'
+      ('drum' 127)
+      ('guitar' 224)
+      ('bass' 138)
+      ('vocals' 221)
+      ('band' 218)
+   )
+   ('genre' 'rock')
+   (
+      'author'
+      "Harmonix, Rhythm Authors"
+   )
+   ('vocal_gender' 'male')
+   ('version' 0)
+   ('format' 4)
+   ('album_art' 'TRUE')
+   ('year_released' 2020)
+   ('rating' 2)
+   ('song_id' 1020539)
+   ('tuning_offset_cents' 0.0)
+   ('game_origin' 'rb4_dlc')
+   ('album_track_number' 1)
+   (
+      'album_name'
+      "POWER UP"
+   )
+   ('decade' 'the20s')
+   ('downloaded' 'TRUE')
+   ('base_points' 0)
+   ('vocal_tonic_note' 2)
+)

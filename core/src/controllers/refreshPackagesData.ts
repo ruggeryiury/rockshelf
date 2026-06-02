@@ -6,7 +6,7 @@ import { isRPCS3Devhdd0PathValid } from '../lib/rbtools/lib.exports'
 /**
  * Forcefully refreshes the song packages cache file.
  */
-export const refreshPackagesData = useHandler(async (win, _): Promise<RPCS3SongPackagesDataExtra | false> => {
+export const refreshPackagesData = useHandler(async (win): Promise<RPCS3SongPackagesDataExtra | false> => {
   const userConfig = await readUserConfigFile()
   if (!userConfig) {
     sendDialog(win, 'corruptedUserConfig')

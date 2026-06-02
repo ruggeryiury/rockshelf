@@ -1,8 +1,9 @@
 import { shell, type BrowserWindow, type IpcMainInvokeEvent } from 'electron'
 import type { Promisable } from 'type-fest'
-import { deletePackage, deletePackageThumbnails, deleteUserConfigAndRestart, editPackageData, sortAndFilterSongsFromPackage, getSongArtworkDataURL, installHighMemoryPatch, installPKGFile, playRockBand3, refreshPackagesData, rpcs3GetInstrumentScores, rpcs3GetPackagesData, rpcs3GetRB3Stats, rpcs3GetSaveDataStats, selectAndParseDTAFile, selectDevhdd0Dir, loadImageForCrop, selectPackageFiles, selectPKGFile, selectRPCS3Exe, testUserConfig, cropImageAndSaveToTemp, createNewPackage, testBuzyLoad, getScoresFromGoCentral, extractMultitrackOrSongAudioFromSong, encDecPackage, verifyPackageEncryptionStatus, extractMIDIFromSong, batchDeleteSongs, sortAndFilterSongPackages, fetchRhythmverseData, useSongArtworkFromUniqueSongPKG, changeDecryptedPackageFolderName } from './controllers.exports'
+import { deletePackage, deletePackageThumbnails, deleteUserConfigAndRestart, editPackageData, sortAndFilterSongsFromPackage, getSongArtworkDataURL, installHighMemoryPatch, installPKGFile, playRockBand3, refreshPackagesData, rpcs3GetInstrumentScores, rpcs3GetPackagesData, rpcs3GetRB3Stats, rpcs3GetSaveDataStats, selectAndParseDTAFile, selectDevhdd0Dir, loadImageForCrop, selectPackageFiles, selectPKGFile, selectRPCS3Exe, testUserConfig, cropImageAndSaveToTemp, createNewPackage, testBuzyLoad, getScoresFromGoCentral, extractMultitrackOrSongAudioFromSong, encDecPackage, verifyPackageEncryptionStatus, extractMIDIFromSong, batchDeleteSongs, sortAndFilterSongPackages, fetchRhythmverseData, useSongArtworkFromUniqueSongPKG, changeDecryptedPackageFolderName, installQuickConfig, mergePackages } from './controllers.exports'
 import { openUserDataFolder, readUserConfigFile, saveUserConfigFile, windowClose, windowMaximize, windowMinimize, type UserConfigObject } from './core.exports'
 import { addHandler } from './core/handler'
+import { getSongPackageDescriptionFileFromFolderHandler } from './controllers/getSongPackageDescriptionFileFromFolder'
 
 export type HandlerFnType = (window: BrowserWindow, event: IpcMainInvokeEvent, ...args: any[]) => Promisable<any>
 export type InitHandlersArray = [string, HandlerFnType][]
@@ -10,6 +11,7 @@ export type InitHandlersArray = [string, HandlerFnType][]
 export const initMainProcessHandlers = (): void => {
   const handlers: InitHandlersArray = [
     ['batchDeleteSongs', batchDeleteSongs],
+    ['changeDecryptedPackageFolderName', changeDecryptedPackageFolderName],
     ['createNewPackage', createNewPackage],
     ['cropImageAndSaveToTemp', cropImageAndSaveToTemp],
     ['deletePackage', deletePackage],
@@ -22,9 +24,12 @@ export const initMainProcessHandlers = (): void => {
     ['fetchRhythmverseData', fetchRhythmverseData],
     ['getScoresFromGoCentral', getScoresFromGoCentral],
     ['getSongArtworkDataURL', getSongArtworkDataURL],
+    ['getSongPackageDescriptionFileFromFolder', getSongPackageDescriptionFileFromFolderHandler],
     ['installHighMemoryPatch', installHighMemoryPatch],
     ['installPKGFile', installPKGFile],
+    ['installQuickConfig', installQuickConfig],
     ['loadImageForCrop', loadImageForCrop],
+    ['mergePackages', mergePackages],
     ['openFolderInExplorer', async (_, __, folderPath: string): Promise<string> => await shell.openPath(folderPath)],
     ['openUserDataFolder', openUserDataFolder],
     ['playRockBand3', playRockBand3],
@@ -45,12 +50,11 @@ export const initMainProcessHandlers = (): void => {
     ['testBuzyLoad', testBuzyLoad],
     ['testError', (_, __, message?: string): Error => new Error(message || '')],
     ['testUserConfig', testUserConfig],
+    ['useSongArtworkFromUniqueSongPKG', useSongArtworkFromUniqueSongPKG],
     ['verifyPackageEncryptionStatus', verifyPackageEncryptionStatus],
     ['windowClose', windowClose],
     ['windowMaximize', windowMaximize],
     ['windowMinimize', windowMinimize],
-    ['useSongArtworkFromUniqueSongPKG', useSongArtworkFromUniqueSongPKG],
-    ['changeDecryptedPackageFolderName', changeDecryptedPackageFolderName],
   ]
   for (const [channel, listeners] of handlers) addHandler(channel, listeners)
 }

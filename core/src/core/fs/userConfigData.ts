@@ -2,6 +2,8 @@ import { BrowserWindow, shell } from 'electron'
 import { getPackagesCacheFile, getRockshelfUserDataDir, getUserConfigFile } from '../fs'
 import { sendMessageBox } from '../rendererSenders'
 import type { ScoreDataInstrumentTypes } from '../../lib/rbtools'
+import type { SongPackagesFilterTypes } from '../../lib.exports'
+import type { DTAFilterTypes } from '../../lib/rbtools/lib.exports'
 
 export interface UserConfigObject {
   /**
@@ -20,6 +22,14 @@ export interface UserConfigObject {
    * The difficulty the player plays the most. Default when first saving the config file is `3` (Expert).
    */
   mostPlayedDifficulty: 0 | 1 | 2 | 3
+  /**
+   * The sorting option for the song packages listing.
+   */
+  packagesCatalogSortBy: SongPackagesFilterTypes
+  /**
+   * The sorting option for the songs listing.
+   */
+  songsCatalogSortBy: DTAFilterTypes
   /**
    * If `true`, the RPCS3 instance launched by the application would open without GUI. Default when first saving the config file is `false`.
    */
@@ -60,6 +70,8 @@ export const saveUserConfigFile = async (newConfig?: Partial<UserConfigObject>):
     rpcs3ExePath: '',
     mostPlayedInstrument: 'band',
     mostPlayedDifficulty: 3,
+    packagesCatalogSortBy: 'name',
+    songsCatalogSortBy: 'title',
     rpcs3NoGUI: false,
   }
 

@@ -1,4 +1,4 @@
-import { FilePath, pathLikeToFilePath, randomByteFromRanges } from 'node-lib'
+import { FilePath, pathLikeToFilePath, randomByteFromRanges, type FilePathJSONRepresentation } from 'node-lib'
 import { getRockshelfTempDir, rbiconsToPath, useHandler } from '../core.exports'
 import { cropImageToTempPNG, type CropImageCoordinatesObject } from '../lib.exports'
 import { temporaryFile } from 'tempy'
@@ -18,7 +18,7 @@ export interface CropImageAndSaveToTempOptions {
    */
   name?: string
 }
-export const cropImageAndSaveToTemp = useHandler(async (_, __, options: CropImageAndSaveToTempOptions) => {
+export const cropImageAndSaveToTemp = useHandler(async (_, __, options: CropImageAndSaveToTempOptions): Promise<FilePathJSONRepresentation> => {
   const { imgPath, imgCropOptions, name } = options
 
   const tempJPG = getRockshelfTempDir().gotoFile(`${name ?? `${randomByteFromRanges(16).toString('hex')}`}.jpg`)

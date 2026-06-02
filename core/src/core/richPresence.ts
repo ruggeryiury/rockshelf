@@ -49,11 +49,6 @@ export const initRichPresence = async (): Promise<never> => {
   let rpJSONData: RB3DeluxeRichPresenteObject | undefined
   let prevHash = ''
 
-  const rpc = new Client({ clientId })
-  try {
-    await rpc.login()
-  } catch (err) {}
-
   ipcMain.handle('discordRPSetUserConfig', (_, userCnfg: UserConfigObject) => {
     devhdd0Path = pathLikeToDirPath(userCnfg.devhdd0Path)
     rpJSONPath = getDiscordRPJSONFile(devhdd0Path)
@@ -69,8 +64,7 @@ export const initRichPresence = async (): Promise<never> => {
       isStarted = true
       return true
     } catch (err) {
-      const win = getBrowserWindowFromEvent(event)
-      sendMessageBox(win, { type: 'error', code: 'initRichPresenceLogin' })
+      sendMessageBox(getBrowserWindowFromEvent(event), { type: 'error', code: 'initRichPresenceLogin' })
       isStarted = false
       return false
     }
@@ -87,6 +81,14 @@ export const initRichPresence = async (): Promise<never> => {
       return false
     }
   })
+
+  const rpc = new Client({ clientId })
+
+  try {
+    await rpc.login()
+  } catch (err) {
+    console.log(err)
+  }
 
   while (true) {
     if (rpJSONPath && isStarted) {

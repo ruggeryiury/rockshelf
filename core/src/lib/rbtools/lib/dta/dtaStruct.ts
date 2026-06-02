@@ -6,7 +6,7 @@ import { MyObject } from 'node-lib'
  * An object that holds information of many values used in a DTA file.
  */
 export const dta = {
-  allKeys: ['id', 'name', 'artist', 'fake', 'master', 'context', 'song_id', 'upgrade_version', 'songname', 'tracks_count', 'pans', 'vols', 'cores', 'vocal_parts', 'mute_volume', 'mute_volume_vocals', 'hopo_threshold', 'song_scroll_speed', 'bank', 'drum_bank', 'anim_tempo', 'band_fail_cue', 'preview', 'song_length', 'rank_drum', 'rank_guitar', 'rank_bass', 'rank_vocals', 'rank_keys', 'rank_real_keys', 'rank_real_guitar', 'rank_real_bass', 'rank_band', 'solo', 'genre', 'sub_genre', 'vocal_gender', 'format', 'version', 'album_art', 'album_name', 'album_track_number', 'year_released', 'year_recorded', 'rating', 'tuning_offset_cents', 'guide_pitch_volume', 'game_origin', 'encoding', 'vocal_tonic_note', 'song_tonality', 'song_key', 'real_guitar_tuning', 'real_bass_tuning', 'alternate_path', 'base_points', 'extra_authoring', 'author', 'strings_author', 'keys_author', 'loading_phrase', 'pack_name', 'languages', 'multitrack', 'unpitchedVocals', 'convert', 'doubleKick', 'rhythmOn', 'emh', 'customsource', 'magma'],
+  allKeys: ['id', 'name', 'artist', 'fake', 'master', 'covered_by', 'context', 'song_id', 'upgrade_version', 'songname', 'tracks_count', 'pans', 'vols', 'cores', 'vocal_parts', 'mute_volume', 'mute_volume_vocals', 'hopo_threshold', 'song_scroll_speed', 'bank', 'drum_bank', 'anim_tempo', 'band_fail_cue', 'preview', 'song_length', 'rank_drum', 'rank_guitar', 'rank_bass', 'rank_vocals', 'rank_keys', 'rank_real_keys', 'rank_real_guitar', 'rank_real_bass', 'rank_band', 'solo', 'genre', 'sub_genre', 'vocal_gender', 'format', 'version', 'album_art', 'album_name', 'album_track_number', 'year_released', 'year_recorded', 'rating', 'tuning_offset_cents', 'guide_pitch_volume', 'game_origin', 'encoding', 'vocal_tonic_note', 'song_tonality', 'song_key', 'real_guitar_tuning', 'real_bass_tuning', 'alternate_path', 'base_points', 'extra_authoring', 'author', 'strings_author', 'keys_author', 'loading_phrase', 'pack_name', 'languages', 'multitrack', 'unpitchedVocals', 'convert', 'doubleKick', 'rhythmOn', 'emh', 'customsource', 'magma'],
   name: {
     '123': '123',
     A: 'a',
@@ -38,16 +38,12 @@ export const dta = {
   },
   animTempo: {
     16: 'Slow (under 100bpm)',
-    24: 'Custom: Medium Slow',
     32: 'Medium (100-160bpm)',
-    48: 'Custom: Medium Fast',
     64: 'Fast (over 160bpm)',
   },
   animTempoStrings: {
     kTempoSlow: 'Slow (under 100bpm)',
-    24: 'Custom: Medium Slow',
     kTempoMedium: 'Medium (100-160bpm)',
-    48: 'Custom: Medium Fast',
     kTempoFast: 'Fast (over 160bpm)',
   },
   bandFailCue: {
@@ -64,7 +60,7 @@ export const dta = {
     'sfx/tambourine_bank.milo': 'Tambourine',
     'sfx/cowbell_bank.milo': 'Cowbell',
     'sfx/handclap_bank.milo': 'Hand Clap',
-    'sfx/cowbell3_bank.milo': 'Cowbell (Alternate)',
+    'sfx/cowbell3_bank.milo': 'Cowbell (Alternative)',
   },
   drumBank: {
     'sfx/kit01_bank.milo': 'Hard Rock Kit',
@@ -708,13 +704,19 @@ export interface RB3CompatibleDTAFile {
    */
   author?: string
   /**
+   * The artist/band who covered the song, only used when setting `'master'` to `false`.
+   *
+   * _This value only works on Rock Band 3 Deluxe_.
+   */
+  covered_by?: string
+  /**
    * An array with the languages of the song.
    */
   languages?: MAGMALanguagesTypes[]
   /**
    * Tells the type of the song's audio stems. It can be `true`, representing `full`, original multitracks.
    */
-  multitrack?: 'diy_stems' | 'partial' | 'karaoke' | 'full' | null
+  multitrack?: 'diy_stems' | 'partial' | 'karaoke' | 'full'
   /**
    * Tells if the song has unpitched vocals.
    */

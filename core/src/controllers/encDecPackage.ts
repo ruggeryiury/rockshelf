@@ -1,7 +1,7 @@
-import { DirPath, FilePath, pathLikeToDirPath, pathLikeToFilePath } from 'node-lib'
+import { DirPath, FilePath, pathLikeToFilePath } from 'node-lib'
 import { getPackagesCacheFile, sendDialog, sendMessageBox, useHandler } from '../core.exports'
-import { editRSPackImage, type RPCS3SongPackagesDataExtra, type RPCS3SongPackagesObjectExtra } from '../lib.exports'
-import { BinaryAPI, EDATFile, MIDIFile, MOGGFile } from '../lib/rbtools'
+import { editRSPackImage, type RPCS3SongPackagesDataExtra } from '../lib.exports'
+import { EDATFile, MIDIFile, MOGGFile } from '../lib/rbtools'
 import { temporaryFile } from 'tempy'
 import { utimes } from 'node:fs/promises'
 

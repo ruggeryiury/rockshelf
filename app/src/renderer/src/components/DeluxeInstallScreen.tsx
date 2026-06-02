@@ -59,7 +59,7 @@ export function DeluxeInstallScreen() {
   )
 
   return (
-    <AnimatedSection condition={active} {...animate({ opacity: true })} id="DeluxeInstallScreen" className="absolute! z-3 h-full max-h-full w-full max-w-full bg-black/90 p-8 backdrop-blur-lg">
+    <AnimatedSection condition={active} {...animate({ opacity: true })} id="DeluxeInstallScreen" className="absolute! z-3 h-full max-h-full w-full max-w-full bg-black p-8">
       <div className="mb-2 flex-row! items-center border-b border-white/25 pb-1">
         <h1 className="font-pentatonicalt! mr-auto text-[2rem] uppercase">{t('installDeluxe')}</h1>
         <button

@@ -15,7 +15,7 @@ export interface SelectPackageFilesObject {
   stats: SelectPackageFilesStatsTypes[]
 }
 
-export const selectPackageFiles = useHandler(async (win, _, files: SelectPackageFilesStatsTypes[]) => {
+export const selectPackageFiles = useHandler(async (win, _, files: SelectPackageFilesStatsTypes[]): Promise<false | SelectPackageFilesObject> => {
   const selection = await dialog.showOpenDialog({ properties: ['openFile', 'multiSelections'] })
 
   if (selection.canceled) {

@@ -22,7 +22,7 @@ export function FirstTimeScreen() {
   const { setMessageBoxState } = useMessageBoxState(useShallow((x) => ({ setMessageBoxState: x.setMessageBoxState })))
 
   return (
-    <AnimatedSection condition={active} {...animate({ opacity: true })} id="FirstTimeScreen" className="absolute! z-3 h-full w-full bg-black/90 p-8 backdrop-blur-lg">
+    <AnimatedSection condition={active} {...animate({ opacity: true })} id="FirstTimeScreen" className="absolute! z-3 h-full w-full bg-black p-8">
       <div className="mb-2 border-b border-white/25 pb-1">
         <h1 className="font-pentatonicalt! text-[2rem] uppercase">{t('firstTimeScreenWelcome')}</h1>
       </div>

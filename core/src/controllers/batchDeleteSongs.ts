@@ -4,7 +4,7 @@ import { getSongPackageStatsFromFolder, rpcs3GetSongPackagesStatsExtra, type RPC
 import { utimes } from 'node:fs/promises'
 import { DTAParser } from '../lib/rbtools'
 
-export const batchDeleteSongs = useHandler(async (win, _, pkgIndex: number, songs: string[]) => {
+export const batchDeleteSongs = useHandler(async (win, _, pkgIndex: number, songs: string[]): Promise<false | RPCS3SongPackagesDataExtra> => {
   const cache = getPackagesCacheFile()
   if (!cache.exists) {
     sendDialog(win, 'corruptedPackagesCache')
@@ -57,7 +57,7 @@ export const batchDeleteSongs = useHandler(async (win, _, pkgIndex: number, song
     songsDeleted++
   }
 
-  parser.removeSongs(songs)
+  parser.removeSongs(songs, 'songname')
 
   parser.sort('ID')
   parser.patchCores()

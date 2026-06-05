@@ -346,8 +346,10 @@ export const extractPackagesForRPCS3Extra = async (win: BrowserWindow, packages:
   if (updates.length > 0 || updateAllSongs !== null) parser.applyUpdatesToExistingSongs(true)
 
   parser.sort('ID')
+  parser.patchInvalidValues()
   parser.patchCores()
   parser.patchSongsEncodings()
+  parser.patchIDs()
 
   sendBuzyLoad(win, { code: 'incrementStep' })
 
@@ -420,7 +422,6 @@ export const extractPackagesForRPCS3Extra = async (win: BrowserWindow, packages:
       }
     }
   } catch (err) {
-    console.log('mainTempFolder', mainTempFolder.path)
     await mainTempFolder.deleteDir(true)
     throw err
   }

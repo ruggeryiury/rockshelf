@@ -60,8 +60,10 @@ export const batchDeleteSongs = useHandler(async (win, _, pkgIndex: number, song
   parser.removeSongs(songs, 'songname')
 
   parser.sort('ID')
+  parser.patchInvalidValues()
   parser.patchCores()
   parser.patchSongsEncodings()
+  parser.patchIDs()
   await parser.export(dtaPath)
 
   const newDTASize = (await dtaPath.stat()).size

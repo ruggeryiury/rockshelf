@@ -1,4 +1,5 @@
 import { BinaryReader, type FilePathLikeTypes, pathLikeToFilePath } from 'node-lib'
+import { dateISOFormatObjectToDateISOString } from '../utils/date'
 
 export const rsPackImage = {
   fileVersion: {
@@ -12,6 +13,7 @@ export const rsPackImage = {
     0: 'merged',
     1: 'stfs',
     2: 'pkg',
+    3: 'rb3',
   },
   encryptionStatus: {
     0: 'unknown',
@@ -61,10 +63,6 @@ export interface ParsedRSPackImageObject {
    * The creation date of the file in ISO string format.
    */
   creationDate: string
-  /**
-   * The modified date of the file in ISO string format.
-   */
-  modifiedDate: string
 }
 
 export interface RSPackImageValidationResults {
@@ -117,10 +115,14 @@ export const parseRSDATBuffer = async (rsdatBuffer: Buffer): Promise<ParsedRSPac
   const source = (await reader.readUInt8()) as RSPackImageSourceNumbers
   const encryptionStatus = (await reader.readUInt8()) as RSPackImageEncryptionStatusNumbers
   reader.padding(13)
-  const creationDateLength = await reader.readUInt8()
-  const creationDate = await reader.readASCII(creationDateLength)
-  const modifiedDateLength = await reader.readUInt8()
-  const modifiedDate = await reader.readASCII(modifiedDateLength)
+  const year = await reader.readUInt16LE()
+  const month = await reader.readUInt8()
+  const day = await reader.readUInt8()
+  const hour = await reader.readUInt8()
+  const min = await reader.readUInt8()
+  const sec = await reader.readUInt8()
+
+  const creationDate = dateISOFormatObjectToDateISOString({ day, hour, min, month, sec, year })
 
   const packageNameLength = await reader.readUInt8()
   const packageName = await reader.readUTF8(packageNameLength)
@@ -131,7 +133,6 @@ export const parseRSDATBuffer = async (rsdatBuffer: Buffer): Promise<ParsedRSPac
     source: (rsPackImage.source[source] as RSPackImageSourceValues | undefined) ?? 'stfs',
     encryptionStatus: (rsPackImage.encryptionStatus[encryptionStatus] as RSPackImageEncryptionStatusValues | undefined) ?? 'unknown',
     creationDate,
-    modifiedDate,
     packageName,
   }
 }

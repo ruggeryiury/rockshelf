@@ -10,7 +10,6 @@ export const cropImageToTempPNG = async (imgSrcPath: FilePathLikeTypes, cropOpti
   const pyScriptPath = getRockshelfModuleRootDir().gotoFile('bin/python/crop_image.py')
 
   const command = `${PythonAPI.getPythonExecName()} "${pyScriptPath.fullname}" "${src.path}" "${tempPNG.path}" --crop_x ${cropOptions.x} --crop_width ${cropOptions.width} --crop_y ${cropOptions.y} --crop_height ${cropOptions.height} --mode ${cropOptions.mode ?? 'stretch'}`
-  console.log(command)
   const { stderr } = await execAsync(command, { windowsHide: true, cwd: pyScriptPath.root })
   if (stderr) throw new Error(stderr)
 

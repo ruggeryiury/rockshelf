@@ -14,11 +14,17 @@ asarUnpack:
   - node_modules/rbtools
 win:
   executableName: Rockshelf
+  artifactName: 'rockshelf-${version}_x86_x64_installer.${ext}'
 nsis:
   artifactName: ${name}-${version}-setup.${ext}
   shortcutName: ${productName}
   uninstallDisplayName: ${productName}
   createDesktopShortcut: always
+  deleteAppDataOnUninstall: true
+  oneClick: false
+  runAfterFinish: false
+  allowToChangeInstallationDirectory: true
+  include: 'build/installer.nsh'
 mac:
   entitlementsInherit: build/entitlements.mac.plist
   extendInfo:

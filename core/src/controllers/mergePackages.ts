@@ -3,6 +3,7 @@ import { getPackagesCacheFile, sendDialog, sendMessageBox, useHandler } from '..
 import { getSongPackageStatsFromFolder, type RPCS3SongPackagesDataExtra } from '../lib.exports'
 import { DTAParser } from '../lib/rbtools'
 import { pathLikeToDirPath, pathLikeToFilePath } from 'node-lib'
+import { rpcs3GenSongPackageManifest } from '../lib/rbtools/lib.exports'
 
 export const mergePackages = useHandler(async (win, _, selectedPackageIndex: number, mainPackageIndex: number) => {
   const cache = getPackagesCacheFile()
@@ -22,6 +23,7 @@ export const mergePackages = useHandler(async (win, _, selectedPackageIndex: num
   }
   const toBeMergedPackage = cacheContents.packages[selectedPackageIndex]
   const toBeMergedPackagePath = pathLikeToDirPath(toBeMergedPackage.path)
+  const { packageFiles } = await rpcs3GenSongPackageManifest(toBeMergedPackagePath)
   const mainPackage = cacheContents.packages[mainPackageIndex]
   const mainPackagePath = pathLikeToDirPath(mainPackage.path)
 
@@ -30,12 +32,12 @@ export const mergePackages = useHandler(async (win, _, selectedPackageIndex: num
     return false
   }
 
-  for (const songnames of toBeMergedPackage.songnames) {
+  for (const songnames of toBeMergedPackage.songs.map((song) => song.songname)) {
     const genDir = mainPackagePath.gotoDir(`songs/${songnames}/gen`)
     if (!genDir.exists) await genDir.mkDir(true)
   }
 
-  for (const file of toBeMergedPackage.packageFiles) {
+  for (const file of packageFiles) {
     const oldFilePath = pathLikeToFilePath(file)
     const relativePath = oldFilePath.path.slice(pathLikeToFilePath(toBeMergedPackage.dtaFilePath).gotoDir('').path.length + 1)
     const newFilePath = mainPackagePath.gotoFile(`songs/${relativePath}`)

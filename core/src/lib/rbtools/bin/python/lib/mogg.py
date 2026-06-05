@@ -779,6 +779,7 @@ def decrypt_mogg(xbox: bool, red: bool, fin: BufferedReader, fout: BufferedReade
     fout.close()
     return failed
 
+
 def decrypt_mogg_bytes(xbox: bool, red: bool, fin: BufferedReader) -> bytearray:
     failed = False
     mogg_data = fin.read()

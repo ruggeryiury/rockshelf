@@ -51,7 +51,6 @@ export const selectPackageFiles = useHandler(async (win, _, files: SelectPackage
         selectedSongs: [...data.dta.map((data) => data.songname)],
       })
     } catch (err) {
-      console.log(err)
       const pkg = new PKGFile(pkgPath)
 
       try {

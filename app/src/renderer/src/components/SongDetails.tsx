@@ -272,8 +272,8 @@ export function SongDetails() {
                   <div className="group w-1/2 rounded-xs p-2 duration-200 hover:bg-white/5">
                     <h1 className="uppercase">{t('gameOrigin')}</h1>
                     <div className="flex-row! items-center">
-                      <p>{t(typeof rb3Stats === 'object' && rb3Stats.hasDeluxe && (songDetails.customsource?.game_origin || songDetails.game_origin).startsWith('ugc') ? `gameOriginDX__${songDetails.customsource?.game_origin || songDetails.game_origin}` : `gameOrigin__${songDetails.customsource?.game_origin || songDetails.game_origin}`)}</p>
-                      {songDetails.customsource?.game_origin && <DiamondIcon className="relative top-[0.1rem] ml-1 rotate-45 cursor-help text-gray-700 duration-100 hover:text-gray-300" title={t('dxGameOriginOnly')} />}
+                      <p>{t(typeof rb3Stats === 'object' && rb3Stats.hasDeluxe && (songDetails.customsource?.game_origin || songDetails.game_origin).startsWith('ugc') ? `gameOriginDX__${songDetails.customsource?.game_origin || songDetails.game_origin}` : `gameOrigin__${(typeof rb3Stats === 'object' && rb3Stats.hasDeluxe ? songDetails.customsource?.game_origin : '') || songDetails.game_origin}`)}</p>
+                      {typeof rb3Stats === 'object' && rb3Stats.hasDeluxe && songDetails.customsource?.game_origin && <DiamondIcon className="relative top-[0.1rem] ml-1 rotate-45 cursor-help text-gray-700 duration-100 hover:text-gray-300" title={t('dxGameOriginOnly')} />}
                     </div>
                   </div>
 

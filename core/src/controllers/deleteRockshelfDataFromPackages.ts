@@ -2,10 +2,7 @@ import { getRB1USRDIR, getRB3USRDIR, readUserConfigFile, useHandler } from '../c
 import { DirPath } from 'node-lib'
 import { isRPCS3Devhdd0PathValid } from '../lib/rbtools/lib.exports'
 
-/**
- * Deletes the user configuraton file and reload the window.
- */
-export const deletePackageThumbnails = useHandler(async (win, _): Promise<boolean> => {
+export const deleteRockshelfDataFromPackages = useHandler(async (win, _): Promise<boolean> => {
   const userConfig = await readUserConfigFile()
   if (!userConfig) return false
 
@@ -17,7 +14,6 @@ export const deletePackageThumbnails = useHandler(async (win, _): Promise<boolea
     for (const entry of await rb1USRDIR.readDir()) {
       if (entry instanceof DirPath) {
         const thumbnailPath = entry.gotoFile('folder.jpg')
-
         if (thumbnailPath.exists) await thumbnailPath.delete()
       }
     }

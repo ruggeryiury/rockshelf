@@ -12,6 +12,7 @@ import { useShallow } from 'zustand/shallow'
 import type { InstrumentScoreData, ParsedRB3SaveData } from 'rockshelf-core/rbtools'
 import { VERBOSE } from './app/rockshelf.globals'
 import { PackageDetails } from './components/PackageDetails'
+import { ExportPackageModal } from './components/ExportPackageModal'
 
 export function App() {
   const { i18n } = useTranslation()
@@ -126,6 +127,7 @@ export function App() {
         <DeluxeInstallScreen />
         <DialogScreen />
         <EditSongScreen />
+        <ExportPackageModal />
         <FatalErrorScreen />
         <FirstTimeScreen />
         <ImageCropScreen />

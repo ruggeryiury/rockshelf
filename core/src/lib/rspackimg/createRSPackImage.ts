@@ -1,7 +1,7 @@
 import { BinaryReader, BinaryWriter, FilePath, type FilePathLikeTypes, pathLikeToFilePath, StreamWriter } from 'node-lib'
 import { createReadStream } from 'node:fs'
 import { useDefaultOptions } from 'use-default-options'
-import { rsPackImage, type RSPackImageEncryptionStatusValues, type RSPackImageSourceValues, type RSPackImageTypeValues } from '../../lib.exports'
+import { dateISOFormatToObject, rsPackImage, type ParsedRSPackImageObject, type RSPackImageEncryptionStatusValues, type RSPackImageSourceValues, type RSPackImageTypeValues } from '../../lib.exports'
 import { getKeyFromMapValue } from '../rbtools/utils.exports'
 
 export interface RSPackImageCreatorOptions {
@@ -10,7 +10,6 @@ export interface RSPackImageCreatorOptions {
   encryptionStatus?: RSPackImageEncryptionStatusValues
   packageName?: string
   creationDate?: string
-  modifiedDate?: string
 }
 
 export const removeRSDataFromBuffer = async (input: Buffer): Promise<Buffer> => {
@@ -33,25 +32,27 @@ export const removeRSDataFromBuffer = async (input: Buffer): Promise<Buffer> => 
   return await reader.read(imageFileSize - footerSizeLength)
 }
 
-export const createRSPackImage = async (imageFilePathOrBuffer: FilePathLikeTypes | Buffer, destPath: FilePathLikeTypes, options?: RSPackImageCreatorOptions): Promise<FilePath> => {
+export const createRSPackImage = async (imageFilePathOrBuffer: FilePathLikeTypes | Buffer, destPath: FilePathLikeTypes, options?: RSPackImageCreatorOptions): Promise<{ path: FilePath; header: ParsedRSPackImageObject }> => {
   let img: FilePath | Buffer
   if (Buffer.isBuffer(imageFilePathOrBuffer)) img = await removeRSDataFromBuffer(imageFilePathOrBuffer)
   else img = pathLikeToFilePath(imageFilePathOrBuffer)
   const dest = pathLikeToFilePath(destPath)
+
   const nowDate = new Date().toISOString()
-  const { type, source, encryptionStatus, packageName, creationDate, modifiedDate } = useDefaultOptions<RSPackImageCreatorOptions>(
+  const date = dateISOFormatToObject(nowDate)
+
+  const { type, source, encryptionStatus, packageName, creationDate } = useDefaultOptions<RSPackImageCreatorOptions>(
     {
       type: 'rockshelf',
       source: 'stfs',
       encryptionStatus: 'unknown',
       packageName: '',
       creationDate: nowDate,
-      modifiedDate: nowDate,
     },
     options
   )
 
-  if (packageName.length === 0) throw new Error("Provided package name for song package JPEG image can't be blank.")
+  if (packageName.length === 0) throw new Error("Provided package name for Rockshelf Pack Image file can't be blank.")
   const writer = await StreamWriter.toFile(dest)
 
   await new Promise((resolve, reject) => {
@@ -80,11 +81,16 @@ export const createRSPackImage = async (imageFilePathOrBuffer: FilePathLikeTypes
   extraData.writeUInt8(getKeyFromMapValue(rsPackImage.type, type) ?? 0)
   extraData.writeUInt8(getKeyFromMapValue(rsPackImage.source, source) ?? 0)
   extraData.writeUInt8(getKeyFromMapValue(rsPackImage.encryptionStatus, encryptionStatus) ?? 0)
+
   extraData.write(Buffer.alloc(13))
-  extraData.writeUInt8(creationDate.length)
-  extraData.writeASCII(creationDate)
-  extraData.writeUInt8(modifiedDate.length)
-  extraData.writeASCII(modifiedDate)
+
+  extraData.writeUInt16LE(date.year)
+  extraData.writeUInt8(date.month)
+  extraData.writeUInt8(date.day)
+  extraData.writeUInt8(date.hour)
+  extraData.writeUInt8(date.min)
+  extraData.writeUInt8(date.sec)
+
   extraData.writeUInt8(packageName.length)
   extraData.writeUTF8(packageName)
 
@@ -96,5 +102,15 @@ export const createRSPackImage = async (imageFilePathOrBuffer: FilePathLikeTypes
   extraData.clearContents()
   await writer.close()
 
-  return dest
+  return {
+    path: dest,
+    header: {
+      fileVersion: 1,
+      type,
+      source,
+      encryptionStatus,
+      creationDate,
+      packageName,
+    },
+  }
 }

@@ -65,10 +65,6 @@ export const changeDecryptedPackageFolderName = useHandler(async (win, __, pkgIn
   cacheContents.packages[pkgIndex].devklic = EDATFile.genDevKLicHash(newPKGPath.name)
   cacheContents.packages[pkgIndex].dtaFilePath = newPKGPath.gotoFile('songs/songs.dta').path
   cacheContents.packages[pkgIndex].thumbnailSrc = `rb3packimg://${encodeURIComponent(newPKGPath.name)}`
-  cacheContents.packages[pkgIndex].packageFiles = cacheContents.packages[pkgIndex].packageFiles.map((p) => {
-    const relativePath = p.slice(oldPKGPath.path.length + 1)
-    return newPKGPath.gotoFile(relativePath).path
-  })
 
   await cache.write(JSON.stringify(cacheContents))
   const now = new Date()

@@ -360,7 +360,7 @@ export function ConfigScreen() {
             className="mr-2 mb-1 w-fit self-start rounded-xs border border-red-500 bg-neutral-900 px-1 py-0.5 text-xs! text-red-500 uppercase duration-100 last:mr-0 last:mb-0 hover:bg-red-950/25 active:bg-neutral-600 disabled:text-neutral-700 disabled:hover:bg-neutral-900"
             onClick={async () => {
               setWindowState({ disableButtons: true })
-              await window.api.deletePackageThumbnails()
+              await window.api.deleteRockshelfDataFromPackages()
               await window.api.deleteUserConfigAndRestart()
             }}
           >

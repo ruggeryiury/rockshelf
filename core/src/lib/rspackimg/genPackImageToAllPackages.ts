@@ -25,7 +25,7 @@ export const genPackImageToAllPackages = async (devhdd0Path: DirPathLikeTypes) =
           continue
         }
 
-        const { manifest, packageSize, packageFiles } = await rpcs3GenSongPackageManifest(packagePath)
+        const { manifest } = await rpcs3GenSongPackageManifest(packagePath)
         const contentsHash = createHashFromBuffer(Buffer.from(manifest))
         const official = getOfficialSongPackageStatsFromHash('extractedRPCS3', contentsHash)
         if (official) {

@@ -4,6 +4,11 @@ export * from './lib/pkg/extractPackagesForRPCS3Extra'
 export * from './lib/pkg/filterSongPackages'
 export * from './lib/pkg/installRB3PatchFromPKG'
 
+export * from './lib/rb3p/calculateSongFilesSizeFromSongname'
+export * from './lib/rb3p/createRB3File'
+export * from './lib/rb3p/parseRB3File'
+export * from './lib/rb3p/RB3File'
+
 export * from './lib/rspackimg/createRSPackImage'
 export * from './lib/rspackimg/editRSPackImage'
 export * from './lib/rspackimg/genPackImageToAllPackages'
@@ -16,4 +21,5 @@ export * from './lib/rpcs3/rpcs3GetSongPackagesStatsExtra'
 export * from './lib/strnum/isValidFolderName'
 export * from './lib/strnum/stringFunctions'
 
+export * from './lib/utils/date'
 export * from './lib/utils/sleep'

@@ -6,7 +6,7 @@ import { useWindowState } from '@renderer/stores/Window.state'
 import { useTranslation } from 'react-i18next'
 import { CREATE_NEW_PACKAGE_TABS, VERBOSE } from '@renderer/app/rockshelf.globals'
 import { useMessageBoxState } from './MessageBox.state'
-import { ChevronDownIcon, EyeIcon, EyeSlashIcon, PlaystationIcon, XboxIcon } from '@renderer/assets/icons'
+import { ChevronDownIcon, EyeIcon, EyeSlashIcon, PlaystationIcon, ShelfIcon, XboxIcon } from '@renderer/assets/icons'
 import { useEffect, useMemo } from 'react'
 import type { SelectPackageFilesStatsTypes } from 'rockshelf-core'
 import { useImageCropScreenState } from './ImageCropScreen.state'
@@ -168,11 +168,11 @@ export function CreateNewPackageScreen() {
             {files.map((file, fileIndex) => {
               {
                 return (
-                  <div className="flex-row!" key={`packageFile${fileIndex}__${file.type === 'pkg' ? file.data.contentID : file.data.contentsHash}`}>
+                  <div className="flex-row!" key={`packageFile${fileIndex}__${file.type === 'pkg' ? file.data.contentID : file.type === 'rb3' ? file.data.header.packageHash : file.data.contentsHash}`}>
                     <div className="group mb-1 w-full flex-row! rounded-sm border-2 border-white/5 p-2 duration-150 last:mb-0 hover:bg-white/5 active:bg-white/10" onMouseOver={() => setCreateNewPackageScreenState({ hoveredFile: fileIndex })} onMouseLeave={() => setCreateNewPackageScreenState({ hoveredFile: -1 })}>
                       <div className="mr-4 h-fit w-16 min-w-16 flex-row! items-start justify-center rounded-sm bg-neutral-900 py-1 duration-150 group-hover:bg-neutral-800">
-                        {file.type === 'stfs' ? <XboxIcon className="mr-1 text-lg" /> : <PlaystationIcon className="mr-1 text-xl" />}
-                        <h1 className="top-0.2 relative!">{file.type === 'stfs' ? 'CON' : 'PKG'}</h1>
+                        {file.type === 'stfs' ? <XboxIcon className="mr-1 text-lg" /> : file.type === 'rb3' ? <ShelfIcon className="mr-1 text-lg" /> : <PlaystationIcon className="mr-1 text-xl" />}
+                        <h1 className="top-0.2 relative!">{file.type === 'stfs' ? 'CON' : file.type === 'rb3' ? 'RB3' : 'PKG'}</h1>
                       </div>
                       <div className="w-full">
                         <div className="mb-1 flex-row! items-start border-b-2 border-white/10 pb-1">
@@ -225,9 +225,9 @@ export function CreateNewPackageScreen() {
                 return (
                   <div key={`selectedFile${fileIndex}`} className="mt-2 mr-4 first:mt-0">
                     <div className="sticky! top-0 z-10 flex-row! items-center bg-neutral-900 p-1">
-                      <div className="mr-1 h-fit w-16 min-w-16 flex-row! justify-center rounded-sm">
-                        {file.type === 'stfs' ? <XboxIcon className="relative! -bottom-0.5 mr-1" /> : <PlaystationIcon className="mr-1 text-xl" />}
-                        <h1 className="">{file.type === 'stfs' ? 'CON' : 'PKG'}</h1>
+                      <div className="mr-2 h-fit w-16 min-w-16 flex-row! justify-center border-r-2 border-white/25 pr-1">
+                        {file.type === 'stfs' ? <XboxIcon className="mr-1 text-lg" /> : file.type === 'rb3' ? <ShelfIcon className="mr-1 text-lg" /> : <PlaystationIcon className="mr-1 text-xl" />}
+                        <h1 className="top-0.2 relative!">{file.type === 'stfs' ? 'CON' : file.type === 'rb3' ? 'RB3' : 'PKG'}</h1>
                       </div>
                       <h1 className="mr-2 text-lg">{file.data.path.name}</h1>
                       <button

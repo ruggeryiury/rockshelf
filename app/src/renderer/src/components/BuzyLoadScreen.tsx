@@ -9,6 +9,7 @@ import { useDeluxeInstallScreenState } from './DeluxeInstallScreen.state'
 import { useShallow } from 'zustand/shallow'
 import { useCreateNewPackageScreenState } from './CreateNewPackageScreen.state'
 import { VERBOSE } from '@renderer/app/rockshelf.globals'
+import { useExportPackageModalState } from './ExportPackageModal.state'
 
 export function BuzyLoadScreen() {
   const { t } = useTranslation()
@@ -16,6 +17,7 @@ export function BuzyLoadScreen() {
   const { setWindowState } = useWindowState(useShallow((x) => ({ setWindowState: x.setWindowState })))
   const { resetDeluxeInstallScreenState } = useDeluxeInstallScreenState(useShallow((x) => ({ resetDeluxeInstallScreenState: x.resetDeluxeInstallScreenState })))
   const { resetCreateNewPackageScreenState } = useCreateNewPackageScreenState(useShallow((x) => ({ resetCreateNewPackageScreenState: x.resetCreateNewPackageScreenState })))
+  const { resetExportPackageModalState } = useExportPackageModalState(useShallow((x) => ({ resetExportPackageModalState: x.resetExportPackageModalState })))
 
   const condition = useMemo(() => active !== null, [active])
 
@@ -154,6 +156,10 @@ export function BuzyLoadScreen() {
                     }
                     case 'resetCreateNewPackageScreenState': {
                       resetCreateNewPackageScreenState()
+                      break
+                    }
+                    case 'resetExportPackageModalState': {
+                      resetExportPackageModalState()
                       break
                     }
                   }

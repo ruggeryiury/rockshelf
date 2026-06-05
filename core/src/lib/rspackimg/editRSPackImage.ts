@@ -30,18 +30,17 @@ export interface EditPackageDataOptions {
   imgCropOptions?: CropImageCoordinatesObject
   encryptionStatus?: RSPackImageEncryptionStatusValues
   creationDate?: string
-  modifiedDate?: string
 }
 
 export const editRSPackImage = async (rsPackImagePath: FilePathLikeTypes, options: EditPackageDataOptions): Promise<FilePath> => {
-  const { imgCropOptions, imgPath, packageName, encryptionStatus } = options
+  const { imgCropOptions, imgPath, packageName, encryptionStatus, creationDate } = options
   const src = pathLikeToFilePath(rsPackImagePath)
 
   const results = await isJPEGRockshelfPackImage(src)
   if (!results) throw new Error(`Provided JPEG image file "${src.path}" is not a valid Rockshelf Pack Image file.`)
 
   const rsDataBuffer = await parseRSDATBuffer(results.buffer)
-  const opts: RSPackImageCreatorOptions = { packageName: packageName || rsDataBuffer.packageName, source: rsDataBuffer.source, type: rsDataBuffer.type, encryptionStatus: encryptionStatus || rsDataBuffer.encryptionStatus }
+  const opts: RSPackImageCreatorOptions = { packageName: packageName || rsDataBuffer.packageName, source: rsDataBuffer.source, type: rsDataBuffer.type, encryptionStatus: encryptionStatus || rsDataBuffer.encryptionStatus, creationDate: creationDate || rsDataBuffer.creationDate }
 
   if (!imgPath) {
     const srcReader = await BinaryReader.fromFile(src)

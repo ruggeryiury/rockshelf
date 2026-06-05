@@ -32,7 +32,6 @@ export const createNewPackage = useHandler(async (win, __, options: CreateNewPac
 
   const { packageFolderName, forceEncryption, packages, thumbnail, packageName, selectedSongs } = options
   const now = new Date()
-  const nowDate = now.toISOString()
 
   let devhdd0: DirPath
   try {
@@ -91,10 +90,11 @@ export const createNewPackage = useHandler(async (win, __, options: CreateNewPac
     if (packages.length === 1) {
       const packagePath = pathLikeToFilePath(packages[0])
       if (packagePath.ext === '.pkg') packageSource = 'pkg'
+      else if (packagePath.ext === '.rb3') packageSource = 'rb3'
       else packageSource = 'stfs'
     } else packageSource = 'merged'
 
-    await createRSPackImage(thumbnail !== null ? tempjpgToPath('tempjpg://thumbnail') : rbiconsToPath('rbicons://custom').gotoFile('custom.jpg'), packageFolder.gotoFile('folder.jpg'), { packageName, type: 'rockshelf', source: packageSource, encryptionStatus: forceEncryption === 'enabled' ? 'encrypted' : 'decrypted', creationDate: nowDate, modifiedDate: nowDate })
+    await createRSPackImage(thumbnail !== null ? tempjpgToPath('tempjpg://thumbnail') : rbiconsToPath('rbicons://custom').gotoFile('custom.jpg'), packageFolder.gotoFile('folder.jpg'), { packageName, type: 'rockshelf', source: packageSource, encryptionStatus: forceEncryption === 'enabled' ? 'encrypted' : 'decrypted' })
     sendBuzyLoad(win, { code: 'incrementStep' })
 
     const cache = getPackagesCacheFile()

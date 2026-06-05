@@ -9,7 +9,7 @@ export { TbArrowBackUp as GoBackIcon } from 'react-icons/tb'
 export { IoMdReturnRight as GoBackToRightIcon, IoMdCheckmarkCircle as SuccessIcon } from 'react-icons/io'
 export { IoDiamondOutline as DiamondIcon } from 'react-icons/io5'
 export { GrSquare as HalfCheckedBox } from 'react-icons/gr'
-export { GiRank1 as LowerRankIcon, GiRank2 as MiddleRankIcon, GiRank3 as HighRankIcon } from 'react-icons/gi'
+export { GiRank1 as LowerRankIcon, GiRank2 as MiddleRankIcon, GiRank3 as HighRankIcon, GiAbstract114 as ShelfIcon } from 'react-icons/gi'
 
 export { RPCS3Icon } from './images/svg/RPCS3Icon'
 export { WiiIcon } from './images/svg/WiiIcon'

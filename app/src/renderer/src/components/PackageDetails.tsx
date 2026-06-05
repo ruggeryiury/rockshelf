@@ -19,6 +19,7 @@ import Markdown from 'react-markdown'
 import remarkGfm from 'remark-gfm'
 import rehypeRaw from 'rehype-raw'
 import rehypeSlug from 'rehype-slug'
+import { useExportPackageModalState } from './ExportPackageModal.state'
 
 export function PackageDetails() {
   const { t } = useTranslation()
@@ -29,6 +30,7 @@ export function PackageDetails() {
   const { setMessageBoxState } = useMessageBoxState(useShallow((x) => ({ setMessageBoxState: x.setMessageBoxState })))
   const { setRBIconsSelectorState } = useRBIconsSelectorState(useShallow((x) => ({ setRBIconsSelectorState: x.setRBIconsSelectorState })))
   const { setImageCropScreenState } = useImageCropScreenState(useShallow((x) => ({ setImageCropScreenState: x.setImageCropScreenState })))
+  const { setExportPackageModalState } = useExportPackageModalState(useShallow((x) => ({ setExportPackageModalState: x.setExportPackageModalState })))
   const active = useMemo(() => (typeof packages === 'object' && selPKG > -1 && selPKG in packages.packages ? packages.packages[selPKG] : null), [selPKG, packages])
 
   useEffect(
@@ -112,6 +114,17 @@ export function PackageDetails() {
                 <TransComponent i18nKey="sortText" values={{ sortType: songsCatalogSortBy === 'difficulty' ? t(`sortText${uppercaseFirstLetter(mostPlayedInstrument)}Diff`) : t(`sort${uppercaseFirstLetter(songsCatalogSortBy)}`) }} />
               </p>
             </div>
+            {!active.official && (
+              <button
+                disabled={disableButtons}
+                className="mr-2 w-fit self-start rounded-xs border border-neutral-700 bg-neutral-900 px-1 py-0.5 text-xs! uppercase duration-100 last:mr-0 hover:bg-neutral-700 active:bg-neutral-600 disabled:text-neutral-700 disabled:hover:bg-neutral-900"
+                onClick={async () => {
+                  setExportPackageModalState({ selPKGToExport: selPKG })
+                }}
+              >
+                {t('exportPackage')}
+              </button>
+            )}
             <button
               disabled={disableButtons}
               className="w-fit self-start rounded-xs border border-neutral-700 bg-neutral-900 px-1 py-0.5 text-xs! text-nowrap uppercase duration-100 hover:bg-neutral-700 active:bg-neutral-600 disabled:text-neutral-700 disabled:hover:bg-neutral-900"

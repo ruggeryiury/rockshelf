@@ -87,7 +87,7 @@ export const initRichPresence = async (): Promise<never> => {
   try {
     await rpc.login()
   } catch (err) {
-    console.log(err)
+    // Do nothing
   }
 
   while (true) {

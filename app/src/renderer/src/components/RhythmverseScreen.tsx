@@ -4,15 +4,16 @@ import { useWindowState } from '@renderer/stores/Window.state'
 import { useTranslation } from 'react-i18next'
 import { useShallow } from 'zustand/shallow'
 import { useRhythmverseScreenState } from './RhythmverseScreen.state'
-import { RHYTHMVERSE_SCREEN_TABS, VERBOSE } from '@renderer/app/rockshelf.globals'
+import { RHYTHMVERSE_SCREEN_TABS, STRUCT_LOG } from '@renderer/app/rockshelf.globals'
 import { useMessageBoxState } from './MessageBox.state'
 import { DiffIconInline } from './SongDetails'
 import { LoadingIcon } from '@renderer/assets/icons'
+import { useEffect } from 'react'
 
 export function RhythmverseScreen() {
   const { t } = useTranslation()
   const { disableButtons, setWindowState } = useWindowState(useShallow((x) => ({ disableButtons: x.disableButtons, setWindowState: x.setWindowState })))
-  const { resetRhythmverseScreenState, searchField, setRhythmverseScreenState, active, selectedTab, searchResults } = useRhythmverseScreenState(useShallow((x) => ({ resetRhythmverseScreenState: x.resetRhythmverseScreenState, searchField: x.searchField, setRhythmverseScreenState: x.setRhythmverseScreenState, active: x.active, selectedTab: x.selectedTab, searchResults: x.searchResults })))
+  const { resetRhythmverseScreenState, searchField, setRhythmverseScreenState, active, selectedTab, searchResults, downloadedSongs, fullBand, multitrack, page, records, sortBy, sortOrder, source, pitchedVocals } = useRhythmverseScreenState(useShallow((x) => ({ resetRhythmverseScreenState: x.resetRhythmverseScreenState, searchField: x.searchField, setRhythmverseScreenState: x.setRhythmverseScreenState, active: x.active, selectedTab: x.selectedTab, searchResults: x.searchResults, downloadedSongs: x.downloadedSongs, fullBand: x.fullBand, page: x.page, multitrack: x.multitrack, records: x.records, sortBy: x.sortBy, sortOrder: x.sortOrder, source: x.source, pitchedVocals: x.pitchedVocals })))
   const { setMessageBoxState } = useMessageBoxState(useShallow((x) => ({ setMessageBoxState: x.setMessageBoxState })))
 
   return (
@@ -43,6 +44,25 @@ export function RhythmverseScreen() {
         >
           {t('browse')}
         </button>
+        <button
+          disabled={disableButtons}
+          className={clsx(selectedTab === RHYTHMVERSE_SCREEN_TABS.DOWNLOADED_SONGS ? 'bg-yellow-500 text-black/90 hover:bg-yellow-400 active:bg-yellow-300' : 'hover:text-neutral-300 active:text-neutral-200', 'h-full w-fit justify-center px-2 duration-200')}
+          onClick={() => {
+            setRhythmverseScreenState({ selectedTab: RHYTHMVERSE_SCREEN_TABS.DOWNLOADED_SONGS })
+          }}
+        >
+          {t('downloadedSongs')}
+        </button>
+
+        <button
+          disabled={disableButtons}
+          className={clsx(selectedTab === RHYTHMVERSE_SCREEN_TABS.FILTERS ? 'bg-cyan-500 text-black/90 hover:bg-cyan-400 active:bg-cyan-300' : 'hover:text-neutral-300 active:text-neutral-200', 'ml-auto h-full w-fit justify-center px-2 duration-200')}
+          onClick={() => {
+            setRhythmverseScreenState({ selectedTab: RHYTHMVERSE_SCREEN_TABS.FILTERS })
+          }}
+        >
+          {t('filters')}
+        </button>
       </div>
       {selectedTab === RHYTHMVERSE_SCREEN_TABS.BROWSE && (
         <>
@@ -58,14 +78,9 @@ export function RhythmverseScreen() {
                   ev.stopPropagation()
                   setWindowState({ disableButtons: true })
                   setRhythmverseScreenState({ searchResults: 'loading' })
-                  if (searchField.length <= 3) {
-                    setMessageBoxState({ message: { type: 'error', code: 'rhythmverseSearchFieldTooSmall' } })
-                    setRhythmverseScreenState({ searchResults: false })
-                    setWindowState({ disableButtons: false })
-                    return
-                  }
-                  const newSearchResults = await window.api.fetchRhythmverseData('text', searchField)
-                  if (VERBOSE.STRUCT) console.log('struct ProcessedRhythmverseObject ["core/src/lib/rbtools/core/RhythmverseAPI.ts"]:', newSearchResults)
+
+                  const newSearchResults = await window.api.fetchRhythmverseData(searchField, 'text', { fullBand, multitrack, page, pitchedVocals, records, sortBy, sortOrder, source })
+                  if (STRUCT_LOG) console.log('struct ProcessedRhythmverseObject ["core/src/lib/rbtools/core/RhythmverseAPI.ts"]:', newSearchResults)
                   setRhythmverseScreenState({ searchResults: newSearchResults })
                   setWindowState({ disableButtons: false })
                 }}
@@ -133,6 +148,84 @@ export function RhythmverseScreen() {
             )}
           </div>
         </>
+      )}
+      {selectedTab === RHYTHMVERSE_SCREEN_TABS.DOWNLOADED_SONGS && (
+        <>
+          <div className="mb-4 w-full flex-row! items-center rounded-sm border border-neutral-900 bg-neutral-800 px-3 py-1"></div>
+        </>
+      )}
+      {selectedTab === RHYTHMVERSE_SCREEN_TABS.FILTERS && (
+        <div className="h-full w-full overflow-y-auto">
+          <div className="group rounded-xs p-2 duration-200 hover:bg-white/5">
+            <h1 className="mb-1 uppercase">{t('sortBy')}</h1>
+            <p className="mb-4 text-xs italic">{t('sortByDesc')}</p>
+            <div className="flex-row! items-center">
+              <button
+                disabled={disableButtons}
+                className={clsx('font-pentatonic mr-2 flex-row! items-center rounded-xs border border-neutral-800 px-2 py-1 text-xs! uppercase duration-200 last:mr-0', sortBy === 'updateDate' ? 'bg-neutral-400 text-neutral-900 hover:bg-neutral-300 active:bg-neutral-200' : 'bg-neutral-900 hover:bg-neutral-800 active:bg-neutral-700')}
+                onClick={async () => {
+                  setRhythmverseScreenState({ sortBy: 'updateDate' })
+                }}
+              >
+                {t('sortByUpdateDate')}
+              </button>
+              <button
+                disabled={disableButtons}
+                className={clsx('font-pentatonic mr-2 flex-row! items-center rounded-xs border border-neutral-800 px-2 py-1 text-xs! uppercase duration-200 last:mr-0', sortBy === 'title' ? 'bg-neutral-400 text-neutral-900 hover:bg-neutral-300 active:bg-neutral-200' : 'bg-neutral-900 hover:bg-neutral-800 active:bg-neutral-700')}
+                onClick={async () => {
+                  setRhythmverseScreenState({ sortBy: 'title' })
+                }}
+              >
+                {t('sortByTitle')}
+              </button>
+              <button
+                disabled={disableButtons}
+                className={clsx('font-pentatonic mr-2 flex-row! items-center rounded-xs border border-neutral-800 px-2 py-1 text-xs! uppercase duration-200 last:mr-0', sortBy === 'artist' ? 'bg-neutral-400 text-neutral-900 hover:bg-neutral-300 active:bg-neutral-200' : 'bg-neutral-900 hover:bg-neutral-800 active:bg-neutral-700')}
+                onClick={async () => {
+                  setRhythmverseScreenState({ sortBy: 'artist' })
+                }}
+              >
+                {t('sortByArtist')}
+              </button>
+              <button
+                disabled={disableButtons}
+                className={clsx('font-pentatonic mr-2 flex-row! items-center rounded-xs border border-neutral-800 px-2 py-1 text-xs! uppercase duration-200 last:mr-0', sortBy === 'length' ? 'bg-neutral-400 text-neutral-900 hover:bg-neutral-300 active:bg-neutral-200' : 'bg-neutral-900 hover:bg-neutral-800 active:bg-neutral-700')}
+                onClick={async () => {
+                  setRhythmverseScreenState({ sortBy: 'length' })
+                }}
+              >
+                {t('sortBySongLength')}
+              </button>
+              <button
+                disabled={disableButtons}
+                className={clsx('font-pentatonic mr-2 flex-row! items-center rounded-xs border border-neutral-800 px-2 py-1 text-xs! uppercase duration-200 last:mr-0', sortBy === 'author' ? 'bg-neutral-400 text-neutral-900 hover:bg-neutral-300 active:bg-neutral-200' : 'bg-neutral-900 hover:bg-neutral-800 active:bg-neutral-700')}
+                onClick={async () => {
+                  setRhythmverseScreenState({ sortBy: 'author' })
+                }}
+              >
+                {t('sortByAuthor')}
+              </button>
+              <button
+                disabled={disableButtons}
+                className={clsx('font-pentatonic mr-2 flex-row! items-center rounded-xs border border-neutral-800 px-2 py-1 text-xs! uppercase duration-200 last:mr-0', sortBy === 'author' ? 'bg-neutral-400 text-neutral-900 hover:bg-neutral-300 active:bg-neutral-200' : 'bg-neutral-900 hover:bg-neutral-800 active:bg-neutral-700')}
+                onClick={async () => {
+                  setRhythmverseScreenState({ sortBy: 'author' })
+                }}
+              >
+                {t('sortByReleaseDate')}
+              </button>
+              <button
+                disabled={disableButtons}
+                className={clsx('font-pentatonic mr-2 flex-row! items-center rounded-xs border border-neutral-800 px-2 py-1 text-xs! uppercase duration-200 last:mr-0', sortBy === 'author' ? 'bg-neutral-400 text-neutral-900 hover:bg-neutral-300 active:bg-neutral-200' : 'bg-neutral-900 hover:bg-neutral-800 active:bg-neutral-700')}
+                onClick={async () => {
+                  setRhythmverseScreenState({ sortBy: 'author' })
+                }}
+              >
+                {t('sortByDownloads')}
+              </button>
+            </div>
+          </div>
+        </div>
       )}
     </AnimatedSection>
   )

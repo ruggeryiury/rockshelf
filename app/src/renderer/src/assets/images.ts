@@ -1,6 +1,7 @@
 import ARGFlag from './images/flags/ar.svg'
 import BOLFlag from './images/flags/bo.svg'
 import BRAFlag from './images/flags/br.svg'
+import FCAFlag from './images/flags/ca.svg'
 import COLFlag from './images/flags/co.svg'
 import MEXFlag from './images/flags/mx.svg'
 import PERUFlag from './images/flags/pe.svg'
@@ -28,4 +29,10 @@ import proKeysIcon from './images/instrument-icons-prokeys.webp'
 import vocalsIcon from './images/instrument-icons-vocals.webp'
 import wavesPattern from './images/waves-seamless-pattern.webp'
 
-export { ARGFlag, BOLFlag, BRAFlag, COLFlag, MEXFlag, PERUFlag, PARYFlag, USAFlag, URUFlag, VEZFlag, imgIconRB3, imgIconRB3DX, bandIcon, bassIcon, drumsIcon, guitarIcon, harm2Icon, harm3Icon, keysIcon, proBassIcon, proDrumsIcon, proGuitarIcon, proKeysIcon, vocalsIcon, wavesPattern, diffDotDevil, diffDotOff, diffDotOn }
+import ruggy from './images/team/ruggy.png'
+import ganso from './images/team/ganso.png'
+import carlmylo from './images/team/carlmylo.png'
+import aloquendiar from './images/team/alo.png'
+import mrbean from './images/team/mrbean.png'
+
+export { ARGFlag, BOLFlag, BRAFlag, COLFlag, MEXFlag, PERUFlag, PARYFlag, USAFlag, URUFlag, VEZFlag, FCAFlag, imgIconRB3, imgIconRB3DX, bandIcon, bassIcon, drumsIcon, guitarIcon, harm2Icon, harm3Icon, keysIcon, proBassIcon, proDrumsIcon, proGuitarIcon, proKeysIcon, vocalsIcon, wavesPattern, diffDotDevil, diffDotOff, diffDotOn, aloquendiar, carlmylo, ganso, mrbean, ruggy }

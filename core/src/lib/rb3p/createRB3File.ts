@@ -2,21 +2,20 @@ import { createWriteStream, createReadStream } from 'node:fs'
 import { type FilePathLikeTypes, type DirPathLikeTypes, pathLikeToDirPath, StreamWriter, BinaryWriter, createHashFromBuffer, pathLikeToFilePath } from 'node-lib'
 import { useDefaultOptions } from 'use-default-options'
 import { DTAParser, EDATFile, MOGGFile } from '../rbtools'
-import { dateISOFormatToObject } from '../utils/date'
 import { isJPEGRockshelfPackImage, parseRSPackImageFile, rsPackImage } from '../rspackimg/parseRSPackImage'
-import { getKeyFromMapValue } from '../rbtools/utils.exports'
+import { getKeyFromMapValue, dateISOFormatToObject } from '../rbtools/utils.exports'
 import { rpcs3GenSongPackageManifest } from '../rbtools/lib.exports'
-import { calculateSongFilesSizeFromSongname, type SongFilesSizeObject } from './calculateSongFilesSizeFromSongname'
+import { calculateSongFilesSizeFromSongname, type SongFilesSizeObject } from './utils'
 import type { BrowserWindow } from 'electron'
 import { temporaryFile } from 'tempy'
 import { sendBuzyLoad } from '../senders/buzyLoad'
 
 export interface CreateRB3FileOptions {
-  author?: string
+  creatorName?: string
 }
 
 export const createRB3FileFromRPCS3PackageFolder = async (win: BrowserWindow, packageDirPath: DirPathLikeTypes, destPath: FilePathLikeTypes, options?: CreateRB3FileOptions): Promise<boolean> => {
-  const { author } = useDefaultOptions({ author: '' }, options)
+  const { creatorName } = useDefaultOptions({ creatorName: '' }, options)
   const packagePath = pathLikeToDirPath(packageDirPath)
 
   sendBuzyLoad(win, { code: 'init', title: 'exportingPackage', steps: ['validatingPackageData', 'writingSongFilesIntoPackageFile'], onCompleted: ['resetExportPackageModalState'] })
@@ -72,6 +71,7 @@ export const createRB3FileFromRPCS3PackageFolder = async (win: BrowserWindow, pa
   const packageName = Buffer.from(parsedThumbnail.packageName)
   const packageFolderName = Buffer.from(packagePath.name)
   const dtaContent = Buffer.from(parser.stringify())
+  const packageCreatorName = creatorName.length > 0 ? Buffer.from(creatorName) : Buffer.alloc(0)
 
   const io = await StreamWriter.toFile(destPath, true)
   const header = new BinaryWriter()
@@ -84,7 +84,7 @@ export const createRB3FileFromRPCS3PackageFolder = async (win: BrowserWindow, pa
   header.writeUInt8(getKeyFromMapValue(rsPackImage.type, parsedThumbnail.type) ?? 0)
   header.writeUInt8(getKeyFromMapValue(rsPackImage.source, parsedThumbnail.source) ?? 0)
   header.writeUInt8(getKeyFromMapValue(rsPackImage.encryptionStatus, parsedThumbnail.encryptionStatus) ?? 0)
-  header.writeUInt8(author.length)
+  header.writeUInt8(packageCreatorName.length)
   header.writeUInt32LE(dtaContent.length)
   header.writeUInt32LE(descFileLength)
   header.writeUInt32LE(thumbnailStats.size - isValid.footerSizeLength)
@@ -126,11 +126,12 @@ export const createRB3FileFromRPCS3PackageFolder = async (win: BrowserWindow, pa
   }
   const thumbnailFileBuffer = (await thumbnailPath.read()).subarray(0, thumbnailStats.size - isValid.footerSizeLength)
 
-  const songDataOffset = 0x50 + 0x50 * parser.songs.length + packageName.length + packageFolderName.length + author.length + dtaContent.length + descFileBuffer.length + thumbnailFileBuffer.length
+  const songDataOffset = 0x50 + 0x50 * parser.songs.length + packageName.length + packageFolderName.length + packageCreatorName.length + dtaContent.length + descFileBuffer.length + thumbnailFileBuffer.length
 
   header.writeUInt32LE(songDataOffset)
   header.writeUInt8(1)
   header.writePadding(2)
+  // header.writePadding(16)
   header.write(contentsHash)
 
   io.write(header.toBuffer())
@@ -142,7 +143,7 @@ export const createRB3FileFromRPCS3PackageFolder = async (win: BrowserWindow, pa
 
   io.write(packageName)
   io.write(packageFolderName)
-  if (author) io.writeUTF8(author)
+  if (packageCreatorName.length > 0) io.write(packageCreatorName)
   io.write(dtaContent)
   if (descFilePath.exists) io.write(descFileBuffer)
   io.write(thumbnailFileBuffer)

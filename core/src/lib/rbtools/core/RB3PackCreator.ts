@@ -69,16 +69,6 @@ export interface SelectedSongForExtractionObject {
    */
   value: string | number
 }
-export interface SelectedSongFromSongnameObject {
-  /**
-   * The type of value provided to select the song.
-   */
-  type: 'songname'
-  /**
-   * The value provided to select the song.
-   */
-  value: string
-}
 
 /**
  * A class that gathers Rock Band 3 package files from Xbox 360 and PS3 systems to different package formats and extraction types.

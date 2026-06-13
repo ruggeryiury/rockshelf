@@ -3,7 +3,7 @@ import { AnimatedDiv, AnimatedSection, TransComponent } from '@renderer/lib.expo
 import { useDeluxeInstallScreenState } from './DeluxeInstallScreen.state'
 import { animate } from '@renderer/lib.exports'
 import { useTranslation } from 'react-i18next'
-import { DXNIGHTLYLINK, VERBOSE } from '@renderer/app/rockshelf.globals'
+import { DXNIGHTLYLINK, STRUCT_LOG } from '@renderer/app/rockshelf.globals'
 import { useWindowState } from '@renderer/stores/Window.state'
 import { useMessageBoxState } from './MessageBox.state'
 import { LoadingIcon } from '@renderer/assets/icons'
@@ -26,7 +26,7 @@ export function DeluxeInstallScreen() {
         setDeluxeInstallScreenState({ commitData: 'loading' })
         try {
           const { data } = await axios.get<GitHubCommitResponse>(`https://api.github.com/repos/hmxmilohax/rock-band-3-deluxe/commits/${selectedPKG.dxHash}`, { responseType: 'json', timeout: 6000 })
-          if (VERBOSE.STRUCT) console.log('struct GitHubCommitResponse ["app\\src\\renderer\\src\\app\\types.ts"]:', data)
+          if (STRUCT_LOG) console.log('struct GitHubCommitResponse ["app\\src\\renderer\\src\\app\\types.ts"]:', data)
           setDeluxeInstallScreenState({ commitData: data })
         } catch (err) {
           if (err instanceof AxiosError || err instanceof Error) setWindowState({ err })
@@ -45,7 +45,7 @@ export function DeluxeInstallScreen() {
           setDeluxeInstallScreenState({ aheadCommitData: 'loading' })
           try {
             const { data } = await axios.get<GitHubCommitCompare>(`https://api.github.com/repos/hmxmilohax/rock-band-3-deluxe/compare/develop...${selectedPKG.dxHash}`, { responseType: 'json', timeout: 6000 })
-            if (VERBOSE.STRUCT) console.log('struct GitHubCommitCompare ["app\\src\\renderer\\src\\app\\types.ts"]:', data)
+            if (STRUCT_LOG) console.log('struct GitHubCommitCompare ["app\\src\\renderer\\src\\app\\types.ts"]:', data)
 
             setDeluxeInstallScreenState({ aheadCommitData: data })
           } catch (err) {
@@ -59,7 +59,7 @@ export function DeluxeInstallScreen() {
   )
 
   return (
-    <AnimatedSection condition={active} {...animate({ opacity: true })} id="DeluxeInstallScreen" className="absolute! z-3 h-full max-h-full w-full max-w-full bg-black p-8">
+    <AnimatedSection id="DeluxeInstallScreen" condition={active} {...animate({ opacity: true })} className="absolute! z-3 h-full max-h-full w-full max-w-full bg-black p-8">
       <div className="mb-2 flex-row! items-center border-b border-white/25 pb-1">
         <h1 className="font-pentatonicalt! mr-auto text-[2rem] uppercase">{t('installDeluxe')}</h1>
         <button
@@ -91,7 +91,7 @@ export function DeluxeInstallScreen() {
             setDeluxeInstallScreenState({ selectedPKG: 'loading' })
             try {
               const newSelectedPKG = await window.api.selectPKGFile()
-              if (VERBOSE.STRUCT) console.log('struct SelectPKGFileReturnObject [core/src/controllers/selectPKGFile.ts]', newSelectedPKG)
+              if (STRUCT_LOG) console.log('struct SelectPKGFileReturnObject [core/src/controllers/selectPKGFile.ts]', newSelectedPKG)
 
               if (!newSelectedPKG) {
                 setWindowState({ disableButtons: false })

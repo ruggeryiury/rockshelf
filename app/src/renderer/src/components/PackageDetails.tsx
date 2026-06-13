@@ -1,4 +1,4 @@
-import { AnimatedDiv, AnimatedSection, TransComponent, animate, getReadableBytesSize, uppercaseFirstLetter } from '@renderer/lib.exports'
+import { AnimatedDiv, AnimatedSection, TransComponent, animate, getReadableBytesSize, underscoreToUppercaseLetter, uppercaseFirstLetter } from '@renderer/lib.exports'
 import { useMyPackagesScreenState } from './MyPackagesScreen.state'
 import { useEffect, useMemo } from 'react'
 import { useWindowState } from '@renderer/stores/Window.state'
@@ -11,20 +11,20 @@ import { bandIcon, guitarIcon, bassIcon, drumsIcon, keysIcon, vocalsIcon, proGui
 import { useMessageBoxState } from './MessageBox.state'
 import { useRBIconsSelectorState } from './RBIconsSelector.state'
 import { useImageCropScreenState } from './ImageCropScreen.state'
-import { PACKAGE_DETAILS_TABS, VERBOSE } from '@renderer/app/rockshelf.globals'
+import { PACKAGE_DETAILS_TABS, STRUCT_LOG, VALIDATORS } from '@renderer/app/rockshelf.globals'
 import { StarsInline } from '@renderer/components.exports'
+import { useExportPackageModalState } from './ExportPackageModal.state'
 
 // Markdown
 import Markdown from 'react-markdown'
 import remarkGfm from 'remark-gfm'
 import rehypeRaw from 'rehype-raw'
 import rehypeSlug from 'rehype-slug'
-import { useExportPackageModalState } from './ExportPackageModal.state'
 
 export function PackageDetails() {
   const { t } = useTranslation()
 
-  const { selPKG, songsCatalog, setMyPackagesScreenState, packageDetailsTab, editPackageName, hasPackageNameChanged, hasPackageFolderNameChanged, editPackageFolderName, packageDescription } = useMyPackagesScreenState(useShallow((x) => ({ selPKG: x.selPKG, songsCatalog: x.songsCatalog, setMyPackagesScreenState: x.setMyPackagesScreenState, packageDetailsTab: x.packageDetailsTab, editPackageName: x.editPackageName, hasPackageNameChanged: x.hasPackageNameChanged, hasPackageFolderNameChanged: x.hasPackageFolderNameChanged, editPackageFolderName: x.editPackageFolderName, packageDescription: x.packageDescription })))
+  const { selPKG, songsCatalog, setMyPackagesScreenState, packageDetailsTab, editPackageName, hasPackageNameChanged, hasPackageFolderNameChanged, editPackageFolderName, packageDescription, packageFolderNameError, packageNameError } = useMyPackagesScreenState(useShallow((x) => ({ selPKG: x.selPKG, songsCatalog: x.songsCatalog, setMyPackagesScreenState: x.setMyPackagesScreenState, packageDetailsTab: x.packageDetailsTab, editPackageName: x.editPackageName, hasPackageNameChanged: x.hasPackageNameChanged, hasPackageFolderNameChanged: x.hasPackageFolderNameChanged, editPackageFolderName: x.editPackageFolderName, packageDescription: x.packageDescription, packageNameError: x.packageNameError, packageFolderNameError: x.packageFolderNameError })))
   const { disableButtons, saveData, packages, rb3Stats, setWindowState, disableImg } = useWindowState(useShallow((x) => ({ disableButtons: x.disableButtons, saveData: x.saveData, packages: x.packages, rb3Stats: x.rb3Stats, setWindowState: x.setWindowState, disableImg: x.disableImg })))
   const { packagesCatalogSortBy, songsCatalogSortBy, mostPlayedInstrument, setUserConfigState, getUserConfigState } = useUserConfigState(useShallow((x) => ({ mostPlayedInstrument: x.mostPlayedInstrument, setUserConfigState: x.setUserConfigState, songsCatalogSortBy: x.songsCatalogSortBy, packagesCatalogSortBy: x.packagesCatalogSortBy, getUserConfigState: x.getUserConfigState })))
   const { setMessageBoxState } = useMessageBoxState(useShallow((x) => ({ setMessageBoxState: x.setMessageBoxState })))
@@ -42,7 +42,7 @@ export function PackageDetails() {
           try {
             const newCatalog = await window.api.sortAndFilterSongsFromPackage(selPKG, songsCatalogSortBy, { instrument: mostPlayedInstrument })
             if (!newCatalog) return
-            if (VERBOSE.STRUCT) {
+            if (STRUCT_LOG) {
               if (newCatalog.type !== 'difficulty' && newCatalog.type !== 'artist') console.log('struct DTACatalogGenericObject [core/src/lib/rbtools/lib/dta/filterDTA.ts]', newCatalog)
               else if (newCatalog.type === 'artist') console.log('struct DTACatalogByArtistObject [core/src/lib/rbtools/lib/dta/filterDTA.ts]', newCatalog)
               else console.log('struct DTACatalogByDifficultyObject [core/src/lib/rbtools/lib/dta/filterDTA.ts]', newCatalog)
@@ -63,7 +63,7 @@ export function PackageDetails() {
   useEffect(
     function resetEditPackageState() {
       if (typeof active === 'object' && active && packageDetailsTab === PACKAGE_DETAILS_TABS.OPTIONS) {
-        setMyPackagesScreenState({ editPackageName: active.packageData.packageName, hasPackageNameChanged: false, hasPackageFolderNameChanged: false, editPackageFolderName: active.name })
+        setMyPackagesScreenState({ editPackageName: active.packageData.packageName, packageNameError: null, hasPackageNameChanged: false, editPackageFolderName: active.name, packageFolderNameError: null, hasPackageFolderNameChanged: false })
       }
     },
     [packageDetailsTab]
@@ -71,7 +71,10 @@ export function PackageDetails() {
 
   useEffect(
     function warnNonSavedChangesOnPackageEdit() {
-      if (packageDetailsTab !== PACKAGE_DETAILS_TABS.OPTIONS && (hasPackageNameChanged || hasPackageFolderNameChanged)) setMessageBoxState({ message: { type: 'warn', code: 'nonSavedChangesOnEditPackage' } })
+      if (packageDetailsTab !== PACKAGE_DETAILS_TABS.OPTIONS && (hasPackageNameChanged || hasPackageFolderNameChanged)) {
+        setMyPackagesScreenState({ packageNameError: null, packageFolderNameError: null, hasPackageNameChanged: false, hasPackageFolderNameChanged: false })
+        setMessageBoxState({ message: { type: 'warn', code: 'nonSavedChangesOnEditPackage' } })
+      }
     },
     [packageDetailsTab]
   )
@@ -83,12 +86,7 @@ export function PackageDetails() {
           setMyPackagesScreenState({ packageDescription: 1 })
           let desc = await window.api.getSongPackageDescriptionFileFromFolder(active.path)
           if (desc) {
-            const binString = atob(desc)
-
-            // Convert binary string to a typed array of bytes
-            const bytes = Uint8Array.from(binString, (m) => m.codePointAt(0) as number)
-
-            // Decode the bytes back into a UTF-8 text string
+            const bytes = Uint8Array.fromBase64(desc)
             desc = new TextDecoder().decode(bytes)
           }
           setMyPackagesScreenState({ packageDescription: desc })
@@ -129,7 +127,7 @@ export function PackageDetails() {
               disabled={disableButtons}
               className="w-fit self-start rounded-xs border border-neutral-700 bg-neutral-900 px-1 py-0.5 text-xs! text-nowrap uppercase duration-100 hover:bg-neutral-700 active:bg-neutral-600 disabled:text-neutral-700 disabled:hover:bg-neutral-900"
               onClick={async () => {
-                setMyPackagesScreenState({ selPKG: -1, songsCatalog: false, packageDetailsTab: 0, editPackageName: '', hasPackageNameChanged: false, hasPackageFolderNameChanged: false, isArtworkLoading: true, artworkURL: '' })
+                setMyPackagesScreenState({ selPKG: -1, songsCatalog: false, packageDetailsTab: 0, editPackageName: '', packageNameError: null, hasPackageNameChanged: false, editPackageFolderName: '', packageFolderNameError: null, hasPackageFolderNameChanged: false, isArtworkLoading: true, artworkURL: '' })
               }}
             >
               {t('goBack')}
@@ -169,7 +167,7 @@ export function PackageDetails() {
               <>
                 <button
                   disabled={disableButtons}
-                  className={clsx(packageDetailsTab === PACKAGE_DETAILS_TABS.OPTIONS ? 'bg-yellow-500 text-black/90 hover:bg-yellow-400 active:bg-yellow-300' : 'hover:text-neutral-300 active:text-neutral-200', 'h-full w-fit justify-center px-2 duration-200')}
+                  className={clsx('flex-row! items-center', (packageNameError || packageFolderNameError) && packageDetailsTab === PACKAGE_DETAILS_TABS.OPTIONS ? 'bg-red-500 text-black/90' : packageNameError || packageFolderNameError ? 'text-red-500 hover:text-red-400 active:text-red-300' : packageDetailsTab === PACKAGE_DETAILS_TABS.OPTIONS ? 'bg-yellow-500 text-black/90 hover:bg-yellow-400 active:bg-yellow-300' : 'hover:text-neutral-300 active:text-neutral-200', 'h-full w-fit justify-center px-2 duration-200')}
                   onClick={() => {
                     setMyPackagesScreenState({ packageDetailsTab: PACKAGE_DETAILS_TABS.OPTIONS })
                   }}
@@ -464,7 +462,10 @@ export function PackageDetails() {
                 <div className="group rounded-xs p-2 duration-200 hover:bg-white/5">
                   <div className="flex-row! items-start">
                     <div className="mr-auto">
-                      <h1 className="mb-1 uppercase">{t('packageName')}</h1>
+                      <div className="flex-row! items-center">
+                        <h1 className="mr-2 uppercase">{t('packageName')}</h1>
+                        <h2 className={clsx('mr-auto text-xs font-semibold', packageNameError !== null && 'text-red-500/80')}>{`${editPackageName.length}/255`}</h2>
+                      </div>
                       <p className="mb-4 text-xs italic">
                         <TransComponent i18nKey="changePackageNameDesc" />
                       </p>
@@ -472,18 +473,18 @@ export function PackageDetails() {
                     {hasPackageNameChanged && (
                       <button
                         className="w-fit rounded-xs border border-neutral-800 bg-neutral-900 px-1 py-0.5 text-xs! uppercase duration-100 last:mb-0 hover:bg-neutral-700 active:bg-neutral-600 disabled:text-neutral-700 disabled:hover:bg-neutral-900"
-                        disabled={disableButtons}
+                        disabled={disableButtons || packageNameError !== null}
                         onClick={async (ev) => {
                           ev.stopPropagation()
                           setWindowState({ disableButtons: true })
                           try {
                             const newPackages = await window.api.editPackageData(selPKG, { packageName: editPackageName })
-                            if (VERBOSE.STRUCT) console.log('struct RPCS3SongPackagesDataExtra ["rbtools/src/lib/rpcs3/rpcs3GetSongPackagesStatsExtra.ts"]:', newPackages)
+                            if (STRUCT_LOG) console.log('struct RPCS3SongPackagesDataExtra ["rbtools/src/lib/rpcs3/rpcs3GetSongPackagesStatsExtra.ts"]:', newPackages)
 
                             if (newPackages) {
                               setWindowState({ packages: newPackages })
                               const newCatalog = await window.api.sortAndFilterSongPackages(packagesCatalogSortBy)
-                              if (VERBOSE.STRUCT) console.log('struct SongPackagesFilterGenericObject [core/src/lib/dta/getDTACatalog.ts]', newCatalog)
+                              if (STRUCT_LOG) console.log('struct SongPackagesFilterGenericObject [core/src/lib/dta/getDTACatalog.ts]', newCatalog)
                               setMyPackagesScreenState({ packagesCatalog: newCatalog })
                               setMyPackagesScreenState({ hasPackageNameChanged: false })
                               setMessageBoxState({ message: { type: 'success', code: 'savePackageEditing' } })
@@ -498,36 +499,57 @@ export function PackageDetails() {
                       </button>
                     )}
                   </div>
-                  <input className="mb-1 rounded-xs border border-neutral-800 bg-neutral-900 px-1 py-0.5 text-sm! duration-100 last:mb-0 hover:bg-neutral-700 focus:border-white/25 active:bg-neutral-600 disabled:text-neutral-700 disabled:hover:bg-neutral-900" value={editPackageName} onChange={(ev) => setMyPackagesScreenState({ hasPackageNameChanged: true, editPackageName: ev.target.value })} minLength={1} maxLength={64} disabled={disableButtons} />
+                  <input
+                    className={clsx('mb-1 rounded-xs border border-neutral-800 bg-neutral-900 px-1 py-0.5 text-sm! duration-100 last:mb-0 hover:bg-neutral-700 focus:border-white/25 active:bg-neutral-600 disabled:text-neutral-700 disabled:hover:bg-neutral-900', packageNameError && 'border-red-500!')}
+                    value={editPackageName}
+                    onChange={(ev) => {
+                      const value = VALIDATORS.packageName.safeParse(ev.target.value)
+
+                      if (!value.success) {
+                        setMyPackagesScreenState({ editPackageName: ev.target.value, packageNameError: value.error.issues[0].message, hasPackageNameChanged: true })
+                      } else setMyPackagesScreenState({ editPackageName: value.data, packageNameError: null, hasPackageNameChanged: true })
+                    }}
+                    minLength={1}
+                    maxLength={255}
+                    disabled={disableButtons}
+                  />
+                  <AnimatedDiv condition={packageNameError !== null} {...animate({ height: true, scaleY: true, opacity: true })}>
+                    <div className="h-2" />
+                    {packageNameError !== null && <p className="origin-top text-xs text-red-500 italic">{t(`inputErrorPKGName${underscoreToUppercaseLetter(packageNameError, true)}`)}</p>}
+                  </AnimatedDiv>
                 </div>
 
                 <div className="group rounded-xs p-2 duration-200 hover:bg-white/5">
                   <div className="flex-row! items-start">
                     <div className="mr-auto">
-                      <h1 className="mb-1 uppercase">{t('packageFolderName')}</h1>
+                      <div className="flex-row! items-center">
+                        <h1 className="mr-2 uppercase">{t('packageFolderName')}</h1>
+                        <h2 className={clsx('mr-auto text-xs font-semibold', packageFolderNameError !== null && 'text-red-500/80')}>{`${editPackageFolderName.length}/42`}</h2>
+                      </div>
                       <p className="text-xs italic">
                         <TransComponent i18nKey="changePackageFolderNameDesc" />
                       </p>
-                      <AnimatedDiv condition={active.packageData.encryptionStatus !== 'decrypted'} {...animate({ opacity: true, scaleY: true, height: true })}>
+                      <AnimatedDiv className="" condition={active.packageData.encryptionStatus !== 'decrypted'} {...animate({ opacity: true, scaleY: true, height: true })}>
                         <div className="h-1" />
                         <p className="text-xs text-yellow-500 italic">{t(active.packageData.encryptionStatus === 'encrypted' ? 'encryptedPKGForFolderNameChangingText' : active.packageData.encryptionStatus === 'mixed' ? 'mixedEncPKGForFolderNameChangingText' : 'unknownEncPKGForFolderNameChangingText')}</p>
                       </AnimatedDiv>
+                      <div className="h-4 w-full" />
                     </div>
                     {hasPackageFolderNameChanged && (
                       <button
                         className="w-fit rounded-xs border border-neutral-800 bg-neutral-900 px-1 py-0.5 text-xs! uppercase duration-100 last:mb-0 hover:bg-neutral-700 active:bg-neutral-600 disabled:text-neutral-700 disabled:hover:bg-neutral-900"
-                        disabled={disableButtons || active.packageData.encryptionStatus !== 'decrypted'}
+                        disabled={disableButtons || active.packageData.encryptionStatus !== 'decrypted' || packageFolderNameError !== null}
                         onClick={async (ev) => {
                           ev.stopPropagation()
                           setWindowState({ disableButtons: true })
                           try {
                             const newPackages = await window.api.changeDecryptedPackageFolderName(selPKG, editPackageFolderName)
-                            if (VERBOSE.STRUCT) console.log('struct RPCS3SongPackagesDataExtra ["rbtools/src/lib/rpcs3/rpcs3GetSongPackagesStatsExtra.ts"]:', newPackages)
+                            if (STRUCT_LOG) console.log('struct RPCS3SongPackagesDataExtra ["rbtools/src/lib/rpcs3/rpcs3GetSongPackagesStatsExtra.ts"]:', newPackages)
 
                             if (newPackages) {
                               setWindowState({ packages: newPackages })
                               const newCatalog = await window.api.sortAndFilterSongPackages(packagesCatalogSortBy)
-                              if (VERBOSE.STRUCT) console.log('struct SongPackagesFilterGenericObject [core/src/lib/dta/getDTACatalog.ts]', newCatalog)
+                              if (STRUCT_LOG) console.log('struct SongPackagesFilterGenericObject [core/src/lib/dta/getDTACatalog.ts]', newCatalog)
                               setMyPackagesScreenState({ packagesCatalog: newCatalog })
                               setMyPackagesScreenState({ hasPackageFolderNameChanged: false })
                               setMessageBoxState({ message: { type: 'success', code: 'savePackageEditing' } })
@@ -543,7 +565,24 @@ export function PackageDetails() {
                     )}
                   </div>
 
-                  <input className="mt-4 mb-1 rounded-xs border border-neutral-800 bg-neutral-900 px-1 py-0.5 text-sm! duration-100 last:mb-0 hover:bg-neutral-700 focus:border-white/25 active:bg-neutral-600 disabled:text-neutral-700 disabled:hover:bg-neutral-900" value={editPackageFolderName} onChange={(ev) => setMyPackagesScreenState({ hasPackageFolderNameChanged: true, editPackageFolderName: ev.target.value })} minLength={1} maxLength={64} disabled={disableButtons || active.packageData.encryptionStatus !== 'decrypted'} />
+                  <input
+                    className={clsx('mb-1 rounded-xs border border-neutral-800 bg-neutral-900 px-1 py-0.5 text-sm! duration-100 last:mb-0 hover:bg-neutral-700 focus:border-white/25 active:bg-neutral-600 disabled:text-neutral-700 disabled:hover:bg-neutral-900', packageFolderNameError && 'border-red-500!')}
+                    value={editPackageFolderName}
+                    onChange={(ev) => {
+                      const value = VALIDATORS.packageFolderName.safeParse(ev.target.value)
+
+                      if (!value.success) {
+                        setMyPackagesScreenState({ editPackageFolderName: ev.target.value, packageFolderNameError: value.error.issues[0].message, hasPackageFolderNameChanged: true })
+                      } else setMyPackagesScreenState({ editPackageFolderName: value.data, packageFolderNameError: null, hasPackageFolderNameChanged: true })
+                    }}
+                    minLength={1}
+                    maxLength={42}
+                    disabled={disableButtons || active.packageData.encryptionStatus !== 'decrypted'}
+                  />
+                  <AnimatedDiv condition={packageFolderNameError !== null} {...animate({ height: true, scaleY: true, opacity: true })}>
+                    <div className="h-2" />
+                    {packageFolderNameError !== null && <p className="origin-top text-xs text-red-500 italic">{t(`inputErrorPKGFolderName${underscoreToUppercaseLetter(packageFolderNameError, true)}`)}</p>}
+                  </AnimatedDiv>
                 </div>
 
                 <div className="group rounded-xs p-2 duration-200 hover:bg-white/5">
@@ -615,7 +654,7 @@ export function PackageDetails() {
                     <p className="text-xs text-red-500 italic">{t('decryptedPackageWODeluxeWarningText')}</p>
                   </AnimatedDiv>
 
-                  <AnimatedDiv condition={active.packageData.encryptionStatus === 'unknown'}>
+                  <AnimatedDiv condition={!active.official && active.packageData.encryptionStatus === 'unknown'}>
                     <div className="h-2 w-full" />
                     <p className="text-xs text-red-500 italic">{t('unknownPKGEncWarningText')}</p>
                   </AnimatedDiv>
@@ -628,7 +667,7 @@ export function PackageDetails() {
                         setWindowState({ disableButtons: true })
                         try {
                           const newPackages = await window.api.encDecPackage('encryptAll', selPKG)
-                          if (VERBOSE.STRUCT) console.log('struct RPCS3SongPackagesDataExtra ["rbtools/src/lib/rpcs3/rpcs3GetSongPackagesStatsExtra.ts"]:', newPackages)
+                          if (STRUCT_LOG) console.log('struct RPCS3SongPackagesDataExtra ["rbtools/src/lib/rpcs3/rpcs3GetSongPackagesStatsExtra.ts"]:', newPackages)
 
                           if (newPackages) setWindowState({ packages: newPackages })
                         } catch (err) {
@@ -646,7 +685,7 @@ export function PackageDetails() {
                         setWindowState({ disableButtons: true })
                         try {
                           const newPackages = await window.api.encDecPackage('decryptAll', selPKG)
-                          if (VERBOSE.STRUCT) console.log('struct RPCS3SongPackagesDataExtra ["rbtools/src/lib/rpcs3/rpcs3GetSongPackagesStatsExtra.ts"]:', newPackages)
+                          if (STRUCT_LOG) console.log('struct RPCS3SongPackagesDataExtra ["rbtools/src/lib/rpcs3/rpcs3GetSongPackagesStatsExtra.ts"]:', newPackages)
 
                           if (newPackages) setWindowState({ packages: newPackages })
                         } catch (err) {
@@ -815,7 +854,7 @@ export function PackageDetails() {
                         await window.api.saveUserConfigFile({ mostPlayedInstrument: 'band' })
                         if (typeof saveData === 'object') {
                           const newInstrScores = await window.api.rpcs3GetInstrumentScores(saveData)
-                          if (VERBOSE.STRUCT) console.log('struct InstrumentScoreData ["rbtools/src/lib/rpcs3/getInstrumentScoresData.ts"]:', newInstrScores)
+                          if (STRUCT_LOG) console.log('struct InstrumentScoreData ["rbtools/src/lib/rpcs3/getInstrumentScoresData.ts"]:', newInstrScores)
                           setWindowState({ instrumentScores: newInstrScores })
                         }
                         setMyPackagesScreenState({ songsCatalog: false })
@@ -834,7 +873,7 @@ export function PackageDetails() {
                         await window.api.saveUserConfigFile({ mostPlayedInstrument: 'guitar' })
                         if (typeof saveData === 'object') {
                           const newInstrScores = await window.api.rpcs3GetInstrumentScores(saveData)
-                          if (VERBOSE.STRUCT) console.log('struct InstrumentScoreData ["rbtools/src/lib/rpcs3/getInstrumentScoresData.ts"]:', newInstrScores)
+                          if (STRUCT_LOG) console.log('struct InstrumentScoreData ["rbtools/src/lib/rpcs3/getInstrumentScoresData.ts"]:', newInstrScores)
                           setWindowState({ instrumentScores: newInstrScores })
                         }
                         setMyPackagesScreenState({ songsCatalog: false })
@@ -853,7 +892,7 @@ export function PackageDetails() {
                         await window.api.saveUserConfigFile({ mostPlayedInstrument: 'bass' })
                         if (typeof saveData === 'object') {
                           const newInstrScores = await window.api.rpcs3GetInstrumentScores(saveData)
-                          if (VERBOSE.STRUCT) console.log('struct InstrumentScoreData ["rbtools/src/lib/rpcs3/getInstrumentScoresData.ts"]:', newInstrScores)
+                          if (STRUCT_LOG) console.log('struct InstrumentScoreData ["rbtools/src/lib/rpcs3/getInstrumentScoresData.ts"]:', newInstrScores)
                           setWindowState({ instrumentScores: newInstrScores })
                         }
                         setMyPackagesScreenState({ songsCatalog: false })
@@ -873,7 +912,7 @@ export function PackageDetails() {
                         await window.api.saveUserConfigFile({ mostPlayedInstrument: 'drums' })
                         if (typeof saveData === 'object') {
                           const newInstrScores = await window.api.rpcs3GetInstrumentScores(saveData)
-                          if (VERBOSE.STRUCT) console.log('struct InstrumentScoreData ["rbtools/src/lib/rpcs3/getInstrumentScoresData.ts"]:', newInstrScores)
+                          if (STRUCT_LOG) console.log('struct InstrumentScoreData ["rbtools/src/lib/rpcs3/getInstrumentScoresData.ts"]:', newInstrScores)
                           setWindowState({ instrumentScores: newInstrScores })
                         }
                         setMyPackagesScreenState({ songsCatalog: false })
@@ -892,7 +931,7 @@ export function PackageDetails() {
                         await window.api.saveUserConfigFile({ mostPlayedInstrument: 'keys' })
                         if (typeof saveData === 'object') {
                           const newInstrScores = await window.api.rpcs3GetInstrumentScores(saveData)
-                          if (VERBOSE.STRUCT) console.log('struct InstrumentScoreData ["rbtools/src/lib/rpcs3/getInstrumentScoresData.ts"]:', newInstrScores)
+                          if (STRUCT_LOG) console.log('struct InstrumentScoreData ["rbtools/src/lib/rpcs3/getInstrumentScoresData.ts"]:', newInstrScores)
                           setWindowState({ instrumentScores: newInstrScores })
                         }
                         setMyPackagesScreenState({ songsCatalog: false })
@@ -911,7 +950,7 @@ export function PackageDetails() {
                         await window.api.saveUserConfigFile({ mostPlayedInstrument: 'vocals' })
                         if (typeof saveData === 'object') {
                           const newInstrScores = await window.api.rpcs3GetInstrumentScores(saveData)
-                          if (VERBOSE.STRUCT) console.log('struct InstrumentScoreData ["rbtools/src/lib/rpcs3/getInstrumentScoresData.ts"]:', newInstrScores)
+                          if (STRUCT_LOG) console.log('struct InstrumentScoreData ["rbtools/src/lib/rpcs3/getInstrumentScoresData.ts"]:', newInstrScores)
                           setWindowState({ instrumentScores: newInstrScores })
                         }
                         setMyPackagesScreenState({ songsCatalog: false })
@@ -930,7 +969,7 @@ export function PackageDetails() {
                         await window.api.saveUserConfigFile({ mostPlayedInstrument: 'proGuitar' })
                         if (typeof saveData === 'object') {
                           const newInstrScores = await window.api.rpcs3GetInstrumentScores(saveData)
-                          if (VERBOSE.STRUCT) console.log('struct InstrumentScoreData ["rbtools/src/lib/rpcs3/getInstrumentScoresData.ts"]:', newInstrScores)
+                          if (STRUCT_LOG) console.log('struct InstrumentScoreData ["rbtools/src/lib/rpcs3/getInstrumentScoresData.ts"]:', newInstrScores)
                           setWindowState({ instrumentScores: newInstrScores })
                         }
                         setMyPackagesScreenState({ songsCatalog: false })
@@ -949,7 +988,7 @@ export function PackageDetails() {
                         await window.api.saveUserConfigFile({ mostPlayedInstrument: 'proBass' })
                         if (typeof saveData === 'object') {
                           const newInstrScores = await window.api.rpcs3GetInstrumentScores(saveData)
-                          if (VERBOSE.STRUCT) console.log('struct InstrumentScoreData ["rbtools/src/lib/rpcs3/getInstrumentScoresData.ts"]:', newInstrScores)
+                          if (STRUCT_LOG) console.log('struct InstrumentScoreData ["rbtools/src/lib/rpcs3/getInstrumentScoresData.ts"]:', newInstrScores)
                           setWindowState({ instrumentScores: newInstrScores })
                         }
                         setMyPackagesScreenState({ songsCatalog: false })
@@ -969,7 +1008,7 @@ export function PackageDetails() {
                         await window.api.saveUserConfigFile({ mostPlayedInstrument: 'proDrums' })
                         if (typeof saveData === 'object') {
                           const newInstrScores = await window.api.rpcs3GetInstrumentScores(saveData)
-                          if (VERBOSE.STRUCT) console.log('struct InstrumentScoreData ["rbtools/src/lib/rpcs3/getInstrumentScoresData.ts"]:', newInstrScores)
+                          if (STRUCT_LOG) console.log('struct InstrumentScoreData ["rbtools/src/lib/rpcs3/getInstrumentScoresData.ts"]:', newInstrScores)
                           setWindowState({ instrumentScores: newInstrScores })
                         }
                         setMyPackagesScreenState({ songsCatalog: false })
@@ -988,7 +1027,7 @@ export function PackageDetails() {
                         await window.api.saveUserConfigFile({ mostPlayedInstrument: 'proKeys' })
                         if (typeof saveData === 'object') {
                           const newInstrScores = await window.api.rpcs3GetInstrumentScores(saveData)
-                          if (VERBOSE.STRUCT) console.log('struct InstrumentScoreData ["rbtools/src/lib/rpcs3/getInstrumentScoresData.ts"]:', newInstrScores)
+                          if (STRUCT_LOG) console.log('struct InstrumentScoreData ["rbtools/src/lib/rpcs3/getInstrumentScoresData.ts"]:', newInstrScores)
                           setWindowState({ instrumentScores: newInstrScores })
                         }
                         setMyPackagesScreenState({ songsCatalog: false })
@@ -1007,7 +1046,7 @@ export function PackageDetails() {
                         await window.api.saveUserConfigFile({ mostPlayedInstrument: 'harmonies' })
                         if (typeof saveData === 'object') {
                           const newInstrScores = await window.api.rpcs3GetInstrumentScores(saveData)
-                          if (VERBOSE.STRUCT) console.log('struct InstrumentScoreData ["rbtools/src/lib/rpcs3/getInstrumentScoresData.ts"]:', newInstrScores)
+                          if (STRUCT_LOG) console.log('struct InstrumentScoreData ["rbtools/src/lib/rpcs3/getInstrumentScoresData.ts"]:', newInstrScores)
                           setWindowState({ instrumentScores: newInstrScores })
                         }
                         setMyPackagesScreenState({ songsCatalog: false })

@@ -4,6 +4,7 @@ import { initReactI18next } from 'react-i18next'
 import { appENUSLocale } from './locale/en-US'
 import { appPTBRLocale } from './locale/pt-BR'
 import { appES419Locale } from './locale/es-419'
+import { appFRCALocale } from './locale/fr-CA'
 
 i18n
   .use(initReactI18next)
@@ -20,9 +21,12 @@ i18n
       'es-419': {
         translation: appES419Locale,
       },
+      'fr-CA': {
+        translation: appFRCALocale,
+      },
     },
     interpolation: {
       escapeValue: false,
     },
-    // fallbackLng: 'en-US',
+    fallbackLng: import.meta.env.DEV ? undefined : 'en-US',
   })

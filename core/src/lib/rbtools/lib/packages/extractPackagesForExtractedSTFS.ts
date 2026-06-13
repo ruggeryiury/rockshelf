@@ -372,7 +372,6 @@ export const extractPackagesForExtractedSTFS = async (packages: RB3PackageLikeTy
       }
     }
   } catch (err) {
-    console.log('mainTempFolder', mainTempFolder.path)
     await mainTempFolder.deleteDir(true)
     throw err
   }

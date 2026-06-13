@@ -8,22 +8,22 @@ export interface RB3FileStatObject {
   packageName: string
   fileSize: number
   defaultFolderName: string
-  author?: string
+  packageCreatorName?: string
   description?: Buffer
   thumbnail: Buffer
-  authorThumbnail?: Buffer
+  packageCreatorThumbnail?: Buffer
   dta: DTAParser
   isSongPackage: boolean
 }
 
-export interface RB3FileJSONRepresentation extends Omit<RB3FileStatObject, 'dta' | 'description' | 'thumbnail' | 'authorThumbnail'> {
+export interface RB3FileJSONRepresentation extends Omit<RB3FileStatObject, 'dta' | 'description' | 'thumbnail' | 'packageCreatorThumbnail'> {
   /**
    * A JSON representation with stats of the file path.
    */
   path: FilePathJSONRepresentation
-  descripton?: string
+  description?: string
   thumbnail: string
-  authorThumbnail?: string
+  packageCreatorThumbnail?: string
   /**
    * The contents of the package's DTA file.
    */
@@ -76,18 +76,20 @@ export class RB3File {
     const packageName = await reader.readUTF8(header.packageNameLength)
     const defaultFolderName = await reader.readUTF8(header.defaultFolderNameLength)
 
-    let author: string | undefined
-    if (header.authorNameLength > 0) author = await reader.readUTF8(header.authorNameLength)
+    let packageCreatorName: string | undefined
+    if (header.packageCreatorNameLength > 0) packageCreatorName = await reader.readUTF8(header.packageCreatorNameLength)
 
     const dta = DTAParser.fromBuffer(await reader.read(header.dtaFileLength))
+
+    dta.sort('Song Title, Artist')
 
     let description: Buffer | undefined
     if (header.descriptionLength > 0) description = await reader.read(header.descriptionLength)
 
     const thumbnail = await reader.read(header.thumbnailLength)
 
-    let authorThumbnail: Buffer | undefined
-    if (header.authorThumbnailLength > 0) authorThumbnail = await reader.read(header.authorThumbnailLength)
+    let packageCreatorThumbnail: Buffer | undefined
+    if (header.packageCreatorThumbnailLength > 0) packageCreatorThumbnail = await reader.read(header.packageCreatorThumbnailLength)
 
     const fileSize = reader.length
 
@@ -95,7 +97,7 @@ export class RB3File {
 
     const isSongPackage = dta.songs.length > 1 ? true : false
 
-    return { header, packageName, fileSize, defaultFolderName, author, description, thumbnail, authorThumbnail, dta, isSongPackage }
+    return { header, packageName, fileSize, defaultFolderName, packageCreatorName, description, thumbnail, packageCreatorThumbnail, dta, isSongPackage }
   }
 
   /**
@@ -106,14 +108,14 @@ export class RB3File {
    * @returns {Promise<RB3FileJSONRepresentation>}
    */
   async toJSON(): Promise<RB3FileJSONRepresentation> {
-    const rawStats = await this.stat()
+    const stat = await this.stat()
     return {
       path: this.path.toJSON(),
-      ...rawStats,
-      descripton: rawStats.header.descriptionLength > 0 && rawStats.description ? rawStats.description.toString('base64') : undefined,
-      thumbnail: `data:image/jpeg;base64,${rawStats.thumbnail.toString('base64')}`,
-      authorThumbnail: rawStats.header.authorThumbnailLength > 0 && rawStats.authorThumbnail ? `data:image/jpeg;base64,${rawStats.authorThumbnail.toString('base64')}` : undefined,
-      dta: rawStats.dta.songs,
+      ...stat,
+      description: stat.header.descriptionLength > 0 && stat.description ? stat.description.toString('base64') : undefined,
+      thumbnail: `data:image/jpeg;base64,${stat.thumbnail.toString('base64')}`,
+      packageCreatorThumbnail: stat.header.packageCreatorThumbnailLength > 0 && stat.packageCreatorThumbnail ? `data:image/jpeg;base64,${stat.packageCreatorThumbnail.toString('base64')}` : undefined,
+      dta: stat.dta.songs,
     }
   }
 }

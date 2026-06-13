@@ -1,3 +1,4 @@
+export * from './utils/date'
 export * from './utils/formatStringFromDTA'
 export * from './utils/getKeyFromMapValue'
 export * from './utils/isValidURL'

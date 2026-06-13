@@ -315,7 +315,6 @@ export const filterDTAByInstrumentDifficulty = (songs: RB3CompatibleDTAFile[], o
   for (const song of sortedSongs) {
     const rawRankValue = song[rankKey]
     const rankValue = rankCalculator(key, rawRankValue)
-    // console.log(instrument, key, song[`rank_${key}`], rankValue)
 
     if (rankValue === -1) headers[7].songsIndexes.push(song)
     else headers[rankValue].songsIndexes.push(song)

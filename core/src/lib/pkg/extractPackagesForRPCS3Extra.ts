@@ -5,6 +5,7 @@ import { sendBuzyLoad } from '../senders/buzyLoad'
 import type { BrowserWindow } from 'electron'
 import { type SelectedSongForExtractionObject, type STFSExtractionTempFolderObject, type PKGExtractionTempFolderObject, type RB3PackageLikeType, DTAParser, type SupportedRB3PackageFileType, STFSFile, PKGFile, type STFSFileJSONRepresentation, type PKGFileJSONRepresentation, TextureFile, MOGGFile, PythonAPI, BinaryAPI, EDATFile } from '../rbtools'
 import { type DTAFileUpdateObject, type DTAFileBatchUpdateObject, type RB3CompatibleDTAFile, isRPCS3Devhdd0PathValid, getUnpackedFilesPathFromRootExtraction } from '../rbtools/lib.exports'
+import { sendRendererConsole } from '../senders/rendererConsole'
 
 // #region Types
 
@@ -58,14 +59,6 @@ export interface RPCS3PackageExtractionObjectExtra {
    * The installed song parsed objects that was installed.
    */
   songs: RB3CompatibleDTAFile[]
-  /**
-   * An array with all song entry ID installed.
-   */
-  installedSongIDs: string[]
-  /**
-   * An array with all internal songnames installed.
-   */
-  installedSongSongnames: string[]
 }
 
 // #region Function
@@ -92,6 +85,8 @@ export const extractPackagesForRPCS3Extra = async (win: BrowserWindow, packages:
     },
     options
   )
+
+  sendRendererConsole(win, { packages, destFolderPath, packageFolderName, options })
 
   const hasSongSelection = songs.length > 0
   let allSelectedSongs: SelectedSongForExtractionObject[] = []
@@ -130,18 +125,23 @@ export const extractPackagesForRPCS3Extra = async (win: BrowserWindow, packages:
   for (const pack of allPackages) {
     const tempFolderPath = pathLikeToDirPath(temporaryDirectory())
     const type = pack instanceof STFSFile ? 'stfs' : 'pkg'
-    const stat = await pack.toJSON()
+    const stat = await pack.stat()
+
+    if (type === 'stfs' && stat.dta.songs.length === 0 && stat.dta.updates.length > 0) {
+      await stat.dta.applyDXUpdatesOnSongs(true)
+    }
 
     if (!hasSongSelection) {
       sendBuzyLoad(win, { code: 'subtext', key: 'extractingText', messageValues: { name: pack.path.fullname } })
       await pack.extract(tempFolderPath, true)
-      parser.addSongs(stat.dta)
+
+      parser.addSongs(stat.dta.songs)
 
       if (type === 'stfs') {
         tempFolders.push({
           path: tempFolderPath,
           type: 'stfs',
-          songs: stat.dta.map((song) => {
+          songs: stat.dta.songs.map((song) => {
             let newSongname = ''
             const hasUpdates = updates.find((val) => val.id.toString() === song.id.toString())
             if (updates.length > 0 && hasUpdates) {
@@ -149,13 +149,18 @@ export const extractPackagesForRPCS3Extra = async (win: BrowserWindow, packages:
             }
             return { songname: song.songname, newSongname, files: getUnpackedFilesPathFromRootExtraction('stfs', tempFolderPath, song.songname) }
           }),
-          stat: stat as STFSFileJSONRepresentation,
+          stat: {
+            path: pack.path.toJSON(),
+            ...stat,
+            dta: stat.dta.songs,
+            upgrades: stat.upgrades?.updates ?? undefined,
+          } as STFSFileJSONRepresentation,
         })
       } else {
         tempFolders.push({
           path: tempFolderPath,
           type: 'pkg',
-          songs: stat.dta.map((song) => {
+          songs: stat.dta.songs.map((song) => {
             let newSongname = ''
             const hasUpdates = updates.find((val) => val.id.toString() === song.id.toString())
             if (updates.length > 0 && hasUpdates) {
@@ -163,19 +168,24 @@ export const extractPackagesForRPCS3Extra = async (win: BrowserWindow, packages:
             }
             return { songname: song.songname, newSongname, files: getUnpackedFilesPathFromRootExtraction('pkg', tempFolderPath, song.songname) }
           }),
-          stat: stat as PKGFileJSONRepresentation,
+          stat: {
+            path: pack.path.toJSON(),
+            ...stat,
+            dta: stat.dta.songs,
+            upgrades: stat.upgrades ? stat.upgrades.updates : undefined,
+          } as PKGFileJSONRepresentation,
         })
       }
     } else {
       const allSelectedSongnames: string[] = []
 
-      for (const song of stat.dta) {
+      for (const song of stat.dta.songs) {
         for (const selSongOption of allSelectedSongs) {
           if ((selSongOption.type === 'songname' && selSongOption.value.toString() === song.songname.toString()) || (selSongOption.type === 'id' && selSongOption.value.toString() === song.id.toString()) || (selSongOption.type === 'songID' && selSongOption.value.toString() === song.song_id.toString())) allSelectedSongnames.push(song.songname)
         }
       }
 
-      const filterdSelectedSongnames = stat.dta.filter((song) => allSelectedSongnames.includes(song.songname))
+      const filterdSelectedSongnames = stat.dta.songs.filter((song) => allSelectedSongnames.includes(song.songname))
 
       if (filterdSelectedSongnames.length === 0) {
         await tempFolderPath.deleteDir(true)
@@ -198,7 +208,12 @@ export const extractPackagesForRPCS3Extra = async (win: BrowserWindow, packages:
             }
             return { songname: song.songname, newSongname, files: getUnpackedFilesPathFromRootExtraction('stfs', tempFolderPath, song.songname) }
           }),
-          stat: stat as STFSFileJSONRepresentation,
+          stat: {
+            path: pack.path.toJSON(),
+            ...stat,
+            dta: stat.dta.songs,
+            upgrades: stat.upgrades?.updates ?? undefined,
+          } as STFSFileJSONRepresentation,
         })
       } else {
         tempFolders.push({
@@ -212,7 +227,12 @@ export const extractPackagesForRPCS3Extra = async (win: BrowserWindow, packages:
             }
             return { songname: song.songname, newSongname, files: getUnpackedFilesPathFromRootExtraction('pkg', tempFolderPath, song.songname) }
           }),
-          stat: stat as PKGFileJSONRepresentation,
+          stat: {
+            path: pack.path.toJSON(),
+            ...stat,
+            dta: stat.dta.songs,
+            upgrades: stat.upgrades ? stat.upgrades.updates : undefined,
+          } as PKGFileJSONRepresentation,
         })
       }
     }
@@ -228,23 +248,70 @@ export const extractPackagesForRPCS3Extra = async (win: BrowserWindow, packages:
         continue
       }
       for (const song of temp.songs) {
+        // RB2-specific files
+        const oldPANPath = song.files.pan
+        if (oldPANPath.exists) {
+          const newPANPath = mainTempFolder.gotoFile(`${song.files.pan.name}.pan`)
+          await oldPANPath.copy(newPANPath, true)
+          await oldPANPath.delete()
+        }
+
+        const oldUSRPath = song.files.usr
+        if (oldUSRPath.exists) {
+          const newUSRPath = mainTempFolder.gotoFile(`${song.files.usr.name}.usr`)
+          await oldUSRPath.copy(newUSRPath, true)
+          await oldUSRPath.delete()
+        }
+
+        const oldVNNPath = song.files.vnn
+        if (oldVNNPath.exists) {
+          const newVNNPath = mainTempFolder.gotoFile(`${song.files.vnn.name}.vnn`)
+          await oldVNNPath.copy(newVNNPath, true)
+          await oldVNNPath.delete()
+        }
+
+        const oldVOCPath = song.files.voc
+        if (oldVOCPath.exists) {
+          const newVOCPath = mainTempFolder.gotoFile(`${song.files.voc.name}.voc`)
+          await oldVOCPath.copy(newVOCPath, true)
+          await oldVOCPath.delete()
+        }
+
+        const oldXVOCABPath = song.files.xvocab
+        if (oldXVOCABPath.exists) {
+          const newXVOCABPath = mainTempFolder.gotoFile(`${song.files.xvocab.name}.xvocab`)
+          await oldXVOCABPath.copy(newXVOCABPath, true)
+          await oldXVOCABPath.delete()
+        }
+
+        const oldWeightsPath = song.files.weights
+        if (oldWeightsPath.exists) {
+          const newWeightsPath = mainTempFolder.gotoFile(`${song.files.weights.name}.bin`)
+          await oldWeightsPath.copy(newWeightsPath, true)
+          await oldWeightsPath.delete()
+        }
+
         // MILO
         const oldMiloPath = song.files.milo
-        const newMiloPath = mainTempFolder.gotoFile(`${song.files.milo.name}.milo_ps3`)
-        await oldMiloPath.copy(newMiloPath, true)
-        await oldMiloPath.delete()
+        if (oldMiloPath.exists) {
+          const newMiloPath = mainTempFolder.gotoFile(`${song.files.milo.name}.milo_ps3`)
+          await oldMiloPath.copy(newMiloPath, true)
+          await oldMiloPath.delete()
+        }
 
         // PNG
         const oldPNGPath = song.files.png
-        const newPNGPath = mainTempFolder.gotoFile(`${song.files.png.name}.png_ps3`)
-        if (temp.type === 'pkg') {
-          await oldPNGPath.copy(newPNGPath, true)
-          await oldPNGPath.delete()
-        } else {
-          // Xbox PNGs must be converted to PS3
-          sendBuzyLoad(win, { code: 'subtext', key: 'convertingXboxPNGText', messageValues: { name: oldPNGPath.fullname } })
-          const tex = new TextureFile(oldPNGPath)
-          await tex.convertToTexture(newPNGPath, 'png_ps3')
+        if (oldPNGPath.exists) {
+          const newPNGPath = mainTempFolder.gotoFile(`${song.files.png.name}.png_ps3`)
+          if (temp.type === 'pkg') {
+            await oldPNGPath.copy(newPNGPath, true)
+            await oldPNGPath.delete()
+          } else {
+            // Xbox PNGs must be converted to PS3
+            sendBuzyLoad(win, { code: 'subtext', key: 'convertingXboxPNGText', messageValues: { name: oldPNGPath.fullname } })
+            const tex = new TextureFile(oldPNGPath)
+            await tex.convertToTexture(newPNGPath, 'png_ps3')
+          }
         }
 
         // MOGG
@@ -371,6 +438,7 @@ export const extractPackagesForRPCS3Extra = async (win: BrowserWindow, packages:
 
   try {
     for (const temp of tempFolders) {
+      temp.songs
       if (temp.songs.length === 0) {
         continue
       }
@@ -381,12 +449,31 @@ export const extractPackagesForRPCS3Extra = async (win: BrowserWindow, packages:
         const mainTempPNG = mainTempFolder.gotoFile(`${songname}_keep.png_ps3`)
         const mainTempMILO = mainTempFolder.gotoFile(`${songname}.milo_ps3`)
 
+        const mainTempPAN = mainTempFolder.gotoFile(`${songname}.pan`)
+        const mainTempUSR = mainTempFolder.gotoFile(`${songname}.usr`)
+        const mainTempVNN = mainTempFolder.gotoFile(`${songname}.vnn`)
+        const mainTempVOC = mainTempFolder.gotoFile(`${songname}.voc`)
+        const mainTempXVOCAB = mainTempFolder.gotoFile(`${songname}.xvocab`)
+        const mainTempWeights = mainTempFolder.gotoFile(`${songname}_weights.bin`)
+
         // CHECK: Maybe check all song files?
         if (!mainTempMOGG.exists) {
           await mainTempFolder.deleteDir()
           sendBuzyLoad(win, {
             code: 'throwError',
             key: 'errorCreateNewPackageSongDataWithNoAudio',
+            messageValues: {
+              songname,
+              newSongname,
+            },
+          })
+          return false
+        }
+        if (!mainTempMIDI.exists) {
+          await mainTempFolder.deleteDir()
+          sendBuzyLoad(win, {
+            code: 'throwError',
+            key: 'errorCreateNewPackageSongDataWithNoChart',
             messageValues: {
               songname,
               newSongname,
@@ -402,23 +489,92 @@ export const extractPackagesForRPCS3Extra = async (win: BrowserWindow, packages:
         const newPNG = songGenFolder.gotoFile(`${newUsedSongname}_keep.png_ps3`)
         const newMILO = songGenFolder.gotoFile(`${newUsedSongname}.milo_ps3`)
 
-        await mainTempMOGG.copy(newMOGG, true)
-        await mainTempMOGG.delete()
-        await mainTempMIDI.copy(newMIDI, true)
-        await mainTempMIDI.delete()
-        await mainTempPNG.copy(newPNG, true)
-        await mainTempPNG.delete()
-        await mainTempMILO.copy(newMILO, true)
-        await mainTempMILO.delete()
+        const newPAN = songGenFolder.gotoFile(`../${newUsedSongname}.pan`)
+        const newUSR = songGenFolder.gotoFile(`../${newUsedSongname}.usr`)
+        const newVNN = songGenFolder.gotoFile(`../${newUsedSongname}.vnn`)
+        const newVOC = songGenFolder.gotoFile(`../${newUsedSongname}.voc`)
+        const newXVOCAB = songGenFolder.gotoFile(`../${newUsedSongname}.xvocab`)
+        const newWeights = songGenFolder.gotoFile(`${newUsedSongname}_weights.bin`)
 
-        const moggStat = await newMOGG.stat()
-        packSize += moggStat.size
-        const midiStat = await newMIDI.stat()
-        packSize += midiStat.size
-        const pngStat = await newPNG.stat()
-        packSize += pngStat.size
-        const miloStat = await newMILO.stat()
-        packSize += miloStat.size
+        if (mainTempMOGG.exists) {
+          await mainTempMOGG.copy(newMOGG, true)
+          await mainTempMOGG.delete()
+
+          const moggStat = await newMOGG.stat()
+          packSize += moggStat.size
+        }
+
+        if (mainTempMIDI.exists) {
+          await mainTempMIDI.copy(newMIDI, true)
+          await mainTempMIDI.delete()
+
+          const midiStat = await newMIDI.stat()
+          packSize += midiStat.size
+        }
+
+        if (mainTempPNG.exists) {
+          await mainTempPNG.copy(newPNG, true)
+          await mainTempPNG.delete()
+
+          const pngStat = await newPNG.stat()
+          packSize += pngStat.size
+        }
+
+        if (mainTempMILO.exists) {
+          await mainTempMILO.copy(newMILO, true)
+          await mainTempMILO.delete()
+
+          const miloStat = await newMILO.stat()
+          packSize += miloStat.size
+        }
+
+        if (mainTempPAN.exists) {
+          await mainTempPAN.copy(newPAN, true)
+          await mainTempPAN.delete()
+
+          const panStat = await newPAN.stat()
+          packSize += panStat.size
+        }
+
+        if (mainTempUSR.exists) {
+          await mainTempUSR.copy(newUSR, true)
+          await mainTempUSR.delete()
+
+          const usrStat = await newUSR.stat()
+          packSize += usrStat.size
+        }
+
+        if (mainTempVNN.exists) {
+          await mainTempVNN.copy(newVNN, true)
+          await mainTempVNN.delete()
+
+          const vnnStat = await newVNN.stat()
+          packSize += vnnStat.size
+        }
+
+        if (mainTempVOC.exists) {
+          await mainTempVOC.copy(newVOC, true)
+          await mainTempVOC.delete()
+
+          const vocStat = await newVOC.stat()
+          packSize += vocStat.size
+        }
+
+        if (mainTempXVOCAB.exists) {
+          await mainTempXVOCAB.copy(newXVOCAB, true)
+          await mainTempXVOCAB.delete()
+
+          const xvocabStat = await newXVOCAB.stat()
+          packSize += xvocabStat.size
+        }
+
+        if (mainTempWeights.exists) {
+          await mainTempWeights.copy(newWeights, true)
+          await mainTempWeights.delete()
+
+          const weightsStat = await newWeights.stat()
+          packSize += weightsStat.size
+        }
       }
     }
   } catch (err) {
@@ -434,7 +590,5 @@ export const extractPackagesForRPCS3Extra = async (win: BrowserWindow, packages:
     packSize,
     songsInstalled: parser.songs.length,
     songs: parser.songs,
-    installedSongIDs: parser.songs.map((song) => song.id),
-    installedSongSongnames: parser.songs.map((song) => song.songname),
   }
 }

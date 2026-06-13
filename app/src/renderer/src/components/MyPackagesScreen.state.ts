@@ -19,9 +19,13 @@ export interface MyPackagesScreenStateProps {
   selSong: number
   isArtworkLoading: boolean
   artworkURL: string | null
+
   editPackageName: string
+  packageNameError: string | null
   hasPackageNameChanged: boolean
+
   editPackageFolderName: string
+  packageFolderNameError: string | null
   hasPackageFolderNameChanged: boolean
 }
 
@@ -62,9 +66,13 @@ const defaultState: MyPackagesScreenStateProps = {
   selSong: -1,
   isArtworkLoading: true,
   artworkURL: null,
+
   editPackageName: '',
+  packageNameError: null,
   hasPackageNameChanged: false,
+
   editPackageFolderName: '',
+  packageFolderNameError: null,
   hasPackageFolderNameChanged: false,
 }
 

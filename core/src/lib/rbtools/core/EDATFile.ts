@@ -159,11 +159,10 @@ export class EDATFile {
       const destPath = options.destPath ? pathLikeToFilePath(options.destPath) : FilePath.of(`${stat.root}/${stat.name}`)
       return new MIDIFile(await this.path.copy(destPath))
     }
-    const devKLicHash = options.devKLicHash
     const dest = options.destPath ? pathLikeToFilePath(options.destPath) : FilePath.of(`${stat.root}/${stat.name}`)
 
     dest.changeThisFileExt('.mid')
-    await BinaryAPI.makeNPDataDecrypt(this.path, devKLicHash, dest)
+    await BinaryAPI.makeNPDataDecrypt(this.path, options.devKLicHash, dest)
     return new MIDIFile(dest)
   }
 }

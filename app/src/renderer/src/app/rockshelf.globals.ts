@@ -2,15 +2,12 @@ import type { SongGenre, SongGenreDX, SongSubGenre, SongSubGenreDX } from 'rocks
 import zod from 'zod'
 
 /** Aplication version, change this when updating. */
-export const APP_VERSION = '0.0.1'
+export const APP_VERSION = '0.0.1-beta1'
 
-/** Flags to allow logging of specific messages. */
-export const VERBOSE = {
-  /**
-   * Allow logging of specific typed objects sent by the main process.
-   */
-  STRUCT: true,
-} as const
+/**
+ * Allow logging of specific typed objects sent by the main process.
+ */
+export const STRUCT_LOG = true
 
 export const DXNIGHTLYLINK = 'https://nightly.link/hmxmilohax/rock-band-3-deluxe/workflows/build/develop'
 export const TU5LINK = 'http://b0.ww.np.dl.playstation.net/tppkg/np/BLUS30463/BLUS30463_T4/e52d21c696ed0fcf/UP8802-BLUS30463_00-ROCKBAND3PATCH05-A0105-V0100-PE.pkg'
@@ -42,6 +39,8 @@ export const CREATE_NEW_PACKAGE_TABS = {
 
 export const RHYTHMVERSE_SCREEN_TABS = {
   BROWSE: 0,
+  DOWNLOADED_SONGS: 1,
+  FILTERS: 10,
 } as const
 
 export const EDIT_SONG_SCREEN_TABS = {
@@ -55,6 +54,12 @@ export const EDIT_SONG_SCREEN_TABS = {
 export const EDIT_SONG_SCREEN_DROPDOWNS = {
   GENRE: 0,
   GAME_ORIGIN: 1,
+} as const
+
+export const INSTALL_RB3_FILE_TABS = {
+  OVERVIEW: 0,
+  DESCRIPTION: 1,
+  SELECT_SONGS: 2,
 } as const
 
 export const GAME_ORIGIN_HEADERS = [
@@ -154,4 +159,10 @@ export const DTA_STRUCT = {
       .regex(/^\S+$/, 'noSpacesAllowed')
       .regex(/^[0-9]+$/, 'numbersOnly'),
   } as const,
+} as const
+
+export const VALIDATORS = {
+  packageCreatorName: zod.string().max(255, 'tooBig'),
+  packageName: zod.string().min(1, 'cantBeBlank').max(255, 'tooBig'),
+  packageFolderName: zod.string().min(1, 'cantBeBlank').max(42, 'tooBig'),
 } as const

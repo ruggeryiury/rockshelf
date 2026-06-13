@@ -18,6 +18,33 @@ export interface UnpackedFilePathsFromSongObject {
    * The path to the song's extrated MILO file.
    */
   milo: FilePath
+
+  // RB2-specific files
+
+  /**
+   * The path to the song's extrated PAN file (pre-RB3 file).
+   */
+  pan: FilePath
+  /**
+   * The path to the song's extrated USR file (pre-RB3 file).
+   */
+  usr: FilePath
+  /**
+   * The path to the song's extrated VNN file (pre-RB3 file).
+   */
+  vnn: FilePath
+  /**
+   * The path to the song's extrated VOC file (pre-RB3 file).
+   */
+  voc: FilePath
+  /**
+   * The path to the song's extrated XVOCAB file (pre-RB3 file).
+   */
+  xvocab: FilePath
+  /**
+   * The path to the song's extrated WEIGHTS.BIN file (pre-RB3 file).
+   */
+  weights: FilePath
 }
 
 /**
@@ -37,5 +64,12 @@ export const getUnpackedFilesPathFromRootExtraction = (type: SupportedRB3Package
     mogg: root.gotoFile(`${songname}.mogg`),
     png: root.gotoFile(`${songname}_keep.png_${isSTFS ? 'xbox' : 'ps3'}`),
     milo: root.gotoFile(`${songname}.milo_${isSTFS ? 'xbox' : 'ps3'}`),
+
+    pan: root.gotoFile(`${songname}.pan`),
+    usr: root.gotoFile(`${songname}.usr`),
+    vnn: root.gotoFile(`${songname}.vnn`),
+    voc: root.gotoFile(`${songname}.voc`),
+    xvocab: root.gotoFile(`${songname}.xvocab`),
+    weights: root.gotoFile(`${songname}_weights.bin`),
   }
 }

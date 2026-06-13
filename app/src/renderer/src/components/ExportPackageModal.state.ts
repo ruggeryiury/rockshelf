@@ -4,6 +4,8 @@ import { immer } from 'zustand/middleware/immer'
 export interface ExportPackageModalStateProps {
   selPKGToExport: number
   destPath: string | null
+  packageCreatorName: string
+  packageCreatorNameError: string | null
 }
 
 export interface ExportPackageModalStateActions {
@@ -30,6 +32,8 @@ export type ExportPackageModalStateHook = ExportPackageModalStateProps & ExportP
 const defaultState: ExportPackageModalStateProps = {
   selPKGToExport: -1,
   destPath: null,
+  packageCreatorName: '',
+  packageCreatorNameError: null,
 }
 
 export const useExportPackageModalState = create<ExportPackageModalStateHook>()(

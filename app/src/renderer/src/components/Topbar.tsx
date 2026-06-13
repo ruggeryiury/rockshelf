@@ -1,4 +1,4 @@
-import { CloseIcon, FolderWithPlusIcon, LoadingIcon, MinimizeIcon } from '@renderer/assets/icons'
+import { CloseIcon, ConsoleDebugIcon, FolderWithPlusIcon, LoadingIcon, MinimizeIcon } from '@renderer/assets/icons'
 import { animate, AnimatedDiv } from '@renderer/lib.exports'
 import { useWindowState } from '@renderer/stores/Window.state'
 import { useTranslation } from 'react-i18next'
@@ -21,16 +21,19 @@ export function Topbar() {
         <LoadingIcon className="animate-spin" />
       </AnimatedDiv>
       <div className="mr-auto" />
-      {import.meta.env.DEV && (
-        <>
-          <button className="h-full justify-center px-3 duration-200 hover:bg-green-500/50" onClick={async () => await window.api.openUserDataFolder()}>
-            <FolderWithPlusIcon className="text-base" />
-          </button>
-          <div className="mx-2 h-full w-px py-1.5">
-            <div className="bg-default-white/25 h-full w-full" />
-          </div>
-        </>
-      )}
+      {/* {import.meta.env.DEV && ( */}
+      <>
+        <button className="h-full justify-center px-3 duration-200 hover:bg-green-500/50" title={t('openConsole')} onClick={async () => await window.api.openConsoleWindow()}>
+          <ConsoleDebugIcon className="text-base" />
+        </button>
+        <button className="h-full justify-center px-3 duration-200 hover:bg-green-500/50" title={t('openAppData')} onClick={async () => await window.api.openUserDataFolder()}>
+          <FolderWithPlusIcon className="text-base" />
+        </button>
+        <div className="mx-2 h-full w-px py-1.5">
+          <div className="bg-default-white/25 h-full w-full" />
+        </div>
+      </>
+      {/* )} */}
       <button className="h-full justify-center px-3 duration-200 hover:bg-white/25 disabled:bg-black/50 disabled:text-neutral-600" disabled={disableTopbarButtons} onClick={async () => await window.api.windowMinimize()}>
         <MinimizeIcon className="text-base" />
       </button>

@@ -1,5 +1,5 @@
 import { BinaryReader, pathLikeToFilePath, type FilePathLikeTypes } from 'node-lib'
-import { dateISOFormatObjectToDateISOString } from '../utils/date'
+import { dateISOFormatObjectToDateISOString } from '../rbtools/utils.exports'
 
 export interface RB3FileHeaderSongEntriesObject {
   songname: string
@@ -18,11 +18,11 @@ export interface RB3FileHeaderObject {
   installationType: 'rockshelf' | 'other'
   sourceType: 'merged' | 'stfs' | 'pkg'
   encryptionStatus: 'unknown' | 'encrypted' | 'decrypted' | 'mixed'
-  authorNameLength: number
+  packageCreatorNameLength: number
   dtaFileLength: number
   descriptionLength: number
   thumbnailLength: number
-  authorThumbnailLength: number
+  packageCreatorThumbnailLength: number
   creationYear: number
   creationMonth: number
   creationDay: number
@@ -59,11 +59,11 @@ export const parseRB3FileHeader = async (rb3FilePath: FilePathLikeTypes): Promis
   const sourceType = st === 0 ? 'merged' : st === 1 ? 'stfs' : 'pkg'
   const es = await reader.readUInt8()
   const encryptionStatus = es === 0 ? 'unknown' : es === 1 ? 'encrypted' : es === 2 ? 'decrypted' : 'mixed'
-  const authorNameLength = await reader.readUInt8()
+  const packageCreatorNameLength = await reader.readUInt8()
   const dtaFileLength = await reader.readUInt32LE()
   const descriptionLength = await reader.readUInt32LE()
   const thumbnailLength = await reader.readUInt32LE()
-  const authorThumbnailLength = await reader.readUInt16LE()
+  const packageCreatorThumbnailLength = await reader.readUInt16LE()
 
   const creationYear = await reader.readUInt16LE()
   const creationMonth = await reader.readUInt8()
@@ -105,11 +105,11 @@ export const parseRB3FileHeader = async (rb3FilePath: FilePathLikeTypes): Promis
     installationType,
     sourceType,
     encryptionStatus,
-    authorNameLength,
+    packageCreatorNameLength,
     dtaFileLength,
     descriptionLength,
     thumbnailLength,
-    authorThumbnailLength,
+    packageCreatorThumbnailLength,
     creationYear,
     creationMonth,
     creationDay,
@@ -123,12 +123,4 @@ export const parseRB3FileHeader = async (rb3FilePath: FilePathLikeTypes): Promis
     packageHash,
     songEntries,
   }
-}
-
-export const parseRB3FileJSONRepresentation = async (rb3FilePath: FilePathLikeTypes) => {
-  const header = parseRB3FileHeader(rb3FilePath)
-
-  const reader = await BinaryReader.fromFile(rb3FilePath)
-
-  await reader.close()
 }

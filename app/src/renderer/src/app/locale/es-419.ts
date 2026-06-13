@@ -1,6 +1,7 @@
 export const appES419Locale = {
   'en-US': 'Inglés (Estados Unidos)',
   'es-419': 'Español (Latinoamericano)',
+  'fr-CA': 'Francés (Canadá)',
   'pt-BR': 'Portugués (Brasil)',
   addPackageFiles: 'Agregar archivos al paquete',
   affectedPackages: 'Paquetes afectados:',

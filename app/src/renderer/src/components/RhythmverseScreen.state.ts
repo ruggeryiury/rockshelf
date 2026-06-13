@@ -1,5 +1,5 @@
 import { create } from 'zustand'
-import type { ProcessedRhythmverseObject } from 'rockshelf-core/rbtools'
+import type { PKGFileJSONRepresentation, ProcessedRhythmverseObject, STFSFileJSONRepresentation } from 'rockshelf-core/rbtools'
 
 export interface RhythmverseScreenStateProps {
   active: boolean
@@ -7,9 +7,16 @@ export interface RhythmverseScreenStateProps {
   selectedTab: number
   searchResults: false | 'loading' | ProcessedRhythmverseObject
 
+  source: 'rb3' | 'rb3xbox' | 'all' | 'rb3wii' | 'rb3ps3' | 'wtde' | 'tbrbxbox' | 'yarg' | 'rb2xbox' | 'ps' | 'chm' | 'gh3pc'
+  sortBy: 'updateDate' | 'title' | 'artist' | 'length' | 'author' | 'releaseDate' | 'downloads'
+  sortOrder: 'asc' | 'desc'
+  page: number
+  records: number
   fullBand: boolean
   multitrack: boolean
   pitchedVocals: boolean
+
+  downloadedSongs: (PKGFileJSONRepresentation | STFSFileJSONRepresentation)[] | null
 }
 
 export interface RhythmverseScreenStateActions {
@@ -39,9 +46,16 @@ const defaultState: RhythmverseScreenStateProps = {
   selectedTab: 0,
   searchResults: false,
 
+  source: 'rb3xbox',
+  sortBy: 'updateDate',
+  sortOrder: 'asc',
+  page: 1,
+  records: 25,
   fullBand: true,
   multitrack: false,
   pitchedVocals: true,
+
+  downloadedSongs: null,
 }
 
 export const useRhythmverseScreenState = create<RhythmverseScreenStateHook>()((set, get) => ({

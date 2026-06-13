@@ -1,10 +1,11 @@
 import { createHashFromBuffer, DirPath, MyObject, parseReadableBytesSize, type DirPathLikeTypes } from 'node-lib'
 import { useDefaultOptions } from 'use-default-options'
-import { getRB1USRDIR, getRB3USRDIR, getRockshelfModuleRootDir } from '../../core.exports'
+import { getRB1USRDIR, getRB3USRDIR, getRockshelfModuleRootDir, sendRendererConsole } from '../../core.exports'
 import { createRSPackImage, parseRSPackImageFile, type ParsedRSPackImageObject } from '../../lib.exports'
 import { temporaryFile } from 'tempy'
 import { RBTools, EDATFile, DTAParser, TextureFile } from '../rbtools'
 import { type RB3CompatibleDTAFile, type OfficialSongPackageStats, type RPCS3SongPackageStatsOptions, isRPCS3Devhdd0PathValid, rpcs3GenSongPackageManifest, getOfficialSongPackageStatsFromHash } from '../rbtools/lib.exports'
+import { BrowserWindow } from 'electron'
 
 // #region Types
 
@@ -196,6 +197,7 @@ export const rpcs3GetSongPackagesStatsExtra = async (devhdd0Path: DirPathLikeTyp
         const { manifest, packageSize } = await rpcs3GenSongPackageManifest(packagePath)
         const contentsHash = createHashFromBuffer(Buffer.from(manifest))
         const official = getOfficialSongPackageStatsFromHash('extractedRPCS3', contentsHash)
+
         if (official?.isDuplicatedForRB3) continue
 
         if (official) {
@@ -233,7 +235,7 @@ export const rpcs3GetSongPackagesStatsExtra = async (devhdd0Path: DirPathLikeTyp
             let newPackageImage = getRockshelfModuleRootDir().gotoFile(`bin/icons/${official?.code}.jpg`)
             if (!newPackageImage.exists) newPackageImage = getRockshelfModuleRootDir().gotoFile(`bin/icons/custom.jpg`)
 
-            const { header } = await createRSPackImage(newPackageImage, thumbnailSrc, { source: 'merged', type: 'other', encryptionStatus: 'unknown', packageName: official?.name || packagePath.name })
+            const { header } = await createRSPackImage(newPackageImage, thumbnailSrc, { source: official ? 'pkg' : 'merged', type: official ? 'rockshelf' : 'other', encryptionStatus: official ? 'encrypted' : 'unknown', packageName: official?.name || packagePath.name })
             packageData = header
           }
         } else {

@@ -1,7 +1,7 @@
 import { dialog } from 'electron'
-import { sendMessageBox, useHandler } from '../core.exports'
+import { sendMessageBox, sendRendererConsole, useHandler } from '../core.exports'
 import { pathLikeToFilePath } from 'node-lib'
-import { type STFSFileJSONRepresentation, type PKGFileJSONRepresentation, STFSFile, PKGFile } from '../lib/rbtools'
+import { type STFSFileJSONRepresentation, type PKGFileJSONRepresentation, STFSFile, PKGFile, DTAParser } from '../lib/rbtools'
 import { getOfficialSongPackageStatsFromHash, sortDTA } from '../lib/rbtools/lib.exports'
 
 export type SelectPackageFilesStatsTypes = { type: 'stfs'; data: STFSFileJSONRepresentation; selectedSongs: string[] } | { type: 'pkg'; data: PKGFileJSONRepresentation; selectedSongs: string[] }
@@ -36,7 +36,16 @@ export const selectPackageFiles = useHandler(async (win, _, files: SelectPackage
 
     try {
       await stfs.checkFileIntegrity()
-      const data = await stfs.toJSON()
+      const stat = await stfs.stat()
+
+      if (stat.dta.songs.length === 0 && stat.dta.updates.length > 0) await stat.dta.applyDXUpdatesOnSongs(true)
+
+      const data: STFSFileJSONRepresentation = {
+        path: stfs.path.toJSON(),
+        ...stat,
+        dta: stat.dta.songs,
+        upgrades: stat.upgrades?.updates ?? undefined,
+      }
 
       if (data.dta.length === 0) {
         ignoredFiles.push(stfs.path.path)

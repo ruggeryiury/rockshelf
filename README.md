@@ -122,11 +122,11 @@ The _Rock Band 3 Song Package file_ is a file container used specifically on Roc
 | Package Installation Type          | `0x08` | `0x01` | `UInt8`    | The installation type of the song package. Tells if the song was created/installed through Rockshelf or other methods.<br /><br />0 = Created/installed through Rockshelf.<br />1 = Created/installed through other methods (probably installed directly on RPCS3 using PKG files/folder). |
 | Package Source Type                | `0x06` | `0x01` | `UInt8`    | The source of the song package.<br /><br />0 = Merged (Different packages file types joined).<br />1 = STFS (Package created from a single CON file).<br />2 = PKG (Package created from a single PKG file).<br />3 = RB3 Song Package file (Package created from a single RB3 file).      |
 | Package Encryption Status          | `0x0a` | `0x01` | `UInt8`    | The encryption status of the song package.<br /><br />0 = Unknown (Might have both encrypted and decrypted files).<br />1 = Encrypted.<br />2 = Decrypted.<br />3 = Mixed (Rarely used).                                                                                                   |
-| Author Name Length                 | `0x0b` | `0x01` | `UInt8`    | The length of the song package author name.                                                                                                                                                                                                                                                |
+| Package Creator Name Length        | `0x0b` | `0x01` | `UInt8`    | The length of the song package creator name.                                                                                                                                                                                                                                               |
 | DTA File Length                    | `0x0c` | `0x04` | `UInt32LE` | The length of the song package DTA file binary data.                                                                                                                                                                                                                                       |
 | Description Length                 | `0x10` | `0x04` | `UInt32LE` | The length of the song package description file.                                                                                                                                                                                                                                           |
-| Thumbnail Length                   | `0x14` | `0x04` | `UInt32LE` | The length of the song package thumbnail image file data.                                                                                                                                                                                                                                  |
-| Author Thumbnail Length            | `0x18` | `0x02` | `UInt16LE` | The length of the song package author thumbnail image file data.                                                                                                                                                                                                                           |
+| Thumbnail Length                   | `0x14` | `0x04` | `UInt32LE` | The length of the song package thumbnail image file embed to the song package file (256x256).                                                                                                                                                                                              |
+| Package Creator Thumbnail Length   | `0x18` | `0x02` | `UInt16LE` | The length of the song package creator thumbnail image file embed to the song package file (128x128).                                                                                                                                                                                      |
 | Creation Year                      | `0x1a` | `0x02` | `UInt16LE` | The song package creation year ([ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format).                                                                                                                                                                                                |
 | Creation Month                     | `0x1c` | `0x01` | `UInt8`    | The song package creation month ([ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format).                                                                                                                                                                                               |
 | Creation Day                       | `0x1d` | `0x01` | `UInt8`    | The song package creation day ([ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format).                                                                                                                                                                                                 |
@@ -160,11 +160,11 @@ After the header and the song entry/entries, the raw data is placed with the act
 - Package Data:
   - Package Name
   - Default Package Folder Name
-  - Author Name
+  - Package Creator Name
   - DTA File
   - Description File
   - Package Thumbnail
-  - Author Thumbnail
+  - Package Creator Thumbnail
 - Song Data:
   - MOGG File
   - MIDI File
@@ -191,3 +191,4 @@ After the header and the song entry/entries, the raw data is placed with the act
 - [Jnack](https://github.com/jnackmclain)
 - [LocalH](https://github.com/LocalH): Providing the Moggulator python script.
 - [Onyxite](https://github.com/mtolly)
+- [MrBean](https://github.com/mrbean56)

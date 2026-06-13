@@ -10,7 +10,7 @@ import { InstrumentScoreData, ParsedRB3SaveData } from 'rockshelf-core/rbtools'
 import { useLogoScreenState } from './LogoScreen.state'
 import { useShallow } from 'zustand/shallow'
 import { useMessageBoxState } from './MessageBox.state'
-import { VERBOSE } from '@renderer/app/rockshelf.globals'
+import { STRUCT_LOG } from '@renderer/app/rockshelf.globals'
 
 export function FirstTimeScreen() {
   const { i18n, t } = useTranslation()
@@ -22,7 +22,7 @@ export function FirstTimeScreen() {
   const { setMessageBoxState } = useMessageBoxState(useShallow((x) => ({ setMessageBoxState: x.setMessageBoxState })))
 
   return (
-    <AnimatedSection condition={active} {...animate({ opacity: true })} id="FirstTimeScreen" className="absolute! z-3 h-full w-full bg-black p-8">
+    <AnimatedSection id="FirstTimeScreen" condition={active} {...animate({ opacity: true })} className="absolute! z-3 h-full w-full bg-black p-8">
       <div className="mb-2 border-b border-white/25 pb-1">
         <h1 className="font-pentatonicalt! text-[2rem] uppercase">{t('firstTimeScreenWelcome')}</h1>
       </div>
@@ -100,21 +100,21 @@ export function FirstTimeScreen() {
             })
 
             const rb3Stats = await window.api.rpcs3GetRB3Stats()
-            if (VERBOSE.STRUCT) console.log('struct RockBand3Data ["rbtools/src/lib/rpcs3/rpcs3GetRB3Stats.ts"]:', rb3Stats)
+            if (STRUCT_LOG) console.log('struct RockBand3Data ["rbtools/src/lib/rpcs3/rpcs3GetRB3Stats.ts"]:', rb3Stats)
             let saveData: ParsedRB3SaveData | false = false
             let instrumentScores: InstrumentScoreData | false = false
             let packagesData: RPCS3SongPackagesDataExtra | false = false
             if (typeof rb3Stats === 'object' && rb3Stats.hasSaveData) {
               saveData = await window.api.rpcs3GetSaveDataStats()
-              if (VERBOSE.STRUCT) console.log('struct ParsedRB3SaveData ["rbtools/src/lib/rpsc3/getSaveData.ts"]:', saveData)
+              if (STRUCT_LOG) console.log('struct ParsedRB3SaveData ["rbtools/src/lib/rpsc3/getSaveData.ts"]:', saveData)
               if (saveData) {
                 await window.api.saveUserConfigFile({ mostPlayedInstrument: saveData.mostPlayedInstrument })
                 setUserConfigState({ mostPlayedInstrument: saveData.mostPlayedInstrument })
                 instrumentScores = await window.api.rpcs3GetInstrumentScores(saveData)
-                if (VERBOSE.STRUCT) console.log('struct InstrumentScoreData ["rbtools/src/lib/rpcs3/getInstrumentScoresData.ts"]:', instrumentScores)
+                if (STRUCT_LOG) console.log('struct InstrumentScoreData ["rbtools/src/lib/rpcs3/getInstrumentScoresData.ts"]:', instrumentScores)
               }
               packagesData = await window.api.rpcs3GetPackagesData()
-              if (VERBOSE.STRUCT) console.log('struct RPCS3SongPackagesDataExtra ["rbtools/src/lib/rpcs3/rpcs3GetSongPackagesStatsExtra.ts"]:', packagesData)
+              if (STRUCT_LOG) console.log('struct RPCS3SongPackagesDataExtra ["rbtools/src/lib/rpcs3/rpcs3GetSongPackagesStatsExtra.ts"]:', packagesData)
             }
 
             setWindowState({

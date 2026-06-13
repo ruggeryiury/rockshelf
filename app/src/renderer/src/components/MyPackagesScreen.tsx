@@ -6,7 +6,7 @@ import { useTranslation } from 'react-i18next'
 import { RPCS3SongPackagesDataExtra } from 'rockshelf-core'
 import { useDialogScreenState } from './DialogScreen.state'
 import { useShallow } from 'zustand/shallow'
-import { MYPACKAGES_TABS, VERBOSE } from '@renderer/app/rockshelf.globals'
+import { MYPACKAGES_TABS, STRUCT_LOG } from '@renderer/app/rockshelf.globals'
 import { LoadingIcon } from '@renderer/assets/icons'
 import { useEffect } from 'react'
 import { useUserConfigState } from '@renderer/stores/UserConfig.state'
@@ -28,7 +28,7 @@ export function MyPackagesScreen() {
           setWindowState({ disableButtons: true })
           try {
             const newCatalog = await window.api.sortAndFilterSongPackages(packagesCatalogSortBy)
-            if (VERBOSE.STRUCT) console.log('struct SongPackagesFilterGenericObject [core/src/lib/dta/getDTACatalog.ts]', newCatalog)
+            if (STRUCT_LOG) console.log('struct SongPackagesFilterGenericObject [core/src/lib/dta/getDTACatalog.ts]', newCatalog)
             setMyPackagesScreenState({ packagesCatalog: newCatalog })
             setWindowState({ disableButtons: false })
           } catch (err) {
@@ -55,11 +55,11 @@ export function MyPackagesScreen() {
               let newPackages: RPCS3SongPackagesDataExtra | false = false
               try {
                 newPackages = await window.api.refreshPackagesData()
-                if (VERBOSE.STRUCT) console.log('struct RPCS3SongPackagesDataExtra ["rbtools/src/lib/rpcs3/rpcs3GetSongPackagesStatsExtra.ts"]:', newPackages)
+                if (STRUCT_LOG) console.log('struct RPCS3SongPackagesDataExtra ["rbtools/src/lib/rpcs3/rpcs3GetSongPackagesStatsExtra.ts"]:', newPackages)
 
                 if (newPackages) {
                   const newCatalog = await window.api.sortAndFilterSongPackages(packagesCatalogSortBy)
-                  if (VERBOSE.STRUCT) console.log('struct SongPackagesFilterGenericObject [core/src/lib/dta/getDTACatalog.ts]', newCatalog)
+                  if (STRUCT_LOG) console.log('struct SongPackagesFilterGenericObject [core/src/lib/dta/getDTACatalog.ts]', newCatalog)
                   setMyPackagesScreenState({ packagesCatalog: newCatalog })
                   setWindowState({ packages: newPackages })
                 }

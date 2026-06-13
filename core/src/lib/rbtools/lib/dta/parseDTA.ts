@@ -11,12 +11,17 @@ import { slashQToQuote } from '../../utils.exports'
 export const parseDTA = (songContent: string): RB3CompatibleDTAFile | PartialDTAFile => {
   const map = new MyObject<RB3CompatibleDTAFile>()
 
-  const allStrings = songContent
+  const removeComments = songContent
+    .split('\r\n')
+    .map((line) => line.trim().replace(/;.*/, '').replace(/\s+/g, ' ').trim())
+    .join('\r\n')
+
+  const allStrings = removeComments
     .split(/"/g)
     .map((val) => val.trim())
     .filter((val, valIndex) => valIndex !== 0 && !val.startsWith(')') && !(val.startsWith('songs/') || val.startsWith('"songs/')) && !(val.startsWith('sfx/') || val.startsWith('"sfx/')) && !(val.endsWith('.mid') || val.endsWith('.mid"')) && !(val.endsWith('.cue') || val.endsWith('.cue"')))
 
-  const splitValues = songContent.split(/[()]/).map((value) => value.replace(/'/g, '').trim())
+  const splitValues = removeComments.split(/[()]/).map((value) => value.replace(/\r\n/g, ' ').replace(/'/g, '').trim())
   const splitComments = songContent
     .split(/[;]/)
     .map((value) => value.trim())
@@ -101,7 +106,7 @@ export const parseDTA = (songContent: string): RB3CompatibleDTAFile | PartialDTA
     else if (i === 1 && key) map.set('id', key)
     // On unfinished strings, if key equals to `"` it means that the string has finished
     else if (unfinishedString) {
-      if (key === '"') unfinishedString = false
+      if (valuesJoin.endsWith('"') || key.endsWith('"')) unfinishedString = false
     }
 
     // This is where tracks count gets counted
@@ -135,7 +140,7 @@ export const parseDTA = (songContent: string): RB3CompatibleDTAFile | PartialDTA
           if (processedArrayName in processedSongObject) processedSongObject[processedArrayName as keyof typeof processedSongObject] = true
           const numbers: number[] = []
           if (key && !isNaN(Number(key))) numbers.push(Number(key))
-          if (valuesLength > 0) numbers.push(...values.map((val) => Number(val)))
+          if (valuesLength > 0) numbers.push(...values.filter((val) => val).map((val) => Number(val)))
           map.set(processedArrayName, numbers)
           if ((processedArrayName === 'pans' || processedArrayName === 'vols' || processedArrayName === 'cores') && tracksCount[5] === 0) {
             const allTracksCount = numbers.length
@@ -165,7 +170,7 @@ export const parseDTA = (songContent: string): RB3CompatibleDTAFile | PartialDTA
       if (ranksIndex === -1) ranksStarted = false
     } else {
       // Get songname used by the song files
-      if (key === 'name' && !processedSongObject.songname && (valuesJoin.startsWith('songs/') || valuesJoin.startsWith('"songs/'))) {
+      if (key === 'name' && !processedSongObject.songname && (valuesJoin.trim().startsWith('songs/') || valuesJoin.trim().startsWith('"songs/'))) {
         map.set('songname', valuesJoin.split('/')[1])
         processedSongObject.songname = true
       }

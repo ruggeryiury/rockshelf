@@ -13,6 +13,7 @@ export const getRockshelfModuleRootDir = (): DirPath =>
       )
 export const getRockshelfUserDataDir = (): DirPath => DirPath.of(app.getPath('userData')).gotoDir('../Rockshelf')
 export const getRockshelfTempDir = (): DirPath => DirPath.of(app.getPath('userData')).gotoDir('../Rockshelf/AppTemp')
+export const getRockshelfPackagesDir = (): DirPath => DirPath.of(app.getPath('userData')).gotoDir('../Rockshelf/DownloadedPackages')
 export const getUserConfigFile = (): FilePath => getRockshelfUserDataDir().gotoFile('user_config.json')
 export const getPackagesCacheFile = (): FilePath => getRockshelfUserDataDir().gotoFile('package.cache.json')
 export const getRB3SaveDataFile = (devhdd0Path: DirPathLikeTypes): FilePath => pathLikeToDirPath(devhdd0Path).gotoFile('home/00000001/savedata/BLUS30463-AUTOSAVE/SAVE.DAT')

@@ -8,7 +8,7 @@ import { useState } from 'react'
 import { useMyPackagesScreenState } from './MyPackagesScreen.state'
 import { useMessageBoxState } from './MessageBox.state'
 import { useCreateNewPackageScreenState } from './CreateNewPackageScreen.state'
-import { VERBOSE } from '@renderer/app/rockshelf.globals'
+import { STRUCT_LOG } from '@renderer/app/rockshelf.globals'
 
 export function ImageCropScreen() {
   const { t } = useTranslation()
@@ -36,7 +36,7 @@ export function ImageCropScreen() {
                   try {
                     if (imgCropOptions) {
                       const newPackages = await window.api.editPackageData(selPKG, { imgPath, imgCropOptions })
-                      if (VERBOSE.STRUCT) console.log('struct RPCS3SongPackagesDataExtra ["rbtools/src/lib/rpcs3/rpcs3GetSongPackagesStatsExtra.ts"]:', newPackages)
+                      if (STRUCT_LOG) console.log('struct RPCS3SongPackagesDataExtra ["rbtools/src/lib/rpcs3/rpcs3GetSongPackagesStatsExtra.ts"]:', newPackages)
 
                       if (newPackages) setWindowState({ packages: newPackages, disableImg: selPKG })
                       setMessageBoxState({ message: { type: 'success', code: 'editPackageImage' } })
@@ -81,7 +81,7 @@ export function ImageCropScreen() {
               aspect={1 / 1}
               onCropChange={setCrop}
               onCropComplete={(_, croppedAreaPixels) => {
-                if (VERBOSE.STRUCT) console.log('struct CroppedArea:', croppedAreaPixels)
+                if (STRUCT_LOG) console.log('struct CroppedArea:', croppedAreaPixels)
                 setImageCropScreenState({ imgCropOptions: croppedAreaPixels })
               }}
               onZoomChange={setZoom}

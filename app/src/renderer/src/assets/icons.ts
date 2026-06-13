@@ -1,6 +1,6 @@
 export { MdError as ErrorIcon, MdLibraryMusic as MusicLibIcon, MdStars as StarCircleIcon } from 'react-icons/md'
 export { SiImessage as MessageSqrIcon } from 'react-icons/si'
-export { VscChromeClose as CloseIcon, VscChromeMaximize as MaximizeIcon, VscChromeMinimize as MinimizeIcon, VscChromeRestore as RestoreWinIcon, VscLoading as LoadingIcon } from 'react-icons/vsc'
+export { VscChromeClose as CloseIcon, VscChromeMaximize as MaximizeIcon, VscChromeMinimize as MinimizeIcon, VscChromeRestore as RestoreWinIcon, VscLoading as LoadingIcon, VscDebugConsole as ConsoleDebugIcon } from 'react-icons/vsc'
 export { FaCheckSquare as CheckedBoxIcon, FaSquare as UncheckedBoxIcon, FaRegFolderOpen as OpenFolderIcon, FaGithub as GitHubIcon, FaRegCheckCircle as CheckedCircleIcon, FaChevronDown as ChevronDownIcon, FaChevronUp as ChevronUpIcon, FaChevronLeft as ChevronLeftIcon, FaChevronRight as ChevronRightIcon, FaEye as EyeIcon, FaEyeSlash as EyeSlashIcon } from 'react-icons/fa'
 export { FiFolderPlus as FolderWithPlusIcon } from 'react-icons/fi'
 export { BsFiletypeExe as ExeFileIcon, BsPlaystation as PlaystationIcon, BsXbox as XboxIcon } from 'react-icons/bs'

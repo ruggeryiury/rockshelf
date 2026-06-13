@@ -4,7 +4,7 @@ import { useCreateNewPackageScreenState } from './CreateNewPackageScreen.state'
 import { useShallow } from 'zustand/shallow'
 import { useWindowState } from '@renderer/stores/Window.state'
 import { useTranslation } from 'react-i18next'
-import { CREATE_NEW_PACKAGE_TABS, VERBOSE } from '@renderer/app/rockshelf.globals'
+import { CREATE_NEW_PACKAGE_TABS, STRUCT_LOG } from '@renderer/app/rockshelf.globals'
 import { useMessageBoxState } from './MessageBox.state'
 import { ChevronDownIcon, EyeIcon, EyeSlashIcon, PlaystationIcon, ShelfIcon, XboxIcon } from '@renderer/assets/icons'
 import { useEffect, useMemo } from 'react'
@@ -68,13 +68,13 @@ export function CreateNewPackageScreen() {
                   setWindowState({ disableButtons: false })
                   return
                 }
-                const results = await window.api.createNewPackage({ packages: files.map((file) => file.data.path.path), packageFolderName, packageName, forceEncryption, thumbnail: packageArtwork, selectedSongs: allSelectedSongs })
-                if (VERBOSE.STRUCT) console.log('struct SerializedRPCS3PackageExtractionObject [core/src/controllers/createNewPackage.ts]', results)
-                if (results) {
+                const packagesData = await window.api.createNewPackage({ packages: files.map((file) => file.data.path.path), packageFolderName, packageName, forceEncryption, thumbnail: packageArtwork, selectedSongs: allSelectedSongs })
+                if (STRUCT_LOG) console.log('struct RPCS3SongPackagesDataExtra ["rbtools/src/lib/rpcs3/rpcs3GetSongPackagesStatsExtra.ts"]:', packagesData)
+                if (packagesData) {
                   const newCatalog = await window.api.sortAndFilterSongPackages(packagesCatalogSortBy)
-                  if (VERBOSE.STRUCT) console.log('struct SongPackagesFilterGenericObject [core/src/lib/dta/getDTACatalog.ts]', newCatalog)
+                  if (STRUCT_LOG) console.log('struct SongPackagesFilterGenericObject [core/src/lib/dta/getDTACatalog.ts]', newCatalog)
                   setMyPackagesScreenState({ packagesCatalog: newCatalog })
-                  setWindowState({ packages: results.packagesData })
+                  setWindowState({ packages: packagesData })
                 }
               } catch (err) {
                 if (err instanceof Error) setWindowState({ err })
@@ -91,7 +91,7 @@ export function CreateNewPackageScreen() {
               resetCreateNewPackageScreenState()
             }}
           >
-            {t('goBack')}
+            {t('cancel')}
           </button>
         </div>
       </div>
@@ -137,7 +137,7 @@ export function CreateNewPackageScreen() {
                 setWindowState({ disableButtons: true })
                 try {
                   const selFiles = await window.api.selectPackageFiles(files)
-                  if (VERBOSE.STRUCT) console.log('struct SelectPackageFilesObject ["core/src/controllers/selectPackageFiles.ts"]:', selFiles)
+                  if (STRUCT_LOG) console.log('struct SelectPackageFilesObject ["core/src/controllers/selectPackageFiles.ts"]:', selFiles)
 
                   if (selFiles) {
                     const { selectedFiles, ignoredFiles, duplicatedFiles } = selFiles
@@ -168,11 +168,11 @@ export function CreateNewPackageScreen() {
             {files.map((file, fileIndex) => {
               {
                 return (
-                  <div className="flex-row!" key={`packageFile${fileIndex}__${file.type === 'pkg' ? file.data.contentID : file.type === 'rb3' ? file.data.header.packageHash : file.data.contentsHash}`}>
+                  <div className="flex-row!" key={`packageFile${fileIndex}__${file.type === 'pkg' ? file.data.contentID : file.data.contentsHash}`}>
                     <div className="group mb-1 w-full flex-row! rounded-sm border-2 border-white/5 p-2 duration-150 last:mb-0 hover:bg-white/5 active:bg-white/10" onMouseOver={() => setCreateNewPackageScreenState({ hoveredFile: fileIndex })} onMouseLeave={() => setCreateNewPackageScreenState({ hoveredFile: -1 })}>
                       <div className="mr-4 h-fit w-16 min-w-16 flex-row! items-start justify-center rounded-sm bg-neutral-900 py-1 duration-150 group-hover:bg-neutral-800">
-                        {file.type === 'stfs' ? <XboxIcon className="mr-1 text-lg" /> : file.type === 'rb3' ? <ShelfIcon className="mr-1 text-lg" /> : <PlaystationIcon className="mr-1 text-xl" />}
-                        <h1 className="top-0.2 relative!">{file.type === 'stfs' ? 'CON' : file.type === 'rb3' ? 'RB3' : 'PKG'}</h1>
+                        {file.type === 'stfs' ? <XboxIcon className="mr-1 text-lg" /> : <PlaystationIcon className="mr-1 text-xl" />}
+                        <h1 className="top-0.2 relative!">{file.type === 'stfs' ? 'CON' : 'PKG'}</h1>
                       </div>
                       <div className="w-full">
                         <div className="mb-1 flex-row! items-start border-b-2 border-white/10 pb-1">
@@ -219,15 +219,14 @@ export function CreateNewPackageScreen() {
             {files.length === 0 && <p>{t('noSongsForSelection')}</p>}
             {files.length > 0 &&
               files.map((file, fileIndex) => {
-                const allSongsSelected = file.selectedSongs.length === file.data.dta.length
                 const isFilteringUnselectedSongs = seeSelectedSongsOnly[fileIndex]
 
                 return (
                   <div key={`selectedFile${fileIndex}`} className="mt-2 mr-4 first:mt-0">
                     <div className="sticky! top-0 z-10 flex-row! items-center bg-neutral-900 p-1">
                       <div className="mr-2 h-fit w-16 min-w-16 flex-row! justify-center border-r-2 border-white/25 pr-1">
-                        {file.type === 'stfs' ? <XboxIcon className="mr-1 text-lg" /> : file.type === 'rb3' ? <ShelfIcon className="mr-1 text-lg" /> : <PlaystationIcon className="mr-1 text-xl" />}
-                        <h1 className="top-0.2 relative!">{file.type === 'stfs' ? 'CON' : file.type === 'rb3' ? 'RB3' : 'PKG'}</h1>
+                        {file.type === 'stfs' ? <XboxIcon className="mr-1 text-lg" /> : <PlaystationIcon className="mr-1 text-xl" />}
+                        <h1 className="top-0.2 relative!">{file.type === 'stfs' ? 'CON' : 'PKG'}</h1>
                       </div>
                       <h1 className="mr-2 text-lg">{file.data.path.name}</h1>
                       <button
@@ -354,7 +353,7 @@ export function CreateNewPackageScreen() {
               <p className="mb-4 text-xs italic">
                 <TransComponent i18nKey="packageNameDesc" />
               </p>
-              <input className="mb-1 rounded-xs border border-neutral-800 bg-neutral-900 px-1 py-0.5 text-sm! duration-100 last:mb-0 hover:bg-neutral-700 focus:border-white/25 active:bg-neutral-600 disabled:text-neutral-700 disabled:hover:bg-neutral-900" value={packageName} onChange={(ev) => setCreateNewPackageScreenState({ packageName: ev.target.value })} minLength={1} maxLength={64} />
+              <input className="mb-1 rounded-xs border border-neutral-800 bg-neutral-900 px-1 py-0.5 text-sm! duration-100 last:mb-0 hover:bg-neutral-700 focus:border-white/25 active:bg-neutral-600 disabled:text-neutral-700 disabled:hover:bg-neutral-900" value={packageName} onChange={(ev) => setCreateNewPackageScreenState({ packageName: ev.target.value })} minLength={1} maxLength={255} />
             </div>
 
             <div className="group rounded-xs p-2 duration-200 hover:bg-white/5">
@@ -362,7 +361,7 @@ export function CreateNewPackageScreen() {
               <p className="mb-4 text-xs italic">
                 <TransComponent i18nKey="packageFolderNameDesc" />
               </p>
-              <input className="mb-1 rounded-xs border border-neutral-800 bg-neutral-900 px-1 py-0.5 text-sm! duration-100 last:mb-0 hover:bg-neutral-700 focus:border-white/25 active:bg-neutral-600 disabled:text-neutral-700 disabled:hover:bg-neutral-900" value={packageFolderName} onChange={(ev) => setCreateNewPackageScreenState({ packageFolderName: ev.target.value })} minLength={1} maxLength={64} />
+              <input className="mb-1 rounded-xs border border-neutral-800 bg-neutral-900 px-1 py-0.5 text-sm! duration-100 last:mb-0 hover:bg-neutral-700 focus:border-white/25 active:bg-neutral-600 disabled:text-neutral-700 disabled:hover:bg-neutral-900" value={packageFolderName} onChange={(ev) => setCreateNewPackageScreenState({ packageFolderName: ev.target.value })} minLength={1} maxLength={42} />
             </div>
 
             <div className="group rounded-xs p-2 duration-200 hover:bg-white/5">

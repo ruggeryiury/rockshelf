@@ -6,7 +6,7 @@ import { useTranslation } from 'react-i18next'
 import { ChevronLeftIcon, ChevronRightIcon, DiamondIcon, LoadingIcon, PlaystationIcon, RPCS3Icon, WiiIcon, XboxIcon } from '@renderer/assets/icons'
 import clsx from 'clsx'
 import { useShallow } from 'zustand/shallow'
-import { SONG_DETAILS_TABS, VERBOSE } from '@renderer/app/rockshelf.globals'
+import { SONG_DETAILS_TABS, STRUCT_LOG } from '@renderer/app/rockshelf.globals'
 import { useUserConfigState } from '@renderer/stores/UserConfig.state'
 import { bandIcon, guitarIcon, bassIcon, drumsIcon, keysIcon, vocalsIcon, proGuitarIcon, proBassIcon, proDrumsIcon, proKeysIcon, harm3Icon, diffDotOn, diffDotOff, diffDotDevil } from '@renderer/assets/images'
 import { StarsInline } from '@renderer/components.exports'
@@ -102,7 +102,7 @@ export function SongDetails() {
         if (songDetailsTab === SONG_DETAILS_TABS.LEADERBOARDS && songDetails !== null && typeof songDetails.song_id === 'number') {
           setMyPackagesScreenState({ songLeaderboards: 'loading' })
           const leaderboards = await window.api.getScoresFromGoCentral(songDetails.song_id, mostPlayedInstrument)
-          if (VERBOSE.STRUCT) console.log('struct GoCentralLeaderboardResultObject [core/src/lib/rbtools/core/GoCentralAPI.ts]', leaderboards)
+          if (STRUCT_LOG) console.log('struct GoCentralLeaderboardResultObject [core/src/lib/rbtools/core/GoCentralAPI.ts]', leaderboards)
           setMyPackagesScreenState({ songLeaderboards: leaderboards })
         }
       }
@@ -252,7 +252,7 @@ export function SongDetails() {
           </div>
           {songDetailsTab === SONG_DETAILS_TABS.DETAILS && (
             <>
-              <div className="h-full w-full overflow-y-auto">
+              <div className="mr-4 h-full w-full overflow-y-auto">
                 <div className="flex-row! flex-wrap items-start">
                   <div className="group w-1/2 rounded-xs p-2 duration-200 hover:bg-white/5">
                     <h1 className="uppercase">{t('songEntryID')}</h1>
@@ -481,7 +481,7 @@ export function SongDetails() {
                       await window.api.saveUserConfigFile({ mostPlayedInstrument: 'band' })
                       if (typeof saveData === 'object') {
                         const newInstrScores = await window.api.rpcs3GetInstrumentScores(saveData)
-                        if (VERBOSE.STRUCT) console.log('struct InstrumentScoreData ["rbtools/src/lib/rpcs3/getInstrumentScoresData.ts"]:', newInstrScores)
+                        if (STRUCT_LOG) console.log('struct InstrumentScoreData ["rbtools/src/lib/rpcs3/getInstrumentScoresData.ts"]:', newInstrScores)
                         setWindowState({ instrumentScores: newInstrScores })
                       }
                       setMyPackagesScreenState({ songsCatalog: false })
@@ -500,7 +500,7 @@ export function SongDetails() {
                       await window.api.saveUserConfigFile({ mostPlayedInstrument: 'guitar' })
                       if (typeof saveData === 'object') {
                         const newInstrScores = await window.api.rpcs3GetInstrumentScores(saveData)
-                        if (VERBOSE.STRUCT) console.log('struct InstrumentScoreData ["rbtools/src/lib/rpcs3/getInstrumentScoresData.ts"]:', newInstrScores)
+                        if (STRUCT_LOG) console.log('struct InstrumentScoreData ["rbtools/src/lib/rpcs3/getInstrumentScoresData.ts"]:', newInstrScores)
                         setWindowState({ instrumentScores: newInstrScores })
                       }
                       setMyPackagesScreenState({ songsCatalog: false })
@@ -519,7 +519,7 @@ export function SongDetails() {
                       await window.api.saveUserConfigFile({ mostPlayedInstrument: 'bass' })
                       if (typeof saveData === 'object') {
                         const newInstrScores = await window.api.rpcs3GetInstrumentScores(saveData)
-                        if (VERBOSE.STRUCT) console.log('struct InstrumentScoreData ["rbtools/src/lib/rpcs3/getInstrumentScoresData.ts"]:', newInstrScores)
+                        if (STRUCT_LOG) console.log('struct InstrumentScoreData ["rbtools/src/lib/rpcs3/getInstrumentScoresData.ts"]:', newInstrScores)
                         setWindowState({ instrumentScores: newInstrScores })
                       }
                       setMyPackagesScreenState({ songsCatalog: false })
@@ -539,7 +539,7 @@ export function SongDetails() {
                       await window.api.saveUserConfigFile({ mostPlayedInstrument: 'drums' })
                       if (typeof saveData === 'object') {
                         const newInstrScores = await window.api.rpcs3GetInstrumentScores(saveData)
-                        if (VERBOSE.STRUCT) console.log('struct InstrumentScoreData ["rbtools/src/lib/rpcs3/getInstrumentScoresData.ts"]:', newInstrScores)
+                        if (STRUCT_LOG) console.log('struct InstrumentScoreData ["rbtools/src/lib/rpcs3/getInstrumentScoresData.ts"]:', newInstrScores)
                         setWindowState({ instrumentScores: newInstrScores })
                       }
                       setMyPackagesScreenState({ songsCatalog: false })
@@ -558,7 +558,7 @@ export function SongDetails() {
                       await window.api.saveUserConfigFile({ mostPlayedInstrument: 'keys' })
                       if (typeof saveData === 'object') {
                         const newInstrScores = await window.api.rpcs3GetInstrumentScores(saveData)
-                        if (VERBOSE.STRUCT) console.log('struct InstrumentScoreData ["rbtools/src/lib/rpcs3/getInstrumentScoresData.ts"]:', newInstrScores)
+                        if (STRUCT_LOG) console.log('struct InstrumentScoreData ["rbtools/src/lib/rpcs3/getInstrumentScoresData.ts"]:', newInstrScores)
                         setWindowState({ instrumentScores: newInstrScores })
                       }
                       setMyPackagesScreenState({ songsCatalog: false })
@@ -577,7 +577,7 @@ export function SongDetails() {
                       await window.api.saveUserConfigFile({ mostPlayedInstrument: 'vocals' })
                       if (typeof saveData === 'object') {
                         const newInstrScores = await window.api.rpcs3GetInstrumentScores(saveData)
-                        if (VERBOSE.STRUCT) console.log('struct InstrumentScoreData ["rbtools/src/lib/rpcs3/getInstrumentScoresData.ts"]:', newInstrScores)
+                        if (STRUCT_LOG) console.log('struct InstrumentScoreData ["rbtools/src/lib/rpcs3/getInstrumentScoresData.ts"]:', newInstrScores)
                         setWindowState({ instrumentScores: newInstrScores })
                       }
                       setMyPackagesScreenState({ songsCatalog: false })
@@ -596,7 +596,7 @@ export function SongDetails() {
                       await window.api.saveUserConfigFile({ mostPlayedInstrument: 'proGuitar' })
                       if (typeof saveData === 'object') {
                         const newInstrScores = await window.api.rpcs3GetInstrumentScores(saveData)
-                        if (VERBOSE.STRUCT) console.log('struct InstrumentScoreData ["rbtools/src/lib/rpcs3/getInstrumentScoresData.ts"]:', newInstrScores)
+                        if (STRUCT_LOG) console.log('struct InstrumentScoreData ["rbtools/src/lib/rpcs3/getInstrumentScoresData.ts"]:', newInstrScores)
                         setWindowState({ instrumentScores: newInstrScores })
                       }
                       setMyPackagesScreenState({ songsCatalog: false })
@@ -615,7 +615,7 @@ export function SongDetails() {
                       await window.api.saveUserConfigFile({ mostPlayedInstrument: 'proBass' })
                       if (typeof saveData === 'object') {
                         const newInstrScores = await window.api.rpcs3GetInstrumentScores(saveData)
-                        if (VERBOSE.STRUCT) console.log('struct InstrumentScoreData ["rbtools/src/lib/rpcs3/getInstrumentScoresData.ts"]:', newInstrScores)
+                        if (STRUCT_LOG) console.log('struct InstrumentScoreData ["rbtools/src/lib/rpcs3/getInstrumentScoresData.ts"]:', newInstrScores)
                         setWindowState({ instrumentScores: newInstrScores })
                       }
                       setMyPackagesScreenState({ songsCatalog: false })
@@ -635,7 +635,7 @@ export function SongDetails() {
                       await window.api.saveUserConfigFile({ mostPlayedInstrument: 'proDrums' })
                       if (typeof saveData === 'object') {
                         const newInstrScores = await window.api.rpcs3GetInstrumentScores(saveData)
-                        if (VERBOSE.STRUCT) console.log('struct InstrumentScoreData ["rbtools/src/lib/rpcs3/getInstrumentScoresData.ts"]:', newInstrScores)
+                        if (STRUCT_LOG) console.log('struct InstrumentScoreData ["rbtools/src/lib/rpcs3/getInstrumentScoresData.ts"]:', newInstrScores)
                         setWindowState({ instrumentScores: newInstrScores })
                       }
                       setMyPackagesScreenState({ songsCatalog: false })
@@ -654,7 +654,7 @@ export function SongDetails() {
                       await window.api.saveUserConfigFile({ mostPlayedInstrument: 'proKeys' })
                       if (typeof saveData === 'object') {
                         const newInstrScores = await window.api.rpcs3GetInstrumentScores(saveData)
-                        if (VERBOSE.STRUCT) console.log('struct InstrumentScoreData ["rbtools/src/lib/rpcs3/getInstrumentScoresData.ts"]:', newInstrScores)
+                        if (STRUCT_LOG) console.log('struct InstrumentScoreData ["rbtools/src/lib/rpcs3/getInstrumentScoresData.ts"]:', newInstrScores)
                         setWindowState({ instrumentScores: newInstrScores })
                       }
                       setMyPackagesScreenState({ songsCatalog: false })
@@ -673,7 +673,7 @@ export function SongDetails() {
                       await window.api.saveUserConfigFile({ mostPlayedInstrument: 'harmonies' })
                       if (typeof saveData === 'object') {
                         const newInstrScores = await window.api.rpcs3GetInstrumentScores(saveData)
-                        if (VERBOSE.STRUCT) console.log('struct InstrumentScoreData ["rbtools/src/lib/rpcs3/getInstrumentScoresData.ts"]:', newInstrScores)
+                        if (STRUCT_LOG) console.log('struct InstrumentScoreData ["rbtools/src/lib/rpcs3/getInstrumentScoresData.ts"]:', newInstrScores)
                         setWindowState({ instrumentScores: newInstrScores })
                       }
                       setMyPackagesScreenState({ songsCatalog: false })
@@ -888,11 +888,11 @@ export function SongDetails() {
                           setWindowState({ disableButtons: true })
                           try {
                             const newPackages = await window.api.batchDeleteSongs(selPKG, [songDetails.songname])
-                            if (VERBOSE.STRUCT) console.log('struct RPCS3SongPackagesDataExtra ["rbtools/src/lib/rpcs3/rpcs3GetSongPackagesStatsExtra.ts"]:', newPackages)
+                            if (STRUCT_LOG) console.log('struct RPCS3SongPackagesDataExtra ["rbtools/src/lib/rpcs3/rpcs3GetSongPackagesStatsExtra.ts"]:', newPackages)
                             if (newPackages) {
                               const newCatalog = await window.api.sortAndFilterSongsFromPackage(selPKG, songsCatalogSortBy, { instrument: mostPlayedInstrument })
                               if (!newCatalog) return
-                              if (VERBOSE.STRUCT) {
+                              if (STRUCT_LOG) {
                                 if (newCatalog.type !== 'difficulty' && newCatalog.type !== 'artist') console.log('struct DTACatalogGenericObject [core/src/lib/dta/getDTACatalog.ts]', newCatalog)
                                 else if (newCatalog.type === 'artist') console.log('struct DTACatalogByArtistObject [core/src/lib/dta/getDTACatalog.ts]', newCatalog)
                                 else console.log('struct DTACatalogByDifficultyObject [core/src/lib/dta/getDTACatalog.ts]', newCatalog)

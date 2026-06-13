@@ -1,5 +1,5 @@
-import { DirPath, FilePath, pathLikeToFilePath } from 'node-lib'
-import { getPackagesCacheFile, sendDialog, sendMessageBox, useHandler } from '../core.exports'
+import { DirPath, FilePath, pathLikeToDirPath, pathLikeToFilePath } from 'node-lib'
+import { getPackagesCacheFile, sendBuzyLoad, sendDialog, sendMessageBox, useHandler } from '../core.exports'
 import { editRSPackImage, type RPCS3SongPackagesDataExtra } from '../lib.exports'
 import { EDATFile, MIDIFile, MOGGFile } from '../lib/rbtools'
 import { temporaryFile } from 'tempy'
@@ -42,14 +42,19 @@ export const encDecPackage = useHandler(async (win, _, func: EncDecPackageFuncti
 
   const files = (await packagePath.gotoDir('songs').readDir(true)).toReversed().filter((entry) => entry instanceof FilePath && (entry.ext === '.mogg' || entry.fullname.endsWith('.mid.edat'))) as FilePath[]
 
-  if (func === 'encryptAll') sendMessageBox(win, { type: 'loading', code: 'encryptingPackageFiles' })
-  else sendMessageBox(win, { type: 'loading', code: 'decryptingPackageFiles' })
+  if (func === 'encryptAll') sendBuzyLoad(win, { code: 'init', title: 'encryptingPackageFiles', steps: ['encryptingPackageFiles'] })
+  else sendBuzyLoad(win, { code: 'init', title: 'decryptingPackageFiles', steps: ['decryptingPackageFiles'] })
 
+  let count = 0
   for (const file of files) {
     if (file.ext === '.mogg') {
       const mogg = new MOGGFile(file)
+      sendBuzyLoad(win, { code: 'subtext', key: `${func === 'encryptAll' ? 'encrypting' : 'decrypting'}MOGGTextWithCount`, messageValues: { name: mogg.path.fullname, count: count.toString(), total: files.length.toString() } })
       const isMOGGEncrypted = await mogg.isEncrypted()
-      if ((isMOGGEncrypted && func === 'encryptAll') || (!isMOGGEncrypted && func === 'decryptAll')) continue
+      if ((isMOGGEncrypted && func === 'encryptAll') || (!isMOGGEncrypted && func === 'decryptAll')) {
+        count++
+        continue
+      }
 
       const tempMOGG = pathLikeToFilePath(temporaryFile({ extension: 'mogg' }))
 
@@ -58,21 +63,31 @@ export const encDecPackage = useHandler(async (win, _, func: EncDecPackageFuncti
 
       await tempMOGG.copy(mogg.path, true)
       await tempMOGG.delete()
+      count++
     } else {
       const edat = new EDATFile(file)
+      sendBuzyLoad(win, { code: 'subtext', key: `${func === 'encryptAll' ? 'encrypting' : 'decrypting'}MIDITextWithCount`, messageValues: { name: edat.path.fullname, count: count.toString(), total: files.length.toString() } })
       const isEDATEncrypted = await edat.isEncrypted()
-      if ((isEDATEncrypted && func === 'encryptAll') || (!isEDATEncrypted && func === 'decryptAll')) continue
-
-      const tempEDAT = pathLikeToFilePath(temporaryFile({ name: edat.path.fullname }))
-      if (func === 'encryptAll') {
-        const midi = new MIDIFile(file)
-        await midi.encrypt({ packFolderName: cacheContents.packages[pkgIndex].name, destPath: tempEDAT })
-      } else {
-        await edat.decrypt({ devKLicHash: cacheContents.packages[pkgIndex].devklic, destPath: tempEDAT })
+      if ((isEDATEncrypted && func === 'encryptAll') || (!isEDATEncrypted && func === 'decryptAll')) {
+        count++
+        continue
       }
 
-      await tempEDAT.copy(edat.path, true)
-      await tempEDAT.delete()
+      const tempEDAT = pathLikeToFilePath(temporaryFile({ name: edat.path.fullname }))
+      const tempRoot = pathLikeToDirPath(tempEDAT.root)
+
+      if (!tempRoot.exists) await tempRoot.mkDir(true)
+      if (func === 'encryptAll') {
+        const midi = new MIDIFile(file)
+        const newEdat = await midi.encrypt({ packFolderName: cacheContents.packages[pkgIndex].name, destPath: tempEDAT })
+        await newEdat.path.copy(edat.path, true)
+        await tempRoot.deleteDir(true)
+      } else {
+        const newMIDI = await edat.decrypt({ devKLicHash: cacheContents.packages[pkgIndex].devklic, destPath: tempEDAT })
+        await newMIDI.path.copy(edat.path, true)
+        await tempRoot.deleteDir(true)
+      }
+      count++
     }
   }
 
@@ -87,6 +102,8 @@ export const encDecPackage = useHandler(async (win, _, func: EncDecPackageFuncti
   await cache.write(JSON.stringify(cacheContents))
   const now = new Date()
   await utimes(cache.path, now, now)
+
+  sendBuzyLoad(win, { code: 'callSuccess' })
 
   return cacheContents
 })

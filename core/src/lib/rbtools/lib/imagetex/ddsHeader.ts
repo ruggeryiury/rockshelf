@@ -186,34 +186,6 @@ export const getDDSHeader = (fullDDSHeader: Buffer, shortDDSHeader: Buffer): DDS
     }
   }
 
-  // [CHANGED]
-  // const headerPaths = await RBTools.headersFolder.readDir()
-  // let ddsFormat: DDSFormatTypes = 'UNKNOWN'
-  // let ddsWidth: ArtworkSizeTypes = 512
-  // let ddsHeight: ArtworkSizeTypes = 512
-
-  // for (const headerPath of headerPaths) {
-  //   if (headerPath instanceof DirPath) continue
-  //   const headerName = headerPath.name
-  //   const headerBytes = await headerPath.read()
-  //   if (headerBytes.toString() === fullDDSHeader.toString() || headerBytes.toString() === shortDDSHeader.toString()) {
-  //     ddsFormat = 'DXT5'
-  //     if (headerName.includes('DXT1')) ddsFormat = 'DXT1'
-  //     else if (headerName.includes('NORMAL')) ddsFormat = 'NORMAL'
-
-  //     let index1 = headerName.indexOf('_') + 1
-  //     let index2 = headerName.indexOf('x')
-  //     const width = parseInt(headerName.substring(index1, index2))
-  //     ddsWidth = width as ArtworkSizeTypes
-  //     index1 = headerName.indexOf('_', index2)
-  //     index2++
-  //     const height = parseInt(headerName.substring(index2, index1))
-  //     ddsHeight = height as ArtworkSizeTypes
-  //     console.log(headerName, ddsFormat, width, height, headerBytes.subarray(0, 0x10))
-  //     header = buildDDSHeader(ddsFormat as DDSFormatTypes, width, height)
-  //   }
-  // }
-
   return {
     type: format,
     width: size,

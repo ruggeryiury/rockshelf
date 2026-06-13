@@ -465,7 +465,6 @@ export const processPKGItemEntries = async (pkgFileHeader: PKGHeaderData, pkgFil
         if (itemDataUsable > 0) blockSize = itemDataUsable
         else blockSize = Math.min(restSize, (Math.floor(Math.random() * (100 - 50 + 1)) + 50) * 0x100000)
 
-        // eslint-disable-next-line no-unused-vars
         if (restSize <= blockSize) blockDataSizeDelta = align.sizeDelta - align.offsetDelta
         // const blockDataSize = blockSize - blockDataOffset - blockDataSizeDelta
 
@@ -478,7 +477,6 @@ export const processPKGItemEntries = async (pkgFileHeader: PKGHeaderData, pkgFil
         restSize -= blockSize
         fileOffset += blockSize
         dataOffset += blockSize
-        // eslint-disable-next-line no-unused-vars
         blockDataOffset = 0
         itemDataUsable = 0
 

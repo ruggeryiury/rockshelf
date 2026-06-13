@@ -402,7 +402,6 @@ export const extractPackagesForRPCS3 = async (packages: RB3PackageLikeType[], de
       }
     }
   } catch (err) {
-    console.log('mainTempFolder', mainTempFolder.path)
     await mainTempFolder.deleteDir(true)
     throw err
   }

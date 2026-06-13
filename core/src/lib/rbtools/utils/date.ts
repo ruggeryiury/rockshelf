@@ -27,11 +27,9 @@ export const dateISOFormatToObject = (dateISOString: string): DateISOFormatObjec
   return { year, month, day, hour, min, sec, msec }
 }
 
-export const dateISOFormatObjectToDate = (dateObj: DateISOFormatObject): Date => {
-  const { day, hour, min, month, msec, sec, year } = dateObj
-  return new Date(`${year}-${month.toString().padStart(2, '0')}-${day.toString().padStart(2, '0')}T${hour.toString().padStart(2, '0')}:${min.toString().padStart(2, '0')}:${sec.toString().padStart(2, '0')}.${msec?.toString().padStart(3, '0') ?? '000'}Z`)
-}
 export const dateISOFormatObjectToDateISOString = (dateObj: DateISOFormatObject): string => {
   const { day, hour, min, month, msec, sec, year } = dateObj
   return `${year}-${month.toString().padStart(2, '0')}-${day.toString().padStart(2, '0')}T${hour.toString().padStart(2, '0')}:${min.toString().padStart(2, '0')}:${sec.toString().padStart(2, '0')}.${msec?.toString().padStart(3, '0') ?? '000'}Z`
 }
+
+export const dateISOFormatObjectToDate = (dateObj: DateISOFormatObject): Date => new Date(dateISOFormatObjectToDateISOString(dateObj))

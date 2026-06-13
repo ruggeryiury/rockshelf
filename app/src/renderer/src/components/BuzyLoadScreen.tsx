@@ -8,8 +8,9 @@ import { useWindowState } from '@renderer/stores/Window.state'
 import { useDeluxeInstallScreenState } from './DeluxeInstallScreen.state'
 import { useShallow } from 'zustand/shallow'
 import { useCreateNewPackageScreenState } from './CreateNewPackageScreen.state'
-import { VERBOSE } from '@renderer/app/rockshelf.globals'
+import { STRUCT_LOG } from '@renderer/app/rockshelf.globals'
 import { useExportPackageModalState } from './ExportPackageModal.state'
+import { useInstallRB3FileScreenState } from './InstallRB3FileScreen.state'
 
 export function BuzyLoadScreen() {
   const { t } = useTranslation()
@@ -18,12 +19,13 @@ export function BuzyLoadScreen() {
   const { resetDeluxeInstallScreenState } = useDeluxeInstallScreenState(useShallow((x) => ({ resetDeluxeInstallScreenState: x.resetDeluxeInstallScreenState })))
   const { resetCreateNewPackageScreenState } = useCreateNewPackageScreenState(useShallow((x) => ({ resetCreateNewPackageScreenState: x.resetCreateNewPackageScreenState })))
   const { resetExportPackageModalState } = useExportPackageModalState(useShallow((x) => ({ resetExportPackageModalState: x.resetExportPackageModalState })))
+  const { resetInstallRB3FileScreenState } = useInstallRB3FileScreenState(useShallow((x) => ({ resetInstallRB3FileScreenState: x.resetInstallRB3FileScreenState })))
 
   const condition = useMemo(() => active !== null, [active])
 
   useEffect(function initBuzyLoadListener() {
     window.api.onBuzyLoad((_, func) => {
-      if (VERBOSE.STRUCT) {
+      if (STRUCT_LOG) {
         if (func.code === 'init') console.log('struct BuzyLoadInitObject [core/src/lib/senders/buzyLoad.ts]', func)
         else if (func.code === 'throwError') console.log('struct BuzyLoadErrorObject [core/src/lib/senders/buzyLoad.ts]', func)
         else console.log('struct BuzyLoadObject [core/src/lib/senders/buzyLoad.ts]', func)
@@ -146,7 +148,7 @@ export function BuzyLoadScreen() {
                     case 'refreshRB3Stats':
                     default: {
                       const rb3Stats = await window.api.rpcs3GetRB3Stats()
-                      if (VERBOSE.STRUCT) console.log('struct RockBand3Data ["rbtools/src/lib/rpcs3/rpcs3GetRB3Stats.ts"]:', rb3Stats)
+                      if (STRUCT_LOG) console.log('struct RockBand3Data ["rbtools/src/lib/rpcs3/rpcs3GetRB3Stats.ts"]:', rb3Stats)
                       setWindowState({ rb3Stats })
                       break
                     }
@@ -160,6 +162,10 @@ export function BuzyLoadScreen() {
                     }
                     case 'resetExportPackageModalState': {
                       resetExportPackageModalState()
+                      break
+                    }
+                    case 'resetInstallRB3FileScreenState': {
+                      resetInstallRB3FileScreenState()
                       break
                     }
                   }

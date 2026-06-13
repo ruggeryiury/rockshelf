@@ -1,5 +1,5 @@
 import { useEffect } from 'react'
-import { BuzyLoadScreen, ConfigScreen, CreateNewPackageScreen, DeluxeInstallScreen, DialogScreen, EditSongScreen, FatalErrorScreen, FirstTimeScreen, ImageCropScreen, LogoScreen, MainScreen, MergePackageModal, MessageBox, MyPackagesScreen, QuickConfigScreen, RBBackground, RBIconsSelector, RhythmverseScreen, SongDetails, Topbar, WindowFrame } from './components.exports'
+import { AboutScreen, BuzyLoadScreen, ConfigScreen, CreateNewPackageScreen, DeluxeInstallScreen, DialogScreen, EditSongScreen, FatalErrorScreen, FirstTimeScreen, ImageCropScreen, InstallRB3FileScreen, LogoScreen, MainScreen, MergePackageModal, MessageBox, MyPackagesScreen, QuickConfigScreen, RBIconsSelector, RhythmverseScreen, SongDetails, Topbar, WindowFrame } from './components.exports'
 import { useWindowState } from './stores/Window.state'
 import { useFirstTimeScreenState } from './components/FirstTimeScreen.state'
 import { useTranslation } from 'react-i18next'
@@ -10,7 +10,7 @@ import { useDialogScreenState } from './components/DialogScreen.state'
 import { RPCS3SongPackagesDataExtra } from 'rockshelf-core'
 import { useShallow } from 'zustand/shallow'
 import type { InstrumentScoreData, ParsedRB3SaveData } from 'rockshelf-core/rbtools'
-import { VERBOSE } from './app/rockshelf.globals'
+import { STRUCT_LOG } from './app/rockshelf.globals'
 import { PackageDetails } from './components/PackageDetails'
 import { ExportPackageModal } from './components/ExportPackageModal'
 
@@ -40,27 +40,27 @@ export function App() {
           return
         }
 
-        if (VERBOSE.STRUCT) console.log('struct UserConfigObject ["core/src/core/userConfigData.ts"]:', hasUserConfig)
+        if (STRUCT_LOG) console.log('struct UserConfigObject ["core/src/core/userConfigData.ts"]:', hasUserConfig)
         setUserConfigState(hasUserConfig)
 
         await window.api.discordRPSetUserConfig(hasUserConfig)
 
         const rb3Stats = await window.api.rpcs3GetRB3Stats()
-        if (VERBOSE.STRUCT) console.log('struct RockBand3Data ["rbtools/src/lib/rpcs3/rpcs3GetRB3Stats.ts"]:', rb3Stats)
+        if (STRUCT_LOG) console.log('struct RockBand3Data ["rbtools/src/lib/rpcs3/rpcs3GetRB3Stats.ts"]:', rb3Stats)
 
         let saveData: ParsedRB3SaveData | false = false
         let instrumentScores: InstrumentScoreData | false = false
         let packagesData: RPCS3SongPackagesDataExtra | false = false
         if (typeof rb3Stats === 'object' && rb3Stats.hasSaveData) {
           saveData = await window.api.rpcs3GetSaveDataStats()
-          if (VERBOSE.STRUCT) console.log('struct ParsedRB3SaveData ["rbtools/src/lib/rpsc3/getSaveData.ts"]:', saveData)
+          if (STRUCT_LOG) console.log('struct ParsedRB3SaveData ["rbtools/src/lib/rpsc3/getSaveData.ts"]:', saveData)
           if (saveData) {
             instrumentScores = await window.api.rpcs3GetInstrumentScores(saveData)
-            if (VERBOSE.STRUCT) console.log('struct InstrumentScoreData ["rbtools/src/lib/rpcs3/getInstrumentScoresData.ts"]:', instrumentScores)
+            if (STRUCT_LOG) console.log('struct InstrumentScoreData ["rbtools/src/lib/rpcs3/getInstrumentScoresData.ts"]:', instrumentScores)
           }
 
           packagesData = await window.api.rpcs3GetPackagesData()
-          if (VERBOSE.STRUCT) console.log('struct RPCS3SongPackagesDataExtra ["rbtools/src/lib/rpcs3/rpcs3GetSongPackagesStatsExtra.ts"]:', packagesData)
+          if (STRUCT_LOG) console.log('struct RPCS3SongPackagesDataExtra ["rbtools/src/lib/rpcs3/rpcs3GetSongPackagesStatsExtra.ts"]:', packagesData)
         }
 
         setWindowState({
@@ -96,7 +96,7 @@ export function App() {
 
   useEffect(function initMessageListener() {
     window.api.onMessage((_, message) => {
-      if (VERBOSE.STRUCT) console.log('struct MessageBoxObject [core/src/core/rendererSenders.ts]', message)
+      if (STRUCT_LOG) console.log('struct MessageBoxObject [core/src/core/rendererSenders.ts]', message)
       setMessageBoxState({ message })
     })
   }, [])
@@ -121,6 +121,7 @@ export function App() {
     <>
       <Topbar />
       <WindowFrame>
+        <AboutScreen />
         <BuzyLoadScreen />
         <ConfigScreen />
         <CreateNewPackageScreen />
@@ -131,6 +132,7 @@ export function App() {
         <FatalErrorScreen />
         <FirstTimeScreen />
         <ImageCropScreen />
+        <InstallRB3FileScreen />
         <LogoScreen />
         <MainScreen />
         <MergePackageModal />
@@ -138,7 +140,6 @@ export function App() {
         <MyPackagesScreen />
         <PackageDetails />
         <QuickConfigScreen />
-        <RBBackground />
         <RBIconsSelector />
         <RhythmverseScreen />
         <SongDetails />

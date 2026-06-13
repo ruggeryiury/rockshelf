@@ -4,7 +4,7 @@ import { useMainScreenState } from './MainScreen.state'
 import { useWindowState } from '@renderer/stores/Window.state'
 import { useTranslation } from 'react-i18next'
 import type { ParsedRB3SaveData, InstrumentScoreData } from 'rockshelf-core/rbtools'
-import { DXNIGHTLYLINK, VERBOSE } from '@renderer/app/rockshelf.globals'
+import { DXNIGHTLYLINK, STRUCT_LOG } from '@renderer/app/rockshelf.globals'
 import type { RockBand3Data } from 'rockshelf-core/rbtools/lib'
 import { useDeluxeInstallScreenState } from './DeluxeInstallScreen.state'
 import { useMessageBoxState } from './MessageBox.state'
@@ -14,6 +14,8 @@ import { useShallow } from 'zustand/shallow'
 import { useCreateNewPackageScreenState } from './CreateNewPackageScreen.state'
 import { useRhythmverseScreenState } from './RhythmverseScreen.state'
 import { useQuickConfigScreenState } from './QuickConfigScreen.state'
+import { useInstallRB3FileScreenState } from './InstallRB3FileScreen.state'
+import { useAboutScreenState } from './AboutScreen.state'
 
 export function MainScreen() {
   const { t } = useTranslation()
@@ -26,6 +28,8 @@ export function MainScreen() {
   const { setCreateNewPackageScreenState } = useCreateNewPackageScreenState(useShallow((x) => ({ setCreateNewPackageScreenState: x.setCreateNewPackageScreenState })))
   const { setRhythmverseScreenState } = useRhythmverseScreenState(useShallow((x) => ({ setRhythmverseScreenState: x.setRhythmverseScreenState })))
   const { setQuickConfigScreenState } = useQuickConfigScreenState(useShallow((x) => ({ setQuickConfigScreenState: x.setQuickConfigScreenState })))
+  const { setInstallRB3FileScreenState } = useInstallRB3FileScreenState(useShallow((x) => ({ setInstallRB3FileScreenState: x.setInstallRB3FileScreenState })))
+  const { setAboutScreenState } = useAboutScreenState(useShallow((x) => ({ setAboutScreenState: x.setAboutScreenState })))
 
   return (
     <AnimatedSection id="MainScreen" condition={active} className="z-1 h-full max-h-full w-full max-w-full overflow-y-hidden bg-black/90 p-8">
@@ -77,7 +81,7 @@ export function MainScreen() {
           )}
           {rb3Stats === 'loading' && (
             <>
-              <p className="mr-auto self-start text-base text-neutral-500 italic">{t('loadingRB3Data')}</p>
+              <p className="mr-auto self-center text-lg text-neutral-500 italic">{t('loadingRB3Data')}</p>
             </>
           )}
           <button
@@ -88,15 +92,15 @@ export function MainScreen() {
               try {
                 setTimeout(async () => {
                   const newRB3Stats = await window.api.rpcs3GetRB3Stats()
-                  if (VERBOSE.STRUCT) console.log('struct RockBand3Data ["rbtools/src/lib/rpcs3/rpcs3GetRB3Stats.ts"]:', rb3Stats)
+                  if (STRUCT_LOG) console.log('struct RockBand3Data ["rbtools/src/lib/rpcs3/rpcs3GetRB3Stats.ts"]:', rb3Stats)
                   let newSaveData: ParsedRB3SaveData | false = false
                   let newInstrumentScores: InstrumentScoreData | false = false
                   if (typeof rb3Stats === 'object' && (rb3Stats.hasSaveData || rb3Stats.userName !== null)) {
                     newSaveData = await window.api.rpcs3GetSaveDataStats()
-                    if (VERBOSE.STRUCT) console.log('struct ParsedRB3SaveData ["rbtools/src/lib/rpsc3/getSaveData.ts"]:', newSaveData)
+                    if (STRUCT_LOG) console.log('struct ParsedRB3SaveData ["rbtools/src/lib/rpsc3/getSaveData.ts"]:', newSaveData)
                     if (newSaveData) {
                       newInstrumentScores = await window.api.rpcs3GetInstrumentScores(newSaveData)
-                      if (VERBOSE.STRUCT) console.log('struct InstrumentScoreData ["rbtools/src/lib/rpcs3/getInstrumentScoresData.ts"]:', newInstrumentScores)
+                      if (STRUCT_LOG) console.log('struct InstrumentScoreData ["rbtools/src/lib/rpcs3/getInstrumentScoresData.ts"]:', newInstrumentScores)
                     }
                   }
                   setWindowState({ disableButtons: false, rb3Stats: newRB3Stats, saveData: newSaveData, instrumentScores: newInstrumentScores })
@@ -112,11 +116,12 @@ export function MainScreen() {
         <AnimatedDiv condition={typeof rb3Stats === 'object'} className="flex-row!" {...animate({ opacity: true, duration: 0.1 })}>
           {typeof rb3Stats === 'object' && (
             <>
-              <div className="mr-4 h-48 max-h-48 w-48 max-w-48">
-                <img src={`rbicons://${rb3Stats.hasDeluxe ? 'dx' : 'rb3'}`} className={clsx(!rb3Stats.hasGameInstalled && 'grayscale', 'mr-4 mb-2 h-48 min-h-48 w-48 min-w-48 border-2 border-neutral-700 duration-200')} />
+              <div className="mr-4">
+                <img src={`rbicons://${rb3Stats.hasDeluxe ? 'dx' : 'rb3'}`} className={clsx(!rb3Stats.hasGameInstalled && 'grayscale', 'mb-2 h-64 min-h-64 w-64 min-w-64 border-2 border-neutral-700 duration-200')} />
 
                 <button
-                  className="mb-2 w-full self-start rounded-xs border border-neutral-700 bg-neutral-900 px-1 py-0.5 text-xs! uppercase duration-100 last:mb-0 hover:bg-neutral-700 active:bg-neutral-600 disabled:text-neutral-700 disabled:hover:bg-neutral-900"
+                  className="mb-2 w-full self-start rounded-xs border border-neutral-700 bg-neutral-900 px-1 py-0.5 text-xs! uppercase duration-100 last:mb-0 hover:cursor-help! hover:bg-neutral-700 active:bg-neutral-600 disabled:text-neutral-700 disabled:hover:bg-neutral-900"
+                  title={`${t(`play${rb3Stats.hasDeluxe ? 'DX' : 'RB3'}`)}.`}
                   disabled={disableButtons}
                   onClick={async () => {
                     setWindowState({ disableButtons: true })
@@ -127,7 +132,8 @@ export function MainScreen() {
                   {t(`play${rb3Stats.hasDeluxe ? 'DX' : 'RB3'}`)}
                 </button>
                 <button
-                  className="mb-2 w-full self-start rounded-xs border border-neutral-700 bg-neutral-900 px-1 py-0.5 text-xs! uppercase duration-100 last:mb-0 hover:bg-neutral-700 active:bg-neutral-600 disabled:text-neutral-700 disabled:hover:bg-neutral-900"
+                  className="mb-2 w-full self-start rounded-xs border border-neutral-700 bg-neutral-900 px-1 py-0.5 text-xs! uppercase duration-100 last:mb-0 hover:cursor-help! hover:bg-neutral-700 active:bg-neutral-600 disabled:text-neutral-700 disabled:hover:bg-neutral-900"
+                  title={t('installDeluxeBtnDesc')}
                   disabled={disableButtons}
                   onClick={async () => {
                     setDeluxeInstallScreenState({ active: true })
@@ -136,7 +142,8 @@ export function MainScreen() {
                   {t('installDeluxe')}
                 </button>
                 <button
-                  className="mb-2 w-full self-start rounded-xs border border-neutral-700 bg-neutral-900 px-1 py-0.5 text-xs! uppercase duration-100 last:mb-0 hover:bg-neutral-700 active:bg-neutral-600 disabled:text-neutral-700 disabled:hover:bg-neutral-900"
+                  className="mb-2 w-full self-start rounded-xs border border-neutral-700 bg-neutral-900 px-1 py-0.5 text-xs! uppercase duration-100 last:mb-0 hover:cursor-help! hover:bg-neutral-700 active:bg-neutral-600 disabled:text-neutral-700 disabled:hover:bg-neutral-900"
+                  title={t('installQuickConfigurationsBtnDesc')}
                   disabled={disableButtons}
                   onClick={() => {
                     setQuickConfigScreenState({ active: true })
@@ -145,7 +152,8 @@ export function MainScreen() {
                   {t('installQuickConfigurations')}
                 </button>
                 <button
-                  className="mb-2 w-full self-start rounded-xs border border-neutral-700 bg-neutral-900 px-1 py-0.5 text-xs! uppercase duration-100 last:mb-0 hover:bg-neutral-700 active:bg-neutral-600 disabled:text-neutral-700 disabled:hover:bg-neutral-900"
+                  className="mb-2 w-full self-start rounded-xs border border-neutral-700 bg-neutral-900 px-1 py-0.5 text-xs! uppercase duration-100 last:mb-0 hover:cursor-help! hover:bg-neutral-700 active:bg-neutral-600 disabled:text-neutral-700 disabled:hover:bg-neutral-900"
+                  title={!richPresence ? t('startRichPresenceBtnDesc') : t('stopRichPresenceBtnDesc')}
                   disabled={disableButtons}
                   onClick={async () => {
                     setWindowState({ disableButtons: true })
@@ -180,7 +188,8 @@ export function MainScreen() {
                   {richPresence ? t('stopRichPresence') : t('startRichPresence')}
                 </button>
                 <button
-                  className="mb-2 w-full self-start rounded-xs border border-neutral-700 bg-neutral-900 px-1 py-0.5 text-xs! uppercase duration-100 last:mb-0 hover:bg-neutral-700 active:bg-neutral-600 disabled:text-neutral-700 disabled:hover:bg-neutral-900"
+                  className="mb-2 w-full self-start rounded-xs border border-neutral-700 bg-neutral-900 px-1 py-0.5 text-xs! uppercase duration-100 last:mb-0 hover:cursor-help! hover:bg-neutral-700 active:bg-neutral-600 disabled:text-neutral-700 disabled:hover:bg-neutral-900"
+                  title={t('createNewPackageBtnDesc')}
                   disabled={disableButtons}
                   onClick={async () => {
                     setWindowState({ disableButtons: true })
@@ -191,7 +200,25 @@ export function MainScreen() {
                   {t('createNewPackage')}
                 </button>
                 <button
-                  className="mb-2 w-full self-start rounded-xs border border-neutral-700 bg-neutral-900 px-1 py-0.5 text-xs! uppercase duration-100 last:mb-0 hover:bg-neutral-700 active:bg-neutral-600 disabled:text-neutral-700 disabled:hover:bg-neutral-900"
+                  className="mb-2 w-full self-start rounded-xs border border-neutral-700 bg-neutral-900 px-1 py-0.5 text-xs! uppercase duration-100 last:mb-0 hover:cursor-help! hover:bg-neutral-700 active:bg-neutral-600 disabled:text-neutral-700 disabled:hover:bg-neutral-900"
+                  title={t('installRB3FileBtnDesc')}
+                  disabled={disableButtons}
+                  onClick={async () => {
+                    setWindowState({ disableButtons: true })
+                    const selectedRB3File = await window.api.selectRB3File()
+                    if (STRUCT_LOG) console.log('struct RB3FileJSONRepresentation ["core/src/lib/rb3p/parseRB3File.ts"]:', selectedRB3File)
+
+                    if (selectedRB3File) {
+                      setInstallRB3FileScreenState({ selectedRB3File, packageName: selectedRB3File.packageName, packageFolderName: selectedRB3File.defaultFolderName, packageNameError: null, packageFolderNameError: null, selectedSongs: selectedRB3File.dta.map((song) => song.songname) })
+                    }
+                    setWindowState({ disableButtons: false })
+                  }}
+                >
+                  {t('installRB3File')}
+                </button>
+                <button
+                  className="mb-2 w-full self-start rounded-xs border border-neutral-700 bg-neutral-900 px-1 py-0.5 text-xs! uppercase duration-100 last:mb-0 hover:cursor-help! hover:bg-neutral-700 active:bg-neutral-600 disabled:text-neutral-700 disabled:hover:bg-neutral-900"
+                  title={t('myPackagesBtnDesc')}
                   disabled={disableButtons}
                   onClick={async () => {
                     setMyPackagesScreenState({ active: true })
@@ -200,7 +227,8 @@ export function MainScreen() {
                   {t('myPackages')}
                 </button>
                 <button
-                  className="mb-2 w-full self-start rounded-xs border border-neutral-700 bg-neutral-900 px-1 py-0.5 text-xs! uppercase duration-100 last:mb-0 hover:bg-neutral-700 active:bg-neutral-600 disabled:text-neutral-700 disabled:hover:bg-neutral-900"
+                  className="mb-2 w-full self-start rounded-xs border border-neutral-700 bg-neutral-900 px-1 py-0.5 text-xs! uppercase duration-100 last:mb-0 hover:cursor-help! hover:bg-neutral-700 active:bg-neutral-600 disabled:text-neutral-700 disabled:hover:bg-neutral-900"
+                  title={t('browseRhythmverseBtnDesc')}
                   disabled={disableButtons}
                   onClick={async () => {
                     setRhythmverseScreenState({ active: true })
@@ -209,13 +237,24 @@ export function MainScreen() {
                   {t('browseRhythmverse')}
                 </button>
                 <button
-                  className="mb-2 w-full self-start rounded-xs border border-neutral-700 bg-neutral-900 px-1 py-0.5 text-xs! uppercase duration-100 last:mb-0 hover:bg-neutral-700 active:bg-neutral-600 disabled:text-neutral-700 disabled:hover:bg-neutral-900"
+                  className="mb-2 w-full self-start rounded-xs border border-neutral-700 bg-neutral-900 px-1 py-0.5 text-xs! uppercase duration-100 last:mb-0 hover:cursor-help! hover:bg-neutral-700 active:bg-neutral-600 disabled:text-neutral-700 disabled:hover:bg-neutral-900"
+                  title={t('configurationsBtnDesc')}
                   disabled={disableButtons}
                   onClick={async () => {
                     setConfigScreenState({ active: true })
                   }}
                 >
                   {t('configurations')}
+                </button>
+                <button
+                  className="mb-2 w-full self-start rounded-xs border border-neutral-700 bg-neutral-900 px-1 py-0.5 text-xs! uppercase duration-100 last:mb-0 hover:cursor-help! hover:bg-neutral-700 active:bg-neutral-600 disabled:text-neutral-700 disabled:hover:bg-neutral-900"
+                  title={t('aboutBtnDesc')}
+                  disabled={disableButtons}
+                  onClick={async () => {
+                    setAboutScreenState({ active: true })
+                  }}
+                >
+                  {t('about')}
                 </button>
               </div>
               <div className="w-full">

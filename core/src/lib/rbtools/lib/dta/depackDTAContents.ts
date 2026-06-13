@@ -90,9 +90,7 @@ export const depackDTAContents = (dtaFileContents: Buffer): string[] => {
       })
       .join('\r\n')
 
-    const joinLines = allLines.replaceAll('\r\n', '').trim()
-    const removeSpaces = joinLines.replace(/\s+/g, ' ').trim()
-    finalSongs.push(removeSpaces)
+    finalSongs.push(allLines)
   }
 
   return finalSongs

@@ -118,7 +118,6 @@ export const extractPackagesForSTFSFile = async (packages: RB3PackageLikeType[],
   }
 
   const firstSong = stfsExtraction.songs[0]
-  console.log(tempExtractionFolder)
 
   const onyxRepackFolder = tempExtractionFolder.gotoDir('onyx-repack')
   await onyxRepackFolder.mkDir(true)

@@ -2,7 +2,7 @@ import { getPackagesCacheFile, getRB3USRDIR, rbiconsToPath, readUserConfigFile, 
 import { DirPath, pathLikeToFilePath } from 'node-lib'
 import { createRSPackImage, extractPackagesForRPCS3Extra, isValidFolderName, rpcs3GetSongPackagesStatsExtra, type RPCS3SongPackagesDataExtra, type RSPackImageSourceValues } from '../lib.exports'
 import { utimes } from 'node:fs/promises'
-import { isRB3FolderNameFreeOnRPCS3, isRPCS3Devhdd0PathValid, officialPackages, type RB3CompatibleDTAFile, type RPCS3ExtractionOptions } from '../lib/rbtools/lib.exports'
+import { isRB3FolderNameFreeOnRPCS3, isRPCS3Devhdd0PathValid, officialPackages, type RPCS3ExtractionOptions } from '../lib/rbtools/lib.exports'
 
 export interface CreateNewPackageOptions {
   packages: string[]
@@ -13,17 +13,7 @@ export interface CreateNewPackageOptions {
   selectedSongs?: string[]
 }
 
-export interface SerializedRPCS3PackageExtractionObject {
-  path: string
-  packageSize: number
-  songsInstalled: number
-  songs: RB3CompatibleDTAFile[]
-  installedSongIDs: string[]
-  installedSongSongnames: string[]
-  packagesData: RPCS3SongPackagesDataExtra
-}
-
-export const createNewPackage = useHandler(async (win, __, options: CreateNewPackageOptions): Promise<SerializedRPCS3PackageExtractionObject | false> => {
+export const createNewPackage = useHandler(async (win, __, options: CreateNewPackageOptions): Promise<RPCS3SongPackagesDataExtra | false> => {
   const userConfig = await readUserConfigFile()
   if (!userConfig) {
     sendDialog(win, 'corruptedUserConfig')
@@ -31,7 +21,6 @@ export const createNewPackage = useHandler(async (win, __, options: CreateNewPac
   }
 
   const { packageFolderName, forceEncryption, packages, thumbnail, packageName, selectedSongs } = options
-  const now = new Date()
 
   let devhdd0: DirPath
   try {
@@ -100,20 +89,14 @@ export const createNewPackage = useHandler(async (win, __, options: CreateNewPac
     const cache = getPackagesCacheFile()
     const packagesData = await rpcs3GetSongPackagesStatsExtra(devhdd0)
     await cache.write(JSON.stringify(packagesData))
+
+    const now = new Date()
     await utimes(cache.path, now, now)
     if (packagesData.parsingErrors.length > 0) sendDialog(win, 'parsingErrorsOnPackagesDTA')
 
     sendBuzyLoad(win, { code: 'callSuccess' })
 
-    return {
-      path: results.path.path,
-      packageSize: results.packSize,
-      songs: results.songs,
-      songsInstalled: results.songsInstalled,
-      installedSongIDs: results.installedSongIDs,
-      installedSongSongnames: results.installedSongSongnames,
-      packagesData,
-    }
+    return packagesData
   } catch (err) {
     if (packageFolder.exists) await packageFolder.deleteDir(true)
     throw err

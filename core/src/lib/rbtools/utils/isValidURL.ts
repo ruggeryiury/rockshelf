@@ -8,7 +8,6 @@ export const isValidURL = (url: string): boolean => {
   try {
     new URL(url)
     return true
-    // eslint-disable-next-line no-unused-vars
   } catch (err) {
     return false
   }

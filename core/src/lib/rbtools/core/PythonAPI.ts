@@ -332,7 +332,6 @@ export class PythonAPI {
     const command = `${PythonAPI.getPythonExecName()} "${pythonScript}" "${pathLikeToString(moggFilePath)}" -p`
     const cwd = is.dev ? RBTools.pyFolder.path : RBTools.pyFolder.path.replace(/(\.asar)([\\/])/, '.asar.unpacked$2')
     const { stderr, stdout } = await execAsync(command, { windowsHide: true, cwd })
-    // if (isDev()) console.log(`RBTools Python script: ${pythonScript}\n----------------------------------\n`, stdout.trim(), '\n\nEND OF PROGRAM\n----------------------------------')
     if (stderr) throw new Error(stderr)
     const returnValue = JSON.parse(
       stdout
@@ -490,7 +489,6 @@ export class PythonAPI {
     if (songs.length > 0) {
       command += ` --songs ${songs.map((s) => `"${s}"`).join(' ')}`
     }
-    // console.log('Running command:', command)
     const cwd = is.dev ? RBTools.pyFolder.path : RBTools.pyFolder.path.replace(/(\.asar)([\\/])/, '.asar.unpacked$2')
     const { stderr } = await execAsync(command, { windowsHide: true, cwd })
     if (stderr) throw new Error(stderr)

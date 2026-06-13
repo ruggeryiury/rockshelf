@@ -9,12 +9,12 @@ import { useShallow } from 'zustand/shallow'
 import { useMessageBoxState } from './MessageBox.state'
 import { InstrumentScoreData } from 'rockshelf-core/rbtools'
 import { useMyPackagesScreenState } from './MyPackagesScreen.state'
-import { VERBOSE } from '@renderer/app/rockshelf.globals'
+import { STRUCT_LOG } from '@renderer/app/rockshelf.globals'
 import { useUserConfigState } from '@renderer/stores/UserConfig.state'
 
 function DialogButton({ children, className, ...props }: ButtonHTMLAttributes<HTMLButtonElement>) {
   return (
-    <button className={clsx('mr-2 rounded-xs border border-neutral-800 bg-neutral-900 px-1 py-0.5 text-sm! uppercase duration-100 last:mr-0 hover:bg-neutral-800 active:bg-neutral-700 disabled:text-neutral-700 disabled:hover:bg-neutral-900', className)} {...props}>
+    <button className={clsx('mr-2 rounded-xs border border-neutral-800 bg-neutral-900 px-1 py-0.5 text-base! uppercase duration-100 last:mr-0 hover:bg-neutral-800 active:bg-neutral-700 disabled:text-neutral-700 disabled:hover:bg-neutral-900', className)} {...props}>
       {children}
     </button>
   )
@@ -126,9 +126,9 @@ export function DialogScreen() {
                     try {
                       setWindowState({ disableButtons: true })
                       const newPackages = await window.api.deletePackage(deletePackageIndex)
-                      if (VERBOSE.STRUCT) console.log('struct RPCS3SongPackagesDataExtra ["rbtools/src/lib/rpcs3/rpcs3GetSongPackagesStatsExtra.ts"]:', newPackages)
+                      if (STRUCT_LOG) console.log('struct RPCS3SongPackagesDataExtra ["rbtools/src/lib/rpcs3/rpcs3GetSongPackagesStatsExtra.ts"]:', newPackages)
                       const newCatalog = await window.api.sortAndFilterSongPackages(packagesCatalogSortBy)
-                      if (VERBOSE.STRUCT) console.log('struct SongPackagesFilterGenericObject [core/src/lib/dta/getDTACatalog.ts]', newCatalog)
+                      if (STRUCT_LOG) console.log('struct SongPackagesFilterGenericObject [core/src/lib/dta/getDTACatalog.ts]', newCatalog)
                       let newInstrumentScores: false | InstrumentScoreData = false
                       if (typeof saveData === 'object') newInstrumentScores = await window.api.rpcs3GetInstrumentScores(saveData)
                       setMyPackagesScreenState({ packagesCatalog: newCatalog })

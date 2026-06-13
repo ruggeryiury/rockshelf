@@ -153,6 +153,11 @@ export class STFSFile {
     if (songs.length > 0) {
       const stat = await this.stat()
       const parser = stat.dta
+
+      if (parser.songs.length === 0 && parser.updates.length > 0) {
+        await parser.applyDXUpdatesOnSongs(true)
+      }
+
       parser.songs = parser.songs.filter((s) => songs.includes(s.songname))
       if (parser.songs.length === 0) throw new Error('None of the provided internal songnames were found on the provided STFS file.')
 

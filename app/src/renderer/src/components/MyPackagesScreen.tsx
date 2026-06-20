@@ -118,7 +118,7 @@ export function MyPackagesScreen() {
                     <div className="mb-1 w-full flex-row! duration-150 last:mb-0" key={`packTitleHeader${headerI}`}>
                       <div className="w-full">
                         <div className="sticky! top-0 z-100 mb-1 w-full flex-row! items-center rounded-b-sm bg-neutral-900 px-2 py-1">
-                          <h1 className="mr-auto text-lg uppercase">{t(header.code)}</h1>
+                          <h1 className="mr-auto text-lg uppercase">{t(packagesCatalog.type === 'userCategory' ? `pkgCategory${headerI}` : header.code)}</h1>
                           <p className="font-pentatonic text-neutral-500 uppercase">{t(header.indexes.length === 1 ? 'packagesCount' : 'packagesCountPlural', { count: header.indexes.length })}</p>
                         </div>
                         {header.indexes.map((packageIndex, packageIndexKey) => {
@@ -242,6 +242,24 @@ export function MyPackagesScreen() {
                     }}
                   >
                     {t('sortByOfficialUnofficial')}
+                  </button>
+                  <button
+                    disabled={disableButtons}
+                    className={clsx('font-pentatonic mr-2 flex-row! items-center rounded-xs border border-neutral-800 px-2 py-1 text-xs! uppercase duration-200 last:mr-0', packagesCatalogSortBy === 'userCategory' ? 'bg-neutral-400 text-neutral-900 hover:bg-neutral-300 active:bg-neutral-200' : 'bg-neutral-900 hover:bg-neutral-800 active:bg-neutral-700')}
+                    onClick={async () => {
+                      setWindowState({ disableButtons: true })
+                      setUserConfigState({ packagesCatalogSortBy: 'userCategory' })
+                      const newConfig = getUserConfigState()
+                      try {
+                        await window.api.saveUserConfigFile(newConfig)
+                        setMyPackagesScreenState({ packagesCatalog: false })
+                      } catch (err) {
+                        if (err instanceof Error) setWindowState({ err })
+                      }
+                      setWindowState({ disableButtons: false })
+                    }}
+                  >
+                    {t('sortByUserCategory')}
                   </button>
                 </div>
               </div>

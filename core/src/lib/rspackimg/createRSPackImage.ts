@@ -1,13 +1,14 @@
 import { BinaryReader, BinaryWriter, FilePath, type FilePathLikeTypes, pathLikeToFilePath, StreamWriter } from 'node-lib'
 import { createReadStream } from 'node:fs'
 import { useDefaultOptions } from 'use-default-options'
-import { rsPackImage, type ParsedRSPackImageObject, type RSPackImageEncryptionStatusValues, type RSPackImageSourceValues, type RSPackImageTypeValues } from '../../lib.exports'
+import { rsPackImage, type ParsedRSPackImageObject, type RSPackImageEncryptionStatusValues, type RSPackImagePackageCategoryValues, type RSPackImageSourceValues, type RSPackImageTypeValues } from '../../lib.exports'
 import { getKeyFromMapValue, dateISOFormatToObject } from '../rbtools/utils.exports'
 
 export interface RSPackImageCreatorOptions {
   type?: RSPackImageTypeValues
   source?: RSPackImageSourceValues
   encryptionStatus?: RSPackImageEncryptionStatusValues
+  category?: RSPackImagePackageCategoryValues
   packageName?: string
   creationDate?: string
 }
@@ -41,11 +42,12 @@ export const createRSPackImage = async (imageFilePathOrBuffer: FilePathLikeTypes
   const nowDate = new Date().toISOString()
   const date = dateISOFormatToObject(nowDate)
 
-  const { type, source, encryptionStatus, packageName, creationDate } = useDefaultOptions<RSPackImageCreatorOptions>(
+  const { type, source, encryptionStatus, category, packageName, creationDate } = useDefaultOptions<RSPackImageCreatorOptions>(
     {
       type: 'rockshelf',
       source: 'stfs',
       encryptionStatus: 'unknown',
+      category: 'other',
       packageName: '',
       creationDate: nowDate,
     },
@@ -81,8 +83,9 @@ export const createRSPackImage = async (imageFilePathOrBuffer: FilePathLikeTypes
   extraData.writeUInt8(getKeyFromMapValue(rsPackImage.type, type) ?? 0)
   extraData.writeUInt8(getKeyFromMapValue(rsPackImage.source, source) ?? 0)
   extraData.writeUInt8(getKeyFromMapValue(rsPackImage.encryptionStatus, encryptionStatus) ?? 0)
+  extraData.writeUInt8(getKeyFromMapValue(rsPackImage.packageCategory, category) ?? 0)
 
-  extraData.write(Buffer.alloc(13))
+  extraData.write(Buffer.alloc(12))
 
   extraData.writeUInt16LE(date.year)
   extraData.writeUInt8(date.month)
@@ -109,6 +112,7 @@ export const createRSPackImage = async (imageFilePathOrBuffer: FilePathLikeTypes
       type,
       source,
       encryptionStatus,
+      category,
       creationDate,
       packageName,
     },

@@ -1,5 +1,5 @@
 import { BinaryReader, FilePath, pathLikeToFilePath, type FilePathLikeTypes } from 'node-lib'
-import { createRSPackImage, cropImageToTempPNG, isJPEGRockshelfPackImage, parseRSDATBuffer, type RSPackImageCreatorOptions, type RSPackImageEncryptionStatusValues } from '../../lib.exports'
+import { createRSPackImage, cropImageToTempPNG, isJPEGRockshelfPackImage, parseRSDATBuffer, type RSPackImageCreatorOptions, type RSPackImageEncryptionStatusValues, type RSPackImagePackageCategoryValues } from '../../lib.exports'
 import { temporaryFile } from 'tempy'
 import { getRockshelfModuleRootDir } from '../../core.exports'
 import { TextureFile, PythonAPI } from '../rbtools'
@@ -29,18 +29,19 @@ export interface EditPackageDataOptions {
   imgPath?: string
   imgCropOptions?: CropImageCoordinatesObject
   encryptionStatus?: RSPackImageEncryptionStatusValues
+  category?: RSPackImagePackageCategoryValues
   creationDate?: string
 }
 
 export const editRSPackImage = async (rsPackImagePath: FilePathLikeTypes, options: EditPackageDataOptions): Promise<FilePath> => {
-  const { imgCropOptions, imgPath, packageName, encryptionStatus, creationDate } = options
+  const { imgCropOptions, imgPath, packageName, encryptionStatus, category, creationDate } = options
   const src = pathLikeToFilePath(rsPackImagePath)
 
   const results = await isJPEGRockshelfPackImage(src)
   if (!results) throw new Error(`Provided JPEG image file "${src.path}" is not a valid Rockshelf Pack Image file.`)
 
   const rsDataBuffer = await parseRSDATBuffer(results.buffer)
-  const opts: RSPackImageCreatorOptions = { packageName: packageName || rsDataBuffer.packageName, source: rsDataBuffer.source, type: rsDataBuffer.type, encryptionStatus: encryptionStatus || rsDataBuffer.encryptionStatus, creationDate: creationDate || rsDataBuffer.creationDate }
+  const opts: RSPackImageCreatorOptions = { packageName: packageName || rsDataBuffer.packageName, source: rsDataBuffer.source, type: rsDataBuffer.type, encryptionStatus: encryptionStatus || rsDataBuffer.encryptionStatus, category: category || rsDataBuffer.category, creationDate: creationDate || rsDataBuffer.creationDate }
 
   if (!imgPath) {
     const srcReader = await BinaryReader.fromFile(src)

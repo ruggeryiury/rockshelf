@@ -1,5 +1,5 @@
 import { getPackagesCacheFile, useHandler } from '../core.exports'
-import { filterSongPackagesByName, filterSongPackagesByOfficialPkg, type RPCS3SongPackagesDataExtra, type SongPackagesFilterGenericObject, type SongPackagesFilterOptions, type SongPackagesFilterTypes } from '../lib.exports'
+import { filterSongPackagesByName, filterSongPackagesByOfficialPkg, filterSongPackagesByUserCategory, type RPCS3SongPackagesDataExtra, type SongPackagesFilterGenericObject, type SongPackagesFilterOptions, type SongPackagesFilterTypes } from '../lib.exports'
 
 export const sortAndFilterSongPackages = useHandler(async (_, __, type: SongPackagesFilterTypes, options?: SongPackagesFilterOptions): Promise<SongPackagesFilterGenericObject> => {
   const cache = getPackagesCacheFile()
@@ -12,5 +12,7 @@ export const sortAndFilterSongPackages = useHandler(async (_, __, type: SongPack
       return filterSongPackagesByName(packages, options)
     case 'officialUnofficial':
       return filterSongPackagesByOfficialPkg(packages, options)
+    case 'userCategory':
+      return filterSongPackagesByUserCategory(packages, options)
   }
 })

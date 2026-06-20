@@ -1,7 +1,7 @@
 import type { BrowserWindow } from 'electron'
 import { DirPath, type FilePathLikeTypes } from 'node-lib'
 import { rpcs3GetSongPackagesStatsExtra, type RPCS3SongPackagesDataExtra } from '../rpcs3/rpcs3GetSongPackagesStatsExtra'
-import { getPackagesCacheFile, getRB3USRDIR, readUserConfigFile, sendBuzyLoad, sendDialog } from '../../core.exports'
+import { getPackagesCacheFile, getRB3USRDIR, readUserConfigFile, sendBuzyLoad, sendDialog, sendMessageBox } from '../../core.exports'
 import { isRPCS3Devhdd0PathValid } from '../rbtools/lib.exports'
 import { isValidFolderName } from '../strnum/isValidFolderName'
 import { useDefaultOptions } from 'use-default-options'
@@ -31,7 +31,7 @@ export const extractRB3FileToRPCS3 = async (win: BrowserWindow, rb3FilePath: Fil
   try {
     await rb3.checkFileIntegrity()
   } catch (err) {
-    // sendMessageBox(win, { type: 'error', code: 'selectRB3FileInvalidFileSignature', messageValues: { path: rb3.path.path } })
+    sendMessageBox(win, { type: 'error', code: 'selectRB3FileInvalidFileSignature', messageValues: { path: rb3.path.path } })
     return false
   }
 
@@ -82,6 +82,9 @@ export const extractRB3FileToRPCS3 = async (win: BrowserWindow, rb3FilePath: Fil
   const { header, dta, thumbnail, description } = await rb3.stat()
   let count = 1
   let total = 2 + dta.songs.length * 4
+
+  for (const entry of header.songEntries) if (entry.artworkSize === 0) total--
+
   if (description && description.length > 0) total++
 
   const packageSongsPath = packageFolder.gotoDir('songs')
@@ -127,11 +130,13 @@ export const extractRB3FileToRPCS3 = async (win: BrowserWindow, rb3FilePath: Fil
       offset += entry.midiSize
       count++
 
-      const artwork = songGenPath.gotoFile(`${songname}_keep.png_ps3`)
-      sendBuzyLoad(win, { code: 'subtext', key: 'writingArtworkTextWithCount', messageValues: { count: count.toString(), total: total.toString(), name: edat.fullname } })
-      await pipeline(createReadStream(rb3.path.path, { start: offset, end: offset + entry.artworkSize - 1 }), artwork.createWriteStreamSync())
-      offset += entry.artworkSize
-      count++
+      if (entry.artworkSize > 0) {
+        const artwork = songGenPath.gotoFile(`${songname}_keep.png_ps3`)
+        sendBuzyLoad(win, { code: 'subtext', key: 'writingArtworkTextWithCount', messageValues: { count: count.toString(), total: total.toString(), name: edat.fullname } })
+        await pipeline(createReadStream(rb3.path.path, { start: offset, end: offset + entry.artworkSize - 1 }), artwork.createWriteStreamSync())
+        offset += entry.artworkSize
+        count++
+      }
 
       const milo = songGenPath.gotoFile(`${songname}.milo_ps3`)
       sendBuzyLoad(win, { code: 'subtext', key: 'writingMILOTextWithCount', messageValues: { count: count.toString(), total: total.toString(), name: edat.fullname } })

@@ -1,4 +1,5 @@
 import { pathLikeToDirPath, type DirPathLikeTypes } from 'node-lib'
+import type { Stats } from 'node:fs'
 
 export interface SongFilesSizeObject {
   moggFilePath: string
@@ -29,8 +30,11 @@ export const calculateSongFilesSizeFromSongname = async (packageDirPath: DirPath
   totalSize += midiStat.size
 
   const artworkFilePath = songPath.gotoFile(`gen/${songname}_keep.png_ps3`)
-  const artworkStat = await artworkFilePath.stat()
-  totalSize += artworkStat.size
+  let artworkStat: Stats | undefined
+  if (artworkFilePath.exists) {
+    artworkStat = await artworkFilePath.stat()
+    totalSize += artworkStat.size
+  }
 
   const miloFilePath = songPath.gotoFile(`gen/${songname}.milo_ps3`)
   const miloStat = await miloFilePath.stat()
@@ -42,7 +46,7 @@ export const calculateSongFilesSizeFromSongname = async (packageDirPath: DirPath
     midiFilePath: midiFilePath.path,
     midi: midiStat.size,
     artworkFilePath: artworkFilePath.path,
-    artwork: artworkStat.size,
+    artwork: artworkStat?.size ?? 0,
     miloFilePath: miloFilePath.path,
     milo: miloStat.size,
     totalSize,

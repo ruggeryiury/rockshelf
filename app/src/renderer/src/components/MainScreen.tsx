@@ -45,6 +45,15 @@ export function MainScreen() {
                 </div>
                 <div className="mx-4 h-full w-0.5 bg-white/50" />
                 <div className="mr-4">
+                  <h1 className="text-[0.65rem] uppercase">{t('songsCountTitle')}</h1>
+                  {typeof packages === 'object' && <h2 className="font-pentatonic text-lg">{formatNumberWithDots(packages.allSongsPlusRB3)}</h2>}
+                </div>
+                <div className="mr-4">
+                  <h1 className="text-[0.65rem] uppercase">{t('packagesInstalled')}</h1>
+                  {typeof packages === 'object' && <h2 className="font-pentatonic text-lg">{formatNumberWithDots(packages.allPackagesCount)}</h2>}
+                </div>
+                <div className="mx-4 h-full w-0.5 bg-white/50" />
+                <div className="mr-4">
                   <h1 className="text-[0.65rem] uppercase">{t('totalScore')}</h1>
                   <h2 className="font-pentatonic text-lg">{formatNumberWithDots(instrumentScores.scoreCount)}</h2>
                 </div>
@@ -85,7 +94,7 @@ export function MainScreen() {
             </>
           )}
           <button
-            className="w-fit self-start rounded-xs border border-neutral-700 bg-neutral-900 px-1 py-0.5 text-xs! uppercase duration-100 hover:bg-neutral-700 active:bg-neutral-600 disabled:text-neutral-700 disabled:hover:bg-neutral-900"
+            className="w-fit h-fill rounded-xs justify-center border border-neutral-700 bg-neutral-900 px-1 py-0.5 text-sm! uppercase duration-100 hover:bg-neutral-700 active:bg-neutral-600 disabled:text-neutral-700 disabled:hover:bg-neutral-900"
             disabled={disableButtons}
             onClick={async () => {
               setWindowState({ disableButtons: true, rb3Stats: 'loading' })

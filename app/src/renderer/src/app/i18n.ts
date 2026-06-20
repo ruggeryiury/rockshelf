@@ -10,7 +10,7 @@ i18n
   .use(initReactI18next)
   .use(I18nextBrowserLanguageDetector)
   .init({
-    debug: true,
+    debug: import.meta.env.DEV,
     resources: {
       'en-US': {
         translation: appENUSLocale,

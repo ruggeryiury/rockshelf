@@ -235,18 +235,20 @@ export const createRB3FileFromRPCS3PackageFolder = async (win: BrowserWindow, pa
     fileProcessedCount++
 
     const artwork = pathLikeToFilePath(song.artworkFilePath)
-    sendBuzyLoad(win, { code: 'subtext', key: 'writingArtworkTextWithCount', messageValues: { name: artwork.fullname, count: fileProcessedCount.toString(), total: allFilesToBeProcessed.toString() } })
-    await new Promise<boolean>((res, rej) => {
-      const readStream = createReadStream(artwork.path)
+    if (artwork.exists) {
+      sendBuzyLoad(win, { code: 'subtext', key: 'writingArtworkTextWithCount', messageValues: { name: artwork.fullname, count: fileProcessedCount.toString(), total: allFilesToBeProcessed.toString() } })
+      await new Promise<boolean>((res, rej) => {
+        const readStream = createReadStream(artwork.path)
 
-      readStream.on('data', (chunk: Buffer) => stream.write(chunk))
-      readStream.on('end', () => {
-        readStream.close()
-        res(true)
+        readStream.on('data', (chunk: Buffer) => stream.write(chunk))
+        readStream.on('end', () => {
+          readStream.close()
+          res(true)
+        })
+        readStream.on('error', rej)
       })
-      readStream.on('error', rej)
-    })
-    fileProcessedCount++
+      fileProcessedCount++
+    }
 
     const milo = pathLikeToFilePath(song.miloFilePath)
     sendBuzyLoad(win, { code: 'subtext', key: 'writingMILOTextWithCount', messageValues: { name: milo.fullname, count: fileProcessedCount.toString(), total: allFilesToBeProcessed.toString() } })

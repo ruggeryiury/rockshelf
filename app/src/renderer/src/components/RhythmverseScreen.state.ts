@@ -4,6 +4,7 @@ import type { PKGFileJSONRepresentation, ProcessedRhythmverseObject, STFSFileJSO
 export interface RhythmverseScreenStateProps {
   active: boolean
   searchField: string
+  lastSearchedField: string | null
   selectedTab: number
   searchResults: false | 'loading' | ProcessedRhythmverseObject
 
@@ -43,6 +44,7 @@ export type RhythmverseScreenStateHook = RhythmverseScreenStateProps & Rhythmver
 const defaultState: RhythmverseScreenStateProps = {
   active: false,
   searchField: '',
+  lastSearchedField: null,
   selectedTab: 0,
   searchResults: false,
 
@@ -50,8 +52,8 @@ const defaultState: RhythmverseScreenStateProps = {
   sortBy: 'updateDate',
   sortOrder: 'asc',
   page: 1,
-  records: 25,
-  fullBand: true,
+  records: 4,
+  fullBand: false,
   multitrack: false,
   pitchedVocals: true,
 

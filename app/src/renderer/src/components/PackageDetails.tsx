@@ -20,6 +20,7 @@ import Markdown from 'react-markdown'
 import remarkGfm from 'remark-gfm'
 import rehypeRaw from 'rehype-raw'
 import rehypeSlug from 'rehype-slug'
+import { useEditAllSongsScreenState } from './EditAllSongsScreen.state'
 
 export function PackageDetails() {
   const { t } = useTranslation()
@@ -31,6 +32,7 @@ export function PackageDetails() {
   const { setRBIconsSelectorState } = useRBIconsSelectorState(useShallow((x) => ({ setRBIconsSelectorState: x.setRBIconsSelectorState })))
   const { setImageCropScreenState } = useImageCropScreenState(useShallow((x) => ({ setImageCropScreenState: x.setImageCropScreenState })))
   const { setExportPackageModalState } = useExportPackageModalState(useShallow((x) => ({ setExportPackageModalState: x.setExportPackageModalState })))
+  const { setEditAllSongsScreenState } = useEditAllSongsScreenState(useShallow((x) => ({ setEditAllSongsScreenState: x.setEditAllSongsScreenState })))
   const active = useMemo(() => (typeof packages === 'object' && selPKG > -1 && selPKG in packages.packages ? packages.packages[selPKG] : null), [selPKG, packages])
 
   useEffect(
@@ -698,6 +700,24 @@ export function PackageDetails() {
                     </button>
                   </div>
                 </div>
+
+                {active.official === undefined && (
+                  <div className="group rounded-xs p-2 duration-200 hover:bg-white/5">
+                    <h1 className="mb-1 uppercase">{t('editAllSongs')}</h1>
+                    <p className="mb-2 text-xs italic">
+                      <TransComponent i18nKey="editAllSongsDesc" />
+                    </p>
+                    <button
+                      disabled={disableButtons}
+                      className="mr-2 mb-1 w-fit self-start rounded-xs border border-green-500 bg-neutral-900 px-1 py-0.5 text-xs! text-green-500 uppercase duration-100 last:mr-0 last:mb-0 hover:bg-green-950/25 active:bg-neutral-600 disabled:text-neutral-700 disabled:hover:bg-neutral-900"
+                      onClick={async () => {
+                        setEditAllSongsScreenState({ selectedPackage: selPKG })
+                      }}
+                    >
+                      {t('editAllSongs')}
+                    </button>
+                  </div>
+                )}
               </div>
             </>
           )}

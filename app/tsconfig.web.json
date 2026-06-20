@@ -1,11 +1,12 @@
 {
   "extends": "@electron-toolkit/tsconfig/tsconfig.web.json",
-  "include": ["src/renderer/src/env.d.ts", "src/renderer/src/**/*", "src/renderer/src/**/*.tsx", "src/preload/*.d.ts", "../core/src/lib/strnum/stringFunctions.ts"],
+  "include": ["src/renderer/src/env.d.ts", "src/renderer/src/**/*", "src/renderer/src/**/*.tsx", "src/preload/*.d.ts"],
   "compilerOptions": {
-    // "ignoreDeprecations": "6.0",
+    "ignoreDeprecations": "6.0",
     "composite": true,
     "jsx": "react-jsx",
     "baseUrl": ".",
+    "target": "esnext",
     "paths": {
       "@renderer/*": ["src/renderer/src/*"]
     },

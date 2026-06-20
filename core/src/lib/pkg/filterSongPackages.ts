@@ -1,6 +1,6 @@
 import { useDefaultOptions } from 'use-default-options'
-import type { RPCS3SongPackagesObjectExtra } from '../../lib.exports'
-import { leadingArticleToTrailing } from '../rbtools/utils.exports'
+import { rsPackImage, type RPCS3SongPackagesObjectExtra } from '../../lib.exports'
+import { getKeyFromMapValue, leadingArticleToTrailing } from '../rbtools/utils.exports'
 
 export interface SongPackagesFilterGenericHeaders {
   /**
@@ -17,7 +17,7 @@ export interface SongPackagesFilterGenericHeaders {
   indexes: number[]
 }
 
-export type SongPackagesFilterTypes = 'name' | 'officialUnofficial'
+export type SongPackagesFilterTypes = 'name' | 'officialUnofficial' | 'userCategory'
 
 export interface SongPackagesFilterGenericObject {
   /**
@@ -66,9 +66,7 @@ export const insertIndexOnSongPackagesArray = (songs: RPCS3SongPackagesObjectExt
  * @returns {number}
  */
 export const useGenericPackagesCatalogSort = (a: RPCS3SongPackagesObjectExtraWithIndex, b: RPCS3SongPackagesObjectExtraWithIndex): number => {
-  if (leadingArticleToTrailing(a.packageData.packageName).toLowerCase() > leadingArticleToTrailing(b.packageData.packageName).toLowerCase()) return 1
-  else if (leadingArticleToTrailing(a.packageData.packageName).toLowerCase() < leadingArticleToTrailing(b.packageData.packageName).toLowerCase()) return -1
-  else return 0
+  return leadingArticleToTrailing(a.packageData.packageName).toLowerCase().localeCompare(leadingArticleToTrailing(b.packageData.packageName).toLowerCase())
 }
 
 export const filterSongPackagesByName = (packages: RPCS3SongPackagesObjectExtra[], options?: SongPackagesFilterOptions): SongPackagesFilterGenericObject => {
@@ -113,7 +111,6 @@ export const filterSongPackagesByOfficialPkg = (packages: RPCS3SongPackagesObjec
   const { filterEmptyHeader } = useDefaultOptions<SongPackagesFilterOptions>({ filterEmptyHeader: true }, options)
   const sortedPackages = insertIndexOnSongPackagesArray(packages).sort(useGenericPackagesCatalogSort)
 
-  const charZCode = 0x7a
   const headers: SongPackagesFilterGenericHeaders[] = [
     {
       name: 'Official',
@@ -131,6 +128,36 @@ export const filterSongPackagesByOfficialPkg = (packages: RPCS3SongPackagesObjec
 
   return {
     type: 'officialUnofficial',
+    headers: filterEmptyHeader ? headers.filter((val) => val.indexes.length > 0) : headers,
+    packagesCount: sortedPackages.length,
+  }
+}
+
+export const filterSongPackagesByUserCategory = (packages: RPCS3SongPackagesObjectExtra[], options?: SongPackagesFilterOptions): SongPackagesFilterGenericObject => {
+  const { filterEmptyHeader } = useDefaultOptions<SongPackagesFilterOptions>({ filterEmptyHeader: true }, options)
+  const sortedPackages = insertIndexOnSongPackagesArray(packages).sort(useGenericPackagesCatalogSort)
+
+  const headers: SongPackagesFilterGenericHeaders[] = [
+    { name: 'Other Packages', code: 'other', indexes: [] },
+    { name: 'Author Packages', code: 'author', indexes: [] },
+    { name: 'Full Band Packages', code: 'artistBand', indexes: [] },
+    { name: 'Singles', code: 'singles', indexes: [] },
+    { name: 'Rock Band Packages', code: 'rockBand', indexes: [] },
+    { name: 'Guitar Hero Packages', code: 'guitarHero', indexes: [] },
+    { name: 'Official Packages', code: 'official', indexes: [] },
+    { name: 'Unofficial Packages', code: 'unofficial', indexes: [] },
+    { name: 'Themed Packages', code: 'themed', indexes: [] },
+    { name: 'Seasonal Packages', code: 'seasonal', indexes: [] },
+    { name: 'Debug', code: 'debug', indexes: [] },
+  ]
+
+  for (const pkg of sortedPackages) {
+    const categoryNum = getKeyFromMapValue(rsPackImage.packageCategory, pkg.packageData.category)
+    if (categoryNum !== null) headers[categoryNum].indexes.push(pkg.index)
+  }
+
+  return {
+    type: 'userCategory',
     headers: filterEmptyHeader ? headers.filter((val) => val.indexes.length > 0) : headers,
     packagesCount: sortedPackages.length,
   }

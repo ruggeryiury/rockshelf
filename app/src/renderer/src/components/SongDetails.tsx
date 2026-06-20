@@ -68,6 +68,8 @@ export function SongDetails() {
     return packageDetails?.songs.length ?? 0
   }, [packageDetails])
 
+  const songFilesFolder = useMemo(() => typeof packageDetails === 'object' && packageDetails !== null && typeof songDetails === 'object' && songDetails !== null && `${packageDetails.path}\\songs\\${songDetails.songname}`, [packageDetails, songDetails])
+
   const resetSongDetailsState = () => {
     setMyPackagesScreenState({ selSong: -1, isArtworkLoading: true, artworkURL: '', songDetailsTab: 0, songLeaderboards: false })
   }
@@ -745,6 +747,20 @@ export function SongDetails() {
             <>
               <div className="h-full w-full overflow-y-auto">
                 <div className="group rounded-xs p-2 duration-200 hover:bg-white/5">
+                  <h1 className="mb-1 uppercase">{t('songFilesFolder')}</h1>
+                  <p className="mb-4 font-mono text-xs italic">{songFilesFolder}</p>
+                  <button
+                    disabled={disableButtons}
+                    className="w-fit self-start rounded-xs border border-neutral-700 bg-neutral-900 px-1 py-0.5 text-xs! uppercase duration-100 hover:bg-neutral-700 active:bg-neutral-600 disabled:text-neutral-700 disabled:hover:bg-neutral-900"
+                    onClick={async () => {
+                      if (songFilesFolder) await window.api.openFolderInExplorer(songFilesFolder)
+                    }}
+                  >
+                    {t('openSongFilesFolder')}
+                  </button>
+                </div>
+
+                <div className="group rounded-xs p-2 duration-200 hover:bg-white/5">
                   <h1 className="mb-1 uppercase">{t('audioTracks')}</h1>
                   {allTracksCount !== undefined && (
                     <p className="mb-1 text-xs italic">
@@ -866,11 +882,7 @@ export function SongDetails() {
                         disabled={disableButtons}
                         className="mr-2 mb-1 w-fit self-start rounded-xs border border-green-500 bg-neutral-900 px-1 py-0.5 text-xs! text-green-500 uppercase duration-100 last:mr-0 last:mb-0 hover:bg-green-950/25 active:bg-neutral-600 disabled:text-neutral-700 disabled:hover:bg-neutral-900"
                         onClick={async () => {
-                          // setWindowState({ disableButtons: true })
-
                           startEditingSong(songDetails)
-
-                          // setWindowState({ disableButtons: false })
                         }}
                       >
                         {t('editSong')}

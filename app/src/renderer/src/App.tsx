@@ -1,5 +1,5 @@
 import { useEffect } from 'react'
-import { AboutScreen, BuzyLoadScreen, ConfigScreen, CreateNewPackageScreen, DeluxeInstallScreen, DialogScreen, EditSongScreen, FatalErrorScreen, FirstTimeScreen, ImageCropScreen, InstallRB3FileScreen, LogoScreen, MainScreen, MergePackageModal, MessageBox, MyPackagesScreen, QuickConfigScreen, RBIconsSelector, RhythmverseScreen, SongDetails, Topbar, WindowFrame } from './components.exports'
+import { AboutScreen, BuzyLoadScreen, ConfigScreen, CreateNewPackageScreen, DeluxeInstallScreen, DialogScreen, EditAllSongsScreen, EditSongScreen, FatalErrorScreen, FirstTimeScreen, ImageCropScreen, InstallRB3FileScreen, LogoScreen, MainScreen, MergePackageModal, MessageBox, MusicStoreScreen, MyPackagesScreen, QuickConfigScreen, RBIconsSelector, RhythmverseScreen, SongDetails, Topbar, WindowFrame } from './components.exports'
 import { useWindowState } from './stores/Window.state'
 import { useFirstTimeScreenState } from './components/FirstTimeScreen.state'
 import { useTranslation } from 'react-i18next'
@@ -127,6 +127,7 @@ export function App() {
         <CreateNewPackageScreen />
         <DeluxeInstallScreen />
         <DialogScreen />
+        <EditAllSongsScreen />
         <EditSongScreen />
         <ExportPackageModal />
         <FatalErrorScreen />
@@ -137,6 +138,7 @@ export function App() {
         <MainScreen />
         <MergePackageModal />
         <MessageBox />
+        <MusicStoreScreen />
         <MyPackagesScreen />
         <PackageDetails />
         <QuickConfigScreen />

@@ -186,9 +186,9 @@ export interface RhythmverseResSongData {
 }
 
 export interface RhythmverseResSongFile {
-  diff_drums: number
-  diff_guitar: number
-  diff_bass: number
+  diff_drums?: number
+  diff_guitar?: number
+  diff_bass?: number
   diff_vocals?: number
   diff_proguitar?: number
   diff_probass?: number
@@ -523,7 +523,10 @@ export class RhythmverseAPI {
     const allSongs: ProcessedRhythmverseSongData[] = []
     if (songs) {
       for (const song of songs) {
-        if (song.file.author.name !== 'Harmonix') {
+        if (song.file.author.name === 'Harmonix') {
+          records.total_filtered--
+          records.returned--
+        } else {
           allSongs.push({
             name: song.data.title,
             artist: song.data.artist,
@@ -531,24 +534,15 @@ export class RhythmverseAPI {
             song_id: song.file.custom_id,
             vocal_parts: Number(song.data.vocal_parts) as PartialDTAFile['vocal_parts'],
             song_length: song.data.song_length * 1000,
-            rank_band: song.file.diff_band === -1 ? 0 : song.file.diff_band,
-            rank_drum: song.file.diff_drums === -1 ? 0 : song.file.diff_drums,
-            rank_bass: song.file.diff_bass === -1 ? 0 : song.file.diff_bass,
-            rank_guitar: song.file.diff_guitar === -1 ? 0 : song.file.diff_guitar,
-            rank_vocals: song.file.diff_vocals === -1 ? 0 : song.file.diff_vocals,
-            rank_keys: song.file.diff_keys === -1 ? 0 : song.file.diff_keys,
-            rank_real_bass: song.file.diff_probass === -1 ? 0 : song.file.diff_probass,
-            rank_real_guitar: song.file.diff_proguitar === -1 ? 0 : song.file.diff_proguitar,
-            rank_real_keys: song.file.diff_prokeys === -1 ? 0 : song.file.diff_prokeys,
-            // rank_band: rankCalculator('band', song.file.diff_band),
-            // rank_drum: rankCalculator('drum', song.file.diff_drums),
-            // rank_bass: rankCalculator('bass', song.file.diff_bass),
-            // rank_guitar: rankCalculator('guitar', song.file.diff_guitar),
-            // rank_vocals: rankCalculator('vocals', song.file.diff_vocals),
-            // rank_keys: rankCalculator('keys', song.file.diff_keys),
-            // rank_real_bass: rankCalculator('real_bass', song.file.diff_probass),
-            // rank_real_guitar: rankCalculator('real_guitar', song.file.diff_proguitar),
-            // rank_real_keys: rankCalculator('real_keys', song.file.diff_prokeys),
+            rank_band: song.file.diff_band === -1 ? 0 : song.file.diff_band - 1,
+            rank_drum: song.file.diff_drums === -1 || song.file.diff_drums === undefined ? -1 : song.file.diff_drums - 1,
+            rank_bass: song.file.diff_bass === -1 || song.file.diff_bass === undefined ? -1 : song.file.diff_bass - 1,
+            rank_guitar: song.file.diff_guitar === -1 || song.file.diff_guitar === undefined ? -1 : song.file.diff_guitar - 1,
+            rank_vocals: song.file.diff_vocals === -1 || song.file.diff_vocals === undefined ? -1 : song.file.diff_vocals - 1,
+            rank_keys: song.file.diff_keys === -1 || song.file.diff_keys === undefined ? -1 : song.file.diff_keys - 1,
+            rank_real_bass: song.file.diff_probass === -1 || song.file.diff_probass === undefined ? -1 : song.file.diff_probass - 1,
+            rank_real_guitar: song.file.diff_proguitar === -1 || song.file.diff_proguitar === undefined ? -1 : song.file.diff_proguitar - 1,
+            rank_real_keys: song.file.diff_prokeys === -1 || song.file.diff_prokeys === undefined ? -1 : song.file.diff_prokeys - 1,
             tuning_offset_cents: Number(song.file.tuning_offset_cents),
             encoding: song.file.encoding as PartialDTAFile['encoding'],
             rating: song.data.rating === 'ff' ? 1 : song.data.rating === 'sr' ? 2 : song.data.rating === 'mc' ? 3 : 4,

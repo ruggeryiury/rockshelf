@@ -40,16 +40,16 @@ export const genPackImageToAllPackages = async (devhdd0Path: DirPathLikeTypes) =
             const texture = new TextureFile(packagePath.gotoFile(`songs/${onlySong.songname}/gen/${onlySong.songname}_keep.png_ps3`))
             if (texture.path.exists) {
               const temp = await texture.convertToImage(temporaryFile({ extension: '.jpg' }), 'jpg')
-              await createRSPackImage(temp.path, thumbnailSrc, { source: 'merged', type: 'other', encryptionStatus: 'unknown', packageName: `${onlySong.name} - ${onlySong.artist}` })
+              await createRSPackImage(temp.path, thumbnailSrc, { source: 'merged', type: 'other', encryptionStatus: 'unknown', category: 'other', packageName: `${onlySong.name} - ${onlySong.artist}` })
               await temp.path.delete()
             } else {
               const newPackageImage = getRockshelfModuleRootDir().gotoFile(`bin/icons/custom.jpg`)
-              await createRSPackImage(newPackageImage, thumbnailSrc, { source: 'merged', type: 'other', encryptionStatus: 'unknown', packageName: `${onlySong.name} - ${onlySong.artist}` })
+              await createRSPackImage(newPackageImage, thumbnailSrc, { source: 'merged', type: 'other', encryptionStatus: 'unknown', category: 'other', packageName: `${onlySong.name} - ${onlySong.artist}` })
             }
           } else {
             let newPackageImage = getRockshelfModuleRootDir().gotoFile(`bin/icons/${official?.code}.jpg`)
             if (!newPackageImage.exists) newPackageImage = getRockshelfModuleRootDir().gotoFile(`bin/icons/custom.jpg`)
-            await createRSPackImage(newPackageImage, thumbnailSrc, { source: official ? 'pkg' : 'merged', type: 'other', encryptionStatus: official ? 'encrypted' : 'unknown', packageName: official?.name || packagePath.name })
+            await createRSPackImage(newPackageImage, thumbnailSrc, { source: official ? 'pkg' : 'merged', type: 'other', encryptionStatus: official ? 'encrypted' : 'unknown', category: official ? 'official' : 'other', packageName: official?.name || packagePath.name })
           }
         }
       }
@@ -91,16 +91,16 @@ export const genPackImageToAllPackages = async (devhdd0Path: DirPathLikeTypes) =
               const texture = new TextureFile(packagePath.gotoFile(`songs/${onlySong.songname}/gen/${onlySong.songname}_keep.png_ps3`))
               if (texture.path.exists) {
                 const temp = await texture.convertToImage(temporaryFile({ extension: '.jpg' }), 'jpg')
-                await createRSPackImage(temp.path, thumbnailSrc, { source: 'pkg', type: 'other', encryptionStatus: 'unknown', packageName: `${onlySong.name} - ${onlySong.artist}` })
+                await createRSPackImage(temp.path, thumbnailSrc, { source: 'pkg', type: 'other', encryptionStatus: 'unknown', category: 'other', packageName: `${onlySong.name} - ${onlySong.artist}` })
                 await temp.path.delete()
               } else {
                 const newPackageImage = getRockshelfModuleRootDir().gotoFile(`bin/icons/custom.jpg`)
-                await createRSPackImage(newPackageImage, thumbnailSrc, { source: 'merged', type: 'other', encryptionStatus: 'unknown', packageName: `${onlySong.name} - ${onlySong.artist}` })
+                await createRSPackImage(newPackageImage, thumbnailSrc, { source: 'merged', type: 'other', encryptionStatus: 'unknown', category: 'other', packageName: `${onlySong.name} - ${onlySong.artist}` })
               }
             } else {
               let newPackageImage = getRockshelfModuleRootDir().gotoFile(`bin/icons/${official?.code}.jpg`)
               if (!newPackageImage.exists) newPackageImage = getRockshelfModuleRootDir().gotoFile(`bin/icons/custom.jpg`)
-              await createRSPackImage(newPackageImage, thumbnailSrc, { source: 'pkg', type: 'other', encryptionStatus: 'encrypted', packageName: official?.name || packagePath.name })
+              await createRSPackImage(newPackageImage, thumbnailSrc, { source: 'pkg', type: 'other', encryptionStatus: 'encrypted', category: 'other', packageName: official?.name || packagePath.name })
             }
           }
         }

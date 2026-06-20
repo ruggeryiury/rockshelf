@@ -21,6 +21,20 @@ export const rsPackImage = {
     2: 'decrypted',
     3: 'mixed',
   },
+  packageCategory: {
+    0: 'other',
+    1: 'author',
+    2: 'artistBand',
+    3: 'fullBand',
+    4: 'singles',
+    5: 'rockBand',
+    6: 'guitarHero',
+    7: 'official',
+    8: 'unofficial',
+    9: 'themed',
+    10: 'seasonal',
+    11: 'debug',
+  },
 } as const
 
 export type RSPackImageFileVersionNumbers = keyof typeof rsPackImage.fileVersion
@@ -34,6 +48,9 @@ export type RSPackImageSourceValues = (typeof rsPackImage.source)[keyof typeof r
 
 export type RSPackImageEncryptionStatusNumbers = keyof typeof rsPackImage.encryptionStatus
 export type RSPackImageEncryptionStatusValues = (typeof rsPackImage.encryptionStatus)[keyof typeof rsPackImage.encryptionStatus]
+
+export type RSPackImagePackageCategoryNumbers = keyof typeof rsPackImage.packageCategory
+export type RSPackImagePackageCategoryValues = (typeof rsPackImage.packageCategory)[keyof typeof rsPackImage.packageCategory]
 
 export interface ParsedRSPackImageObject {
   /**
@@ -55,6 +72,10 @@ export interface ParsedRSPackImageObject {
    * The encryption status of the package files.
    */
   encryptionStatus: RSPackImageEncryptionStatusValues
+  /**
+   * The category of the package.
+   */
+  category: RSPackImagePackageCategoryValues
   /**
    * The display name of the song package on Rockshelf.
    */
@@ -114,7 +135,9 @@ export const parseRSDATBuffer = async (rsdatBuffer: Buffer): Promise<ParsedRSPac
   const type = (await reader.readUInt8()) as RSPackImageTypeNumbers
   const source = (await reader.readUInt8()) as RSPackImageSourceNumbers
   const encryptionStatus = (await reader.readUInt8()) as RSPackImageEncryptionStatusNumbers
-  reader.padding(13)
+  const category = (await reader.readUInt8()) as RSPackImagePackageCategoryNumbers
+  
+  reader.padding(12)
   const year = await reader.readUInt16LE()
   const month = await reader.readUInt8()
   const day = await reader.readUInt8()
@@ -132,6 +155,7 @@ export const parseRSDATBuffer = async (rsdatBuffer: Buffer): Promise<ParsedRSPac
     type: (rsPackImage.type[type] as RSPackImageTypeValues | undefined) ?? 'rockshelf',
     source: (rsPackImage.source[source] as RSPackImageSourceValues | undefined) ?? 'stfs',
     encryptionStatus: (rsPackImage.encryptionStatus[encryptionStatus] as RSPackImageEncryptionStatusValues | undefined) ?? 'unknown',
+    category: (rsPackImage.packageCategory[category] as RSPackImagePackageCategoryValues | undefined) ?? 'other',
     creationDate,
     packageName,
   }

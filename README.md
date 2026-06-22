@@ -23,9 +23,9 @@
 - [Requirements](#requirements)
   - [System](#system)
   - [Python](#python)
-- [Custom Files](#custom-files)
+- [Custom File Formats](#custom-file-formats)
   - [Rockshelf Pack Image file](#rockshelf-pack-image-file)
-  - [RB3 File Format](#rb3-file-format)
+  - [Rock Band 3 Song Package file](#rock-band-3-song-package-file)
     - [Header](#header)
     - [Song Entries](#song-entries)
     - [Raw Data](#raw-data)
@@ -48,8 +48,8 @@ Rockshelf is a Rock Band 3 Deluxe utility suite for RPCS3 users built with [Elec
   - _Built-in localized Discord Rich Presence for Rock Band 3 Deluxe._
 - Song Package Creator
   - _Create a new song package from CON and/or PKG files._
-- Package Exporter `NEW!`
-  - _Quickly export and share your packages as a Rock Band 3 Song Package file, with support for package thumbnail, description, package author, and more!_
+- Package Exporter and Installer `NEW!`
+  - _Quickly export and share your packages as a [Rock Band 3 Song Package file](#rock-band-3-song-package-file), with support for package thumbnail, description, package author, and more!_
 - Package Manager
   - _Visualize your installed packages' songs and data._
 - Leaderboard Viewer
@@ -78,15 +78,22 @@ Rockshelf is a Rock Band 3 Deluxe utility suite for RPCS3 users built with [Elec
 | `pycryptodome` | `pip install pycryptodome` | Cryptographic library for Python                                                    | [[link]](https://pypi.org/project/pycryptodome/) |
 | `pydub`        | `pip install pydub`        | Manipulate audio with an simple and easy high level interface.                      | [[link]](https://pypi.org/project/pydub/)        |
 
-# Custom Files
+# Custom File Formats
 
-_Rockshelf_ introduces new type of files. You can find the datagram of all these files below.
+_Rockshelf_ introduces new type of files that was created to enhance the song package distribution with features that couldn't be implemented on existing file formats used to share song packages, as they're not specifically containers but package formats used for their specific consoles, like STFS/CON files for Xbox 360, and PKG files for PlayStation 3. The main purposes was to create file formats that can be easily parsed on any environment/programming language, with full specification of these files openly available for public, and the simplicity to only store data that can be actively used for the functionality of these files themselves. You can find the datagram of all these files below.
+
+| NAME                          | EXTENSION | DESCRIPTION                                                                              |
+| ----------------------------- | --------- | ---------------------------------------------------------------------------------------- |
+| Rockshelf Pack Image File     | `.jpg`    | A common JPEG file with extra bytes that stores the package data displayed on Rockshelf. |
+| Rock Band 3 Song Package File | `.rb3`    | A file container that stores song package data and its song files.                       |
 
 ## Rockshelf Pack Image file
 
-The _Rockshelf Pack Image file_ is a common JPEG file with a few extra bytes on the file's footer. It was created with the need to join all displaying values from the package on a single and discreet JPEG file. The JPEG file uses specific bytes to represent the end of the image file, so the image is rendered on all systems without problem, even with these few extra bytes placed on the file's footer.
+The _Rockshelf Pack Image file_ is a JPEG file with a few extra bytes on the file's footer. It was created with the need to keep information related to the song package on a JPEG file that can still be interpreted on any operational system as a working JPEG file. This functionality works perfectly with JPEG files, as they use specific bytes to point the end of the image data, so the image is able to be rendered without problem, even with these few extra bytes placed on the file's footer.
 
-The last 4 bytes must represent a 32-bit unsigned integer with the Rockshelf Pack Image file's extra bytes size. The file is only valid on Rockshelf if the file signature bytes (magic) is found when you seek it calculating the file size minus the extra bytes size.<br /><br />
+Keep in mind that these files are processed on Rockshelf to contain the extra bytes, so using a JPEG file without processing will result in file validation errors.
+
+The last 4 bytes must represent a 32-bit unsigned integer with the Rockshelf Pack Image file's extra bytes size. The file is only valid on Rockshelf if the signature bytes is found when you seek it, calculating the file size minus the extra bytes size.<br /><br />
 
 | NAME                      | OFFSET | LENGTH | TYPE       | DESCRIPTION                                                                                                                                                                                                                                                                                                                                                                                                                    |
 | ------------------------- | ------ | ------ | ---------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
@@ -104,12 +111,12 @@ The last 4 bytes must represent a 32-bit unsigned integer with the Rockshelf Pac
 | Creation Minute           | `0x1a` | `0x01` | `UInt8`    | The song package creation minutes ([ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format).                                                                                                                                                                                                                                                                                                                                 |
 | Creation Second           | `0x1b` | `0x01` | `UInt8`    | The song package creation seconds ([ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format).                                                                                                                                                                                                                                                                                                                                 |
 | Package Name Length       | `0x1c` | `0x01` | `UInt8`    | The length of the song package name string.                                                                                                                                                                                                                                                                                                                                                                                    |
-| Package Name              | `0x1d` | `???`  | `UTF8`     | The package name.                                                                                                                                                                                                                                                                                                                                                                                                              |
+| Package Name              | `0x1d` | `???`  | `UTF8`     | The package name (up to 255 characters).                                                                                                                                                                                                                                                                                                                                                                                       |
 | Extra Bytes Footer Length | `???`  | `0x04` | `UInt32LE` | The size of the extra bytes footer (including the size itself).                                                                                                                                                                                                                                                                                                                                                                |
 
-## RB3 File Format
+## Rock Band 3 Song Package file
 
-The _Rock Band 3 Song Package file_ is a file container used specifically on Rockshelf. The package contains raw data and all information needed to recreate the package when sharing through other users. The produced file is ~5% smaller than Xbox 360 CON packages, and ~8% smaller than the PS3 PKG file, but its creation and depacking is way faster than both of them without the validation shenanigans needed for the consoles. The file header has a fixed `0x50` bytes, with each song entry also having fixed `0x50` bytes.<br />
+The _Rock Band 3 Song Package file_ is a file container used specifically on Rockshelf. The package contains raw data and all information needed to recreate the package when sharing through other users. The file creation and contents depacking is way faster than both STFS/CON and PKG files. The file header has a fixed `0x50` bytes, with each song entry also having fixed `0x50` bytes.<br />
 
 ### Header
 
@@ -136,7 +143,7 @@ The _Rock Band 3 Song Package file_ is a file container used specifically on Roc
 | Creation Second                    | `0x20` | `0x01` | `UInt8`    | The song package creation seconds ([ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format).                                                                                                                                                                                                                                                                                                                                 |
 | Package Size                       | `0x21` | `0x08` | `UInt64LE` | The size of the song package.                                                                                                                                                                                                                                                                                                                                                                                                  |
 | Song Data Offset                   | `0x29` | `0x04` | `UInt32LE` | The offset where the actual songs data starts on the package.                                                                                                                                                                                                                                                                                                                                                                  |
-| Package Files Format               | `0x2d` | `0x01` | `UInt8`    | The console-specific format of the song package files<br /><br />0 = Xbox 360.<br />1 = PS3.                                                                                                                                                                                                                                                                                                                                   |
+| Package Files Format               | `0x2d` | `0x01` | `UInt8`    | The console-specific format of the stored song package files.<br /><br />0 = Xbox 360.<br />1 = PS3.                                                                                                                                                                                                                                                                                                                           |
 | Package Category                   | `0x2e` | `0x01` | `UInt8`    | The category of the song package. The catogies are pre-defined in Rockshelf.<br /><br />0 = "Other Packages"<br />1 = "Author Packages"<br />2 = "Artist/Band Packages"<br />3 = "Full Album Packages"<br />4 = "Singles"<br />5 = "Rock Band Packages"<br />6 = "Guitar Hero Packages"<br />7 = "Official Packages"<br />8 = "Unofficial Packages"<br />9 = "Themed Packages"<br />10 = "Seasonal Packages"<br />11 = "Debug" |
 | _Reserved (padding)_               | `0x2f` | `0x01` | `byte[]`   |                                                                                                                                                                                                                                                                                                                                                                                                                                |
 | Package Hash                       | `0x30` | `0x20` | `byte[]`   | The song package contents hash in [SHA256 algorithm](https://en.wikipedia.org/wiki/SHA-2).                                                                                                                                                                                                                                                                                                                                     |
@@ -175,12 +182,13 @@ After the header and the song entry/entries, the raw data is placed with the act
 
 # Known Limitations
 
-- Rockshelf is not able to read, install or edit Rock Band/Rock Band 2 song packages.
+- **Rockshelf is not able to read, install or edit Rock Band/Rock Band 2 song packages (except any official song package from Rock Band).**
   - _Rockshelf uses a specific DTA parser written in JavaScript that can't process Rock Band/Rock Band 2 DTA values, and therefore can't guarantee compatibility with Rock Band/Rock Band 2. Rockshelf's DTA Parser was written to parse exclusively Rock Band 3 DTAs from customs generated by MAGMA, or DTAs from Rock Band 3 or newer._
-- Rockshelf is not able to install any official song package:
+- **Rockshelf is not able to install any official song package.**
   - _For official packages, installing the PKG version directly through RPCS3 is recommended. Rockshelf is only able to detect that they're official packages and lock all types of editing on them. Please, don't try to install the CON version of official packages, as it might collide with the same error discussed previously._
-- Rockshelf is not able to create or edit both CON and PKG files.
-  - _Both CON and PKG files are formats specific for their systems (Xbox 360 and PlayStation 3, respectively). For future plans, a specific package format will be created for use in Rockshelf._
+    - Rockshelf might be able to install official songs from their CON files counterpart, but it will be installed on the Rock Band 3 DLC folder, losing compatibility with Rock Band 1/2.
+- **Rockshelf is not able to create or edit both CON and PKG files.**
+  - _Both CON and PKG files are formats specific for their systems (Xbox 360 and PlayStation 3, respectively). Rockshelf uses the new [Rock Band 3 Song Package](#rock-band-3-song-package-file) file format as a native song package format for the application, with exclusive features for customizations!_
 
 # Special Thanks
 

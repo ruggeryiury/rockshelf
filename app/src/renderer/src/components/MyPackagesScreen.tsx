@@ -3,10 +3,10 @@ import { AnimatedDiv, AnimatedSection, animate, getReadableBytesSize } from '@re
 import { useMyPackagesScreenState } from './MyPackagesScreen.state'
 import { useWindowState } from '@renderer/stores/Window.state'
 import { useTranslation } from 'react-i18next'
-import { RPCS3SongPackagesDataExtra } from 'rockshelf-core'
+import { RPCS3SongPackagesDataExtra, RSPackImagePackageCategoryValues } from 'rockshelf-core'
 import { useDialogScreenState } from './DialogScreen.state'
 import { useShallow } from 'zustand/shallow'
-import { MYPACKAGES_TABS, STRUCT_LOG } from '@renderer/app/rockshelf.globals'
+import { MYPACKAGES_TABS, PKG_CATEGORIES, STRUCT_LOG } from '@renderer/app/rockshelf.globals'
 import { LoadingIcon } from '@renderer/assets/icons'
 import { useEffect } from 'react'
 import { useUserConfigState } from '@renderer/stores/UserConfig.state'
@@ -118,7 +118,7 @@ export function MyPackagesScreen() {
                     <div className="mb-1 w-full flex-row! duration-150 last:mb-0" key={`packTitleHeader${headerI}`}>
                       <div className="w-full">
                         <div className="sticky! top-0 z-100 mb-1 w-full flex-row! items-center rounded-b-sm bg-neutral-900 px-2 py-1">
-                          <h1 className="mr-auto text-lg uppercase">{t(packagesCatalog.type === 'userCategory' ? `pkgCategory${headerI}` : header.code)}</h1>
+                          <h1 className="mr-auto text-lg uppercase">{t(packagesCatalog.type === 'userCategory' ? `pkgCategory${PKG_CATEGORIES.indexOf(header.code as RSPackImagePackageCategoryValues)}` : header.code)}</h1>
                           <p className="font-pentatonic text-neutral-500 uppercase">{t(header.indexes.length === 1 ? 'packagesCount' : 'packagesCountPlural', { count: header.indexes.length })}</p>
                         </div>
                         {header.indexes.map((packageIndex, packageIndexKey) => {

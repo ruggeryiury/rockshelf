@@ -4,7 +4,7 @@ import { useTranslation } from 'react-i18next'
 import { useInstallRB3FileScreenState } from './InstallRB3FileScreen.state'
 import { useShallow } from 'zustand/shallow'
 import { useWindowState } from '@renderer/stores/Window.state'
-import { INSTALL_RB3_FILE_TABS, STRUCT_LOG, VALIDATORS } from '@renderer/app/rockshelf.globals'
+import { INSTALL_RB3_FILE_TABS, PKG_CATEGORIES, STRUCT_LOG, VALIDATORS } from '@renderer/app/rockshelf.globals'
 
 // Markdown
 import Markdown from 'react-markdown'
@@ -107,7 +107,10 @@ export function InstallRB3FileScreen() {
                   <h2 className="font-pentatonic text-xl uppercase">by {selectedRB3File.packageCreatorName}</h2>
                 </div>
               )}
-              <div className="mt-1 w-fit rounded-sm bg-neutral-900 px-1 py-0.5 font-mono text-xs font-bold uppercase">{t(selectedRB3File.header.songsCount === 1 ? 'songsCount' : 'songsCountPlural', { count: selectedRB3File.header.songsCount })}</div>
+              <div className="flex-row! items-center mt-1 w-full">
+                <p className="mr-1 w-fit rounded-sm bg-neutral-900 px-1 py-0.5 font-mono text-xs font-bold uppercase">{t(selectedRB3File.header.songsCount === 1 ? 'songsCount' : 'songsCountPlural', { count: selectedRB3File.header.songsCount })}</p>
+                <p className="w-fit rounded-sm bg-neutral-900 px-1 py-0.5 font-mono text-xs font-bold uppercase">{t(`pkgCategory${PKG_CATEGORIES.indexOf(selectedRB3File.header.packageCategory)}`)}</p>
+              </div>
               {installRB3FileTab === INSTALL_RB3_FILE_TABS.OVERVIEW && (
                 <>
                   <h2 className="font-pentatonic mt-4 uppercase">{t('packageSize')}</h2>

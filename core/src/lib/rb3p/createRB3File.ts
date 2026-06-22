@@ -130,8 +130,8 @@ export const createRB3FileFromRPCS3PackageFolder = async (win: BrowserWindow, pa
 
   header.writeUInt32LE(songDataOffset)
   header.writeUInt8(1)
-  header.writePadding(2)
-  // header.writePadding(16)
+  header.writeUInt8(getKeyFromMapValue(rsPackImage.packageCategory, parsedThumbnail.category) ?? 0)
+  header.writePadding(1)
   header.write(contentsHash)
 
   io.write(header.toBuffer())

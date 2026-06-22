@@ -1,5 +1,6 @@
 import { BinaryReader, pathLikeToFilePath, type FilePathLikeTypes } from 'node-lib'
 import { dateISOFormatObjectToDateISOString } from '../rbtools/utils.exports'
+import { rsPackImage, type RSPackImagePackageCategoryNumbers, type RSPackImagePackageCategoryValues } from '../rspackimg/parseRSPackImage'
 
 export interface RB3FileHeaderSongEntriesObject {
   songname: string
@@ -33,6 +34,7 @@ export interface RB3FileHeaderObject {
   packageSize: number
   songDataOffset: number
   packageFilesFormat: 'xbox' | 'ps3'
+  packageCategory: RSPackImagePackageCategoryValues
   packageHash: string
   songEntries: RB3FileHeaderSongEntriesObject[]
 }
@@ -77,7 +79,9 @@ export const parseRB3FileHeader = async (rb3FilePath: FilePathLikeTypes): Promis
   const songDataOffset = await reader.readUInt32LE()
   const pff = await reader.readUInt8()
   const packageFilesFormat = pff === 0 ? 'xbox' : 'ps3'
-  reader.padding(0x02)
+  const catIndex = await reader.readUInt8() as RSPackImagePackageCategoryNumbers
+  const packageCategory = rsPackImage.packageCategory[catIndex]
+  reader.padding(0x01)
   const packageHash = await reader.readHex(0x20, false)
 
   reader.seek(0x50)
@@ -120,6 +124,7 @@ export const parseRB3FileHeader = async (rb3FilePath: FilePathLikeTypes): Promis
     packageSize,
     songDataOffset,
     packageFilesFormat,
+    packageCategory,
     packageHash,
     songEntries,
   }

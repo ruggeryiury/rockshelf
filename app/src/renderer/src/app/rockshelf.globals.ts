@@ -37,6 +37,10 @@ export const CREATE_NEW_PACKAGE_TABS = {
   OPTIONS: 2,
 } as const
 
+export const CREATE_NEW_PACKAGE_DROPDOWNS = {
+  CATEGORY: 0,
+} as const
+
 export const RHYTHMVERSE_SCREEN_TABS = {
   BROWSE: 0,
   DOWNLOADED_SONGS: 1,
@@ -72,6 +76,8 @@ export const GAME_ORIGIN_HEADERS = [
   { code: 'community', options: ['a7xmegapack', 'airheads', 'customs', 'c3customs', 'c3legacy', 'euterpe', 'finnish', 'jrb', 'lanebreakers', 'lanebreakersbonus', 'lanebreakersdlc', 'milohax', 'paramoremegapack', 'rbbr', 'rbee', 'rbrc', 'tbrbcdlc', 'ugc', 'ugc_c3', 'ugc_lost', 'ugc_plus', 'ugc_rv'] },
   { code: 'fanMadeGames', options: ['ch', 'fof', 'fretsmasher', 'phaseshift', 'yarg', 'yargdlc'] },
 ]
+
+export const PKG_CATEGORIES = ['other', 'author', 'artistBand', 'fullBand', 'singles', 'rockBand', 'guitarHero', 'official', 'unofficial', 'themed', 'seasonal', 'debug'] as const
 
 export const DTA_STRUCT = {
   allGenresKeys: ['alternative', 'blues', 'classical', 'classicrock', 'country', 'emo', 'fusion', 'glam', 'grunge', 'hiphoprap', 'indierock', 'inspirational', 'jazz', 'jrock', 'latin', 'metal', 'new_wave', 'novelty', 'numetal', 'other', 'popdanceelectronic', 'poprock', 'prog', 'punk', 'rbsoulfunk', 'reggaeska', 'rock', 'southernrock', 'world'] as SongGenre[],

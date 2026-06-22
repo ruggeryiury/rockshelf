@@ -45,21 +45,21 @@ export const getSongPackageStatsFromFolder = async (packagePath: DirPathLikeType
       const texture = new TextureFile(packageDir.gotoFile(`songs/${onlySong.songname}/gen/${onlySong.songname}_keep.png_ps3`))
       if (texture.path.exists) {
         const temp = await texture.convertToImage(temporaryFile({ extension: '.jpg' }), 'jpg')
-        packageData = { fileVersion: 1, source: 'merged', type: 'other', encryptionStatus: 'unknown', packageName: `${onlySong.name} - ${onlySong.artist}`, creationDate: nowDate }
+        packageData = { fileVersion: 1, source: 'merged', type: 'other', encryptionStatus: 'unknown', packageName: `${onlySong.name} - ${onlySong.artist}`, category: 'other', creationDate: nowDate }
         await createRSPackImage(temp.path, thumbnailSrc, packageData)
         await temp.path.delete()
       } else {
         let newPackageImage = getRockshelfModuleRootDir().gotoFile(`bin/icons/${official?.code}.jpg`)
         if (!newPackageImage.exists) newPackageImage = getRockshelfModuleRootDir().gotoFile(`bin/icons/custom.jpg`)
 
-        packageData = { fileVersion: 1, source: 'merged', type: 'other', encryptionStatus: 'unknown', packageName: official?.name || packageDir.name, creationDate: nowDate }
+        packageData = { fileVersion: 1, source: 'merged', type: 'other', encryptionStatus: 'unknown', packageName: official?.name || packageDir.name, category: 'other', creationDate: nowDate }
         await createRSPackImage(newPackageImage, thumbnailSrc, packageData)
       }
     } else {
       let newPackageImage = getRockshelfModuleRootDir().gotoFile(`bin/icons/${official?.code}.jpg`)
       if (!newPackageImage.exists) newPackageImage = getRockshelfModuleRootDir().gotoFile(`bin/icons/custom.jpg`)
 
-      packageData = { fileVersion: 1, source: 'merged', type: 'other', encryptionStatus: 'unknown', packageName: official?.name || packageDir.name, creationDate: nowDate }
+      packageData = { fileVersion: 1, source: 'merged', type: 'other', encryptionStatus: 'unknown', packageName: official?.name || packageDir.name, category: 'other', creationDate: nowDate }
       await createRSPackImage(newPackageImage, thumbnailSrc, packageData)
     }
   } else {

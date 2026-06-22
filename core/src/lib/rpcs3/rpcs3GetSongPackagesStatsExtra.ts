@@ -147,6 +147,7 @@ export const rpcs3GetSongPackagesStatsExtra = async (devhdd0Path: DirPathLikeTyp
         source: 'pkg',
         type: 'other',
         encryptionStatus: 'unknown',
+        category: 'official',
         creationDate: '2010-10-26T00:00:00.000Z',
       },
       official: {
@@ -222,20 +223,20 @@ export const rpcs3GetSongPackagesStatsExtra = async (devhdd0Path: DirPathLikeTyp
             const texture = new TextureFile(packagePath.gotoFile(`songs/${onlySong.songname}/gen/${onlySong.songname}_keep.png_ps3`))
             if (texture.path.exists) {
               const temp = await texture.convertToImage(temporaryFile({ extension: '.jpg' }), 'jpg')
-              const { header } = await createRSPackImage(temp.path, thumbnailSrc, { source: 'merged', type: 'other', encryptionStatus: 'unknown', packageName: `${onlySong.name} - ${onlySong.artist}` })
+              const { header } = await createRSPackImage(temp.path, thumbnailSrc, { source: 'merged', type: 'other', encryptionStatus: 'unknown', packageName: `${onlySong.name} - ${onlySong.artist}`, category: 'other' })
               packageData = header
               await temp.path.delete()
             } else {
               const newPackageImage = getRockshelfModuleRootDir().gotoFile(`bin/icons/custom.jpg`)
 
-              const { header } = await createRSPackImage(newPackageImage, thumbnailSrc, { source: 'merged', type: 'other', encryptionStatus: 'unknown', packageName: packagePath.name })
+              const { header } = await createRSPackImage(newPackageImage, thumbnailSrc, { source: 'merged', type: 'other', encryptionStatus: 'unknown', packageName: packagePath.name, category: 'other' })
               packageData = header
             }
           } else {
             let newPackageImage = getRockshelfModuleRootDir().gotoFile(`bin/icons/${official?.code}.jpg`)
             if (!newPackageImage.exists) newPackageImage = getRockshelfModuleRootDir().gotoFile(`bin/icons/custom.jpg`)
 
-            const { header } = await createRSPackImage(newPackageImage, thumbnailSrc, { source: official ? 'pkg' : 'merged', type: official ? 'rockshelf' : 'other', encryptionStatus: official ? 'encrypted' : 'unknown', packageName: official?.name || packagePath.name })
+            const { header } = await createRSPackImage(newPackageImage, thumbnailSrc, { source: official ? 'pkg' : 'merged', type: official ? 'rockshelf' : 'other', encryptionStatus: official ? 'encrypted' : 'unknown', packageName: official?.name || packagePath.name, category: official ? 'official' : 'other' })
             packageData = header
           }
         } else {
@@ -316,20 +317,20 @@ export const rpcs3GetSongPackagesStatsExtra = async (devhdd0Path: DirPathLikeTyp
             const texture = new TextureFile(packagePath.gotoFile(`songs/${onlySong.songname}/gen/${onlySong.songname}_keep.png_ps3`))
             if (texture.path.exists) {
               const temp = await texture.convertToImage(temporaryFile({ extension: '.jpg' }), 'jpg')
-              const { header } = await createRSPackImage(temp.path, thumbnailSrc, { source: 'merged', type: 'other', encryptionStatus: 'unknown', packageName: `${onlySong.name} - ${onlySong.artist}` })
+              const { header } = await createRSPackImage(temp.path, thumbnailSrc, { source: 'merged', type: 'other', encryptionStatus: 'unknown', packageName: `${onlySong.name} - ${onlySong.artist}`, category: 'other' })
               packageData = header
               await temp.path.delete()
             } else {
               const newPackageImage = getRockshelfModuleRootDir().gotoFile(`bin/icons/custom.jpg`)
 
-              const { header } = await createRSPackImage(newPackageImage, thumbnailSrc, { source: 'merged', type: 'other', encryptionStatus: 'unknown', packageName: packagePath.name })
+              const { header } = await createRSPackImage(newPackageImage, thumbnailSrc, { source: 'merged', type: 'other', encryptionStatus: 'unknown', packageName: packagePath.name, category: 'other' })
               packageData = header
             }
           } else {
             let newPackageImage = getRockshelfModuleRootDir().gotoFile(`bin/icons/${official?.code}.jpg`)
             if (!newPackageImage.exists) newPackageImage = getRockshelfModuleRootDir().gotoFile(`bin/icons/custom.jpg`)
 
-            const { header } = await createRSPackImage(newPackageImage, thumbnailSrc, { source: 'merged', type: 'other', encryptionStatus: 'unknown', packageName: official?.name || packagePath.name })
+            const { header } = await createRSPackImage(newPackageImage, thumbnailSrc, { source: 'merged', type: 'other', encryptionStatus: 'unknown', packageName: official?.name || packagePath.name, category: official ? 'official' : 'other' })
             packageData = header
           }
         } else {

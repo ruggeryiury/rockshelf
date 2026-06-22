@@ -140,7 +140,8 @@ export const filterSongPackagesByUserCategory = (packages: RPCS3SongPackagesObje
   const headers: SongPackagesFilterGenericHeaders[] = [
     { name: 'Other Packages', code: 'other', indexes: [] },
     { name: 'Author Packages', code: 'author', indexes: [] },
-    { name: 'Full Band Packages', code: 'artistBand', indexes: [] },
+    { name: 'Artist/Band Packages', code: 'artistBand', indexes: [] },
+    { name: 'Full Band Packages', code: 'fullBand', indexes: [] },
     { name: 'Singles', code: 'singles', indexes: [] },
     { name: 'Rock Band Packages', code: 'rockBand', indexes: [] },
     { name: 'Guitar Hero Packages', code: 'guitarHero', indexes: [] },

@@ -1,5 +1,5 @@
 import { RPCS3ExtractionOptions } from 'rockshelf-core/rbtools/lib'
-import { SelectPackageFilesStatsTypes } from 'rockshelf-core'
+import { RSPackImagePackageCategoryNumbers, SelectPackageFilesStatsTypes } from 'rockshelf-core'
 import { create } from 'zustand'
 
 export interface CreateNewPackageScreenStateProps {
@@ -11,11 +11,13 @@ export interface CreateNewPackageScreenStateProps {
   hoveredFile: number
   expandedFileSongsView: boolean[]
   seeSelectedSongsOnly: boolean[]
+  dropdownActivated: number
 
   packageName: string
   packageFolderName: string
   forceEncryption: NonNullable<RPCS3ExtractionOptions['forceEncryption']>
   packageArtwork: string | null
+  category: RSPackImagePackageCategoryNumbers
 }
 
 export interface CreateNewPackageScreenStateActions {
@@ -48,11 +50,13 @@ const defaultState: CreateNewPackageScreenStateProps = {
   hoveredFile: -1,
   expandedFileSongsView: [],
   seeSelectedSongsOnly: [],
+  dropdownActivated: -1,
 
   packageName: '',
   packageFolderName: '',
   forceEncryption: 'disabled',
   packageArtwork: null,
+  category: 0,
 }
 
 export const useCreateNewPackageScreenState = create<CreateNewPackageScreenStateHook>()((set, get) => ({

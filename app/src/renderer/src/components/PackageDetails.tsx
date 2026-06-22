@@ -1,17 +1,17 @@
 import { AnimatedDiv, AnimatedSection, TransComponent, animate, getReadableBytesSize, underscoreToUppercaseLetter, uppercaseFirstLetter } from '@renderer/lib.exports'
 import { useMyPackagesScreenState } from './MyPackagesScreen.state'
-import { useEffect, useMemo } from 'react'
+import { useEffect, useMemo, useRef } from 'react'
 import { useWindowState } from '@renderer/stores/Window.state'
 import { useTranslation } from 'react-i18next'
 import { useUserConfigState } from '@renderer/stores/UserConfig.state'
 import { useShallow } from 'zustand/shallow'
-import { LoadingIcon } from '@renderer/assets/icons'
+import { ChevronDownIcon, LoadingIcon } from '@renderer/assets/icons'
 import clsx from 'clsx'
 import { bandIcon, guitarIcon, bassIcon, drumsIcon, keysIcon, vocalsIcon, proGuitarIcon, proBassIcon, proDrumsIcon, proKeysIcon, harm3Icon } from '@renderer/assets/images'
 import { useMessageBoxState } from './MessageBox.state'
 import { useRBIconsSelectorState } from './RBIconsSelector.state'
 import { useImageCropScreenState } from './ImageCropScreen.state'
-import { PACKAGE_DETAILS_TABS, STRUCT_LOG, VALIDATORS } from '@renderer/app/rockshelf.globals'
+import { CREATE_NEW_PACKAGE_DROPDOWNS, PACKAGE_DETAILS_TABS, PKG_CATEGORIES, STRUCT_LOG, VALIDATORS } from '@renderer/app/rockshelf.globals'
 import { StarsInline } from '@renderer/components.exports'
 import { useExportPackageModalState } from './ExportPackageModal.state'
 
@@ -25,7 +25,7 @@ import { useEditAllSongsScreenState } from './EditAllSongsScreen.state'
 export function PackageDetails() {
   const { t } = useTranslation()
 
-  const { selPKG, songsCatalog, setMyPackagesScreenState, packageDetailsTab, editPackageName, hasPackageNameChanged, hasPackageFolderNameChanged, editPackageFolderName, packageDescription, packageFolderNameError, packageNameError } = useMyPackagesScreenState(useShallow((x) => ({ selPKG: x.selPKG, songsCatalog: x.songsCatalog, setMyPackagesScreenState: x.setMyPackagesScreenState, packageDetailsTab: x.packageDetailsTab, editPackageName: x.editPackageName, hasPackageNameChanged: x.hasPackageNameChanged, hasPackageFolderNameChanged: x.hasPackageFolderNameChanged, editPackageFolderName: x.editPackageFolderName, packageDescription: x.packageDescription, packageNameError: x.packageNameError, packageFolderNameError: x.packageFolderNameError })))
+  const { selPKG, songsCatalog, setMyPackagesScreenState, packageDetailsTab, editPackageName, hasPackageNameChanged, hasPackageFolderNameChanged, editPackageFolderName, packageDescription, packageFolderNameError, packageNameError, pkgDetailsDropdown, editPackageCategory, hasPackageCategoryChanged } = useMyPackagesScreenState(useShallow((x) => ({ selPKG: x.selPKG, songsCatalog: x.songsCatalog, setMyPackagesScreenState: x.setMyPackagesScreenState, packageDetailsTab: x.packageDetailsTab, editPackageName: x.editPackageName, hasPackageNameChanged: x.hasPackageNameChanged, hasPackageFolderNameChanged: x.hasPackageFolderNameChanged, editPackageFolderName: x.editPackageFolderName, packageDescription: x.packageDescription, packageNameError: x.packageNameError, packageFolderNameError: x.packageFolderNameError, pkgDetailsDropdown: x.pkgDetailsDropdown, hasPackageCategoryChanged: x.hasPackageCategoryChanged, editPackageCategory: x.editPackageCategory })))
   const { disableButtons, saveData, packages, rb3Stats, setWindowState, disableImg } = useWindowState(useShallow((x) => ({ disableButtons: x.disableButtons, saveData: x.saveData, packages: x.packages, rb3Stats: x.rb3Stats, setWindowState: x.setWindowState, disableImg: x.disableImg })))
   const { packagesCatalogSortBy, songsCatalogSortBy, mostPlayedInstrument, setUserConfigState, getUserConfigState } = useUserConfigState(useShallow((x) => ({ mostPlayedInstrument: x.mostPlayedInstrument, setUserConfigState: x.setUserConfigState, songsCatalogSortBy: x.songsCatalogSortBy, packagesCatalogSortBy: x.packagesCatalogSortBy, getUserConfigState: x.getUserConfigState })))
   const { setMessageBoxState } = useMessageBoxState(useShallow((x) => ({ setMessageBoxState: x.setMessageBoxState })))
@@ -65,7 +65,7 @@ export function PackageDetails() {
   useEffect(
     function resetEditPackageState() {
       if (typeof active === 'object' && active && packageDetailsTab === PACKAGE_DETAILS_TABS.OPTIONS) {
-        setMyPackagesScreenState({ editPackageName: active.packageData.packageName, packageNameError: null, hasPackageNameChanged: false, editPackageFolderName: active.name, packageFolderNameError: null, hasPackageFolderNameChanged: false })
+        setMyPackagesScreenState({ editPackageName: active.packageData.packageName, packageNameError: null, hasPackageNameChanged: false, editPackageFolderName: active.name, packageFolderNameError: null, hasPackageFolderNameChanged: false, editPackageCategory: active.packageData.category, hasPackageCategoryChanged: false, pkgDetailsDropdown: -1 })
       }
     },
     [packageDetailsTab]
@@ -73,8 +73,8 @@ export function PackageDetails() {
 
   useEffect(
     function warnNonSavedChangesOnPackageEdit() {
-      if (packageDetailsTab !== PACKAGE_DETAILS_TABS.OPTIONS && (hasPackageNameChanged || hasPackageFolderNameChanged)) {
-        setMyPackagesScreenState({ packageNameError: null, packageFolderNameError: null, hasPackageNameChanged: false, hasPackageFolderNameChanged: false })
+      if (packageDetailsTab !== PACKAGE_DETAILS_TABS.OPTIONS && (hasPackageNameChanged || hasPackageFolderNameChanged || hasPackageCategoryChanged)) {
+        setMyPackagesScreenState({ packageNameError: null, packageFolderNameError: null, hasPackageNameChanged: false, hasPackageFolderNameChanged: false, hasPackageCategoryChanged: false })
         setMessageBoxState({ message: { type: 'warn', code: 'nonSavedChangesOnEditPackage' } })
       }
     },
@@ -99,6 +99,10 @@ export function PackageDetails() {
     },
     [active, packageDetailsTab]
   )
+
+  // useEffect()
+
+  const categorySelectorDivRef = useRef<HTMLDivElement>(null)
 
   return (
     <AnimatedSection id="PackageDetails" condition={active !== null && songsCatalog !== false} {...animate({ opacity: true })} className="absolute! z-5 h-full max-h-full w-full max-w-full bg-black p-8">
@@ -639,6 +643,62 @@ export function PackageDetails() {
                         {t('getArtworkFromSong', { songTitle: active.songs[0].name })}
                       </button>
                     )}
+                  </div>
+                </div>
+
+                <div className="group rounded-xs p-2 duration-200 hover:bg-white/5">
+                  <div className="flex-row! items-start">
+                    <div className="mr-auto">
+                      <h1 className="mb-1 uppercase">{t('pkgCategory')}</h1>
+                      <p className="mb-4 text-xs italic">
+                        <TransComponent i18nKey="pkgCategoryDesc" />
+                      </p>
+                    </div>
+                    {hasPackageCategoryChanged && (
+                      <button
+                        className="w-fit rounded-xs border border-neutral-800 bg-neutral-900 px-1 py-0.5 text-xs! uppercase duration-100 last:mb-0 hover:bg-neutral-700 active:bg-neutral-600 disabled:text-neutral-700 disabled:hover:bg-neutral-900"
+                        disabled={disableButtons || packageNameError !== null}
+                        onClick={async (ev) => {
+                          ev.stopPropagation()
+                          setWindowState({ disableButtons: true })
+                          try {
+                            const newPackages = await window.api.editPackageData(selPKG, { category: editPackageCategory })
+                            if (STRUCT_LOG) console.log('struct RPCS3SongPackagesDataExtra ["rbtools/src/lib/rpcs3/rpcs3GetSongPackagesStatsExtra.ts"]:', newPackages)
+
+                            if (newPackages) {
+                              setWindowState({ packages: newPackages })
+                              const newCatalog = await window.api.sortAndFilterSongPackages(packagesCatalogSortBy)
+                              if (STRUCT_LOG) console.log('struct SongPackagesFilterGenericObject [core/src/lib/dta/getDTACatalog.ts]', newCatalog)
+                              setMyPackagesScreenState({ packagesCatalog: newCatalog })
+                              setMyPackagesScreenState({ hasPackageCategoryChanged: false })
+                              setMessageBoxState({ message: { type: 'success', code: 'savePackageEditing' } })
+                            }
+                          } catch (err) {
+                            if (err instanceof Error) setWindowState({ err })
+                          }
+                          setWindowState({ disableButtons: false })
+                        }}
+                      >
+                        {t('saveChanges')}
+                      </button>
+                    )}
+                  </div>
+
+                  <div ref={categorySelectorDivRef}>
+                    <button onClick={() => setMyPackagesScreenState({ pkgDetailsDropdown: pkgDetailsDropdown === CREATE_NEW_PACKAGE_DROPDOWNS.CATEGORY ? -1 : CREATE_NEW_PACKAGE_DROPDOWNS.CATEGORY })} className={clsx('w-full flex-row! items-start border border-white/10 p-1 text-start normal-case! hover:border-white/20 active:border-white/45', pkgDetailsDropdown === CREATE_NEW_PACKAGE_DROPDOWNS.CATEGORY ? 'rounded-t-sm' : 'rounded-sm')}>
+                      {t(`pkgCategory${PKG_CATEGORIES.indexOf(editPackageCategory)}`)}
+
+                      <ChevronDownIcon className={clsx('ml-auto self-center text-xl', pkgDetailsDropdown === CREATE_NEW_PACKAGE_DROPDOWNS.CATEGORY && 'rotate-90')} />
+                    </button>
+                    <AnimatedDiv condition={pkgDetailsDropdown === CREATE_NEW_PACKAGE_DROPDOWNS.CATEGORY} {...animate({ opacity: true, duration: 0.1 })} className="absolute! top-full z-16 max-h-36 min-h-36 w-full origin-top overflow-y-auto rounded-b-sm border border-white/10 bg-black/95 p-1">
+                      {PKG_CATEGORIES.map((cat, catIndex) => {
+                        return (
+                          <button className={clsx('flex-row! items-center p-2 normal-case! duration-100', editPackageCategory === cat ? 'bg-neutral-700 text-neutral-300 hover:bg-neutral-600' : 'hover:bg-white/10')} key={`categorySelector__${cat}${catIndex}`} onClick={() => setMyPackagesScreenState({ editPackageCategory: cat, hasPackageCategoryChanged: true, pkgDetailsDropdown: -1 })}>
+                            {t(`pkgCategory${catIndex}`)}
+                          </button>
+                        )
+                      })}
+                    </AnimatedDiv>
                   </div>
                 </div>
 

@@ -607,6 +607,8 @@ export const appENUSLocale = {
   songFilesFolder: 'Song Files Folder',
   musicStore: 'Music Store',
   sortByUserCategory: 'User Category',
+  pkgCategory: 'Category',
+  pkgCategoryDesc: 'Assign a category for the song package.',
   pkgCategory0: 'Other Packages',
   pkgCategory1: 'Author Packages',
   pkgCategory2: 'Artist/Band Packages',
@@ -617,8 +619,8 @@ export const appENUSLocale = {
   pkgCategory7: 'Official Packages',
   pkgCategory8: 'Unofficial Packages',
   pkgCategory9: 'Themed Packages',
-  pkgCategory11: 'Seasonal Packages',
-  pkgCategory10: 'Debug',
+  pkgCategory10: 'Seasonal Packages',
+  pkgCategory11: 'Debug',
 
   // Edit All Songs
   editAllSongs: 'Edit All Songs',

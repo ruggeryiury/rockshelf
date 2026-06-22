@@ -1,5 +1,5 @@
 import { create } from 'zustand'
-import { SongPackagesFilterGenericObject, SongPackagesFilterTypes } from 'rockshelf-core'
+import { RSPackImagePackageCategoryValues, SongPackagesFilterGenericObject, SongPackagesFilterTypes } from 'rockshelf-core'
 import type { DTAFilterGenericObject, DTAFilterByArtistObject, DTAFilterByDifficultyObject, DTAFilterTypes } from 'rockshelf-core/rbtools/lib'
 import type { GoCentralLeaderboardResultObject } from 'rockshelf-core/rbtools'
 
@@ -12,6 +12,7 @@ export interface MyPackagesScreenStateProps {
   selPKG: number
   packageDetailsTab: number
   hoveredPKG: number
+  pkgDetailsDropdown: number
 
   songsCatalog: DTAFilterGenericObject | DTAFilterByArtistObject | DTAFilterByDifficultyObject | false | 'loading'
   songDetailsTab: number
@@ -27,6 +28,9 @@ export interface MyPackagesScreenStateProps {
   editPackageFolderName: string
   packageFolderNameError: string | null
   hasPackageFolderNameChanged: boolean
+
+  editPackageCategory: RSPackImagePackageCategoryValues
+  hasPackageCategoryChanged: boolean
 }
 
 export interface MyPackagesScreenStateActions {
@@ -59,6 +63,7 @@ const defaultState: MyPackagesScreenStateProps = {
   selPKG: -1,
   packageDetailsTab: 0,
   hoveredPKG: -1,
+  pkgDetailsDropdown: -1,
 
   songsCatalog: false,
   songDetailsTab: 0,
@@ -74,6 +79,9 @@ const defaultState: MyPackagesScreenStateProps = {
   editPackageFolderName: '',
   packageFolderNameError: null,
   hasPackageFolderNameChanged: false,
+
+  editPackageCategory: 'other',
+  hasPackageCategoryChanged: false,
 }
 
 export const useMyPackagesScreenState = create<MyPackagesScreenStateHook>()((set, get) => ({

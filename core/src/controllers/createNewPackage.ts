@@ -1,8 +1,9 @@
 import { getPackagesCacheFile, getRB3USRDIR, rbiconsToPath, readUserConfigFile, sendBuzyLoad, sendDialog, tempjpgToPath, useHandler } from '../core.exports'
 import { DirPath, pathLikeToFilePath } from 'node-lib'
-import { createRSPackImage, extractPackagesForRPCS3Extra, isValidFolderName, rpcs3GetSongPackagesStatsExtra, type RPCS3SongPackagesDataExtra, type RSPackImageSourceValues } from '../lib.exports'
+import { createRSPackImage, extractPackagesForRPCS3Extra, isValidFolderName, rpcs3GetSongPackagesStatsExtra, rsPackImage, type RPCS3SongPackagesDataExtra, type RSPackImagePackageCategoryNumbers, type RSPackImageSourceValues } from '../lib.exports'
 import { utimes } from 'node:fs/promises'
 import { isRB3FolderNameFreeOnRPCS3, isRPCS3Devhdd0PathValid, officialPackages, type RPCS3ExtractionOptions } from '../lib/rbtools/lib.exports'
+import { getKeyFromMapValue } from '../lib/rbtools/utils.exports'
 
 export interface CreateNewPackageOptions {
   packages: string[]
@@ -11,6 +12,7 @@ export interface CreateNewPackageOptions {
   forceEncryption: NonNullable<RPCS3ExtractionOptions['forceEncryption']>
   thumbnail: string | null
   selectedSongs?: string[]
+  category?: RSPackImagePackageCategoryNumbers
 }
 
 export const createNewPackage = useHandler(async (win, __, options: CreateNewPackageOptions): Promise<RPCS3SongPackagesDataExtra | false> => {
@@ -20,7 +22,7 @@ export const createNewPackage = useHandler(async (win, __, options: CreateNewPac
     return false
   }
 
-  const { packageFolderName, forceEncryption, packages, thumbnail, packageName, selectedSongs } = options
+  const { packageFolderName, forceEncryption, packages, thumbnail, packageName, selectedSongs, category } = options
 
   let devhdd0: DirPath
   try {
@@ -83,7 +85,7 @@ export const createNewPackage = useHandler(async (win, __, options: CreateNewPac
       else packageSource = 'stfs'
     } else packageSource = 'merged'
 
-    await createRSPackImage(thumbnail !== null ? tempjpgToPath('tempjpg://thumbnail') : rbiconsToPath('rbicons://custom').gotoFile('custom.jpg'), packageFolder.gotoFile('folder.jpg'), { packageName, type: 'rockshelf', source: packageSource, encryptionStatus: forceEncryption === 'enabled' ? 'encrypted' : 'decrypted' })
+    await createRSPackImage(thumbnail !== null ? tempjpgToPath('tempjpg://thumbnail') : rbiconsToPath('rbicons://custom').gotoFile('custom.jpg'), packageFolder.gotoFile('folder.jpg'), { packageName, type: 'rockshelf', source: packageSource, encryptionStatus: forceEncryption === 'enabled' ? 'encrypted' : 'decrypted', category: rsPackImage.packageCategory[category ?? 0] })
     sendBuzyLoad(win, { code: 'incrementStep' })
 
     const cache = getPackagesCacheFile()

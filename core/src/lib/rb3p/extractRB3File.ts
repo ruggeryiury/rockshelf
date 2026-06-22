@@ -99,7 +99,7 @@ export const extractRB3FileToRPCS3 = async (win: BrowserWindow, rb3FilePath: Fil
 
   const packageArtworkPath = packageFolder.gotoFile('folder.jpg')
   sendBuzyLoad(win, { code: 'subtext', key: 'writingPKGThumbnailTextWithCount', messageValues: { count: count.toString(), total: total.toString(), name: packageArtworkPath.fullname } })
-  await createRSPackImage(thumbnail, packageArtworkPath, { packageName, type: 'rockshelf', source: header.sourceType, encryptionStatus: header.encryptionStatus, creationDate: header.dateISOString })
+  await createRSPackImage(thumbnail, packageArtworkPath, { packageName, type: 'rockshelf', source: header.sourceType, encryptionStatus: header.encryptionStatus, creationDate: header.dateISOString, category: header.packageCategory })
   count++
 
   if (description && description.length > 0) {

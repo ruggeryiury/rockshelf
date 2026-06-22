@@ -687,9 +687,6 @@ export function EditSongScreen() {
                     </button>
                     <h1 className="mb-1 uppercase">{t('enableDXGenre')}</h1>
                   </div>
-                  {/* <p className="text-xs italic">
-                    <TransComponent i18nKey="enableDXGenreDesc" />
-                  </p> */}
                   <AnimatedDiv condition={enableDXGenre} ref={genreSelectorDivRef}>
                     <div className="h-2 w-full" />
                     <button onClick={() => setEditSongScreenState({ dropdownActivated: dropdownActivated === EDIT_SONG_SCREEN_DROPDOWNS.GENRE ? -1 : EDIT_SONG_SCREEN_DROPDOWNS.GENRE })} className={clsx('w-full flex-row! items-start border border-white/10 p-1 text-start normal-case! hover:border-white/20 active:border-white/45', dropdownActivated === EDIT_SONG_SCREEN_DROPDOWNS.GENRE ? 'rounded-t-sm' : 'rounded-sm')}>

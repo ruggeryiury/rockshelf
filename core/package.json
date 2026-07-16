@@ -25,12 +25,14 @@
     "jschardet": "3.1.4",
     "node-lib": "link:..\\..\\node-lib",
     "tempy": "^3.2.0",
+    "unzipper": "^0.12.5",
     "use-default-options": "link:..\\..\\use-default-options",
     "yaml": "^2.8.2"
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",
     "@types/node": "^25.5.0",
+    "@types/unzipper": "^0.10.11",
     "eslint": "^10.0.3",
     "eslint-import-resolver-typescript": "^4.4.4",
     "globals": "^17.4.0",

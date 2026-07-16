@@ -81,10 +81,10 @@ export const parseRB3FileHeader = async (rb3FilePath: FilePathLikeTypes): Promis
   const packageFilesFormat = pff === 0 ? 'xbox' : 'ps3'
   const catIndex = await reader.readUInt8() as RSPackImagePackageCategoryNumbers
   const packageCategory = rsPackImage.packageCategory[catIndex]
-  reader.padding(0x01)
+  reader.padding(0x11)
   const packageHash = await reader.readHex(0x20, false)
 
-  reader.seek(0x50)
+  reader.seek(0x60)
 
   const songEntries: RB3FileHeaderObject['songEntries'] = []
 

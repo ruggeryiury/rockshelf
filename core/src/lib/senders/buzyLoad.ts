@@ -10,7 +10,7 @@ export interface BuzyLoadErrorObject {
   messageValues?: Record<string, string>
 }
 
-export type BuzyLoadOnCompleteActions = 'refreshRB3Stats' | 'resetDeluxeInstallScreenState' | 'resetCreateNewPackageScreenState' | 'resetExportPackageModalState' | 'resetInstallRB3FileScreenState'
+export type BuzyLoadOnCompleteActions = 'refreshRB3Stats' | 'resetCreateNewPackageScreenState' | 'resetExportPackageModalState' | 'resetInstallRB3FileScreenState'
 
 export interface BuzyLoadInitObject {
   code: 'init'

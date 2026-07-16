@@ -1,6 +1,6 @@
 import { Client, type SetActivity } from '@xhayper/discord-rpc'
 import { BrowserWindow, ipcMain } from 'electron'
-import { getBrowserWindowFromEvent, getDiscordRPJSONFile, getLocaleStringFromRenderer, sendMessageBox, type UserConfigObject } from '../core.exports'
+import { getBrowserWindowFromEvent, RockshelfFileSys, getLocaleStringFromRenderer, sendMessageBox, type UserConfigObject } from '../core.exports'
 import { DirPath, pathLikeToDirPath, type FilePath } from 'node-lib'
 import { sleep, underlineToCamelCase } from '../lib.exports'
 import { slashQToQuote } from '../lib/rbtools/utils.exports'
@@ -51,7 +51,7 @@ export const initRichPresence = async (): Promise<never> => {
 
   ipcMain.handle('discordRPSetUserConfig', (_, userCnfg: UserConfigObject) => {
     devhdd0Path = pathLikeToDirPath(userCnfg.devhdd0Path)
-    rpJSONPath = getDiscordRPJSONFile(devhdd0Path)
+    rpJSONPath = RockshelfFileSys.dxRichPresenceFile(devhdd0Path)
     return true
   })
 

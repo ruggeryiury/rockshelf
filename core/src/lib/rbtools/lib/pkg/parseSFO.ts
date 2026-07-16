@@ -1,4 +1,4 @@
-import { BinaryReader, HexStr, type FilePathLikeTypes } from 'node-lib'
+import { BinaryReader, Hex, type FilePathLikeTypes } from 'node-lib'
 
 export interface SFODataObject {
   /**
@@ -117,7 +117,7 @@ export const parseSFOFileOrBuffer = async (sfoFilePathOrBuffer: FilePathLikeType
         entryData = await reader.readUTF8(dataLength)
         break
       case 'uint32':
-        entryData = HexStr.processHex(await reader.readUInt32LE())
+        entryData = Hex.toHexString(await reader.readUInt32LE())
         break
     }
     readDataBytes += dataLength

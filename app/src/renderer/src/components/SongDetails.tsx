@@ -293,7 +293,7 @@ export function SongDetails() {
                     <h1 className="mb-1 uppercase">{t('author')}</h1>
                     <div className="flex-row! items-center">
                       {/* <p className={clsx(songDetails.author === undefined && 'text-neutral-500 italic')}>{songDetails.author !== undefined ? packageDetails.official !== undefined ? 'Harmonix' : songDetails.author : t('notSpecified')}</p> */}
-                      <p className={clsx(!packageDetails.official && !songDetails.author && 'text-neutral-500 italic')}>{packageDetails.official && !songDetails.author ? 'Harmonix' : !packageDetails.official && !songDetails.author ? t('notSpecified') : songDetails.author}</p>
+                      <p className={clsx(!packageDetails.official && (!songDetails.author || songDetails.author === 'Unknown Charter') && 'text-neutral-500 italic')}>{packageDetails.official && !songDetails.author ? 'Harmonix' : !packageDetails.official && (!songDetails.author || songDetails.author === 'Unknown Charter') ? t('notSpecified') : songDetails.author}</p>
                     </div>
                   </div>
 

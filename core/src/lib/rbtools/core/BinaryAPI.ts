@@ -1,4 +1,4 @@
-import { execAsync, type FilePath, pathLikeToFilePath, pathLikeToString, resolve, type FilePathLikeTypes, type DirPathLikeTypes, pathLikeToDirPath, DirPath, HexStr } from 'node-lib'
+import { execAsync, type FilePath, pathLikeToFilePath, pathLikeToString, resolve, type FilePathLikeTypes, type DirPathLikeTypes, pathLikeToDirPath, DirPath, Hex } from 'node-lib'
 import { EDATFile, ImageFile, MIDIFile, MOGGFile, RBTools } from '../core.exports'
 import { buildOSCommand } from '../lib.exports'
 import { is } from '@electron-toolkit/utils'
@@ -41,6 +41,22 @@ export class BinaryAPI {
   }
 
   /**
+   * Decrypts an encrypted MOGG file.
+   * - - - -
+   * @param {FilePathLikeTypes} srcFile The path to the MOGG file to be decrypted.
+   * @param {FilePathLikeTypes} destPath The destination path of the new, decrypted MOGG file.
+   * @returns {MOGGFile} A `MOGGFile` instance pointing to the new MOGG file path.
+   */
+  static async cliCryptDecrypt(srcFile: FilePathLikeTypes, destPath: FilePathLikeTypes): Promise<MOGGFile> {
+    const exeName = RBTools.binFolder.gotoFile('cliCrypt.exe').name
+    const command = buildOSCommand(`${exeName} "${pathLikeToString(srcFile)}" "${pathLikeToString(destPath)}" decrypt`)
+    const cwd = is.dev ? RBTools.binFolder.path : RBTools.binFolder.path.replace(/(\.asar)([\\/])/, '.asar.unpacked$2')
+    const { stderr } = await execAsync(command, { windowsHide: true, cwd })
+    if (stderr) throw new Error(stderr.trim())
+    return new MOGGFile(destPath)
+  }
+
+  /**
    * Encrypts files using custom 16-bytes `devKLic` key hash and returns an instance of `EDATFile` pointing to the new encrypted EDAT file.
    * - - - -
    * @param {FilePathLikeTypes} srcFile The path to the source file to be encrypted.
@@ -50,7 +66,7 @@ export class BinaryAPI {
    * @returns {Promise<EDATFile>}
    */
   static async makeNPDataEncrypt(srcFile: FilePathLikeTypes, contentID: string, devKLic: string, destPath?: FilePathLikeTypes): Promise<EDATFile> {
-    if (!HexStr.isHexString(devKLic)) throw new Error('Provided devklic must be a HEX string.')
+    if (!Hex.isHexString(devKLic)) throw new Error('Provided devklic must be a HEX string.')
     if (devKLic.length !== 32) throw new Error('Provided devklic must be a fixed-length HEX string of 32 characters.')
     const exeName = RBTools.binFolder.gotoFile('make_npdata.exe').name
     const src = pathLikeToFilePath(srcFile)
@@ -78,7 +94,7 @@ export class BinaryAPI {
    * @returns {Promise<MIDIFile>}
    */
   static async makeNPDataDecrypt(srcFile: FilePathLikeTypes, devKLic: string, destPath?: FilePathLikeTypes): Promise<MIDIFile> {
-    if (!HexStr.isHexString(devKLic)) throw new Error('Provided devklic must be a HEX string.')
+    if (!Hex.isHexString(devKLic)) throw new Error('Provided devklic must be a HEX string.')
     if (devKLic.length !== 32) throw new Error('Provided devklic must be a fixed-length HEX string of 32 characters.')
     const exeName = RBTools.binFolder.gotoFile('make_npdata.exe').name
     const src = pathLikeToFilePath(srcFile)

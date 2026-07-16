@@ -1,4 +1,4 @@
-import { BinaryReader, type FilePath, type FilePathJSONRepresentation, type FilePathLikeTypes, pathLikeToFilePath, randomByteFromRanges } from 'node-lib'
+import { BinaryReader, type FilePath, type FilePathJSONRepresentation, type FilePathLikeTypes, pathLikeToFilePath, randomBytesFromRanges } from 'node-lib'
 import { BinaryAPI, EDATFile, PythonAPI, type MIDIFileStatPythonObject } from '../core.exports'
 
 // #region Types
@@ -90,7 +90,7 @@ export class MIDIFile {
    * @returns {Promise<EDATFile>}
    */
   async encrypt(options: EDATEncryptionOptions): Promise<EDATFile> {
-    const contentID = options.contentID ?? EDATFile.genContentID(`RBTOOLSEDAT${randomByteFromRanges(6, ['numbers']).toString()}`)
+    const contentID = options.contentID ?? await EDATFile.genContentID(`RBTOOLSEDAT${(await randomBytesFromRanges(6, ['numbers'])).toString()}`)
     const packFolderName = options.packFolderName
     const destPath = options.destPath ? pathLikeToFilePath(options.destPath) : undefined
 

@@ -6,14 +6,13 @@ import { useTranslation } from 'react-i18next'
 import type { ParsedRB3SaveData, InstrumentScoreData } from 'rockshelf-core/rbtools'
 import { DXNIGHTLYLINK, STRUCT_LOG } from '@renderer/app/rockshelf.globals'
 import type { RockBand3Data } from 'rockshelf-core/rbtools/lib'
-import { useDeluxeInstallScreenState } from './DeluxeInstallScreen.state'
+import { useDeluxeConfigScreenState } from './DeluxeConfigScreen.state'
 import { useMessageBoxState } from './MessageBox.state'
 import { useConfigScreenState } from './ConfigScreen.state'
 import { useMyPackagesScreenState } from './MyPackagesScreen.state'
 import { useShallow } from 'zustand/shallow'
 import { useCreateNewPackageScreenState } from './CreateNewPackageScreen.state'
 import { useRhythmverseScreenState } from './RhythmverseScreen.state'
-import { useQuickConfigScreenState } from './QuickConfigScreen.state'
 import { useInstallRB3FileScreenState } from './InstallRB3FileScreen.state'
 import { useAboutScreenState } from './AboutScreen.state'
 
@@ -22,12 +21,11 @@ export function MainScreen() {
   const active = useMainScreenState((x) => x.active)
   const { disableButtons, saveData, setWindowState, rb3Stats, instrumentScores, packages, richPresence } = useWindowState(useShallow((x) => ({ disableButtons: x.disableButtons, saveData: x.saveData, setWindowState: x.setWindowState, rb3Stats: x.rb3Stats, instrumentScores: x.instrumentScores, packages: x.packages, richPresence: x.richPresence })))
   const { setMessageBoxState } = useMessageBoxState(useShallow((x) => ({ setMessageBoxState: x.setMessageBoxState })))
-  const { setDeluxeInstallScreenState } = useDeluxeInstallScreenState(useShallow((x) => ({ setDeluxeInstallScreenState: x.setDeluxeInstallScreenState })))
+  const { setDeluxeConfigScreenState } = useDeluxeConfigScreenState(useShallow((x) => ({ setDeluxeConfigScreenState: x.setDeluxeConfigScreenState })))
   const { setConfigScreenState } = useConfigScreenState(useShallow((x) => ({ setConfigScreenState: x.setConfigScreenState })))
   const { setMyPackagesScreenState } = useMyPackagesScreenState(useShallow((x) => ({ setMyPackagesScreenState: x.setMyPackagesScreenState })))
   const { setCreateNewPackageScreenState } = useCreateNewPackageScreenState(useShallow((x) => ({ setCreateNewPackageScreenState: x.setCreateNewPackageScreenState })))
   const { setRhythmverseScreenState } = useRhythmverseScreenState(useShallow((x) => ({ setRhythmverseScreenState: x.setRhythmverseScreenState })))
-  const { setQuickConfigScreenState } = useQuickConfigScreenState(useShallow((x) => ({ setQuickConfigScreenState: x.setQuickConfigScreenState })))
   const { setInstallRB3FileScreenState } = useInstallRB3FileScreenState(useShallow((x) => ({ setInstallRB3FileScreenState: x.setInstallRB3FileScreenState })))
   const { setAboutScreenState } = useAboutScreenState(useShallow((x) => ({ setAboutScreenState: x.setAboutScreenState })))
 
@@ -94,14 +92,18 @@ export function MainScreen() {
             </>
           )}
           <button
-            className="w-fit h-fill rounded-xs justify-center border border-neutral-700 bg-neutral-900 px-1 py-0.5 text-sm! uppercase duration-100 hover:bg-neutral-700 active:bg-neutral-600 disabled:text-neutral-700 disabled:hover:bg-neutral-900"
+            className="h-fill w-fit justify-center rounded-xs border border-neutral-700 bg-neutral-900 px-1 py-0.5 text-sm! uppercase duration-100 hover:bg-neutral-700 active:bg-neutral-600 disabled:text-neutral-700 disabled:hover:bg-neutral-900"
             disabled={disableButtons}
             onClick={async () => {
               setWindowState({ disableButtons: true, rb3Stats: 'loading' })
               try {
                 setTimeout(async () => {
                   const newRB3Stats = await window.api.rpcs3GetRB3Stats()
-                  if (STRUCT_LOG) console.log('struct RockBand3Data ["rbtools/src/lib/rpcs3/rpcs3GetRB3Stats.ts"]:', rb3Stats)
+                  if (STRUCT_LOG) console.log('struct RockBand3Data ["rbtools/src/lib/rpcs3/rpcs3GetRB3Stats.ts"]:', newRB3Stats)
+
+                  const newInstalledDeluxeData = await window.api.getInstalledDeluxeData()
+                  if (STRUCT_LOG) console.log('struct DeluxeInstalledData ["rbtools/src/lib/github/api.ts"]:', newInstalledDeluxeData)
+
                   let newSaveData: ParsedRB3SaveData | false = false
                   let newInstrumentScores: InstrumentScoreData | false = false
                   if (typeof rb3Stats === 'object' && (rb3Stats.hasSaveData || rb3Stats.userName !== null)) {
@@ -112,7 +114,7 @@ export function MainScreen() {
                       if (STRUCT_LOG) console.log('struct InstrumentScoreData ["rbtools/src/lib/rpcs3/getInstrumentScoresData.ts"]:', newInstrumentScores)
                     }
                   }
-                  setWindowState({ disableButtons: false, rb3Stats: newRB3Stats, saveData: newSaveData, instrumentScores: newInstrumentScores })
+                  setWindowState({ disableButtons: false, rb3Stats: newRB3Stats, saveData: newSaveData, instrumentScores: newInstrumentScores, installedDeluxeData: newInstalledDeluxeData })
                 }, 300)
               } catch (err) {
                 if (err instanceof Error) setWindowState({ err })
@@ -142,23 +144,13 @@ export function MainScreen() {
                 </button>
                 <button
                   className="mb-2 w-full self-start rounded-xs border border-neutral-700 bg-neutral-900 px-1 py-0.5 text-xs! uppercase duration-100 last:mb-0 hover:cursor-help! hover:bg-neutral-700 active:bg-neutral-600 disabled:text-neutral-700 disabled:hover:bg-neutral-900"
-                  title={t('installDeluxeBtnDesc')}
+                  title={t('deluxeSettingsBtnDesc')}
                   disabled={disableButtons}
                   onClick={async () => {
-                    setDeluxeInstallScreenState({ active: true })
+                    setDeluxeConfigScreenState({ active: true })
                   }}
                 >
-                  {t('installDeluxe')}
-                </button>
-                <button
-                  className="mb-2 w-full self-start rounded-xs border border-neutral-700 bg-neutral-900 px-1 py-0.5 text-xs! uppercase duration-100 last:mb-0 hover:cursor-help! hover:bg-neutral-700 active:bg-neutral-600 disabled:text-neutral-700 disabled:hover:bg-neutral-900"
-                  title={t('installQuickConfigurationsBtnDesc')}
-                  disabled={disableButtons}
-                  onClick={() => {
-                    setQuickConfigScreenState({ active: true })
-                  }}
-                >
-                  {t('installQuickConfigurations')}
+                  {t('deluxeSettings')}
                 </button>
                 <button
                   className="mb-2 w-full self-start rounded-xs border border-neutral-700 bg-neutral-900 px-1 py-0.5 text-xs! uppercase duration-100 last:mb-0 hover:cursor-help! hover:bg-neutral-700 active:bg-neutral-600 disabled:text-neutral-700 disabled:hover:bg-neutral-900"

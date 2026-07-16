@@ -116,7 +116,7 @@ The last 4 bytes must represent a 32-bit unsigned integer with the Rockshelf Pac
 
 ## Rock Band 3 Song Package file
 
-The _Rock Band 3 Song Package file_ is a file container used specifically on Rockshelf. The package contains raw data and all information needed to recreate the package when sharing through other users. The file creation and contents depacking is way faster than both STFS/CON and PKG files. The file header has a fixed `0x50` bytes, with each song entry also having fixed `0x50` bytes.<br />
+The _Rock Band 3 Song Package file_ is a file container used specifically on Rockshelf. The package contains raw data and all information needed to recreate the package when sharing through other users. The file creation and contents depacking is way faster than both STFS/CON and PKG files. The file header has a fixed `0x60` bytes, with each song entry having fixed `0x50` bytes.<br />
 
 ### Header
 
@@ -145,8 +145,8 @@ The _Rock Band 3 Song Package file_ is a file container used specifically on Roc
 | Song Data Offset                   | `0x29` | `0x04` | `UInt32LE` | The offset where the actual songs data starts on the package.                                                                                                                                                                                                                                                                                                                                                                  |
 | Package Files Format               | `0x2d` | `0x01` | `UInt8`    | The console-specific format of the stored song package files.<br /><br />0 = Xbox 360.<br />1 = PS3.                                                                                                                                                                                                                                                                                                                           |
 | Package Category                   | `0x2e` | `0x01` | `UInt8`    | The category of the song package. The catogies are pre-defined in Rockshelf.<br /><br />0 = "Other Packages"<br />1 = "Author Packages"<br />2 = "Artist/Band Packages"<br />3 = "Full Album Packages"<br />4 = "Singles"<br />5 = "Rock Band Packages"<br />6 = "Guitar Hero Packages"<br />7 = "Official Packages"<br />8 = "Unofficial Packages"<br />9 = "Themed Packages"<br />10 = "Seasonal Packages"<br />11 = "Debug" |
-| _Reserved (padding)_               | `0x2f` | `0x01` | `byte[]`   |                                                                                                                                                                                                                                                                                                                                                                                                                                |
-| Package Hash                       | `0x30` | `0x20` | `byte[]`   | The song package contents hash in [SHA256 algorithm](https://en.wikipedia.org/wiki/SHA-2).                                                                                                                                                                                                                                                                                                                                     |
+| _Reserved (padding)_               | `0x2f` | `0x11` | `byte[]`   |                                                                                                                                                                                                                                                                                                                                                                                                                                |
+| Package Hash                       | `0x40` | `0x20` | `byte[]`   | The song package contents hash in [SHA256 algorithm](https://en.wikipedia.org/wiki/SHA-2).                                                                                                                                                                                                                                                                                                                                     |
 
 ### Song Entries
 
@@ -194,11 +194,11 @@ After the header and the song entry/entries, the raw data is placed with the act
 
 - [Carl Mylo](https://github.com/carlmylo): Helping testing and providing the spanish translation.
 - Ganso: Helping with general testing.
-- [Aloquendiar](https://github.com/Aloquendiar)
-- [Emma](https://github.com/InvoxiPlayGames)
-- [raphaelgoulart](https://github.com/raphaelgoulart)
-- [TrojanNemo](https://github.com/trojannemo)
-- [Jnack](https://github.com/jnackmclain)
+- [TrojanNemo](https://github.com/trojannemo): Helping and providing the CliCrypt CLI.
+- [Aloquendiar](https://github.com/Aloquendiar): Helping with general testing and helping providing the spanish translation.
+- [MrBean](https://github.com/mrbean56): Helping with general testing and helping providing the canadian french translation.
 - [LocalH](https://github.com/LocalH): Providing the Moggulator python script.
+- [Emma](https://github.com/InvoxiPlayGames): General help and providing the Song ID generator logic.
+- [raphaelgoulart](https://github.com/raphaelgoulart)
+- [Jnack](https://github.com/jnackmclain)
 - [Onyxite](https://github.com/mtolly)
-- [MrBean](https://github.com/mrbean56)

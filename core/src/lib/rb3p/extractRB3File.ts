@@ -1,7 +1,7 @@
 import type { BrowserWindow } from 'electron'
 import { DirPath, type FilePathLikeTypes } from 'node-lib'
 import { rpcs3GetSongPackagesStatsExtra, type RPCS3SongPackagesDataExtra } from '../rpcs3/rpcs3GetSongPackagesStatsExtra'
-import { getPackagesCacheFile, getRB3USRDIR, readUserConfigFile, sendBuzyLoad, sendDialog, sendMessageBox } from '../../core.exports'
+import { RockshelfFileSys, readUserConfigFile, sendBuzyLoad, sendDialog, sendMessageBox } from '../../core.exports'
 import { isRPCS3Devhdd0PathValid } from '../rbtools/lib.exports'
 import { isValidFolderName } from '../strnum/isValidFolderName'
 import { useDefaultOptions } from 'use-default-options'
@@ -51,7 +51,7 @@ export const extractRB3FileToRPCS3 = async (win: BrowserWindow, rb3FilePath: Fil
 
   sendBuzyLoad(win, { code: 'init', title: 'installingRB3File', steps: ['validatingPackageFolderName', 'extractingPackageFiles', 'updatingInstalledPackagesData'], onCompleted: ['resetInstallRB3FileScreenState'] })
 
-  const packageFolder = getRB3USRDIR(devhdd0).gotoDir(packageFolderName)
+  const packageFolder = RockshelfFileSys.rb3UsrDir(devhdd0).gotoDir(packageFolderName)
   const folderNameTestResults = isValidFolderName(packageFolderName)
 
   if (typeof folderNameTestResults === 'string') {
@@ -147,7 +147,7 @@ export const extractRB3FileToRPCS3 = async (win: BrowserWindow, rb3FilePath: Fil
 
   sendBuzyLoad(win, { code: 'incrementStep' })
 
-  const cache = getPackagesCacheFile()
+  const cache = RockshelfFileSys.packagesCacheFile()
   const packagesData = await rpcs3GetSongPackagesStatsExtra(devhdd0)
   await cache.write(JSON.stringify(packagesData))
 

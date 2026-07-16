@@ -1,5 +1,5 @@
 import { BrowserWindow, shell } from 'electron'
-import { getPackagesCacheFile, getRockshelfUserDataDir, getUserConfigFile } from '../fs'
+import { RockshelfFileSys } from '../fs'
 import { sendMessageBox } from '../rendererSenders'
 import type { ScoreDataInstrumentTypes } from '../../lib/rbtools'
 import type { SongPackagesFilterTypes } from '../../lib.exports'
@@ -43,7 +43,7 @@ export interface UserConfigObject {
  * @returns {Promise<boolean>}
  */
 export const openUserDataFolder = async (win: BrowserWindow): Promise<boolean> => {
-  const rockshelfUserDataDir = getRockshelfUserDataDir()
+  const rockshelfUserDataDir = RockshelfFileSys.appUserDataDir()
   const error = await shell.openPath(rockshelfUserDataDir.path)
   if (error) {
     sendMessageBox(win, { type: 'error', code: 'openUserDataFolder' })
@@ -58,12 +58,12 @@ export const openUserDataFolder = async (win: BrowserWindow): Promise<boolean> =
  * @returns {Promise<UserConfig | undefined>}
  */
 export const readUserConfigFile = async (): Promise<UserConfigObject | undefined> => {
-  const userConfigFile = getUserConfigFile()
+  const userConfigFile = RockshelfFileSys.userConfigFile()
   if (userConfigFile.exists) return await userConfigFile.readJSON<UserConfigObject>()
 }
 
 export const saveUserConfigFile = async (newConfig?: Partial<UserConfigObject>): Promise<string> => {
-  const userConfigFilePath = getUserConfigFile()
+  const userConfigFilePath = RockshelfFileSys.userConfigFile()
   const oldConfig = await readUserConfigFile()
   const defaultValues: UserConfigObject = {
     devhdd0Path: '',
@@ -86,11 +86,11 @@ export const saveUserConfigFile = async (newConfig?: Partial<UserConfigObject>):
 }
 
 export const deleteUserConfigFile = async (): Promise<void> => {
-  const userConfigFile = getUserConfigFile()
+  const userConfigFile = RockshelfFileSys.userConfigFile()
   if (userConfigFile.exists) await userConfigFile.delete()
 }
 
 export const deletePackagesCacheFile = async (): Promise<void> => {
-  const packagesCacheFile = getPackagesCacheFile()
+  const packagesCacheFile = RockshelfFileSys.packagesCacheFile()
   if (packagesCacheFile.exists) await packagesCacheFile.delete()
 }

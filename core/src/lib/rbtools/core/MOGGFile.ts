@@ -88,7 +88,7 @@ export class MOGGFile {
    * @returns {Promise<MOGGFile>}
    */
   async decrypt(decMoggPath: FilePathLikeTypes): Promise<MOGGFile> {
-    if (await this.isEncrypted()) return await PythonAPI.decryptMOGG(this.path, decMoggPath)
+    if (await this.isEncrypted()) return await BinaryAPI.cliCryptDecrypt(this.path, decMoggPath)
     return this
   }
 

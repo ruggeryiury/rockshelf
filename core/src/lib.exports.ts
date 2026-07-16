@@ -1,3 +1,5 @@
+export * from './lib/github/api'
+
 export * from './lib/image/cropImageToTempPNG'
 
 export * from './lib/pkg/extractPackagesForRPCS3Extra'

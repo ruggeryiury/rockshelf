@@ -1,5 +1,5 @@
 import type { FilePath } from 'node-lib'
-import { getRockshelfTempDir } from '../../core.exports'
+import { RockshelfFileSys } from '../../core.exports'
 
 /**
  * Resolves the path from the `tempjpg://` protocol.
@@ -8,7 +8,7 @@ import { getRockshelfTempDir } from '../../core.exports'
  * @returns {FilePath}
  */
 export const tempjpgToPath = (url: string): FilePath => {
-  const root = getRockshelfTempDir()
+  const root = RockshelfFileSys.appTempDir()
   const name = url.slice('tempjpg://'.length)
   const filePath = root.gotoFile(`${name}.jpg`)
   return filePath

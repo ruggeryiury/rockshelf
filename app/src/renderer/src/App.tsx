@@ -1,5 +1,5 @@
 import { useEffect } from 'react'
-import { AboutScreen, BuzyLoadScreen, ConfigScreen, CreateNewPackageScreen, DeluxeInstallScreen, DialogScreen, EditAllSongsScreen, EditSongScreen, FatalErrorScreen, FirstTimeScreen, ImageCropScreen, InstallRB3FileScreen, LogoScreen, MainScreen, MergePackageModal, MessageBox, MusicStoreScreen, MyPackagesScreen, QuickConfigScreen, RBIconsSelector, RhythmverseScreen, SongDetails, Topbar, WindowFrame } from './components.exports'
+import { AboutScreen, BuzyLoadScreen, ConfigScreen, CreateNewPackageScreen, DeluxeConfigScreen, DialogScreen, EditAllSongsScreen, EditSongScreen, FatalErrorScreen, FirstTimeScreen, ImageCropScreen, InstallRB3FileScreen, LogoScreen, MainScreen, MergePackageModal, MessageBox, MusicStoreScreen, MyPackagesScreen, RBIconsSelector, RhythmverseScreen, SongDetails, Topbar, WindowFrame } from './components.exports'
 import { useWindowState } from './stores/Window.state'
 import { useFirstTimeScreenState } from './components/FirstTimeScreen.state'
 import { useTranslation } from 'react-i18next'
@@ -7,7 +7,7 @@ import { useUserConfigState } from './stores/UserConfig.state'
 import { useLogoScreenState } from './components/LogoScreen.state'
 import { useMessageBoxState } from './components/MessageBox.state'
 import { useDialogScreenState } from './components/DialogScreen.state'
-import { RPCS3SongPackagesDataExtra } from 'rockshelf-core'
+import { DeluxeInstalledData, RPCS3SongPackagesDataExtra } from 'rockshelf-core'
 import { useShallow } from 'zustand/shallow'
 import type { InstrumentScoreData, ParsedRB3SaveData } from 'rockshelf-core/rbtools'
 import { STRUCT_LOG } from './app/rockshelf.globals'
@@ -51,6 +51,7 @@ export function App() {
         let saveData: ParsedRB3SaveData | false = false
         let instrumentScores: InstrumentScoreData | false = false
         let packagesData: RPCS3SongPackagesDataExtra | false = false
+        let installedDeluxeData: DeluxeInstalledData | false = false
         if (typeof rb3Stats === 'object' && rb3Stats.hasSaveData) {
           saveData = await window.api.rpcs3GetSaveDataStats()
           if (STRUCT_LOG) console.log('struct ParsedRB3SaveData ["rbtools/src/lib/rpsc3/getSaveData.ts"]:', saveData)
@@ -63,11 +64,17 @@ export function App() {
           if (STRUCT_LOG) console.log('struct RPCS3SongPackagesDataExtra ["rbtools/src/lib/rpcs3/rpcs3GetSongPackagesStatsExtra.ts"]:', packagesData)
         }
 
+        if (typeof rb3Stats === 'object') {
+          installedDeluxeData = await window.api.getInstalledDeluxeData()
+          if (STRUCT_LOG) console.log('struct DeluxeInstalledData ["rbtools/src/lib/github/api.ts"]:', installedDeluxeData)
+        }
+
         setWindowState({
           rb3Stats,
           saveData,
           instrumentScores,
           packages: packagesData,
+          installedDeluxeData,
           disableButtons: false,
         })
         setLogoScreenState({ active: false })
@@ -79,7 +86,7 @@ export function App() {
     const touts: NodeJS.Timeout[] = []
 
     const t1 = setTimeout(() => setLogoScreenState({ showText: true }), 500)
-    const t2 = setTimeout(() => fn().then(() => undefined), 2500)
+    const t2 = setTimeout(() => fn().then(() => undefined), 500)
     touts.push(t1, t2)
 
     return () => {
@@ -125,7 +132,7 @@ export function App() {
         <BuzyLoadScreen />
         <ConfigScreen />
         <CreateNewPackageScreen />
-        <DeluxeInstallScreen />
+        <DeluxeConfigScreen />
         <DialogScreen />
         <EditAllSongsScreen />
         <EditSongScreen />
@@ -141,7 +148,6 @@ export function App() {
         <MusicStoreScreen />
         <MyPackagesScreen />
         <PackageDetails />
-        <QuickConfigScreen />
         <RBIconsSelector />
         <RhythmverseScreen />
         <SongDetails />

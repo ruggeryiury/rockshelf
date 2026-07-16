@@ -1,7 +1,7 @@
 import { BinaryReader, FilePath, pathLikeToFilePath, type FilePathLikeTypes } from 'node-lib'
 import { createRSPackImage, cropImageToTempPNG, isJPEGRockshelfPackImage, parseRSDATBuffer, type RSPackImageCreatorOptions, type RSPackImageEncryptionStatusValues, type RSPackImagePackageCategoryValues } from '../../lib.exports'
 import { temporaryFile } from 'tempy'
-import { getRockshelfModuleRootDir } from '../../core.exports'
+import { RockshelfFileSys } from '../../core.exports'
 import { TextureFile, PythonAPI } from '../rbtools'
 
 export interface CropImageCoordinatesObject {
@@ -53,7 +53,7 @@ export const editRSPackImage = async (rsPackImagePath: FilePathLikeTypes, option
     let filePath: FilePath
     let isFilePathTemp: boolean = false
     if (imgPath.startsWith('rbicons://')) {
-      const root = getRockshelfModuleRootDir()
+      const root = RockshelfFileSys.coreModuleRootDir()
       const code = imgPath.slice('rbicons://'.length)
       filePath = root.gotoFile(`bin/icons/${code}.webp`)
       if (!filePath.exists) filePath = root.gotoFile(`bin/icons/custom.webp`)

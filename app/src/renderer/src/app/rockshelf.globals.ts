@@ -66,6 +66,11 @@ export const INSTALL_RB3_FILE_TABS = {
   SELECT_SONGS: 2,
 } as const
 
+export const DELUXE_CONFIG_SCREEN_TABS = {
+  INSTALL_DELUXE: 0,
+  QUICK_CONFIG: 1
+} as const
+
 export const GAME_ORIGIN_HEADERS = [
   { code: 'betaBuilds', options: ['gh1_beta', 'gh2_beta', 'gh80s_beta', 'gh3_beta', 'gh5_beta', 'djhero_beta', 'gh6_beta', 'djhero2_beta', 'rb1_beta', 'rb2_beta', 'rb3_beta'], official: true },
   { code: 'ghGames', options: ['gh1', 'gh2', 'gh2dlc', 'gh80s', 'gh3', 'gh3dlc', 'ghot', 'gha', 'ghwt', 'ghwtdlc', 'ghotd', 'ghm', 'ghmdlc', 'ghsh', 'gh5', 'gh5dlc', 'djhero', 'djherodlc', 'bh', 'bh2', 'bhds', 'ghvh', 'ghotmh', 'ghwor', 'ghwordlc', 'djhero2', 'djhero2dlc', 'ghl', 'ghtv', 'gh', 'ghdlc'], official: true },

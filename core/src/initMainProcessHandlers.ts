@@ -1,6 +1,6 @@
 import { shell, type BrowserWindow, type IpcMainInvokeEvent } from 'electron'
 import type { Promisable } from 'type-fest'
-import { deletePackage, deleteRockshelfDataFromPackages, deleteUserConfigAndRestart, editPackageData, sortAndFilterSongsFromPackage, getSongArtworkDataURL, installHighMemoryPatch, installPKGFile, playRockBand3, refreshPackagesData, rpcs3GetInstrumentScores, rpcs3GetPackagesData, rpcs3GetRB3Stats, rpcs3GetSaveDataStats, selectAndParseDTAFile, selectDevhdd0Dir, loadImageForCrop, selectPackageFiles, selectPKGFile, selectRPCS3Exe, testUserConfig, cropImageAndSaveToTemp, createNewPackage, testBuzyLoad, getScoresFromGoCentral, extractMultitrackOrSongAudioFromSong, encDecPackage, verifyPackageEncryptionStatus, extractMIDIFromSong, batchDeleteSongs, sortAndFilterSongPackages, fetchRhythmverseData, useSongArtworkFromUniqueSongPKG, changeDecryptedPackageFolderName, installQuickConfig, mergePackages, exportPackage, selectPathToSaveRB3File, selectRB3File, openConsoleWindow, installRB3File } from './controllers.exports'
+import { deletePackage, deleteRockshelfDataFromPackages, deleteUserConfigAndRestart, editPackageData, sortAndFilterSongsFromPackage, getSongArtworkDataURL, installHighMemoryPatch, installPKGFile, playRockBand3, refreshPackagesData, rpcs3GetInstrumentScores, rpcs3GetPackagesData, rpcs3GetRB3Stats, rpcs3GetSaveDataStats, selectAndParseDTAFile, selectDevhdd0Dir, loadImageForCrop, selectPackageFiles, selectPKGFile, selectRPCS3Exe, testUserConfig, cropImageAndSaveToTemp, createNewPackage, testBuzyLoad, getScoresFromGoCentral, extractMultitrackOrSongAudioFromSong, encDecPackage, verifyPackageEncryptionStatus, extractMIDIFromSong, batchDeleteSongs, sortAndFilterSongPackages, fetchRhythmverseData, useSongArtworkFromUniqueSongPKG, changeDecryptedPackageFolderName, installQuickConfig, mergePackages, exportPackage, selectPathToSaveRB3File, selectRB3File, openConsoleWindow, installRB3File, getCommitDataFromCommitHash, checkCommitsAhead, getInstalledDeluxeData, downloadAndInstallDeluxe } from './controllers.exports'
 import { openUserDataFolder, readUserConfigFile, saveUserConfigFile, windowClose, windowMaximize, windowMinimize, type UserConfigObject } from './core.exports'
 import { addHandler } from './core/handler'
 import { getSongPackageDescriptionFileFromFolderHandler } from './controllers/getSongPackageDescriptionFileFromFolder'
@@ -12,17 +12,21 @@ export const initMainProcessHandlers = (): void => {
   const handlers: InitHandlersArray = [
     ['batchDeleteSongs', batchDeleteSongs],
     ['changeDecryptedPackageFolderName', changeDecryptedPackageFolderName],
+    ['checkCommitsAhead', checkCommitsAhead],
     ['createNewPackage', createNewPackage],
     ['cropImageAndSaveToTemp', cropImageAndSaveToTemp],
     ['deletePackage', deletePackage],
     ['deleteRockshelfDataFromPackages', deleteRockshelfDataFromPackages],
     ['deleteUserConfigAndRestart', deleteUserConfigAndRestart],
+    ['downloadAndInstallDeluxe', downloadAndInstallDeluxe],
     ['editPackageData', editPackageData],
     ['encDecPackage', encDecPackage],
     ['exportPackage', exportPackage],
     ['extractMIDIFromSong', extractMIDIFromSong],
     ['extractMultitrackOrSongAudioFromSong', extractMultitrackOrSongAudioFromSong],
     ['fetchRhythmverseData', fetchRhythmverseData],
+    ['getCommitDataFromCommitHash', getCommitDataFromCommitHash],
+    ['getInstalledDeluxeData', getInstalledDeluxeData],
     ['getScoresFromGoCentral', getScoresFromGoCentral],
     ['getSongArtworkDataURL', getSongArtworkDataURL],
     ['getSongPackageDescriptionFileFromFolder', getSongPackageDescriptionFileFromFolderHandler],

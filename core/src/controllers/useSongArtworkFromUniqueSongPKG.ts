@@ -1,9 +1,9 @@
 import { DirPath } from 'node-lib'
-import { getPackagesCacheFile, sendDialog, sendMessageBox, useHandler } from '../core.exports'
+import { RockshelfFileSys, sendDialog, sendMessageBox, useHandler } from '../core.exports'
 import { editRSPackImage, type RPCS3SongPackagesDataExtra } from '../lib.exports'
 
 export const useSongArtworkFromUniqueSongPKG = useHandler(async (win, __, pkgIndex: number): Promise<boolean> => {
-  const cache = getPackagesCacheFile()
+  const cache = RockshelfFileSys.packagesCacheFile()
   if (!cache.exists) {
     sendDialog(win, 'corruptedPackagesCache')
     return false

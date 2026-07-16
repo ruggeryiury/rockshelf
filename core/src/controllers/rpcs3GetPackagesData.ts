@@ -1,5 +1,5 @@
 import { utimes } from 'node:fs/promises'
-import { getPackagesCacheFile, readUserConfigFile, sendDialog, sendMessageBox, useHandler } from '../core.exports'
+import { RockshelfFileSys, readUserConfigFile, sendDialog, sendMessageBox, useHandler } from '../core.exports'
 import { genPackImageToAllPackages, rpcs3GetSongPackagesStatsExtra, type RPCS3SongPackagesDataExtra } from '../lib.exports'
 import { isRPCS3Devhdd0PathValid } from '../lib/rbtools/lib.exports'
 
@@ -16,7 +16,7 @@ export const rpcs3GetPackagesData = useHandler(async (win, _, forceUpdate: boole
   const devhdd0 = isRPCS3Devhdd0PathValid(userConfig.devhdd0Path)
   await genPackImageToAllPackages(devhdd0)
 
-  const cache = getPackagesCacheFile()
+  const cache = RockshelfFileSys.packagesCacheFile()
 
   if (forceUpdate || !cache.exists) {
     const packagesData = await rpcs3GetSongPackagesStatsExtra(devhdd0)

@@ -1,4 +1,4 @@
-import { getRB3SaveDataFile, readUserConfigFile, sendDialog, useHandler } from '../core.exports'
+import { RockshelfFileSys, readUserConfigFile, sendDialog, useHandler } from '../core.exports'
 import { type ParsedRB3SaveData, RB3SaveData } from '../lib/rbtools'
 import { isRPCS3Devhdd0PathValid } from '../lib/rbtools/lib.exports'
 
@@ -13,6 +13,6 @@ export const rpcs3GetSaveDataStats = useHandler(async (win, __): Promise<false |
   }
 
   const devhdd0Path = isRPCS3Devhdd0PathValid(userConfig.devhdd0Path)
-  const rb3SaveDataPath = getRB3SaveDataFile(devhdd0Path)
+  const rb3SaveDataPath = RockshelfFileSys.rb3SaveFile(devhdd0Path)
   return await RB3SaveData.parseFromFile(rb3SaveDataPath)
 })

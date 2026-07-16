@@ -1,9 +1,9 @@
-import { getPackagesCacheFile, sendDialog, useHandler } from '../core.exports'
+import { RockshelfFileSys, sendDialog, useHandler } from '../core.exports'
 import { type RPCS3SongPackagesDataExtra } from '../lib.exports'
 import { filterDTAByArtist, filterDTAByDecade, filterDTAByGenre, filterDTAByInstrumentDifficulty, filterDTABySongRating, filterDTAByTitle, filterDTAByYearReleased, type DTAFilterByArtistObject, type DTAFilterByDifficultyObject, type DTAFilterGenericObject, type DTAFilterOptions, type DTAFilterTypes } from '../lib/rbtools/lib.exports'
 
 export const sortAndFilterSongsFromPackage = useHandler(async (win, _, packageIndex: number, type: DTAFilterTypes = 'title', options?: DTAFilterOptions): Promise<false | DTAFilterGenericObject | DTAFilterByArtistObject | DTAFilterByDifficultyObject> => {
-  const cache = getPackagesCacheFile()
+  const cache = RockshelfFileSys.packagesCacheFile()
   const cacheContents = await cache.readJSON<RPCS3SongPackagesDataExtra>()
 
   if (!(packageIndex in cacheContents.packages)) {

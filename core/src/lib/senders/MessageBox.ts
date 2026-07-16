@@ -8,7 +8,7 @@ export interface MessageBoxObject {
    *
    * The `"debug"` type also won't create a timeout event, but it will use the "code" property as an unlocalized text (to use it as a message).
    */
-  type: 'error' | 'info' | 'success' | 'warn' | 'loading' | 'debug'
+  type: 'error' | 'info' | 'success' | 'warn' | 'loading' | 'debug' | 'progressBar'
   /**
    * A unique message or error code.
    */
@@ -21,6 +21,17 @@ export interface MessageBoxObject {
    * Optional dynamic values used for interpolation or localization.
    */
   messageValues?: Record<string, string | number | boolean>
+  progress?:
+    | {
+        count: string | number
+        total: string | number
+        percentage: string
+      }
+    | {
+        count: number
+        total: number
+        percentage?: never
+      }
 }
 
 /**

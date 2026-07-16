@@ -72,7 +72,7 @@ export class RB3File {
     const header = await parseRB3FileHeader(this.path)
     const reader = await BinaryReader.fromFile(this.path)
 
-    reader.seek(0x50 + header.songsCount * 0x50)
+    reader.seek(0x60 + header.songsCount * 0x50)
     const packageName = await reader.readUTF8(header.packageNameLength)
     const defaultFolderName = await reader.readUTF8(header.defaultFolderNameLength)
 

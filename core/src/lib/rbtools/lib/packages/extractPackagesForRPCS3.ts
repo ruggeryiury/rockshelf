@@ -291,7 +291,7 @@ export const extractPackagesForRPCS3 = async (packages: RB3PackageLikeType[], de
           await oldMIDIPath.delete()
         } else if (temp.type === 'stfs' && forceEncryption === 'enabled') {
           const newDevkLic = EDATFile.genDevKLicHash(packageFolderName)
-          const newContentID = EDATFile.genContentID(packageFolderName.toUpperCase())
+          const newContentID = await EDATFile.genContentID(packageFolderName.toUpperCase())
           await BinaryAPI.makeNPDataEncrypt(oldMIDIPath, newContentID, newDevkLic, newMIDIPath)
         }
         // MIDI might be encrypted for PKG files
@@ -310,7 +310,7 @@ export const extractPackagesForRPCS3 = async (packages: RB3PackageLikeType[], de
 
           if (forceEncryption === 'enabled') {
             const newDevkLic = EDATFile.genDevKLicHash(packageFolderName)
-            const newContentID = EDATFile.genContentID(packageFolderName.toUpperCase())
+            const newContentID = await EDATFile.genContentID(packageFolderName.toUpperCase())
             await BinaryAPI.makeNPDataEncrypt(oldMIDIPath, newContentID, newDevkLic, newMIDIPath)
           } else {
             await oldMIDIPath.copy(newMIDIPath, true)

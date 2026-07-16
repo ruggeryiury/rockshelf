@@ -1,10 +1,10 @@
 import { DirPath } from 'node-lib'
-import { getPackagesCacheFile, sendDialog, sendMessageBox, useHandler } from '../core.exports'
+import { RockshelfFileSys, sendDialog, sendMessageBox, useHandler } from '../core.exports'
 import type { RPCS3SongPackagesDataExtra } from '../lib.exports'
 import { utimes } from 'node:fs/promises'
 
 export const deletePackage = useHandler(async (win, __, pkgIndex: number): Promise<false | RPCS3SongPackagesDataExtra> => {
-  const cache = getPackagesCacheFile()
+  const cache = RockshelfFileSys.packagesCacheFile()
   if (!cache.exists) {
     sendDialog(win, 'corruptedPackagesCache')
     return false

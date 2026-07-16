@@ -5,7 +5,6 @@ import { useEffect, useMemo, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { CheckedCircleIcon, ErrorIcon, LoadingIcon } from '@renderer/assets/icons'
 import { useWindowState } from '@renderer/stores/Window.state'
-import { useDeluxeInstallScreenState } from './DeluxeInstallScreen.state'
 import { useShallow } from 'zustand/shallow'
 import { useCreateNewPackageScreenState } from './CreateNewPackageScreen.state'
 import { STRUCT_LOG } from '@renderer/app/rockshelf.globals'
@@ -16,7 +15,6 @@ export function BuzyLoadScreen() {
   const { t } = useTranslation()
   const { active, hasError, isCompleted, resetBuzyLoadScreenState, setBuzyLoadScreenState, step, subtextKey, subtextValues } = useBuzyLoadScreenState(useShallow((x) => ({ active: x.active, step: x.step, isCompleted: x.isCompleted, hasError: x.hasError, setBuzyLoadScreenState: x.setBuzyLoadScreenState, resetBuzyLoadScreenState: x.resetBuzyLoadScreenState, subtextKey: x.subtextKey, subtextValues: x.subtextValues })))
   const { setWindowState } = useWindowState(useShallow((x) => ({ setWindowState: x.setWindowState })))
-  const { resetDeluxeInstallScreenState } = useDeluxeInstallScreenState(useShallow((x) => ({ resetDeluxeInstallScreenState: x.resetDeluxeInstallScreenState })))
   const { resetCreateNewPackageScreenState } = useCreateNewPackageScreenState(useShallow((x) => ({ resetCreateNewPackageScreenState: x.resetCreateNewPackageScreenState })))
   const { resetExportPackageModalState } = useExportPackageModalState(useShallow((x) => ({ resetExportPackageModalState: x.resetExportPackageModalState })))
   const { resetInstallRB3FileScreenState } = useInstallRB3FileScreenState(useShallow((x) => ({ resetInstallRB3FileScreenState: x.resetInstallRB3FileScreenState })))
@@ -150,10 +148,6 @@ export function BuzyLoadScreen() {
                       const rb3Stats = await window.api.rpcs3GetRB3Stats()
                       if (STRUCT_LOG) console.log('struct RockBand3Data ["rbtools/src/lib/rpcs3/rpcs3GetRB3Stats.ts"]:', rb3Stats)
                       setWindowState({ rb3Stats })
-                      break
-                    }
-                    case 'resetDeluxeInstallScreenState': {
-                      resetDeluxeInstallScreenState()
                       break
                     }
                     case 'resetCreateNewPackageScreenState': {

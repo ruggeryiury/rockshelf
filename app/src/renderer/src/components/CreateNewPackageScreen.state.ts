@@ -14,7 +14,9 @@ export interface CreateNewPackageScreenStateProps {
   dropdownActivated: number
 
   packageName: string
+  packageNameError: string | null
   packageFolderName: string
+  packageFolderNameError: string | null
   forceEncryption: NonNullable<RPCS3ExtractionOptions['forceEncryption']>
   packageArtwork: string | null
   category: RSPackImagePackageCategoryNumbers
@@ -53,7 +55,9 @@ const defaultState: CreateNewPackageScreenStateProps = {
   dropdownActivated: -1,
 
   packageName: '',
+  packageNameError: null,
   packageFolderName: '',
+  packageFolderNameError: null,
   forceEncryption: 'disabled',
   packageArtwork: null,
   category: 0,

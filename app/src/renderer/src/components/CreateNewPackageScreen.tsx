@@ -1,10 +1,10 @@
 import clsx from 'clsx'
-import { animate, AnimatedDiv, AnimatedSection, getReadableBytesSize, TransComponent } from '@renderer/lib.exports'
+import { animate, AnimatedDiv, AnimatedSection, getReadableBytesSize, TransComponent, underscoreToUppercaseLetter } from '@renderer/lib.exports'
 import { useCreateNewPackageScreenState } from './CreateNewPackageScreen.state'
 import { useShallow } from 'zustand/shallow'
 import { useWindowState } from '@renderer/stores/Window.state'
 import { useTranslation } from 'react-i18next'
-import { CREATE_NEW_PACKAGE_DROPDOWNS, CREATE_NEW_PACKAGE_TABS, PKG_CATEGORIES, STRUCT_LOG } from '@renderer/app/rockshelf.globals'
+import { CREATE_NEW_PACKAGE_DROPDOWNS, CREATE_NEW_PACKAGE_TABS, PKG_CATEGORIES, STRUCT_LOG, VALIDATORS } from '@renderer/app/rockshelf.globals'
 import { useMessageBoxState } from './MessageBox.state'
 import { ChevronDownIcon, EyeIcon, EyeSlashIcon, PlaystationIcon, ShelfIcon, XboxIcon } from '@renderer/assets/icons'
 import { useEffect, useMemo, useRef } from 'react'
@@ -16,7 +16,7 @@ import { useUserConfigState } from '@renderer/stores/UserConfig.state'
 
 export function CreateNewPackageScreen() {
   const { t } = useTranslation()
-  const { active, setCreateNewPackageScreenState, resetCreateNewPackageScreenState, navIndex, files, hoveredFile, packageName, packageFolderName, forceEncryption, addedSongsCount, packageArtwork, expandedFileSongsView, seeSelectedSongsOnly, dropdownActivated, category } = useCreateNewPackageScreenState(useShallow((x) => ({ active: x.active, setCreateNewPackageScreenState: x.setCreateNewPackageScreenState, resetCreateNewPackageScreenState: x.resetCreateNewPackageScreenState, navIndex: x.navIndex, files: x.files, hoveredFile: x.hoveredFile, packageName: x.packageName, packageFolderName: x.packageFolderName, forceEncryption: x.forceEncryption, addedSongsCount: x.addedSongsCount, addedStarsCount: x.addedStarsCount, packageArtwork: x.packageArtwork, expandedFileSongsView: x.expandedFileSongsView, seeSelectedSongsOnly: x.seeSelectedSongsOnly, dropdownActivated: x.dropdownActivated, category: x.category })))
+  const { active, setCreateNewPackageScreenState, resetCreateNewPackageScreenState, navIndex, files, hoveredFile, packageName, packageFolderName, forceEncryption, addedSongsCount, packageArtwork, expandedFileSongsView, seeSelectedSongsOnly, dropdownActivated, category, packageNameError, packageFolderNameError } = useCreateNewPackageScreenState(useShallow((x) => ({ active: x.active, setCreateNewPackageScreenState: x.setCreateNewPackageScreenState, resetCreateNewPackageScreenState: x.resetCreateNewPackageScreenState, navIndex: x.navIndex, files: x.files, hoveredFile: x.hoveredFile, packageName: x.packageName, packageFolderName: x.packageFolderName, forceEncryption: x.forceEncryption, addedSongsCount: x.addedSongsCount, addedStarsCount: x.addedStarsCount, packageArtwork: x.packageArtwork, expandedFileSongsView: x.expandedFileSongsView, seeSelectedSongsOnly: x.seeSelectedSongsOnly, dropdownActivated: x.dropdownActivated, category: x.category, packageNameError: x.packageNameError, packageFolderNameError: x.packageFolderNameError })))
   const { disableButtons, setWindowState, rb3Stats } = useWindowState(useShallow((x) => ({ disableButtons: x.disableButtons, setWindowState: x.setWindowState, rb3Stats: x.rb3Stats })))
   const { setMessageBoxState } = useMessageBoxState(useShallow((x) => ({ setMessageBoxState: x.setMessageBoxState })))
   const { setImageCropScreenState } = useImageCropScreenState(useShallow((x) => ({ setImageCropScreenState: x.setImageCropScreenState })))
@@ -30,7 +30,7 @@ export function CreateNewPackageScreen() {
     return allSongs
   }, [files])
 
-  const isReadyToInstall = useMemo(() => packageName.length > 0 && packageFolderName.length > 0 && files.length > 0, [packageName, packageFolderName, files])
+  const isReadyToInstall = useMemo(() => packageName.length > 0 && packageFolderName.length > 0 && files.length > 0 && packageNameError === null && packageFolderNameError === null, [packageName, packageFolderName, files, packageNameError, packageFolderNameError])
 
   useEffect(
     function changeDefaultForceEncryptionValues() {
@@ -136,7 +136,7 @@ export function CreateNewPackageScreen() {
         )}
         <button
           disabled={disableButtons}
-          className={clsx(navIndex === CREATE_NEW_PACKAGE_TABS.OPTIONS ? 'bg-yellow-500 text-black/90 hover:bg-yellow-400 active:bg-yellow-300' : 'hover:text-neutral-300 active:text-neutral-200', 'h-full w-fit justify-center px-2 duration-200')}
+          className={clsx('flex-row! items-center', (packageNameError || packageFolderNameError) && navIndex === CREATE_NEW_PACKAGE_TABS.OPTIONS ? 'bg-red-500 text-black/90' : packageNameError || packageFolderNameError ? 'text-red-500 hover:text-red-400 active:text-red-300' : navIndex === CREATE_NEW_PACKAGE_TABS.OPTIONS ? 'bg-yellow-500 text-black/90 hover:bg-yellow-400 active:bg-yellow-300' : 'hover:text-neutral-300 active:text-neutral-200', 'h-full w-fit justify-center px-2 duration-200')}
           onClick={() => {
             setCreateNewPackageScreenState({ navIndex: CREATE_NEW_PACKAGE_TABS.OPTIONS })
           }}
@@ -366,19 +366,59 @@ export function CreateNewPackageScreen() {
         <>
           <div className="h-full w-full overflow-y-auto">
             <div className="group rounded-xs p-2 duration-200 hover:bg-white/5">
-              <h1 className="mb-1 uppercase">{t('packageName')}</h1>
+              <div className="flex-row! items-center">
+                <h1 className="mr-2 uppercase">{t('packageName')}</h1>
+                <h2 className={clsx('mr-auto text-xs font-semibold', packageNameError !== null && 'text-red-500/80')}>{`${packageName.length}/255`}</h2>
+              </div>
               <p className="mb-4 text-xs italic">
                 <TransComponent i18nKey="packageNameDesc" />
               </p>
-              <input className="mb-1 rounded-xs border border-neutral-800 bg-neutral-900 px-1 py-0.5 text-sm! duration-100 last:mb-0 hover:bg-neutral-700 focus:border-white/25 active:bg-neutral-600 disabled:text-neutral-700 disabled:hover:bg-neutral-900" value={packageName} onChange={(ev) => setCreateNewPackageScreenState({ packageName: ev.target.value })} minLength={1} maxLength={255} />
+              <input
+                className="mb-1 rounded-xs border border-neutral-800 bg-neutral-900 px-1 py-0.5 text-sm! duration-100 last:mb-0 hover:bg-neutral-700 focus:border-white/25 active:bg-neutral-600 disabled:text-neutral-700 disabled:hover:bg-neutral-900"
+                value={packageName}
+                onChange={(ev) => {
+                  const value = VALIDATORS.packageName.safeParse(ev.target.value)
+
+                  if (!value.success) {
+                    setCreateNewPackageScreenState({ packageName: ev.target.value, packageNameError: value.error.issues[0].message })
+                  } else setCreateNewPackageScreenState({ packageName: value.data, packageNameError: null })
+                }}
+                minLength={1}
+                maxLength={255}
+                disabled={disableButtons}
+              />
+              <AnimatedDiv condition={packageNameError !== null} {...animate({ height: true, scaleY: true, opacity: true })}>
+                <div className="h-2" />
+                {packageNameError !== null && <p className="origin-top text-xs text-red-500 italic">{t(`inputErrorPKGName${underscoreToUppercaseLetter(packageNameError, true)}`)}</p>}
+              </AnimatedDiv>
             </div>
 
             <div className="group rounded-xs p-2 duration-200 hover:bg-white/5">
-              <h1 className="mb-1 uppercase">{t('packageFolderName')}</h1>
+              <div className="flex-row! items-center">
+                <h1 className="mr-2 uppercase">{t('packageFolderName')}</h1>
+                <h2 className={clsx('mr-auto text-xs font-semibold', packageFolderNameError !== null && 'text-red-500/80')}>{`${packageFolderName.length}/42`}</h2>
+              </div>
               <p className="mb-4 text-xs italic">
                 <TransComponent i18nKey="packageFolderNameDesc" />
               </p>
-              <input className="mb-1 rounded-xs border border-neutral-800 bg-neutral-900 px-1 py-0.5 text-sm! duration-100 last:mb-0 hover:bg-neutral-700 focus:border-white/25 active:bg-neutral-600 disabled:text-neutral-700 disabled:hover:bg-neutral-900" value={packageFolderName} onChange={(ev) => setCreateNewPackageScreenState({ packageFolderName: ev.target.value })} minLength={1} maxLength={42} />
+              <input
+                className="mb-1 rounded-xs border border-neutral-800 bg-neutral-900 px-1 py-0.5 text-sm! duration-100 last:mb-0 hover:bg-neutral-700 focus:border-white/25 active:bg-neutral-600 disabled:text-neutral-700 disabled:hover:bg-neutral-900"
+                value={packageFolderName}
+                onChange={(ev) => {
+                  const value = VALIDATORS.packageFolderName.safeParse(ev.target.value)
+
+                  if (!value.success) {
+                    setCreateNewPackageScreenState({ packageFolderName: ev.target.value, packageFolderNameError: value.error.issues[0].message })
+                  } else setCreateNewPackageScreenState({ packageFolderName: value.data, packageFolderNameError: null })
+                }}
+                minLength={1}
+                maxLength={42}
+                disabled={disableButtons}
+              />
+              <AnimatedDiv condition={packageFolderNameError !== null} {...animate({ height: true, scaleY: true, opacity: true })}>
+                <div className="h-2" />
+                {packageFolderNameError !== null && <p className="origin-top text-xs text-red-500 italic">{t(`inputErrorPKGFolderName${underscoreToUppercaseLetter(packageFolderNameError, true)}`)}</p>}
+              </AnimatedDiv>
             </div>
 
             <div className="group rounded-xs p-2 duration-200 hover:bg-white/5">

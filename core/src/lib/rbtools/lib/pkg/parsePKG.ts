@@ -1,4 +1,4 @@
-import { BinaryReader, createHashFromBuffer, HexStr, MyObject, pathLikeToFilePath, pathLikeToString, type FilePathLikeTypes } from 'node-lib'
+import { BinaryReader, createHashFromBuffer, Hex, MyObject, pathLikeToFilePath, pathLikeToString, type FilePathLikeTypes } from 'node-lib'
 import { calculateAesAlignedOffsetAndSize, parseSFOFileOrBuffer, PkgAesCtrCounter, pkgContentKeys, PkgXorSha1Counter, type CalculatedAesOffsetAndSizeObject, type SFOData } from '../../lib.exports'
 import { createCipheriv } from 'node:crypto'
 
@@ -335,7 +335,7 @@ export const parsePKGItemEntries = async (pkgFilePathOrBuffer: FilePathLikeTypes
     })
 
     const itemAlign = calculateAesAlignedOffsetAndSize(itemDataOffset, itemDataSize)
-    if (itemAlign.offsetDelta > 0) throw new Error(`PKG Item Entries Parsing Error: Unaligned encrypted offset ${HexStr.processHex(header.dataOffset)} - ${HexStr.processHex(itemAlign.offsetDelta)} = ${HexStr.processHex(itemAlign.offset)} (+${HexStr.processHex(header.dataOffset)}) for item #${i.toString()}.`)
+    if (itemAlign.offsetDelta > 0) throw new Error(`PKG Item Entries Parsing Error: Unaligned encrypted offset ${Hex.toHexString(header.dataOffset)} - ${Hex.toHexString(itemAlign.offsetDelta)} = ${Hex.toHexString(itemAlign.offset)} (+${Hex.toHexString(header.dataOffset)}) for item #${i.toString()}.`)
 
     const itemFlags = flags & 0xff
 
@@ -367,8 +367,8 @@ export const parsePKGItemEntries = async (pkgFilePathOrBuffer: FilePathLikeTypes
 
   const namesSize = nameOffsetEnd - namesOffset
 
-  if (namesOffset < entriesSize) throw new Error(`PKG Item Entries Parsing Error: Item Names with offset ${HexStr.processHex(namesOffset)} are INTERLEAVED with the Item Entries of size ${HexStr.processHex(entriesSize)}.`)
-  else if (namesOffset > entriesSize) throw new Error(`PKG Item Entries Parsing Error: Item Names with offset ${HexStr.processHex(namesOffset)} are not directly following the Item Entries with size ${HexStr.processHex(entriesSize)}.`)
+  if (namesOffset < entriesSize) throw new Error(`PKG Item Entries Parsing Error: Item Names with offset ${Hex.toHexString(namesOffset)} are INTERLEAVED with the Item Entries of size ${Hex.toHexString(entriesSize)}.`)
+  else if (namesOffset > entriesSize) throw new Error(`PKG Item Entries Parsing Error: Item Names with offset ${Hex.toHexString(namesOffset)} are not directly following the Item Entries with size ${Hex.toHexString(entriesSize)}.`)
 
   let readSize = namesOffset + namesSize
   if (readSize > size) {
@@ -390,7 +390,7 @@ export const parsePKGItemEntries = async (pkgFilePathOrBuffer: FilePathLikeTypes
     offset2 = offset + entry.itemNameOffset
     const itemAlign = calculateAesAlignedOffsetAndSize(offset2, entry.itemNameSize)
     // entry.itemAlign = itemAlign
-    if (itemAlign.offsetDelta > 0) throw new Error(`PKG Item Entries Parsing Error: Unaligned encrypted offset ${HexStr.processHex(offset2)} - ${HexStr.processHex(itemAlign.offsetDelta)} = ${HexStr.processHex(itemAlign.offset)} (+${header.dataOffset.toString()}) for item #${i.toString()}.`)
+    if (itemAlign.offsetDelta > 0) throw new Error(`PKG Item Entries Parsing Error: Unaligned encrypted offset ${Hex.toHexString(offset2)} - ${Hex.toHexString(itemAlign.offsetDelta)} = ${Hex.toHexString(itemAlign.offset)} (+${header.dataOffset.toString()}) for item #${i.toString()}.`)
 
     offset2 = itemAlign.offset - align.offset
 

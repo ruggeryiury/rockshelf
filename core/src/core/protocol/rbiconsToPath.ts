@@ -1,5 +1,5 @@
 import type { FilePath } from 'node-lib'
-import { getRockshelfModuleRootDir } from '../../core.exports'
+import { RockshelfFileSys } from '../../core.exports'
 
 /**
  * Resolves the path from the `rbtools://` protocol.
@@ -8,7 +8,7 @@ import { getRockshelfModuleRootDir } from '../../core.exports'
  * @returns {FilePath}
  */
 export const rbiconsToPath = (url: string): FilePath => {
-  const root = getRockshelfModuleRootDir()
+  const root = RockshelfFileSys.coreModuleRootDir()
   const name = url.slice('rbicons://'.length)
   let filePath = root.gotoFile(`bin/icons/${name}.webp`)
   if (!filePath.exists) filePath = root.gotoFile(`bin/icons/custom.webp`)

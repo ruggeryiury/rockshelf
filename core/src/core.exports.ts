@@ -3,7 +3,6 @@ export * from './core/fs/userConfigData'
 export * from './core/protocol/rbiconsToPath'
 export * from './core/protocol/tempjpgToPath'
 
-export * from './core/createTempFolders'
 export * from './core/createWindow'
 export * from './core/fs'
 export * from './core/getBrowserWindowFromEvent'

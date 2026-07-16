@@ -1,7 +1,7 @@
 import { GitHubCommitCompare, GitHubCommitResponse } from '@renderer/app/types'
 import { ParsedRB3SaveData, InstrumentScoreData } from 'rockshelf-core/rbtools'
 import { RockBand3Data } from 'rockshelf-core/rbtools/lib'
-import { RPCS3SongPackagesDataExtra } from 'rockshelf-core'
+import { DeluxeInstalledData, RPCS3SongPackagesDataExtra } from 'rockshelf-core'
 import { create, StoreApi, UseBoundStore } from 'zustand'
 import { immer } from 'zustand/middleware/immer'
 
@@ -24,8 +24,7 @@ export interface WindowStateProps {
   saveData: false | ParsedRB3SaveData | 'loading'
   instrumentScores: false | InstrumentScoreData | 'loading'
   packages: false | RPCS3SongPackagesDataExtra | 'loading'
-  commitData: GitHubCommitResponse | null | 'loading'
-  aheadCommitData: GitHubCommitCompare | null | 'loading'
+  installedDeluxeData: false | DeluxeInstalledData | 'loading'
   richPresence: boolean
 }
 
@@ -60,8 +59,7 @@ const defaultState: WindowStateProps = {
   instrumentScores: false,
   saveData: false,
   packages: false,
-  commitData: null,
-  aheadCommitData: null,
+  installedDeluxeData: false,
   richPresence: false,
 }
 

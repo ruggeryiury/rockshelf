@@ -126,12 +126,12 @@ export const createRB3FileFromRPCS3PackageFolder = async (win: BrowserWindow, pa
   }
   const thumbnailFileBuffer = (await thumbnailPath.read()).subarray(0, thumbnailStats.size - isValid.footerSizeLength)
 
-  const songDataOffset = 0x50 + 0x50 * parser.songs.length + packageName.length + packageFolderName.length + packageCreatorName.length + dtaContent.length + descFileBuffer.length + thumbnailFileBuffer.length
+  const songDataOffset = 0x60 + 0x50 * parser.songs.length + packageName.length + packageFolderName.length + packageCreatorName.length + dtaContent.length + descFileBuffer.length + thumbnailFileBuffer.length
 
   header.writeUInt32LE(songDataOffset)
-  header.writeUInt8(1)
+  header.writeUInt8(0x01)
   header.writeUInt8(getKeyFromMapValue(rsPackImage.packageCategory, parsedThumbnail.category) ?? 0)
-  header.writePadding(1)
+  header.writePadding(0x11)
   header.write(contentsHash)
 
   io.write(header.toBuffer())

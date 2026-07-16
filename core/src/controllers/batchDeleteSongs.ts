@@ -1,11 +1,11 @@
 import { DirPath, pathLikeToFilePath } from 'node-lib'
-import { getPackagesCacheFile, sendDialog, sendMessageBox, useHandler } from '../core.exports'
+import { RockshelfFileSys, sendDialog, sendMessageBox, useHandler } from '../core.exports'
 import { getSongPackageStatsFromFolder, rpcs3GetSongPackagesStatsExtra, type RPCS3SongPackagesDataExtra } from '../lib.exports'
 import { utimes } from 'node:fs/promises'
 import { DTAParser } from '../lib/rbtools'
 
 export const batchDeleteSongs = useHandler(async (win, _, pkgIndex: number, songs: string[]): Promise<false | RPCS3SongPackagesDataExtra> => {
-  const cache = getPackagesCacheFile()
+  const cache = RockshelfFileSys.packagesCacheFile()
   if (!cache.exists) {
     sendDialog(win, 'corruptedPackagesCache')
     return false

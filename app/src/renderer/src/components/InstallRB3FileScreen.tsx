@@ -23,7 +23,7 @@ export function InstallRB3FileScreen() {
   const { setMyPackagesScreenState } = useMyPackagesScreenState(useShallow((x) => ({ setMyPackagesScreenState: x.setMyPackagesScreenState })))
 
   const creationDate = useMemo(() => selectedRB3File && new Date(selectedRB3File.header.dateISOString), [selectedRB3File])
-  const creationDateString = useMemo(() => selectedRB3File && creationDate && creationDate.toLocaleString(i18n.language, { dateStyle: 'full' }), [selectedRB3File, creationDate])
+  const creationDateString = useMemo(() => selectedRB3File && creationDate && creationDate.toLocaleString(i18n.language, { dateStyle: 'full' }), [selectedRB3File, creationDate, i18n.language])
   return (
     <AnimatedSection id="InstallRB3FileScreen" condition={selectedRB3File !== null} {...animate({ opacity: true })} className="absolute! z-3 h-full max-h-full w-full max-w-full bg-black p-8">
       {selectedRB3File !== null && creationDate && (
@@ -104,10 +104,10 @@ export function InstallRB3FileScreen() {
               {selectedRB3File.packageCreatorName && (
                 <div className="-mt-1 flex-row! items-center">
                   {selectedRB3File.packageCreatorThumbnail && <img src={selectedRB3File.packageCreatorThumbnail} className="mr-2 h-8 min-h-8 w-8 min-w-8" />}
-                  <h2 className="font-pentatonic text-xl uppercase">by {selectedRB3File.packageCreatorName}</h2>
+                  <h2 className="font-pentatonic text-xl uppercase">{t('packageCreatorsText', { creators: selectedRB3File.packageCreatorName })}</h2>
                 </div>
               )}
-              <div className="flex-row! items-center mt-1 w-full">
+              <div className="mt-1 w-full flex-row! items-center">
                 <p className="mr-1 w-fit rounded-sm bg-neutral-900 px-1 py-0.5 font-mono text-xs font-bold uppercase">{t(selectedRB3File.header.songsCount === 1 ? 'songsCount' : 'songsCountPlural', { count: selectedRB3File.header.songsCount })}</p>
                 <p className="w-fit rounded-sm bg-neutral-900 px-1 py-0.5 font-mono text-xs font-bold uppercase">{t(`pkgCategory${PKG_CATEGORIES.indexOf(selectedRB3File.header.packageCategory)}`)}</p>
               </div>

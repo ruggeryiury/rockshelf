@@ -1,4 +1,4 @@
-import { getPackagesCacheFile, readUserConfigFile, sendDialog, useHandler } from '../core.exports'
+import { RockshelfFileSys, readUserConfigFile, sendDialog, useHandler } from '../core.exports'
 import { rpcs3GetSongPackagesStatsExtra, type RPCS3SongPackagesDataExtra } from '../lib.exports'
 import { utimes } from 'fs/promises'
 import { isRPCS3Devhdd0PathValid } from '../lib/rbtools/lib.exports'
@@ -15,7 +15,7 @@ export const refreshPackagesData = useHandler(async (win): Promise<RPCS3SongPack
 
   const devhdd0 = isRPCS3Devhdd0PathValid(userConfig.devhdd0Path)
 
-  const cache = getPackagesCacheFile()
+  const cache = RockshelfFileSys.packagesCacheFile()
   const packagesData = await rpcs3GetSongPackagesStatsExtra(devhdd0)
   await cache.write(JSON.stringify(packagesData))
   const now = new Date()

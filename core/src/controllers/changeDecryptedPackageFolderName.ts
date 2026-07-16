@@ -1,12 +1,12 @@
 import { DirPath } from 'node-lib'
-import { getPackagesCacheFile, sendBuzyLoad, sendDialog, sendMessageBox, useHandler } from '../core.exports'
+import { RockshelfFileSys, sendBuzyLoad, sendDialog, sendMessageBox, useHandler } from '../core.exports'
 import { isValidFolderName, type RPCS3SongPackagesDataExtra } from '../lib.exports'
 import { isRB3FolderNameFreeOnRPCS3, officialPackages } from '../lib/rbtools/lib.exports'
 import { utimes } from 'node:fs/promises'
 import { EDATFile } from '../lib/rbtools'
 
 export const changeDecryptedPackageFolderName = useHandler(async (win, __, pkgIndex: number, newPackageFolderName: string): Promise<false | RPCS3SongPackagesDataExtra> => {
-  const cache = getPackagesCacheFile()
+  const cache = RockshelfFileSys.packagesCacheFile()
   if (!cache.exists) {
     sendDialog(win, 'corruptedPackagesCache')
     return false

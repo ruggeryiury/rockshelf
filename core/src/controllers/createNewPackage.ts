@@ -1,4 +1,4 @@
-import { getPackagesCacheFile, getRB3USRDIR, rbiconsToPath, readUserConfigFile, sendBuzyLoad, sendDialog, tempjpgToPath, useHandler } from '../core.exports'
+import { RockshelfFileSys, rbiconsToPath, readUserConfigFile, sendBuzyLoad, sendDialog, tempjpgToPath, useHandler } from '../core.exports'
 import { DirPath, pathLikeToFilePath } from 'node-lib'
 import { createRSPackImage, extractPackagesForRPCS3Extra, isValidFolderName, rpcs3GetSongPackagesStatsExtra, rsPackImage, type RPCS3SongPackagesDataExtra, type RSPackImagePackageCategoryNumbers, type RSPackImageSourceValues } from '../lib.exports'
 import { utimes } from 'node:fs/promises'
@@ -34,7 +34,7 @@ export const createNewPackage = useHandler(async (win, __, options: CreateNewPac
 
   sendBuzyLoad(win, { code: 'init', title: 'creatingNewPackage', steps: ['validatingPackageFolderName', 'extractingPackageFiles', 'processingPackageFiles', 'exportingNewDTAFile', 'movingFilesToNewPackageFolder', 'creatingPackageImage', 'updatingInstalledPackagesData'], onCompleted: ['resetCreateNewPackageScreenState'] })
 
-  const packageFolder = getRB3USRDIR(devhdd0).gotoDir(packageFolderName)
+  const packageFolder = RockshelfFileSys.rb3UsrDir(devhdd0).gotoDir(packageFolderName)
   const folderNameTestResults = isValidFolderName(packageFolderName)
 
   if (typeof folderNameTestResults === 'string') {
@@ -74,7 +74,7 @@ export const createNewPackage = useHandler(async (win, __, options: CreateNewPac
 
   try {
     const results = await extractPackagesForRPCS3Extra(win, packages, devhdd0, packageFolderName, { forceEncryption, songs: selectedSongs })
-    if (!results) return false
+    if (!results) throw new Error()
 
     sendBuzyLoad(win, { code: 'incrementStep' })
     let packageSource: RSPackImageSourceValues
@@ -88,7 +88,7 @@ export const createNewPackage = useHandler(async (win, __, options: CreateNewPac
     await createRSPackImage(thumbnail !== null ? tempjpgToPath('tempjpg://thumbnail') : rbiconsToPath('rbicons://custom').gotoFile('custom.jpg'), packageFolder.gotoFile('folder.jpg'), { packageName, type: 'rockshelf', source: packageSource, encryptionStatus: forceEncryption === 'enabled' ? 'encrypted' : 'decrypted', category: rsPackImage.packageCategory[category ?? 0] })
     sendBuzyLoad(win, { code: 'incrementStep' })
 
-    const cache = getPackagesCacheFile()
+    const cache = RockshelfFileSys.packagesCacheFile()
     const packagesData = await rpcs3GetSongPackagesStatsExtra(devhdd0)
     await cache.write(JSON.stringify(packagesData))
 

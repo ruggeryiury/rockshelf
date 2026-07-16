@@ -40,8 +40,8 @@ Rockshelf is a Rock Band 3 Deluxe utility suite for RPCS3 users built with [Elec
 
 - Rock Band 3 Launcher
   - _Starts Rock Band 3 on RPCS3 directly from Rockshelf._
-- Rock Band 3 Deluxe PKG Installer
-  - _Rockshelf is able to install Deluxe, giving instructions on where to download and how to install it._
+- Rock Band 3 Deluxe Installer
+  - _Rockshelf is able to install Deluxe and keep track of latest commits automatically._
 - Quick Configuration Setter
   - _Quickly use pre-defined configurations for Rock Band 3 on RPCS3._
 - Discord Rich Presence

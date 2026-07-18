@@ -761,7 +761,7 @@ export function PackageDetails() {
                   </div>
                 </div>
 
-                {active.official === undefined && (
+                {/* {active.official === undefined && (
                   <div className="group rounded-xs p-2 duration-200 hover:bg-white/5">
                     <h1 className="mb-1 uppercase">{t('editAllSongs')}</h1>
                     <p className="mb-2 text-xs italic">
@@ -777,7 +777,7 @@ export function PackageDetails() {
                       {t('editAllSongs')}
                     </button>
                   </div>
-                )}
+                )} */}
               </div>
             </>
           )}

@@ -6,6 +6,9 @@ import { appPTBRLocale } from './locale/pt-BR'
 import { appES419Locale } from './locale/es-419'
 import { appFRCALocale } from './locale/fr-CA'
 
+// New Keys
+import { appENUSLocaleNew } from './locale/new_en-US'
+
 i18n
   .use(initReactI18next)
   .use(I18nextBrowserLanguageDetector)
@@ -13,7 +16,10 @@ i18n
     debug: import.meta.env.DEV,
     resources: {
       'en-US': {
-        translation: appENUSLocale,
+        translation: {
+          ...appENUSLocale,
+          ...appENUSLocaleNew,
+        },
       },
       'pt-BR': {
         translation: appPTBRLocale,

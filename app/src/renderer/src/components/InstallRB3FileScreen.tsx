@@ -192,7 +192,7 @@ export function InstallRB3FileScreen() {
               )}
               {installRB3FileTab === INSTALL_RB3_FILE_TABS.DESCRIPTION && selectedRB3File.description && selectedRB3File.description.length > 0 && (
                 <div className="mt-2">
-                  <div className="h-fill select-text">
+                  <div className="markdown-body h-fill select-text">
                     <Markdown
                       remarkPlugins={[remarkGfm]}
                       rehypePlugins={[rehypeRaw, [rehypeSlug, { prefix: 'MD__' }]]}

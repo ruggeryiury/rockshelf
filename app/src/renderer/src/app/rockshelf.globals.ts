@@ -68,7 +68,7 @@ export const INSTALL_RB3_FILE_TABS = {
 
 export const DELUXE_CONFIG_SCREEN_TABS = {
   INSTALL_DELUXE: 0,
-  QUICK_CONFIG: 1
+  QUICK_CONFIG: 1,
 } as const
 
 export const GAME_ORIGIN_HEADERS = [

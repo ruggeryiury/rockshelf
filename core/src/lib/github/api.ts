@@ -204,7 +204,7 @@ export class RockshelfGithubAPI {
         downloadedDXPatchFile: dxVersionFile.toJSON(),
       }
 
-    const dxVersion = (await dxVersionFile.readLines({ encoding: 'utf-8' })).map((val) => val.replace(/"/g, '').trimStart().trimEnd())[4]
+    const dxVersion = (await dxVersionFile.readLines({ encoding: 'utf-8' }))[4].trim().replace(/"/g, '').split('-')[0]
     const isValidSHA = Hex.isHexString(dxVersion) && dxVersion.length === 7
     if (!isValidSHA) return false
 

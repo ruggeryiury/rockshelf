@@ -77,7 +77,7 @@ export const downloadAndInstallDeluxe = useHandler(async (win, __, options: Delu
 
   sendMessageBox(win, { type: 'success', code: 'deluxeInstall' })
 
-  // await deluxeZipFile.delete()
+  await deluxeZipFile.delete()
 
   return await RockshelfGithubAPI.getInstalledDeluxeData()
 })

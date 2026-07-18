@@ -136,7 +136,7 @@ export const parseRSDATBuffer = async (rsdatBuffer: Buffer): Promise<ParsedRSPac
   const source = (await reader.readUInt8()) as RSPackImageSourceNumbers
   const encryptionStatus = (await reader.readUInt8()) as RSPackImageEncryptionStatusNumbers
   const category = (await reader.readUInt8()) as RSPackImagePackageCategoryNumbers
-  
+
   reader.padding(12)
   const year = await reader.readUInt16LE()
   const month = await reader.readUInt8()

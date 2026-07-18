@@ -44,10 +44,14 @@ export function AboutScreen() {
           <div>
             <h1 className="mb-1 text-lg">Ruggy</h1>
             <div className="flex-row! items-center">
-              <button disabled={disableButtons} className="flex-row! items-center mb-1 w-fit self-start rounded-xs border border-neutral-700 bg-neutral-900 px-1 py-0.5 text-xs! text-nowrap uppercase duration-100 hover:bg-neutral-700 active:bg-neutral-600 disabled:text-neutral-700 disabled:hover:bg-neutral-900" onClick={async () => {
-                await window.api.openExternalLink('https://github.com/ruggeryiury')
-              }}>
-                <GitHubIcon className='mr-1'/>
+              <button
+                disabled={disableButtons}
+                className="mb-1 w-fit flex-row! items-center self-start rounded-xs border border-neutral-700 bg-neutral-900 px-1 py-0.5 text-xs! text-nowrap uppercase duration-100 hover:bg-neutral-700 active:bg-neutral-600 disabled:text-neutral-700 disabled:hover:bg-neutral-900"
+                onClick={async () => {
+                  await window.api.openExternalLink('https://github.com/ruggeryiury')
+                }}
+              >
+                <GitHubIcon className="mr-1" />
                 <p>{t('github')}</p>
               </button>
             </div>

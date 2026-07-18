@@ -106,10 +106,20 @@ export function DeluxeConfigScreen() {
                     <p className="mb-1">
                       {t('commitBy')} {installedDeluxeData.installed.authorName}
                     </p>
-                    <button className="w-fit flex-row! items-center self-start rounded-xs border border-neutral-700 bg-neutral-900 px-1 py-0.5 text-xs! uppercase duration-100 hover:bg-neutral-700 active:bg-neutral-600 disabled:text-neutral-700 disabled:hover:bg-neutral-900" onClick={async () => installedDeluxeData.installed && (await window.api.openExternalLink(`https://github.com/hmxmilohax/rock-band-3-deluxe/commit/${installedDeluxeData.installed.sha}`))}>
-                      <GitHubIcon className="mr-1" />
-                      {t('openCommitOnGitHub')}
-                    </button>
+                    <div className="flex-row! items-center">
+                      <button className="mr-2 w-fit flex-row! items-center self-start rounded-xs border border-neutral-700 bg-neutral-900 px-1 py-0.5 text-xs! uppercase duration-100 last:mr-0 hover:bg-neutral-700 active:bg-neutral-600 disabled:text-neutral-700 disabled:hover:bg-neutral-900" onClick={async () => installedDeluxeData.installed && (await window.api.openExternalLink(`https://github.com/hmxmilohax/rock-band-3-deluxe/commit/${installedDeluxeData.installed.sha}`))}>
+                        <GitHubIcon className="mr-1" />
+                        {t('openCommitOnGitHub')}
+                      </button>
+                      <button
+                        className="mr-2 w-fit flex-row! items-center self-start rounded-xs border border-neutral-700 bg-neutral-900 px-1 py-0.5 text-xs! uppercase duration-100 last:mr-0 hover:bg-neutral-700 active:bg-neutral-600 disabled:text-neutral-700 disabled:hover:bg-neutral-900"
+                        onClick={async () => {
+                          await window.api.openFSFolderInExplorer('rb3UsrDir')
+                        }}
+                      >
+                        {t('openInstallationFolder')}
+                      </button>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -226,7 +236,7 @@ export function DeluxeConfigScreen() {
                       }
                       setWindowState({ disableButtons: false })
                     }}
-                      disabled={disableButtons}
+                    disabled={disableButtons}
                   >
                     {t('downloadInstallDeluxe')}
                   </button>
@@ -244,7 +254,7 @@ export function DeluxeConfigScreen() {
                       }
                       setWindowState({ disableButtons: false })
                     }}
-                      disabled={disableButtons}
+                    disabled={disableButtons}
                   >
                     {t('downloadInstallDeluxeCC')}
                   </button>

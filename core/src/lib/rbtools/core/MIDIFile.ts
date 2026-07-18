@@ -90,7 +90,7 @@ export class MIDIFile {
    * @returns {Promise<EDATFile>}
    */
   async encrypt(options: EDATEncryptionOptions): Promise<EDATFile> {
-    const contentID = options.contentID ?? await EDATFile.genContentID(`RBTOOLSEDAT${(await randomBytesFromRanges(6, ['numbers'])).toString()}`)
+    const contentID = options.contentID ?? (await EDATFile.genContentID(`RBTOOLSEDAT${(await randomBytesFromRanges(6, ['numbers'])).toString()}`))
     const packFolderName = options.packFolderName
     const destPath = options.destPath ? pathLikeToFilePath(options.destPath) : undefined
 

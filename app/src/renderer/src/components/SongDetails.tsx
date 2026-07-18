@@ -873,7 +873,7 @@ export function SongDetails() {
                 </div>
                 {packageDetails?.official === undefined && (
                   <>
-                    <div className="group rounded-xs p-2 duration-200 hover:bg-white/5">
+                    {/* <div className="group rounded-xs p-2 duration-200 hover:bg-white/5">
                       <h1 className="mb-1 uppercase">{t('editSong')}</h1>
                       <p className="mb-2 text-xs italic">
                         <TransComponent i18nKey="editSongDesc" />
@@ -887,7 +887,7 @@ export function SongDetails() {
                       >
                         {t('editSong')}
                       </button>
-                    </div>
+                    </div> */}
                     <div className="group rounded-xs p-2 duration-200 hover:bg-white/5">
                       <h1 className="mb-1 uppercase">{t('deleteSong')}</h1>
                       <p className="mb-2 text-xs italic">

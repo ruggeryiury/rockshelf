@@ -328,6 +328,12 @@ export type ProcessedRhythmverseSongData = Omit<PartialDTAFile, 'id' | 'album_ar
   thanks: number
   /** The quantity of downloads of the song. */
   downloads: number
+  /** The URL of the author's avatar. */
+  author_avatar: string
+  /** The URL of the author's songlist in RhythmVerse. */
+  author_url: string
+  author_id: number
+  file_id: string
 }
 
 export interface ProcessedRhythmverseObject {
@@ -563,6 +569,10 @@ export class RhythmverseAPI {
             file_size: song.file.size ? song.file.size : undefined,
             thanks: song.file.thanks,
             downloads: song.file.downloads,
+            author_avatar: `https://rhythmverse.co${song.file.author.avatar_path}`,
+            author_url: song.file.author.author_url_full,
+            author_id: song.file.author.id,
+            file_id: song.file.file_id,
           })
         }
       }

@@ -1,6 +1,6 @@
 import { shell, type BrowserWindow, type IpcMainInvokeEvent } from 'electron'
 import type { Promisable } from 'type-fest'
-import { deletePackage, deleteRockshelfDataFromPackages, deleteUserConfigAndRestart, editPackageData, sortAndFilterSongsFromPackage, getSongArtworkDataURL, installHighMemoryPatch, installPKGFile, playRockBand3, refreshPackagesData, rpcs3GetInstrumentScores, rpcs3GetPackagesData, rpcs3GetRB3Stats, rpcs3GetSaveDataStats, selectAndParseDTAFile, selectDevhdd0Dir, loadImageForCrop, selectPackageFiles, selectPKGFile, selectRPCS3Exe, testUserConfig, cropImageAndSaveToTemp, createNewPackage, testBuzyLoad, getScoresFromGoCentral, extractMultitrackOrSongAudioFromSong, encDecPackage, verifyPackageEncryptionStatus, extractMIDIFromSong, batchDeleteSongs, sortAndFilterSongPackages, fetchRhythmverseData, useSongArtworkFromUniqueSongPKG, changeDecryptedPackageFolderName, installQuickConfig, mergePackages, exportPackage, selectPathToSaveRB3File, selectRB3File, openConsoleWindow, installRB3File, getCommitDataFromCommitHash, checkCommitsAhead, getInstalledDeluxeData, downloadAndInstallDeluxe } from './controllers.exports'
+import { deletePackage, deleteRockshelfDataFromPackages, deleteUserConfigAndRestart, editPackageData, sortAndFilterSongsFromPackage, getSongArtworkDataURL, installHighMemoryPatch, installPKGFile, playRockBand3, refreshPackagesData, rpcs3GetInstrumentScores, rpcs3GetPackagesData, rpcs3GetRB3Stats, rpcs3GetSaveDataStats, selectAndParseDTAFile, selectDevhdd0Dir, loadImageForCrop, selectPackageFiles, selectPKGFile, selectRPCS3Exe, testUserConfig, cropImageAndSaveToTemp, createNewPackage, testBuzyLoad, getScoresFromGoCentral, extractMultitrackOrSongAudioFromSong, encDecPackage, verifyPackageEncryptionStatus, extractMIDIFromSong, batchDeleteSongs, sortAndFilterSongPackages, fetchRhythmverseData, useSongArtworkFromUniqueSongPKG, changeDecryptedPackageFolderName, installQuickConfig, mergePackages, exportPackage, selectPathToSaveRB3File, selectRB3File, openConsoleWindow, installRB3File, getCommitDataFromCommitHash, checkCommitsAhead, getInstalledDeluxeData, downloadAndInstallDeluxe, openFSFolderInExplorer } from './controllers.exports'
 import { openUserDataFolder, readUserConfigFile, saveUserConfigFile, windowClose, windowMaximize, windowMinimize, type UserConfigObject } from './core.exports'
 import { addHandler } from './core/handler'
 import { getSongPackageDescriptionFileFromFolderHandler } from './controllers/getSongPackageDescriptionFileFromFolder'
@@ -38,6 +38,7 @@ export const initMainProcessHandlers = (): void => {
     ['mergePackages', mergePackages],
     ['openConsoleWindow', openConsoleWindow],
     ['openFolderInExplorer', async (_, __, folderPath: string): Promise<string> => await shell.openPath(folderPath)],
+    ['openFSFolderInExplorer', openFSFolderInExplorer],
     ['openUserDataFolder', openUserDataFolder],
     ['playRockBand3', playRockBand3],
     ['readUserConfigFile', readUserConfigFile],

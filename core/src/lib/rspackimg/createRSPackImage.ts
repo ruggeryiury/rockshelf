@@ -94,8 +94,10 @@ export const createRSPackImage = async (imageFilePathOrBuffer: FilePathLikeTypes
   extraData.writeUInt8(date.min)
   extraData.writeUInt8(date.sec)
 
-  extraData.writeUInt8(packageName.length)
-  extraData.writeUTF8(packageName)
+  const packageNameBuffer = Buffer.from(packageName, 'utf-8')
+
+  extraData.writeUInt8(packageNameBuffer.length)
+  extraData.write(packageNameBuffer)
 
   const extraDataLength = extraData.length + 4
   extraData.writeUInt32LE(extraDataLength)

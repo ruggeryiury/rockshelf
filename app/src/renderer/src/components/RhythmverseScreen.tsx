@@ -159,7 +159,7 @@ export function RhythmverseScreen() {
                   searchResults.songs.map((song, songI) => {
                     const isHostedOnRhythmverse = song.file_download_url.startsWith('https://rhythmverse.co')
                     return (
-                      <div className="group mb-2 h-1/4 flex-row! items-center rounded-xs px-2 py-3 duration-200 hover:bg-white/5" key={`rhythmverseResultsSong${songI}`}>
+                      <div className="group mb-2 h-1/4 flex-row! items-center rounded-sm border border-neutral-900 px-4 duration-200 last:mb-0 hover:bg-white/5" key={`rhythmverseResultsSong${songI}`}>
                         <img
                           src={song.album_art}
                           className="mr-2 h-24 min-h-24 w-24 min-w-24 border-2 border-neutral-700"
@@ -170,8 +170,8 @@ export function RhythmverseScreen() {
                         />
                         <div className="h-full w-full flex-row! items-center">
                           <div className="mr-auto">
-                            <h1 className="text-2xl">{htmlEntityDecode(song.name || '')}</h1>
-                            <h2 className="text-sm text-neutral-500 italic">
+                            <h1 className="text-lg">{htmlEntityDecode(song.name || '')}</h1>
+                            <h2 className="mb-2 text-sm text-neutral-500 italic">
                               {htmlEntityDecode(song.artist || '')}
                               {song.album_name ? <> &bull; {htmlEntityDecode(song.album_name)}</> : ''}
                             </h2>
@@ -202,17 +202,17 @@ export function RhythmverseScreen() {
                               </div>
                             </div>
                           </div>
-                          <div className="w-1/5 min-w-1/5 self-start">
+                          <div className="h-full w-1/5 min-w-1/5 self-start py-4">
                             <button
                               className="mr-2 mb-1 w-full self-start rounded-xs border border-neutral-700 bg-neutral-900 px-1 py-0.5 text-[0.65rem]! uppercase duration-100 last:mr-0 last:mb-0 hover:bg-neutral-700 active:bg-neutral-600 disabled:text-neutral-700 disabled:hover:bg-neutral-900"
                               onClick={async () => {
                                 await window.api.openExternalLink(song.song_url)
                               }}
                             >
-                              Open Link on RhythmVerse
+                              {t('openLinkOnRhythmverse')}
                             </button>
                             <button
-                              className="mr-2 mb-1 w-full self-start rounded-xs border border-neutral-700 bg-neutral-900 px-1 py-0.5 text-[0.65rem]! uppercase duration-100 last:mr-0 last:mb-0 hover:bg-neutral-700 active:bg-neutral-600 disabled:text-neutral-700 disabled:hover:bg-neutral-900"
+                              className="mr-2 mb-auto w-full self-start rounded-xs border border-neutral-700 bg-neutral-900 px-1 py-0.5 text-[0.65rem]! uppercase duration-100 last:mr-0 last:mb-0 hover:bg-neutral-700 active:bg-neutral-600 disabled:text-neutral-700 disabled:hover:bg-neutral-900"
                               onClick={async () => {
                                 if (isHostedOnRhythmverse) {
                                 } else {
@@ -222,6 +222,31 @@ export function RhythmverseScreen() {
                             >
                               {isHostedOnRhythmverse ? t('download') : t('downloadExternal')}
                             </button>
+
+                            <div className="mb-1 flex-row! items-center">
+                              <img src="rbicons://instrument-icons-download" title={t('sortByDownloads')} className="mr-1 h-4 min-h-4 w-4 min-w-4 cursor-help!" />
+                              <p className="font-bold">{song.downloads}</p>
+                            </div>
+                            <div className="flex-row! items-center">
+                              <img
+                                src={song.author_avatar}
+                                title={song.author}
+                                onError={(ev) => {
+                                  ev.currentTarget.onerror = null
+                                  ev.currentTarget.style.display = 'none'
+                                }}
+                                className="mr-1 h-4 min-h-4 w-4 min-w-4 border border-neutral-800"
+                              />
+                              <p
+                                className="hover:cursor-pointer hover:underline"
+                                title={t('clickToAccessUserSongfiles')}
+                                onClick={async () => {
+                                  await window.api.openExternalLink(song.author_url)
+                                }}
+                              >
+                                {song.author || ''}
+                              </p>
+                            </div>
                           </div>
                         </div>
                       </div>

@@ -19,7 +19,7 @@ export function EditAllSongsScreen() {
             <img src={active.thumbnailSrc || 'rbicons://website'} className="mr-2 h-32 min-h-32 w-32 min-w-32 border-2 border-neutral-700" />
 
             <div className="mr-auto h-full">
-              <h1 className="font-pentatonicalt! mb-2 text-[2rem]">{t('editingPackageTitle', {packageName: active.packageData.packageName})}</h1>
+              <h1 className="font-pentatonicalt! mb-2 text-[2rem]">{t('editingPackageTitle', { packageName: active.packageData.packageName })}</h1>
             </div>
             <button
               disabled={disableButtons}

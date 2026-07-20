@@ -27,7 +27,7 @@ export class RockshelfFileSys {
 
   static appUserDataDir = (): DirPath => DirPath.of(app.getPath('userData')).gotoDir('../Rockshelf')
   static appTempDir = (): DirPath => DirPath.of(app.getPath('userData')).gotoDir('../Rockshelf/AppTemp')
-  static dlcDir = (): DirPath => DirPath.of(app.getPath('userData')).gotoDir('../Rockshelf/DownloadedContent')
+  static appDownloadableContentDir = (): DirPath => DirPath.of(app.getPath('userData')).gotoDir('../Rockshelf/DownloadedContent')
   static rb1UsrDir = (devhdd0Path: DirPathLikeTypes): DirPath => pathLikeToDirPath(devhdd0Path).gotoDir('game/BLUS30050/USRDIR')
   static rb2UsrDir = (devhdd0Path: DirPathLikeTypes): DirPath => pathLikeToDirPath(devhdd0Path).gotoDir('game/BLUS30147/USRDIR')
   static rb3UsrDir = (devhdd0Path: DirPathLikeTypes): DirPath => pathLikeToDirPath(devhdd0Path).gotoDir('game/BLUS30463/USRDIR')
@@ -48,7 +48,7 @@ export class RockshelfFileSys {
       await tempFolder.mkDir()
     }
 
-    const dlcFolder = this.dlcDir()
+    const dlcFolder = this.appDownloadableContentDir()
     if (!dlcFolder.exists) await dlcFolder.mkDir()
   }
 }

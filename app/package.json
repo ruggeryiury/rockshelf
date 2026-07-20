@@ -1,6 +1,6 @@
 {
   "name": "rockshelf-app",
-  "version": "0.0.1-beta1",
+  "version": "0.0.1-beta2",
   "description": "A Rock Band 3 Deluxe song package manager for RPCS3 users built with Electron Vite framework",
   "type": "module",
   "main": "./out/main/index.js",

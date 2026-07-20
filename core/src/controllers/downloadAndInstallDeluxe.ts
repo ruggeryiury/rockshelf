@@ -24,12 +24,15 @@ export const downloadAndInstallDeluxe = useHandler(async (win, __, options: Delu
 
   const deluxeZipFile = RockshelfFileSys.getDownloadedDXPatchFile(options.latestVersionHash)
   if (!deluxeZipFile.exists) {
+    sendMessageBox(win, { type: 'loading', code: 'fetchingDataFromDeluxeServers' })
+
     let downloadedBytes = 0,
       totalBytes = 0
 
-    const deluxeWriter = await deluxeZipFile.createWriteStream()
     const response = await axios.get<ReadStream>(downloadLink, { responseType: 'stream' })
     totalBytes = Number(response.headers['content-length'])
+
+    const deluxeWriter = await deluxeZipFile.createWriteStream()
 
     const interval = setInterval(() => {
       sendMessageBox(win, { type: 'progressBar', code: 'downloadingDeluxeText', progress: { count: getReadableBytesSize(downloadedBytes), total: getReadableBytesSize(totalBytes), percentage: `${((downloadedBytes / totalBytes) * 100).toFixed().toString()}%` } })

@@ -1,5 +1,6 @@
 import { create } from 'zustand'
-import type { PKGFileJSONRepresentation, ProcessedRhythmverseObject, STFSFileJSONRepresentation } from 'rockshelf-core/rbtools'
+import type { ProcessedRhythmverseObject } from 'rockshelf-core/rbtools'
+import type { RhythmverseSongDownloadJSONRepresentation } from 'rockshelf-core'
 
 export interface RhythmverseScreenStateProps {
   active: boolean
@@ -17,7 +18,7 @@ export interface RhythmverseScreenStateProps {
   multitrack: boolean
   pitchedVocals: boolean
 
-  downloadedSongs: (PKGFileJSONRepresentation | STFSFileJSONRepresentation)[] | null
+  queue: RhythmverseSongDownloadJSONRepresentation[]
 }
 
 export interface RhythmverseScreenStateActions {
@@ -57,7 +58,7 @@ const defaultState: RhythmverseScreenStateProps = {
   multitrack: false,
   pitchedVocals: true,
 
-  downloadedSongs: null,
+  queue: [],
 }
 
 export const useRhythmverseScreenState = create<RhythmverseScreenStateHook>()((set, get) => ({

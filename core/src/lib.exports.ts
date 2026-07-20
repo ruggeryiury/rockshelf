@@ -22,6 +22,7 @@ export * from './lib/rpcs3/getSongPackageStatsFromFolder'
 export * from './lib/rpcs3/rpcs3GetSongPackagesStatsExtra'
 
 export * from './lib/strnum/isValidFolderName'
+export * from './lib/strnum/sanitizeFilename'
 export * from './lib/strnum/stringFunctions'
 
 export * from './lib/utils/sleep'

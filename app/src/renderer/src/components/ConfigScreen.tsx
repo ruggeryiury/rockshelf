@@ -13,7 +13,7 @@ import { STRUCT_LOG } from '@renderer/app/rockshelf.globals'
 export function ConfigScreen() {
   const { i18n, t } = useTranslation()
   const { active, resetConfigScreenState } = useConfigScreenState(useShallow((x) => ({ active: x.active, resetConfigScreenState: x.resetConfigScreenState })))
-  const { devhdd0Path, rpcs3ExePath, mostPlayedInstrument, getUserConfigState, setUserConfigState } = useUserConfigState(useShallow((x) => ({ devhdd0Path: x.devhdd0Path, rpcs3ExePath: x.rpcs3ExePath, mostPlayedInstrument: x.mostPlayedInstrument, getUserConfigState: x.getUserConfigState, setUserConfigState: x.setUserConfigState })))
+  const { devhdd0Path, rpcs3ExePath, mostPlayedInstrument, getUserConfigState, setUserConfigState, downloadedContentDirPath, downloadedContentFileName } = useUserConfigState(useShallow((x) => ({ devhdd0Path: x.devhdd0Path, rpcs3ExePath: x.rpcs3ExePath, mostPlayedInstrument: x.mostPlayedInstrument, getUserConfigState: x.getUserConfigState, setUserConfigState: x.setUserConfigState, downloadedContentFileName: x.downloadedContentFileName, downloadedContentDirPath: x.downloadedContentDirPath })))
   const { disableButtons, saveData, setWindowState } = useWindowState(useShallow((x) => ({ disableButtons: x.disableButtons, saveData: x.saveData, setWindowState: x.setWindowState })))
   const setMessageBoxState = useMessageBoxState((x) => x.setMessageBoxState)
   return (
@@ -332,6 +332,75 @@ export function ConfigScreen() {
                 }}
               >
                 <img src={harm3Icon} width={24} />
+              </button>
+            </div>
+          </div>
+          <h1 className="mb-4 border-b border-white/25 pb-1 uppercase">{t('rhythmverseData')}</h1>
+
+          <div className="group rounded-xs p-2 duration-200 hover:bg-white/5">
+            <h1 className="mb-1 uppercase">{t('downloadedContentSavePath')}</h1>
+            <p className="mb-4 text-xs italic">
+              <TransComponent i18nKey="downloadedContentSavePathDesc" />
+            </p>
+            <div className="mb-2 bg-neutral-900 px-3 py-1 duration-200 group-hover:bg-neutral-800">
+              <p className="font-mono">{downloadedContentDirPath}</p>
+            </div>
+            <button
+              className="mb-1 w-fit rounded-xs border border-neutral-800 bg-neutral-900 px-1 py-0.5 text-xs! uppercase duration-100 last:mb-0 hover:bg-neutral-700 active:bg-neutral-600 disabled:text-neutral-700 disabled:hover:bg-neutral-900"
+              disabled={disableButtons}
+              onClick={async () => {
+                setWindowState({ disableButtons: true })
+                try {
+                  const path = await window.api.selectDir()
+                  if (!path) {
+                    setWindowState({ disableButtons: false })
+                    return
+                  }
+                  setUserConfigState({ downloadedContentDirPath: path })
+                  const newConfig = getUserConfigState()
+                  await window.api.saveUserConfigFile(newConfig)
+                  setWindowState({ disableButtons: false })
+                } catch (err) {
+                  if (err instanceof Error) setWindowState({ err })
+                }
+              }}
+            >
+              {t('change')}
+            </button>
+          </div>
+
+          <div className="group mb-2 rounded-xs p-2 duration-200 hover:bg-white/5">
+            <h1 className="mb-1 uppercase">{t('downloadedContentFileName')}</h1>
+            <p className="mb-4 text-xs italic">
+              <TransComponent i18nKey="downloadedContentFileNameDesc" />
+            </p>
+            <div className="flex-row! items-center">
+              <button
+                title={t('band')}
+                disabled={disableButtons}
+                className={clsx('mr-2 flex-row! items-center rounded-xs border border-neutral-800 px-2 py-1 text-xs! uppercase duration-200 last:mr-0', downloadedContentFileName === 'hash' ? 'bg-neutral-400 text-neutral-900 hover:bg-neutral-300 active:bg-neutral-200' : 'bg-neutral-900 hover:bg-neutral-800 active:bg-neutral-700')}
+                onClick={async () => {
+                  setWindowState({ disableButtons: true })
+                  setUserConfigState({ downloadedContentFileName: 'hash' })
+                  await window.api.saveUserConfigFile({ downloadedContentFileName: 'hash' })
+                  setWindowState({ disableButtons: false })
+                }}
+              >
+                {t('hash')}
+              </button>
+
+              <button
+                title={t('band')}
+                disabled={disableButtons}
+                className={clsx('mr-2 flex-row! items-center rounded-xs border border-neutral-800 px-2 py-1 text-xs! uppercase duration-200 last:mr-0', downloadedContentFileName === 'nameAndArtist' ? 'bg-neutral-400 text-neutral-900 hover:bg-neutral-300 active:bg-neutral-200' : 'bg-neutral-900 hover:bg-neutral-800 active:bg-neutral-700')}
+                onClick={async () => {
+                  setWindowState({ disableButtons: true })
+                  setUserConfigState({ downloadedContentFileName: 'nameAndArtist' })
+                  await window.api.saveUserConfigFile({ downloadedContentFileName: 'nameAndArtist' })
+                  setWindowState({ disableButtons: false })
+                }}
+              >
+                {t('songNameAndArtist')}
               </button>
             </div>
           </div>

@@ -2,7 +2,7 @@ import type { SongGenre, SongGenreDX, SongSubGenre, SongSubGenreDX } from 'rocks
 import zod from 'zod'
 
 /** Aplication version, change this when updating. */
-export const APP_VERSION = '0.0.1-beta1'
+export const APP_VERSION = '0.0.1-beta2'
 
 /**
  * Allow logging of specific typed objects sent by the main process.
@@ -43,7 +43,8 @@ export const CREATE_NEW_PACKAGE_DROPDOWNS = {
 
 export const RHYTHMVERSE_SCREEN_TABS = {
   BROWSE: 0,
-  DOWNLOADED_SONGS: 1,
+  QUEUE: 1,
+  DOWNLOADED_SONGS: 2,
   FILTERS: 10,
 } as const
 

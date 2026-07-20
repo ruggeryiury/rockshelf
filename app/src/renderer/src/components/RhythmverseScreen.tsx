@@ -8,11 +8,13 @@ import { RHYTHMVERSE_SCREEN_TABS, STRUCT_LOG } from '@renderer/app/rockshelf.glo
 import { DiffIconInline } from './SongDetails'
 import { CheckedBoxIcon, ChevronLeftIcon, ChevronRightIcon, LoadingIcon, UncheckedBoxIcon } from '@renderer/assets/icons'
 import { useCallback, useMemo } from 'react'
+import { useUserConfigState } from '@renderer/stores/UserConfig.state'
 
 export function RhythmverseScreen() {
   const { t } = useTranslation()
+  const { getUserConfigState } = useUserConfigState(useShallow((x) => ({ getUserConfigState: x.getUserConfigState })))
   const { disableButtons, setWindowState } = useWindowState(useShallow((x) => ({ disableButtons: x.disableButtons, setWindowState: x.setWindowState })))
-  const { searchField, setRhythmverseScreenState, active, selectedTab, searchResults, downloadedSongs, fullBand, multitrack, page, records, sortBy, sortOrder, source, pitchedVocals } = useRhythmverseScreenState(useShallow((x) => ({ searchField: x.searchField, setRhythmverseScreenState: x.setRhythmverseScreenState, active: x.active, selectedTab: x.selectedTab, searchResults: x.searchResults, downloadedSongs: x.downloadedSongs, fullBand: x.fullBand, page: x.page, multitrack: x.multitrack, records: x.records, sortBy: x.sortBy, sortOrder: x.sortOrder, source: x.source, pitchedVocals: x.pitchedVocals })))
+  const { searchField, setRhythmverseScreenState, active, selectedTab, searchResults, fullBand, multitrack, page, records, sortBy, sortOrder, source, pitchedVocals, queue } = useRhythmverseScreenState(useShallow((x) => ({ searchField: x.searchField, setRhythmverseScreenState: x.setRhythmverseScreenState, active: x.active, selectedTab: x.selectedTab, searchResults: x.searchResults, fullBand: x.fullBand, page: x.page, multitrack: x.multitrack, records: x.records, sortBy: x.sortBy, sortOrder: x.sortOrder, source: x.source, pitchedVocals: x.pitchedVocals, queue: x.queue })))
 
   const totalPages = useMemo(() => typeof searchResults === 'object' && Math.ceil(searchResults.records.total_filtered / records), [searchResults])
 
@@ -27,7 +29,7 @@ export function RhythmverseScreen() {
             disabled={disableButtons}
             className="w-fit self-start rounded-xs border border-neutral-700 bg-neutral-900 px-1 py-0.5 text-xs! uppercase duration-100 hover:bg-neutral-700 active:bg-neutral-600 disabled:text-neutral-700 disabled:hover:bg-neutral-900"
             onClick={async () => {
-              setRhythmverseScreenState({ active: false, searchField: '', searchResults: false })
+              setRhythmverseScreenState({ active: false, searchField: '', searchResults: false, selectedTab: RHYTHMVERSE_SCREEN_TABS.BROWSE })
             }}
           >
             {t('goBack')}
@@ -46,12 +48,13 @@ export function RhythmverseScreen() {
         </button>
         <button
           disabled={disableButtons}
-          className={clsx(selectedTab === RHYTHMVERSE_SCREEN_TABS.DOWNLOADED_SONGS ? 'bg-yellow-500 text-black/90 hover:bg-yellow-400 active:bg-yellow-300' : 'hover:text-neutral-300 active:text-neutral-200', 'h-full w-fit justify-center px-2 duration-200')}
+          className={clsx(selectedTab === RHYTHMVERSE_SCREEN_TABS.QUEUE ? 'bg-yellow-500 text-black/90 hover:bg-yellow-400 active:bg-yellow-300' : 'hover:text-neutral-300 active:text-neutral-200', 'h-full w-fit flex-row! items-center justify-center px-2 duration-200')}
           onClick={() => {
-            setRhythmverseScreenState({ selectedTab: RHYTHMVERSE_SCREEN_TABS.DOWNLOADED_SONGS })
+            setRhythmverseScreenState({ selectedTab: RHYTHMVERSE_SCREEN_TABS.QUEUE })
           }}
         >
-          {t('downloadedSongs')}
+          <p>{t('queue')}</p>
+          {queue.length > 0 && <div className="ml-2 h-fit min-w-8 rounded-lg bg-yellow-300 px-1 py-0.5 text-xs text-black">{queue.length}</div>}
         </button>
 
         <button
@@ -158,10 +161,12 @@ export function RhythmverseScreen() {
                 {searchResults.songs.length > 0 &&
                   searchResults.songs.map((song, songI) => {
                     const isHostedOnRhythmverse = song.file_download_url.startsWith('https://rhythmverse.co')
+                    const isOfficialHmxSong = htmlEntityDecode(song.author || '') === 'Harmonix'
+                    const isDownloading = queue.find((val) => val.hash === song.hash)
                     return (
-                      <div className="group mb-2 h-1/4 flex-row! items-center rounded-sm border border-neutral-900 px-4 duration-200 last:mb-0 hover:bg-white/5" key={`rhythmverseResultsSong${songI}`}>
+                      <div className={clsx('group mb-2 h-1/4 flex-row! items-center rounded-sm border border-neutral-900 px-4 duration-200 last:mb-0', !isOfficialHmxSong && 'hover:bg-white/5')} key={`rhythmverseResultsSong${songI}`}>
                         <img
-                          src={song.album_art}
+                          src={isOfficialHmxSong ? 'rbicons://harmonix-logo' : song.album_art}
                           className="mr-2 h-24 min-h-24 w-24 min-w-24 border-2 border-neutral-700"
                           onError={(ev) => {
                             ev.currentTarget.onerror = null
@@ -204,32 +209,48 @@ export function RhythmverseScreen() {
                           </div>
                           <div className="h-full w-1/5 min-w-1/5 self-start py-4">
                             <button
-                              className="mr-2 mb-1 w-full self-start rounded-xs border border-neutral-700 bg-neutral-900 px-1 py-0.5 text-[0.65rem]! uppercase duration-100 last:mr-0 last:mb-0 hover:bg-neutral-700 active:bg-neutral-600 disabled:text-neutral-700 disabled:hover:bg-neutral-900"
+                              className={clsx('mr-2 w-full self-start rounded-xs border border-neutral-700 bg-neutral-900 px-1 py-0.5 text-[0.65rem]! uppercase duration-100 last:mr-0 last:mb-0 hover:bg-neutral-700 active:bg-neutral-600 disabled:text-neutral-700 disabled:hover:bg-neutral-900', isOfficialHmxSong ? 'mb-auto' : 'mb-1')}
                               onClick={async () => {
                                 await window.api.openExternalLink(song.song_url)
                               }}
                             >
                               {t('openLinkOnRhythmverse')}
                             </button>
-                            <button
-                              className="mr-2 mb-auto w-full self-start rounded-xs border border-neutral-700 bg-neutral-900 px-1 py-0.5 text-[0.65rem]! uppercase duration-100 last:mr-0 last:mb-0 hover:bg-neutral-700 active:bg-neutral-600 disabled:text-neutral-700 disabled:hover:bg-neutral-900"
-                              onClick={async () => {
-                                if (isHostedOnRhythmverse) {
-                                } else {
-                                  await window.api.openExternalLink(song.file_download_url)
-                                }
-                              }}
-                            >
-                              {isHostedOnRhythmverse ? t('download') : t('downloadExternal')}
-                            </button>
+                            {!isOfficialHmxSong && (
+                              <button
+                                className="mr-2 mb-auto w-full items-center self-start rounded-xs border border-neutral-700 bg-neutral-900 px-1 py-0.5 text-[0.65rem]! uppercase duration-100 last:mr-0 last:mb-0 hover:bg-neutral-700 active:bg-neutral-600 disabled:text-neutral-700 disabled:hover:bg-neutral-900"
+                                onClick={async () => {
+                                  if (isHostedOnRhythmverse) {
+                                    await window.api.rhythmverseDownloadSong({ downloadLink: song.file_download_url, id: song.file_id, hash: song.hash, albumURL: song.album_art, name: song.name || '', artist: song.artist || '' }, getUserConfigState())
+                                  } else {
+                                    await window.api.openExternalLink(song.file_download_url)
+                                  }
+                                }}
+                              >
+                                {(() => {
+                                  if (isDownloading)
+                                    return (
+                                      <div className="flex-row! items-center">
+                                        <LoadingIcon className="mr-2 animate-spin" />
+                                        <span>{t('downloading')}</span>
+                                      </div>
+                                    )
+                                  else {
+                                    return isHostedOnRhythmverse ? t('download') : t('downloadExternal')
+                                  }
+                                })()}
+                              </button>
+                            )}
 
-                            <div className="mb-1 flex-row! items-center">
-                              <img src="rbicons://instrument-icons-download" title={t('sortByDownloads')} className="mr-1 h-4 min-h-4 w-4 min-w-4 cursor-help!" />
-                              <p className="font-bold">{song.downloads}</p>
-                            </div>
+                            {!isOfficialHmxSong && (
+                              <div className="mb-1 flex-row! items-center">
+                                <img src="rbicons://instrument-icons-download" title={t('sortByDownloads')} className="mr-1 h-4 min-h-4 w-4 min-w-4 cursor-help!" />
+                                <p className="font-bold">{song.downloads}</p>
+                              </div>
+                            )}
                             <div className="flex-row! items-center">
                               <img
-                                src={song.author_avatar}
+                                src={isOfficialHmxSong ? 'rbicons://harmonix-logo' : song.author_avatar}
                                 title={song.author}
                                 onError={(ev) => {
                                   ev.currentTarget.onerror = null
@@ -238,13 +259,13 @@ export function RhythmverseScreen() {
                                 className="mr-1 h-4 min-h-4 w-4 min-w-4 border border-neutral-800"
                               />
                               <p
-                                className="hover:cursor-pointer hover:underline"
-                                title={t('clickToAccessUserSongfiles')}
+                                className={clsx(!isOfficialHmxSong && 'hover:cursor-pointer hover:underline')}
+                                title={isOfficialHmxSong ? undefined : t('clickToAccessUserSongfiles')}
                                 onClick={async () => {
-                                  await window.api.openExternalLink(song.author_url)
+                                  if (!isOfficialHmxSong) await window.api.openExternalLink(song.author_url)
                                 }}
                               >
-                                {song.author || ''}
+                                {htmlEntityDecode(song.author || '')}
                               </p>
                             </div>
                           </div>
@@ -255,6 +276,30 @@ export function RhythmverseScreen() {
               </>
             )}
           </div>
+        </>
+      )}
+      {selectedTab === RHYTHMVERSE_SCREEN_TABS.QUEUE && (
+        <>
+          {queue.length === 0 && <p className="italic">{t('noSongOnQueue')}</p>}
+          {queue.map((item, itemI) => {
+            return (
+              <div className="group mb-2 flex-row! items-center rounded-sm border border-neutral-900 px-4 py-2 duration-200 last:mb-0" key={`rhythmverseQueue${itemI}`}>
+                <img src={item.albumURL} className="mr-2 h-16 min-h-16 w-16 min-w-16 border border-neutral-600" />
+                <div>
+                  <h1 className="text-lg">{htmlEntityDecode(item.name)}</h1>
+                  <h2 className="mb-2 text-sm text-neutral-500 italic">{htmlEntityDecode(item.artist)}</h2>
+                  <div className="flex-row! items-center">
+                    <div className="mr-2 h-5 w-lg rounded-sm border border-neutral-600">
+                      <div className="h-full bg-linear-to-r from-cyan-600 to-cyan-500" style={{ width: item.percentage }} />
+                    </div>
+                    <p className="text-nowrap">
+                      {item.downloadedBytes}/{item.totalBytes} ({item.percentage})
+                    </p>
+                  </div>
+                </div>
+              </div>
+            )
+          })}
         </>
       )}
       {selectedTab === RHYTHMVERSE_SCREEN_TABS.DOWNLOADED_SONGS && (

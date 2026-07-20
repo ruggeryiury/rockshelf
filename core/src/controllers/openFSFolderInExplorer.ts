@@ -3,7 +3,7 @@ import { readUserConfigFile, RockshelfFileSys, useHandler } from '../core.export
 import { DirPath } from 'node-lib'
 import { isRPCS3Devhdd0PathValid } from '../lib/rbtools/lib.exports'
 
-export type RockshelfFileSystemCommand = 'coreModuleRootDir' | 'appUserDataDir' | 'appTempDir' | 'dlcDir' | 'rb1UsrDir' | 'rb2UsrDir' | 'rb3UsrDir'
+export type RockshelfFileSystemCommand = 'coreModuleRootDir' | 'appUserDataDir' | 'appTempDir' | 'appDownloadableContentDir' | 'rb1UsrDir' | 'rb2UsrDir' | 'rb3UsrDir'
 
 export const openFSFolderInExplorer = useHandler(async (win, __, command: RockshelfFileSystemCommand): Promise<string | false> => {
   let path: DirPath
@@ -18,8 +18,8 @@ export const openFSFolderInExplorer = useHandler(async (win, __, command: Rocksh
     case 'appTempDir': {
       path = RockshelfFileSys.appTempDir()
     }
-    case 'dlcDir': {
-      path = RockshelfFileSys.dlcDir()
+    case 'appDownloadableContentDir': {
+      path = RockshelfFileSys.appDownloadableContentDir()
     }
     case 'rb1UsrDir':
     case 'rb2UsrDir':

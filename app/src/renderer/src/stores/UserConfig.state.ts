@@ -32,6 +32,8 @@ const defaultState: UserConfigStateProps = {
   packagesCatalogSortBy: 'name',
   songsCatalogSortBy: 'title',
   rpcs3NoGUI: false,
+  downloadedContentDirPath: '',
+  downloadedContentFileName: 'hash',
 }
 
 export const useUserConfigState = create<UserConfigStateHook>()((set, get) => ({

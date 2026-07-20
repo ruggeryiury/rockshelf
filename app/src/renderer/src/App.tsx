@@ -13,6 +13,7 @@ import type { InstrumentScoreData, ParsedRB3SaveData } from 'rockshelf-core/rbto
 import { STRUCT_LOG } from './app/rockshelf.globals'
 import { PackageDetails } from './components/PackageDetails'
 import { ExportPackageModal } from './components/ExportPackageModal'
+import { useRhythmverseScreenState } from './components/RhythmverseScreen.state'
 
 export function App() {
   const { i18n } = useTranslation()
@@ -22,6 +23,7 @@ export function App() {
   const { setLogoScreenState } = useLogoScreenState(useShallow((x) => ({ setLogoScreenState: x.setLogoScreenState })))
   const { setMessageBoxState } = useMessageBoxState(useShallow((x) => ({ setMessageBoxState: x.setMessageBoxState })))
   const { setDialogScreenState } = useDialogScreenState(useShallow((x) => ({ setDialogScreenState: x.setDialogScreenState })))
+  const { setRhythmverseScreenState } = useRhythmverseScreenState(useShallow((x) => ({ setRhythmverseScreenState: x.setRhythmverseScreenState })))
 
   useEffect(function initApp() {
     const fn = async () => {
@@ -99,23 +101,22 @@ export function App() {
       const text = i18n.exists(key) ? i18n.t(key, messageValues ?? {}) : key
       window.api.sendLocale(uuid, text)
     })
-  }, [])
 
-  useEffect(function initMessageListener() {
     window.api.onMessage((_, message) => {
       if (STRUCT_LOG) console.log('struct MessageBoxObject [core/src/core/rendererSenders.ts]', message)
       setMessageBoxState({ message })
     })
-  }, [])
 
-  useEffect(function initDialogListener() {
     window.api.onDialog((_, code) => {
       return setDialogScreenState({ active: code })
     })
-  }, [])
 
-  useEffect(function initRendererConsoleListener() {
     window.api.onRendererConsole((_, val) => console.log(val))
+
+    window.api.onRhythmverseQueue((_, queue) => {
+      console.log(queue)
+      setRhythmverseScreenState({ queue })
+    })
   }, [])
 
   useEffect(

@@ -1,8 +1,8 @@
 /* eslint-disable @typescript-eslint/no-unsafe-return */
 import { ipcRenderer, shell, webUtils, type IpcRenderer, type IpcRendererEvent } from 'electron'
 import type { Promisable } from 'type-fest'
-import type { openUserDataFolder, readUserConfigFile, MessageBoxObject, saveUserConfigFile, UserConfigObject, windowClose, windowMaximize, windowMinimize, BuzyLoadInitObject, BuzyLoadScreenSenderObject, BuzyLoadErrorObject, DialogScreenPromptsTypes, BuzyLoadSubtextObject } from './core.exports'
-import type { deletePackage, deleteRockshelfDataFromPackages, deleteUserConfigAndRestart, editPackageData, sortAndFilterSongsFromPackage, getSongArtworkDataURL, installHighMemoryPatch, installPKGFile, playRockBand3, refreshPackagesData, rpcs3GetInstrumentScores, rpcs3GetPackagesData, rpcs3GetRB3Stats, rpcs3GetSaveDataStats, selectAndParseDTAFile, selectDevhdd0Dir, loadImageForCrop, selectPackageFiles, SelectPackageFilesStatsTypes, SelectPKGFileReturnObject, selectPKGFile, selectRPCS3Exe, testUserConfig, cropImageAndSaveToTemp, CropImageAndSaveToTempOptions, createNewPackage, CreateNewPackageOptions, testBuzyLoad, getScoresFromGoCentral, extractMultitrackOrSongAudioFromSong, encDecPackage, EncDecPackageFunctionTypes, verifyPackageEncryptionStatus, extractMIDIFromSong, batchDeleteSongs, sortAndFilterSongPackages, RhythmverseDataFetchingTypes, fetchRhythmverseData, useSongArtworkFromUniqueSongPKG, changeDecryptedPackageFolderName, installQuickConfig, mergePackages, exportPackage, selectPathToSaveRB3File, selectRB3File, openConsoleWindow, installRB3File, getCommitDataFromCommitHash, checkCommitsAhead, getInstalledDeluxeData, downloadAndInstallDeluxe, DeluxeInstallationOptions, RockshelfFileSystemCommand, openFSFolderInExplorer } from './controllers.exports'
+import type { openUserDataFolder, readUserConfigFile, MessageBoxObject, saveUserConfigFile, UserConfigObject, windowClose, windowMaximize, windowMinimize, BuzyLoadInitObject, BuzyLoadScreenSenderObject, BuzyLoadErrorObject, DialogScreenPromptsTypes, BuzyLoadSubtextObject, RhythmverseDownloadSongOptions, RhythmverseSongDownloadJSONRepresentation, RhythmverseSongDownload } from './core.exports'
+import type { deletePackage, deleteRockshelfDataFromPackages, deleteUserConfigAndRestart, editPackageData, sortAndFilterSongsFromPackage, getSongArtworkDataURL, installHighMemoryPatch, installPKGFile, playRockBand3, refreshPackagesData, rpcs3GetInstrumentScores, rpcs3GetPackagesData, rpcs3GetRB3Stats, rpcs3GetSaveDataStats, selectAndParseDTAFile, selectDevhdd0Dir, loadImageForCrop, selectPackageFiles, SelectPackageFilesStatsTypes, SelectPKGFileReturnObject, selectPKGFile, selectRPCS3Exe, testUserConfig, cropImageAndSaveToTemp, CropImageAndSaveToTempOptions, createNewPackage, CreateNewPackageOptions, testBuzyLoad, getScoresFromGoCentral, extractMultitrackOrSongAudioFromSong, encDecPackage, EncDecPackageFunctionTypes, verifyPackageEncryptionStatus, extractMIDIFromSong, batchDeleteSongs, sortAndFilterSongPackages, RhythmverseDataFetchingTypes, fetchRhythmverseData, useSongArtworkFromUniqueSongPKG, changeDecryptedPackageFolderName, installQuickConfig, mergePackages, exportPackage, selectPathToSaveRB3File, selectRB3File, openConsoleWindow, installRB3File, getCommitDataFromCommitHash, checkCommitsAhead, getInstalledDeluxeData, downloadAndInstallDeluxe, DeluxeInstallationOptions, RockshelfFileSystemCommand, openFSFolderInExplorer, selectDir } from './controllers.exports'
 import type { ParsedRB3SaveData, RhythmverseFetchingOptions, ScoreDataInstrumentTypes } from 'rockshelf-core/rbtools'
 import type { CreateRB3FileOptions, EditPackageDataOptions, RB3FileExtractionOptions, ResponseGetBasicOptions, RPCS3SongPackagesObjectExtra, SongPackagesFilterOptions, SongPackagesFilterTypes } from './lib.exports'
 import type { FatalErrorObject } from './lib/senders/fatalError'
@@ -19,6 +19,7 @@ export type OnLocaleRequestCallback = (event: IpcRendererEvent, uuid: string, ke
 export type OnMessageCallback = (event: IpcRendererEvent, message: MessageBoxObject) => Promisable<any>
 export type OnRendererConsoleCallback = (event: IpcRendererEvent, value: any) => Promisable<any>
 export type OnFatalErrorCallback = (event: IpcRendererEvent, errObject: FatalErrorObject) => Promisable<any>
+export type OnRhythmverseQueueCallback = (event: IpcRendererEvent, queue: RhythmverseSongDownloadJSONRepresentation[]) => Promisable<any>
 
 export const rockshelfAPI = {
   // #region Listeners
@@ -54,11 +55,14 @@ export const rockshelfAPI = {
   /**
    * Sends a localized string to the main process. This function must be called inside the `onLocaleRequest` listener to get the request UUID.
    * - - - -
-   * @param {string} uuid A unique
+   * @param {string} uuid A unique ID.
    * @param {string} text The localized string you want to send to the main process.
    */
   sendLocale(uuid: string, text: string): void {
     return ipcRenderer.send(`sendLocale/${uuid}`, text)
+  },
+  onRhythmverseQueue(callback: OnRhythmverseQueueCallback): IpcRenderer {
+    return on('sendRhythmverseQueue', callback)
   },
 
   /**
@@ -130,6 +134,7 @@ export const rockshelfAPI = {
   extractMultitrackOrSongAudioFromSong: async (packageDetails: RPCS3SongPackagesObjectExtra, song: RB3CompatibleDTAFile): ReturnType<typeof extractMultitrackOrSongAudioFromSong> => await invoke('extractMultitrackOrSongAudioFromSong', packageDetails, song),
   fetchRhythmverseData: async (searchField: string, type: RhythmverseDataFetchingTypes, options?: RhythmverseFetchingOptions): ReturnType<typeof fetchRhythmverseData> => await invoke('fetchRhythmverseData', searchField, type, options),
   getCommitDataFromCommitHash: async (commitHash: string, options?: ResponseGetBasicOptions): ReturnType<typeof getCommitDataFromCommitHash> => await invoke('getCommitDataFromCommitHash', commitHash, options),
+  getDownloadedContentData: async (): ReturnType<typeof RhythmverseSongDownload.getDownloadedContentData> => await invoke('getDownloadedContentData'),
   getInstalledDeluxeData: async (): ReturnType<typeof getInstalledDeluxeData> => await invoke('getInstalledDeluxeData'),
   getScoresFromGoCentral: async (songID: number, instrument: ScoreDataInstrumentTypes = 'band'): ReturnType<typeof getScoresFromGoCentral> => await invoke('getScoresFromGoCentral', songID, instrument),
   getSongArtworkDataURL: async (packageDetails: RPCS3SongPackagesObjectExtra, songDetails: RB3CompatibleDTAFile): ReturnType<typeof getSongArtworkDataURL> => await invoke('getSongArtworkDataURL', packageDetails, songDetails),
@@ -147,6 +152,7 @@ export const rockshelfAPI = {
   playRockBand3: async (): ReturnType<typeof playRockBand3> => await invoke('playRockBand3'),
   readUserConfigFile: async (): ReturnType<typeof readUserConfigFile> => await invoke('readUserConfigFile'),
   refreshPackagesData: async (): ReturnType<typeof refreshPackagesData> => await invoke('refreshPackagesData'),
+  rhythmverseDownloadSong: async (options: RhythmverseDownloadSongOptions, userOptions: UserConfigObject): Promise<void> => await invoke('rhythmverseDownloadSong', options, userOptions),
   rpcs3GetInstrumentScores: async (saveData: ParsedRB3SaveData): ReturnType<typeof rpcs3GetInstrumentScores> => await invoke('rpcs3GetInstrumentScores', saveData),
   rpcs3GetPackagesData: async (forceUpdate: boolean = false): ReturnType<typeof rpcs3GetPackagesData> => await invoke('rpcs3GetPackagesData', forceUpdate),
   rpcs3GetRB3Stats: async (): ReturnType<typeof rpcs3GetRB3Stats> => await invoke('rpcs3GetRB3Stats'),
@@ -154,6 +160,7 @@ export const rockshelfAPI = {
   saveUserConfigFile: async (newConfig?: Partial<UserConfigObject>): ReturnType<typeof saveUserConfigFile> => await invoke('saveUserConfigFile', newConfig),
   selectAndParseDTAFile: async (): ReturnType<typeof selectAndParseDTAFile> => await invoke('selectAndParseDTAFile'),
   selectDevhdd0Dir: async (): ReturnType<typeof selectDevhdd0Dir> => await invoke('selectDevhdd0Dir'),
+  selectDir: async (): ReturnType<typeof selectDir> => await invoke('selectDir'),
   selectPackageFiles: async (files: SelectPackageFilesStatsTypes[]): ReturnType<typeof selectPackageFiles> => await invoke('selectPackageFiles', files),
   selectPathToSaveRB3File: async (): ReturnType<typeof selectPathToSaveRB3File> => await invoke('selectPathToSaveRB3File'),
   selectPKGFile: async (): ReturnType<typeof selectPKGFile> => await invoke('selectPKGFile'),

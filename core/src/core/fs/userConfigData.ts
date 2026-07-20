@@ -34,6 +34,14 @@ export interface UserConfigObject {
    * If `true`, the RPCS3 instance launched by the application would open without GUI. Default when first saving the config file is `false`.
    */
   rpcs3NoGUI: boolean
+  /**
+   * The folder where Rockshelf will place downloadable content from Rhythmverse.
+   */
+  downloadedContentDirPath: string
+  /**
+   * The name of the downloadable content files.
+   */
+  downloadedContentFileName: 'hash' | 'nameAndArtist'
 }
 
 /**
@@ -73,6 +81,8 @@ export const saveUserConfigFile = async (newConfig?: Partial<UserConfigObject>):
     packagesCatalogSortBy: 'name',
     songsCatalogSortBy: 'title',
     rpcs3NoGUI: false,
+    downloadedContentDirPath: RockshelfFileSys.appDownloadableContentDir().path,
+    downloadedContentFileName: 'hash',
   }
 
   const value: UserConfigObject = {

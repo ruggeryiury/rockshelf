@@ -1,7 +1,7 @@
 import { app, BrowserWindow, protocol, net, ipcMain } from 'electron'
 import { pathToFileURL } from 'node:url'
 import { electronApp, optimizer } from '@electron-toolkit/utils'
-import { createWindow, initRichPresence, readUserConfigFile, RockshelfFileSys, setElectronUserDataFolder, type CreateWindowOptions } from './core.exports'
+import { createWindow, initRhythmverseDownloader, initRichPresence, readUserConfigFile, RockshelfFileSys, setElectronUserDataFolder, type CreateWindowOptions } from './core.exports'
 import { initMainProcessHandlers } from './initMainProcessHandlers'
 
 export async function initRockshelfMainProcess(options: CreateWindowOptions): Promise<void> {
@@ -99,6 +99,7 @@ export async function initRockshelfMainProcess(options: CreateWindowOptions): Pr
   })
 
   void initRichPresence()
+  void initRhythmverseDownloader()
   void initMainProcessHandlers()
   void createWindow(options)
 

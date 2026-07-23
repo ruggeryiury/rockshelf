@@ -57,7 +57,6 @@ jobs:
   build_app:
     needs:
       - detect_version
-      - build_core
     if: needs.detect_version.outputs.should_release == 'true'
 
     strategy:

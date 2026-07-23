@@ -1,5 +1,5 @@
 import { DirPath, FilePath, pathLikeToDirPath, pathLikeToFilePath } from 'node-lib'
-import { RockshelfFileSys, sendBuzyLoad, sendDialog, sendMessageBox, useHandler } from '../core.exports'
+import { RockshelfFileSystemAPI, sendBuzyLoad, sendDialog, sendMessageBox, useHandler } from '../core.exports'
 import { editRSPackImage, type RPCS3SongPackagesDataExtra } from '../lib.exports'
 import { EDATFile, MIDIFile, MOGGFile } from '../lib/rbtools'
 import { temporaryFile } from 'tempy'
@@ -8,7 +8,7 @@ import { utimes } from 'node:fs/promises'
 export type EncDecPackageFunctionTypes = 'encryptAll' | 'decryptAll'
 
 export const encDecPackage = useHandler(async (win, _, func: EncDecPackageFunctionTypes, pkgIndex: number): Promise<RPCS3SongPackagesDataExtra | false> => {
-  const cache = RockshelfFileSys.packagesCacheFile()
+  const cache = RockshelfFileSystemAPI.packagesCacheFile()
   if (!cache.exists) {
     sendDialog(win, 'corruptedPackagesCache')
     return false

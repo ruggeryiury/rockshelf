@@ -1,0 +1,16 @@
+import { ipcMain, type BrowserWindow } from 'electron'
+import { randomBytesFromRanges } from 'node-lib'
+
+/**
+ * Returns a localized string from renderer from the provided key. If the key is not registered on the renderer's locale file, the function will return the key itself.
+ * - - - -
+ * @param {BrowserWindow} win Target `BrowserWindow` that will receive the message.
+ * @param {string} key The key of the locale value.
+ */
+export const getLocaleStringFromRenderer = async (win: BrowserWindow, key: string, messageValues?: Record<string, string | number>): Promise<string> => {
+  const uuid = (await randomBytesFromRanges(16)).toString('hex')
+  return new Promise<string>((resolve, _) => {
+    ipcMain.once(`sendLocale/${uuid}`, (_, text: string) => resolve(text))
+    win.webContents.send('getLocaleStringFromRenderer', uuid, key, messageValues)
+  })
+}

@@ -1,5 +1,5 @@
 import { utimes } from 'node:fs/promises'
-import { RockshelfFileSys, readUserConfigFile, sendDialog, sendMessageBox, useHandler } from '../core.exports'
+import { RockshelfFileSystemAPI, UserConfigAPI, sendDialog, sendMessageBox, useHandler } from '../core.exports'
 import { genPackImageToAllPackages, rpcs3GetSongPackagesStatsExtra, type RPCS3SongPackagesDataExtra } from '../lib.exports'
 import { isRPCS3Devhdd0PathValid } from '../lib/rbtools/lib.exports'
 
@@ -7,7 +7,7 @@ import { isRPCS3Devhdd0PathValid } from '../lib/rbtools/lib.exports'
  * Retrieves data from all installed song packages.
  */
 export const rpcs3GetPackagesData = useHandler(async (win, _, forceUpdate: boolean = false): Promise<RPCS3SongPackagesDataExtra | false> => {
-  const userConfig = await readUserConfigFile()
+  const userConfig = await UserConfigAPI.readFile()
   if (!userConfig) {
     sendDialog(win, 'corruptedUserConfig')
     return false
@@ -16,7 +16,7 @@ export const rpcs3GetPackagesData = useHandler(async (win, _, forceUpdate: boole
   const devhdd0 = isRPCS3Devhdd0PathValid(userConfig.devhdd0Path)
   await genPackImageToAllPackages(devhdd0)
 
-  const cache = RockshelfFileSys.packagesCacheFile()
+  const cache = RockshelfFileSystemAPI.packagesCacheFile()
 
   if (forceUpdate || !cache.exists) {
     const packagesData = await rpcs3GetSongPackagesStatsExtra(devhdd0)

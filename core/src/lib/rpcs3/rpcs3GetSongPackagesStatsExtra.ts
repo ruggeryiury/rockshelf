@@ -1,6 +1,6 @@
 import { createHashFromBuffer, DirPath, MyObject, parseReadableBytesSize, type DirPathLikeTypes } from 'node-lib'
 import { useDefaultOptions } from 'use-default-options'
-import { RockshelfFileSys } from '../../core.exports'
+import { RockshelfFileSystemAPI } from '../../core.exports'
 import { createRSPackImage, parseRSPackImageFile, type ParsedRSPackImageObject } from '../../lib.exports'
 import { temporaryFile } from 'tempy'
 import { RBTools, EDATFile, DTAParser, TextureFile } from '../rbtools'
@@ -173,7 +173,7 @@ export const rpcs3GetSongPackagesStatsExtra = async (devhdd0Path: DirPathLikeTyp
     rb3PackagesCount = 0,
     allPackagesSize = 0
 
-  const rb3UsrDir = RockshelfFileSys.rb3UsrDir(devhdd0)
+  const rb3UsrDir = RockshelfFileSystemAPI.rb3UsrDir(devhdd0)
   if (rb3UsrDir.exists) {
     const allRB3PackagesFolder = (await rb3UsrDir.readDir()).filter((entry) => entry instanceof DirPath && entry.name !== 'gen' && entry.name !== 'custom_textures') as DirPath[]
 
@@ -227,14 +227,14 @@ export const rpcs3GetSongPackagesStatsExtra = async (devhdd0Path: DirPathLikeTyp
               packageData = header
               await temp.path.delete()
             } else {
-              const newPackageImage = RockshelfFileSys.coreModuleRootDir().gotoFile(`bin/icons/custom.jpg`)
+              const newPackageImage = RockshelfFileSystemAPI.coreModuleRootDir().gotoFile(`bin/icons/custom.jpg`)
 
               const { header } = await createRSPackImage(newPackageImage, thumbnailSrc, { source: 'merged', type: 'other', encryptionStatus: 'unknown', packageName: packagePath.name, category: 'other' })
               packageData = header
             }
           } else {
-            let newPackageImage = RockshelfFileSys.coreModuleRootDir().gotoFile(`bin/icons/${official?.code}.jpg`)
-            if (!newPackageImage.exists) newPackageImage = RockshelfFileSys.coreModuleRootDir().gotoFile(`bin/icons/custom.jpg`)
+            let newPackageImage = RockshelfFileSystemAPI.coreModuleRootDir().gotoFile(`bin/icons/${official?.code}.jpg`)
+            if (!newPackageImage.exists) newPackageImage = RockshelfFileSystemAPI.coreModuleRootDir().gotoFile(`bin/icons/custom.jpg`)
 
             const { header } = await createRSPackImage(newPackageImage, thumbnailSrc, { source: official ? 'pkg' : 'merged', type: official ? 'rockshelf' : 'other', encryptionStatus: official ? 'encrypted' : 'unknown', packageName: official?.name || packagePath.name, category: official ? 'official' : 'other' })
             packageData = header
@@ -263,7 +263,7 @@ export const rpcs3GetSongPackagesStatsExtra = async (devhdd0Path: DirPathLikeTyp
     }
   }
 
-  const rb1UsrDir = RockshelfFileSys.rb1UsrDir(devhdd0)
+  const rb1UsrDir = RockshelfFileSystemAPI.rb1UsrDir(devhdd0)
   if (rb1UsrDir.exists) {
     const allRB1PackagesFolder = (await rb1UsrDir.readDir()).filter((entry) => entry instanceof DirPath && entry.name !== 'gen' && entry.name !== 'CCF0099') as DirPath[]
 
@@ -321,14 +321,14 @@ export const rpcs3GetSongPackagesStatsExtra = async (devhdd0Path: DirPathLikeTyp
               packageData = header
               await temp.path.delete()
             } else {
-              const newPackageImage = RockshelfFileSys.coreModuleRootDir().gotoFile(`bin/icons/custom.jpg`)
+              const newPackageImage = RockshelfFileSystemAPI.coreModuleRootDir().gotoFile(`bin/icons/custom.jpg`)
 
               const { header } = await createRSPackImage(newPackageImage, thumbnailSrc, { source: 'merged', type: 'other', encryptionStatus: 'unknown', packageName: packagePath.name, category: 'other' })
               packageData = header
             }
           } else {
-            let newPackageImage = RockshelfFileSys.coreModuleRootDir().gotoFile(`bin/icons/${official?.code}.jpg`)
-            if (!newPackageImage.exists) newPackageImage = RockshelfFileSys.coreModuleRootDir().gotoFile(`bin/icons/custom.jpg`)
+            let newPackageImage = RockshelfFileSystemAPI.coreModuleRootDir().gotoFile(`bin/icons/${official?.code}.jpg`)
+            if (!newPackageImage.exists) newPackageImage = RockshelfFileSystemAPI.coreModuleRootDir().gotoFile(`bin/icons/custom.jpg`)
 
             const { header } = await createRSPackImage(newPackageImage, thumbnailSrc, { source: 'merged', type: 'other', encryptionStatus: 'unknown', packageName: official?.name || packagePath.name, category: official ? 'official' : 'other' })
             packageData = header

@@ -1,0 +1,16 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
+/* Pentatonic */
+@font-face {
+  font-family: 'Pentatonic';
+  src: url('../../assets/fonts/pentatonic_reg.woff2') format('woff2');
+  font-weight: 400;
+  font-display: 'swap';
+}
+
+@font-face {
+  font-family: 'Pentatonic Alt';
+  src: url('../../assets/fonts/pentatonic_reg_alt.woff2') format('woff2');
+  font-weight: 400;
+  font-display: 'swap';
+}

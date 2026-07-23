@@ -136,7 +136,13 @@ export function SongDetails() {
                   <p className="mb-1">{songDetails.artist}</p>
                   {songDetails.album_name ? <h2 className="font-bold text-gray-300 uppercase">{t('albumName')}</h2> : <h2 className="font-bold text-gray-300 uppercase">{t('yearReleased')}</h2>}
                   {songDetails.album_name ? (
-                    <p className="mb-1">{songDetails.album_name}</p>
+                    <>
+                      <div className="mt-1 mb-1 flex-row! items-center">
+                        {songDetails.album_track_number && <p className="mr-1 rounded-sm bg-neutral-900 p-0.5 font-bold">{songDetails.album_track_number}</p>}
+
+                        <p>{songDetails.album_name}</p>
+                      </div>
+                    </>
                   ) : (
                     <p className="mb-1">
                       {songDetails.year_released}

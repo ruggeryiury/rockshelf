@@ -1,12 +1,12 @@
 import { utimes } from 'node:fs/promises'
-import { RockshelfFileSys, sendDialog, sendMessageBox, useHandler } from '../core.exports'
+import { RockshelfFileSystemAPI, sendDialog, sendMessageBox, useHandler } from '../core.exports'
 import { getSongPackageStatsFromFolder, type RPCS3SongPackagesDataExtra } from '../lib.exports'
 import { DTAParser } from '../lib/rbtools'
 import { pathLikeToDirPath, pathLikeToFilePath } from 'node-lib'
 import { rpcs3GenSongPackageManifest } from '../lib/rbtools/lib.exports'
 
 export const mergePackages = useHandler(async (win, _, selectedPackageIndex: number, mainPackageIndex: number) => {
-  const cache = RockshelfFileSys.packagesCacheFile()
+  const cache = RockshelfFileSystemAPI.packagesCacheFile()
   if (!cache.exists) {
     sendDialog(win, 'corruptedPackagesCache')
     return false

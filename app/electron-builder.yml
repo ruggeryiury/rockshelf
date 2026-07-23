@@ -11,7 +11,6 @@ files:
   - '!{tsconfig.json,tsconfig.node.json,tsconfig.web.json}'
 asarUnpack:
   - resources/**
-  - node_modules/rbtools
 win:
   executableName: Rockshelf
   artifactName: 'rockshelf-${version}_x86_x64_installer.${ext}'
@@ -22,7 +21,6 @@ nsis:
   createDesktopShortcut: always
   deleteAppDataOnUninstall: true
   oneClick: false
-  runAfterFinish: false
   allowToChangeInstallationDirectory: true
   include: 'build/installer.nsh'
 mac:
@@ -38,8 +36,6 @@ dmg:
 linux:
   target:
     - AppImage
-    - snap
-    - deb
   maintainer: electronjs.org
   category: Utility
 appImage:

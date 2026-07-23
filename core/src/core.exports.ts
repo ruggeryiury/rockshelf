@@ -1,15 +1,19 @@
-export * from './core/fs/userConfigData'
+export * from './core/electron/createWindow'
+export * from './core/electron/getBrowserWindowFromEvent'
+export * from './core/electron/getLocaleStringFromRenderer'
+export * from './core/electron/handler'
+export * from './core/electron/rendererSenders'
+export * from './core/electron/setElectronUserDataFolder'
+export * from './core/electron/windowFunctions'
+
+export * from './core/fs/RockshelfFileSystemAPI'
+export * from './core/fs/UserConfigAPI'
 
 export * from './core/protocol/rbiconsToPath'
 export * from './core/protocol/tempjpgToPath'
 
-export * from './core/createWindow'
-export * from './core/fs'
-export * from './core/getBrowserWindowFromEvent'
-export * from './core/getLocaleStringFromRenderer'
-export * from './core/handler'
-export * from './core/rendererSenders'
-export * from './core/rhythmverseDownloader'
-export * from './core/richPresence'
-export * from './core/setElectronUserDataFolder'
-export * from './core/windowFunctions'
+export * from './core/rhythmverse/SongDownloadQueueAPI'
+
+export * from './core/rpcs3/richPresence'
+
+export * from './core/pythonEnv'

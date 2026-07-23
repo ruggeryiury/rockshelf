@@ -1,11 +1,11 @@
 import { spawn } from 'node:child_process'
 import { execAsync, FilePath, pathLikeToFilePath, pathLikeToString, type DirPathLikeTypes, type FilePathLikeTypes, type DirPath, pathLikeToDirPath } from 'node-lib'
 import { useDefaultOptions } from 'use-default-options'
+import { temporaryFile } from 'tempy'
+import { is } from '@electron-toolkit/utils'
 import { ImageFile, MOGGFile, RBTools, type ImageConvertingOptions, type ImageFormatTypes } from '../core.exports'
 import { genAudioFileStructure, type RB3CompatibleDTAFile, type TPLHeaderParserObject } from '../lib.exports'
-import { platform } from 'node:os'
-import { is } from '@electron-toolkit/utils'
-import { temporaryFile } from 'tempy'
+import { RockshelfFileSystemAPI } from '../../../core.exports'
 
 // #region Types
 
@@ -120,12 +120,6 @@ export type PreviewAudioFormatTypes = 'wav' | 'flac' | 'ogg' | 'mp3'
  * API calls as static methods for Python scripts of RBTools.
  */
 export class PythonAPI {
-  /**
-   * Returns the correct python executable name across many OS'.
-   * - - - -
-   * @returns {'py' | 'python3'}
-   */
-  static getPythonExecName = (): 'py' | 'python3' => (platform() === 'win32' ? 'py' : 'python3')
   // #region Image/Texture
 
   /**
@@ -136,7 +130,7 @@ export class PythonAPI {
    */
   static async imageFileStat(imgFilePath: FilePathLikeTypes): Promise<ImageFileStatPythonObject> {
     const pythonScript = 'img_file_stat.py'
-    const command = `${PythonAPI.getPythonExecName()} "${pythonScript}" "${pathLikeToString(imgFilePath)}" -p`
+    const command = `"${RockshelfFileSystemAPI.pythonEnvScriptFile().path}" "${pythonScript}" "${pathLikeToString(imgFilePath)}" -p`
     const cwd = is.dev ? RBTools.pyFolder.path : RBTools.pyFolder.path.replace(/(\.asar)([\\/])/, '.asar.unpacked$2')
     const { stderr, stdout } = await execAsync(command, { windowsHide: true, cwd })
     if (stderr) throw new Error(stderr)
@@ -167,7 +161,7 @@ export class PythonAPI {
     )
     const dest = pathLikeToFilePath(destFilePath).changeFileExt(toFormat)
     const pythonScript = 'image_converter.py'
-    const command = `${PythonAPI.getPythonExecName()} "${pythonScript}" "${pathLikeToString(srcFilePath)}" "${pathLikeToString(dest)}" --width ${opts.width.toString()} --height ${opts.height.toString()} --interpolation ${opts.interpolation.toUpperCase()} --quality ${opts.quality.toString()}`
+    const command = `"${RockshelfFileSystemAPI.pythonEnvScriptFile().path}" "${pythonScript}" "${pathLikeToString(srcFilePath)}" "${pathLikeToString(dest)}" --width ${opts.width.toString()} --height ${opts.height.toString()} --interpolation ${opts.interpolation.toUpperCase()} --quality ${opts.quality.toString()}`
     const cwd = is.dev ? RBTools.pyFolder.path : RBTools.pyFolder.path.replace(/(\.asar)([\\/])/, '.asar.unpacked$2')
     const { stderr } = await execAsync(command, { windowsHide: true, cwd })
     if (stderr) throw new Error(stderr)
@@ -213,9 +207,9 @@ export class PythonAPI {
         if (code === 0) {
           resolve(Buffer.from(stdout, 'base64'))
         } else if (code === null) {
-          reject(new Error(`${PythonAPI.getPythonExecName()} script exited with unknown code: ${stderr}`))
+          reject(new Error(`"${RockshelfFileSystemAPI.pythonEnvScriptFile().path}" script exited with unknown code: ${stderr}`))
         } else {
-          reject(new Error(`${PythonAPI.getPythonExecName()} script exited with code ${code.toString()}: ${stderr}`))
+          reject(new Error(`"${RockshelfFileSystemAPI.pythonEnvScriptFile().path}" script exited with code ${code.toString()}: ${stderr}`))
         }
       })
 
@@ -251,9 +245,9 @@ export class PythonAPI {
         if (code === 0) {
           resolve(JSON.parse(stdout) as ImageFileStatPythonObject)
         } else if (code === null) {
-          reject(new Error(`${PythonAPI.getPythonExecName()} script exited with unknown code: ${stderr}`))
+          reject(new Error(`"${RockshelfFileSystemAPI.pythonEnvScriptFile().path}" script exited with unknown code: ${stderr}`))
         } else {
-          reject(new Error(`${PythonAPI.getPythonExecName()} script exited with code ${code.toString()}: ${stderr}`))
+          reject(new Error(`"${RockshelfFileSystemAPI.pythonEnvScriptFile().path}" script exited with code ${code.toString()}: ${stderr}`))
         }
       })
 
@@ -273,7 +267,7 @@ export class PythonAPI {
     const tex = pathLikeToFilePath(texWiiPath)
     const base64Header = texHeader.data.toString('base64')
     const pythonScript = 'texwii_to_base64_buffer.py'
-    const command = `${PythonAPI.getPythonExecName()} "${pythonScript}" "${tex.path}" -tpl "${base64Header}" -p`
+    const command = `"${RockshelfFileSystemAPI.pythonEnvScriptFile().path}" "${pythonScript}" "${tex.path}" -tpl "${base64Header}" -p`
     const cwd = is.dev ? RBTools.pyFolder.path : RBTools.pyFolder.path.replace(/(\.asar)([\\/])/, '.asar.unpacked$2')
     const { stderr, stdout } = await execAsync(command, { windowsHide: true, cwd })
     if (stderr) throw new Error(stderr)
@@ -291,7 +285,7 @@ export class PythonAPI {
    */
   static async audioFileStat(audioFilePath: FilePathLikeTypes): Promise<AudioFileStatPythonObject> {
     const pythonScript = 'audio_file_stat.py'
-    const command = `${PythonAPI.getPythonExecName()} "${pythonScript}" "${pathLikeToString(audioFilePath)}" -p`
+    const command = `"${RockshelfFileSystemAPI.pythonEnvScriptFile().path}" "${pythonScript}" "${pathLikeToString(audioFilePath)}" -p`
     const cwd = is.dev ? RBTools.pyFolder.path : RBTools.pyFolder.path.replace(/(\.asar)([\\/])/, '.asar.unpacked$2')
     const { stderr, stdout } = await execAsync(command, { windowsHide: true, cwd })
     if (stderr) throw new Error(stderr)
@@ -314,7 +308,7 @@ export class PythonAPI {
     for (const track of tracks) {
       audioFilesInput += `"${pathLikeToString(track)}" `
     }
-    const command = `${PythonAPI.getPythonExecName()} "${pythonScript}" ${audioFilesInput}${encrypt ? '-e' : ''}-d "${pathLikeToString(destPath)}"`
+    const command = `"${RockshelfFileSystemAPI.pythonEnvScriptFile().path}" "${pythonScript}" ${audioFilesInput}${encrypt ? '-e' : ''}-d "${pathLikeToString(destPath)}"`
     const cwd = is.dev ? RBTools.pyFolder.path : RBTools.pyFolder.path.replace(/(\.asar)([\\/])/, '.asar.unpacked$2')
     const { stderr } = await execAsync(command, { windowsHide: true, cwd })
     if (stderr) throw new Error(stderr)
@@ -329,7 +323,7 @@ export class PythonAPI {
    */
   static async moggFileStat(moggFilePath: FilePathLikeTypes): Promise<MOGGFileStatPythonObject> {
     const pythonScript = 'mogg_file_stat.py'
-    const command = `${PythonAPI.getPythonExecName()} "${pythonScript}" "${pathLikeToString(moggFilePath)}" -p`
+    const command = `"${RockshelfFileSystemAPI.pythonEnvScriptFile().path}" "${pythonScript}" "${pathLikeToString(moggFilePath)}" -p`
     const cwd = is.dev ? RBTools.pyFolder.path : RBTools.pyFolder.path.replace(/(\.asar)([\\/])/, '.asar.unpacked$2')
     const { stderr, stdout } = await execAsync(command, { windowsHide: true, cwd })
     if (stderr) throw new Error(stderr)
@@ -354,7 +348,7 @@ export class PythonAPI {
     const enc = pathLikeToFilePath(encMoggPath)
     const dec = pathLikeToFilePath(decMoggPath)
     const pythonScript = 'decrypt_mogg.py'
-    const command = `${PythonAPI.getPythonExecName()} "${pythonScript}" "${enc.path}" "${dec.path}"`
+    const command = `"${RockshelfFileSystemAPI.pythonEnvScriptFile().path}" "${pythonScript}" "${enc.path}" "${dec.path}"`
     const cwd = is.dev ? RBTools.pyFolder.path : RBTools.pyFolder.path.replace(/(\.asar)([\\/])/, '.asar.unpacked$2')
     const { stderr } = await execAsync(command, { windowsHide: true, cwd })
     if (stderr) throw new Error(stderr)
@@ -379,7 +373,7 @@ export class PythonAPI {
     const tracksStr = JSON.stringify(genAudioFileStructure(songdata))
     const tracks = Buffer.from(tracksStr).toString('base64')
     const pythonScript = 'mogg_track_extractor.py'
-    const command = `${PythonAPI.getPythonExecName()} "${pythonScript}" "${mogg.path}" -t "${tracks}" -o "${dest.path}"${extractCrowd ? ' -c' : ''}`
+    const command = `"${RockshelfFileSystemAPI.pythonEnvScriptFile().path}" "${pythonScript}" "${mogg.path}" -t "${tracks}" -o "${dest.path}"${extractCrowd ? ' -c' : ''}`
     const cwd = is.dev ? RBTools.pyFolder.path : RBTools.pyFolder.path.replace(/(\.asar)([\\/])/, '.asar.unpacked$2')
     const { stderr } = await execAsync(command, { windowsHide: true, cwd })
     if (stderr) throw new Error(stderr)
@@ -403,7 +397,7 @@ export class PythonAPI {
     const tracks = Buffer.from(JSON.stringify(genAudioFileStructure(songdata))).toString('base64')
 
     const pythonScript = 'mogg_preview_creator.py'
-    const command = `${PythonAPI.getPythonExecName()} "${pythonScript}" "${mogg.path}" -t "${tracks}" -ps ${songdata.preview[0].toString()} -o "${dest.path}" -f "${format}"${mixCrowd ? ' -c' : ''}`
+    const command = `"${RockshelfFileSystemAPI.pythonEnvScriptFile().path}" "${pythonScript}" "${mogg.path}" -t "${tracks}" -ps ${songdata.preview[0].toString()} -o "${dest.path}" -f "${format}"${mixCrowd ? ' -c' : ''}`
     const cwd = is.dev ? RBTools.pyFolder.path : RBTools.pyFolder.path.replace(/(\.asar)([\\/])/, '.asar.unpacked$2')
     const { stderr } = await execAsync(command, { windowsHide: true, cwd })
     if (stderr) throw new Error(stderr)
@@ -420,7 +414,7 @@ export class PythonAPI {
    */
   static async midiFileStat(midiFilePath: FilePathLikeTypes): Promise<MIDIFileStatPythonObject> {
     const pythonScript = 'midi_file_stat.py'
-    const command = `${PythonAPI.getPythonExecName()} "${pythonScript}" "${pathLikeToString(midiFilePath)}" -p`
+    const command = `"${RockshelfFileSystemAPI.pythonEnvScriptFile().path}" "${pythonScript}" "${pathLikeToString(midiFilePath)}" -p`
     const cwd = is.dev ? RBTools.pyFolder.path : RBTools.pyFolder.path.replace(/(\.asar)([\\/])/, '.asar.unpacked$2')
     const { stderr, stdout } = await execAsync(command, { windowsHide: true, cwd })
     if (stderr) throw new Error(stderr)
@@ -440,7 +434,7 @@ export class PythonAPI {
     const stfs = pathLikeToFilePath(stfsFilePath)
     const pythonScript = 'stfs_file_stat.py'
     const tempJSON = FilePath.of(temporaryFile({ extension: 'json' }))
-    const command = `${PythonAPI.getPythonExecName()} "${pythonScript}" "${stfs.path}" -s "${tempJSON.path}"`
+    const command = `"${RockshelfFileSystemAPI.pythonEnvScriptFile().path}" "${pythonScript}" "${stfs.path}" -s "${tempJSON.path}"`
     const cwd = is.dev ? RBTools.pyFolder.path : RBTools.pyFolder.path.replace(/(\.asar)([\\/])/, '.asar.unpacked$2')
     const { stderr } = await execAsync(command, { windowsHide: true, cwd })
     if (stderr) throw new Error(stderr)
@@ -463,7 +457,7 @@ export class PythonAPI {
     const stfs = pathLikeToFilePath(stfsFilePath)
     const dest = pathLikeToDirPath(destPath)
     const pythonScript = 'stfs_extract.py'
-    let command = `${PythonAPI.getPythonExecName()} "${pythonScript}" "${stfs.path}" "${dest.path}"`
+    let command = `"${RockshelfFileSystemAPI.pythonEnvScriptFile().path}" "${pythonScript}" "${stfs.path}" "${dest.path}"`
     if (extractOnRoot) command += ' --extract-on-root'
     const cwd = is.dev ? RBTools.pyFolder.path : RBTools.pyFolder.path.replace(/(\.asar)([\\/])/, '.asar.unpacked$2')
     const { stderr } = await execAsync(command, { windowsHide: true, cwd })
@@ -484,7 +478,7 @@ export class PythonAPI {
     const stfs = pathLikeToFilePath(stfsFilePath)
     const dest = pathLikeToDirPath(destPath)
     const pythonScript = songs.length === 0 ? 'stfs_extract.py' : 'stfs_extract_selected_songs.py'
-    let command = `${PythonAPI.getPythonExecName()} "${pythonScript}" "${stfs.path}" "${dest.path}"`
+    let command = `"${RockshelfFileSystemAPI.pythonEnvScriptFile().path}" "${pythonScript}" "${stfs.path}" "${dest.path}"`
     if (extractOnRoot) command += ' --extract-on-root'
     if (songs.length > 0) {
       command += ` --songs ${songs.map((s) => `"${s}"`).join(' ')}`
@@ -503,7 +497,7 @@ export class PythonAPI {
     const tracks = Buffer.from(tracksStr).toString('base64')
     const pythonScript = 'extract_song_audio_from_single_track.py'
 
-    const command = `${PythonAPI.getPythonExecName()} "${pythonScript}" "${mogg.path}" "${dest.path}" --tracks "${tracks}"`
+    const command = `"${RockshelfFileSystemAPI.pythonEnvScriptFile().path}" "${pythonScript}" "${mogg.path}" "${dest.path}" --tracks "${tracks}"`
     const cwd = is.dev ? RBTools.pyFolder.path : RBTools.pyFolder.path.replace(/(\.asar)([\\/])/, '.asar.unpacked$2')
     const { stderr } = await execAsync(command, { windowsHide: true, cwd })
     if (stderr) throw new Error(stderr)

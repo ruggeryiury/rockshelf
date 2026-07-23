@@ -4,7 +4,7 @@ import { useUserConfigState } from '@renderer/stores/UserConfig.state'
 import { useWindowState } from '@renderer/stores/Window.state'
 import { animate, AnimatedButton, AnimatedSection, TransComponent } from '@renderer/lib.exports'
 import clsx from 'clsx'
-import { ARGFlag, BRAFlag, COLFlag, MEXFlag, USAFlag } from '@renderer/assets/images'
+import { ARGFlag, BRAFlag, COLFlag, FCAFlag, MEXFlag, USAFlag } from '@renderer/assets/images'
 import { RPCS3SongPackagesDataExtra } from 'rockshelf-core'
 import { InstrumentScoreData, ParsedRB3SaveData } from 'rockshelf-core/rbtools'
 import { useLogoScreenState } from './LogoScreen.state'
@@ -152,6 +152,10 @@ export function FirstTimeScreen() {
           <img src={COLFlag} width={12} className="mr-2" />
           <img src={MEXFlag} width={12} className="mr-2" />
           <h1>{t('es-419')}</h1>
+        </button>
+        <button className={clsx('mr-2 flex-row! items-center rounded-xs border border-neutral-800 px-2 py-1 text-xs! uppercase duration-200 last:mr-0', i18n.language === 'fr-CA' ? 'bg-neutral-400 text-neutral-900 hover:bg-neutral-300 active:bg-neutral-200' : 'bg-neutral-900 hover:bg-neutral-800 active:bg-neutral-700')} onClick={() => i18n.changeLanguage('fr-CA')}>
+          <img src={FCAFlag} width={12} className="mr-2" />
+          <h1>{t('fr-CA')}</h1>
         </button>
       </div>
     </AnimatedSection>

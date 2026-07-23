@@ -1,4 +1,4 @@
-import { RockshelfFileSys, rbiconsToPath, readUserConfigFile, sendBuzyLoad, sendDialog, tempjpgToPath, useHandler } from '../core.exports'
+import { RockshelfFileSystemAPI, UserConfigAPI, rbiconsToPath, sendBuzyLoad, sendDialog, tempjpgToPath, useHandler } from '../core.exports'
 import { DirPath, pathLikeToFilePath } from 'node-lib'
 import { createRSPackImage, extractPackagesForRPCS3Extra, isValidFolderName, rpcs3GetSongPackagesStatsExtra, rsPackImage, type RPCS3SongPackagesDataExtra, type RSPackImagePackageCategoryNumbers, type RSPackImageSourceValues } from '../lib.exports'
 import { utimes } from 'node:fs/promises'
@@ -16,7 +16,7 @@ export interface CreateNewPackageOptions {
 }
 
 export const createNewPackage = useHandler(async (win, __, options: CreateNewPackageOptions): Promise<RPCS3SongPackagesDataExtra | false> => {
-  const userConfig = await readUserConfigFile()
+  const userConfig = await UserConfigAPI.readFile()
   if (!userConfig) {
     sendDialog(win, 'corruptedUserConfig')
     return false
@@ -34,7 +34,7 @@ export const createNewPackage = useHandler(async (win, __, options: CreateNewPac
 
   sendBuzyLoad(win, { code: 'init', title: 'creatingNewPackage', steps: ['validatingPackageFolderName', 'extractingPackageFiles', 'processingPackageFiles', 'exportingNewDTAFile', 'movingFilesToNewPackageFolder', 'creatingPackageImage', 'updatingInstalledPackagesData'], onCompleted: ['resetCreateNewPackageScreenState'] })
 
-  const packageFolder = RockshelfFileSys.rb3UsrDir(devhdd0).gotoDir(packageFolderName)
+  const packageFolder = RockshelfFileSystemAPI.rb3UsrDir(devhdd0).gotoDir(packageFolderName)
   const folderNameTestResults = isValidFolderName(packageFolderName)
 
   if (typeof folderNameTestResults === 'string') {
@@ -88,7 +88,7 @@ export const createNewPackage = useHandler(async (win, __, options: CreateNewPac
     await createRSPackImage(thumbnail !== null ? tempjpgToPath('tempjpg://thumbnail') : rbiconsToPath('rbicons://custom').gotoFile('custom.jpg'), packageFolder.gotoFile('folder.jpg'), { packageName, type: 'rockshelf', source: packageSource, encryptionStatus: forceEncryption === 'enabled' ? 'encrypted' : 'decrypted', category: rsPackImage.packageCategory[category ?? 0] })
     sendBuzyLoad(win, { code: 'incrementStep' })
 
-    const cache = RockshelfFileSys.packagesCacheFile()
+    const cache = RockshelfFileSystemAPI.packagesCacheFile()
     const packagesData = await rpcs3GetSongPackagesStatsExtra(devhdd0)
     await cache.write(JSON.stringify(packagesData))
 

@@ -1,5 +1,5 @@
 import type { SelectPKGFileReturnObject } from '../controllers.exports'
-import { readUserConfigFile, sendDialog, useHandler } from '../core.exports'
+import { UserConfigAPI, sendDialog, useHandler } from '../core.exports'
 import { installRB3PatchFromPKG } from '../lib.exports'
 import { isRPCS3Devhdd0PathValid } from '../lib/rbtools/lib.exports'
 
@@ -7,7 +7,7 @@ import { isRPCS3Devhdd0PathValid } from '../lib/rbtools/lib.exports'
  * Installs a PKG file into the `dev_hdd0` folder with no processing.
  */
 export const installPKGFile = useHandler(async (win, _, selectedPKG: SelectPKGFileReturnObject): Promise<boolean> => {
-  const userConfig = await readUserConfigFile()
+  const userConfig = await UserConfigAPI.readFile()
   if (!userConfig) {
     sendDialog(win, 'corruptedUserConfig')
     return false

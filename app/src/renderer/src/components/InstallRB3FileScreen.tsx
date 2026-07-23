@@ -196,6 +196,11 @@ export function InstallRB3FileScreen() {
                     <Markdown
                       remarkPlugins={[remarkGfm]}
                       rehypePlugins={[rehypeRaw, [rehypeSlug, { prefix: 'MD__' }]]}
+                      urlTransform={(url, key) => {
+                        if (url.startsWith('data:image') && key === 'src') return url
+                        else if (url.startsWith('#') && key === 'href') return url
+                        return null
+                      }}
                       components={{
                         a: ({ href, children }) => {
                           const isHeaderLink = href && href.startsWith('#') ? true : false

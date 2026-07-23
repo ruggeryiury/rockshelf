@@ -76,6 +76,11 @@ export function DeluxeConfigScreen() {
       </div>
       {selectedTab === DELUXE_CONFIG_SCREEN_TABS.INSTALL_DELUXE && (
         <div className="h-full w-full overflow-y-auto">
+          {installedDeluxeData === false && (
+            <div className="mt-2 flex-row! items-center">
+              <p>{t('deluxeDataOfflineConnectionError')}</p>
+            </div>
+          )}
           {installedDeluxeData === 'loading' && (
             <div className="mt-2 flex-row! items-center">
               <LoadingIcon className="mr-2 animate-spin" />
@@ -164,7 +169,7 @@ export function DeluxeConfigScreen() {
                 {!installedDeluxeData.isUpdated && (
                   <div className="flex-row! items-center">
                     <button
-                      className="mr-2 w-fit flex-row! items-center self-start rounded-xs border border-neutral-700 bg-neutral-900 px-1 py-0.5 text-xs! uppercase duration-100 last:mr-0 hover:bg-neutral-700 active:bg-neutral-600 disabled:text-neutral-700 disabled:hover:bg-neutral-900"
+                      className="mr-2 w-fit flex-row! items-center self-start rounded-xs border border-neutral-700 bg-neutral-900 px-1 py-0.5 text-start text-xs! uppercase duration-100 last:mr-0 hover:bg-neutral-700 active:bg-neutral-600 disabled:text-neutral-700 disabled:hover:bg-neutral-900"
                       onClick={async () => {
                         setWindowState({ disableButtons: true })
                         try {
@@ -179,10 +184,14 @@ export function DeluxeConfigScreen() {
                       }}
                       disabled={disableButtons}
                     >
-                      {t('downloadInstallLatestDeluxe')}
+                      <TransComponent i18nKey="downloadInstallDeluxe" />
+
+                      <code className="ml-3 font-bold">
+                        <TransComponent i18nKey="latest" />
+                      </code>
                     </button>
                     <button
-                      className="mr-2 w-fit flex-row! items-center self-start rounded-xs border border-neutral-700 bg-neutral-900 px-1 py-0.5 text-xs! uppercase duration-100 last:mr-0 hover:bg-neutral-700 active:bg-neutral-600 disabled:text-neutral-700 disabled:hover:bg-neutral-900"
+                      className="mr-2 w-fit flex-row! items-center self-start rounded-xs border border-neutral-700 bg-neutral-900 px-1 py-0.5 text-start text-xs! uppercase duration-100 last:mr-0 hover:bg-neutral-700 active:bg-neutral-600 disabled:text-neutral-700 disabled:hover:bg-neutral-900"
                       onClick={async () => {
                         setWindowState({ disableButtons: true })
                         try {
@@ -197,7 +206,17 @@ export function DeluxeConfigScreen() {
                       }}
                       disabled={disableButtons}
                     >
-                      {t('downloadInstallLatestDeluxeCC')}
+                      <TransComponent i18nKey="downloadInstallDeluxe" />
+
+                      <div className="items-start">
+                        <code className="ml-3 font-bold">
+                          <TransComponent i18nKey="latest" />
+                        </code>
+
+                        <code className="ml-3 font-bold">
+                          <TransComponent i18nKey="customCharacters" />
+                        </code>
+                      </div>
                     </button>
                   </div>
                 )}
@@ -238,7 +257,7 @@ export function DeluxeConfigScreen() {
                     }}
                     disabled={disableButtons}
                   >
-                    {t('downloadInstallDeluxe')}
+                    <TransComponent i18nKey="downloadInstallDeluxe" />
                   </button>
                   <button
                     className="mr-2 w-fit flex-row! items-center self-start rounded-xs border border-neutral-700 bg-neutral-900 px-1 py-0.5 text-xs! uppercase duration-100 last:mr-0 hover:bg-neutral-700 active:bg-neutral-600 disabled:text-neutral-700 disabled:hover:bg-neutral-900"
@@ -256,7 +275,7 @@ export function DeluxeConfigScreen() {
                     }}
                     disabled={disableButtons}
                   >
-                    {t('downloadInstallDeluxeCC')}
+                    <TransComponent i18nKey="downloadInstallDeluxe" />
                   </button>
                 </div>
               </div>

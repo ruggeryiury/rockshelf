@@ -1,11 +1,11 @@
-import { readUserConfigFile, sendDialog, sendMessageBox, useHandler } from '../core.exports'
+import { UserConfigAPI, sendDialog, sendMessageBox, useHandler } from '../core.exports'
 import { isRPCS3Devhdd0PathValid } from '../lib/rbtools/lib.exports'
 
 /**
  * Installs the High Memory Patch on the Rock Band 3's USRDIR folder.
  */
 export const installHighMemoryPatch = useHandler(async (win, _): Promise<boolean> => {
-  const userConfig = await readUserConfigFile()
+  const userConfig = await UserConfigAPI.readFile()
   if (!userConfig) {
     sendDialog(win, 'corruptedUserConfig')
     return false

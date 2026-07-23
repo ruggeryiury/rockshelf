@@ -1,5 +1,5 @@
 import { createHashFromBuffer, pathLikeToDirPath, type DirPathLikeTypes } from 'node-lib'
-import { RockshelfFileSys } from '../../core.exports'
+import { RockshelfFileSystemAPI } from '../../core.exports'
 import { createRSPackImage, parseRSPackImageFile, type ParsedRSPackImageObject, type RPCS3SongPackagesObjectExtra } from '../../lib.exports'
 import { temporaryFile } from 'tempy'
 import { DTAParser, EDATFile, TextureFile } from '../rbtools'
@@ -49,15 +49,15 @@ export const getSongPackageStatsFromFolder = async (packagePath: DirPathLikeType
         await createRSPackImage(temp.path, thumbnailSrc, packageData)
         await temp.path.delete()
       } else {
-        let newPackageImage = RockshelfFileSys.coreModuleRootDir().gotoFile(`bin/icons/${official?.code}.jpg`)
-        if (!newPackageImage.exists) newPackageImage = RockshelfFileSys.coreModuleRootDir().gotoFile(`bin/icons/custom.jpg`)
+        let newPackageImage = RockshelfFileSystemAPI.coreModuleRootDir().gotoFile(`bin/icons/${official?.code}.jpg`)
+        if (!newPackageImage.exists) newPackageImage = RockshelfFileSystemAPI.coreModuleRootDir().gotoFile(`bin/icons/custom.jpg`)
 
         packageData = { fileVersion: 1, source: 'merged', type: 'other', encryptionStatus: 'unknown', packageName: official?.name || packageDir.name, category: 'other', creationDate: nowDate }
         await createRSPackImage(newPackageImage, thumbnailSrc, packageData)
       }
     } else {
-      let newPackageImage = RockshelfFileSys.coreModuleRootDir().gotoFile(`bin/icons/${official?.code}.jpg`)
-      if (!newPackageImage.exists) newPackageImage = RockshelfFileSys.coreModuleRootDir().gotoFile(`bin/icons/custom.jpg`)
+      let newPackageImage = RockshelfFileSystemAPI.coreModuleRootDir().gotoFile(`bin/icons/${official?.code}.jpg`)
+      if (!newPackageImage.exists) newPackageImage = RockshelfFileSystemAPI.coreModuleRootDir().gotoFile(`bin/icons/custom.jpg`)
 
       packageData = { fileVersion: 1, source: 'merged', type: 'other', encryptionStatus: 'unknown', packageName: official?.name || packageDir.name, category: 'other', creationDate: nowDate }
       await createRSPackImage(newPackageImage, thumbnailSrc, packageData)

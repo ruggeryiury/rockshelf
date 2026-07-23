@@ -1,13 +1,13 @@
 import type { SelectPKGFileReturnObject } from '../../controllers.exports'
 import { temporaryDirectory } from 'tempy'
 import { DirPath, type DirPathLikeTypes } from 'node-lib'
-import { RockshelfFileSys, sendBuzyLoad } from '../../core.exports'
+import { RockshelfFileSystemAPI, sendBuzyLoad } from '../../core.exports'
 import type { BrowserWindow } from 'electron'
 import { BinaryAPI } from '../rbtools'
 
 export const installRB3PatchFromPKG = async (win: BrowserWindow, devhdd0Path: DirPathLikeTypes, selectedPKG: SelectPKGFileReturnObject): Promise<boolean> => {
   sendBuzyLoad(win, { code: 'init', title: selectedPKG.pkgType === 'dx' ? 'installingRB3DX' : 'installingTU5', steps: selectedPKG.pkgType === 'dx' ? ['extractingDeluxePKG', 'installingRB3DX'] : ['extractingTU5PKG', 'installingTU5'], onCompleted: ['refreshRB3Stats', 'resetDeluxeInstallScreenState'] })
-  const rb3GameFolder = RockshelfFileSys.rb3UsrDir(devhdd0Path).gotoDir('../')
+  const rb3GameFolder = RockshelfFileSystemAPI.rb3UsrDir(devhdd0Path).gotoDir('../')
   let tempFolderPath: DirPath
 
   try {

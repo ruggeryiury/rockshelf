@@ -1,4 +1,4 @@
-export * from './lib/github/api'
+export * from './lib/github/GitHubAPI'
 
 export * from './lib/image/cropImageToTempPNG'
 
@@ -25,4 +25,5 @@ export * from './lib/strnum/isValidFolderName'
 export * from './lib/strnum/sanitizeFilename'
 export * from './lib/strnum/stringFunctions'
 
+export * from './lib/utils/getInternalPythonName'
 export * from './lib/utils/sleep'

@@ -11,10 +11,11 @@
  * @param {string} name The folder name to validate.
  * @returns Return `true` if valid, `false` otherwise.
  */
-export function isValidFolderName(name: string): true | 'noEmptyString' | 'noInvalidChars' | 'noEndsWithSpaceOrDot' | 'noSystemReservedNames' {
+export function isValidFolderName(name: string): true | 'noEmptyString' | 'noInvalidChars' | 'noEndsWithSpaceOrDot' | 'noSystemReservedNames' | 'tooBig' {
   if (!name || name.trim().length === 0) {
     return 'noEmptyString'
   }
+  if (name.length > 255) return 'tooBig'
 
   // Invalid characters (Windows + safe cross-platform)
   const invalidChars = /[<>:"/\\|?*\x00-\x1F]/

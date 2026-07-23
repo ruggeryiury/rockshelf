@@ -8,6 +8,7 @@ pnpm-lock.yaml
 *.md
 !LICENSE.md
 !README.md
+!CHANGELOG.md
 .DS_Store
 .eslintcache
 *.log*

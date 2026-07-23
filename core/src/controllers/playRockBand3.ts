@@ -1,10 +1,10 @@
-import { RockshelfFileSys, readUserConfigFile, sendDialog, useHandler } from '../core.exports'
+import { RockshelfFileSystemAPI, UserConfigAPI, sendDialog, useHandler } from '../core.exports'
 import { pathLikeToDirPath, type DirPath, type FilePath } from 'node-lib'
 import { exec } from 'node:child_process'
 import { type RockBand3Data, isRPCS3Devhdd0PathValid, isRPCS3ExePathValid, rpcs3GetRB3Stats } from '../lib/rbtools/lib.exports'
 
 export const playRockBand3 = useHandler(async (win): Promise<boolean> => {
-  const userConfig = await readUserConfigFile()
+  const userConfig = await UserConfigAPI.readFile()
   if (!userConfig) {
     sendDialog(win, 'corruptedUserConfig')
     return false
@@ -15,7 +15,7 @@ export const playRockBand3 = useHandler(async (win): Promise<boolean> => {
   try {
     devhdd0Path = isRPCS3Devhdd0PathValid(userConfig.devhdd0Path)
     rpcs3ExePath = isRPCS3ExePathValid(userConfig.rpcs3ExePath)
-    rpcs3UserConfigFile = RockshelfFileSys.rpcs3UserConfigFile(rpcs3ExePath)
+    rpcs3UserConfigFile = RockshelfFileSystemAPI.rpcs3UserConfigFile(rpcs3ExePath)
     stats = await rpcs3GetRB3Stats(devhdd0Path, rpcs3ExePath)
 
     if (!stats.path) {

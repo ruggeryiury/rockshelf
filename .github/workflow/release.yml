@@ -1,0 +1,166 @@
+name: Release
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - core/package.json
+
+permissions:
+  contents: write
+
+# Cancel older release runs if a new commit is pushed
+concurrency:
+  group: release-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  # ------------------------------------------------------------
+  # Check if the version in core/package.json changed
+  # ------------------------------------------------------------
+  detect_version:
+    runs-on: ubuntu-24.04
+
+    outputs:
+      should_release: ${{ steps.version.outputs.should_release }}
+      version: ${{ steps.version.outputs.version }}
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+
+      - name: Check version change
+        id: version
+        shell: bash
+        run: |
+          CURRENT_VERSION=$(node -p "require('./core/package.json').version")
+
+          PREVIOUS_VERSION=$(git show HEAD~1:core/package.json 2>/dev/null | node -pe "JSON.parse(require('fs').readFileSync(0,'utf8')).version" || echo "")
+
+          echo "Current version: $CURRENT_VERSION"
+          echo "Previous version: $PREVIOUS_VERSION"
+
+          echo "version=$CURRENT_VERSION" >> "$GITHUB_OUTPUT"
+
+          if [ "$CURRENT_VERSION" != "$PREVIOUS_VERSION" ]; then
+            echo "should_release=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "should_release=false" >> "$GITHUB_OUTPUT"
+          fi
+
+  # ------------------------------------------------------------
+  # Build Windows and Linux in parallel
+  # ------------------------------------------------------------
+  build_app:
+    needs:
+      - detect_version
+      - build_core
+    if: needs.detect_version.outputs.should_release == 'true'
+
+    strategy:
+      matrix:
+        include:
+          - os: windows-2025
+            artifact_name: windows-installer
+            build_command: build:win
+            output_file: rockshelf-app-${{ needs.detect_version.outputs.version }}-setup.exe
+
+          - os: ubuntu-24.04
+            artifact_name: linux-appimage
+            build_command: build:linux
+            output_file: rockshelf-app-${{ needs.detect_version.outputs.version }}.AppImage
+
+    runs-on: ${{ matrix.os }}
+
+    defaults:
+      run:
+        shell: bash
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup PNPM
+        uses: pnpm/action-setup@v4
+        with:
+          version: 10.30.3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 24.15.0
+          cache: pnpm
+
+      - name: Download core package
+        uses: actions/download-artifact@v4
+        with:
+          name: core-package
+          path: packages
+
+      - name: Install app dependencies
+        working-directory: app
+        run: pnpm install
+
+      - name: Build application
+        working-directory: app
+        run: pnpm ${{ matrix.build_command }}
+
+      - name: Verify generated file
+        shell: bash
+        run: |
+          FILE="app/dist/${{ matrix.output_file }}"
+
+          if [ ! -f "$FILE" ]; then
+            echo "Expected file not found: $FILE"
+            echo "Files in app/dist:"
+            find app/dist -type f
+            exit 1
+          fi
+
+          echo "Found: $FILE"
+
+      - name: Upload build artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ matrix.artifact_name }}
+          path: app/dist/${{ matrix.output_file }}
+          if-no-files-found: error
+
+  # ------------------------------------------------------------
+  # Create GitHub Release and attach installers
+  # ------------------------------------------------------------
+  create_release:
+    needs:
+      - detect_version
+      - build_app
+    if: needs.detect_version.outputs.should_release == 'true'
+    runs-on: ubuntu-24.04
+
+    steps:
+      - name: Download Windows installer
+        uses: actions/download-artifact@v4
+        with:
+          name: windows-installer
+          path: release-assets
+
+      - name: Download Linux AppImage
+        uses: actions/download-artifact@v4
+        with:
+          name: linux-appimage
+          path: release-assets
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: v${{ needs.detect_version.outputs.version }}
+          name: ${{ needs.detect_version.outputs.version }}
+          body: |
+            _See [CHANGELOG](CHANGELOG.md) for more details._
+          files: |
+            release-assets/rockshelf-app-${{ needs.detect_version.outputs.version }}-setup.exe
+            release-assets/rockshelf-app-${{ needs.detect_version.outputs.version }}.AppImage
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

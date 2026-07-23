@@ -1,13 +1,14 @@
 import { app, BrowserWindow, protocol, net, ipcMain } from 'electron'
 import { pathToFileURL } from 'node:url'
 import { electronApp, optimizer } from '@electron-toolkit/utils'
-import { createWindow, initRhythmverseDownloader, initRichPresence, readUserConfigFile, RockshelfFileSys, setElectronUserDataFolder, type CreateWindowOptions } from './core.exports'
+import { createPythonEnvOnUserDataDir, createWindow, SongDownloadQueueAPI, initRichPresence, RockshelfFileSystemAPI, setElectronUserDataFolder, UserConfigAPI, type CreateWindowOptions } from './core.exports'
 import { initMainProcessHandlers } from './initMainProcessHandlers'
 
 export async function initRockshelfMainProcess(options: CreateWindowOptions): Promise<void> {
   await setElectronUserDataFolder(app, 'Rockshelf')
-  await RockshelfFileSys.deleteDeprecatedEntries()
-  await RockshelfFileSys.checkAndCreateAppEntries()
+  await RockshelfFileSystemAPI.deleteDeprecatedEntries()
+  await RockshelfFileSystemAPI.checkAndCreateAppEntries()
+  await createPythonEnvOnUserDataDir()
 
   app.on('window-all-closed', () => {
     if (process.platform !== 'darwin') {
@@ -18,7 +19,7 @@ export async function initRockshelfMainProcess(options: CreateWindowOptions): Pr
   await app.whenReady()
 
   protocol.handle('rbicons', async (request) => {
-    const root = RockshelfFileSys.coreModuleRootDir()
+    const root = RockshelfFileSystemAPI.coreModuleRootDir()
     const code = request.url.slice('rbicons://'.length)
     const name = code === 'songPackage' ? 'custom' : code
     let filePath = root.gotoFile(`bin/icons/${name}.webp`)
@@ -30,9 +31,9 @@ export async function initRockshelfMainProcess(options: CreateWindowOptions): Pr
   })
 
   protocol.handle('rb1packimg', async (request) => {
-    const userConfig = await readUserConfigFile()
+    const userConfig = await UserConfigAPI.readFile()
     if (!userConfig) throw new Error('User config file not found, aborting...')
-    const rb1usrdir = RockshelfFileSys.rb1UsrDir(userConfig.devhdd0Path)
+    const rb1usrdir = RockshelfFileSystemAPI.rb1UsrDir(userConfig.devhdd0Path)
     const packageFolderName = decodeURIComponent(request.url.slice('rb1packimg://'.length))
     const filePath = rb1usrdir.gotoFile(`${packageFolderName}/folder.jpg`)
 
@@ -49,9 +50,9 @@ export async function initRockshelfMainProcess(options: CreateWindowOptions): Pr
   })
 
   protocol.handle('rb3packimg', async (request) => {
-    const userConfig = await readUserConfigFile()
+    const userConfig = await UserConfigAPI.readFile()
     if (!userConfig) throw new Error('User config file not found, aborting...')
-    const rb3usrdir = RockshelfFileSys.rb3UsrDir(userConfig.devhdd0Path)
+    const rb3usrdir = RockshelfFileSystemAPI.rb3UsrDir(userConfig.devhdd0Path)
     const packageFolderName = decodeURIComponent(request.url.slice('rb3packimg://'.length))
     const filePath = rb3usrdir.gotoFile(`${packageFolderName}/folder.jpg`)
 
@@ -66,7 +67,7 @@ export async function initRockshelfMainProcess(options: CreateWindowOptions): Pr
   })
 
   protocol.handle('artworks', async (request) => {
-    const root = RockshelfFileSys.coreModuleRootDir()
+    const root = RockshelfFileSystemAPI.coreModuleRootDir()
     const songShortname = request.url.slice('artworks://'.length)
     const artwork = root.gotoFile(`bin/artworks/${songShortname}_keep.png`)
 
@@ -76,7 +77,7 @@ export async function initRockshelfMainProcess(options: CreateWindowOptions): Pr
   })
 
   protocol.handle('tempjpg', async (request) => {
-    const root = RockshelfFileSys.appTempDir()
+    const root = RockshelfFileSystemAPI.appTempDir()
     const name = request.url.slice('tempjpg://'.length)
     const artwork = root.gotoFile(`${name}.jpg`)
 
@@ -99,7 +100,7 @@ export async function initRockshelfMainProcess(options: CreateWindowOptions): Pr
   })
 
   void initRichPresence()
-  void initRhythmverseDownloader()
+  void SongDownloadQueueAPI.initRhythmverseDownloader()
   void initMainProcessHandlers()
   void createWindow(options)
 

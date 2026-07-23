@@ -14,6 +14,7 @@ export interface TranslationComponentProps {
    * Optional values to be interpolated within the translation string.
    */
   values?: Record<string, string | number | boolean>
+  className?: string
 }
 
 const defaultComponents = {
@@ -32,6 +33,6 @@ const defaultComponents = {
   proKeysIcon: <img className="inline w-4 opacity-80" src={proKeysIcon} />,
 } as const
 
-export function TransComponent({ i18nKey, values, components }: TranslationComponentProps) {
-  return <TC i18nKey={i18nKey} components={{ ...defaultComponents, ...components }} values={values} />
+export function TransComponent({ i18nKey, values, components, className }: TranslationComponentProps) {
+  return <TC className={className} i18nKey={i18nKey} components={{ ...defaultComponents, ...components }} values={values} />
 }

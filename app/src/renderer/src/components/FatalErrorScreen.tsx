@@ -17,7 +17,7 @@ export function FatalErrorScreen() {
           <button
             className="mb-2 w-fit self-start rounded-xs border border-neutral-700 bg-neutral-900 px-1 py-0.5 uppercase duration-100 last:mb-0 hover:bg-neutral-700 active:bg-neutral-600 disabled:text-neutral-700 disabled:hover:bg-neutral-900"
             onClick={async () => {
-              await window.api.deleteUserConfigAndRestart(true)
+              await window.api.win.restart()
             }}
           >
             {t('restartRockshelf')}

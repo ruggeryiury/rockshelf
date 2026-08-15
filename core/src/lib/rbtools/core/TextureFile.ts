@@ -44,7 +44,7 @@ export class TextureFile {
     if (firstByte !== 1 && firstByte !== 2) proof = false
     if (secondByte !== 4 && secondByte !== 8) proof = false
     if (!proof) throw new Error(`Provided texture file "${this.path.path}" is not a valid texture file.`)
-    return true
+    return proof
   }
 
   /**

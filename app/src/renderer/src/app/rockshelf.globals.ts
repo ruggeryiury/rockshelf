@@ -2,8 +2,7 @@ import type { SongGenre, SongGenreDX, SongSubGenre, SongSubGenreDX } from 'rocks
 import zod from 'zod'
 
 /** Aplication version, change this when updating. */
-export const APP_VERSION = '0.0.1-beta2'
-
+export const APP_VERSION = '0.1'
 /**
  * Allow logging of specific typed objects sent by the main process.
  */

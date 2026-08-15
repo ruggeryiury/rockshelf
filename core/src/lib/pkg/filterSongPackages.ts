@@ -23,7 +23,7 @@ export interface SongPackagesFilterGenericObject {
   /**
    * The type of the catalog.
    */
-  type: Exclude<SongPackagesFilterTypes, 'artist' | 'difficulty'>
+  type: SongPackagesFilterTypes
   /**
    * An array with objects representing each header from the specified type.
    */

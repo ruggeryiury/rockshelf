@@ -4,8 +4,8 @@ import { useAboutScreenState } from './AboutScreen.state'
 import { useShallow } from 'zustand/shallow'
 import { useWindowState } from '@renderer/stores/Window.state'
 import { APP_VERSION } from '@renderer/app/rockshelf.globals'
-import { aloquendiar, carlmylo, ganso, mrbean, ruggy } from '@renderer/assets/images'
-import { GitHubIcon } from '@renderer/assets/icons'
+import { aloquendiar, BRAFlag, carlmylo, FCAFlag, ganso, MEXFlag, mrbean, ruggy, USAFlag } from '@renderer/assets/images'
+import { BlueSkyIcon, GitHubIcon, TwitchIcon } from '@renderer/assets/icons'
 
 export function AboutScreen() {
   const { t } = useTranslation()
@@ -40,19 +40,42 @@ export function AboutScreen() {
 
         <h3 className="font-pentatonic mb-2 border-b border-white/25 pb-1 uppercase">{t('creator')}</h3>
         <div className="mb-4 flex-row! items-center last:mb-0">
-          <img src={ruggy} className="mr-2 h-12 w-12 rounded-sm" />
+          <img src={ruggy} className="mr-2 h-16 w-16 rounded-sm" />
           <div>
-            <h1 className="mb-1 text-lg">Ruggy</h1>
-            <div className="flex-row! items-center">
+            <div className="mb-1 flex-row! items-center">
+              <h1 className="mr-1 text-lg">Ruggy</h1>
+              <img src={BRAFlag} width={16} className="mr-2" />
+            </div>
+            <div className="mb-1 flex-row! items-center">
               <button
                 disabled={disableButtons}
-                className="mb-1 w-fit flex-row! items-center self-start rounded-xs border border-neutral-700 bg-neutral-900 px-1 py-0.5 text-xs! text-nowrap uppercase duration-100 hover:bg-neutral-700 active:bg-neutral-600 disabled:text-neutral-700 disabled:hover:bg-neutral-900"
+                className="mr-1 w-fit flex-row! items-center self-start rounded-xs border border-neutral-700 bg-neutral-900 px-1 py-0.5 text-xs! text-nowrap uppercase duration-100 last:mr-0 hover:bg-neutral-700 active:bg-neutral-600 disabled:text-neutral-700 disabled:hover:bg-neutral-900"
                 onClick={async () => {
-                  await window.api.openExternalLink('https://github.com/ruggeryiury')
+                  await window.api.open.externalURL('https://github.com/ruggeryiury')
                 }}
               >
                 <GitHubIcon className="mr-1" />
                 <p>{t('github')}</p>
+              </button>
+              <button
+                disabled={disableButtons}
+                className="mr-1 w-fit flex-row! items-center self-start rounded-xs border border-neutral-700 bg-neutral-900 px-1 py-0.5 text-xs! text-nowrap uppercase duration-100 last:mr-0 hover:bg-neutral-700 active:bg-neutral-600 disabled:text-neutral-700 disabled:hover:bg-neutral-900"
+                onClick={async () => {
+                  await window.api.open.externalURL('https://bsky.app/profile/therogerland.bsky.social')
+                }}
+              >
+                <BlueSkyIcon className="mr-1" />
+                <p>Bluesky</p>
+              </button>
+              <button
+                disabled={disableButtons}
+                className="mr-1 w-fit flex-row! items-center self-start rounded-xs border border-neutral-700 bg-neutral-900 px-1 py-0.5 text-xs! text-nowrap uppercase duration-100 last:mr-0 hover:bg-neutral-700 active:bg-neutral-600 disabled:text-neutral-700 disabled:hover:bg-neutral-900"
+                onClick={async () => {
+                  await window.api.open.externalURL('https://www.twitch.tv/therogerland')
+                }}
+              >
+                <TwitchIcon className="mr-1" />
+                <p>Twitch</p>
               </button>
             </div>
           </div>
@@ -61,30 +84,64 @@ export function AboutScreen() {
         <h3 className="font-pentatonic mb-2 border-b border-white/25 pb-1 uppercase">{t('translationRevTeam')}</h3>
         <div className="mb-4 last:mb-0">
           <div className="mb-1 flex-row! items-center">
-            <img src={ganso} className="mr-2 h-14 w-14 rounded-sm" />
+            <img src={ganso} className="mr-2 h-16 w-16 rounded-sm" />
             <div>
-              <h1 className="text-lg">Ganso</h1>
+              <div className="mb-1 flex-row! items-center">
+                <h1 className="mr-1 text-lg">Ganso</h1>
+                <img src={BRAFlag} width={16} className="mr-2" />
+              </div>
               <p>{`${t('pt-BR')}`}</p>
             </div>
           </div>
           <div className="mb-1 flex-row! items-center">
-            <img src={carlmylo} className="mr-2 h-14 w-14 rounded-sm" />
+            <img src={carlmylo} className="mr-2 h-16 w-16 rounded-sm" />
             <div>
-              <h1 className="text-lg">CarlMylo</h1>
-              <p>{`${t('en-US')} - ${t('es-419')}`}</p>
+              <div className="mb-1 flex-row! items-center">
+                <h1 className="mr-1 text-lg">CarlMylo</h1>
+                <img src={USAFlag} width={16} className="mr-2" />
+              </div>
+              <p className="mb-2">{`${t('en-US')} - ${t('es-419')}`}</p>
+              <div className="mb-1 flex-row! items-center">
+                <button
+                  disabled={disableButtons}
+                  className="mr-1 w-fit flex-row! items-center self-start rounded-xs border border-neutral-700 bg-neutral-900 px-1 py-0.5 text-xs! text-nowrap uppercase duration-100 last:mr-0 hover:bg-neutral-700 active:bg-neutral-600 disabled:text-neutral-700 disabled:hover:bg-neutral-900"
+                  onClick={async () => {
+                    await window.api.open.externalURL('https://bsky.app/profile/carlmylo.bsky.social')
+                  }}
+                >
+                  <BlueSkyIcon className="mr-1" />
+                  <p>Bluesky</p>
+                </button>
+                <button
+                  disabled={disableButtons}
+                  className="mr-1 w-fit flex-row! items-center self-start rounded-xs border border-neutral-700 bg-neutral-900 px-1 py-0.5 text-xs! text-nowrap uppercase duration-100 last:mr-0 hover:bg-neutral-700 active:bg-neutral-600 disabled:text-neutral-700 disabled:hover:bg-neutral-900"
+                  onClick={async () => {
+                    await window.api.open.externalURL('https://www.twitch.tv/carlmylo')
+                  }}
+                >
+                  <TwitchIcon className="mr-1" />
+                  <p>Twitch</p>
+                </button>
+              </div>
             </div>
           </div>
           <div className="mb-1 flex-row! items-center">
-            <img src={aloquendiar} className="mr-2 h-14 w-14 rounded-sm" />
+            <img src={aloquendiar} className="mr-2 h-16 w-16 rounded-sm" />
             <div>
-              <h1 className="text-lg">Aloquendiar (Axo)</h1>
+              <div className="mb-1 flex-row! items-center">
+                <h1 className="mr-1 text-lg">Aloquendiar (Alo)</h1>
+                <img src={MEXFlag} width={16} className="mr-2" />
+              </div>
               <p>{`${t('es-419')}`}</p>
             </div>
           </div>
           <div className="mb-1 flex-row! items-center">
-            <img src={mrbean} className="mr-2 h-14 w-14 rounded-sm" />
+            <img src={mrbean} className="mr-2 h-16 w-16 rounded-sm" />
             <div>
-              <h1 className="text-lg">MrBean</h1>
+              <div className="mb-1 flex-row! items-center">
+                <h1 className="mr-1 text-lg">MrBean</h1>
+                <img src={FCAFlag} width={16} className="mr-2" />
+              </div>
               <p>{`${t('fr-CA')}`}</p>
             </div>
           </div>

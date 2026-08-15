@@ -29,10 +29,12 @@ export const parseDTA = (songContent: string): RB3CompatibleDTAFile | PartialDTA
 
   // Parsing MAGMA generated values
   for (const lines of splitComments) {
+    // console.log(lines)
     const [key, ...values] = lines.split(' ')
     if (key === 'Song' && values[0] === 'authored' && values[1] === 'by' && values[2]) map.set('author', values.slice(2).join(' '))
-    else if (key.startsWith('ORIG_ID=')) map.set('original_id', key.split('=')[1].slice(0, -1))
-    else if (key.includes('=') && !key.startsWith('=')) {
+    else if (key.startsWith('ORIG_ID=')) {
+      map.set('original_id', key.split('=')[1].slice(0, -1).trim())
+    } else if (key.includes('=') && !key.startsWith('=')) {
       const proof = Boolean(Number(key.split('=')[1].slice(0, 1).trim()))
       if (proof) {
         if (key.startsWith('Karaoke=')) map.set('multitrack', 'karaoke')
@@ -46,10 +48,11 @@ export const parseDTA = (songContent: string): RB3CompatibleDTAFile | PartialDTA
         else if (key.startsWith('RhythmBass=')) map.set('rhythmOn', 'bass')
         else if (key.startsWith('CATemh=')) map.set('emh', 'cat')
         else if (key.startsWith('ExpertOnly=')) map.set('emh', 'expert_only')
-        else if (key.startsWith('ORIG_ID=')) map.set('original_id', '1')
       }
     }
   }
+
+  let hasID = false
 
   // This is the index of used strings as the file is read.
   let stringIndex = 0
@@ -101,9 +104,11 @@ export const parseDTA = (songContent: string): RB3CompatibleDTAFile | PartialDTA
 
     // Always empty
     if (!key && valuesLength === 0 && !tracksStarted && !processedArrayName && !ranksStarted) continue
-    // Song identifier must always be here on "key" variable and "values" array must always be zero
-    else if (i === 1 && !key) throw new Error(`DTA Parsing error: No ID is present parsing song at index ${i.toString()}`)
-    else if (i === 1 && key) map.set('id', key)
+    else if (key && !hasID) {
+      map.set('id', key)
+      hasID = true
+    }
+
     // On unfinished strings, if key equals to `"` it means that the string has finished
     else if (unfinishedString) {
       if (valuesJoin.endsWith('"') || key.endsWith('"')) unfinishedString = false
@@ -241,14 +246,13 @@ export const parseDTA = (songContent: string): RB3CompatibleDTAFile | PartialDTA
     }
   }
 
-  // console.log(tracksCount)
-
   if (!(tracksCount[5] > 2) && !isTracksCountEmpty(tracksCount)) map.set('tracks_count', tracksCount as RB3CompatibleDTAFile['tracks_count'])
   if (tracksCount[3] > 0 && map.has('rank_vocals') && (map.get('rank_vocals') as number) > 0 && !map.has('vocal_parts')) map.set('vocal_parts', 1)
+  else if ((!map.has('rank_vocals') || map.get('rank_vocals') === 0) && !map.has('vocal_parts')) map.set('vocal_parts', 0)
   if (preview[1] !== 0) map.set('preview', preview as RB3CompatibleDTAFile['preview'])
   if (solo.length > 0) map.set('solo', solo as RB3CompatibleDTAFile['solo'])
   if (extraAuthoring.length > 0) map.set('extra_authoring', extraAuthoring as RB3CompatibleDTAFile['extra_authoring'])
   if (languages.length > 0) map.set('languages', languages as RB3CompatibleDTAFile['languages'])
 
-  return customSourceIfdefDeconstructor(sortDTAMap(map)).toJSON() as RB3CompatibleDTAFile | PartialDTAFile
+  return customSourceIfdefDeconstructor(sortDTAMap(map)).toJSON()
 }

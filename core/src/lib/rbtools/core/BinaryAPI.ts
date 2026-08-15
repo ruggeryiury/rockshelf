@@ -3,6 +3,13 @@ import { EDATFile, ImageFile, MIDIFile, MOGGFile, RBTools } from '../core.export
 import { buildOSCommand } from '../lib.exports'
 import { is } from '@electron-toolkit/utils'
 
+export interface OGGEncodingOptions {
+  /**
+   * Specify quality, between `-1` (very low) and `10` (very high), instead of specifying a particular bitrate. Fractional qualities (e.g. `2.75`) are permitted. Default is `3`.
+   */
+  quality: number
+}
+
 /**
  * A class with APIs to use RBTools executables.
  */
@@ -38,6 +45,30 @@ export class BinaryAPI {
     const { stderr } = await execAsync(command, { windowsHide: true, cwd })
     if (stderr) throw new Error(stderr.trim())
     return new MOGGFile(destPath)
+  }
+
+  /**
+   * Encodes a multitrack audio file to OGG. Returns an instantiated `FilePath` class pointing to the new OGG file.
+   * - - - -
+   * @param {FilePathLikeTypes} srcFile The source audio file you want to encode as OGG.
+   * @param {FilePathLikeTypes} destPath The destination path to the new OGG file.
+   * @param {OGGEncodingOptions | undefined} [options] `OPTIONAL` An object with options for the OGG encoder.
+   * @returns {Promise<FilePath>}
+   */
+  static async oggEnc(srcFile: FilePathLikeTypes, destPath: FilePathLikeTypes, options?: OGGEncodingOptions): Promise<FilePath> {
+    const { quality } = {
+      quality: 3,
+      ...options,
+    } as Required<OGGEncodingOptions>
+
+    const dest = pathLikeToFilePath(destPath)
+
+    const exeName = RBTools.binFolder.gotoFile('oggenc.exe').name
+    const command = buildOSCommand(`${exeName} -o "${dest.path}" -q ${quality.toString()} "${pathLikeToString(srcFile)}"`)
+    const cwd = is.dev ? RBTools.binFolder.path : RBTools.binFolder.path.replace(/(\.asar)([\\/])/, '.asar.unpacked$2')
+    const { stderr } = await execAsync(command, { windowsHide: true, cwd })
+    if (stderr) throw new Error(stderr.trim())
+    return dest
   }
 
   /**

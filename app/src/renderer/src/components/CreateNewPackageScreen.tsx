@@ -6,13 +6,13 @@ import { useWindowState } from '@renderer/stores/Window.state'
 import { useTranslation } from 'react-i18next'
 import { CREATE_NEW_PACKAGE_DROPDOWNS, CREATE_NEW_PACKAGE_TABS, PKG_CATEGORIES, STRUCT_LOG, VALIDATORS } from '@renderer/app/rockshelf.globals'
 import { useMessageBoxState } from './MessageBox.state'
-import { ChevronDownIcon, EyeIcon, EyeSlashIcon, PlaystationIcon, ShelfIcon, XboxIcon } from '@renderer/assets/icons'
+import { ChevronDownIcon, EyeIcon, EyeSlashIcon, PlaystationIcon, RB3FileIcon, ShelfIcon, XboxIcon } from '@renderer/assets/icons'
 import { useEffect, useMemo, useRef } from 'react'
-import type { SelectPackageFilesStatsTypes } from 'rockshelf-core'
 import { useImageCropScreenState } from './ImageCropScreen.state'
 import { useRBIconsSelectorState } from './RBIconsSelector.state'
 import { useMyPackagesScreenState } from './MyPackagesScreen.state'
 import { useUserConfigState } from '@renderer/stores/UserConfig.state'
+import { SelectPackageFilesStatsTypes } from 'rockshelf-core'
 
 export function CreateNewPackageScreen() {
   const { t } = useTranslation()
@@ -65,7 +65,8 @@ export function CreateNewPackageScreen() {
         <img src={packageArtwork ?? 'rbicons://custom'} className="mr-2 h-32 min-h-32 w-32 min-w-32 border-2 border-neutral-700" />
         <div className="mr-auto">
           <h1 className="font-pentatonicalt! mr-auto text-[2rem] uppercase">{t('createNewPackage')}</h1>
-          <h2 className="font-pentatonic h-6">{packageName}</h2>
+          <h2 className="text-xs text-neutral-400">{t('createNewPackageDesc')}</h2>
+          <h2 className={clsx('h-6', !packageName ? 'text-neutral-600 italic' : 'font-pentatonic')}>{packageName || t('noPackageName')}</h2>
           {files.length > 0 && <h2 className="font-pentatonic uppercase">{t(files.length === 1 ? 'fileCount' : 'fileCountPlural', { count: files.length })}</h2>}
           <h2 className="font-pentatonic uppercase">
             {allSelectedSongs.length === addedSongsCount && addedSongsCount === 1 && t('songsCount', { count: addedSongsCount })}
@@ -85,10 +86,10 @@ export function CreateNewPackageScreen() {
                   setWindowState({ disableButtons: false })
                   return
                 }
-                const packagesData = await window.api.createNewPackage({ packages: files.map((file) => file.data.path.path), packageFolderName, packageName, forceEncryption, thumbnail: packageArtwork, selectedSongs: allSelectedSongs, category })
-                if (STRUCT_LOG) console.log('struct RPCS3SongPackagesDataExtra ["rbtools/src/lib/rpcs3/rpcs3GetSongPackagesStatsExtra.ts"]:', packagesData)
+                const packagesData = await window.api.data.createPackage({ packages: files.map((file) => file.data.path.path), packageFolderName, packageName, forceEncryption, thumbnail: packageArtwork, selectedSongs: allSelectedSongs, category })
+                if (STRUCT_LOG) console.log('struct LightRB3SongPackagesData ["core/api/DataSyncAPI.ts"]:', packagesData)
                 if (packagesData) {
-                  const newCatalog = await window.api.sortAndFilterSongPackages(packagesCatalogSortBy)
+                  const newCatalog = await window.api.data.filterSongPackages(packagesCatalogSortBy)
                   if (STRUCT_LOG) console.log('struct SongPackagesFilterGenericObject [core/src/lib/dta/getDTACatalog.ts]', newCatalog)
                   setMyPackagesScreenState({ packagesCatalog: newCatalog })
                   setWindowState({ packages: packagesData })
@@ -153,7 +154,7 @@ export function CreateNewPackageScreen() {
               onClick={async () => {
                 setWindowState({ disableButtons: true })
                 try {
-                  const selFiles = await window.api.selectPackageFiles(files)
+                  const selFiles = await window.api.selector.packageFiles(files)
                   if (STRUCT_LOG) console.log('struct SelectPackageFilesObject ["core/src/controllers/selectPackageFiles.ts"]:', selFiles)
 
                   if (selFiles) {
@@ -185,11 +186,11 @@ export function CreateNewPackageScreen() {
             {files.map((file, fileIndex) => {
               {
                 return (
-                  <div className="flex-row!" key={`packageFile${fileIndex}__${file.type === 'pkg' ? file.data.contentID : file.data.contentsHash}`}>
+                  <div className="flex-row!" key={`packageFile${fileIndex}__${file.type === 'pkg' ? file.data.contentID : file.type === 'rb3' ? file.data.header.packageHash : file.data.contentsHash}`}>
                     <div className="group mb-1 w-full flex-row! rounded-sm border-2 border-white/5 p-2 duration-150 last:mb-0 hover:bg-white/5 active:bg-white/10" onMouseOver={() => setCreateNewPackageScreenState({ hoveredFile: fileIndex })} onMouseLeave={() => setCreateNewPackageScreenState({ hoveredFile: -1 })}>
                       <div className="mr-4 h-fit w-16 min-w-16 flex-row! items-start justify-center rounded-sm bg-neutral-900 py-1 duration-150 group-hover:bg-neutral-800">
-                        {file.type === 'stfs' ? <XboxIcon className="mr-1 text-lg" /> : <PlaystationIcon className="mr-1 text-xl" />}
-                        <h1 className="top-0.2 relative!">{file.type === 'stfs' ? 'CON' : 'PKG'}</h1>
+                        {file.type === 'stfs' ? <XboxIcon className="mr-1 text-lg" /> : file.type === 'rb3' ? <RB3FileIcon className="mr-1 text-xl" /> : <PlaystationIcon className="mr-1 text-xl" />}
+                        <h1 className="top-0.2 relative!">{file.type === 'stfs' ? 'CON' : file.type === 'rb3' ? 'RB3' : 'PKG'}</h1>
                       </div>
                       <div className="w-full">
                         <div className="mb-1 flex-row! items-start border-b-2 border-white/10 pb-1">
@@ -242,8 +243,8 @@ export function CreateNewPackageScreen() {
                   <div key={`selectedFile${fileIndex}`} className="mt-2 mr-4 first:mt-0">
                     <div className="sticky! top-0 z-10 flex-row! items-center bg-neutral-900 p-1">
                       <div className="mr-2 h-fit w-16 min-w-16 flex-row! justify-center border-r-2 border-white/25 pr-1">
-                        {file.type === 'stfs' ? <XboxIcon className="mr-1 text-lg" /> : <PlaystationIcon className="mr-1 text-xl" />}
-                        <h1 className="top-0.2 relative!">{file.type === 'stfs' ? 'CON' : 'PKG'}</h1>
+                        {file.type === 'stfs' ? <XboxIcon className="mr-1 text-lg" /> : file.type === 'rb3' ? <RB3FileIcon className="mr-1 text-xl" /> : <PlaystationIcon className="mr-1 text-xl" />}
+                        <h1 className="top-0.2 relative!">{file.type === 'stfs' ? 'CON' : file.type === 'rb3' ? 'RB3' : 'PKG'}</h1>
                       </div>
                       <h1 className="mr-2 text-lg">{file.data.path.name}</h1>
                       <button
@@ -433,7 +434,7 @@ export function CreateNewPackageScreen() {
                   onClick={async () => {
                     setWindowState({ disableButtons: true })
                     try {
-                      const imgStats = await window.api.loadImageForCrop()
+                      const imgStats = await window.api.open.imageToCrop()
                       if (imgStats) {
                         setImageCropScreenState({ imgPath: imgStats.path, imgDataURL: imgStats.dataURL, func: 'createNewPackage' })
                         setMessageBoxState({ message: null })

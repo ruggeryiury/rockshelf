@@ -1,6 +1,8 @@
-import { type DirPath, pathLikeToFilePath, type DirPathLikeTypes, type FilePath, type FilePathJSONRepresentation, type FilePathLikeTypes } from 'node-lib'
-import { BinaryAPI, PythonAPI, type MOGGFileStatPythonObject } from '../core.exports'
+import { FilePath, type DirPath, pathLikeToFilePath, type DirPathLikeTypes, type FilePathJSONRepresentation, type FilePathLikeTypes } from 'node-lib'
+import { BinaryAPI, PythonAPI, type MOGGFileStatPythonObject, type MOGGTracksExtractorOptions } from '../core.exports'
 import type { RB3CompatibleDTAFile } from '../lib.exports'
+import { temporaryFile } from 'tempy'
+import { pipeline } from 'node:stream/promises'
 
 // #region Types
 
@@ -112,11 +114,11 @@ export class MOGGFile {
    * - - - -
    * @param {RB3CompatibleDTAFile} songdata The parsed song data of the song where the MOGG belongs.
    * @param {DirPathLikeTypes} destFolderPath The destination folder path where the tracks audio files will be created.
-   * @param {boolean} extractCrowd Extracts the crowd audio from the MOGG file. Default is `false`.
+   * @param {MOGGTracksExtractorOptions | undefined} [options] `OPTIONAL` An object with values that tweaks the extraction process.
    * @returns {Promise<DirPath>}
    */
-  async extractTracks(songdata: RB3CompatibleDTAFile, destFolderPath: DirPathLikeTypes, extractCrowd: boolean = false): Promise<DirPath> {
-    return await PythonAPI.moggTrackExtractor(this.path, songdata, destFolderPath, extractCrowd)
+  async extractTracks(songdata: RB3CompatibleDTAFile, destFolderPath: DirPathLikeTypes, options?: MOGGTracksExtractorOptions): Promise<DirPath> {
+    return await PythonAPI.moggTrackExtractor(this.path, songdata, destFolderPath, options)
   }
 
   /**
@@ -130,5 +132,30 @@ export class MOGGFile {
    */
   async createPreview(songdata: RB3CompatibleDTAFile, destPath: FilePathLikeTypes, format?: 'wav' | 'flac' | 'ogg' | 'mp3', mixCrowd?: boolean): Promise<FilePath> {
     return await PythonAPI.moggPreviewCreator(this.path, songdata, destPath, format, mixCrowd)
+  }
+
+  /**
+   * Removes the MOGG header from the OGG stream.
+   * - - - -
+   * @param {FilePathLikeTypes | undefined} [destPath] `OPTIONAL` The destination path. If not provided, the OGG file will be saved on the same MOGG file directory, using the same name.
+   * @returns {Promise<void>}
+   */
+  async toOGG(destPath?: FilePathLikeTypes): Promise<void> {
+    const dest: FilePath = destPath ? pathLikeToFilePath(destPath) : this.path.changeFileName(this.path.name)
+
+    let src = this.path
+    let isTemp = false
+    if (await this.isEncrypted()) {
+      const tempFile = temporaryFile({ extension: 'ogg' })
+      const decMOGGFile = await this.decrypt(tempFile)
+      isTemp = true
+      src = decMOGGFile.path
+    }
+
+    const fileStat = await src.stat()
+    const oggOffset = (await src.readOffset(4, 8)).readUInt32LE()
+
+    await pipeline(src.createReadStream({ start: oggOffset, end: fileStat.size - oggOffset }), await dest.createWriteStream())
+    if (isTemp) await src.delete()
   }
 }

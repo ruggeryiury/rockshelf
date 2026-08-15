@@ -6,6 +6,7 @@ import { is } from '@electron-toolkit/utils'
 import { ImageFile, MOGGFile, RBTools, type ImageConvertingOptions, type ImageFormatTypes } from '../core.exports'
 import { genAudioFileStructure, type RB3CompatibleDTAFile, type TPLHeaderParserObject } from '../lib.exports'
 import { RockshelfFileSystemAPI } from '../../../core.exports'
+import type { CropImageCoordinatesObject } from '../../rspackimg/editRSPackImage'
 
 // #region Types
 
@@ -115,6 +116,30 @@ export interface STFSFileStatRawObject {
 }
 
 export type PreviewAudioFormatTypes = 'wav' | 'flac' | 'ogg' | 'mp3'
+
+export interface ImageCropOptions {
+  destPath?: FilePathLikeTypes
+  cropX?: number
+  cropY?: number
+  cropWidth?: number
+  cropHeight?: number
+  mode?: CropImageCoordinatesObject['mode']
+  outWidth?: number
+  outHeight?: number
+  quality?: number
+  imgFormat?: ImageFormatTypes
+}
+
+export interface MOGGTracksExtractorOptions {
+  /**
+   * Extracts the crowd audio from the MOGG file. Default is `false`.
+   */
+  extractCrowd?: boolean
+  /**
+   * Applies the volume values from the song's DTA file. Default is `true`.
+   */
+  applyVolume?: boolean
+}
 
 /**
  * API calls as static methods for Python scripts of RBTools.
@@ -257,6 +282,26 @@ export class PythonAPI {
   }
 
   /**
+   * Crops an image file. Returns an instantiated `ImageFile` class pointing to the new, processed image file path.
+   * - - - -
+   * @param srcPath The path of an image file.
+   * @param options An object with values that tweaks the cropping process.
+   * @returns {Promise<ImageFile>}
+   */
+  static async imageCrop(srcPath: FilePathLikeTypes, options: ImageCropOptions): Promise<ImageFile> {
+    const src = pathLikeToFilePath(srcPath)
+    const srcStat = await new ImageFile(src).stat()
+    const dest = options.destPath ? pathLikeToFilePath(options.destPath) : pathLikeToFilePath(temporaryFile({ extension: 'bin' }))
+    dest.changeThisFileExt(options.imgFormat || src.ext)
+    const pythonScript = 'crop_image.py'
+    const command = `"${RockshelfFileSystemAPI.pythonEnvScriptFile().path}" "${pythonScript}" "${src.path}" "${dest.path}" --crop_x ${options.cropX || 0} --crop_width ${options.cropWidth || srcStat.width} --crop_y ${options.cropY || 0} --crop_height ${options.cropHeight || srcStat.height} --mode ${options.mode ?? 'stretch'} --out_width ${options.outWidth || 256} --out_height ${options.outHeight || 256} --quality ${options.quality || 100}`
+    const cwd = is.dev ? RBTools.pyFolder.path : RBTools.pyFolder.path.replace(/(\.asar)([\\/])/, '.asar.unpacked$2')
+    const { stderr } = await execAsync(command, { windowsHide: true, cwd })
+    if (stderr) throw new Error(stderr)
+    return new ImageFile(dest)
+  }
+
+  /**
    * Converts a PNG_WII file Buffer to a WEBP Base64-encoded string.
    * - - - -
    * @param {FilePathLikeTypes} texWiiPath The path to the `.png_wii` file.
@@ -294,25 +339,23 @@ export class PythonAPI {
   }
 
   /**
-   * Creates Harmonix's MOGG file from a bunch of audio files and returns an instantiated `MOGGFile` class pointing to the new MOGG file.
+   * Creates a multitrack WAV file from a bunch of audio files and returns an instantiated `FilePath` class pointing to the new WAV file.
    * - - - -
-   * @param {FilePathLikeTypes[]} tracks An array with audio file paths to be inserted into the MOGG file.
-   * @param {FilePathLikeTypes} destPath The destination path of the new MOGG file.
-   * @param {boolean} [encrypt] `OPTIONAL` Encrypts the MOGG file using `0B` encryption. The encryption works on all systems. Default is `false`.
-   * @returns {Promise<MOGGFile>}
+   * @param {FilePathLikeTypes[]} tracks An array with audio file paths to be inserted into the WAV file.
+   * @param {FilePathLikeTypes} destPath The destination path of the new WAV file.
+   * @returns {Promise<FilePath>}
    */
-  static async moggCreator(tracks: FilePathLikeTypes[], destPath: FilePathLikeTypes, encrypt: boolean = false): Promise<MOGGFile> {
-    const pythonScript = 'mogg_creator.py'
+  static async multitrackWAVCreator(tracks: FilePathLikeTypes[], destPath: FilePathLikeTypes): Promise<FilePath> {
+    const pythonScript = 'multitrack_wav_creator.py'
+    const dest = pathLikeToFilePath(destPath)
 
     let audioFilesInput = ''
-    for (const track of tracks) {
-      audioFilesInput += `"${pathLikeToString(track)}" `
-    }
-    const command = `"${RockshelfFileSystemAPI.pythonEnvScriptFile().path}" "${pythonScript}" ${audioFilesInput}${encrypt ? '-e' : ''}-d "${pathLikeToString(destPath)}"`
+    for (const track of tracks) audioFilesInput += `"${pathLikeToString(track)}" `
+    const command = `"${RockshelfFileSystemAPI.pythonEnvScriptFile().path}" "${pythonScript}" ${audioFilesInput}-d "${pathLikeToString(destPath)}"`
     const cwd = is.dev ? RBTools.pyFolder.path : RBTools.pyFolder.path.replace(/(\.asar)([\\/])/, '.asar.unpacked$2')
     const { stderr } = await execAsync(command, { windowsHide: true, cwd })
     if (stderr) throw new Error(stderr)
-    return new MOGGFile(destPath)
+    return dest
   }
 
   /**
@@ -364,16 +407,21 @@ export class PythonAPI {
    * @param {FilePathLikeTypes} moggPath The MOGG file path where the tracks will be extracted.
    * @param {RB3CompatibleDTAFile} songdata The parsed song data of the song where the MOGG belongs.
    * @param {DirPathLikeTypes} destFolderPath The destination folder path where the tracks audio files will be created.
-   * @param {boolean} extractCrowd Extracts the crowd audio from the MOGG file. Default is `false`.
+   * @param {MOGGTracksExtractorOptions | undefined} [options] `OPTIONAL` An object with values that tweaks the extraction process.
    * @returns {Promise<DirPath>}
    */
-  static async moggTrackExtractor(moggPath: FilePathLikeTypes, songdata: RB3CompatibleDTAFile, destFolderPath: DirPathLikeTypes, extractCrowd: boolean = false): Promise<DirPath> {
+  static async moggTrackExtractor(moggPath: FilePathLikeTypes, songdata: RB3CompatibleDTAFile, destFolderPath: DirPathLikeTypes, options?: MOGGTracksExtractorOptions): Promise<DirPath> {
+    const { applyVolume, extractCrowd }: Required<MOGGTracksExtractorOptions> = {
+      extractCrowd: false,
+      applyVolume: true,
+      ...options,
+    }
     const mogg = pathLikeToFilePath(moggPath)
     const dest = pathLikeToDirPath(destFolderPath)
     const tracksStr = JSON.stringify(genAudioFileStructure(songdata))
     const tracks = Buffer.from(tracksStr).toString('base64')
     const pythonScript = 'mogg_track_extractor.py'
-    const command = `"${RockshelfFileSystemAPI.pythonEnvScriptFile().path}" "${pythonScript}" "${mogg.path}" -t "${tracks}" -o "${dest.path}"${extractCrowd ? ' -c' : ''}`
+    const command = `"${RockshelfFileSystemAPI.pythonEnvScriptFile().path}" "${pythonScript}" "${mogg.path}" -t "${tracks}" -o "${dest.path}"${extractCrowd ? ' -c' : ''}${!applyVolume ? ' --no-apply_volume' : ''}`
     const cwd = is.dev ? RBTools.pyFolder.path : RBTools.pyFolder.path.replace(/(\.asar)([\\/])/, '.asar.unpacked$2')
     const { stderr } = await execAsync(command, { windowsHide: true, cwd })
     if (stderr) throw new Error(stderr)

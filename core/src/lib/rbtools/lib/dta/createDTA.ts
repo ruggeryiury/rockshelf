@@ -562,7 +562,7 @@ export const createDTA = (songdata: SongDataCreationObject): RB3CompatibleDTAFil
     instrumentCount++
 
     bassR = rankValuesToDTARankSystem('bass', bass.rank)
-    real_bassR = rankValuesToDTARankSystem('real_bass', (bass.rankPRO as typeof bass.rankPRO | undefined) ?? -1)
+    real_bassR = rankValuesToDTARankSystem('real_bass', bass.rankPRO ?? -1)
     map.set('rank_bass', bassR)
 
     if (real_bassR > 0) {
@@ -594,7 +594,7 @@ export const createDTA = (songdata: SongDataCreationObject): RB3CompatibleDTAFil
     instrumentCount++
 
     guitarR = rankValuesToDTARankSystem('guitar', guitar.rank)
-    real_guitarR = rankValuesToDTARankSystem('real_guitar', (guitar.rankPRO as typeof guitar.rankPRO | undefined) ?? -1)
+    real_guitarR = rankValuesToDTARankSystem('real_guitar', guitar.rankPRO ?? -1)
     map.set('rank_guitar', guitarR)
 
     if (real_guitarR > 0) {
@@ -656,7 +656,7 @@ export const createDTA = (songdata: SongDataCreationObject): RB3CompatibleDTAFil
     instrumentCount++
 
     keysR = rankValuesToDTARankSystem('keys', keys.rank)
-    real_keysR = rankValuesToDTARankSystem('real_keys', (keys.rankPRO as typeof keys.rankPRO | undefined) ?? -1)
+    real_keysR = rankValuesToDTARankSystem('real_keys', keys.rankPRO ?? -1)
     map.set('rank_keys', keysR)
     map.set('rank_real_keys', real_keysR)
 

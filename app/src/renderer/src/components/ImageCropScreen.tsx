@@ -5,16 +5,16 @@ import { useShallow } from 'zustand/shallow'
 import { useImageCropScreenState } from './ImageCropScreen.state'
 import Cropper from 'react-easy-crop'
 import { useState } from 'react'
-import { useMyPackagesScreenState } from './MyPackagesScreen.state'
 import { useMessageBoxState } from './MessageBox.state'
 import { useCreateNewPackageScreenState } from './CreateNewPackageScreen.state'
 import { STRUCT_LOG } from '@renderer/app/rockshelf.globals'
+import { usePackageDetailsState } from './PackageDetails.state'
 
 export function ImageCropScreen() {
   const { t } = useTranslation()
   const { disableButtons, setWindowState } = useWindowState(useShallow((x) => ({ disableButtons: x.disableButtons, setWindowState: x.setWindowState })))
   const { resetImageCropScreenState, imgPath, imgDataURL, setImageCropScreenState, imgCropOptions, func } = useImageCropScreenState(useShallow((x) => ({ resetImageCropScreenState: x.resetImageCropScreenState, imgPath: x.imgPath, imgDataURL: x.imgDataURL, setImageCropScreenState: x.setImageCropScreenState, imgCropOptions: x.imgCropOptions, func: x.func })))
-  const { selPKG } = useMyPackagesScreenState(useShallow((x) => ({ selPKG: x.selPKG })))
+  const { pkgIndex } = usePackageDetailsState(useShallow((x) => ({ pkgIndex: x.pkgIndex })))
   const { setMessageBoxState } = useMessageBoxState(useShallow((x) => ({ setMessageBoxState: x.setMessageBoxState })))
   const { setCreateNewPackageScreenState } = useCreateNewPackageScreenState(useShallow((x) => ({ setCreateNewPackageScreenState: x.setCreateNewPackageScreenState })))
   const [crop, setCrop] = useState({ x: 0, y: 0 })
@@ -35,10 +35,10 @@ export function ImageCropScreen() {
                 if (func === 'packageDetails') {
                   try {
                     if (imgCropOptions) {
-                      const newPackages = await window.api.editPackageData(selPKG, { imgPath, imgCropOptions })
-                      if (STRUCT_LOG) console.log('struct RPCS3SongPackagesDataExtra ["rbtools/src/lib/rpcs3/rpcs3GetSongPackagesStatsExtra.ts"]:', newPackages)
+                      const newPackages = await window.api.data.editPackage(pkgIndex, { imgPath, imgCropOptions })
+                      if (STRUCT_LOG) console.log('struct LightRB3SongPackagesData ["core/api/DataSyncAPI.ts"]:', newPackages)
 
-                      if (newPackages) setWindowState({ packages: newPackages, disableImg: selPKG })
+                      if (newPackages) setWindowState({ packages: newPackages, disableImg: pkgIndex })
                       setMessageBoxState({ message: { type: 'success', code: 'editPackageImage' } })
                       resetImageCropScreenState()
                     }
@@ -48,9 +48,8 @@ export function ImageCropScreen() {
                 } else if (func === 'createNewPackage') {
                   try {
                     if (imgCropOptions) {
-                      setCreateNewPackageScreenState({ packageArtwork: `rbicons://custom` })
-                      await window.api.cropImageAndSaveToTemp({ imgPath, imgCropOptions, name: 'thumbnail' })
-                      setCreateNewPackageScreenState({ packageArtwork: `tempjpg://thumbnail` })
+                      const newArtwork = await window.api.img.cropAndSaveToTemp(imgPath, { cropX: imgCropOptions.x, cropY: imgCropOptions.y, cropWidth: imgCropOptions.width, cropHeight: imgCropOptions.height, mode: imgCropOptions.mode })
+                      setCreateNewPackageScreenState({ packageArtwork: `temp://${newArtwork.fullname}` })
                       setMessageBoxState({ message: { type: 'success', code: 'editPackageImage' } })
                       resetImageCropScreenState()
                     }

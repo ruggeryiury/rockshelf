@@ -10,6 +10,8 @@ export { IoMdReturnRight as GoBackToRightIcon, IoMdCheckmarkCircle as SuccessIco
 export { IoDiamondOutline as DiamondIcon } from 'react-icons/io5'
 export { GrSquare as HalfCheckedBox } from 'react-icons/gr'
 export { GiRank1 as LowerRankIcon, GiRank2 as MiddleRankIcon, GiRank3 as HighRankIcon, GiAbstract114 as ShelfIcon } from 'react-icons/gi'
+export { FaBluesky as BlueSkyIcon, FaTwitch as TwitchIcon } from 'react-icons/fa6'
+export { SiDatabricks as RB3FileIcon } from 'react-icons/si'
 
 export { RPCS3Icon } from './images/svg/RPCS3Icon'
 export { WiiIcon } from './images/svg/WiiIcon'

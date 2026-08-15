@@ -44,11 +44,11 @@ export function MainScreen() {
                 <div className="mx-4 h-full w-0.5 bg-white/50" />
                 <div className="mr-4">
                   <h1 className="text-[0.65rem] uppercase">{t('songsCountTitle')}</h1>
-                  {typeof packages === 'object' && <h2 className="font-pentatonic text-lg">{formatNumberWithDots(packages.allSongsPlusRB3)}</h2>}
+                  {typeof packages === 'object' && <h2 className="font-pentatonic text-lg">{formatNumberWithDots(packages.songsCount.allPlusRB3)}</h2>}
                 </div>
                 <div className="mr-4">
                   <h1 className="text-[0.65rem] uppercase">{t('packagesInstalled')}</h1>
-                  {typeof packages === 'object' && <h2 className="font-pentatonic text-lg">{formatNumberWithDots(packages.allPackagesCount)}</h2>}
+                  {typeof packages === 'object' && <h2 className="font-pentatonic text-lg">{formatNumberWithDots(packages.packagesCount.all)}</h2>}
                 </div>
                 <div className="mx-4 h-full w-0.5 bg-white/50" />
                 <div className="mr-4">
@@ -71,7 +71,7 @@ export function MainScreen() {
                       <div className="flex-row! items-center">
                         <img src="rbicons://rb4-stars-gold" className="relative! top-[0.05rem] mr-1 h-5 min-h-5 w-5 min-w-5" />
                         <h2 className="font-pentatonic text-lg">
-                          {instrumentScores.goldStars}/{packages.allSongsPlusRB3}
+                          {instrumentScores.goldStars}/{packages.songsCount.allPlusRB3}
                         </h2>
                       </div>
                     </div>
@@ -98,19 +98,19 @@ export function MainScreen() {
               setWindowState({ disableButtons: true, rb3Stats: 'loading' })
               try {
                 setTimeout(async () => {
-                  const newRB3Stats = await window.api.rpcs3GetRB3Stats()
+                  const newRB3Stats = await window.api.data.getRockBand3Data()
                   if (STRUCT_LOG) console.log('struct RockBand3Data ["rbtools/src/lib/rpcs3/rpcs3GetRB3Stats.ts"]:', newRB3Stats)
 
-                  const newInstalledDeluxeData = await window.api.getInstalledDeluxeData()
+                  const newInstalledDeluxeData = await window.api.data.getInstalledDeluxeData()
                   if (STRUCT_LOG) console.log('struct DeluxeInstalledData ["rbtools/src/lib/github/api.ts"]:', newInstalledDeluxeData)
 
                   let newSaveData: ParsedRB3SaveData | false = false
                   let newInstrumentScores: InstrumentScoreData | false = false
                   if (typeof rb3Stats === 'object' && (rb3Stats.hasSaveData || rb3Stats.userName !== null)) {
-                    newSaveData = await window.api.rpcs3GetSaveDataStats()
+                    newSaveData = await window.api.data.getRockBand3SaveData()
                     if (STRUCT_LOG) console.log('struct ParsedRB3SaveData ["rbtools/src/lib/rpsc3/getSaveData.ts"]:', newSaveData)
                     if (newSaveData) {
-                      newInstrumentScores = await window.api.rpcs3GetInstrumentScores(newSaveData)
+                      newInstrumentScores = await window.api.data.getInstrumentScoresData(newSaveData)
                       if (STRUCT_LOG) console.log('struct InstrumentScoreData ["rbtools/src/lib/rpcs3/getInstrumentScoresData.ts"]:', newInstrumentScores)
                     }
                   }
@@ -136,7 +136,7 @@ export function MainScreen() {
                   disabled={disableButtons}
                   onClick={async () => {
                     setWindowState({ disableButtons: true })
-                    await window.api.playRockBand3()
+                    await window.api.rpcs3.playRB3()
                     setWindowState({ disableButtons: false })
                   }}
                 >
@@ -160,7 +160,7 @@ export function MainScreen() {
                     setWindowState({ disableButtons: true })
                     if (richPresence) {
                       try {
-                        const rpDestroySuccess = await window.api.discordRPDestroy()
+                        const rpDestroySuccess = await window.api.discord.stop()
                         if (!rpDestroySuccess) {
                           setWindowState({ disableButtons: false, richPresence: true })
                           return
@@ -173,7 +173,7 @@ export function MainScreen() {
                       }
                     }
                     try {
-                      const rpStartSuccess = await window.api.discordRPStart()
+                      const rpStartSuccess = await window.api.discord.start()
                       if (!rpStartSuccess) {
                         setWindowState({ disableButtons: false, richPresence: false })
                         return
@@ -206,7 +206,7 @@ export function MainScreen() {
                   disabled={disableButtons}
                   onClick={async () => {
                     setWindowState({ disableButtons: true })
-                    const selectedRB3File = await window.api.selectRB3File()
+                    const selectedRB3File = await window.api.selector.rb3File()
                     if (STRUCT_LOG) console.log('struct RB3FileJSONRepresentation ["core/src/lib/rb3p/parseRB3File.ts"]:', selectedRB3File)
 
                     if (selectedRB3File) {
@@ -298,7 +298,7 @@ export function MainScreen() {
                                 onClick={async () => {
                                   setWindowState({ disableButtons: true })
                                   try {
-                                    await window.api.installHighMemoryPatch()
+                                    await window.api.rpcs3.installHighMemoryPatch()
                                     setWindowState((oldState) => {
                                       return {
                                         rb3Stats: {

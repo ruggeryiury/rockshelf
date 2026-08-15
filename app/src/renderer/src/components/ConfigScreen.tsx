@@ -9,12 +9,14 @@ import { BRAFlag, MEXFlag, USAFlag, ARGFlag, COLFlag, bandIcon, guitarIcon, bass
 import { useShallow } from 'zustand/shallow'
 import type { RockBand3Data } from 'rockshelf-core/rbtools/lib'
 import { STRUCT_LOG } from '@renderer/app/rockshelf.globals'
+import { useMyPackagesScreenState } from './MyPackagesScreen.state'
 
 export function ConfigScreen() {
   const { i18n, t } = useTranslation()
   const { active, resetConfigScreenState } = useConfigScreenState(useShallow((x) => ({ active: x.active, resetConfigScreenState: x.resetConfigScreenState })))
   const { devhdd0Path, rpcs3ExePath, mostPlayedInstrument, getUserConfigState, setUserConfigState, downloadedContentDirPath, downloadedContentFileName } = useUserConfigState(useShallow((x) => ({ devhdd0Path: x.devhdd0Path, rpcs3ExePath: x.rpcs3ExePath, mostPlayedInstrument: x.mostPlayedInstrument, getUserConfigState: x.getUserConfigState, setUserConfigState: x.setUserConfigState, downloadedContentFileName: x.downloadedContentFileName, downloadedContentDirPath: x.downloadedContentDirPath })))
   const { disableButtons, saveData, setWindowState } = useWindowState(useShallow((x) => ({ disableButtons: x.disableButtons, saveData: x.saveData, setWindowState: x.setWindowState })))
+  const { setMyPackagesScreenState } = useMyPackagesScreenState(useShallow((x) => ({ setMyPackagesScreenState: x.setMyPackagesScreenState })))
   const setMessageBoxState = useMessageBoxState((x) => x.setMessageBoxState)
   return (
     <AnimatedSection id="ConfigScreen" condition={active} {...animate({ opacity: true })} className="absolute! z-3 h-full max-h-full w-full max-w-full bg-black p-8">
@@ -74,15 +76,15 @@ export function ConfigScreen() {
               onClick={async () => {
                 setWindowState({ disableButtons: true })
                 try {
-                  const path = await window.api.selectDevhdd0Dir()
+                  const path = await window.api.selector.devhdd0()
                   if (!path) {
                     setWindowState({ disableButtons: false })
                     return
                   }
                   setUserConfigState({ devhdd0Path: path })
                   const newConfig = getUserConfigState()
-                  await window.api.saveUserConfigFile(newConfig)
-                  const newRB3Stats = (await window.api.rpcs3GetRB3Stats()) as RockBand3Data
+                  await window.api.userConfig.save(newConfig)
+                  const newRB3Stats = (await window.api.data.getRockBand3Data()) as RockBand3Data
                   setWindowState({ disableButtons: false, rb3Stats: newRB3Stats })
                   setMessageBoxState({ message: { type: 'success', code: 'changedDevhdd0Dir' } })
                 } catch (err) {
@@ -108,14 +110,14 @@ export function ConfigScreen() {
               onClick={async () => {
                 setWindowState({ disableButtons: true })
                 try {
-                  const path = await window.api.selectRPCS3Exe()
+                  const path = await window.api.selector.rpcs3Exe()
                   if (!path) {
                     setWindowState({ disableButtons: false })
                     return
                   }
                   setUserConfigState({ rpcs3ExePath: path })
                   const newConfig = getUserConfigState()
-                  await window.api.saveUserConfigFile(newConfig)
+                  await window.api.userConfig.save(newConfig)
                   setWindowState({ disableButtons: false })
                   setMessageBoxState({ message: { type: 'success', code: 'changedRPCS3ExeFile' } })
                 } catch (err) {
@@ -140,9 +142,9 @@ export function ConfigScreen() {
                 onClick={async () => {
                   setWindowState({ disableButtons: true })
                   setUserConfigState({ mostPlayedInstrument: 'band' })
-                  await window.api.saveUserConfigFile({ mostPlayedInstrument: 'band' })
+                  await window.api.userConfig.save({ mostPlayedInstrument: 'band' })
                   if (typeof saveData === 'object') {
-                    const newInstrScores = await window.api.rpcs3GetInstrumentScores(saveData)
+                    const newInstrScores = await window.api.data.getInstrumentScoresData(saveData)
                     if (STRUCT_LOG) console.log('struct InstrumentScoreData ["rbtools/src/lib/rpcs3/getInstrumentScoresData.ts"]:', newInstrScores)
                     setWindowState({ instrumentScores: newInstrScores })
                   }
@@ -158,9 +160,9 @@ export function ConfigScreen() {
                 onClick={async () => {
                   setWindowState({ disableButtons: true })
                   setUserConfigState({ mostPlayedInstrument: 'guitar' })
-                  await window.api.saveUserConfigFile({ mostPlayedInstrument: 'guitar' })
+                  await window.api.userConfig.save({ mostPlayedInstrument: 'guitar' })
                   if (typeof saveData === 'object') {
-                    const newInstrScores = await window.api.rpcs3GetInstrumentScores(saveData)
+                    const newInstrScores = await window.api.data.getInstrumentScoresData(saveData)
                     if (STRUCT_LOG) console.log('struct InstrumentScoreData ["rbtools/src/lib/rpcs3/getInstrumentScoresData.ts"]:', newInstrScores)
                     setWindowState({ instrumentScores: newInstrScores })
                   }
@@ -176,9 +178,9 @@ export function ConfigScreen() {
                 onClick={async () => {
                   setWindowState({ disableButtons: true })
                   setUserConfigState({ mostPlayedInstrument: 'bass' })
-                  await window.api.saveUserConfigFile({ mostPlayedInstrument: 'bass' })
+                  await window.api.userConfig.save({ mostPlayedInstrument: 'bass' })
                   if (typeof saveData === 'object') {
-                    const newInstrScores = await window.api.rpcs3GetInstrumentScores(saveData)
+                    const newInstrScores = await window.api.data.getInstrumentScoresData(saveData)
                     if (STRUCT_LOG) console.log('struct InstrumentScoreData ["rbtools/src/lib/rpcs3/getInstrumentScoresData.ts"]:', newInstrScores)
                     setWindowState({ instrumentScores: newInstrScores })
                   }
@@ -195,9 +197,9 @@ export function ConfigScreen() {
                 onClick={async () => {
                   setWindowState({ disableButtons: true })
                   setUserConfigState({ mostPlayedInstrument: 'drums' })
-                  await window.api.saveUserConfigFile({ mostPlayedInstrument: 'drums' })
+                  await window.api.userConfig.save({ mostPlayedInstrument: 'drums' })
                   if (typeof saveData === 'object') {
-                    const newInstrScores = await window.api.rpcs3GetInstrumentScores(saveData)
+                    const newInstrScores = await window.api.data.getInstrumentScoresData(saveData)
                     if (STRUCT_LOG) console.log('struct InstrumentScoreData ["rbtools/src/lib/rpcs3/getInstrumentScoresData.ts"]:', newInstrScores)
                     setWindowState({ instrumentScores: newInstrScores })
                   }
@@ -213,9 +215,9 @@ export function ConfigScreen() {
                 onClick={async () => {
                   setWindowState({ disableButtons: true })
                   setUserConfigState({ mostPlayedInstrument: 'keys' })
-                  await window.api.saveUserConfigFile({ mostPlayedInstrument: 'keys' })
+                  await window.api.userConfig.save({ mostPlayedInstrument: 'keys' })
                   if (typeof saveData === 'object') {
-                    const newInstrScores = await window.api.rpcs3GetInstrumentScores(saveData)
+                    const newInstrScores = await window.api.data.getInstrumentScoresData(saveData)
                     if (STRUCT_LOG) console.log('struct InstrumentScoreData ["rbtools/src/lib/rpcs3/getInstrumentScoresData.ts"]:', newInstrScores)
                     setWindowState({ instrumentScores: newInstrScores })
                   }
@@ -231,9 +233,9 @@ export function ConfigScreen() {
                 onClick={async () => {
                   setWindowState({ disableButtons: true })
                   setUserConfigState({ mostPlayedInstrument: 'vocals' })
-                  await window.api.saveUserConfigFile({ mostPlayedInstrument: 'vocals' })
+                  await window.api.userConfig.save({ mostPlayedInstrument: 'vocals' })
                   if (typeof saveData === 'object') {
-                    const newInstrScores = await window.api.rpcs3GetInstrumentScores(saveData)
+                    const newInstrScores = await window.api.data.getInstrumentScoresData(saveData)
                     if (STRUCT_LOG) console.log('struct InstrumentScoreData ["rbtools/src/lib/rpcs3/getInstrumentScoresData.ts"]:', newInstrScores)
                     setWindowState({ instrumentScores: newInstrScores })
                   }
@@ -249,9 +251,9 @@ export function ConfigScreen() {
                 onClick={async () => {
                   setWindowState({ disableButtons: true })
                   setUserConfigState({ mostPlayedInstrument: 'proGuitar' })
-                  await window.api.saveUserConfigFile({ mostPlayedInstrument: 'proGuitar' })
+                  await window.api.userConfig.save({ mostPlayedInstrument: 'proGuitar' })
                   if (typeof saveData === 'object') {
-                    const newInstrScores = await window.api.rpcs3GetInstrumentScores(saveData)
+                    const newInstrScores = await window.api.data.getInstrumentScoresData(saveData)
                     if (STRUCT_LOG) console.log('struct InstrumentScoreData ["rbtools/src/lib/rpcs3/getInstrumentScoresData.ts"]:', newInstrScores)
                     setWindowState({ instrumentScores: newInstrScores })
                   }
@@ -267,9 +269,9 @@ export function ConfigScreen() {
                 onClick={async () => {
                   setWindowState({ disableButtons: true })
                   setUserConfigState({ mostPlayedInstrument: 'proBass' })
-                  await window.api.saveUserConfigFile({ mostPlayedInstrument: 'proBass' })
+                  await window.api.userConfig.save({ mostPlayedInstrument: 'proBass' })
                   if (typeof saveData === 'object') {
-                    const newInstrScores = await window.api.rpcs3GetInstrumentScores(saveData)
+                    const newInstrScores = await window.api.data.getInstrumentScoresData(saveData)
                     if (STRUCT_LOG) console.log('struct InstrumentScoreData ["rbtools/src/lib/rpcs3/getInstrumentScoresData.ts"]:', newInstrScores)
                     setWindowState({ instrumentScores: newInstrScores })
                   }
@@ -286,9 +288,9 @@ export function ConfigScreen() {
                 onClick={async () => {
                   setWindowState({ disableButtons: true })
                   setUserConfigState({ mostPlayedInstrument: 'proDrums' })
-                  await window.api.saveUserConfigFile({ mostPlayedInstrument: 'proDrums' })
+                  await window.api.userConfig.save({ mostPlayedInstrument: 'proDrums' })
                   if (typeof saveData === 'object') {
-                    const newInstrScores = await window.api.rpcs3GetInstrumentScores(saveData)
+                    const newInstrScores = await window.api.data.getInstrumentScoresData(saveData)
                     if (STRUCT_LOG) console.log('struct InstrumentScoreData ["rbtools/src/lib/rpcs3/getInstrumentScoresData.ts"]:', newInstrScores)
                     setWindowState({ instrumentScores: newInstrScores })
                   }
@@ -304,9 +306,9 @@ export function ConfigScreen() {
                 onClick={async () => {
                   setWindowState({ disableButtons: true })
                   setUserConfigState({ mostPlayedInstrument: 'proKeys' })
-                  await window.api.saveUserConfigFile({ mostPlayedInstrument: 'proKeys' })
+                  await window.api.userConfig.save({ mostPlayedInstrument: 'proKeys' })
                   if (typeof saveData === 'object') {
-                    const newInstrScores = await window.api.rpcs3GetInstrumentScores(saveData)
+                    const newInstrScores = await window.api.data.getInstrumentScoresData(saveData)
                     if (STRUCT_LOG) console.log('struct InstrumentScoreData ["rbtools/src/lib/rpcs3/getInstrumentScoresData.ts"]:', newInstrScores)
                     setWindowState({ instrumentScores: newInstrScores })
                   }
@@ -322,9 +324,9 @@ export function ConfigScreen() {
                 onClick={async () => {
                   setWindowState({ disableButtons: true })
                   setUserConfigState({ mostPlayedInstrument: 'harmonies' })
-                  await window.api.saveUserConfigFile({ mostPlayedInstrument: 'harmonies' })
+                  await window.api.userConfig.save({ mostPlayedInstrument: 'harmonies' })
                   if (typeof saveData === 'object') {
-                    const newInstrScores = await window.api.rpcs3GetInstrumentScores(saveData)
+                    const newInstrScores = await window.api.data.getInstrumentScoresData(saveData)
                     if (STRUCT_LOG) console.log('struct InstrumentScoreData ["rbtools/src/lib/rpcs3/getInstrumentScoresData.ts"]:', newInstrScores)
                     setWindowState({ instrumentScores: newInstrScores })
                   }
@@ -351,14 +353,14 @@ export function ConfigScreen() {
               onClick={async () => {
                 setWindowState({ disableButtons: true })
                 try {
-                  const path = await window.api.selectDir()
+                  const path = await window.api.selector.dir()
                   if (!path) {
                     setWindowState({ disableButtons: false })
                     return
                   }
                   setUserConfigState({ downloadedContentDirPath: path })
                   const newConfig = getUserConfigState()
-                  await window.api.saveUserConfigFile(newConfig)
+                  await window.api.userConfig.save(newConfig)
                   setWindowState({ disableButtons: false })
                 } catch (err) {
                   if (err instanceof Error) setWindowState({ err })
@@ -382,7 +384,7 @@ export function ConfigScreen() {
                 onClick={async () => {
                   setWindowState({ disableButtons: true })
                   setUserConfigState({ downloadedContentFileName: 'hash' })
-                  await window.api.saveUserConfigFile({ downloadedContentFileName: 'hash' })
+                  await window.api.userConfig.save({ downloadedContentFileName: 'hash' })
                   setWindowState({ disableButtons: false })
                 }}
               >
@@ -396,7 +398,7 @@ export function ConfigScreen() {
                 onClick={async () => {
                   setWindowState({ disableButtons: true })
                   setUserConfigState({ downloadedContentFileName: 'nameAndArtist' })
-                  await window.api.saveUserConfigFile({ downloadedContentFileName: 'nameAndArtist' })
+                  await window.api.userConfig.save({ downloadedContentFileName: 'nameAndArtist' })
                   setWindowState({ disableButtons: false })
                 }}
               >
@@ -414,9 +416,10 @@ export function ConfigScreen() {
               setWindowState({ disableButtons: true })
               setMessageBoxState({ message: { type: 'loading', code: 'recreatePackagesCacheFile' } })
               try {
-                const newPackagesData = await window.api.rpcs3GetPackagesData(true)
-                if (STRUCT_LOG) console.log('struct RPCS3SongPackagesDataExtra ["rbtools/src/lib/rpcs3/rpcs3GetSongPackagesStatsExtra.ts"]:', newPackagesData)
+                const newPackagesData = await window.api.data.getLightSongPackagesData()
+                if (STRUCT_LOG) console.log('struct LightRB3SongPackagesData ["core/api/DataSyncAPI.ts"]:', newPackagesData)
                 setWindowState({ packages: newPackagesData, disableButtons: false })
+                setMyPackagesScreenState({ packagesCatalog: false })
                 setMessageBoxState({ message: { type: 'success', code: 'recreatePackagesCacheFile' } })
               } catch (err) {
                 if (err instanceof Error) setWindowState({ err })
@@ -433,8 +436,10 @@ export function ConfigScreen() {
             className="mr-2 mb-1 w-fit self-start rounded-xs border border-red-500 bg-neutral-900 px-1 py-0.5 text-xs! text-red-500 uppercase duration-100 last:mr-0 last:mb-0 hover:bg-red-950/25 active:bg-neutral-600 disabled:text-neutral-700 disabled:hover:bg-neutral-900"
             onClick={async () => {
               setWindowState({ disableButtons: true })
-              await window.api.deleteRockshelfDataFromPackages()
-              await window.api.deleteUserConfigAndRestart()
+              // await window.api.deleteRockshelfDataFromPackages()
+              await window.api.userConfig.delete()
+              await window.api.win.restart()
+              await window.api.win.restart()
             }}
           >
             {t('deleteAllData')}

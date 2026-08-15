@@ -4,10 +4,10 @@ import { useShallow } from 'zustand/shallow'
 import { useTranslation } from 'react-i18next'
 import { useWindowState } from '@renderer/stores/Window.state'
 import clsx from 'clsx'
-import { useMyPackagesScreenState } from './MyPackagesScreen.state'
 import { useMessageBoxState } from './MessageBox.state'
 import { useCreateNewPackageScreenState } from './CreateNewPackageScreen.state'
 import { STRUCT_LOG } from '@renderer/app/rockshelf.globals'
+import { usePackageDetailsState } from './PackageDetails.state'
 
 const allIcons: string[] = [
   'custom',
@@ -32,11 +32,23 @@ const allIcons: string[] = [
   'website',
 ]
 
+const rbIcons: string[] = ['rb1-green', 'rb1-red', 'rb1-yellow', 'rb1', 'rb1-orange']
+const rbDLCIcons: string[] = [
+  'rb1-2',
+  ...(() => {
+    const dlcNames: string[] = []
+    for (let i = 2; i < 16; i++) dlcNames.push(`rb1-2-${i}`)
+    return dlcNames
+  })(),
+]
+const rb2Icons: string[] = ['rb2', 'rb2-cyan', 'rb2-hot', 'rb2-mustard', 'rb2-ocean', 'rb2-pink', 'rb2-red', 'rb2-terrain', 'rb2-tropical']
+const rb3Icons: string[] = ['rb3-green', 'rb3-red', 'rb3-yellow', 'rb3', 'rb3-orange']
+
 export function RBIconsSelector() {
   const { t } = useTranslation()
 
-  const { selPKG } = useMyPackagesScreenState(useShallow((x) => ({ selPKG: x.selPKG })))
-  const { active, resetRBIconsSelectorState, selIcon, setRBIconsSelectorState } = useRBIconsSelectorState(useShallow((x) => ({ active: x.active, resetRBIconsSelectorState: x.resetRBIconsSelectorState, selIcon: x.selIcon, setRBIconsSelectorState: x.setRBIconsSelectorState })))
+  const { pkgIndex } = usePackageDetailsState(useShallow((x) => ({ pkgIndex: x.pkgIndex })))
+  const { active, resetRBIconsSelectorState, selIcon, selCollection, setRBIconsSelectorState } = useRBIconsSelectorState(useShallow((x) => ({ active: x.active, resetRBIconsSelectorState: x.resetRBIconsSelectorState, selIcon: x.selIcon, selCollection: x.selCollection, setRBIconsSelectorState: x.setRBIconsSelectorState })))
   const { setMessageBoxState } = useMessageBoxState(useShallow((x) => ({ setMessageBoxState: x.setMessageBoxState })))
   const { disableButtons, setWindowState } = useWindowState(useShallow((x) => ({ disableButtons: x.disableButtons, setWindowState: x.setWindowState })))
   const { setCreateNewPackageScreenState } = useCreateNewPackageScreenState(useShallow((x) => ({ setCreateNewPackageScreenState: x.setCreateNewPackageScreenState })))
@@ -52,24 +64,40 @@ export function RBIconsSelector() {
               setWindowState({ disableButtons: true })
 
               setMessageBoxState({ message: { type: 'loading', code: 'rbIconsSelector' } })
-              const rbIconURL = `rbicons://${allIcons[selIcon]}`
+              let rbIconURL = `rbicons://`
+
+              switch (selCollection) {
+                case 'rb1':
+                default:
+                  rbIconURL += rbIcons[selIcon]
+                  break
+                case 'rbdlc':
+                  rbIconURL += rbDLCIcons[selIcon]
+                  break
+                case 'rb2':
+                  rbIconURL += rb2Icons[selIcon]
+                  break
+                case 'rb3':
+                  rbIconURL += rb3Icons[selIcon]
+                  break
+              }
+
               if (active === 'editPackage') {
                 try {
-                  const newPackages = await window.api.editPackageData(selPKG, { imgPath: rbIconURL })
-                  if (STRUCT_LOG) console.log('struct RPCS3SongPackagesDataExtra ["rbtools/src/lib/rpcs3/rpcs3GetSongPackagesStatsExtra.ts"]:', newPackages)
+                  const newPackages = await window.api.data.editPackage(pkgIndex, { imgPath: rbIconURL })
+                  if (STRUCT_LOG) console.log('struct LightRB3SongPackagesData ["core/api/DataSyncAPI.ts"]:', newPackages)
 
-                  if (newPackages) setWindowState({ packages: newPackages, disableImg: selPKG })
+                  if (newPackages) setWindowState({ packages: newPackages, disableImg: pkgIndex })
                   setMessageBoxState({ message: { type: 'success', code: 'editPackageImage' } })
                   resetRBIconsSelectorState()
                 } catch (err) {
                   if (err instanceof Error) setWindowState({ err })
                 }
               } else if (active === 'createNewPackage') {
-                setCreateNewPackageScreenState({ packageArtwork: `rbicons://custom` })
-                await window.api.cropImageAndSaveToTemp({ imgPath: rbIconURL, name: 'thumbnail' })
+                const newArtwork = await window.api.img.cropAndSaveToTemp(rbIconURL)
                 setMessageBoxState({ message: { type: 'success', code: 'editPackageImage' } })
                 resetRBIconsSelectorState()
-                setCreateNewPackageScreenState({ packageArtwork: `tempjpg://thumbnail` })
+                setCreateNewPackageScreenState({ packageArtwork: `temp://${newArtwork.fullname}` })
               }
               setWindowState({ disableButtons: false })
             }}
@@ -88,15 +116,61 @@ export function RBIconsSelector() {
         </button>
       </div>
       <div className="h-full w-full overflow-x-hidden overflow-y-auto">
-        <div className="flex-row! flex-wrap gap-2">
-          {allIcons.map((icon, iconIndex) => {
+        <h1 className="mb-1 text-2xl uppercase">Rock Band</h1>
+        <div className="mb-2 flex-row! flex-wrap gap-2 last:mb-0">
+          {rbIcons.map((icon, iconIndex) => {
             return (
               <img
                 key={`icon_${icon}`}
                 src={`rbicons://${icon}`}
-                className={clsx(selIcon === iconIndex ? '' : 'border-transparent', 'h-24 min-h-24 w-24 min-w-24 border-2')}
+                className={clsx(selIcon === iconIndex && selCollection === 'rb1' ? '' : 'border-transparent', 'h-16 min-h-16 w-16 min-w-16 border-2')}
                 onClick={async () => {
-                  setRBIconsSelectorState({ selIcon: iconIndex })
+                  setRBIconsSelectorState({ selIcon: iconIndex, selCollection: 'rb1' })
+                }}
+              />
+            )
+          })}
+        </div>
+        <h1 className="mb-1 text-2xl uppercase">Rock Band DLC</h1>
+        <div className="mb-2 flex-row! flex-wrap gap-2 last:mb-0">
+          {rbDLCIcons.map((icon, iconIndex) => {
+            return (
+              <img
+                key={`icon_${icon}`}
+                src={`rbicons://${icon}`}
+                className={clsx(selIcon === iconIndex && selCollection === 'rbdlc' ? '' : 'border-transparent', 'h-16 min-h-16 w-16 min-w-16 border-2')}
+                onClick={async () => {
+                  setRBIconsSelectorState({ selIcon: iconIndex, selCollection: 'rbdlc' })
+                }}
+              />
+            )
+          })}
+        </div>
+        <h1 className="mb-1 text-2xl uppercase">Rock Band 2</h1>
+        <div className="mb-2 flex-row! flex-wrap gap-2 last:mb-0">
+          {rb2Icons.map((icon, iconIndex) => {
+            return (
+              <img
+                key={`icon_${icon}`}
+                src={`rbicons://${icon}`}
+                className={clsx(selIcon === iconIndex && selCollection === 'rb2' ? '' : 'border-transparent', 'h-16 min-h-16 w-16 min-w-16 border-2')}
+                onClick={async () => {
+                  setRBIconsSelectorState({ selIcon: iconIndex, selCollection: 'rb2' })
+                }}
+              />
+            )
+          })}
+        </div>
+        <h1 className="mb-1 text-2xl uppercase">Rock Band 3</h1>
+        <div className="mb-2 flex-row! flex-wrap gap-2 last:mb-0">
+          {rb3Icons.map((icon, iconIndex) => {
+            return (
+              <img
+                key={`icon_${icon}`}
+                src={`rbicons://${icon}`}
+                className={clsx(selIcon === iconIndex && selCollection === 'rb3' ? '' : 'border-transparent', 'h-16 min-h-16 w-16 min-w-16 border-2')}
+                onClick={async () => {
+                  setRBIconsSelectorState({ selIcon: iconIndex, selCollection: 'rb3' })
                 }}
               />
             )

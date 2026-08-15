@@ -7,9 +7,7 @@ import { useUserConfigState } from './stores/UserConfig.state'
 import { useLogoScreenState } from './components/LogoScreen.state'
 import { useMessageBoxState } from './components/MessageBox.state'
 import { useDialogScreenState } from './components/DialogScreen.state'
-import { DeluxeInstalledData, RPCS3SongPackagesDataExtra } from 'rockshelf-core'
 import { useShallow } from 'zustand/shallow'
-import type { InstrumentScoreData, ParsedRB3SaveData } from 'rockshelf-core/rbtools'
 import { STRUCT_LOG } from './app/rockshelf.globals'
 import { PackageDetails } from './components/PackageDetails'
 import { ExportPackageModal } from './components/ExportPackageModal'
@@ -28,55 +26,29 @@ export function App() {
   useEffect(function initApp() {
     const fn = async () => {
       try {
-        const hasUserConfig = await window.api.readUserConfigFile()
+        const userConfigStatus = await window.api.userConfig.read()
+        console.log('userConfigStatus', userConfigStatus)
 
-        if (!hasUserConfig) {
+        if (userConfigStatus === 'firstTime') {
           setWindowState({ disableButtons: false })
           setFirstTimeScreenState({ active: true })
           return
-        }
-
-        const testUserConfig = await window.api.testUserConfig()
-        if (!testUserConfig) {
+        } else if (userConfigStatus === 'corrupted') {
           setWindowState({ disableButtons: false })
+          setDialogScreenState({ active: 'corruptedUserConfig' })
           return
         }
 
-        if (STRUCT_LOG) console.log('struct UserConfigObject ["core/src/core/userConfigData.ts"]:', hasUserConfig)
-        setUserConfigState(hasUserConfig)
+        if (STRUCT_LOG) console.log('struct UserConfigObject ["core/src/core/api/UserDataAPI.ts"]:', userConfigStatus)
+        setUserConfigState(userConfigStatus)
 
-        await window.api.discordRPSetUserConfig(hasUserConfig)
+        await window.api.discord.setUserConfig(userConfigStatus)
 
-        const rb3Stats = await window.api.rpcs3GetRB3Stats()
-        if (STRUCT_LOG) console.log('struct RockBand3Data ["rbtools/src/lib/rpcs3/rpcs3GetRB3Stats.ts"]:', rb3Stats)
-
-        let saveData: ParsedRB3SaveData | false = false
-        let instrumentScores: InstrumentScoreData | false = false
-        let packagesData: RPCS3SongPackagesDataExtra | false = false
-        let installedDeluxeData: DeluxeInstalledData | false = false
-        if (typeof rb3Stats === 'object' && rb3Stats.hasSaveData) {
-          saveData = await window.api.rpcs3GetSaveDataStats()
-          if (STRUCT_LOG) console.log('struct ParsedRB3SaveData ["rbtools/src/lib/rpsc3/getSaveData.ts"]:', saveData)
-          if (saveData) {
-            instrumentScores = await window.api.rpcs3GetInstrumentScores(saveData)
-            if (STRUCT_LOG) console.log('struct InstrumentScoreData ["rbtools/src/lib/rpcs3/getInstrumentScoresData.ts"]:', instrumentScores)
-          }
-
-          packagesData = await window.api.rpcs3GetPackagesData()
-          if (STRUCT_LOG) console.log('struct RPCS3SongPackagesDataExtra ["rbtools/src/lib/rpcs3/rpcs3GetSongPackagesStatsExtra.ts"]:', packagesData)
-        }
-
-        if (typeof rb3Stats === 'object') {
-          installedDeluxeData = await window.api.getInstalledDeluxeData()
-          if (STRUCT_LOG) console.log('struct DeluxeInstalledData ["rbtools/src/lib/github/api.ts"]:', installedDeluxeData)
-        }
+        const initialState = await window.api.data.getInitialState()
+        if (STRUCT_LOG) console.log('struct InitialStateObject ["core/src/core/api/DataSyncAPI.ts"]:', initialState)
 
         setWindowState({
-          rb3Stats,
-          saveData,
-          instrumentScores,
-          packages: packagesData,
-          installedDeluxeData,
+          ...initialState,
           disableButtons: false,
         })
         setLogoScreenState({ active: false })
@@ -111,12 +83,9 @@ export function App() {
       return setDialogScreenState({ active: code })
     })
 
-    window.api.onRendererConsole((_, val) => console.log(val))
+    window.api.onRendererConsole((_, ...val) => console.log(...val))
 
-    window.api.onRhythmverseQueue((_, queue) => {
-      console.log(queue)
-      setRhythmverseScreenState({ queue })
-    })
+    window.api.onRhythmverseQueue((_, queue) => setRhythmverseScreenState({ queue }))
   }, [])
 
   useEffect(

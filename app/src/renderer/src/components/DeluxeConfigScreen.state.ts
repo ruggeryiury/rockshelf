@@ -1,5 +1,3 @@
-import { GitHubCommitCompare, GitHubCommitResponse } from '@renderer/app/types'
-import { SelectPKGFileReturnObject } from 'rockshelf-core'
 import { create } from 'zustand'
 
 export interface DeluxeConfigScreenStateProps {

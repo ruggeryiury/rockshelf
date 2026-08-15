@@ -1,0 +1,482 @@
+(
+   'feelinalright'
+   (
+      'name'
+      "Feelin' Alright"
+   )
+   (
+      'artist'
+      "Traffic"
+   )
+   ('master' 'TRUE')
+   ('song_id' 1007)
+   (
+      'song'
+      (
+         'name'
+         "songs/feelinalright/feelinalright"
+      )
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1)
+            )
+            (
+               'bass'
+               (2)
+            )
+            (
+               'guitar'
+               (3 4)
+            )
+            (
+               'vocals'
+               (5 6)
+            )
+            (
+               'keys'
+               (7)
+            )
+         )
+      )
+      ('vocal_parts' 3)
+      (
+         'pans'
+         (0.0 0.8 0.0 -1.0 1.0 -1.0 1.0 -0.8 -1.0 1.0)
+      )
+      (
+         'vols'
+         (0.0 -1.5 -2.8 -3.0 -3.0 -3.0 -3.0 -2.0 -3.0 -3.0)
+      )
+      (
+         'cores'
+         (-1 -1 -1 1 1 -1 -1 -1 -1 -1)
+      )
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+   )
+   ('bank' 'sfx/tambourine_bank.milo')
+   ('anim_tempo' 'kTempoSlow')
+   ('band_fail_cue' 'band_fail_vintage_keys.cue')
+   ('song_scroll_speed' 2300)
+   ('preview' 36919 66919)
+   ('song_length' 265062)
+   (
+      'rank'
+      ('drum' 186)
+      ('guitar' 222)
+      ('bass' 321)
+      ('vocals' 200)
+      ('keys' 251)
+      ('real_guitar' 110)
+      ('real_bass' 123)
+      ('real_keys' 251)
+      ('band' 120)
+   )
+   (solo (vocal_percussion))
+   ('format' 10)
+   ('version' 30)
+   (
+      'game_origin'
+      #ifdef CUSTOMSOURCE
+      'rb3_beta'
+      #else
+      'rb3_dlc'
+      #endif
+   )
+   ('short_version' 109679)
+   ('rating' 2)
+   ('genre' 'classicrock')
+   ('vocal_gender' 'male')
+   ('year_released' 1968)
+   ('album_art' 'TRUE')
+   (
+      'album_name'
+      "Traffic"
+   )
+   ('album_track_number' 5)
+   (
+      'author'
+      "Harmonix"
+   )
+   ('vocal_tonic_note' 0)
+   ('song_tonality' 0)
+   (real_guitar_tuning (0 0 0 0 0 0))
+   (real_bass_tuning (0 0 0 0))
+)
+
+(
+   'blackmagicgypsyqueen'
+   (
+      'name'
+      "Black Magic Woman/Gypsy Queen"
+   )
+   (
+      'artist'
+      "Santana"
+   )
+   ('master' 'TRUE')
+   ('song_id' 1002)
+   (
+      'song'
+      (
+         'name'
+         "songs/blackmagicgypsyqueen/blackmagicgypsyqueen"
+      )
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1)
+            )
+            (
+               'bass'
+               (2)
+            )
+            (
+               'guitar'
+               (3 4)
+            )
+            (
+               'vocals'
+               (5)
+            )
+            (
+               'keys'
+               (6)
+            )
+         )
+      )
+      ('vocal_parts' 1)
+      (
+         'pans'
+         (-1.0 1.0 0.0 -1.0 1.0 0.0 -0.5 -1.0 1.0)
+      )
+      (
+         'vols'
+         (0.0 0.0 -2.0 -4.5 -4.5 0.0 -3.0 -3.0 -3.0)
+      )
+      (
+         'cores'
+         (-1 -1 -1 1 1 -1 -1 -1 -1)
+      )
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+   )
+   ('bank' 'sfx/tambourine_bank.milo')
+   ('anim_tempo' 'kTempoSlow')
+   ('band_fail_cue' 'band_fail_vintage_keys.cue')
+   ('song_scroll_speed' 2300)
+   ('preview' 86800 109200)
+   ('song_length' 325000)
+   (
+      'rank'
+      ('drum' 451)
+      ('guitar' 221)
+      ('bass' 181)
+      ('vocals' 421)
+      ('keys' 311)
+      ('real_guitar' 121)
+      ('real_bass' 121)
+      ('real_keys' 311)
+      ('band' 300)
+   )
+   (solo (guitar drum vocal_percussion))
+   ('format' 10)
+   ('version' 30)
+   (
+      'game_origin'
+      #ifdef CUSTOMSOURCE
+      'rb3_beta'
+      #else
+      'rb3_dlc'
+      #endif
+   )
+   ('short_version' 183292)
+   ('rating' 1)
+   ('genre' 'classicrock')
+   ('vocal_gender' 'male')
+   ('year_released' 1970)
+   ('album_art' 'TRUE')
+   (
+      'album_name'
+      "Abraxas"
+   )
+   ('album_track_number' 2)
+   (
+      'author'
+      "Harmonix"
+   )
+   ('vocal_tonic_note' 11)
+   ('song_tonality' 1)
+   (real_guitar_tuning (0 0 0 0 0 0))
+   (real_bass_tuning (0 0 0 0))
+)
+
+(
+   'crazytrain_2002'
+   (
+      'name'
+      "Crazy Train (2002 version)"
+   )
+   (
+      'artist'
+      "Ozzy Osbourne"
+   )
+   ('master' 'TRUE')
+   ('song_id' 3531009)
+   (
+      'song'
+      (
+         'name'
+         "songs/crazytrain_2002/crazytrain_2002"
+      )
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1)
+            )
+            (
+               'bass'
+               (2)
+            )
+            (
+               'guitar'
+               (3 4)
+            )
+            (
+               'vocals'
+               (5 6)
+            )
+         )
+      )
+      ('vocal_parts' 2)
+      (
+         'pans'
+         (-1.0 1.0 0.0 -1.0 1.0 -1.0 1.0 -1.0 1.0)
+      )
+      (
+         'vols'
+         (-4.5 -4.5 -2.0 -3.5 -3.5 -4.5 -4.5 -4.5 -4.5)
+      )
+      (
+         'cores'
+         (-1 -1 -1 1 1 -1 -1 -1 -1)
+      )
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+   )
+   ('bank' 'sfx/tambourine_bank.milo')
+   ('anim_tempo' 'kTempoMedium')
+   ('band_fail_cue' 'band_fail_heavy_keys.cue')
+   ('song_scroll_speed' 2300)
+   ('preview' 77000 107000)
+   ('song_length' 331721)
+   (
+      'rank'
+      ('drum' 481)
+      ('guitar' 441)
+      ('bass' 458)
+      ('vocals' 131)
+      ('keys' 0)
+      ('real_keys' 0)
+      ('real_guitar' 480)
+      ('real_bass' 441)
+      ('band' 378)
+   )
+   (solo (guitar))
+   ('format' 10)
+   ('version' 30)
+   (
+      'game_origin'
+      #ifdef CUSTOMSOURCE
+      'rb3_beta'
+      #else
+      'rb3_dlc'
+      #endif
+   )
+   ('short_version' 95000)
+   ('rating' 2)
+   ('genre' 'metal')
+   ('vocal_gender' 'male')
+   ('year_released' 1980)
+   ('year_recorded' 2002)
+   ('album_art' 'TRUE')
+   (
+      'album_name'
+      "Blizzard of Ozz (2002 Re-Master)"
+   )
+   ('album_track_number' 2)
+   (
+      'author'
+      "Harmonix"
+   )
+   ('vocal_tonic_note' 6)
+   ('song_tonality' 1)
+   (real_guitar_tuning (0 0 0 0 0 0))
+   (real_bass_tuning (0 0 0 0))
+)
+
+(
+   'sisterchristian09'
+   (
+      'name'
+      "Sister Christian '09"
+   )
+   (
+      'artist'
+      "Night Ranger"
+   )
+   ('master' 'TRUE')
+   ('song_id' 3531004)
+   (
+      'song'
+      (
+         'name'
+         "songs/sisterchristian09/sisterchristian09"
+      )
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1)
+            )
+            (
+               'bass'
+               (2)
+            )
+            (
+               'guitar'
+               (3 4)
+            )
+            (
+               'vocals'
+               (5)
+            )
+            (
+               'keys'
+               (6 7)
+            )
+         )
+      )
+      ('vocal_parts' 3)
+      (
+         'pans'
+         (-1.0 1.0 0.0 -1.0 1.0 0.0 -1.0 1.0 -0.3)
+      )
+      (
+         'vols'
+         (0.0 0.0 -3.0 -4.5 -4.5 -2.5 -4.0 -4.0 -3.0)
+      )
+      (
+         'cores'
+         (-1 -1 -1 1 1 -1 -1 -1 -1)
+      )
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+   )
+   ('bank' 'sfx/tambourine_bank.milo')
+   (drum_bank sfx/kit02_bank.milo)
+   ('anim_tempo' 'kTempoSlow')
+   ('band_fail_cue' 'band_fail_rock_keys.cue')
+   ('song_scroll_speed' 2300)
+   ('preview' 68000 98000)
+   ('song_length' 309000)
+   (
+      'rank'
+      ('drum' 180)
+      ('guitar' 150)
+      ('bass' 170)
+      ('vocals' 180)
+      ('keys' 310)
+      ('real_guitar' 323)
+      ('real_bass' 323)
+      ('real_keys' 310)
+      ('band' 270)
+   )
+   (solo (guitar))
+   ('format' 10)
+   ('version' 30)
+   (
+      'game_origin'
+      #ifdef CUSTOMSOURCE
+      'rb3_beta'
+      #else
+      'rb3_dlc'
+      #endif
+   )
+   ('short_version' 123500)
+   ('rating' 1)
+   ('genre' 'rock')
+   ('vocal_gender' 'male')
+   ('year_released' 1983)
+   ('year_recorded' 2009)
+   ('album_art' 'TRUE')
+   (
+      'album_name'
+      "Night Ranger Rock Band Re-Record"
+   )
+   ('album_track_number' 3)
+   (
+      'author'
+      "Harmonix"
+   )
+   ('vocal_tonic_note' 0)
+   ('song_tonality' 0)
+   (real_guitar_tuning (0 0 0 0 0 0))
+   (real_bass_tuning (0 0 0 0))
+)

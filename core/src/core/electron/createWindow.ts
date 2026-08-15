@@ -14,6 +14,10 @@ export interface CreateWindowOptions {
    * The path to the icon asset used on Linux systems.
    */
   linuxIconPath: FilePathLikeTypes
+  /**
+   * An array with arguments provided when executing Rockshelf.
+   */
+  argv: string[]
 }
 
 /**

@@ -397,7 +397,7 @@ export class DTAIO {
    */
   constructor(formatOptions?: DTAIOFormattingOptions) {
     this.content = {}
-    this.options = useDefaultOptions<RequiredDeep<DTAIOFormattingOptions>>(DTAIO.formatOptions.defaultMAGMA, formatOptions as RequiredDeep<DTAIOFormattingOptions>)
+    this.options = useDefaultOptions<RequiredDeep<DTAIOFormattingOptions>>(DTAIO.formatOptions.defaultMAGMA, formatOptions)
   }
 
   // #region Static Methods
@@ -535,7 +535,7 @@ export class DTAIO {
   static useObject = (value: Record<string, unknown>, formatOptions?: DTAIOFormattingOptions): ObjectValueObject => ({
     __type: 'object',
     __value: value,
-    __options: useDefaultOptions<RequiredDeep<DTAIOFormattingOptions>>(DTAIO.formatOptions.defaultMAGMA, formatOptions as RequiredDeep<DTAIOFormattingOptions>),
+    __options: useDefaultOptions<RequiredDeep<DTAIOFormattingOptions>>(DTAIO.formatOptions.defaultMAGMA, formatOptions),
   })
 
   /**
@@ -548,7 +548,7 @@ export class DTAIO {
   static useArray = (value: DTAIOAddValueTypes[], formatOptions?: DTAIOFormattingOptions): ArrayValueObject => ({
     __type: 'array',
     __value: value,
-    __options: useDefaultOptions<RequiredDeep<DTAIOFormattingOptions>>(DTAIO.formatOptions.defaultMAGMA, formatOptions as RequiredDeep<DTAIOFormattingOptions>),
+    __options: useDefaultOptions<RequiredDeep<DTAIOFormattingOptions>>(DTAIO.formatOptions.defaultMAGMA, formatOptions),
   })
 
   /**
@@ -588,7 +588,7 @@ export class DTAIO {
     __condition: condition,
     __valueIfTrue: valueIfTrue,
     __valueIfFalse: valueIfFalse,
-    __options: useDefaultOptions<RequiredDeep<DTAIOFormattingOptions>>(DTAIO.formatOptions.defaultMAGMA, formatOptions as RequiredDeep<DTAIOFormattingOptions>),
+    __options: useDefaultOptions<RequiredDeep<DTAIOFormattingOptions>>(DTAIO.formatOptions.defaultMAGMA, formatOptions),
   })
 
   // #region Class Methods

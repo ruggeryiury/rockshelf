@@ -5,8 +5,6 @@ import { useWindowState } from '@renderer/stores/Window.state'
 import { animate, AnimatedButton, AnimatedSection, TransComponent } from '@renderer/lib.exports'
 import clsx from 'clsx'
 import { ARGFlag, BRAFlag, COLFlag, FCAFlag, MEXFlag, USAFlag } from '@renderer/assets/images'
-import { RPCS3SongPackagesDataExtra } from 'rockshelf-core'
-import { InstrumentScoreData, ParsedRB3SaveData } from 'rockshelf-core/rbtools'
 import { useLogoScreenState } from './LogoScreen.state'
 import { useShallow } from 'zustand/shallow'
 import { useMessageBoxState } from './MessageBox.state'
@@ -37,7 +35,7 @@ export function FirstTimeScreen() {
           onClick={async () => {
             setWindowState({ disableButtons: true })
             try {
-              const selectedDevhdd0Path = await window.api.selectDevhdd0Dir()
+              const selectedDevhdd0Path = await window.api.selector.devhdd0()
               if (!selectedDevhdd0Path) {
                 setWindowState({ disableButtons: false })
                 return
@@ -65,7 +63,7 @@ export function FirstTimeScreen() {
           onClick={async () => {
             setWindowState({ disableButtons: true })
             try {
-              const selectedRPCS3Exe = await window.api.selectRPCS3Exe()
+              const selectedRPCS3Exe = await window.api.selector.rpcs3Exe()
               if (!selectedRPCS3Exe) {
                 setWindowState({ disableButtons: false })
                 return
@@ -92,36 +90,19 @@ export function FirstTimeScreen() {
           setWindowState({ disableButtons: true })
           setMessageBoxState({ message: { type: 'loading', code: 'firstTimeData' } })
           try {
-            await window.api.saveUserConfigFile({
+            const userConfigStatus = await window.api.userConfig.save({
               devhdd0Path,
               rpcs3ExePath,
               mostPlayedDifficulty: 3,
               mostPlayedInstrument: 'band',
             })
+            if (STRUCT_LOG) console.log('struct UserConfigObject ["core/src/core/api/UserDataAPI.ts"]:', userConfigStatus)
 
-            const rb3Stats = await window.api.rpcs3GetRB3Stats()
-            if (STRUCT_LOG) console.log('struct RockBand3Data ["rbtools/src/lib/rpcs3/rpcs3GetRB3Stats.ts"]:', rb3Stats)
-            let saveData: ParsedRB3SaveData | false = false
-            let instrumentScores: InstrumentScoreData | false = false
-            let packagesData: RPCS3SongPackagesDataExtra | false = false
-            if (typeof rb3Stats === 'object' && rb3Stats.hasSaveData) {
-              saveData = await window.api.rpcs3GetSaveDataStats()
-              if (STRUCT_LOG) console.log('struct ParsedRB3SaveData ["rbtools/src/lib/rpsc3/getSaveData.ts"]:', saveData)
-              if (saveData) {
-                await window.api.saveUserConfigFile({ mostPlayedInstrument: saveData.mostPlayedInstrument })
-                setUserConfigState({ mostPlayedInstrument: saveData.mostPlayedInstrument })
-                instrumentScores = await window.api.rpcs3GetInstrumentScores(saveData)
-                if (STRUCT_LOG) console.log('struct InstrumentScoreData ["rbtools/src/lib/rpcs3/getInstrumentScoresData.ts"]:', instrumentScores)
-              }
-              packagesData = await window.api.rpcs3GetPackagesData()
-              if (STRUCT_LOG) console.log('struct RPCS3SongPackagesDataExtra ["rbtools/src/lib/rpcs3/rpcs3GetSongPackagesStatsExtra.ts"]:', packagesData)
-            }
+            const initialState = await window.api.data.getInitialState()
+            if (STRUCT_LOG) console.log('struct InitialStateObject ["core/src/core/api/DataSyncAPI.ts"]:', initialState)
 
             setWindowState({
-              rb3Stats,
-              saveData,
-              instrumentScores,
-              packages: packagesData,
+              ...initialState,
               disableButtons: false,
             })
 

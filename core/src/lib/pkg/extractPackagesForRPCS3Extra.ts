@@ -3,9 +3,9 @@ import { temporaryDirectory, temporaryFile } from 'tempy'
 import { useDefaultOptions } from 'use-default-options'
 import { sendBuzyLoad } from '../senders/buzyLoad'
 import type { BrowserWindow } from 'electron'
-import { type SelectedSongForExtractionObject, type STFSExtractionTempFolderObject, type PKGExtractionTempFolderObject, type RB3PackageLikeType, DTAParser, type SupportedRB3PackageFileType, STFSFile, PKGFile, type STFSFileJSONRepresentation, type PKGFileJSONRepresentation, TextureFile, MOGGFile, PythonAPI, BinaryAPI, EDATFile } from '../rbtools'
+import { type SelectedSongForExtractionObject, type STFSExtractionTempFolderObject, type PKGExtractionTempFolderObject, type RB3PackageLikeType, DTAParser, type SupportedRB3PackageFileType, STFSFile, PKGFile, type STFSFileJSONRepresentation, type PKGFileJSONRepresentation, TextureFile, MOGGFile, PythonAPI, BinaryAPI, EDATFile, type STFSFileStatObject, type PKGFileSongPackageStatObject } from '../rbtools'
 import { type DTAFileUpdateObject, type DTAFileBatchUpdateObject, type RB3CompatibleDTAFile, isRPCS3Devhdd0PathValid, getUnpackedFilesPathFromRootExtraction } from '../rbtools/lib.exports'
-import { sendRendererConsole } from '../senders/rendererConsole'
+import { RB3File, type RB3ExtractionTempFolderObject, type RB3FileJSONRepresentation } from '../rb3p/RB3File'
 
 // #region Types
 
@@ -46,7 +46,7 @@ export interface RPCS3PackageExtractionObjectExtra {
   /**
    * An array with all temporary folder created when each package were extracted.
    */
-  tempFolders: (STFSExtractionTempFolderObject | PKGExtractionTempFolderObject)[]
+  tempFolders: (STFSExtractionTempFolderObject | PKGExtractionTempFolderObject | RB3ExtractionTempFolderObject)[]
   /**
    * The size of the created package.
    */
@@ -68,14 +68,14 @@ export interface RPCS3PackageExtractionObjectExtra {
  *
  * The `options` parameter is an object where you can tweak the extraction and package creation process, selecting the package folder name, and forcing encryption/decryption of all files for vanilla Rock Band 3 support.
  * - - - -
- * @param {RB3PackageLikeType[]} packages An array with paths to STFS or PKG files to be installed. You can select individual song or multiple songs package.
+ * @param {(RB3File | RB3PackageLikeType)[]} packages An array with paths to STFS, PKG or RB3 files to be installed. You can select individual song or multiple songs package.
  * @param {DirPathLikeTypes} destFolderPath The destination folder you want to place the extracted package. You can use any folder, but placing a valid `dev_hdd0` folder, this function will install the new package on Rock Band 3's USRDIR folder on RPCS3.
  * @param {string} packageFolderName The name of the new package folder.
  * @param {RPCS3ExtractionOptionsExtra} [options] `OPTIONAL` An object with properties that modifies the default behavior of the extraction and package creation process.
  * @returns {Promise<RPCS3PackageExtractionObjectExtra | false>}
  */
-export const extractPackagesForRPCS3Extra = async (win: BrowserWindow, packages: RB3PackageLikeType[], destFolderPath: DirPathLikeTypes, packageFolderName: string, options?: RPCS3ExtractionOptionsExtra): Promise<RPCS3PackageExtractionObjectExtra | false> => {
-  const { forceEncryption, songs, updates, updateAllSongs } = useDefaultOptions<RPCS3ExtractionOptionsExtra>(
+export const extractPackagesForRPCS3Extra = async (win: BrowserWindow, packages: (RB3File | RB3PackageLikeType)[], destFolderPath: DirPathLikeTypes, packageFolderName: string, options?: RPCS3ExtractionOptionsExtra): Promise<RPCS3PackageExtractionObjectExtra | false> => {
+  const { forceEncryption, songs, updates, updateAllSongs, overwritePackFolder } = useDefaultOptions<RPCS3ExtractionOptionsExtra>(
     {
       forceEncryption: 'disabled',
       overwritePackFolder: true,
@@ -86,12 +86,12 @@ export const extractPackagesForRPCS3Extra = async (win: BrowserWindow, packages:
     options
   )
 
-  sendRendererConsole(win, { packages, destFolderPath, packageFolderName, options })
+  // sendRendererConsole(win, { packages, destFolderPath, packageFolderName, options })
 
   const hasSongSelection = songs.length > 0
   let allSelectedSongs: SelectedSongForExtractionObject[] = []
 
-  if (hasSongSelection) allSelectedSongs = songs.map((song) => (typeof song === 'string' ? { type: 'songname', value: song } : song)) as SelectedSongForExtractionObject[]
+  if (hasSongSelection) allSelectedSongs = songs.map((song) => (typeof song === 'string' ? { type: 'songname', value: song } : song))
 
   const dest = pathLikeToDirPath(destFolderPath)
   let isDevhdd0 = false
@@ -105,26 +105,27 @@ export const extractPackagesForRPCS3Extra = async (win: BrowserWindow, packages:
   const usrdir = isDevhdd0 ? dest.gotoDir('game/BLUS30463/USRDIR') : dest
   const newFolder = usrdir.gotoDir(packageFolderName)
 
-  // if (newFolder.exists && !overwritePackFolder) {
-  //   if (!isDevhdd0 && dest.exists) await dest.deleteDir(true)
-  //   throw new Error(`Provided package folder name "${packageFolderName}" already exists.`)
-  // }
+  if (newFolder.exists && !overwritePackFolder) {
+    if (!isDevhdd0 && dest.exists) await dest.deleteDir(true)
+    throw new Error(`Provided package folder name "${packageFolderName}" already exists.`)
+  }
 
   const parser = new DTAParser()
 
-  const allPackages: SupportedRB3PackageFileType[] = packages.map((pack) => {
-    if (pack instanceof STFSFile || pack instanceof PKGFile) return pack
+  const allPackages: (SupportedRB3PackageFileType | RB3File)[] = packages.map((pack) => {
+    if (pack instanceof STFSFile || pack instanceof PKGFile || pack instanceof RB3File) return pack
     else {
       const filePath = pathLikeToFilePath(pack)
       if (filePath.ext === '.pkg') return new PKGFile(filePath)
+      else if (filePath.ext === '.rb3') return new RB3File(filePath)
       else return new STFSFile(filePath)
     }
   })
 
-  const tempFolders: (STFSExtractionTempFolderObject | PKGExtractionTempFolderObject)[] = []
+  const tempFolders: (STFSExtractionTempFolderObject | PKGExtractionTempFolderObject | RB3ExtractionTempFolderObject)[] = []
   for (const pack of allPackages) {
     const tempFolderPath = pathLikeToDirPath(temporaryDirectory())
-    const type = pack instanceof STFSFile ? 'stfs' : 'pkg'
+    const type = pack instanceof STFSFile ? 'stfs' : pack instanceof RB3File ? 'rb3' : 'pkg'
     const stat = await pack.stat()
 
     if (type === 'stfs' && stat.dta.songs.length === 0 && stat.dta.updates.length > 0) {
@@ -153,8 +154,22 @@ export const extractPackagesForRPCS3Extra = async (win: BrowserWindow, packages:
             path: pack.path.toJSON(),
             ...stat,
             dta: stat.dta.songs,
-            upgrades: stat.upgrades?.updates ?? undefined,
+            upgrades: (stat as STFSFileStatObject).upgrades?.updates ?? undefined,
           } as STFSFileJSONRepresentation,
+        })
+      } else if (type === 'rb3') {
+        tempFolders.push({
+          path: tempFolderPath,
+          type: 'rb3',
+          songs: stat.dta.songs.map((song) => {
+            let newSongname = ''
+            const hasUpdates = updates.find((val) => val.id.toString() === song.id.toString())
+            if (updates.length > 0 && hasUpdates) {
+              newSongname = hasUpdates.songname
+            }
+            return { songname: song.songname, newSongname, files: getUnpackedFilesPathFromRootExtraction('pkg', tempFolderPath, song.songname) }
+          }),
+          stat: (await pack.toJSON()) as RB3FileJSONRepresentation,
         })
       } else {
         tempFolders.push({
@@ -172,7 +187,7 @@ export const extractPackagesForRPCS3Extra = async (win: BrowserWindow, packages:
             path: pack.path.toJSON(),
             ...stat,
             dta: stat.dta.songs,
-            upgrades: stat.upgrades ? stat.upgrades.updates : undefined,
+            upgrades: (stat as PKGFileSongPackageStatObject).upgrades?.updates ?? undefined,
           } as PKGFileJSONRepresentation,
         })
       }
@@ -212,8 +227,22 @@ export const extractPackagesForRPCS3Extra = async (win: BrowserWindow, packages:
             path: pack.path.toJSON(),
             ...stat,
             dta: stat.dta.songs,
-            upgrades: stat.upgrades?.updates ?? undefined,
+            upgrades: (stat as STFSFileStatObject).upgrades?.updates ?? undefined,
           } as STFSFileJSONRepresentation,
+        })
+      } else if (type === 'rb3') {
+        tempFolders.push({
+          path: tempFolderPath,
+          type: 'rb3',
+          songs: filterdSelectedSongnames.map((song) => {
+            let newSongname = ''
+            const hasUpdates = updates.find((val) => val.id.toString() === song.id.toString())
+            if (updates.length > 0 && hasUpdates) {
+              newSongname = hasUpdates.songname
+            }
+            return { songname: song.songname, newSongname, files: getUnpackedFilesPathFromRootExtraction('pkg', tempFolderPath, song.songname) }
+          }),
+          stat: (await pack.toJSON()) as RB3FileJSONRepresentation,
         })
       } else {
         tempFolders.push({
@@ -231,7 +260,7 @@ export const extractPackagesForRPCS3Extra = async (win: BrowserWindow, packages:
             path: pack.path.toJSON(),
             ...stat,
             dta: stat.dta.songs,
-            upgrades: stat.upgrades ? stat.upgrades.updates : undefined,
+            upgrades: (stat as PKGFileSongPackageStatObject).upgrades?.updates ?? undefined,
           } as PKGFileJSONRepresentation,
         })
       }
@@ -303,7 +332,7 @@ export const extractPackagesForRPCS3Extra = async (win: BrowserWindow, packages:
         const oldPNGPath = song.files.png
         if (oldPNGPath.exists) {
           const newPNGPath = mainTempFolder.gotoFile(`${song.files.png.name}.png_ps3`)
-          if (temp.type === 'pkg') {
+          if (temp.type === 'pkg' || temp.type === 'rb3') {
             await oldPNGPath.copy(newPNGPath, true)
             await oldPNGPath.delete()
           } else {
@@ -357,10 +386,10 @@ export const extractPackagesForRPCS3Extra = async (win: BrowserWindow, packages:
         const newMIDIPath = mainTempFolder.gotoFile(`${song.songname}.mid.edat`)
 
         // MIDI is decrypted, just move changing the extension to EDAT
-        if (temp.type === 'stfs' && forceEncryption === 'disabled') {
+        if ((temp.type === 'stfs' || temp.type === 'rb3') && forceEncryption === 'disabled') {
           await oldMIDIPath.copy(newMIDIPath, true)
           await oldMIDIPath.delete()
-        } else if (temp.type === 'stfs' && forceEncryption === 'enabled') {
+        } else if ((temp.type === 'stfs' || temp.type === 'rb3') && forceEncryption === 'enabled') {
           const newDevkLic = EDATFile.genDevKLicHash(packageFolderName)
           const newContentID = await EDATFile.genContentID(`RBTOOLSEDAT${(await randomBytesFromRanges(6, ['numbers'])).toString()}`)
           sendBuzyLoad(win, { code: 'subtext', key: 'encryptingMIDIFileText', messageValues: { name: oldMIDIPath.fullname } })

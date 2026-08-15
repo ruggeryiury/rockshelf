@@ -9,6 +9,7 @@ export * from './lib/dta/dtaStruct'
 export * from './lib/dta/filterDTA'
 export * from './lib/dta/genNumericSongID'
 export * from './lib/dta/parseDTA'
+export * from './lib/dta/rockshelfDTAUpdates'
 export * from './lib/dta/sortDTA'
 export * from './lib/dta/stringifyDTA'
 

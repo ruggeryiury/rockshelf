@@ -106,7 +106,7 @@ export function MergePackageModal() {
                       setMessageBoxState({ message: { type: 'loading', code: 'mergePackages', messageValues: { toBeMergedPackageName: packages.packages[selPKG].packageData.packageName, mainPackageName: packages.packages[index].packageData.packageName } } })
 
                       try {
-                        const newPackages = await window.api.mergePackages(selPKG, index)
+                        const newPackages = await window.api.data.mergePackages(selPKG, index)
                         if (newPackages) {
                           resetMergePackageModalState()
                           setMyPackagesScreenState({ packagesCatalog: false })

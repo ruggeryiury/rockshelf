@@ -49,10 +49,10 @@ export function InstallRB3FileScreen() {
                 onClick={async () => {
                   setWindowState({ disableButtons: true })
                   try {
-                    const packagesData = await window.api.installRB3File(selectedRB3File.path.path, { packageName, packageFolderName, songs: selectedSongs })
-                    if (STRUCT_LOG) console.log('struct RPCS3SongPackagesDataExtra ["rbtools/src/lib/rpcs3/rpcs3GetSongPackagesStatsExtra.ts"]:', packagesData)
+                    const packagesData = await window.api.data.installRB3File(selectedRB3File.path.path, { packageName, packageFolderName, songs: selectedSongs })
+                    if (STRUCT_LOG) console.log('struct LightRB3SongPackagesData ["core/api/DataSyncAPI.ts"]:', packagesData)
                     if (packagesData) {
-                      const newCatalog = await window.api.sortAndFilterSongPackages(packagesCatalogSortBy)
+                      const newCatalog = await window.api.data.filterSongPackages(packagesCatalogSortBy)
                       if (STRUCT_LOG) console.log('struct SongPackagesFilterGenericObject [core/src/lib/dta/getDTACatalog.ts]', newCatalog)
                       setMyPackagesScreenState({ packagesCatalog: newCatalog })
                       setWindowState({ packages: packagesData })
@@ -66,7 +66,7 @@ export function InstallRB3FileScreen() {
                 {t('installPackage')}
               </button>
             </div>
-            <div className="w-full">
+            <div className="mr-2 w-full">
               <div className="mb-2 h-6 min-h-6 w-full flex-row! items-center rounded-b-sm bg-white/15 px-4">
                 <button
                   disabled={disableButtons}

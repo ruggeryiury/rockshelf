@@ -3,6 +3,7 @@ import { create } from 'zustand'
 export interface RBIconsSelectorStateProps {
   active: 'editPackage' | 'createNewPackage' | null
   selIcon: number
+  selCollection: 'rb1' | 'rbdlc' | 'rb2' | 'rb3'
 }
 
 export interface RBIconsSelectorStateActions {
@@ -29,6 +30,7 @@ export type RBIconsSelectorStateHook = RBIconsSelectorStateProps & RBIconsSelect
 const defaultState: RBIconsSelectorStateProps = {
   active: null,
   selIcon: -1,
+  selCollection: 'rb1',
 }
 
 export const useRBIconsSelectorState = create<RBIconsSelectorStateHook>()((set, get) => ({

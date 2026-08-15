@@ -9,7 +9,7 @@ export interface OSCommandBuiltOptions {
 }
 
 /**
- * Builds a command configured to specific operational systems.
+ * Builds a command configured to specific operating systems.
  * - - - -
  * @param {string} command The command you want to process.
  * @param {OSCommandBuiltOptions} [options] An object with properties that modifies the default behavior of the building process.

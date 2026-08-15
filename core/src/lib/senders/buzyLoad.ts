@@ -25,6 +25,13 @@ export interface BuzyLoadSubtextObject {
   messageValues?: Record<string, string>
 }
 
+/**
+ * Sends a message that controls the `BuzyLoadScreen` component on the renderer.
+ * - - - -
+ * @param {BrowserWindow} win The `BrowserWindow` instance of the event emitter.
+ * @param {BuzyLoadScreenSenderObject | BuzyLoadInitObject | BuzyLoadErrorObject | BuzyLoadSubtextObject} func An object with properties for specific commands on the `BuzyLoadScreen` component.
+ * @returns {true}
+ */
 export const sendBuzyLoad = (win: BrowserWindow, func: BuzyLoadScreenSenderObject | BuzyLoadInitObject | BuzyLoadErrorObject | BuzyLoadSubtextObject): true => {
   win.webContents.send('sendBuzyLoad', func)
   return true

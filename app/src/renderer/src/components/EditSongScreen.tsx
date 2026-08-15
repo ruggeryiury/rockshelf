@@ -4,11 +4,12 @@ import { useShallow } from 'zustand/shallow'
 import { useEditSongScreenState } from './EditSongScreen.state'
 import { useTranslation } from 'react-i18next'
 import { useWindowState } from '@renderer/stores/Window.state'
-import { AnimatedDiv, AnimatedSection, TransComponent, animate, formatMillisecondsToTimeDuration, rankCalculator, sleep, underscoreToUppercaseLetter } from '@renderer/lib.exports'
-import { useMyPackagesScreenState } from './MyPackagesScreen.state'
+import { AnimatedDiv, AnimatedSection, TransComponent, animate, sleep, underscoreToUppercaseLetter } from '@renderer/lib.exports'
 import { useEffect, useMemo, useRef } from 'react'
 import { CheckedBoxIcon, ChevronDownIcon, ChevronUpIcon, DiamondIcon, UncheckedBoxIcon } from '@renderer/assets/icons'
 import { DTA_STRUCT, EDIT_SONG_SCREEN_DROPDOWNS, EDIT_SONG_SCREEN_TABS, GAME_ORIGIN_HEADERS } from '@renderer/app/rockshelf.globals'
+import { usePackageDetailsState } from './PackageDetails.state'
+import { useSongDetailsState } from './SongDetails.state'
 
 export function EditSongScreen() {
   const { t } = useTranslation()
@@ -17,15 +18,15 @@ export function EditSongScreen() {
 
   const { disableButtons, packages } = useWindowState(useShallow((x) => ({ disableButtons: x.disableButtons, setWindowState: x.setWindowState, packages: x.packages })))
 
-  const { selPKG, selSong, artworkURL } = useMyPackagesScreenState(useShallow((x) => ({ selPKG: x.selPKG, selSong: x.selSong, isArtworkLoading: x.isArtworkLoading, artworkURL: x.artworkURL, setMyPackagesScreenState: x.setMyPackagesScreenState, songDetailsTab: x.songDetailsTab, songLeaderboards: x.songLeaderboards })))
+  const { pkgIndex, songs } = usePackageDetailsState(useShallow((x) => ({ pkgIndex: x.pkgIndex, songs: x.songs })))
+  const { songIndex, artworkURL } = useSongDetailsState(useShallow((x) => ({ songIndex: x.songIndex, artworkURL: x.artworkURL })))
 
-  const packageDetails = useMemo(() => (typeof packages === 'object' && selPKG > -1 && selPKG in packages.packages ? packages.packages[selPKG] : null), [packages, selPKG])
-
-  const songDetails = useMemo(() => (typeof packages === 'object' && selPKG > -1 && selPKG in packages.packages && selSong > -1 && packageDetails !== null && selSong in packageDetails.songs ? packageDetails.songs[selSong] : null), [packages, selPKG, selSong])
+  const packageDetails = useMemo(() => (typeof packages === 'object' && pkgIndex > -1 && pkgIndex in packages.packages ? packages.packages[pkgIndex] : null), [packages, pkgIndex])
+  const songDetails = useMemo(() => (typeof packages === 'object' && pkgIndex > -1 && pkgIndex in packages.packages && songIndex > -1 && packageDetails !== null && Array.isArray(songs) && songIndex in songs ? songs[songIndex] : null), [packages, pkgIndex, songIndex])
 
   const currentYear = useMemo(() => new Date().getFullYear(), [])
 
-  const active = useMemo(() => songDetails !== null && selSong > -1 && isEditingSong !== false, [songDetails, selSong, isEditingSong])
+  const active = useMemo(() => songDetails !== null && songIndex > -1 && isEditingSong !== false, [songDetails, songIndex, isEditingSong])
 
   // const formattedSongLength = useMemo(() => formatMillisecondsToTimeDuration(songLength), [songLength])
   const genreSelectorDivRef = useRef<HTMLDivElement>(null)

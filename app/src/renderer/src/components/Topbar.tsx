@@ -21,33 +21,31 @@ export function Topbar() {
         <LoadingIcon className="animate-spin" />
       </AnimatedDiv>
       <div className="mr-auto" />
-      {/* {import.meta.env.DEV && ( */}
       <>
-        <button className="h-full justify-center px-3 duration-200 hover:bg-green-500/50" title={t('openConsole')} onClick={async () => await window.api.openConsoleWindow()}>
+        <button className="h-full justify-center px-3 duration-200 hover:bg-green-500/50" title={t('openConsole')} onClick={async () => await window.api.open.consoleWindow()}>
           <ConsoleDebugIcon className="text-base" />
         </button>
-        <button className="h-full justify-center px-3 duration-200 hover:bg-green-500/50" title={t('openAppData')} onClick={async () => await window.api.openUserDataFolder()}>
+        <button className="h-full justify-center px-3 duration-200 hover:bg-green-500/50" title={t('openAppData')} onClick={async () => await window.api.open.fsDir('appUserDataDir')}>
           <FolderWithPlusIcon className="text-base" />
         </button>
         <div className="mx-2 h-full w-px py-1.5">
           <div className="bg-default-white/25 h-full w-full" />
         </div>
       </>
-      {/* )} */}
-      <button className="h-full justify-center px-3 duration-200 hover:bg-white/25 disabled:bg-black/50 disabled:text-neutral-600" disabled={disableTopbarButtons} onClick={async () => await window.api.windowMinimize()}>
+      <button className="h-full justify-center px-3 duration-200 hover:bg-white/25 disabled:bg-black/50 disabled:text-neutral-600" disabled={disableTopbarButtons} onClick={async () => await window.api.win.minimize()}>
         <MinimizeIcon className="text-base" />
       </button>
       {/* <button
         className="h-full justify-center px-3 duration-200 hover:bg-white/25 disabled:bg-black/50 disabled:text-neutral-600"
         disabled={disableTopbarButtons}
         onClick={async () => {
-          const isWinMax = await window.api.windowMaximize()
+          const isWinMax = await window.api.win.maximize()
           setWindowState({ isWinMaximized: isWinMax })
         }}
       >
         {isWinMaximized ? <RestoreWinIcon className="text-base" /> : <MaximizeIcon className="text-base" />}
       </button> */}
-      <button className="h-full justify-center px-3 duration-200 hover:bg-red-500 disabled:bg-black/50 disabled:text-neutral-600" disabled={disableTopbarButtons} onClick={async () => await window.api.windowClose()}>
+      <button className="h-full justify-center px-3 duration-200 hover:bg-red-500 disabled:bg-black/50 disabled:text-neutral-600" disabled={disableTopbarButtons} onClick={async () => await window.api.win.close()}>
         <CloseIcon className="text-base" />
       </button>
     </header>

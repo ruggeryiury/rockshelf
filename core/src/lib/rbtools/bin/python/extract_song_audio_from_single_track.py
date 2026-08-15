@@ -19,6 +19,13 @@ if __name__ == "__main__":
         type=str,
         required=True,
     )
+    parser.add_argument(
+        "-v",
+        "--apply_volume",
+        help="Applies the volume values from the song's DTA file.",
+        action=argparse.BooleanOptionalAction,
+        default=True,
+    )
 
     arg = parser.parse_args()
 
@@ -27,7 +34,8 @@ if __name__ == "__main__":
 
     output = Path(arg.dest_path).with_suffix('.wav')
 
-    audios = mogg_track_extractor(arg.mogg_file_path, tracks, False)
+    audios = mogg_track_extractor(
+        arg.mogg_file_path, tracks, False, arg.apply_volume)
     backing_channel_begin_index = 0
     backing_channels = tracks["backing"]['channels']
 

@@ -1,7 +1,7 @@
 import type { BinaryToTextEncoding } from 'node:crypto'
 import axios from 'axios'
 import { createHashFromBuffer, type FilePath, pathLikeToFilePath, type AllHashAlgorithms, type FilePathLikeTypes } from 'node-lib'
-import { depackDTAContents, genNumericSongID, genTracksCountArray, isRB3CompatibleDTA, parseDTA, sortDTA, stringifyDTA, type RB3CompatibleDTAFile, type SongDataCreationObject, type DTAStringifyOptions, type SongSortingTypes, type DTAFileUpdateObject, type DTAFileBatchUpdateObject, createDTA } from '../lib.exports'
+import { depackDTAContents, genNumericSongID, genTracksCountArray, isRB3CompatibleDTA, parseDTA, sortDTA, stringifyDTA, type RB3CompatibleDTAFile, type SongDataCreationObject, type DTAStringifyOptions, type SongSortingTypes, type DTAFileUpdateObject, type DTAFileBatchUpdateObject, createDTA, rockshelfDTAUpdates } from '../lib.exports'
 import { RBTools } from './RBTools'
 import { inspect } from 'node:util'
 import { isValidURL } from '../utils.exports'
@@ -256,35 +256,6 @@ export class DTAParser {
   }
 
   /**
-   * Applies Rock Band 3 Deluxe updates on songs found in the `songs` array and returns an array with IDs of songs where the updated imformations were applied.
-   * - - - -
-   * @param {boolean} [deleteNonAppliedUpdates] `OPTIONAL` Cleans the `updates` array when finished. Default is `true`.
-   * @param {boolean} [fetchUpdates] `OPTIONAL` If true, the function will fetch all updates from the Rock Band 3 Deluxe repository even if there's a local update file and save the new content. Default is `false`.
-   * @returns {Promise<string[]>}
-   */
-  async applyDXUpdatesOnSongs(deleteNonAppliedUpdates: boolean = true, fetchUpdates: boolean = false): Promise<string[]> {
-    const upatesLinks = ['https://raw.githubusercontent.com/hmxmilohax/rock-band-3-deluxe/refs/heads/develop/_ark/dx/song_updates/official_additional_metadata.dta', 'https://raw.githubusercontent.com/hmxmilohax/rock-band-3-deluxe/refs/heads/develop/_ark/dx/song_updates/unofficial_additional_metadata.dta', 'https://raw.githubusercontent.com/hmxmilohax/rock-band-3-deluxe/refs/heads/develop/_ark/dx/song_updates/metadata_updates.dta', 'https://raw.githubusercontent.com/hmxmilohax/rock-band-3-deluxe/refs/heads/develop/_ark/dx/song_updates/rbhp_upgrades.dta', 'https://raw.githubusercontent.com/hmxmilohax/rock-band-3-deluxe/refs/heads/develop/_ark/dx/song_updates/harms_and_updates.dta', 'https://raw.githubusercontent.com/hmxmilohax/rock-band-3-deluxe/refs/heads/develop/_ark/dx/song_updates/rb_plus_upgrades.dta', 'https://raw.githubusercontent.com/hmxmilohax/rock-band-3-deluxe/refs/heads/develop/_ark/dx/song_updates/vanilla.dta', 'https://raw.githubusercontent.com/hmxmilohax/rock-band-3-deluxe/refs/heads/develop/_ark/dx/song_updates/loading_phrases.dta']
-    const localUpdates = RBTools.dbFolder.gotoFile('updates.json')
-    if (!localUpdates.exists) fetchUpdates = true
-    if (fetchUpdates) {
-      const dta = await DTAParser.fromURL('https://raw.githubusercontent.com/hmxmilohax/rock-band-3-deluxe/refs/heads/develop/_ark/dx/song_updates/harmonix_upgrades.dta')
-      for (const link of upatesLinks) {
-        const parsedData = await DTAParser.fromURL(link)
-        dta.addUpdates(parsedData.updates)
-      }
-
-      for (let i = 0; i < dta.updates.length - 1; i++) dta.updates[i].author = 'Harmonix'
-      await localUpdates.write(JSON.stringify(dta.updates))
-    }
-    if (localUpdates.exists) {
-      const json = await localUpdates.readJSON<DTAFileUpdateObject>()
-      this.addUpdates(json)
-    }
-
-    return this.applyUpdatesToExistingSongs(deleteNonAppliedUpdates)
-  }
-
-  /**
    * Adds update values to all songs inside the `songs` array and returns an array with IDs of songs where the updated imformations were applied.
    * - - - -
    * @param {DTAFileBatchUpdateObject} update An object with updated values to be applied on all songs from the `songs` array.
@@ -297,11 +268,11 @@ export class DTAParser {
   }
 
   /**
-   * Inserts the updates found in the `updates` array on songs inside the `songs` array directly, if they're found. This function returns an array with IDs of songs where the updated imformations were applied.
+   * Inserts the updates found in the `updates` array on songs inside the `songs` array directly, if they're found. This function returns an array with IDs of songs where the updated informations were applied.
    * @param {boolean} [deleteNonAppliedUpdates] `OPTIONAL` Cleans the `updates` array when finished. Default is `true`.
    * @returns {string[]}
    */
-  applyUpdatesToExistingSongs(deleteNonAppliedUpdates = true): string[] {
+  applyUpdatesToExistingSongs(deleteNonAppliedUpdates: boolean = true): string[] {
     if (this.updates.length === 0) return [] as string[]
     const appliedUpdSongsIDs: string[] = []
     const unusedUpdates: DTAFileUpdateObject[] = []
@@ -338,6 +309,43 @@ export class DTAParser {
     if (deleteNonAppliedUpdates) this._cleanUpdates()
     else this.updates = unusedUpdates
     return appliedUpdSongsIDs
+  }
+
+  /**
+   * Apply exclusive Rockshelf values to correctly parse official songs.
+   */
+  private applyRockshelfUpdates() {
+    this.addUpdates(rockshelfDTAUpdates)
+  }
+
+  /**
+   * Applies Rock Band 3 Deluxe updates on songs found in the `songs` array and returns an array with IDs of songs where the updated imformations were applied.
+   * - - - -
+   * @param {boolean} [deleteNonAppliedUpdates] `OPTIONAL` Cleans the `updates` array when finished. Default is `true`.
+   * @param {boolean} [fetchUpdates] `OPTIONAL` If true, the function will fetch all updates from the Rock Band 3 Deluxe repository even if there's a local update file and save the new content. Default is `false`.
+   * @returns {Promise<string[]>}
+   */
+  async applyDXUpdatesOnSongs(deleteNonAppliedUpdates: boolean = true, fetchUpdates: boolean = false): Promise<string[]> {
+    const updatesLinks = ['https://raw.githubusercontent.com/hmxmilohax/rock-band-3-deluxe/refs/heads/develop/_ark/dx/song_updates/official_additional_metadata.dta', 'https://raw.githubusercontent.com/hmxmilohax/rock-band-3-deluxe/refs/heads/develop/_ark/dx/song_updates/unofficial_additional_metadata.dta', 'https://raw.githubusercontent.com/hmxmilohax/rock-band-3-deluxe/refs/heads/develop/_ark/dx/song_updates/metadata_updates.dta', 'https://raw.githubusercontent.com/hmxmilohax/rock-band-3-deluxe/refs/heads/develop/_ark/dx/song_updates/rbhp_upgrades.dta', 'https://raw.githubusercontent.com/hmxmilohax/rock-band-3-deluxe/refs/heads/develop/_ark/dx/song_updates/harms_and_updates.dta', 'https://raw.githubusercontent.com/hmxmilohax/rock-band-3-deluxe/refs/heads/develop/_ark/dx/song_updates/rb_plus_upgrades.dta', 'https://raw.githubusercontent.com/hmxmilohax/rock-band-3-deluxe/refs/heads/develop/_ark/dx/song_updates/vanilla.dta', 'https://raw.githubusercontent.com/hmxmilohax/rock-band-3-deluxe/refs/heads/develop/_ark/dx/song_updates/loading_phrases.dta']
+    const localUpdates = RBTools.dbFolder.gotoFile('updates.json')
+    if (!localUpdates.exists) fetchUpdates = true
+    if (fetchUpdates) {
+      const dta = await DTAParser.fromURL('https://raw.githubusercontent.com/hmxmilohax/rock-band-3-deluxe/refs/heads/develop/_ark/dx/song_updates/harmonix_upgrades.dta')
+      for (const link of updatesLinks) {
+        const parsedData = await DTAParser.fromURL(link)
+        dta.addUpdates(parsedData.updates)
+      }
+
+      for (let i = 0; i < dta.updates.length - 1; i++) dta.updates[i].author = 'Harmonix'
+      await localUpdates.write(JSON.stringify(dta.updates))
+    }
+    if (localUpdates.exists) {
+      const json = await localUpdates.readJSON<DTAFileUpdateObject>()
+      this.addUpdates(json)
+    }
+
+    this.applyRockshelfUpdates()
+    return this.applyUpdatesToExistingSongs(deleteNonAppliedUpdates)
   }
 
   // #region Patches
@@ -453,48 +461,53 @@ export class DTAParser {
     return patchedSongsID
   }
 
-  // patchFeaturingTexts(): string[] {
-  //   const patchedSongsID: string[] = []
-  //   const newSongs: RB3CompatibleDTAFile[] = []
+  /**
+   * Patches the `name` and `artist` values, identifying featured artists and placing them on the song's title, standartized. and returns an array with IDs of songs where the encoding patch were applied.
+   * - - - -
+   * @returns {string[]}
+   */
+  patchFeaturingTexts(): string[] {
+    const patchedSongsID: string[] = []
+    const newSongs: RB3CompatibleDTAFile[] = []
 
-  //   const FEAT_REGEX = /\s*(?:\(|\[)?\s*(feat\.?|ft\.?)\s+([^)|\]]+)(?:\)|\])?/i
+    const FEAT_REGEX = /\s*(?:\(|\[)?\s*(feat\.?|ft\.?|featuring\.?)\s+([^)|\]]+)(?:\)|\])?/i
 
-  //   for (const song of this.songs) {
-  //     let title = song.name.trim()
-  //     let artist = song.artist.trim()
-  //     let featuredArtist: string | null = null
+    for (const song of this.songs) {
+      let name = song.name.trim()
+      let artist = song.artist.trim()
+      let featuredArtist: string | null = null
 
-  //     const titleMatch = title.match(FEAT_REGEX)
+      const titleMatch = name.match(FEAT_REGEX)
 
-  //     if (titleMatch) {
-  //       featuredArtist = titleMatch[2].trim()
+      if (titleMatch) {
+        featuredArtist = titleMatch[2].trim()
 
-  //       title = title.replace(titleMatch[0], '').trim()
-  //     }
+        name = name.replace(titleMatch[0], '').trim()
+      }
 
-  //     if (!featuredArtist) {
-  //       const artistMatch = artist.match(FEAT_REGEX)
+      if (!featuredArtist) {
+        const artistMatch = artist.match(FEAT_REGEX)
 
-  //       if (artistMatch) {
-  //         featuredArtist = artistMatch[2].trim()
+        if (artistMatch) {
+          featuredArtist = artistMatch[2].trim()
 
-  //         // Remove featuring from artist
-  //         artist = artist.replace(artistMatch[0], '').trim()
-  //       }
-  //     }
-  //     if (featuredArtist) {
-  //       title = `${title} (ft. ${featuredArtist})`
-  //     }
+          // Remove featuring from artist
+          artist = artist.replace(artistMatch[0], '').trim()
+        }
+      }
+      if (featuredArtist) {
+        name = `${name} (ft. ${featuredArtist})`
+      }
 
-  //     if (song.name.toLowerCase() !== title.toLowerCase()) patchedSongsID.push(song.id)
-  //     if (song.artist.toLowerCase() !== artist.toLowerCase()) patchedSongsID.push(song.id)
+      if (song.name.toLowerCase() !== name.toLowerCase()) patchedSongsID.push(song.id)
+      if (song.artist.toLowerCase() !== artist.toLowerCase()) patchedSongsID.push(song.id)
 
-  //     newSongs.push({ ...song, name: title, artist })
-  //   }
+      newSongs.push({ ...song, name, artist })
+    }
 
-  //   this.songs = newSongs
-  //   return patchedSongsID
-  // }
+    this.songs = newSongs
+    return patchedSongsID
+  }
 
   /**
    * Sorts the `songs` array based on a song data value.

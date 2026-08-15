@@ -5,14 +5,63 @@ import { rsPackImage, type ParsedRSPackImageObject, type RSPackImageEncryptionSt
 import { getKeyFromMapValue, dateISOFormatToObject } from '../rbtools/utils.exports'
 
 export interface RSPackImageCreatorOptions {
+  /**
+   * The installation type of the song package. Tells if the song was created/installed through Rockshelf or other methods.
+   *
+   * - `0` = Created/installed through Rockshelf.
+   * - `1` = Created/installed through other methods (probably installed directly on RPCS3 using PKG files/folder).
+   */
   type?: RSPackImageTypeValues
+  /**
+   * The source of the song package.
+   *
+   * - `0` = Merged (Different packages file types joined).
+   * - `1` = STFS (Package created from a single CON file).
+   * - `2` = PKG (Package created from a single PKG file).
+   */
   source?: RSPackImageSourceValues
+  /**
+   * The encryption status of the song package.
+   *
+   * - `0` = Unknown (Might have both encrypted and decrypted files).
+   * - `1` = Encrypted.
+   * - `2` = Decrypted.
+   * - `3` = Mixed (Rarely used).
+   */
   encryptionStatus?: RSPackImageEncryptionStatusValues
+  /**
+   * The category of the song package. The catogies are pre-defined in Rockshelf.
+   *
+   * - `0` = "Other Packages"
+   * - `1` = "Author Packages"
+   * - `2` = "Artist/Band Packages"
+   * - `3` = "Full Album Packages"
+   * - `4` = "Singles"
+   * - `5` = "Rock Band Packages"
+   * - `6` = "Guitar Hero Packages"
+   * - `7` = "Official Packages"
+   * - `8` = "Unofficial Packages"
+   * - `9` = "Themed Packages"
+   * - `10` = "Seasonal Packages"
+   * - `11` = "Debug"
+   */
   category?: RSPackImagePackageCategoryValues
+  /**
+   * The name of the song package.
+   */
   packageName?: string
+  /**
+   * The song package creation date encoded as a ISO string.
+   */
   creationDate?: string
 }
 
+/**
+ * Removes the extra bytes from a Rockshelf Pack Image file buffer, returning the buffer with only raw JPEG file data.
+ * - - - -
+ * @param {Buffer} input The Rockshelf Pack Image file buffer you want to extract the JPEG data from.
+ * @returns {Promise<Buffer>}
+ */
 export const removeRSDataFromBuffer = async (input: Buffer): Promise<Buffer> => {
   const reader = BinaryReader.fromBuffer(input)
   const imageFileSize = reader.length
@@ -33,7 +82,26 @@ export const removeRSDataFromBuffer = async (input: Buffer): Promise<Buffer> => 
   return await reader.read(imageFileSize - footerSizeLength)
 }
 
-export const createRSPackImage = async (imageFilePathOrBuffer: FilePathLikeTypes | Buffer, destPath: FilePathLikeTypes, options?: RSPackImageCreatorOptions): Promise<{ path: FilePath; header: ParsedRSPackImageObject }> => {
+export interface RockshelfPackImageCreatorReturnObject {
+  /**
+   * The path of the new Rockshelf Pack Image file.
+   */
+  path: FilePath
+  /**
+   * An object with values from the extra bytes of the Rockshelf Pack Image file.
+   */
+  header: ParsedRSPackImageObject
+}
+
+/**
+ * Creates a Rockshelf Pack Image file.
+ * - - - -
+ * @param {FilePathLikeTypes | Buffer} imageFilePathOrBuffer The path to an image file, or an image file buffer.
+ * @param {FilePathLikeTypes} destPath The destination path of the new Rockshelf Pack Image file.
+ * @param {RSPackImageCreatorOptions | undefined} [options] `OPTIONAL` An object with values that tweaks the file creation process.
+ * @returns {Promise<RockshelfPackImageCreatorReturnObject>}
+ */
+export const createRSPackImage = async (imageFilePathOrBuffer: FilePathLikeTypes | Buffer, destPath: FilePathLikeTypes, options?: RSPackImageCreatorOptions): Promise<RockshelfPackImageCreatorReturnObject> => {
   let img: FilePath | Buffer
   if (Buffer.isBuffer(imageFilePathOrBuffer)) img = await removeRSDataFromBuffer(imageFilePathOrBuffer)
   else img = pathLikeToFilePath(imageFilePathOrBuffer)

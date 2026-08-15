@@ -101,10 +101,6 @@ export class ImageFile {
     return `data:${mime};base64,${imgBuffer.toString('base64')}`
   }
 
-  static async bufferStat(imgBuffer: Buffer): Promise<ImageFileStatPythonObject> {
-    return await PythonAPI.imageBufferStat(imgBuffer)
-  }
-
   // #region Constructor
 
   /**
@@ -143,6 +139,15 @@ export class ImageFile {
   async stat(): Promise<ImageFileStatPythonObject> {
     this._checkExistence()
     return await PythonAPI.imageFileStat(this.path)
+  }
+
+  /**
+   * Returns an object with stats of the image file buffer.
+   * - - - -
+   * @returns {Promise<ImageFileStatPythonObject>}
+   */
+  static async bufferStat(imgBuffer: Buffer): Promise<ImageFileStatPythonObject> {
+    return await PythonAPI.imageBufferStat(imgBuffer)
   }
 
   /**

@@ -5,6 +5,12 @@ import { temporaryFile } from 'tempy'
 import { DTAParser, EDATFile, TextureFile } from '../rbtools'
 import { rpcs3GenSongPackageManifest, getOfficialSongPackageStatsFromHash } from '../rbtools/lib.exports'
 
+/**
+ * Gets information about a specific song package from its folder path.
+ * - - - -
+ * @param {DirPathLikeTypes} packagePath The path to an installed song package folder on the RPCS3's USRDIR folder.
+ * @returns {Promise<RPCS3SongPackagesObjectExtra | undefined>}
+ */
 export const getSongPackageStatsFromFolder = async (packagePath: DirPathLikeTypes): Promise<RPCS3SongPackagesObjectExtra | undefined> => {
   const packageDir = pathLikeToDirPath(packagePath)
   const dtaFilePath = packageDir.gotoFile('songs/songs.dta')
@@ -79,5 +85,5 @@ export const getSongPackageStatsFromFolder = async (packagePath: DirPathLikeType
     songs: parsedData.songs,
     packageData,
     official,
-  } as RPCS3SongPackagesObjectExtra
+  }
 }

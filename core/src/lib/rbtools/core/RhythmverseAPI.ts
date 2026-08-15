@@ -595,7 +595,7 @@ export class RhythmverseAPI {
    * @param {boolean} debug `OPTIONAL` Logs the downloading percentage of the songs on the console. Default is `false`.
    * @returns {Promise<FilePath>}
    */
-  static async downloadResults(searchResults: RawRhythmverseResponse | ProcessedRhythmverseObject, destPath: DirPathLikeTypes, debug = false): Promise<FilePath[]> {
+  static async downloadResults(searchResults: RawRhythmverseResponse | ProcessedRhythmverseObject, destPath: DirPathLikeTypes, debug: boolean = false): Promise<FilePath[]> {
     const files: FilePath[] = []
     let results: ProcessedRhythmverseObject
     if ('status' in searchResults) results = this.processRawData(searchResults)

@@ -5,7 +5,6 @@ import { createRSPackImage, parseRSPackImageFile, type ParsedRSPackImageObject }
 import { temporaryFile } from 'tempy'
 import { RBTools, EDATFile, DTAParser, TextureFile } from '../rbtools'
 import { type RB3CompatibleDTAFile, type OfficialSongPackageStats, type RPCS3SongPackageStatsOptions, isRPCS3Devhdd0PathValid, rpcs3GenSongPackageManifest, getOfficialSongPackageStatsFromHash } from '../rbtools/lib.exports'
-import { BrowserWindow } from 'electron'
 
 // #region Types
 

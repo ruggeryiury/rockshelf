@@ -1,0 +1,775 @@
+(
+   'comeasyouare_cover'
+   (
+      'name'
+      "Come As You Are (Cover)"
+   )
+   (
+      'artist'
+      "Nirvana"
+   )
+   ('master' 'FALSE')
+   ('context' 36)
+   (
+      'song'
+      (
+         'name'
+         "songs/comeasyouare_cover/comeasyouare_cover"
+      )
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1 2 3 4)
+            )
+            ('bass' (5 6))
+            (
+               'guitar'
+               (7 8)
+            )
+            (
+               'vocals'
+               (9 10)
+            )
+         )
+      )
+      ('vocal_parts' 1)
+      (
+         'pans'
+         (0.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0)
+      )
+      (
+         'vols'
+         (0.0 0.0 0.0 -3.0 -3.0 -4.5 -4.5 -4.0 -4.0 -1.0 -1.0 -10.0 -10.0)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 -1 -1 -1 1 1 -1 -1 -1 -1)
+      )
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+      (midi_file "songs/comeasyouare_cover/comeasyouare_cover.mid")
+   )
+   ('song_scroll_speed' 2300)
+   ('bank' 'sfx/tambourine_bank.milo')
+   ('anim_tempo' 'kTempoMedium')
+   ('preview' 19500 37000)
+   (
+      'rank'
+      ('drum' 142)
+      ('guitar' 173)
+      ('bass' 178)
+      ('vocals' 100)
+      ('band' 593)
+   )
+   ('genre' 'grunge')
+   ('decade' 'the90s')
+   ('vocal_gender' 'male')
+   ('song_tonality' 1)
+   ('vocal_tonic_note' 4)
+   ('format' 3)
+   ('version' 2)
+   (
+      'fake'
+      {'==' $SONG_VERSION 0}
+   )
+   ('downloaded' 'TRUE')
+   ('game_origin' 'rb1_dlc')
+   ('song_id' 3620003)
+   ('rating' 2)
+   ('short_version' 0)
+   ('song_length' 220746)
+   ('album_art' 'TRUE')
+   ('year_released' 1991)
+   (
+      'author'
+      "Harmonix"
+   )
+   ('base_points' 0)
+;                K    SNARE     CYMBALS     BASS       GUITAR     VOCALS     TRKS
+;(tuning_offset_cents 0)
+;(extra_authoring ^^^) ; flag to designate that a song has extra authoring (files, etc.) for a specific project(s)
+;(pack_name "^^^Moonwalk (or die...) 3-pack^^^")  ; OPTIONAL
+;(encoding latin1) ; OPTIONAL, required if name, artist, album_name, or pack_name contain non-ascii characters
+)
+
+(
+   'behindblueeyes_cover'
+   (
+      'name'
+      "Behind Blue Eyes (Cover)"
+   )
+   (
+      'artist'
+      "The Who"
+   )
+   ('master' 'FALSE')
+   ('context' 32)
+   (
+      'song'
+      (
+         'name'
+         "songs/behindblueeyes_cover/behindblueeyes_cover"
+      )
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1 2 3 4)
+            )
+            ('bass' 5)
+            (
+               'guitar'
+               (6 7)
+            )
+            (
+               'vocals'
+               (8 9)
+            )
+         )
+      )
+      ('vocal_parts' 1)
+      (
+         'pans'
+         (0.0 -1.0 1.0 -1.0 1.0 0.0 -1.0 1.0 -1.0 1.0 -1.0 1.0)
+      )
+      (
+         'vols'
+         (0.0 0.0 0.0 -1.5 -1.5 -4.5 -4.5 -4.5 -3.0 -3.0 -8.0 -8.0)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 -1 -1 1 1 -1 -1 -1 -1)
+      )
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+      (midi_file "songs/behindblueeyes_cover/behindblueeyes_cover.mid")
+   )
+   ('song_scroll_speed' 2300)
+   ('bank' 'sfx/tambourine_bank.milo')
+   ('anim_tempo' 'kTempoMedium')
+   ('preview' 16000 46000)
+   (
+      'rank'
+      ('drum' 94)
+      ('guitar' 240)
+      ('bass' 62)
+      ('vocals' 125)
+      ('band' 521)
+   )
+   ('genre' 'classicrock')
+   ('decade' 'the70s')
+   ('vocal_gender' 'male')
+   ('song_tonality' 1)
+   ('vocal_tonic_note' 4)
+   ('format' 3)
+   ('version' 2)
+   (
+      'fake'
+      {'==' $SONG_VERSION 0}
+   )
+   ('downloaded' 'TRUE')
+   ('game_origin' 'rb1_dlc')
+   ('song_id' 3620006)
+   ('rating' 1)
+   ('short_version' 0)
+   ('song_length' 223242)
+   ('album_art' 'TRUE')
+   ('year_released' 1971)
+   (
+      'author'
+      "Harmonix"
+   )
+   ('base_points' 0)
+;                K     SNARE   CYMBALS   BASS  GUITAR    VOCALS     TRKS
+;(tuning_offset_cents 0)
+;(extra_authoring ^^^) ; flag to designate that a song has extra authoring (files, etc.) for a specific project(s)
+;(pack_name "^^^Moonwalk (or die...) 3-pack^^^")  ; OPTIONAL
+;(encoding latin1) ; OPTIONAL, required if name, artist, album_name, or pack_name contain non-ascii characters
+)
+
+(
+   'brownsugar'
+   (
+      'name'
+      "Brown Sugar (Cover)"
+   )
+   (
+      'artist'
+      "The Rolling Stones"
+   )
+   ('master' 'FALSE')
+   ('context' 34)
+   (
+      'song'
+      (
+         'name'
+         "songs/brownsugar/brownsugar"
+      )
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1 2 3 4)
+            )
+            ('bass' 5)
+            (
+               'guitar'
+               (6 7)
+            )
+            (
+               'vocals'
+               (8 9)
+            )
+         )
+      )
+      ('vocal_parts' 1)
+      (
+         'pans'
+         (0.0 -1.0 1.0 -1.0 1.0 0.0 -1.0 1.0 -1.0 1.0 -1.0 1.0)
+      )
+      (
+         'vols'
+         (0.0 0.0 0.0 -3.0 -3.0 -4.5 -4.5 -4.5 -3.0 -3.0 -8.0 -8.0)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 -1 -1 1 1 -1 -1 -1 -1)
+      )
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+      (midi_file "songs/brownsugar/brownsugar.mid")
+   )
+   ('song_scroll_speed' 2300)
+   ('bank' 'sfx/tambourine_bank.milo')
+   ('anim_tempo' 'kTempoMedium')
+   ('preview' 49200 64300)
+   (
+      'rank'
+      ('drum' 120)
+      ('guitar' 196)
+      ('bass' 191)
+      ('vocals' 136)
+      ('band' 643)
+   )
+   ('genre' 'classicrock')
+   ('decade' 'the70s')
+   ('vocal_gender' 'male')
+   ('song_tonality' 0)
+   ('vocal_tonic_note' 0)
+   ('format' 3)
+   ('version' 2)
+   (
+      'fake'
+      {'==' $SONG_VERSION 0}
+   )
+   ('downloaded' 'TRUE')
+   ('game_origin' 'rb1_dlc')
+   ('song_id' 3620004)
+   ('rating' 2)
+   ('short_version' 0)
+   ('song_length' 236583)
+   ('album_art' 'TRUE')
+   ('year_released' 1971)
+   (
+      'author'
+      "Harmonix"
+   )
+   ('base_points' 0)
+;                K       SN     CYMBALS    BASS   GUITAR     VOCALS     TRACKS
+;(tuning_offset_cents 0)
+;(extra_authoring ^^^) ; flag to designate that a song has extra authoring (files, etc.) for a specific project(s)
+;(pack_name "^^^Moonwalk (or die...) 3-pack^^^")  ; OPTIONAL
+;(encoding latin1) ; OPTIONAL, required if name, artist, album_name, or pack_name contain non-ascii characters
+)
+
+(
+   'kingnothing'
+   (
+      'name'
+      "King Nothing"
+   )
+   (
+      'artist'
+      "Metallica"
+   )
+   ('master' 'TRUE')
+   ('context' 428)
+   (
+      'song'
+      (
+         'name'
+         "songs/kingnothing/kingnothing"
+      )
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1 2 3 4)
+            )
+            ('bass' 5)
+            (
+               'guitar'
+               (6 7)
+            )
+            (
+               'vocals'
+               (8 9)
+            )
+         )
+      )
+      ('vocal_parts' 2)
+      (
+         'pans'
+         (0.0 -1.0 1.0 -1.0 1.0 0.0 -1.0 1.0 -1.0 1.0 -1.0 1.0)
+      )
+      (
+         'vols'
+         (-1.0 -3.5 -3.5 -2.5 -2.5 -3.0 -2.0 -2.0 -4.0 -4.0 -3.0 -3.0)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 -1 -1 1 1 -1 -1 -1 -1)
+      )
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+      (midi_file "songs/kingnothing/kingnothing.mid")
+   )
+   ('song_scroll_speed' 2300)
+   ('bank' 'sfx/tambourine_bank.milo')
+   ('anim_tempo' 'kTempoMedium')
+   ('preview' 64600 133500)
+   (
+      'rank'
+      ('drum' 175)
+      ('guitar' 217)
+      ('bass' 328)
+      ('vocals' 240)
+      ('band' 240)
+   )
+   (solo (guitar))
+   ('genre' 'metal')
+   ('decade' 'the90s')
+   ('vocal_gender' 'male')
+   ('song_tonality' 1)
+   ('vocal_tonic_note' 3)
+   ('format' 3)
+   ('version' 2)
+   (
+      'fake'
+      {'==' $SONG_VERSION 0}
+   )
+   ('downloaded' 'TRUE')
+   ('game_origin' 'rb1_dlc')
+   ('song_id' 3620001)
+   ('rating' 2)
+   ('short_version' 0)
+   ('song_length' 334681)
+   ('album_art' 'TRUE')
+   ('year_released' 1996)
+   (
+      'album_name'
+      "Load"
+   )
+   ('album_track_number' 5)
+   (
+      'author'
+      "Harmonix, r0bd0g"
+   )
+   ('base_points' 656178)
+;                 K      SN       CYMBALS    BS     GUITAR     VOCALS     TRACKS
+;(tuning_offset_cents 0)
+;(extra_authoring ^^^) ; flag to designate that a song has extra authoring (files, etc.) for a specific project(s)
+;(pack_name "^^^Moonwalk (or die...) 3-pack^^^")  ; OPTIONAL
+;(encoding latin1) ; OPTIONAL, required if name, artist, album_name, or pack_name contain non-ascii characters
+)
+
+(
+   'fuel'
+   (
+      'name'
+      "Fuel"
+   )
+   (
+      'artist'
+      "Metallica"
+   )
+   ('master' 'TRUE')
+   ('context' 155)
+   (
+      'song'
+      (
+         'name'
+         "songs/fuel/fuel"
+      )
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1 2 3)
+            )
+            ('bass' 4)
+            (
+               'guitar'
+               (5 6)
+            )
+            (
+               'vocals'
+               (7 8)
+            )
+         )
+      )
+      ('vocal_parts' 3)
+      (
+         'pans'
+         (0.0 0.0 -1.0 1.0 0.0 -1.0 1.0 -1.0 1.0 -1.0 1.0)
+      )
+      (
+         'vols'
+         (-1.0 -1.0 -2.0 -2.0 -3.0 -4.0 -4.0 -3.0 -3.0 -3.0 -3.0)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 -1 1 1 -1 -1 -1 -1)
+      )
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+      (midi_file "songs/fuel/fuel.mid")
+   )
+   ('song_scroll_speed' 2300)
+   ('bank' 'sfx/tambourine_bank.milo')
+   ('anim_tempo' 'kTempoMedium')
+   ('preview' 58200 83000)
+   (
+      'rank'
+      ('drum' 324)
+      ('guitar' 315)
+      ('bass' 375)
+      ('vocals' 148)
+      ('band' 334)
+   )
+   (solo (guitar))
+   ('genre' 'metal')
+   ('decade' 'the90s')
+   ('vocal_gender' 'male')
+   ('song_tonality' 1)
+   ('vocal_tonic_note' 3)
+   ('format' 3)
+   ('version' 2)
+   (
+      'fake'
+      {'==' $SONG_VERSION 0}
+   )
+   ('downloaded' 'TRUE')
+   ('game_origin' 'rb1_dlc')
+   ('song_id' 3620000)
+   ('rating' 2)
+   ('short_version' 0)
+   ('song_length' 271227)
+   ('album_art' 'TRUE')
+   ('year_released' 1997)
+   (
+      'album_name'
+      "Reload"
+   )
+   ('album_track_number' 1)
+   (
+      'author'
+      "Harmonix, r0bd0g"
+   )
+   ('base_points' 653161)
+;                K      SN    CYMBALS    BS     GUITAR     VOCALS     TRACKS
+;(tuning_offset_cents 0)
+;(extra_authoring ^^^) ; flag to designate that a song has extra authoring (files, etc.) for a specific project(s)
+;(pack_name "^^^Moonwalk (or die...) 3-pack^^^")  ; OPTIONAL
+;(encoding latin1) ; OPTIONAL, required if name, artist, album_name, or pack_name contain non-ascii characters
+)
+
+(
+   'laventurier'
+   (
+      'name'
+      "L'Aventurier"
+   )
+   (
+      'artist'
+      "Indochine"
+   )
+   ('master' 'TRUE')
+   ('context' 170)
+   (
+      'song'
+      (
+         'name'
+         "songs/laventurier/laventurier"
+      )
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1 2 3 4 5)
+            )
+            ('bass' 6)
+            (
+               'guitar'
+               (7 8)
+            )
+            (
+               'vocals'
+               (9 10)
+            )
+         )
+      )
+      ('vocal_parts' 1)
+      (
+         'pans'
+         (-1.0 1.0 -1.0 1.0 -1.0 1.0 0.0 -1.0 1.0 -1.0 1.0 -1.0 1.0)
+      )
+      (
+         'vols'
+         (-0.5 -0.5 -1.0 -1.0 -1.5 -1.5 -0.5 -3.5 -3.5 -3.0 -3.0 -5.0 -5.0)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 -1 -1 -1 1 1 -1 -1 -1 -1)
+      )
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+      (midi_file "songs/laventurier/laventurier.mid")
+   )
+   ('song_scroll_speed' 2300)
+   ('bank' 'sfx/tambourine_bank.milo')
+   ('anim_tempo' 'kTempoMedium')
+   ('preview' 33200 56158)
+   (
+      'rank'
+      ('drum' 208)
+      ('guitar' 137)
+      ('bass' 120)
+      ('vocals' 118)
+      ('band' 180)
+   )
+   ('genre' 'new_wave')
+   ('decade' 'the80s')
+   ('vocal_gender' 'male')
+   ('song_tonality' 1)
+   ('vocal_tonic_note' 8)
+   ('format' 3)
+   ('version' 2)
+   (
+      'fake'
+      {'==' $SONG_VERSION 0}
+   )
+   ('downloaded' 'TRUE')
+   ('game_origin' 'rb1_dlc')
+   ('song_id' 3620002)
+   ('rating' 2)
+   ('short_version' 0)
+   ('song_length' 232868)
+   ('album_art' 'TRUE')
+   ('year_released' 1982)
+   (
+      'album_name'
+      "L'Aventurier"
+   )
+   ('album_track_number' 1)
+   (
+      'author'
+      "Harmonix"
+   )
+   ('base_points' 520877)
+;                ---K---   ---SN--   --CYM--   BS   --GTR--   --VOX--  --TRKS--
+;(tuning_offset_cents 0)
+;(extra_authoring ^^^) ; flag to designate that a song has extra authoring (files, etc.) for a specific project(s)
+;(pack_name "^^^Moonwalk (or die...) 3-pack^^^")  ; OPTIONAL
+;(encoding latin1) ; OPTIONAL, required if name, artist, album_name, or pack_name contain non-ascii characters
+)
+
+(
+   'wecarealot_cover'
+   (
+      'name'
+      "We Care a Lot (Cover)"
+   )
+   (
+      'artist'
+      "Faith No More"
+   )
+   ('master' 'FALSE')
+   ('context' 51)
+   (
+      'song'
+      (
+         'name'
+         "songs/wecarealot_cover/wecarealot_cover"
+      )
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1 2 3 4 5)
+            )
+            (
+               'bass'
+               (6 7)
+            )
+            (
+               'guitar'
+               (8 9)
+            )
+            (
+               'vocals'
+               (10 11)
+            )
+         )
+      )
+      ('vocal_parts' 1)
+      (
+         'pans'
+         (-1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0)
+      )
+      (
+         'vols'
+         (-1.0 -1.0 -1.0 -1.0 -1.5 -1.5 -0.5 -0.5 -1.0 -1.0 -1.0 -1.0 -3.0 -3.0)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 -1 -1 -1 -1 1 1 -1 -1 -1 -1)
+      )
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+      (midi_file "songs/wecarealot_cover/wecarealot_cover.mid")
+   )
+   ('song_scroll_speed' 2300)
+   ('bank' 'sfx/tambourine_bank.milo')
+   ('anim_tempo' 'kTempoMedium')
+   ('preview' 31500 60000)
+   (
+      'rank'
+      ('drum' 113)
+      ('guitar' 190)
+      ('bass' 131)
+      ('vocals' 80)
+      ('band' 514)
+   )
+   ('genre' 'rock')
+   ('decade' 'the80s')
+   ('vocal_gender' 'male')
+   ('song_tonality' 1)
+   ('vocal_tonic_note' 4)
+   ('format' 3)
+   ('version' 2)
+   (
+      'fake'
+      {'==' $SONG_VERSION 0}
+   )
+   ('downloaded' 'TRUE')
+   ('game_origin' 'rb1_dlc')
+   ('song_id' 3620005)
+   ('rating' 2)
+   ('short_version' 0)
+   ('song_length' 246340)
+   ('album_art' 'TRUE')
+   ('year_released' 1987)
+   (
+      'author'
+      "Harmonix"
+   )
+   ('base_points' 0)
+;                 KICK      SNARE   CYMBALS      BASS    GUITAR    VOCALS     TRKS
+;(tuning_offset_cents 0)
+;(extra_authoring ^^^) ; flag to designate that a song has extra authoring (files, etc.) for a specific project(s)
+;(pack_name "^^^Moonwalk (or die...) 3-pack^^^")  ; OPTIONAL
+;(encoding latin1) ; OPTIONAL, required if name, artist, album_name, or pack_name contain non-ascii characters
+)

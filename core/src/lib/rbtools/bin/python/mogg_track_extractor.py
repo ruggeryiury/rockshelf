@@ -17,44 +17,44 @@ class DrumsTracksStructure(TypedDict):
         "drum_layout_kit", "drum_layout_kit_kick", "drum_layout_kit_kick_snare"
     ]
     array: Optional[List[int]]
-    pan: List[int]
-    vol: List[int]
+    pan: List[float]
+    vol: List[float]
     hasSepDrums: bool
     hasSolo: bool
     kickEnabled: bool
     kickChannels: int
-    kickPan: List[int]
-    kickVol: List[int]
+    kickPan: List[float]
+    kickVol: List[float]
     snareEnabled: bool
     snareChannels: int
-    snarePan: List[int]
-    snareVol: List[int]
+    snarePan: List[float]
+    snareVol: List[float]
     kitEnabled: bool
     kitChannels: int
-    kitPan: List[int]
-    kitVol: List[int]
+    kitPan: List[float]
+    kitVol: List[float]
 
 
 class InstrumentTracksStructure(TypedDict):
     enabled: bool
     channels: int
     array: Optional[List[int]]
-    pan: List[int]
-    vol: List[int]
+    pan: List[float]
+    vol: List[float]
     hasSolo: bool
 
 
 class CrowdTracksStructure(TypedDict):
     enabled: bool
-    array: Optional[List[int]]
-    vol: Optional[int]
+    array: Optional[List[float]]
+    vol: Optional[float]
 
 
 class AudioFileTracksStructureDocument(TypedDict):
     allTracksCount: int
-    defaultPans: List[int]
-    defaultVols: List[int]
-    defaultCores: List[int]
+    defaultPans: List[float]
+    defaultVols: List[float]
+    defaultCores: List[float]
     drum: DrumsTracksStructure
     bass: InstrumentTracksStructure
     guitar: InstrumentTracksStructure
@@ -68,6 +68,7 @@ def mogg_track_extractor(
     mogg_file_path: str,
     tracks: AudioFileTracksStructureDocument,
     output_crowd: bool = False,
+    apply_volume: bool = False
 ) -> List[AudioSegment]:
 
     fin = open(mogg_file_path, "rb")
@@ -110,6 +111,11 @@ def mogg_track_extractor(
                 .append(AudioSegment.silent(duration, frame_rate=frame_rate))
                 .pan(tracks["drum"]["pan"][1])
             )
+
+            if apply_volume:
+                drums_left = drums_left + tracks["drum"]["vol"][0]
+                drums_right = drums_right + tracks["drum"]["vol"][1]
+
             drums_audio = (
                 AudioSegment.silent(duration, frame_rate=frame_rate)
                 .set_channels(2)
@@ -126,6 +132,10 @@ def mogg_track_extractor(
                 .set_sample_width(2)
                 .overlay(oggtracks[i])
             )
+
+            if apply_volume:
+                kick_audio = kick_audio + tracks["drum"]["vol"][0]
+
             exports.append(kick_audio)
             kit_left = (
                 oggtracks[i]
@@ -137,6 +147,11 @@ def mogg_track_extractor(
                 .append(AudioSegment.silent(duration, frame_rate=frame_rate))
                 .pan(tracks["drum"]["pan"][2])
             )
+
+            if apply_volume:
+                kit_left = kit_left + tracks["drum"]["vol"][1]
+                kit_right = kit_right + tracks["drum"]["vol"][2]
+
             kit_audio = (
                 AudioSegment.silent(duration, frame_rate=frame_rate)
                 .set_channels(2)
@@ -153,6 +168,10 @@ def mogg_track_extractor(
                 .set_sample_width(2)
                 .overlay(oggtracks[i])
             )
+
+            if apply_volume:
+                kick_audio = kick_audio + tracks["drum"]["vol"][0]
+
             exports.append(kick_audio)
 
             snare_audio = (
@@ -161,6 +180,10 @@ def mogg_track_extractor(
                 .set_sample_width(2)
                 .overlay(oggtracks[i + 1])
             )
+
+            if apply_volume:
+                snare_audio = snare_audio + tracks["drum"]["vol"][1]
+
             exports.append(snare_audio)
 
             kit_left = (
@@ -173,6 +196,11 @@ def mogg_track_extractor(
                 .append(AudioSegment.silent(duration, frame_rate=frame_rate))
                 .pan(tracks["drum"]["pan"][3])
             )
+
+            if apply_volume:
+                kit_left = kit_left + tracks["drum"]["vol"][2]
+                kit_right = kit_right + tracks["drum"]["vol"][3]
+
             kit_audio = (
                 AudioSegment.silent(duration, frame_rate=frame_rate)
                 .set_channels(2)
@@ -189,6 +217,10 @@ def mogg_track_extractor(
                 .set_sample_width(2)
                 .overlay(oggtracks[i])
             )
+
+            if apply_volume:
+                kick_audio = kick_audio + tracks["drum"]["vol"][0]
+
             exports.append(kick_audio)
 
             snare_left = (
@@ -201,6 +233,11 @@ def mogg_track_extractor(
                 .append(AudioSegment.silent(duration, frame_rate=frame_rate))
                 .pan(tracks["drum"]["pan"][2])
             )
+
+            if apply_volume:
+                snare_left = snare_left + tracks["drum"]["vol"][1]
+                snare_right = snare_right + tracks["drum"]["vol"][2]
+
             snare_audio = (
                 AudioSegment.silent(duration, frame_rate=frame_rate)
                 .set_channels(2)
@@ -220,6 +257,11 @@ def mogg_track_extractor(
                 .append(AudioSegment.silent(duration, frame_rate=frame_rate))
                 .pan(tracks["drum"]["pan"][4])
             )
+
+            if apply_volume:
+                kit_left = kit_left + tracks["drum"]["vol"][3]
+                kit_right = kit_right + tracks["drum"]["vol"][4]
+
             kit_audio = (
                 AudioSegment.silent(duration, frame_rate=frame_rate)
                 .set_channels(2)
@@ -240,6 +282,11 @@ def mogg_track_extractor(
                 .append(AudioSegment.silent(duration, frame_rate=frame_rate))
                 .pan(tracks["drum"]["pan"][1])
             )
+
+            if apply_volume:
+                kick_left = kick_left + tracks["drum"]["vol"][0]
+                kick_right = kick_right + tracks["drum"]["vol"][1]
+
             kick_audio = (
                 AudioSegment.silent(duration, frame_rate=frame_rate)
                 .set_channels(2)
@@ -259,6 +306,11 @@ def mogg_track_extractor(
                 .append(AudioSegment.silent(duration, frame_rate=frame_rate))
                 .pan(tracks["drum"]["pan"][3])
             )
+
+            if apply_volume:
+                snare_left = snare_left + tracks["drum"]["vol"][2]
+                snare_right = snare_right + tracks["drum"]["vol"][3]
+
             snare_audio = (
                 AudioSegment.silent(duration, frame_rate=frame_rate)
                 .set_channels(2)
@@ -278,6 +330,11 @@ def mogg_track_extractor(
                 .append(AudioSegment.silent(duration, frame_rate=frame_rate))
                 .pan(tracks["drum"]["pan"][5])
             )
+
+            if apply_volume:
+                kit_left = kit_left + tracks["drum"]["vol"][4]
+                kit_right = kit_right + tracks["drum"]["vol"][5]
+
             kit_audio = (
                 AudioSegment.silent(duration, frame_rate=frame_rate)
                 .set_channels(2)
@@ -297,6 +354,10 @@ def mogg_track_extractor(
                 .set_sample_width(2)
                 .overlay(oggtracks[i])
             )
+
+            if apply_volume:
+                bass_audio = bass_audio + tracks["bass"]["vol"][0]
+
             exports.append(bass_audio)
             i += 1
         elif bass_channels == 2:
@@ -310,6 +371,11 @@ def mogg_track_extractor(
                 .append(AudioSegment.silent(duration, frame_rate=frame_rate))
                 .pan(tracks["bass"]["pan"][1])
             )
+
+            if apply_volume:
+                bass_left = bass_left + tracks["bass"]["vol"][0]
+                bass_right = bass_right + tracks["bass"]["vol"][1]
+
             bass_audio = (
                 AudioSegment.silent(duration, frame_rate=frame_rate)
                 .set_channels(2)
@@ -329,6 +395,10 @@ def mogg_track_extractor(
                 .set_sample_width(2)
                 .overlay(oggtracks[i])
             )
+
+            if apply_volume:
+                guitar_audio = guitar_audio + tracks["guitar"]["vol"][0]
+
             exports.append(guitar_audio)
             i += 1
         elif guitar_channels == 2:
@@ -342,6 +412,11 @@ def mogg_track_extractor(
                 .append(AudioSegment.silent(duration, frame_rate=frame_rate))
                 .pan(tracks["guitar"]["pan"][1])
             )
+
+            if apply_volume:
+                guitar_left = guitar_left + tracks["guitar"]["vol"][0]
+                guitar_right = guitar_right + tracks["guitar"]["vol"][1]
+
             guitar_audio = (
                 AudioSegment.silent(duration, frame_rate=frame_rate)
                 .set_channels(2)
@@ -361,6 +436,10 @@ def mogg_track_extractor(
                 .set_sample_width(2)
                 .overlay(oggtracks[i])
             )
+
+            if apply_volume:
+                vocals_audio = vocals_audio + tracks["vocals"]["vol"][0]
+
             exports.append(vocals_audio)
             i += 1
         elif vocals_channels == 2:
@@ -374,6 +453,11 @@ def mogg_track_extractor(
                 .append(AudioSegment.silent(duration, frame_rate=frame_rate))
                 .pan(tracks["vocals"]["pan"][1])
             )
+
+            if apply_volume:
+                vocals_left = vocals_left + tracks["vocals"]["vol"][0]
+                vocals_right = vocals_right + tracks["vocals"]["vol"][1]
+
             vocals_audio = (
                 AudioSegment.silent(duration, frame_rate=frame_rate)
                 .set_channels(2)
@@ -393,6 +477,10 @@ def mogg_track_extractor(
                 .set_sample_width(2)
                 .overlay(oggtracks[i])
             )
+
+            if apply_volume:
+                keys_audio = keys_audio + tracks["keys"]["vol"][0]
+
             exports.append(keys_audio)
             i += 1
         elif keys_channels == 2:
@@ -406,6 +494,11 @@ def mogg_track_extractor(
                 .append(AudioSegment.silent(duration, frame_rate=frame_rate))
                 .pan(tracks["keys"]["pan"][1])
             )
+
+            if apply_volume:
+                keys_left = keys_left + tracks["keys"]["vol"][0]
+                keys_right = keys_right + tracks["keys"]["vol"][1]
+
             keys_audio = (
                 AudioSegment.silent(duration, frame_rate=frame_rate)
                 .set_channels(2)
@@ -425,6 +518,10 @@ def mogg_track_extractor(
                 .set_sample_width(2)
                 .overlay(oggtracks[i])
             )
+
+            if apply_volume:
+                backing_audio = backing_audio + tracks["backing"]["vol"][0]
+
             exports.append(backing_audio)
             i += 1
         elif backing_channels == 2:
@@ -438,6 +535,11 @@ def mogg_track_extractor(
                 .append(AudioSegment.silent(duration, frame_rate=frame_rate))
                 .pan(tracks["backing"]["pan"][1])
             )
+
+            if apply_volume:
+                backing_left = backing_left + tracks["backing"]["vol"][0]
+                backing_right = backing_right + tracks["backing"]["vol"][1]
+
             backing_audio = (
                 AudioSegment.silent(duration, frame_rate=frame_rate)
                 .set_channels(2)
@@ -459,6 +561,11 @@ def mogg_track_extractor(
             .append(AudioSegment.silent(duration, frame_rate=frame_rate))
             .pan(1)
         )
+
+        if apply_volume:
+            crowd_left = crowd_left + tracks["crowd"]["vol"]
+            crowd_right = crowd_right + tracks["backing"]["vol"]
+
         crowd_audio = (
             AudioSegment.silent(duration, frame_rate=frame_rate)
             .set_channels(2)
@@ -499,6 +606,13 @@ if __name__ == "__main__":
         action=argparse.BooleanOptionalAction,
         default=False,
     )
+    parser.add_argument(
+        "-v",
+        "--apply_volume",
+        help="Applies the volume values from the song's DTA file.",
+        action=argparse.BooleanOptionalAction,
+        default=True,
+    )
 
     arg = parser.parse_args()
 
@@ -511,7 +625,8 @@ if __name__ == "__main__":
     if not output.exists():
         output.mkdir(parents=True)
 
-    audios = mogg_track_extractor(arg.mogg_file_path, tracks, arg.output_crowd)
+    audios = mogg_track_extractor(
+        arg.mogg_file_path, tracks, arg.output_crowd, arg.apply_volume)
     print(tracks)
 
     drums_path = Path(arg.output, "drums.wav")

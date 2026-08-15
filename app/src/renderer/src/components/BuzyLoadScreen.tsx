@@ -145,7 +145,7 @@ export function BuzyLoadScreen() {
                   switch (fn) {
                     case 'refreshRB3Stats':
                     default: {
-                      const rb3Stats = await window.api.rpcs3GetRB3Stats()
+                      const rb3Stats = await window.api.data.getRockBand3Data()
                       if (STRUCT_LOG) console.log('struct RockBand3Data ["rbtools/src/lib/rpcs3/rpcs3GetRB3Stats.ts"]:', rb3Stats)
                       setWindowState({ rb3Stats })
                       break

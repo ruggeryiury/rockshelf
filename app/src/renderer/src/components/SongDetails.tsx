@@ -1,5 +1,4 @@
-import { AnimatedDiv, AnimatedSection, TransComponent, animate, formatMillisecondsToTimeDuration, formatNumberWithDots, formatSongKeyString, rankCalculator, sleep, underscoreToUppercaseLetter } from '@renderer/lib.exports'
-import { useMyPackagesScreenState } from './MyPackagesScreen.state'
+import { AnimatedDiv, AnimatedSection, TransComponent, animate, formatMillisecondsToTimeDuration, formatNumberWithDots, formatSongKeyString, rankCalculator, underscoreToUppercaseLetter } from '@renderer/lib.exports'
 import { useWindowState } from '@renderer/stores/Window.state'
 import { useEffect, useMemo } from 'react'
 import { useTranslation } from 'react-i18next'
@@ -11,6 +10,9 @@ import { useUserConfigState } from '@renderer/stores/UserConfig.state'
 import { bandIcon, guitarIcon, bassIcon, drumsIcon, keysIcon, vocalsIcon, proGuitarIcon, proBassIcon, proDrumsIcon, proKeysIcon, harm3Icon, diffDotOn, diffDotOff, diffDotDevil } from '@renderer/assets/images'
 import { StarsInline } from '@renderer/components.exports'
 import { useEditSongScreenState } from './EditSongScreen.state'
+import { useSongDetailsState } from './SongDetails.state'
+import { usePackageDetailsState } from './PackageDetails.state'
+import { useMessageBoxState } from './MessageBox.state'
 
 export function DiffIconInline({ diff, width, mr }: { diff: number; width?: number; mr?: 'auto' | number }) {
   const { t, i18n } = useTranslation()
@@ -35,7 +37,9 @@ export function DiffIconInline({ diff, width, mr }: { diff: number; width?: numb
 }
 export function SongDetails() {
   const { t } = useTranslation()
-  const { selPKG, selSong, isArtworkLoading, artworkURL, songDetailsTab, songLeaderboards, setMyPackagesScreenState } = useMyPackagesScreenState(useShallow((x) => ({ selPKG: x.selPKG, selSong: x.selSong, isArtworkLoading: x.isArtworkLoading, artworkURL: x.artworkURL, setMyPackagesScreenState: x.setMyPackagesScreenState, songDetailsTab: x.songDetailsTab, songLeaderboards: x.songLeaderboards })))
+  const { setMessageBoxState } = useMessageBoxState(useShallow((x) => ({ setMessageBoxState: x.setMessageBoxState })))
+  const { pkgIndex, songs, setPackageDetailsState } = usePackageDetailsState(useShallow((x) => ({ pkgIndex: x.pkgIndex, songs: x.songs, setPackageDetailsState: x.setPackageDetailsState })))
+  const { songDetailsTab, songIndex, artworkURL, isArtworkLoading, songLeaderboards, setSongDetailsState } = useSongDetailsState(useShallow((x) => ({ songDetailsTab: x.songDetailsTab, songIndex: x.songIndex, artworkURL: x.artworkURL, isArtworkLoading: x.isArtworkLoading, songLeaderboards: x.songLeaderboards, setSongDetailsState: x.setSongDetailsState })))
 
   const { songsCatalogSortBy, mostPlayedInstrument } = useUserConfigState(useShallow((x) => ({ mostPlayedInstrument: x.mostPlayedInstrument, songsCatalogSortBy: x.songsCatalogSortBy })))
 
@@ -45,9 +49,8 @@ export function SongDetails() {
 
   const { setUserConfigState } = useUserConfigState(useShallow((x) => ({ setUserConfigState: x.setUserConfigState })))
 
-  const packageDetails = useMemo(() => (typeof packages === 'object' && selPKG > -1 && selPKG in packages.packages ? packages.packages[selPKG] : null), [packages, selPKG])
-
-  const songDetails = useMemo(() => (typeof packages === 'object' && selPKG > -1 && selPKG in packages.packages && selSong > -1 && packageDetails !== null && selSong in packageDetails.songs ? packageDetails.songs[selSong] : null), [packages, selPKG, selSong])
+  const packageDetails = useMemo(() => (typeof packages === 'object' && pkgIndex > -1 && pkgIndex in packages.packages ? packages.packages[pkgIndex] : null), [packages, pkgIndex])
+  const songDetails = useMemo(() => (typeof packages === 'object' && pkgIndex > -1 && pkgIndex in packages.packages && songIndex > -1 && packageDetails !== null && songs && songIndex in songs ? songs[songIndex] : null), [packages, pkgIndex, songIndex, songs])
 
   const allTracksCount = useMemo(() => songDetails?.tracks_count.reduce<number>((prev, curr) => (curr ? prev + curr : prev), 0), [songDetails])
 
@@ -64,14 +67,12 @@ export function SongDetails() {
     return null
   }, [songDetails])
 
-  const songsCount = useMemo(() => {
-    return packageDetails?.songs.length ?? 0
-  }, [packageDetails])
+  const songsCount = useMemo(() => (Array.isArray(songs) && songs.length) || 0, [packageDetails])
 
   const songFilesFolder = useMemo(() => typeof packageDetails === 'object' && packageDetails !== null && typeof songDetails === 'object' && songDetails !== null && `${packageDetails.path}\\songs\\${songDetails.songname}`, [packageDetails, songDetails])
 
   const resetSongDetailsState = () => {
-    setMyPackagesScreenState({ selSong: -1, isArtworkLoading: true, artworkURL: '', songDetailsTab: 0, songLeaderboards: false })
+    setSongDetailsState({ songIndex: -1, isArtworkLoading: true, artworkURL: '', songDetailsTab: 0, songLeaderboards: false })
   }
 
   useEffect(
@@ -80,14 +81,14 @@ export function SongDetails() {
         if (!packageDetails || !songDetails) return
 
         if (packageDetails.official?.code === 'rb3' || packageDetails.official?.code === 'rb1') {
-          setMyPackagesScreenState({ isArtworkLoading: false, artworkURL: `artworks://${songDetails.songname}` })
+          setSongDetailsState({ isArtworkLoading: false, artworkURL: `artworks://${songDetails.songname}` })
           return
         }
 
         try {
-          const artworkDataURL = await window.api.getSongArtworkDataURL(packageDetails, songDetails)
-          if (artworkDataURL) setMyPackagesScreenState({ artworkURL: artworkDataURL, isArtworkLoading: false })
-          else setMyPackagesScreenState({ artworkURL: packageDetails.thumbnailSrc, isArtworkLoading: false })
+          const artworkDataURL = await window.api.data.getArtworkDataURLFromSong(packageDetails, songDetails)
+          if (artworkDataURL) setSongDetailsState({ artworkURL: artworkDataURL, isArtworkLoading: false })
+          else setSongDetailsState({ artworkURL: packageDetails.thumbnailSrc, isArtworkLoading: false })
         } catch (err) {
           if (err instanceof Error) setWindowState({ err })
         }
@@ -95,17 +96,17 @@ export function SongDetails() {
 
       void start()
     },
-    [packages, selPKG, selSong]
+    [packages, pkgIndex, songIndex]
   )
 
   useEffect(
     function fetchSongLeaderboardScores() {
       const start = async () => {
         if (songDetailsTab === SONG_DETAILS_TABS.LEADERBOARDS && songDetails !== null && typeof songDetails.song_id === 'number') {
-          setMyPackagesScreenState({ songLeaderboards: 'loading' })
-          const leaderboards = await window.api.getScoresFromGoCentral(songDetails.song_id, mostPlayedInstrument)
+          setSongDetailsState({ songLeaderboards: 'loading' })
+          const leaderboards = await window.api.data.getScoresFromGoCentral(songDetails.song_id, mostPlayedInstrument)
           if (STRUCT_LOG) console.log('struct GoCentralLeaderboardResultObject [core/src/lib/rbtools/core/GoCentralAPI.ts]', leaderboards)
-          setMyPackagesScreenState({ songLeaderboards: leaderboards })
+          setSongDetailsState({ songLeaderboards: leaderboards })
         }
       }
       void start()
@@ -138,7 +139,7 @@ export function SongDetails() {
                   {songDetails.album_name ? (
                     <>
                       <div className="mt-1 mb-1 flex-row! items-center">
-                        {songDetails.album_track_number && <p className="mr-1 rounded-sm bg-neutral-900 p-0.5 font-bold">{songDetails.album_track_number}</p>}
+                        {typeof songDetails.album_track_number === 'number' && <p className="mr-1 rounded-sm bg-neutral-900 p-0.5 font-bold">{songDetails.album_track_number.toString()}</p>}
 
                         <p>{songDetails.album_name}</p>
                       </div>
@@ -169,28 +170,52 @@ export function SongDetails() {
               </div>
             </div>
             <div className="ml-24">
-              <button
-                disabled={disableButtons}
-                className="mb-1 w-full self-start rounded-xs border border-neutral-700 bg-neutral-900 px-1 py-0.5 text-xs! text-nowrap uppercase duration-100 hover:bg-neutral-700 active:bg-neutral-600 disabled:text-neutral-700 disabled:hover:bg-neutral-900"
-                onClick={async () => {
-                  resetSongDetailsState()
-                }}
-              >
-                {t('goBack')}
-              </button>
-              <div className="flex-row! items-center">
+              <div className="mb-1 flex-row! items-center">
+                {packageDetails.packageData.encryptionStatus === 'decrypted' && (
+                  <button
+                    disabled={disableButtons}
+                    className="mr-2 w-full self-start rounded-xs border border-neutral-700 bg-neutral-900 px-1 py-0.5 text-xs! text-nowrap uppercase duration-100 hover:bg-neutral-700 active:bg-neutral-600 disabled:text-neutral-700 disabled:hover:bg-neutral-900"
+                    onClick={async () => {
+                      setWindowState({ disableButtons: true })
+                      try {
+                        const destPath = await window.api.selector.pathToRB3File('song')
+                        if (destPath) {
+                          setMessageBoxState({ message: { type: 'loading', code: 'exportingSong', messageValues: { songTitle: songDetails.name } } })
+                          await window.api.data.exportSong(pkgIndex, songIndex, destPath)
+                          setMessageBoxState({ message: { type: 'success', code: 'exportingSong' } })
+                        }
+                      } catch (err) {
+                        if (err instanceof Error) setWindowState({ err })
+                      }
+                      setWindowState({ disableButtons: false })
+                    }}
+                  >
+                    {t('exportSong')}
+                  </button>
+                )}
+                <button
+                  disabled={disableButtons}
+                  className="w-full self-start rounded-xs border border-neutral-700 bg-neutral-900 px-1 py-0.5 text-xs! text-nowrap uppercase duration-100 hover:bg-neutral-700 active:bg-neutral-600 disabled:text-neutral-700 disabled:hover:bg-neutral-900"
+                  onClick={async () => {
+                    resetSongDetailsState()
+                  }}
+                >
+                  {t('goBack')}
+                </button>
+              </div>
+              {/* <div className="flex-row! items-center">
                 <button
                   disabled={disableButtons || songDetailsTab === SONG_DETAILS_TABS.LEADERBOARDS}
-                  className="w-1/2 items-center rounded-xs border border-neutral-700 bg-neutral-900 px-1 py-0.5 text-xs! text-nowrap uppercase duration-100 hover:bg-neutral-700 active:bg-neutral-600 disabled:text-neutral-700 disabled:hover:bg-neutral-900"
+                  className=" ml-auto w-fit items-center rounded-xs border border-neutral-700 bg-neutral-900 px-1 py-0.5 text-xs! text-nowrap uppercase duration-100 hover:bg-neutral-700 active:bg-neutral-600 disabled:text-neutral-700 disabled:hover:bg-neutral-900"
                   onClick={async () => {
                     setWindowState({ disableButtons: true })
-                    if (selSong === 0) {
-                      setMyPackagesScreenState({
-                        selSong: songsCount - 1,
+                    if (songIndex === 0) {
+                      setSongDetailsState({
+                        songIndex: songsCount - 1,
                       })
                     } else {
-                      setMyPackagesScreenState({
-                        selSong: selSong - 1,
+                      setSongDetailsState({
+                        songIndex: songIndex - 1,
                       })
                     }
 
@@ -202,16 +227,16 @@ export function SongDetails() {
                 </button>
                 <button
                   disabled={disableButtons || songDetailsTab === SONG_DETAILS_TABS.LEADERBOARDS}
-                  className="w-1/2 items-center rounded-xs border border-neutral-700 bg-neutral-900 px-1 py-0.5 text-xs! text-nowrap uppercase duration-100 hover:bg-neutral-700 active:bg-neutral-600 disabled:text-neutral-700 disabled:hover:bg-neutral-900"
+                  className="w-fit items-center rounded-xs border border-neutral-700 bg-neutral-900 px-1 py-0.5 text-xs! text-nowrap uppercase duration-100 hover:bg-neutral-700 active:bg-neutral-600 disabled:text-neutral-700 disabled:hover:bg-neutral-900"
                   onClick={async () => {
                     setWindowState({ disableButtons: true })
-                    if (selSong === songsCount - 1) {
-                      setMyPackagesScreenState({
-                        selSong: 0,
+                    if (songIndex === songsCount - 1) {
+                      setSongDetailsState({
+                        songIndex: 0,
                       })
                     } else {
-                      setMyPackagesScreenState({
-                        selSong: selSong + 1,
+                      setSongDetailsState({
+                        songIndex: songIndex + 1,
                       })
                     }
 
@@ -221,7 +246,7 @@ export function SongDetails() {
                 >
                   <ChevronRightIcon />
                 </button>
-              </div>
+              </div> */}
             </div>
           </div>
           <div className="mb-2 h-6 min-h-6 w-full flex-row! items-center rounded-b-sm bg-white/15 px-4">
@@ -229,7 +254,7 @@ export function SongDetails() {
               disabled={disableButtons}
               className={clsx('flex-row! items-center', songDetailsTab === SONG_DETAILS_TABS.DETAILS ? 'bg-yellow-500 text-black/90 hover:bg-yellow-400 active:bg-yellow-300' : 'hover:text-neutral-300 active:text-neutral-200', 'h-full w-fit justify-center px-2 duration-200')}
               onClick={() => {
-                setMyPackagesScreenState({ songDetailsTab: SONG_DETAILS_TABS.DETAILS })
+                setSongDetailsState({ songDetailsTab: SONG_DETAILS_TABS.DETAILS })
               }}
             >
               {t('details')}
@@ -238,7 +263,7 @@ export function SongDetails() {
               disabled={disableButtons}
               className={clsx('flex-row! items-center', songDetailsTab === SONG_DETAILS_TABS.LEADERBOARDS ? 'bg-yellow-500 text-black/90 hover:bg-yellow-400 active:bg-yellow-300' : 'hover:text-neutral-300 active:text-neutral-200', 'h-full w-fit justify-center px-2 duration-200')}
               onClick={() => {
-                setMyPackagesScreenState({ songDetailsTab: SONG_DETAILS_TABS.LEADERBOARDS })
+                setSongDetailsState({ songDetailsTab: SONG_DETAILS_TABS.LEADERBOARDS })
               }}
             >
               <img src={`rbicons://instrument-icons-${mostPlayedInstrument.toLowerCase()}`} className={clsx('mr-1 h-5 w-5', songDetailsTab === SONG_DETAILS_TABS.LEADERBOARDS ? 'opacity-100' : 'opacity-75')} />
@@ -250,7 +275,7 @@ export function SongDetails() {
                   disabled={disableButtons}
                   className={clsx('flex-row! items-center', songDetailsTab === SONG_DETAILS_TABS.OPTIONS ? 'bg-yellow-500 text-black/90 hover:bg-yellow-400 active:bg-yellow-300' : 'hover:text-neutral-300 active:text-neutral-200', 'h-full w-fit justify-center px-2 duration-200')}
                   onClick={() => {
-                    setMyPackagesScreenState({ songDetailsTab: SONG_DETAILS_TABS.OPTIONS })
+                    setSongDetailsState({ songDetailsTab: SONG_DETAILS_TABS.OPTIONS })
                   }}
                 >
                   {t('options')}
@@ -486,13 +511,13 @@ export function SongDetails() {
                     onClick={async () => {
                       setWindowState({ disableButtons: true })
                       setUserConfigState({ mostPlayedInstrument: 'band' })
-                      await window.api.saveUserConfigFile({ mostPlayedInstrument: 'band' })
+                      await window.api.userConfig.save({ mostPlayedInstrument: 'band' })
                       if (typeof saveData === 'object') {
-                        const newInstrScores = await window.api.rpcs3GetInstrumentScores(saveData)
+                        const newInstrScores = await window.api.data.getInstrumentScoresData(saveData)
                         if (STRUCT_LOG) console.log('struct InstrumentScoreData ["rbtools/src/lib/rpcs3/getInstrumentScoresData.ts"]:', newInstrScores)
                         setWindowState({ instrumentScores: newInstrScores })
                       }
-                      setMyPackagesScreenState({ songsCatalog: false })
+                      setPackageDetailsState({ songsCatalog: false })
                       setWindowState({ disableButtons: false })
                     }}
                   >
@@ -505,13 +530,13 @@ export function SongDetails() {
                     onClick={async () => {
                       setWindowState({ disableButtons: true })
                       setUserConfigState({ mostPlayedInstrument: 'guitar' })
-                      await window.api.saveUserConfigFile({ mostPlayedInstrument: 'guitar' })
+                      await window.api.userConfig.save({ mostPlayedInstrument: 'guitar' })
                       if (typeof saveData === 'object') {
-                        const newInstrScores = await window.api.rpcs3GetInstrumentScores(saveData)
+                        const newInstrScores = await window.api.data.getInstrumentScoresData(saveData)
                         if (STRUCT_LOG) console.log('struct InstrumentScoreData ["rbtools/src/lib/rpcs3/getInstrumentScoresData.ts"]:', newInstrScores)
                         setWindowState({ instrumentScores: newInstrScores })
                       }
-                      setMyPackagesScreenState({ songsCatalog: false })
+                      setPackageDetailsState({ songsCatalog: false })
                       setWindowState({ disableButtons: false })
                     }}
                   >
@@ -524,13 +549,13 @@ export function SongDetails() {
                     onClick={async () => {
                       setWindowState({ disableButtons: true })
                       setUserConfigState({ mostPlayedInstrument: 'bass' })
-                      await window.api.saveUserConfigFile({ mostPlayedInstrument: 'bass' })
+                      await window.api.userConfig.save({ mostPlayedInstrument: 'bass' })
                       if (typeof saveData === 'object') {
-                        const newInstrScores = await window.api.rpcs3GetInstrumentScores(saveData)
+                        const newInstrScores = await window.api.data.getInstrumentScoresData(saveData)
                         if (STRUCT_LOG) console.log('struct InstrumentScoreData ["rbtools/src/lib/rpcs3/getInstrumentScoresData.ts"]:', newInstrScores)
                         setWindowState({ instrumentScores: newInstrScores })
                       }
-                      setMyPackagesScreenState({ songsCatalog: false })
+                      setPackageDetailsState({ songsCatalog: false })
                       setWindowState({ disableButtons: false })
                     }}
                   >
@@ -544,13 +569,13 @@ export function SongDetails() {
                     onClick={async () => {
                       setWindowState({ disableButtons: true })
                       setUserConfigState({ mostPlayedInstrument: 'drums' })
-                      await window.api.saveUserConfigFile({ mostPlayedInstrument: 'drums' })
+                      await window.api.userConfig.save({ mostPlayedInstrument: 'drums' })
                       if (typeof saveData === 'object') {
-                        const newInstrScores = await window.api.rpcs3GetInstrumentScores(saveData)
+                        const newInstrScores = await window.api.data.getInstrumentScoresData(saveData)
                         if (STRUCT_LOG) console.log('struct InstrumentScoreData ["rbtools/src/lib/rpcs3/getInstrumentScoresData.ts"]:', newInstrScores)
                         setWindowState({ instrumentScores: newInstrScores })
                       }
-                      setMyPackagesScreenState({ songsCatalog: false })
+                      setPackageDetailsState({ songsCatalog: false })
                       setWindowState({ disableButtons: false })
                     }}
                   >
@@ -563,13 +588,13 @@ export function SongDetails() {
                     onClick={async () => {
                       setWindowState({ disableButtons: true })
                       setUserConfigState({ mostPlayedInstrument: 'keys' })
-                      await window.api.saveUserConfigFile({ mostPlayedInstrument: 'keys' })
+                      await window.api.userConfig.save({ mostPlayedInstrument: 'keys' })
                       if (typeof saveData === 'object') {
-                        const newInstrScores = await window.api.rpcs3GetInstrumentScores(saveData)
+                        const newInstrScores = await window.api.data.getInstrumentScoresData(saveData)
                         if (STRUCT_LOG) console.log('struct InstrumentScoreData ["rbtools/src/lib/rpcs3/getInstrumentScoresData.ts"]:', newInstrScores)
                         setWindowState({ instrumentScores: newInstrScores })
                       }
-                      setMyPackagesScreenState({ songsCatalog: false })
+                      setPackageDetailsState({ songsCatalog: false })
                       setWindowState({ disableButtons: false })
                     }}
                   >
@@ -582,13 +607,13 @@ export function SongDetails() {
                     onClick={async () => {
                       setWindowState({ disableButtons: true })
                       setUserConfigState({ mostPlayedInstrument: 'vocals' })
-                      await window.api.saveUserConfigFile({ mostPlayedInstrument: 'vocals' })
+                      await window.api.userConfig.save({ mostPlayedInstrument: 'vocals' })
                       if (typeof saveData === 'object') {
-                        const newInstrScores = await window.api.rpcs3GetInstrumentScores(saveData)
+                        const newInstrScores = await window.api.data.getInstrumentScoresData(saveData)
                         if (STRUCT_LOG) console.log('struct InstrumentScoreData ["rbtools/src/lib/rpcs3/getInstrumentScoresData.ts"]:', newInstrScores)
                         setWindowState({ instrumentScores: newInstrScores })
                       }
-                      setMyPackagesScreenState({ songsCatalog: false })
+                      setPackageDetailsState({ songsCatalog: false })
                       setWindowState({ disableButtons: false })
                     }}
                   >
@@ -601,13 +626,13 @@ export function SongDetails() {
                     onClick={async () => {
                       setWindowState({ disableButtons: true })
                       setUserConfigState({ mostPlayedInstrument: 'proGuitar' })
-                      await window.api.saveUserConfigFile({ mostPlayedInstrument: 'proGuitar' })
+                      await window.api.userConfig.save({ mostPlayedInstrument: 'proGuitar' })
                       if (typeof saveData === 'object') {
-                        const newInstrScores = await window.api.rpcs3GetInstrumentScores(saveData)
+                        const newInstrScores = await window.api.data.getInstrumentScoresData(saveData)
                         if (STRUCT_LOG) console.log('struct InstrumentScoreData ["rbtools/src/lib/rpcs3/getInstrumentScoresData.ts"]:', newInstrScores)
                         setWindowState({ instrumentScores: newInstrScores })
                       }
-                      setMyPackagesScreenState({ songsCatalog: false })
+                      setPackageDetailsState({ songsCatalog: false })
                       setWindowState({ disableButtons: false })
                     }}
                   >
@@ -620,13 +645,13 @@ export function SongDetails() {
                     onClick={async () => {
                       setWindowState({ disableButtons: true })
                       setUserConfigState({ mostPlayedInstrument: 'proBass' })
-                      await window.api.saveUserConfigFile({ mostPlayedInstrument: 'proBass' })
+                      await window.api.userConfig.save({ mostPlayedInstrument: 'proBass' })
                       if (typeof saveData === 'object') {
-                        const newInstrScores = await window.api.rpcs3GetInstrumentScores(saveData)
+                        const newInstrScores = await window.api.data.getInstrumentScoresData(saveData)
                         if (STRUCT_LOG) console.log('struct InstrumentScoreData ["rbtools/src/lib/rpcs3/getInstrumentScoresData.ts"]:', newInstrScores)
                         setWindowState({ instrumentScores: newInstrScores })
                       }
-                      setMyPackagesScreenState({ songsCatalog: false })
+                      setPackageDetailsState({ songsCatalog: false })
                       setWindowState({ disableButtons: false })
                     }}
                   >
@@ -640,13 +665,13 @@ export function SongDetails() {
                     onClick={async () => {
                       setWindowState({ disableButtons: true })
                       setUserConfigState({ mostPlayedInstrument: 'proDrums' })
-                      await window.api.saveUserConfigFile({ mostPlayedInstrument: 'proDrums' })
+                      await window.api.userConfig.save({ mostPlayedInstrument: 'proDrums' })
                       if (typeof saveData === 'object') {
-                        const newInstrScores = await window.api.rpcs3GetInstrumentScores(saveData)
+                        const newInstrScores = await window.api.data.getInstrumentScoresData(saveData)
                         if (STRUCT_LOG) console.log('struct InstrumentScoreData ["rbtools/src/lib/rpcs3/getInstrumentScoresData.ts"]:', newInstrScores)
                         setWindowState({ instrumentScores: newInstrScores })
                       }
-                      setMyPackagesScreenState({ songsCatalog: false })
+                      setPackageDetailsState({ songsCatalog: false })
                       setWindowState({ disableButtons: false })
                     }}
                   >
@@ -659,13 +684,13 @@ export function SongDetails() {
                     onClick={async () => {
                       setWindowState({ disableButtons: true })
                       setUserConfigState({ mostPlayedInstrument: 'proKeys' })
-                      await window.api.saveUserConfigFile({ mostPlayedInstrument: 'proKeys' })
+                      await window.api.userConfig.save({ mostPlayedInstrument: 'proKeys' })
                       if (typeof saveData === 'object') {
-                        const newInstrScores = await window.api.rpcs3GetInstrumentScores(saveData)
+                        const newInstrScores = await window.api.data.getInstrumentScoresData(saveData)
                         if (STRUCT_LOG) console.log('struct InstrumentScoreData ["rbtools/src/lib/rpcs3/getInstrumentScoresData.ts"]:', newInstrScores)
                         setWindowState({ instrumentScores: newInstrScores })
                       }
-                      setMyPackagesScreenState({ songsCatalog: false })
+                      setPackageDetailsState({ songsCatalog: false })
                       setWindowState({ disableButtons: false })
                     }}
                   >
@@ -678,13 +703,13 @@ export function SongDetails() {
                     onClick={async () => {
                       setWindowState({ disableButtons: true })
                       setUserConfigState({ mostPlayedInstrument: 'harmonies' })
-                      await window.api.saveUserConfigFile({ mostPlayedInstrument: 'harmonies' })
+                      await window.api.userConfig.save({ mostPlayedInstrument: 'harmonies' })
                       if (typeof saveData === 'object') {
-                        const newInstrScores = await window.api.rpcs3GetInstrumentScores(saveData)
+                        const newInstrScores = await window.api.data.getInstrumentScoresData(saveData)
                         if (STRUCT_LOG) console.log('struct InstrumentScoreData ["rbtools/src/lib/rpcs3/getInstrumentScoresData.ts"]:', newInstrScores)
                         setWindowState({ instrumentScores: newInstrScores })
                       }
-                      setMyPackagesScreenState({ songsCatalog: false })
+                      setPackageDetailsState({ songsCatalog: false })
                       setWindowState({ disableButtons: false })
                     }}
                   >
@@ -759,7 +784,7 @@ export function SongDetails() {
                     disabled={disableButtons}
                     className="w-fit self-start rounded-xs border border-neutral-700 bg-neutral-900 px-1 py-0.5 text-xs! uppercase duration-100 hover:bg-neutral-700 active:bg-neutral-600 disabled:text-neutral-700 disabled:hover:bg-neutral-900"
                     onClick={async () => {
-                      if (songFilesFolder) await window.api.openFolderInExplorer(songFilesFolder)
+                      if (songFilesFolder) await window.api.open.dir(songFilesFolder)
                     }}
                   >
                     {t('openSongFilesFolder')}
@@ -860,22 +885,40 @@ export function SongDetails() {
                     )}
                   </div>
 
-                  <button
-                    className="mb-1 w-fit rounded-xs border border-neutral-800 bg-neutral-900 px-1 py-0.5 text-xs! uppercase duration-100 last:mb-0 hover:bg-neutral-700 active:bg-neutral-600 disabled:text-neutral-700 disabled:hover:bg-neutral-900"
-                    onClick={async (ev) => {
-                      setWindowState({ disableButtons: true })
-                      if (packageDetails) {
-                        try {
-                          await window.api.extractMultitrackOrSongAudioFromSong(packageDetails, songDetails)
-                        } catch (err) {
-                          if (err instanceof Error) setWindowState({ err })
+                  <div className="mb-1 flex-row! items-center">
+                    <button
+                      className="mr-2 w-fit rounded-xs border border-neutral-800 bg-neutral-900 px-1 py-0.5 text-xs! uppercase duration-100 last:mb-0 hover:bg-neutral-700 active:bg-neutral-600 disabled:text-neutral-700 disabled:hover:bg-neutral-900"
+                      onClick={async (ev) => {
+                        setWindowState({ disableButtons: true })
+                        if (packageDetails) {
+                          try {
+                            await window.api.audio.extractMOGGTracksFromSong(packageDetails, songDetails, { applyVolume: false })
+                          } catch (err) {
+                            if (err instanceof Error) setWindowState({ err })
+                          }
                         }
-                      }
-                      setWindowState({ disableButtons: false })
-                    }}
-                  >
-                    {t(typeof songDetails.multitrack !== 'string' && !packageDetails?.official ? 'extractSongAudioTrack' : 'extractTracks')}
-                  </button>
+                        setWindowState({ disableButtons: false })
+                      }}
+                    >
+                      {t(typeof songDetails.multitrack !== 'string' && !packageDetails?.official ? 'extractSongAudioTrack' : 'extractTracks')}
+                    </button>
+                    <button
+                      className="mr-2 w-fit rounded-xs border border-neutral-800 bg-neutral-900 px-1 py-0.5 text-xs! uppercase duration-100 last:mb-0 hover:bg-neutral-700 active:bg-neutral-600 disabled:text-neutral-700 disabled:hover:bg-neutral-900"
+                      onClick={async (ev) => {
+                        setWindowState({ disableButtons: true })
+                        if (packageDetails) {
+                          try {
+                            await window.api.audio.extractMOGGTracksFromSong(packageDetails, songDetails, { applyVolume: true })
+                          } catch (err) {
+                            if (err instanceof Error) setWindowState({ err })
+                          }
+                        }
+                        setWindowState({ disableButtons: false })
+                      }}
+                    >
+                      {t(typeof songDetails.multitrack !== 'string' && !packageDetails?.official ? 'extractSongAudioTrackApplyVolume' : 'extractTracksApplyVolume')}
+                    </button>
+                  </div>
                 </div>
                 {packageDetails?.official === undefined && (
                   <>
@@ -905,20 +948,11 @@ export function SongDetails() {
                         onClick={async () => {
                           setWindowState({ disableButtons: true })
                           try {
-                            const newPackages = await window.api.batchDeleteSongs(selPKG, [songDetails.songname])
-                            if (STRUCT_LOG) console.log('struct RPCS3SongPackagesDataExtra ["rbtools/src/lib/rpcs3/rpcs3GetSongPackagesStatsExtra.ts"]:', newPackages)
-                            if (newPackages) {
-                              const newCatalog = await window.api.sortAndFilterSongsFromPackage(selPKG, songsCatalogSortBy, { instrument: mostPlayedInstrument })
-                              if (!newCatalog) return
-                              if (STRUCT_LOG) {
-                                if (newCatalog.type !== 'difficulty' && newCatalog.type !== 'artist') console.log('struct DTACatalogGenericObject [core/src/lib/dta/getDTACatalog.ts]', newCatalog)
-                                else if (newCatalog.type === 'artist') console.log('struct DTACatalogByArtistObject [core/src/lib/dta/getDTACatalog.ts]', newCatalog)
-                                else console.log('struct DTACatalogByDifficultyObject [core/src/lib/dta/getDTACatalog.ts]', newCatalog)
-                              }
-                              resetSongDetailsState()
-                              setMyPackagesScreenState({ songsCatalog: newCatalog })
-                              setWindowState({ packages: newPackages })
-                            }
+                            const newPackages = await window.api.data.deleteSongsFromPackage(pkgIndex, [songDetails.songname])
+                            if (STRUCT_LOG) console.log('struct LightRB3SongPackagesData ["core/api/DataSyncAPI.ts"]:', newPackages)
+                            resetSongDetailsState()
+                            setPackageDetailsState({ songsCatalog: false })
+                            setWindowState({ packages: newPackages })
                           } catch (err) {
                             if (err instanceof Error) setWindowState({ err })
                           }

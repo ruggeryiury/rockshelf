@@ -3,7 +3,7 @@ import { AnimatedDiv, AnimatedSection, animate, getReadableBytesSize } from '@re
 import { useMyPackagesScreenState } from './MyPackagesScreen.state'
 import { useWindowState } from '@renderer/stores/Window.state'
 import { useTranslation } from 'react-i18next'
-import { RPCS3SongPackagesDataExtra, RSPackImagePackageCategoryValues } from 'rockshelf-core'
+import { LightRB3SongPackagesData, RSPackImagePackageCategoryValues } from 'rockshelf-core'
 import { useDialogScreenState } from './DialogScreen.state'
 import { useShallow } from 'zustand/shallow'
 import { MYPACKAGES_TABS, PKG_CATEGORIES, STRUCT_LOG } from '@renderer/app/rockshelf.globals'
@@ -11,6 +11,7 @@ import { LoadingIcon } from '@renderer/assets/icons'
 import { useEffect } from 'react'
 import { useUserConfigState } from '@renderer/stores/UserConfig.state'
 import { useMergePackageModalState } from './MergePackageModal.state'
+import { usePackageDetailsState } from './PackageDetails.state'
 
 export function MyPackagesScreen() {
   const { t } = useTranslation()
@@ -19,6 +20,7 @@ export function MyPackagesScreen() {
   const { setDialogScreenState } = useDialogScreenState(useShallow((x) => ({ setDialogScreenState: x.setDialogScreenState })))
   const { packagesCatalogSortBy, setUserConfigState, getUserConfigState } = useUserConfigState(useShallow((x) => ({ packagesCatalogSortBy: x.packagesCatalogSortBy, setUserConfigState: x.setUserConfigState, getUserConfigState: x.getUserConfigState })))
   const { setMergePackageModalState } = useMergePackageModalState(useShallow((x) => ({ setMergePackageModalState: x.setMergePackageModalState })))
+  const { setPackageDetailsState } = usePackageDetailsState(useShallow((x) => ({ setPackageDetailsState: x.setPackageDetailsState })))
 
   useEffect(
     function fetchCatalogObject() {
@@ -27,7 +29,7 @@ export function MyPackagesScreen() {
           setMyPackagesScreenState({ packagesCatalog: 'loading' })
           setWindowState({ disableButtons: true })
           try {
-            const newCatalog = await window.api.sortAndFilterSongPackages(packagesCatalogSortBy)
+            const newCatalog = await window.api.data.filterSongPackages(packagesCatalogSortBy)
             if (STRUCT_LOG) console.log('struct SongPackagesFilterGenericObject [core/src/lib/dta/getDTACatalog.ts]', newCatalog)
             setMyPackagesScreenState({ packagesCatalog: newCatalog })
             setWindowState({ disableButtons: false })
@@ -52,17 +54,12 @@ export function MyPackagesScreen() {
             className="mr-2 w-fit self-start rounded-xs border border-neutral-700 bg-neutral-900 px-1 py-0.5 text-xs! uppercase duration-100 last:mr-0 hover:bg-neutral-700 active:bg-neutral-600 disabled:text-neutral-700 disabled:hover:bg-neutral-900"
             onClick={async () => {
               setWindowState({ disableButtons: true, packages: 'loading' })
-              let newPackages: RPCS3SongPackagesDataExtra | false = false
+              let newPackages: LightRB3SongPackagesData | false = false
               try {
-                newPackages = await window.api.refreshPackagesData()
-                if (STRUCT_LOG) console.log('struct RPCS3SongPackagesDataExtra ["rbtools/src/lib/rpcs3/rpcs3GetSongPackagesStatsExtra.ts"]:', newPackages)
-
-                if (newPackages) {
-                  const newCatalog = await window.api.sortAndFilterSongPackages(packagesCatalogSortBy)
-                  if (STRUCT_LOG) console.log('struct SongPackagesFilterGenericObject [core/src/lib/dta/getDTACatalog.ts]', newCatalog)
-                  setMyPackagesScreenState({ packagesCatalog: newCatalog })
-                  setWindowState({ packages: newPackages })
-                }
+                newPackages = await window.api.data.getLightSongPackagesData()
+                if (STRUCT_LOG) console.log('struct LightRB3SongPackagesData ["core/api/DataSyncAPI.ts"]:', newPackages)
+                setMyPackagesScreenState({ packagesCatalog: false })
+                setWindowState({ packages: newPackages })
               } catch (err) {
                 if (err instanceof Error) setWindowState({ err })
               }
@@ -130,9 +127,15 @@ export function MyPackagesScreen() {
                                 className="mb-1 w-full flex-row! rounded-sm border-2 border-white/5 p-2 duration-150 last:mb-0 hover:bg-white/5 active:bg-white/10"
                                 onMouseOver={() => setMyPackagesScreenState({ hoveredPKG: packageIndex })}
                                 onMouseLeave={() => setMyPackagesScreenState({ hoveredPKG: -1 })}
-                                onClick={() => {
+                                onClick={async () => {
                                   setWindowState({ disableButtons: true })
-                                  setMyPackagesScreenState({ selPKG: packageIndex })
+                                  try {
+                                    const songs = await window.api.data.getSongsFromPackage(packageIndex)
+                                    if (STRUCT_LOG) console.log('struct RB3CompatibleDTAFile[] ["rbtools/lib/dta/dtaStruct.ts"]:', songs)
+                                    setPackageDetailsState({ songs, pkgIndex: packageIndex })
+                                  } catch (err) {
+                                    if (err instanceof Error) setWindowState({ err })
+                                  }
                                   setWindowState({ disableButtons: false })
                                 }}
                               >
@@ -140,7 +143,7 @@ export function MyPackagesScreen() {
                                 <div className="mr-auto w-full">
                                   <h2 className="font-pentatonic w-full text-[1.5rem]">{pkg.packageData.packageName}</h2>
                                   <h3 className="mb-2 text-sm text-neutral-500 italic">
-                                    {t(pkg.songs.length === 1 ? 'songsCount' : 'songsCountPlural', { count: pkg.songs.length })} / {getReadableBytesSize(pkg.packageSize)}
+                                    {t(pkg.songsCount === 1 ? 'songsCount' : 'songsCountPlural', { count: pkg.songsCount })} / {getReadableBytesSize(pkg.packageSize)}
                                   </h3>
                                   <div className="flex-row! items-center">
                                     <code className="mr-1 w-fit rounded-sm bg-neutral-900 px-1 py-0.5 font-semibold uppercase">{pkg.packageType}</code>
@@ -155,7 +158,7 @@ export function MyPackagesScreen() {
                                         className="mr-2 mb-1 w-full self-start rounded-xs border border-neutral-700 bg-neutral-900 px-1 py-0.5 text-[0.65rem]! uppercase duration-100 last:mr-0 last:mb-0 hover:bg-neutral-700 active:bg-neutral-600 disabled:text-neutral-700 disabled:hover:bg-neutral-900"
                                         onClick={async (ev) => {
                                           ev.stopPropagation()
-                                          await window.api.openFolderInExplorer(pkg.path)
+                                          await window.api.open.dir(pkg.path)
                                         }}
                                       >
                                         {t('openPackageFolder')}
@@ -215,7 +218,7 @@ export function MyPackagesScreen() {
                       setUserConfigState({ packagesCatalogSortBy: 'name' })
                       const newConfig = getUserConfigState()
                       try {
-                        await window.api.saveUserConfigFile(newConfig)
+                        await window.api.userConfig.save(newConfig)
                         setMyPackagesScreenState({ packagesCatalog: false })
                       } catch (err) {
                         if (err instanceof Error) setWindowState({ err })
@@ -233,7 +236,7 @@ export function MyPackagesScreen() {
                       setUserConfigState({ packagesCatalogSortBy: 'officialUnofficial' })
                       const newConfig = getUserConfigState()
                       try {
-                        await window.api.saveUserConfigFile(newConfig)
+                        await window.api.userConfig.save(newConfig)
                         setMyPackagesScreenState({ packagesCatalog: false })
                       } catch (err) {
                         if (err instanceof Error) setWindowState({ err })
@@ -251,7 +254,7 @@ export function MyPackagesScreen() {
                       setUserConfigState({ packagesCatalogSortBy: 'userCategory' })
                       const newConfig = getUserConfigState()
                       try {
-                        await window.api.saveUserConfigFile(newConfig)
+                        await window.api.userConfig.save(newConfig)
                         setMyPackagesScreenState({ packagesCatalog: false })
                       } catch (err) {
                         if (err instanceof Error) setWindowState({ err })

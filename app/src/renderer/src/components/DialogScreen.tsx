@@ -60,7 +60,8 @@ export function DialogScreen() {
                   setDialogScreenState({ isLoadingAction: true })
                   setWindowState({ disableButtons: true })
                   try {
-                    await window.api.deleteUserConfigAndRestart()
+                    await window.api.userConfig.delete()
+                    await window.api.win.restart()
                   } catch (err) {
                     if (err instanceof Error) setWindowState({ err })
                   }
@@ -77,7 +78,8 @@ export function DialogScreen() {
                   setDialogScreenState({ isLoadingAction: true })
                   setWindowState({ disableButtons: true })
                   try {
-                    const newPackagesData = await window.api.rpcs3GetPackagesData(true)
+                    await window.api.data.getSongPackagesData()
+                    const newPackagesData = await window.api.data.getLightSongPackagesData()
                     resetDialogScreenState()
                     setWindowState({ packages: newPackagesData, disableButtons: false })
                   } catch (err) {
@@ -125,12 +127,12 @@ export function DialogScreen() {
                   onClick={async () => {
                     try {
                       setWindowState({ disableButtons: true })
-                      const newPackages = await window.api.deletePackage(deletePackageIndex)
-                      if (STRUCT_LOG) console.log('struct RPCS3SongPackagesDataExtra ["rbtools/src/lib/rpcs3/rpcs3GetSongPackagesStatsExtra.ts"]:', newPackages)
-                      const newCatalog = await window.api.sortAndFilterSongPackages(packagesCatalogSortBy)
+                      const newPackages = await window.api.data.deletePackage(deletePackageIndex)
+                      if (STRUCT_LOG) console.log('struct LightRB3SongPackagesData ["core/api/DataSyncAPI.ts"]:', newPackages)
+                      const newCatalog = await window.api.data.filterSongPackages(packagesCatalogSortBy)
                       if (STRUCT_LOG) console.log('struct SongPackagesFilterGenericObject [core/src/lib/dta/getDTACatalog.ts]', newCatalog)
                       let newInstrumentScores: false | InstrumentScoreData = false
-                      if (typeof saveData === 'object') newInstrumentScores = await window.api.rpcs3GetInstrumentScores(saveData)
+                      if (typeof saveData === 'object') newInstrumentScores = await window.api.data.getInstrumentScoresData(saveData)
                       setMyPackagesScreenState({ packagesCatalog: newCatalog })
                       setWindowState({ packages: newPackages, instrumentScores: newInstrumentScores })
                       setMessageBoxState({ message: { type: 'success', code: 'deletePackage' } })

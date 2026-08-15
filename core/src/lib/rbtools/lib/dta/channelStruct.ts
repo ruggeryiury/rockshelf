@@ -550,10 +550,10 @@ export const genAudioFileStructure = (song: RB3CompatibleDTAFile): AudioFileTrac
  * @returns {boolean} A boolean value that tells if the provided tracks count array is empty.
  */
 export const isTracksCountEmpty = (tracksCount: number[]): boolean => {
-  let proof = true
+  let tracksCounter = 0
   for (const track of tracksCount) {
-    if (track !== 0) proof = false
+    tracksCounter += track
   }
 
-  return proof
+  return tracksCounter === 0
 }

@@ -7,7 +7,7 @@ from os import PathLike, path
 from pathlib import Path
 from typing import TypedDict, Union
 from pydub.utils import mediainfo
-from lib.mogg import decrypt_mogg
+from lib.mogg import decrypt_mogg, mogg_to_ogg
 
 
 class MOGGStatObject(TypedDict):
@@ -42,40 +42,48 @@ def mogg_file_stat(mogg_file_path: Union[str, PathLike[str]]) -> MOGGFileStat:
         MOGGFileStat: A dict with stats of the MOGG file.
     """
 
-    with open(mogg_file_path, "rb") as fin:
-        version = struct.unpack("<I", fin.read(4))[0]
-        fin.seek(0)
-        temp_ogg = tempfile.NamedTemporaryFile(delete=False, suffix=".ogg")
+    temp_dec_mogg = tempfile.NamedTemporaryFile(delete=False, suffix=".mogg")
+    ogg_temp = tempfile.NamedTemporaryFile(delete=False, suffix=".ogg")
 
-        decrypt_mogg(False, False, fin, temp_ogg)
-        try:
-            audio = mediainfo(temp_ogg.name)
+    fin = open(mogg_file_path, 'rb')
+    version_bytes = fin.read(4)
+    version = int.from_bytes(version_bytes, 'little')
+    fin.seek(0)
 
-            return {
-                "bitRate": int(audio["bit_rate"]),
-                "channels": int(audio["channels"]),
-                "codec": audio["codec_name"],
-                "codecDesc": audio["codec_long_name"],
-                "duration": int(float(audio["duration"]) * 1000),
-                "durationSec": float(audio["duration"]),
-                "ext": audio["format_name"],
-                "extDesc": audio["format_long_name"],
-                "sampleRate": int(audio["sample_rate"]),
-                "size": int(audio["size"]),
-                "mogg": {
-                    "size": path.getsize(mogg_file_path),
-                    "version": version,
-                    "isEncrypted": version != 10,
-                    "worksInPS3": version == 11,
-                },
-            }
-        except Exception as e:
-            temp_ogg.close()
-            Path(temp_ogg.name).unlink(True)
-            raise e
-        finally:
-            temp_ogg.close()
-            Path(temp_ogg.name).unlink(True)
+    if version != 10:
+        decrypt_mogg(False, False, fin, temp_dec_mogg)
+
+    mogg_to_ogg(temp_dec_mogg if version != 10 else fin, ogg_temp)
+
+    try:
+        audio = mediainfo(ogg_temp.name)
+
+        return {
+            "bitRate": int(audio["bit_rate"]),
+            "channels": int(audio["channels"]),
+            "codec": audio["codec_name"],
+            "codecDesc": audio["codec_long_name"],
+            "duration": int(float(audio["duration"]) * 1000),
+            "durationSec": float(audio["duration"]),
+            "ext": audio["format_name"],
+            "extDesc": audio["format_long_name"],
+            "sampleRate": int(audio["sample_rate"]),
+            "size": int(audio["size"]),
+            "mogg": {
+                "size": path.getsize(mogg_file_path),
+                "version": version,
+                "isEncrypted": version != 10,
+                "worksInPS3": version == 11,
+            },
+        }
+    except Exception as e:
+        raise e
+    finally:
+        fin.close()
+        temp_dec_mogg.close()
+        ogg_temp.close()
+        Path(temp_dec_mogg.name).unlink(True)
+        Path(ogg_temp.name).unlink(True)
 
 
 if __name__ == "__main__":

@@ -1,7 +1,8 @@
 import linuxIconPath from '../../resources/icon.png?asset'
-import { initRockshelfMainProcess } from 'rockshelf-core'
+import { Rockshelf } from 'rockshelf-core'
 
-initRockshelfMainProcess({
+Rockshelf.init({
   linuxIconPath,
   mainScriptRootFolder: import.meta.dirname,
+  argv: process.argv.filter((val) => val !== '.'),
 })

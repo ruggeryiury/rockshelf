@@ -31,9 +31,9 @@ export function DeluxeConfigScreen() {
           onClick={async () => {
             setWindowState({ disableButtons: true, installedDeluxeData: 'loading' })
             try {
-              const newRB3Stats = await window.api.rpcs3GetRB3Stats()
+              const newRB3Stats = await window.api.data.getRockBand3Data()
               if (STRUCT_LOG) console.log('struct RockBand3Data ["rbtools/src/lib/rpcs3/rpcs3GetRB3Stats.ts"]:', newRB3Stats)
-              const newData = await window.api.getInstalledDeluxeData()
+              const newData = await window.api.data.getInstalledDeluxeData()
               if (STRUCT_LOG) console.log('struct DeluxeInstalledData ["rbtools/src/lib/github/api.ts"]:', newData)
               setWindowState({ installedDeluxeData: newData, rb3Stats: newRB3Stats })
             } catch (err) {
@@ -112,14 +112,14 @@ export function DeluxeConfigScreen() {
                       {t('commitBy')} {installedDeluxeData.installed.authorName}
                     </p>
                     <div className="flex-row! items-center">
-                      <button className="mr-2 w-fit flex-row! items-center self-start rounded-xs border border-neutral-700 bg-neutral-900 px-1 py-0.5 text-xs! uppercase duration-100 last:mr-0 hover:bg-neutral-700 active:bg-neutral-600 disabled:text-neutral-700 disabled:hover:bg-neutral-900" onClick={async () => installedDeluxeData.installed && (await window.api.openExternalLink(`https://github.com/hmxmilohax/rock-band-3-deluxe/commit/${installedDeluxeData.installed.sha}`))}>
+                      <button className="mr-2 w-fit flex-row! items-center self-start rounded-xs border border-neutral-700 bg-neutral-900 px-1 py-0.5 text-xs! uppercase duration-100 last:mr-0 hover:bg-neutral-700 active:bg-neutral-600 disabled:text-neutral-700 disabled:hover:bg-neutral-900" onClick={async () => installedDeluxeData.installed && (await window.api.open.externalURL(`https://github.com/hmxmilohax/rock-band-3-deluxe/commit/${installedDeluxeData.installed.sha}`))}>
                         <GitHubIcon className="mr-1" />
                         {t('openCommitOnGitHub')}
                       </button>
                       <button
                         className="mr-2 w-fit flex-row! items-center self-start rounded-xs border border-neutral-700 bg-neutral-900 px-1 py-0.5 text-xs! uppercase duration-100 last:mr-0 hover:bg-neutral-700 active:bg-neutral-600 disabled:text-neutral-700 disabled:hover:bg-neutral-900"
                         onClick={async () => {
-                          await window.api.openFSFolderInExplorer('rb3UsrDir')
+                          await window.api.open.fsDir('rb3UsrDir')
                         }}
                       >
                         {t('openInstallationFolder')}
@@ -151,7 +151,7 @@ export function DeluxeConfigScreen() {
                       <p className="mb-1">
                         {t('commitBy')} {installedDeluxeData.latest.authorName}
                       </p>
-                      <button className="w-fit flex-row! items-center self-start rounded-xs border border-neutral-700 bg-neutral-900 px-1 py-0.5 text-xs! uppercase duration-100 hover:bg-neutral-700 active:bg-neutral-600 disabled:text-neutral-700 disabled:hover:bg-neutral-900" onClick={async () => installedDeluxeData.installed && (await window.api.openExternalLink(`https://github.com/hmxmilohax/rock-band-3-deluxe/commit/${installedDeluxeData.latest?.sha}`))}>
+                      <button className="w-fit flex-row! items-center self-start rounded-xs border border-neutral-700 bg-neutral-900 px-1 py-0.5 text-xs! uppercase duration-100 hover:bg-neutral-700 active:bg-neutral-600 disabled:text-neutral-700 disabled:hover:bg-neutral-900" onClick={async () => installedDeluxeData.installed && (await window.api.open.externalURL(`https://github.com/hmxmilohax/rock-band-3-deluxe/commit/${installedDeluxeData.latest?.sha}`))}>
                         <GitHubIcon className="mr-1" />
                         {t('openCommitOnGitHub')}
                       </button>
@@ -173,8 +173,8 @@ export function DeluxeConfigScreen() {
                       onClick={async () => {
                         setWindowState({ disableButtons: true })
                         try {
-                          const newData = await window.api.downloadAndInstallDeluxe({ latestVersionHash: installedDeluxeData.latest?.short || '', type: 'standard' })
-                          const newRB3Stats = await window.api.rpcs3GetRB3Stats()
+                          const newData = await window.api.data.downloadAndInstallDeluxe({ latestVersionHash: installedDeluxeData.latest?.short || '', type: 'standard' })
+                          const newRB3Stats = await window.api.data.getRockBand3Data()
                           if (STRUCT_LOG) console.log('struct RockBand3Data ["rbtools/src/lib/rpcs3/rpcs3GetRB3Stats.ts"]:', newRB3Stats)
                           setWindowState({ installedDeluxeData: newData, rb3Stats: newRB3Stats })
                         } catch (err) {
@@ -184,19 +184,15 @@ export function DeluxeConfigScreen() {
                       }}
                       disabled={disableButtons}
                     >
-                      <TransComponent i18nKey="downloadInstallDeluxe" />
-
-                      <code className="ml-3 font-bold">
-                        <TransComponent i18nKey="latest" />
-                      </code>
+                      <TransComponent i18nKey="updateToLatest" />
                     </button>
                     <button
                       className="mr-2 w-fit flex-row! items-center self-start rounded-xs border border-neutral-700 bg-neutral-900 px-1 py-0.5 text-start text-xs! uppercase duration-100 last:mr-0 hover:bg-neutral-700 active:bg-neutral-600 disabled:text-neutral-700 disabled:hover:bg-neutral-900"
                       onClick={async () => {
                         setWindowState({ disableButtons: true })
                         try {
-                          const newData = await window.api.downloadAndInstallDeluxe({ latestVersionHash: installedDeluxeData.latest?.short || '', type: 'customCharacters' })
-                          const newRB3Stats = await window.api.rpcs3GetRB3Stats()
+                          const newData = await window.api.data.downloadAndInstallDeluxe({ latestVersionHash: installedDeluxeData.latest?.short || '', type: 'customCharacters' })
+                          const newRB3Stats = await window.api.data.getRockBand3Data()
                           if (STRUCT_LOG) console.log('struct RockBand3Data ["rbtools/src/lib/rpcs3/rpcs3GetRB3Stats.ts"]:', newRB3Stats)
                           setWindowState({ installedDeluxeData: newData, rb3Stats: newRB3Stats })
                         } catch (err) {
@@ -206,17 +202,14 @@ export function DeluxeConfigScreen() {
                       }}
                       disabled={disableButtons}
                     >
-                      <TransComponent i18nKey="downloadInstallDeluxe" />
-
-                      <div className="items-start">
-                        <code className="ml-3 font-bold">
-                          <TransComponent i18nKey="latest" />
-                        </code>
-
-                        <code className="ml-3 font-bold">
-                          <TransComponent i18nKey="customCharacters" />
-                        </code>
-                      </div>
+                      <span className="mr-1">
+                        <TransComponent i18nKey="updateToLatest" />
+                      </span>
+                      <span className="font-mono font-bold">
+                        &#x28;
+                        <TransComponent i18nKey="customCharacters" />
+                        &#x29;
+                      </span>
                     </button>
                   </div>
                 )}
@@ -242,12 +235,12 @@ export function DeluxeConfigScreen() {
                 <p className="mb-2">{t('deluxeNotInstalledText')}</p>
                 <div className="flex-row! items-center">
                   <button
-                    className="mr-2 w-fit flex-row! items-center self-start rounded-xs border border-neutral-700 bg-neutral-900 px-1 py-0.5 text-xs! uppercase duration-100 last:mr-0 hover:bg-neutral-700 active:bg-neutral-600 disabled:text-neutral-700 disabled:hover:bg-neutral-900"
+                    className="mr-4 h-full w-fit flex-row! items-center self-start rounded-xs border border-neutral-700 bg-neutral-900 px-2 py-1 text-xs! uppercase duration-100 last:mr-0 hover:bg-neutral-700 active:bg-neutral-600 disabled:text-neutral-700 disabled:hover:bg-neutral-900"
                     onClick={async () => {
                       setWindowState({ disableButtons: true })
                       try {
-                        const newData = await window.api.downloadAndInstallDeluxe({ latestVersionHash: installedDeluxeData.latest?.short || '', type: 'standard' })
-                        const newRB3Stats = await window.api.rpcs3GetRB3Stats()
+                        const newData = await window.api.data.downloadAndInstallDeluxe({ latestVersionHash: installedDeluxeData.latest?.short || '', type: 'standard' })
+                        const newRB3Stats = await window.api.data.getRockBand3Data()
                         if (STRUCT_LOG) console.log('struct RockBand3Data ["rbtools/src/lib/rpcs3/rpcs3GetRB3Stats.ts"]:', newRB3Stats)
                         setWindowState({ installedDeluxeData: newData, rb3Stats: newRB3Stats })
                       } catch (err) {
@@ -257,15 +250,15 @@ export function DeluxeConfigScreen() {
                     }}
                     disabled={disableButtons}
                   >
-                    <TransComponent i18nKey="downloadInstallDeluxe" />
+                    <TransComponent i18nKey="downloadAndInstallRB3DX" />
                   </button>
                   <button
-                    className="mr-2 w-fit flex-row! items-center self-start rounded-xs border border-neutral-700 bg-neutral-900 px-1 py-0.5 text-xs! uppercase duration-100 last:mr-0 hover:bg-neutral-700 active:bg-neutral-600 disabled:text-neutral-700 disabled:hover:bg-neutral-900"
+                    className="mr-2 h-full w-fit flex-row! items-center self-start rounded-xs border border-neutral-700 bg-neutral-900 px-2 py-1 text-xs! uppercase duration-100 last:mr-0 hover:bg-neutral-700 active:bg-neutral-600 disabled:text-neutral-700 disabled:hover:bg-neutral-900"
                     onClick={async () => {
                       setWindowState({ disableButtons: true })
                       try {
-                        const newData = await window.api.downloadAndInstallDeluxe({ latestVersionHash: installedDeluxeData.latest?.short || '', type: 'customCharacters' })
-                        const newRB3Stats = await window.api.rpcs3GetRB3Stats()
+                        const newData = await window.api.data.downloadAndInstallDeluxe({ latestVersionHash: installedDeluxeData.latest?.short || '', type: 'customCharacters' })
+                        const newRB3Stats = await window.api.data.getRockBand3Data()
                         if (STRUCT_LOG) console.log('struct RockBand3Data ["rbtools/src/lib/rpcs3/rpcs3GetRB3Stats.ts"]:', newRB3Stats)
                         setWindowState({ installedDeluxeData: newData, rb3Stats: newRB3Stats })
                       } catch (err) {
@@ -275,7 +268,12 @@ export function DeluxeConfigScreen() {
                     }}
                     disabled={disableButtons}
                   >
-                    <TransComponent i18nKey="downloadInstallDeluxe" />
+                    <div className="mb-2 rounded-sm p-3">
+                      <div className="mb-2 flex-row! items-end border-b border-neutral-600 pb-1">
+                        <h1 className="mr-auto text-xl uppercase">{t('status')}</h1>
+                      </div>
+                      <p>{t('downloadAndInstallRB3DX')}</p>
+                    </div>
                   </button>
                 </div>
               </div>
@@ -292,7 +290,7 @@ export function DeluxeConfigScreen() {
               onClick={async () => {
                 setWindowState({ disableButtons: true })
                 try {
-                  await window.api.installQuickConfig(rpcs3ExePath, 'potato')
+                  await window.api.data.installQuickConfig('potato')
                 } catch (err) {
                   if (err instanceof Error) setWindowState({ err })
                 }
@@ -324,7 +322,7 @@ export function DeluxeConfigScreen() {
               onClick={async () => {
                 setWindowState({ disableButtons: true })
                 try {
-                  await window.api.installQuickConfig(rpcs3ExePath, 'potato')
+                  await window.api.data.installQuickConfig('minimum')
                 } catch (err) {
                   if (err instanceof Error) setWindowState({ err })
                 }
@@ -353,7 +351,7 @@ export function DeluxeConfigScreen() {
               onClick={async () => {
                 setWindowState({ disableButtons: true })
                 try {
-                  await window.api.installQuickConfig(rpcs3ExePath, 'potato')
+                  await window.api.data.installQuickConfig('recommended')
                 } catch (err) {
                   if (err instanceof Error) setWindowState({ err })
                 }

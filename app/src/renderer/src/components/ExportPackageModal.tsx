@@ -35,7 +35,7 @@ export function ExportPackageModal() {
                   onClick={async () => {
                     setWindowState({ disableButtons: true })
                     try {
-                      const exportPackagePath = await window.api.selectPathToSaveRB3File()
+                      const exportPackagePath = await window.api.selector.pathToRB3File()
                       if (!exportPackagePath) {
                         setWindowState({ disableButtons: false })
                         return
@@ -102,7 +102,7 @@ export function ExportPackageModal() {
                   onClick={async () => {
                     if (destPath !== null) {
                       try {
-                        const aaa = await window.api.exportPackage(active.path, destPath, { creatorName: packageCreatorName })
+                        await window.api.data.exportPackage(active.path, destPath, { creatorName: packageCreatorName })
                       } catch (err) {
                         if (err instanceof Error) setWindowState({ err })
                       }

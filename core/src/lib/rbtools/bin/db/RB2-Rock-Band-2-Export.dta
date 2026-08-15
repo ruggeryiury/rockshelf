@@ -1,0 +1,8589 @@
+(
+   'aceofspades'
+   (
+      'name'
+      "Ace of Spades '08"
+   )
+   (
+      'artist'
+      "Motörhead"
+   )
+   ('master' 'TRUE')
+   ('song_id' 251)
+   (
+      'song'
+      (
+         'name'
+         "songs/aceofspades/aceofspades"
+      )
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1 2 3 4)
+            )
+            (
+               'bass'
+               (5)
+            )
+            (
+               'guitar'
+               (6 7)
+            )
+            (
+               'vocals'
+               (8 9)
+            )
+            (
+               'keys'
+               ()
+            )
+         )
+      )
+      (
+         'pans'
+         (0.0 -1.0 1.0 -1.0 1.0 0.0 -1.0 1.0 -1.0 1.0 -1.0 1.0)
+      )
+      (
+         'vols'
+         (-0.5 -1.0 -1.0 -1.5 -1.5 -3.0 -3.0 -3.0 -3.5 -3.5 -4.0 -4.0)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 -1 -1 1 1 -1 -1 -1 -1)
+      )
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+   )
+   ('bank' 'sfx/cowbell_bank.milo')
+   ('anim_tempo' 'kTempoMedium')
+   ('song_scroll_speed' 2300)
+   ('preview' 16721 46721)
+   ('song_length' 175000)
+   (solo (guitar vocal_percussion))
+   (
+      'rank'
+      ('drum' 429)
+      ('guitar' 388)
+      ('bass' 471)
+      ('vocals' 255)
+      ('keys' 0)
+      ('real_guitar' 0)
+      ('real_bass' 0)
+      ('real_keys' 0)
+      ('band' 453)
+   )
+   ('format' 10)
+   ('version' 2)
+   ('game_origin' 'rb2')
+   ('short_version' 0)
+   ('rating' 2)
+   ('genre' 'metal')
+   ('vocal_gender' 'male')
+   ('year_released' 1980)
+   ('year_recorded' 2008)
+   ('album_art' 'TRUE')
+   (
+      'album_name'
+      "Ace of Spades '08"
+   )
+   ('album_track_number' 1)
+   ('encoding' 'latin1')
+)
+(
+   'ajaggedgorgeouswinter'
+   (
+      'name'
+      "A Jagged Gorgeous Winter"
+   )
+   (
+      'artist'
+      "The Main Drag"
+   )
+   ('master' 'TRUE')
+   ('song_id' 326)
+   (
+      'song'
+      (
+         'name'
+         "songs/ajaggedgorgeouswinter/ajaggedgorgeouswinter"
+      )
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1)
+            )
+            (
+               'bass'
+               (2)
+            )
+            (
+               'guitar'
+               (3 4)
+            )
+            (
+               'vocals'
+               (5 6)
+            )
+         )
+      )
+      (
+         'pans'
+         (-1.0 1.0 0.0 -1.0 1.0 -1.0 1.0 -1.0 1.0)
+      )
+      (
+         'vols'
+         (-0.5 -0.5 -4.0 -4.2 -4.2 -3.0 -3.0 -1.5 -1.5)
+      )
+      (
+         'cores'
+         (-1 -1 -1 1 1 -1 -1 -1 -1)
+      )
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+   )
+   ('bank' 'sfx/tambourine_bank.milo')
+   ('anim_tempo' 'kTempoMedium')
+   ('song_scroll_speed' 2300)
+   ('preview' 15000 45000)
+   ('song_length' 238498)
+   (
+      'rank'
+      ('drum' 339)
+      ('guitar' 223)
+      ('bass' 258)
+      ('vocals' 203)
+      ('keys' 0)
+      ('real_guitar' 0)
+      ('real_bass' 0)
+      ('real_keys' 0)
+      ('band' 273)
+   )
+   ('format' 10)
+   ('version' 2)
+   ('game_origin' 'rb2')
+   ('short_version' 0)
+   ('rating' 2)
+   ('genre' 'indierock')
+   ('vocal_gender' 'male')
+   ('year_released' 2008)
+   ('album_art' 'TRUE')
+   (
+      'album_name'
+      "Yours As Fast As Mine"
+   )
+   ('album_track_number' 3)
+)
+(
+   'alabamagetaway'
+   (
+      'name'
+      "Alabama Getaway"
+   )
+   (
+      'artist'
+      "The Grateful Dead"
+   )
+   ('master' 'TRUE')
+   ('song_id' 252)
+   (
+      'song'
+      (
+         'name'
+         "songs/alabamagetaway/alabamagetaway"
+      )
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1 2 3 4)
+            )
+            (
+               'bass'
+               (5)
+            )
+            (
+               'guitar'
+               (6 7)
+            )
+            (
+               'vocals'
+               (8 9)
+            )
+            (
+               'keys'
+               ()
+            )
+         )
+      )
+      ('crowd_channels' 12 13)
+      (
+         'pans'
+         (0.0 -1.0 1.0 -1.0 1.0 0.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -2.5 2.5)
+      )
+      (
+         'vols'
+         (-0.5 -0.5 -0.5 -2.0 -2.0 -3.0 -5.0 -5.0 -3.5 -3.5 -2.5 -2.5 -2.2 -2.2)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 -1 -1 1 1 -1 -1 -1 -1 -1 -1)
+      )
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+      ('hopo_threshold' 250)
+   )
+   ('bank' 'sfx/tambourine_bank.milo')
+   ('anim_tempo' 'kTempoFast')
+   ('song_scroll_speed' 2300)
+   ('preview' 33600 45800)
+   ('song_length' 230454)
+   (solo (guitar vocal_percussion))
+   (
+      'rank'
+      ('drum' 300)
+      ('guitar' 362)
+      ('bass' 213)
+      ('vocals' 326)
+      ('keys' 0)
+      ('real_guitar' 0)
+      ('real_bass' 0)
+      ('real_keys' 0)
+      ('band' 336)
+   )
+   ('format' 10)
+   ('version' 2)
+   ('game_origin' 'rb2')
+   ('short_version' 0)
+   ('rating' 2)
+   ('genre' 'classicrock')
+   ('vocal_gender' 'male')
+   ('year_released' 1980)
+   ('album_art' 'TRUE')
+   (
+      'album_name'
+      "Go to Heaven"
+   )
+   ('album_track_number' 1)
+)
+(
+   'alexchilton'
+   (
+      'name'
+      "Alex Chilton"
+   )
+   (
+      'artist'
+      "The Replacements"
+   )
+   ('master' 'TRUE')
+   ('song_id' 253)
+   (
+      'song'
+      (
+         'name'
+         "songs/alexchilton/alexchilton"
+      )
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1 2 3 4 5)
+            )
+            (
+               'bass'
+               (6)
+            )
+            (
+               'guitar'
+               (7 8)
+            )
+            (
+               'vocals'
+               (9 10)
+            )
+            (
+               'keys'
+               ()
+            )
+         )
+      )
+      ('crowd_channels' 13 14)
+      (
+         'pans'
+         (-1.0 1.0 -1.0 1.0 -1.0 1.0 0.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -2.5 2.5)
+      )
+      (
+         'vols'
+         (-0.5 -0.5 -2.0 -2.0 -1.0 -1.0 -2.5 -4.5 -4.5 -3.0 -3.0 -6.0 -6.0 -3.7 -3.7)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 -1 -1 -1 1 1 -1 -1 -1 -1 -1 -1)
+      )
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+   )
+   ('bank' 'sfx/tambourine_bank.milo')
+   ('anim_tempo' 'kTempoFast')
+   ('song_scroll_speed' 2300)
+   ('preview' 41772 70471)
+   ('song_length' 201818)
+   (solo (guitar vocal_percussion))
+   (
+      'rank'
+      ('drum' 330)
+      ('guitar' 282)
+      ('bass' 304)
+      ('vocals' 213)
+      ('keys' 0)
+      ('real_guitar' 0)
+      ('real_bass' 0)
+      ('real_keys' 0)
+      ('band' 309)
+   )
+   ('format' 10)
+   ('version' 2)
+   ('game_origin' 'rb2')
+   ('short_version' 0)
+   ('rating' 2)
+   ('genre' 'rock')
+   ('vocal_gender' 'male')
+   ('year_released' 1987)
+   ('album_art' 'TRUE')
+   (
+      'album_name'
+      "Pleased To Meet Me"
+   )
+   ('album_track_number' 2)
+)
+(
+   'alive'
+   (
+      'name'
+      "Alive"
+   )
+   (
+      'artist'
+      "Pearl Jam"
+   )
+   ('master' 'TRUE')
+   ('song_id' 254)
+   (
+      'song'
+      (
+         'name'
+         "songs/alive/alive"
+      )
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1 2 3 4 5)
+            )
+            (
+               'bass'
+               (6 7)
+            )
+            (
+               'guitar'
+               (8 9)
+            )
+            (
+               'vocals'
+               (10 11)
+            )
+            (
+               'keys'
+               ()
+            )
+         )
+      )
+      (
+         'pans'
+         (-1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0)
+      )
+      (
+         'vols'
+         (-1.0 -1.0 -1.0 -1.0 -2.0 -2.0 -5.0 -5.0 -3.5 -3.5 -4.0 -4.0 -4.0 -4.0)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 -1 -1 -1 -1 1 1 -1 -1 -1 -1)
+      )
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+   )
+   ('bank' 'sfx/tambourine_bank.milo')
+   ('anim_tempo' 'kTempoSlow')
+   ('song_scroll_speed' 2300)
+   ('preview' 68452 98452)
+   ('song_length' 357272)
+   (solo (guitar vocal_percussion))
+   (
+      'rank'
+      ('drum' 293)
+      ('guitar' 287)
+      ('bass' 284)
+      ('vocals' 232)
+      ('keys' 0)
+      ('real_guitar' 0)
+      ('real_bass' 0)
+      ('real_keys' 0)
+      ('band' 323)
+   )
+   ('format' 10)
+   ('version' 2)
+   ('game_origin' 'rb2')
+   ('short_version' 0)
+   ('rating' 2)
+   ('genre' 'grunge')
+   ('vocal_gender' 'male')
+   ('year_released' 1991)
+   ('album_art' 'TRUE')
+   (
+      'album_name'
+      "Ten"
+   )
+   ('album_track_number' 3)
+)
+(
+   'almosteasy'
+   (
+      'name'
+      "Almost Easy"
+   )
+   (
+      'artist'
+      "Avenged Sevenfold"
+   )
+   ('master' 'TRUE')
+   ('song_id' 255)
+   (
+      'song'
+      (
+         'name'
+         "songs/almosteasy/almosteasy"
+      )
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1 2 3 4 5)
+            )
+            (
+               'bass'
+               (6 7)
+            )
+            (
+               'guitar'
+               (8 9)
+            )
+            (
+               'vocals'
+               (10 11)
+            )
+            (
+               'keys'
+               ()
+            )
+         )
+      )
+      (
+         'pans'
+         (-1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0)
+      )
+      (
+         'vols'
+         (-0.8 -0.8 -0.8 -0.8 -2.3 -2.3 -4.3 -4.3 -3.3 -3.3 -3.3 -3.3 -5.3 -5.3)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 -1 -1 -1 -1 1 1 -1 -1 -1 -1)
+      )
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+   )
+   ('bank' 'sfx/handclap_bank.milo')
+   ('anim_tempo' 'kTempoFast')
+   ('song_scroll_speed' 2300)
+   ('preview' 59849 88675)
+   ('song_length' 238636)
+   (solo (guitar vocal_percussion))
+   (
+      'rank'
+      ('drum' 365)
+      ('guitar' 396)
+      ('bass' 391)
+      ('vocals' 307)
+      ('keys' 0)
+      ('real_guitar' 0)
+      ('real_bass' 0)
+      ('real_keys' 0)
+      ('band' 460)
+   )
+   ('format' 10)
+   ('version' 2)
+   ('game_origin' 'rb2')
+   ('short_version' 0)
+   ('rating' 2)
+   ('genre' 'metal')
+   ('vocal_gender' 'male')
+   ('year_released' 2007)
+   ('album_art' 'TRUE')
+   (
+      'album_name'
+      "Avenged Sevenfold"
+   )
+   ('album_track_number' 2)
+)
+(
+   'americanwoman'
+   (
+      'name'
+      "American Woman"
+   )
+   (
+      'artist'
+      "The Guess Who"
+   )
+   ('master' 'TRUE')
+   ('song_id' 256)
+   (
+      'song'
+      (
+         'name'
+         "songs/americanwoman/americanwoman"
+      )
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1)
+            )
+            (
+               'bass'
+               (2)
+            )
+            (
+               'guitar'
+               (3 4)
+            )
+            (
+               'vocals'
+               (5 6)
+            )
+            (
+               'keys'
+               ()
+            )
+         )
+      )
+      ('crowd_channels' 9 10)
+      (
+         'pans'
+         (-1.0 1.0 0.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -2.5 2.5)
+      )
+      (
+         'vols'
+         (-0.5 -0.5 -3.0 -2.5 -2.5 -3.5 -3.5 -3.0 -3.0 -4.5 -4.5)
+      )
+      (
+         'cores'
+         (-1 -1 -1 1 1 -1 -1 -1 -1 -1 -1)
+      )
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+   )
+   ('bank' 'sfx/tambourine_bank.milo')
+   ('anim_tempo' 'kTempoSlow')
+   ('song_scroll_speed' 2300)
+   ('preview' 9938 39845)
+   ('song_length' 249090)
+   (solo (guitar vocal_percussion))
+   (
+      'rank'
+      ('drum' 313)
+      ('guitar' 165)
+      ('bass' 216)
+      ('vocals' 239)
+      ('keys' 0)
+      ('real_guitar' 0)
+      ('real_bass' 0)
+      ('real_keys' 0)
+      ('band' 259)
+   )
+   ('format' 10)
+   ('version' 2)
+   ('game_origin' 'rb2')
+   ('short_version' 0)
+   ('rating' 2)
+   ('genre' 'classicrock')
+   ('vocal_gender' 'male')
+   ('year_released' 1970)
+   ('album_art' 'TRUE')
+   (
+      'album_name'
+      "American Woman"
+   )
+   ('album_track_number' 1)
+)
+(
+   'anywayyouwantit'
+   (
+      'name'
+      "Any Way You Want It"
+   )
+   (
+      'artist'
+      "Journey"
+   )
+   ('master' 'TRUE')
+   ('context' 268)
+   (
+      'song'
+      ('name' 'songs/anywayyouwantit/anywayyouwantit')
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1 2 3 4 5)
+            )
+            ('bass' 6)
+            (
+               'guitar'
+               (7 8)
+            )
+            (
+               'vocals'
+               (9 10)
+            )
+         )
+      )
+      ('crowd_channels' 13 14)
+      (
+         'pans'
+         (-1.0 1.0 -1.0 1.0 -1.0 1.0 0.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -2.5 2.5)
+      )
+      (
+         'vols'
+         (-1.0 -1.0 -1.0 -1.0 -3.0 -3.0 -3.0 -3.5 -3.5 -3.0 -3.0 -3.8 -3.8 -3.5 -3.5)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 -1 -1 -1 1 1 -1 -1 -1 -1 -1 -1)
+      )
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+      ('midi_file' 'songs/anywayyouwantit/anywayyouwantit.mid')
+   )
+   ('song_scroll_speed' 2300)
+   ('bank' 'sfx/tambourine_bank.milo')
+   ('anim_tempo' 'kTempoMedium')
+   ('song_id' 257)
+   ('preview' 4400 34400)
+   (
+      'rank'
+      ('drum' 243)
+      ('guitar' 344)
+      ('bass' 317)
+      ('vocals' 372)
+      ('band' 373)
+   )
+   ('genre' 'classicrock')
+   ('decade' 'the80s')
+   ('vocal_gender' 'male')
+   ('version' 1)
+   ('format' 3)
+   ('game_origin' 'rb2')
+   ('year_released' 1980)
+   ('album_art' 'TRUE')
+   (
+      'album_name'
+      "Departure"
+   )
+   ('album_track_number' 1)
+   ('base_points' 503236)
+)
+(
+   'aqualung'
+   (
+      'name'
+      "Aqualung"
+   )
+   (
+      'artist'
+      "Jethro Tull"
+   )
+   ('master' 'TRUE')
+   ('song_id' 258)
+   (
+      'song'
+      (
+         'name'
+         "songs/aqualung/aqualung"
+      )
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1)
+            )
+            (
+               'bass'
+               (2)
+            )
+            (
+               'guitar'
+               (3 4)
+            )
+            (
+               'vocals'
+               (5 6)
+            )
+            (
+               'keys'
+               ()
+            )
+         )
+      )
+      ('crowd_channels' 9 10)
+      (
+         'pans'
+         (-1.0 1.0 0.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -2.5 2.5)
+      )
+      (
+         'vols'
+         (-0.5 -0.5 -3.0 -3.0 -3.0 -2.5 -2.5 -3.0 -3.0 -4.5 -4.5)
+      )
+      (
+         'cores'
+         (-1 -1 -1 1 1 -1 -1 -1 -1 -1 -1)
+      )
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+   )
+   ('bank' 'sfx/tambourine_bank.milo')
+   ('anim_tempo' 'kTempoMedium')
+   ('song_scroll_speed' 2300)
+   ('preview' 11772 41703)
+   ('song_length' 399090)
+   (solo (guitar vocal_percussion))
+   (
+      'rank'
+      ('drum' 361)
+      ('guitar' 296)
+      ('bass' 365)
+      ('vocals' 297)
+      ('keys' 0)
+      ('real_guitar' 0)
+      ('real_bass' 0)
+      ('real_keys' 0)
+      ('band' 395)
+   )
+   ('format' 10)
+   ('version' 2)
+   ('game_origin' 'rb2')
+   ('short_version' 0)
+   ('rating' 2)
+   ('genre' 'prog')
+   ('vocal_gender' 'male')
+   ('year_released' 1971)
+   ('album_art' 'TRUE')
+   (
+      'album_name'
+      "Aqualung"
+   )
+   ('album_track_number' 1)
+)
+(
+   'badreputation'
+   (
+      'name'
+      "Bad Reputation"
+   )
+   (
+      'artist'
+      "Joan Jett"
+   )
+   ('master' 'TRUE')
+   ('song_id' 259)
+   (
+      'song'
+      (
+         'name'
+         "songs/badreputation/badreputation"
+      )
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1 2 3)
+            )
+            (
+               'bass'
+               (4)
+            )
+            (
+               'guitar'
+               (5 6)
+            )
+            (
+               'vocals'
+               (7)
+            )
+            (
+               'keys'
+               ()
+            )
+         )
+      )
+      ('crowd_channels' 10 11)
+      (
+         'pans'
+         (0.0 0.0 -1.0 1.0 0.0 -1.0 1.0 0.0 -1.0 1.0 -2.5 2.5)
+      )
+      (
+         'vols'
+         (-0.5 -0.5 -1.5 -1.5 -3.5 -5.0 -5.0 -1.0 -3.5 -3.5 -4.2 -4.2)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 -1 1 1 -1 -1 -1 -1 -1)
+      )
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+   )
+   ('bank' 'sfx/tambourine_bank.milo')
+   ('anim_tempo' 'kTempoFast')
+   ('song_scroll_speed' 2300)
+   ('preview' 51879 79719)
+   ('song_length' 171818)
+   (solo (guitar))
+   (
+      'rank'
+      ('drum' 400)
+      ('guitar' 228)
+      ('bass' 229)
+      ('vocals' 268)
+      ('keys' 0)
+      ('real_guitar' 0)
+      ('real_bass' 0)
+      ('real_keys' 0)
+      ('band' 364)
+   )
+   ('format' 10)
+   ('version' 2)
+   ('game_origin' 'rb2')
+   ('short_version' 0)
+   ('rating' 2)
+   ('genre' 'punk')
+   ('vocal_gender' 'female')
+   ('year_released' 1980)
+   ('album_art' 'TRUE')
+   (
+      'album_name'
+      "Joan Jett"
+   )
+   ('album_track_number' 1)
+)
+(
+   'battery'
+   (
+      'name'
+      "Battery"
+   )
+   (
+      'artist'
+      "Metallica"
+   )
+   ('master' 'TRUE')
+   ('context' 271)
+   (
+      'song'
+      ('name' 'songs/battery/battery')
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1 2 3 4)
+            )
+            ('bass' 5)
+            (
+               'guitar'
+               (6 7)
+            )
+            (
+               'vocals'
+               (8 9)
+            )
+         )
+      )
+      (
+         'pans'
+         (0.0 -1.0 1.0 -1.0 1.0 0.0 -1.0 1.0 -1.0 1.0 -1.0 1.0)
+      )
+      (
+         'vols'
+         (-0.5 -1.0 -1.0 -3.0 -3.0 -4.0 -6.0 -6.0 -4.5 -4.5 -5.5 -5.5)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 -1 -1 1 1 -1 -1 -1 -1)
+      )
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+      ('midi_file' 'songs/battery/battery.mid')
+   )
+   ('song_scroll_speed' 2300)
+   ('bank' 'sfx/cowbell3_bank.milo')
+   ('anim_tempo' 'kTempoFast')
+   ('song_id' 260)
+   ('preview' 101700 131700)
+   (
+      'rank'
+      ('drum' 510)
+      ('guitar' 483)
+      ('bass' 553)
+      ('vocals' 261)
+      ('band' 520)
+   )
+   ('genre' 'metal')
+   ('decade' 'the80s')
+   ('vocal_gender' 'male')
+   ('format' 3)
+   ('version' 1)
+   ('game_origin' 'rb2')
+   ('year_released' 1986)
+   ('album_art' 'TRUE')
+   (
+      'album_name'
+      "Master of Puppets"
+   )
+   ('album_track_number' 1)
+   ('base_points' 761017)
+)
+(
+   'bodhisattva'
+   (
+      'name'
+      "Bodhisattva"
+   )
+   (
+      'artist'
+      "Steely Dan"
+   )
+   ('master' 'TRUE')
+   ('song_id' 261)
+   (
+      'song'
+      (
+         'name'
+         "songs/bodhisattva/bodhisattva"
+      )
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1 2)
+            )
+            (
+               'bass'
+               (3)
+            )
+            (
+               'guitar'
+               (4 5)
+            )
+            (
+               'vocals'
+               (6 7)
+            )
+            (
+               'keys'
+               ()
+            )
+         )
+      )
+      (
+         'pans'
+         (0.0 -1.0 1.0 0.0 -1.0 1.0 -1.0 1.0 -1.0 1.0)
+      )
+      (
+         'vols'
+         (0.0 -1.0 -1.0 -4.5 -5.0 -5.0 -3.0 -3.0 -4.0 -4.0)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 1 1 -1 -1 -1 -1)
+      )
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+      ('hopo_threshold' 250)
+   )
+   ('bank' 'sfx/tambourine_bank.milo')
+   ('anim_tempo' 'kTempoMedium')
+   ('song_scroll_speed' 2300)
+   ('preview' 73300 97300)
+   ('song_length' 318181)
+   (solo (guitar vocal_percussion))
+   (
+      'rank'
+      ('drum' 374)
+      ('guitar' 474)
+      ('bass' 424)
+      ('vocals' 148)
+      ('keys' 0)
+      ('real_guitar' 0)
+      ('real_bass' 0)
+      ('real_keys' 0)
+      ('band' 500)
+   )
+   ('format' 10)
+   ('version' 2)
+   ('game_origin' 'rb2')
+   ('short_version' 0)
+   ('rating' 2)
+   ('genre' 'classicrock')
+   ('vocal_gender' 'male')
+   ('year_released' 1973)
+   ('album_art' 'TRUE')
+   (
+      'album_name'
+      "Countdown to Ecstasy"
+   )
+   ('album_track_number' 1)
+)
+(
+   'carryonwaywardson'
+   (
+      'name'
+      "Carry On Wayward Son"
+   )
+   (
+      'artist'
+      "Kansas"
+   )
+   ('master' 'TRUE')
+   ('song_id' 262)
+   (
+      'song'
+      (
+         'name'
+         "songs/carryonwaywardson/carryonwaywardson"
+      )
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1 2 3 4)
+            )
+            (
+               'bass'
+               (5)
+            )
+            (
+               'guitar'
+               (6 7)
+            )
+            (
+               'vocals'
+               (8 9)
+            )
+            (
+               'keys'
+               ()
+            )
+         )
+      )
+      ('crowd_channels' 12 13)
+      (
+         'pans'
+         (0.0 -1.0 1.0 -1.0 1.0 0.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -2.5 2.5)
+      )
+      (
+         'vols'
+         (-1.0 -1.5 -1.5 -3.5 -3.5 -3.0 -4.0 -4.0 -4.0 -4.0 -3.5 -3.5 -3.7 -3.7)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 -1 -1 1 1 -1 -1 -1 -1 -1 -1)
+      )
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+   )
+   ('bank' 'sfx/cowbell3_bank.milo')
+   ('anim_tempo' 'kTempoMedium')
+   ('song_scroll_speed' 2300)
+   ('preview' 103400 123250)
+   ('song_length' 326363)
+   (solo (guitar vocal_percussion))
+   (
+      'rank'
+      ('drum' 168)
+      ('guitar' 379)
+      ('bass' 412)
+      ('vocals' 411)
+      ('keys' 0)
+      ('real_guitar' 0)
+      ('real_bass' 0)
+      ('real_keys' 0)
+      ('band' 433)
+   )
+   ('format' 10)
+   ('version' 2)
+   ('game_origin' 'rb2')
+   ('short_version' 0)
+   ('rating' 2)
+   ('genre' 'prog')
+   ('vocal_gender' 'male')
+   ('year_released' 1976)
+   ('album_art' 'TRUE')
+   (
+      'album_name'
+      "Leftoverture"
+   )
+   ('album_track_number' 1)
+   ('tuning_offset_cents' 25)
+)
+(
+   'chopsuey'
+   (
+      'name'
+      "Chop Suey"
+   )
+   (
+      'artist'
+      "System of a Down"
+   )
+   ('master' 'TRUE')
+   ('song_id' 263)
+   (
+      'song'
+      (
+         'name'
+         "songs/chopsuey/chopsuey"
+      )
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1 2 3 4 5)
+            )
+            (
+               'bass'
+               (6)
+            )
+            (
+               'guitar'
+               (7 8)
+            )
+            (
+               'vocals'
+               (9 10)
+            )
+            (
+               'keys'
+               ()
+            )
+         )
+      )
+      ('crowd_channels' 13 14)
+      (
+         'pans'
+         (-1.0 1.0 -1.0 1.0 -1.0 1.0 0.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -2.5 2.5)
+      )
+      (
+         'vols'
+         (-0.5 -0.5 -1.5 -1.5 -2.0 -2.0 -4.0 -4.0 -4.0 -3.0 -3.0 -2.0 -2.0 -4.5 -4.5)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 -1 -1 -1 1 1 -1 -1 -1 -1 -1 -1)
+      )
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+   )
+   ('bank' 'sfx/handclap_bank.milo')
+   ('anim_tempo' 'kTempoMedium')
+   ('song_scroll_speed' 2300)
+   ('preview' 56772 86471)
+   ('song_length' 214090)
+   (solo (vocal_percussion))
+   (
+      'rank'
+      ('drum' 317)
+      ('guitar' 401)
+      ('bass' 505)
+      ('vocals' 443)
+      ('keys' 0)
+      ('real_guitar' 0)
+      ('real_bass' 0)
+      ('real_keys' 0)
+      ('band' 407)
+   )
+   ('format' 10)
+   ('version' 2)
+   ('game_origin' 'rb2')
+   ('short_version' 0)
+   ('rating' 2)
+   ('genre' 'numetal')
+   ('vocal_gender' 'male')
+   ('year_released' 2001)
+   ('album_art' 'TRUE')
+   (
+      'album_name'
+      "Toxicity"
+   )
+   ('album_track_number' 6)
+)
+(
+   'colonyofbirchmen'
+   (
+      'name'
+      "Colony of Birchmen"
+   )
+   (
+      'artist'
+      "Mastodon"
+   )
+   ('master' 'TRUE')
+   ('song_id' 264)
+   (
+      'song'
+      (
+         'name'
+         "songs/colonyofbirchmen/colonyofbirchmen"
+      )
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1 2 3 4)
+            )
+            (
+               'bass'
+               (5)
+            )
+            (
+               'guitar'
+               (6 7)
+            )
+            (
+               'vocals'
+               (8)
+            )
+            (
+               'keys'
+               ()
+            )
+         )
+      )
+      (
+         'pans'
+         (0.0 -1.0 1.0 -1.0 1.0 0.0 -1.0 1.0 0.0 -1.0 1.0)
+      )
+      (
+         'vols'
+         (-0.5 -1.0 -1.0 -2.5 -2.5 -4.5 -3.5 -3.5 -3.0 -3.0 -3.0)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 -1 -1 1 1 -1 -1 -1)
+      )
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+   )
+   ('bank' 'sfx/cowbell3_bank.milo')
+   ('anim_tempo' 'kTempoMedium')
+   ('song_scroll_speed' 2300)
+   ('preview' 26703 56703)
+   ('song_length' 254545)
+   (solo (guitar vocal_percussion))
+   (
+      'rank'
+      ('drum' 443)
+      ('guitar' 448)
+      ('bass' 396)
+      ('vocals' 417)
+      ('keys' 0)
+      ('real_guitar' 0)
+      ('real_bass' 0)
+      ('real_keys' 0)
+      ('band' 487)
+   )
+   ('format' 10)
+   ('version' 2)
+   ('game_origin' 'rb2')
+   ('short_version' 0)
+   ('rating' 2)
+   ('genre' 'metal')
+   ('vocal_gender' 'male')
+   ('year_released' 2006)
+   ('album_art' 'TRUE')
+   (
+      'album_name'
+      "Blood Mountain"
+   )
+   ('album_track_number' 7)
+)
+(
+   'comeoutandplay'
+   (
+      'name'
+      "Come Out and Play (Keep 'Em Separated)"
+   )
+   (
+      'artist'
+      "The Offspring"
+   )
+   ('master' 'TRUE')
+   ('song_id' 265)
+   (
+      'song'
+      (
+         'name'
+         "songs/comeoutandplay/comeoutandplay"
+      )
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1 2 3 4)
+            )
+            (
+               'bass'
+               (5 6)
+            )
+            (
+               'guitar'
+               (7 8)
+            )
+            (
+               'vocals'
+               (9 10)
+            )
+            (
+               'keys'
+               ()
+            )
+         )
+      )
+      ('crowd_channels' 13 14)
+      (
+         'pans'
+         (0.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -2.5 2.5)
+      )
+      (
+         'vols'
+         (-1.0 -1.0 -1.0 -3.5 -3.5 -5.3 -5.3 -6.0 -6.0 -4.5 -4.5 -6.5 -6.5 -3.0 -3.0)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 -1 -1 -1 1 1 -1 -1 -1 -1 -1 -1)
+      )
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+   )
+   ('bank' 'sfx/tambourine_bank.milo')
+   ('anim_tempo' 'kTempoMedium')
+   ('song_scroll_speed' 2300)
+   ('preview' 70000 100000)
+   ('song_length' 198636)
+   (solo (vocal_percussion))
+   (
+      'rank'
+      ('drum' 229)
+      ('guitar' 318)
+      ('bass' 118)
+      ('vocals' 300)
+      ('keys' 0)
+      ('real_guitar' 0)
+      ('real_bass' 0)
+      ('real_keys' 0)
+      ('band' 295)
+   )
+   ('format' 10)
+   ('version' 2)
+   ('game_origin' 'rb2')
+   ('short_version' 0)
+   ('rating' 2)
+   ('genre' 'punk')
+   ('vocal_gender' 'male')
+   ('year_released' 1994)
+   ('album_art' 'TRUE')
+   (
+      'album_name'
+      "Smash"
+   )
+   ('album_track_number' 7)
+)
+(
+   'conventionallover'
+   (
+      'name'
+      "Conventional Lover"
+   )
+   (
+      'artist'
+      "Speck"
+   )
+   ('master' 'TRUE')
+   ('song_id' 327)
+   (
+      'song'
+      (
+         'name'
+         "songs/conventionallover/conventionallover"
+      )
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1 2 3 4)
+            )
+            (
+               'bass'
+               (5)
+            )
+            (
+               'guitar'
+               (6 7)
+            )
+            (
+               'vocals'
+               (8 9)
+            )
+         )
+      )
+      (
+         'pans'
+         (0.0 -1.0 1.0 -1.0 1.0 0.0 -1.0 1.0 -1.0 1.0 -1.0 1.0)
+      )
+      (
+         'vols'
+         (-0.5 -0.8 -0.8 -1.5 -1.5 -3.0 -3.7 -3.7 -4.2 -4.2 -3.0 -3.0)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 -1 -1 1 1 -1 -1 -1 -1)
+      )
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+   )
+   ('bank' 'sfx/handclap_bank.milo')
+   ('anim_tempo' 'kTempoMedium')
+   ('song_scroll_speed' 2300)
+   ('preview' 92287 122287)
+   ('song_length' 210769)
+   (solo (guitar vocal_percussion))
+   (
+      'rank'
+      ('drum' 191)
+      ('guitar' 219)
+      ('bass' 235)
+      ('vocals' 193)
+      ('keys' 0)
+      ('real_guitar' 0)
+      ('real_bass' 0)
+      ('real_keys' 0)
+      ('band' 236)
+   )
+   ('format' 10)
+   ('version' 2)
+   ('game_origin' 'rb2')
+   ('short_version' 0)
+   ('rating' 2)
+   ('genre' 'poprock')
+   ('vocal_gender' 'male')
+   ('year_released' 2007)
+   ('album_art' 'TRUE')
+   (
+      'album_name'
+      "Working as Intended"
+   )
+   ('album_track_number' 1)
+)
+(
+   'coolforcats'
+   (
+      'name'
+      "Cool for Cats"
+   )
+   (
+      'artist'
+      "Squeeze"
+   )
+   ('master' 'TRUE')
+   ('song_id' 266)
+   (
+      'song'
+      (
+         'name'
+         "songs/coolforcats/coolforcats"
+      )
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1 2 3 4 5)
+            )
+            (
+               'bass'
+               (6 7)
+            )
+            (
+               'guitar'
+               (8 9)
+            )
+            (
+               'vocals'
+               (10 11)
+            )
+            (
+               'keys'
+               ()
+            )
+         )
+      )
+      (
+         'pans'
+         (-1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0)
+      )
+      (
+         'vols'
+         (-0.5 -0.5 -2.0 -2.0 -2.0 -2.0 -3.0 -3.0 -3.0 -3.0 -5.0 -5.0 -2.5 -2.5)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 -1 -1 -1 -1 1 1 -1 -1 -1 -1)
+      )
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+   )
+   ('bank' 'sfx/tambourine_bank.milo')
+   ('anim_tempo' 'kTempoMedium')
+   ('song_scroll_speed' 2300)
+   ('preview' 31000 61000)
+   ('song_length' 202272)
+   (solo (drum guitar vocal_percussion))
+   (
+      'rank'
+      ('drum' 150)
+      ('guitar' 116)
+      ('bass' 268)
+      ('vocals' 124)
+      ('keys' 0)
+      ('real_guitar' 0)
+      ('real_bass' 0)
+      ('real_keys' 0)
+      ('band' 168)
+   )
+   ('format' 10)
+   ('version' 2)
+   ('game_origin' 'rb2')
+   ('short_version' 0)
+   ('rating' 2)
+   ('genre' 'new_wave')
+   ('vocal_gender' 'male')
+   ('year_released' 1979)
+   ('album_art' 'TRUE')
+   (
+      'album_name'
+      "Cool for Cats"
+   )
+   ('album_track_number' 12)
+)
+(
+   'deluxe'
+   (
+      'name'
+      "De-Luxe"
+   )
+   (
+      'artist'
+      "Lush"
+   )
+   ('master' 'TRUE')
+   ('song_id' 267)
+   (
+      'song'
+      (
+         'name'
+         "songs/deluxe/deluxe"
+      )
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1 2 3 4 5)
+            )
+            (
+               'bass'
+               (6)
+            )
+            (
+               'guitar'
+               (7 8)
+            )
+            (
+               'vocals'
+               (9 10)
+            )
+            (
+               'keys'
+               ()
+            )
+         )
+      )
+      (
+         'pans'
+         (-1.0 1.0 -1.0 1.0 -1.0 1.0 0.0 -1.0 1.0 -1.0 1.0 -1.0 1.0)
+      )
+      (
+         'vols'
+         (-0.5 -0.5 -1.0 -1.0 -2.5 -2.5 -3.5 -2.5 -2.5 -4.0 -4.0 -4.0 -4.0)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 -1 -1 -1 1 1 -1 -1 -1 -1)
+      )
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+   )
+   ('bank' 'sfx/tambourine_bank.milo')
+   ('anim_tempo' 'kTempoSlow')
+   ('song_scroll_speed' 2300)
+   ('preview' 43700 73096)
+   ('song_length' 213636)
+   (solo (vocal_percussion))
+   (
+      'rank'
+      ('drum' 236)
+      ('guitar' 264)
+      ('bass' 129)
+      ('vocals' 183)
+      ('keys' 0)
+      ('real_guitar' 0)
+      ('real_bass' 0)
+      ('real_keys' 0)
+      ('band' 241)
+   )
+   ('format' 10)
+   ('version' 2)
+   ('game_origin' 'rb2')
+   ('short_version' 0)
+   ('rating' 2)
+   ('genre' 'alternative')
+   ('vocal_gender' 'female')
+   ('year_released' 1990)
+   ('album_art' 'TRUE')
+   (
+      'album_name'
+      "Gala"
+   )
+   ('album_track_number' 4)
+)
+(
+   'downwiththesickness'
+   (
+      'name'
+      "Down with the Sickness"
+   )
+   (
+      'artist'
+      "Disturbed"
+   )
+   ('master' 'TRUE')
+   ('song_id' 268)
+   (
+      'song'
+      (
+         'name'
+         "songs/downwiththesickness/downwiththesickness"
+      )
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1 2 3)
+            )
+            (
+               'bass'
+               (4 5)
+            )
+            (
+               'guitar'
+               (6 7)
+            )
+            (
+               'vocals'
+               (8 9)
+            )
+            (
+               'keys'
+               ()
+            )
+         )
+      )
+      (
+         'pans'
+         (0.0 0.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0)
+      )
+      (
+         'vols'
+         (-0.5 -2.0 -2.0 -2.0 -2.5 -2.5 -3.5 -3.5 -4.0 -4.0 -4.0 -4.0)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 -1 -1 1 1 -1 -1 -1 -1)
+      )
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+   )
+   ('bank' 'sfx/cowbell_bank.milo')
+   ('anim_tempo' 'kTempoSlow')
+   ('song_scroll_speed' 2300)
+   ('preview' 90000 120000)
+   ('song_length' 283181)
+   (solo (vocal_percussion))
+   (
+      'rank'
+      ('drum' 343)
+      ('guitar' 305)
+      ('bass' 352)
+      ('vocals' 378)
+      ('keys' 0)
+      ('real_guitar' 0)
+      ('real_bass' 0)
+      ('real_keys' 0)
+      ('band' 400)
+   )
+   ('format' 10)
+   ('version' 2)
+   ('game_origin' 'rb2')
+   ('short_version' 0)
+   ('rating' 2)
+   ('genre' 'numetal')
+   ('vocal_gender' 'male')
+   ('year_released' 2000)
+   ('album_art' 'TRUE')
+   (
+      'album_name'
+      "The Sickness"
+   )
+   ('album_track_number' 4)
+)
+(
+   'drainyou'
+   (
+      'name'
+      "Drain You"
+   )
+   (
+      'artist'
+      "Nirvana"
+   )
+   ('master' 'TRUE')
+   ('song_id' 269)
+   (
+      'song'
+      (
+         'name'
+         "songs/drainyou/drainyou"
+      )
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1 2 3 4)
+            )
+            (
+               'bass'
+               (5)
+            )
+            (
+               'guitar'
+               (6 7)
+            )
+            (
+               'vocals'
+               (8 9)
+            )
+            (
+               'keys'
+               ()
+            )
+         )
+      )
+      ('crowd_channels' 12 13)
+      (
+         'pans'
+         (0.0 -1.0 1.0 -1.0 1.0 0.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -2.5 2.5)
+      )
+      (
+         'vols'
+         (-0.5 -1.0 -1.0 -2.0 -2.0 -2.5 -3.0 -3.0 -4.3 -4.3 -5.8 -5.8 -4.3 -4.3)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 -1 -1 1 1 -1 -1 -1 -1 -1 -1)
+      )
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+   )
+   ('bank' 'sfx/tambourine_bank.milo')
+   ('anim_tempo' 'kTempoMedium')
+   ('song_scroll_speed' 2000)
+   ('preview' 16000 46000)
+   ('song_length' 230454)
+   (solo (guitar))
+   (
+      'rank'
+      ('drum' 171)
+      ('guitar' 148)
+      ('bass' 219)
+      ('vocals' 145)
+      ('keys' 0)
+      ('real_guitar' 0)
+      ('real_bass' 0)
+      ('real_keys' 0)
+      ('band' 153)
+   )
+   ('format' 10)
+   ('version' 2)
+   ('game_origin' 'rb2')
+   ('short_version' 0)
+   ('rating' 2)
+   ('genre' 'grunge')
+   ('vocal_gender' 'male')
+   ('year_released' 1991)
+   ('album_art' 'TRUE')
+   (
+      'album_name'
+      "Nevermind"
+   )
+   ('album_track_number' 8)
+)
+(
+   'epro'
+   (
+      'name'
+      "E-Pro"
+   )
+   (
+      'artist'
+      "Beck"
+   )
+   ('master' 'TRUE')
+   ('song_id' 270)
+   (
+      'song'
+      (
+         'name'
+         "songs/epro/epro"
+      )
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1 2)
+            )
+            (
+               'bass'
+               (3 4)
+            )
+            (
+               'guitar'
+               (5 6)
+            )
+            (
+               'vocals'
+               (7 8)
+            )
+            (
+               'keys'
+               ()
+            )
+         )
+      )
+      (
+         'pans'
+         (0.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0)
+      )
+      (
+         'vols'
+         (-0.2 -0.5 -0.5 -5.0 -5.0 -4.5 -4.5 -3.5 -3.5 -1.0 -1.0)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 -1 1 1 -1 -1 -1 -1)
+      )
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+   )
+   ('bank' 'sfx/cowbell_bank.milo')
+   ('anim_tempo' 'kTempoSlow')
+   ('song_scroll_speed' 2300)
+   ('preview' 45000 75000)
+   ('song_length' 206363)
+   (solo (drum vocal_percussion))
+   (
+      'rank'
+      ('drum' 207)
+      ('guitar' 193)
+      ('bass' 147)
+      ('vocals' 200)
+      ('keys' 0)
+      ('real_guitar' 0)
+      ('real_bass' 0)
+      ('real_keys' 0)
+      ('band' 121)
+   )
+   ('format' 10)
+   ('version' 2)
+   ('game_origin' 'rb2')
+   ('short_version' 0)
+   ('rating' 2)
+   ('genre' 'alternative')
+   ('vocal_gender' 'male')
+   ('year_released' 2005)
+   ('album_art' 'TRUE')
+   (
+      'album_name'
+      "Guero"
+   )
+   ('album_track_number' 1)
+   ('tuning_offset_cents' -17)
+)
+(
+   'everlong'
+   (
+      'name'
+      "Everlong"
+   )
+   (
+      'artist'
+      "Foo Fighters"
+   )
+   ('master' 'TRUE')
+   ('song_id' 271)
+   (
+      'song'
+      (
+         'name'
+         "songs/everlong/everlong"
+      )
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1 2 3 4 5)
+            )
+            (
+               'bass'
+               (6 7)
+            )
+            (
+               'guitar'
+               (8 9)
+            )
+            (
+               'vocals'
+               (10 11)
+            )
+            (
+               'keys'
+               ()
+            )
+         )
+      )
+      ('crowd_channels' 14 15)
+      (
+         'pans'
+         (-1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -2.5 2.5)
+      )
+      (
+         'vols'
+         (-1.5 -1.5 -2.5 -2.5 -3.5 -3.5 -4.5 -4.5 -3.5 -3.5 -3.0 -3.0 -4.5 -4.5 -4.5 -4.5)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 -1 -1 -1 -1 1 1 -1 -1 -1 -1 -1 -1)
+      )
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+   )
+   ('bank' 'sfx/tambourine_bank.milo')
+   ('anim_tempo' 'kTempoFast')
+   ('song_scroll_speed' 2300)
+   ('preview' 101000 131000)
+   ('song_length' 262727)
+   (
+      'rank'
+      ('drum' 486)
+      ('guitar' 322)
+      ('bass' 297)
+      ('vocals' 197)
+      ('keys' 0)
+      ('real_guitar' 0)
+      ('real_bass' 0)
+      ('real_keys' 0)
+      ('band' 413)
+   )
+   ('format' 10)
+   ('version' 2)
+   ('game_origin' 'rb2')
+   ('short_version' 0)
+   ('rating' 2)
+   ('genre' 'alternative')
+   ('vocal_gender' 'male')
+   ('year_released' 1997)
+   ('album_art' 'TRUE')
+   (
+      'album_name'
+      "The Colour and the Shape"
+   )
+   ('album_track_number' 11)
+)
+(
+   'eyeofthetiger'
+   (
+      'name'
+      "Eye of the Tiger"
+   )
+   (
+      'artist'
+      "Survivor"
+   )
+   ('master' 'TRUE')
+   ('song_id' 272)
+   (
+      'song'
+      (
+         'name'
+         "songs/eyeofthetiger/eyeofthetiger"
+      )
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1 2 3 4)
+            )
+            (
+               'bass'
+               (5)
+            )
+            (
+               'guitar'
+               (6 7)
+            )
+            (
+               'vocals'
+               (8 9)
+            )
+            (
+               'keys'
+               ()
+            )
+         )
+      )
+      ('crowd_channels' 12 13)
+      (
+         'pans'
+         (0.0 -1.0 1.0 -1.0 1.0 0.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -2.5 2.5)
+      )
+      (
+         'vols'
+         (-0.5 -0.5 -0.5 -2.5 -2.5 -3.5 -4.5 -4.5 -4.5 -4.5 -4.0 -4.0 -3.0 -3.0)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 -1 -1 1 1 -1 -1 -1 -1 -1 -1)
+      )
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+   )
+   ('bank' 'sfx/tambourine_bank.milo')
+   ('anim_tempo' 'kTempoMedium')
+   ('song_scroll_speed' 2300)
+   ('preview' 87300 109500)
+   ('song_length' 259090)
+   (solo (vocal_percussion))
+   (
+      'rank'
+      ('drum' 100)
+      ('guitar' 100)
+      ('bass' 100)
+      ('vocals' 210)
+      ('keys' 0)
+      ('real_guitar' 0)
+      ('real_bass' 0)
+      ('real_keys' 0)
+      ('band' 100)
+   )
+   ('format' 10)
+   ('version' 2)
+   ('game_origin' 'rb2')
+   ('short_version' 0)
+   ('rating' 2)
+   ('genre' 'rock')
+   ('vocal_gender' 'male')
+   ('year_released' 1982)
+   ('album_art' 'TRUE')
+   (
+      'album_name'
+      "Eye of the Tiger"
+   )
+   ('album_track_number' 1)
+)
+(
+   'feelthepain'
+   (
+      'name'
+      "Feel the Pain"
+   )
+   (
+      'artist'
+      "Dinosaur Jr."
+   )
+   ('master' 'TRUE')
+   ('song_id' 273)
+   (
+      'song'
+      (
+         'name'
+         "songs/feelthepain/feelthepain"
+      )
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1 2 3 4 5)
+            )
+            (
+               'bass'
+               (6)
+            )
+            (
+               'guitar'
+               (7 8)
+            )
+            (
+               'vocals'
+               (9 10)
+            )
+            (
+               'keys'
+               ()
+            )
+         )
+      )
+      (
+         'pans'
+         (-1.0 1.0 -1.0 1.0 -1.0 1.0 0.0 -1.0 1.0 -1.0 1.0 -1.0 1.0)
+      )
+      (
+         'vols'
+         (-0.5 -0.5 -0.5 -0.5 -1.5 -1.5 -1.5 -1.5 -1.5 -4.0 -4.0 -4.5 -4.5)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 -1 -1 -1 1 1 -1 -1 -1 -1)
+      )
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+   )
+   ('bank' 'sfx/tambourine_bank.milo')
+   ('anim_tempo' 'kTempoMedium')
+   ('song_scroll_speed' 2300)
+   ('preview' 47630 75000)
+   ('song_length' 260000)
+   (solo (guitar vocal_percussion))
+   (
+      'rank'
+      ('drum' 194)
+      ('guitar' 210)
+      ('bass' 309)
+      ('vocals' 172)
+      ('keys' 0)
+      ('real_guitar' 0)
+      ('real_bass' 0)
+      ('real_keys' 0)
+      ('band' 205)
+   )
+   ('format' 10)
+   ('version' 2)
+   ('game_origin' 'rb2')
+   ('short_version' 0)
+   ('rating' 2)
+   ('genre' 'alternative')
+   ('vocal_gender' 'male')
+   ('year_released' 1994)
+   ('album_art' 'TRUE')
+   (
+      'album_name'
+      "Without a Sound"
+   )
+   ('album_track_number' 1)
+)
+(
+   'floaton'
+   (
+      'name'
+      "Float On"
+   )
+   (
+      'artist'
+      "Modest Mouse"
+   )
+   ('master' 'TRUE')
+   ('song_id' 274)
+   (
+      'song'
+      (
+         'name'
+         "songs/floaton/floaton"
+      )
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1 2 3)
+            )
+            (
+               'bass'
+               (4)
+            )
+            (
+               'guitar'
+               (5 6)
+            )
+            (
+               'vocals'
+               (7 8)
+            )
+            (
+               'keys'
+               ()
+            )
+         )
+      )
+      ('crowd_channels' 11 12)
+      (
+         'pans'
+         (0.0 0.0 -1.0 1.0 0.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -2.5 2.5)
+      )
+      (
+         'vols'
+         (-0.5 -0.5 -2.0 -2.0 -3.8 -5.5 -5.5 -3.0 -3.0 -3.0 -3.0 -4.7 -4.7)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 -1 1 1 -1 -1 -1 -1 -1 -1)
+      )
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+   )
+   ('bank' 'sfx/tambourine_bank.milo')
+   ('anim_tempo' 'kTempoSlow')
+   ('song_scroll_speed' 2300)
+   ('preview' 121115 151115)
+   ('song_length' 217727)
+   (
+      'rank'
+      ('drum' 129)
+      ('guitar' 104)
+      ('bass' 124)
+      ('vocals' 179)
+      ('keys' 0)
+      ('real_guitar' 0)
+      ('real_bass' 0)
+      ('real_keys' 0)
+      ('band' 147)
+   )
+   ('format' 10)
+   ('version' 2)
+   ('game_origin' 'rb2')
+   ('short_version' 0)
+   ('rating' 2)
+   ('genre' 'indierock')
+   ('vocal_gender' 'male')
+   ('year_released' 2004)
+   ('album_art' 'TRUE')
+   (
+      'album_name'
+      "Good News for People Who Love Bad News"
+   )
+   ('album_track_number' 3)
+)
+(
+   'getclean'
+   (
+      'name'
+      "Get Clean"
+   )
+   (
+      'artist'
+      "Anarchy Club"
+   )
+   ('master' 'TRUE')
+   ('song_id' 328)
+   (
+      'song'
+      (
+         'name'
+         "songs/getclean/getclean"
+      )
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1 2 3 4 5)
+            )
+            (
+               'bass'
+               (6)
+            )
+            (
+               'guitar'
+               (7 8)
+            )
+            (
+               'vocals'
+               (9 10)
+            )
+         )
+      )
+      (
+         'pans'
+         (-1.0 1.0 -1.0 1.0 -1.0 1.0 0.0 -1.0 1.0 -1.0 1.0 -1.0 1.0)
+      )
+      (
+         'vols'
+         (-1.5 -1.5 -5.0 -5.0 -9.0 -9.0 -2.0 -3.0 -3.0 -3.5 -3.5 -3.5 -3.5)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 -1 -1 -1 1 1 -1 -1 -1 -1)
+      )
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+   )
+   ('bank' 'sfx/tambourine_bank.milo')
+   ('anim_tempo' 'kTempoMedium')
+   ('song_scroll_speed' 2300)
+   ('preview' 45557 75557)
+   ('song_length' 217043)
+   (solo (guitar))
+   (
+      'rank'
+      ('drum' 348)
+      ('guitar' 440)
+      ('bass' 357)
+      ('vocals' 320)
+      ('keys' 0)
+      ('real_guitar' 0)
+      ('real_bass' 0)
+      ('real_keys' 0)
+      ('band' 473)
+   )
+   ('format' 10)
+   ('version' 2)
+   ('game_origin' 'rb2')
+   ('short_version' 0)
+   ('rating' 2)
+   ('genre' 'metal')
+   ('vocal_gender' 'male')
+   ('year_released' 2009)
+   ('album_art' 'TRUE')
+   (
+      'album_name'
+      "The Art of War"
+   )
+   ('album_track_number' 5)
+)
+(
+   'girlsnotgrey'
+   (
+      'name'
+      "Girl's Not Grey"
+   )
+   (
+      'artist'
+      "AFI"
+   )
+   ('master' 'TRUE')
+   ('song_id' 275)
+   (
+      'song'
+      (
+         'name'
+         "songs/girlsnotgrey/girlsnotgrey"
+      )
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1 2 3 4 5)
+            )
+            (
+               'bass'
+               (6 7)
+            )
+            (
+               'guitar'
+               (8 9)
+            )
+            (
+               'vocals'
+               (10 11)
+            )
+            (
+               'keys'
+               ()
+            )
+         )
+      )
+      (
+         'pans'
+         (-1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0)
+      )
+      (
+         'vols'
+         (-2.5 -2.5 -0.5 -0.5 -4.0 -4.0 -5.5 -5.5 -2.0 -2.0 -1.5 -1.5 -2.5 -2.5)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 -1 -1 -1 -1 1 1 -1 -1 -1 -1)
+      )
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+   )
+   ('bank' 'sfx/tambourine_bank.milo')
+   ('anim_tempo' 'kTempoMedium')
+   ('song_scroll_speed' 2300)
+   ('preview' 43000 70530)
+   ('song_length' 194090)
+   (solo (vocal_percussion))
+   (
+      'rank'
+      ('drum' 286)
+      ('guitar' 269)
+      ('bass' 326)
+      ('vocals' 229)
+      ('keys' 0)
+      ('real_guitar' 0)
+      ('real_bass' 0)
+      ('real_keys' 0)
+      ('band' 286)
+   )
+   ('format' 10)
+   ('version' 2)
+   ('game_origin' 'rb2')
+   ('short_version' 0)
+   ('rating' 2)
+   ('genre' 'alternative')
+   ('vocal_gender' 'male')
+   ('year_released' 2003)
+   ('album_art' 'TRUE')
+   (
+      'album_name'
+      "Sing the Sorrow"
+   )
+   ('album_track_number' 6)
+)
+(
+   'giveitall'
+   (
+      'name'
+      "Give It All"
+   )
+   (
+      'artist'
+      "Rise Against"
+   )
+   ('master' 'TRUE')
+   ('song_id' 276)
+   (
+      'song'
+      (
+         'name'
+         "songs/giveitall/giveitall"
+      )
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1 2 3)
+            )
+            (
+               'bass'
+               (4)
+            )
+            (
+               'guitar'
+               (5 6)
+            )
+            (
+               'vocals'
+               (7 8)
+            )
+            (
+               'keys'
+               ()
+            )
+         )
+      )
+      ('crowd_channels' 11 12)
+      (
+         'pans'
+         (0.0 0.0 -1.0 1.0 0.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -2.5 2.5)
+      )
+      (
+         'vols'
+         (-1.0 -1.0 -3.0 -3.0 -3.0 -3.0 -3.0 -2.5 -2.5 -3.0 -3.0 -3.0 -3.0)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 -1 1 1 -1 -1 -1 -1 -1 -1)
+      )
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+   )
+   ('bank' 'sfx/tambourine_bank.milo')
+   ('anim_tempo' 'kTempoSlow')
+   ('song_scroll_speed' 2300)
+   ('preview' 29100 50700)
+   ('song_length' 175454)
+   (
+      'rank'
+      ('drum' 471)
+      ('guitar' 309)
+      ('bass' 348)
+      ('vocals' 290)
+      ('keys' 0)
+      ('real_guitar' 0)
+      ('real_bass' 0)
+      ('real_keys' 0)
+      ('band' 427)
+   )
+   ('format' 10)
+   ('version' 2)
+   ('game_origin' 'rb2')
+   ('short_version' 0)
+   ('rating' 2)
+   ('genre' 'punk')
+   ('vocal_gender' 'male')
+   ('year_released' 2004)
+   ('album_art' 'TRUE')
+   (
+      'album_name'
+      "Siren Song of the Counter Culture"
+   )
+   ('album_track_number' 9)
+)
+(
+   'giveiteway'
+   (
+      'name'
+      "Give It Away"
+   )
+   (
+      'artist'
+      "Red Hot Chili Peppers"
+   )
+   ('master' 'TRUE')
+   ('song_id' 909899679)
+   (
+      'song'
+      (
+         'name'
+         "songs/giveitaway/giveitaway"
+      )
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1 2 3 4)
+            )
+            ('bass' 5)
+            (
+               'guitar'
+               (6 7)
+            )
+            (
+               'vocals'
+               (8 9)
+            )
+         )
+      )
+      (
+         'pans'
+         (0.0 -1.0 1.0 -1.0 1.0 0.0 -1.0 1.0 -1.0 1.0 -1.0 1.0)
+      )
+      (
+         'vols'
+         (-0.5 -2.0 -2.0 -3.0 -3.0 -2.5 -3.5 -3.5 -3.5 -3.5 -3.5 -3.5)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 -1 -1 1 1 -1 -1 -1 -1)
+      )
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+      (midi_file "songs/giveitaway/giveitaway.mid")
+   )
+   ('song_scroll_speed' 2300)
+   ('bank' 'sfx/tambourine_bank.milo')
+   ('anim_tempo' 'kTempoSlow')
+   ('preview' 77654 106235)
+   ('song_length' 288000)
+   (
+      'rank'
+      ('drum' 141)
+      ('guitar' 214)
+      ('bass' 339)
+      ('vocals' 313)
+      ('keys' 0)
+      ('real_guitar' 0)
+      ('real_bass' 0)
+      ('real_keys' 0)
+      ('band' 250)
+   )
+   ('format' 3)
+   ('version' 1)
+   ('game_origin' 'rb2')
+   ('genre' 'alternative')
+   ('downloaded' 'TRUE')
+   ('vocal_gender' 'male')
+   ('year_released' 1991)
+   ('album_art' 'TRUE')
+   (
+      'album_name'
+      "Blood Sugar Sex Magik"
+   )
+   ('album_track_number' 9)
+)
+(
+   'goyourownway'
+   (
+      'name'
+      "Go Your Own Way"
+   )
+   (
+      'artist'
+      "Fleetwood Mac"
+   )
+   ('master' 'TRUE')
+   ('song_id' 278)
+   (
+      'song'
+      (
+         'name'
+         "songs/goyourownway/goyourownway"
+      )
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1 2 3 4 5)
+            )
+            (
+               'bass'
+               (6)
+            )
+            (
+               'guitar'
+               (7 8)
+            )
+            (
+               'vocals'
+               (9 10)
+            )
+            (
+               'keys'
+               ()
+            )
+         )
+      )
+      ('crowd_channels' 13 14)
+      (
+         'pans'
+         (-1.0 1.0 -1.0 1.0 -1.0 1.0 0.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -2.5 2.5)
+      )
+      (
+         'vols'
+         (-0.5 -0.5 -1.0 -1.0 -1.5 -1.5 -5.0 -3.5 -3.5 -3.5 -3.5 -3.5 -3.5 -4.0 -4.0)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 -1 -1 -1 1 1 -1 -1 -1 -1 -1 -1)
+      )
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+   )
+   ('bank' 'sfx/tambourine_bank.milo')
+   ('anim_tempo' 'kTempoMedium')
+   ('song_scroll_speed' 2300)
+   ('preview' 34911 64911)
+   ('song_length' 239090)
+   (solo (guitar vocal_percussion))
+   (
+      'rank'
+      ('drum' 156)
+      ('guitar' 241)
+      ('bass' 265)
+      ('vocals' 235)
+      ('keys' 0)
+      ('real_guitar' 0)
+      ('real_bass' 0)
+      ('real_keys' 0)
+      ('band' 277)
+   )
+   ('format' 10)
+   ('version' 2)
+   ('game_origin' 'rb2')
+   ('short_version' 0)
+   ('rating' 2)
+   ('genre' 'classicrock')
+   ('vocal_gender' 'male')
+   ('year_released' 1977)
+   ('album_art' 'TRUE')
+   (
+      'album_name'
+      "Rumours"
+   )
+   ('album_track_number' 5)
+)
+(
+   'hellothere'
+   (
+      'name'
+      "Hello There"
+   )
+   (
+      'artist'
+      "Cheap Trick"
+   )
+   ('master' 'TRUE')
+   ('song_id' 279)
+   (
+      'song'
+      (
+         'name'
+         "songs/hellothere/hellothere"
+      )
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1 2 3)
+            )
+            (
+               'bass'
+               (4 5)
+            )
+            (
+               'guitar'
+               (6 7)
+            )
+            (
+               'vocals'
+               (8 9)
+            )
+            (
+               'keys'
+               ()
+            )
+         )
+      )
+      (
+         'pans'
+         (0.0 0.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 0.0)
+      )
+      (
+         'vols'
+         (-0.5 -0.5 -1.5 -1.5 -3.0 -3.0 -3.0 -3.0 -4.5 -4.5 -4.0)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 -1 -1 1 1 -1 -1 -1)
+      )
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+   )
+   ('bank' 'sfx/tambourine_bank.milo')
+   ('anim_tempo' 'kTempoFast')
+   ('song_scroll_speed' 2300)
+   ('preview' 15708 45708)
+   ('song_length' 99545)
+   (solo (guitar vocal_percussion))
+   (
+      'rank'
+      ('drum' 138)
+      ('guitar' 157)
+      ('bass' 261)
+      ('vocals' 114)
+      ('keys' 0)
+      ('real_guitar' 0)
+      ('real_bass' 0)
+      ('real_keys' 0)
+      ('band' 174)
+   )
+   ('format' 10)
+   ('version' 2)
+   ('game_origin' 'rb2')
+   ('short_version' 0)
+   ('rating' 2)
+   ('genre' 'rock')
+   ('vocal_gender' 'male')
+   ('year_released' 1977)
+   ('year_recorded' 1997)
+   ('album_art' 'TRUE')
+   (
+      'album_name'
+      "Hello There"
+   )
+)
+(
+   'hungrylikethewolf'
+   (
+      'name'
+      "Hungry Like the Wolf"
+   )
+   (
+      'artist'
+      "Duran Duran"
+   )
+   ('master' 'TRUE')
+   ('song_id' 280)
+   (
+      'song'
+      (
+         'name'
+         "songs/hungrylikethewolf/hungrylikethewolf"
+      )
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1 2)
+            )
+            (
+               'bass'
+               (3)
+            )
+            (
+               'guitar'
+               (4 5)
+            )
+            (
+               'vocals'
+               (6 7)
+            )
+            (
+               'keys'
+               ()
+            )
+         )
+      )
+      ('crowd_channels' 10 11)
+      (
+         'pans'
+         (0.0 -1.0 1.0 0.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -2.5 2.5)
+      )
+      (
+         'vols'
+         (-0.5 -0.5 -0.5 -3.5 -4.5 -4.5 -4.5 -4.5 -3.5 -3.5 -3.0 -3.0)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 1 1 -1 -1 -1 -1 -1 -1)
+      )
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+   )
+   ('bank' 'sfx/handclap_bank.milo')
+   ('anim_tempo' 'kTempoMedium')
+   ('song_scroll_speed' 2300)
+   ('preview' 25890 55890)
+   ('song_length' 234090)
+   (solo (vocal_percussion))
+   (
+      'rank'
+      ('drum' 106)
+      ('guitar' 112)
+      ('bass' 200)
+      ('vocals' 117)
+      ('keys' 0)
+      ('real_guitar' 0)
+      ('real_bass' 0)
+      ('real_keys' 0)
+      ('band' 126)
+   )
+   ('format' 10)
+   ('version' 2)
+   ('game_origin' 'rb2')
+   ('short_version' 0)
+   ('rating' 2)
+   ('genre' 'poprock')
+   ('vocal_gender' 'male')
+   ('year_released' 1982)
+   ('album_art' 'TRUE')
+   (
+      'album_name'
+      "Rio"
+   )
+   ('album_track_number' 4)
+)
+(
+   'iwaswrong'
+   (
+      'name'
+      "I Was Wrong"
+   )
+   (
+      'artist'
+      "Social Distortion"
+   )
+   ('master' 'TRUE')
+   ('song_id' 281)
+   (
+      'song'
+      (
+         'name'
+         "songs/iwaswrong/iwaswrong"
+      )
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1 2 3)
+            )
+            (
+               'bass'
+               (4)
+            )
+            (
+               'guitar'
+               (5 6)
+            )
+            (
+               'vocals'
+               (7 8)
+            )
+            (
+               'keys'
+               ()
+            )
+         )
+      )
+      ('crowd_channels' 11 12)
+      (
+         'pans'
+         (0.0 0.0 -1.0 1.0 0.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -2.5 2.5)
+      )
+      (
+         'vols'
+         (-0.5 -0.5 -2.0 -2.0 -2.5 -3.5 -3.5 -3.0 -3.0 -4.5 -4.5 -4.0 -4.0)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 -1 1 1 -1 -1 -1 -1 -1 -1)
+      )
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+   )
+   ('bank' 'sfx/cowbell3_bank.milo')
+   ('anim_tempo' 'kTempoMedium')
+   ('song_scroll_speed' 2300)
+   ('preview' 51896 81896)
+   ('song_length' 246818)
+   (solo (guitar vocal_percussion))
+   (
+      'rank'
+      ('drum' 121)
+      ('guitar' 169)
+      ('bass' 232)
+      ('vocals' 110)
+      ('keys' 0)
+      ('real_guitar' 0)
+      ('real_bass' 0)
+      ('real_keys' 0)
+      ('band' 111)
+   )
+   ('format' 10)
+   ('version' 2)
+   ('game_origin' 'rb2')
+   ('short_version' 0)
+   ('rating' 2)
+   ('genre' 'punk')
+   ('vocal_gender' 'male')
+   ('year_released' 1996)
+   ('year_recorded' 2007)
+   ('album_art' 'TRUE')
+   (
+      'album_name'
+      "Greatest Hits"
+   )
+   ('album_track_number' 9)
+)
+(
+   'kidsinamerica'
+   (
+      'name'
+      "Kids in America"
+   )
+   (
+      'artist'
+      "The Muffs"
+   )
+   ('master' 'TRUE')
+   ('song_id' 282)
+   (
+      'song'
+      (
+         'name'
+         "songs/kidsinamerica/kidsinamerica"
+      )
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1 2 3 4 5)
+            )
+            (
+               'bass'
+               (6)
+            )
+            (
+               'guitar'
+               (7 8)
+            )
+            (
+               'vocals'
+               (9 10)
+            )
+            (
+               'keys'
+               ()
+            )
+         )
+      )
+      ('crowd_channels' 13 14)
+      (
+         'pans'
+         (-1.0 1.0 -1.0 1.0 -1.0 1.0 0.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -2.5 2.5)
+      )
+      (
+         'vols'
+         (-1.0 -1.0 -1.0 -1.0 -3.0 -3.0 -3.0 -2.5 -2.5 -3.8 -3.8 -2.5 -2.5 -3.5 -3.5)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 -1 -1 -1 1 1 -1 -1 -1 -1 -1 -1)
+      )
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+   )
+   ('bank' 'sfx/tambourine_bank.milo')
+   ('anim_tempo' 'kTempoFast')
+   ('song_scroll_speed' 2300)
+   ('preview' 32264 62264)
+   ('song_length' 217727)
+   (solo (guitar vocal_percussion))
+   (
+      'rank'
+      ('drum' 378)
+      ('guitar' 205)
+      ('bass' 226)
+      ('vocals' 134)
+      ('keys' 0)
+      ('real_guitar' 0)
+      ('real_bass' 0)
+      ('real_keys' 0)
+      ('band' 282)
+   )
+   ('format' 10)
+   ('version' 2)
+   ('game_origin' 'rb2')
+   ('short_version' 0)
+   ('rating' 2)
+   ('genre' 'poprock')
+   ('vocal_gender' 'female')
+   ('year_released' 1995)
+   (
+      'album_name'
+      "Clueless: Original Motion Picture Soundtrack"
+   )
+   ('album_track_number' 1)
+)
+(
+   'lazyeye'
+   (
+      'name'
+      "Lazy Eye"
+   )
+   (
+      'artist'
+      "Silversun Pickups"
+   )
+   ('master' 'TRUE')
+   ('song_id' 283)
+   (
+      'song'
+      (
+         'name'
+         "songs/lazyeye/lazyeye"
+      )
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1 2 3)
+            )
+            (
+               'bass'
+               (4 5)
+            )
+            (
+               'guitar'
+               (6 7)
+            )
+            (
+               'vocals'
+               (8 9)
+            )
+            (
+               'keys'
+               ()
+            )
+         )
+      )
+      (
+         'pans'
+         (0.0 0.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0)
+      )
+      (
+         'vols'
+         (-0.5 -0.5 -1.5 -1.5 -4.0 -4.0 -4.0 -4.0 -4.5 -4.5 -4.5 -4.5)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 -1 -1 1 1 -1 -1 -1 -1)
+      )
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+   )
+   ('bank' 'sfx/tambourine_bank.milo')
+   ('anim_tempo' 'kTempoMedium')
+   ('song_scroll_speed' 2300)
+   ('preview' 96339 126339)
+   ('song_length' 363181)
+   (solo (guitar vocal_percussion))
+   (
+      'rank'
+      ('drum' 185)
+      ('guitar' 366)
+      ('bass' 194)
+      ('vocals' 107)
+      ('keys' 0)
+      ('real_guitar' 0)
+      ('real_bass' 0)
+      ('real_keys' 0)
+      ('band' 291)
+   )
+   ('format' 10)
+   ('version' 2)
+   ('game_origin' 'rb2')
+   ('short_version' 0)
+   ('rating' 2)
+   ('genre' 'indierock')
+   ('vocal_gender' 'male')
+   ('year_released' 2006)
+   ('album_art' 'TRUE')
+   (
+      'album_name'
+      "Carnavas"
+   )
+   ('album_track_number' 7)
+)
+(
+   'letthereberock'
+   (
+      'name'
+      "Let There Be Rock"
+   )
+   (
+      'artist'
+      "AC/DC"
+   )
+   ('master' 'TRUE')
+   ('context' 293)
+   (
+      'song'
+      ('name' 'songs/letthereberock/letthereberock')
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1 2 3 4 5)
+            )
+            ('bass' 6)
+            (
+               'guitar'
+               (7 8)
+            )
+            (
+               'vocals'
+               (9 10)
+            )
+         )
+      )
+      (
+         'pans'
+         (-1.0 1.0 -1.0 1.0 -1.0 1.0 0.0 -1.0 1.0 -1.0 1.0 -1.0 1.0)
+      )
+      (
+         'vols'
+         (-2.0 -2.0 -1.0 -1.0 -1.0 -1.0 -3.0 -4.0 -4.0 -4.0 -4.0 -5.0 -5.0)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 -1 -1 -1 1 1 -1 -1 -1 -1)
+      )
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+      ('midi_file' 'songs/letthereberock/letthereberock.mid')
+   )
+   ('song_scroll_speed' 2300)
+   ('bank' 'sfx/tambourine_bank.milo')
+   ('anim_tempo' 'kTempoFast')
+   ('song_id' 284)
+   ('preview' 56432 84672)
+   (
+      'rank'
+      ('drum' 176)
+      ('guitar' 357)
+      ('bass' 171)
+      ('vocals' 271)
+      ('band' 386)
+   )
+   ('genre' 'rock')
+   ('decade' 'the70s')
+   ('vocal_gender' 'male')
+   ('version' 1)
+   ('format' 3)
+   ('game_origin' 'rb2')
+   ('album_art' 'TRUE')
+   ('year_released' 1977)
+   (
+      'album_name'
+      "Let There Be Rock"
+   )
+   ('album_track_number' 3)
+   ('base_points' 965767)
+)
+(
+   'livinonaprayer'
+   (
+      'name'
+      "Livin' on a Prayer"
+   )
+   (
+      'artist'
+      "Bon Jovi"
+   )
+   ('master' 'TRUE')
+   ('song_id' 285)
+   (
+      'song'
+      (
+         'name'
+         "songs/livinonaprayer/livinonaprayer"
+      )
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1 2 3 4)
+            )
+            (
+               'bass'
+               (5)
+            )
+            (
+               'guitar'
+               (6 7)
+            )
+            (
+               'vocals'
+               (8 9)
+            )
+            (
+               'keys'
+               ()
+            )
+         )
+      )
+      ('crowd_channels' 12 13)
+      (
+         'pans'
+         (0.0 -1.0 1.0 -1.0 1.0 0.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -2.5 2.5)
+      )
+      (
+         'vols'
+         (-0.5 -2.0 -2.0 -3.0 -3.0 -3.0 -3.0 -3.0 -3.5 -3.5 -5.5 -5.5 -2.0 -2.0)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 -1 -1 1 1 -1 -1 -1 -1 -1 -1)
+      )
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+   )
+   ('bank' 'sfx/cowbell_bank.milo')
+   ('anim_tempo' 'kTempoMedium')
+   ('song_scroll_speed' 2300)
+   ('preview' 82300 110400)
+   ('song_length' 265000)
+   (solo (guitar vocal_percussion))
+   (
+      'rank'
+      ('drum' 126)
+      ('guitar' 260)
+      ('bass' 335)
+      ('vocals' 281)
+      ('keys' 0)
+      ('real_guitar' 0)
+      ('real_bass' 0)
+      ('real_keys' 0)
+      ('band' 264)
+   )
+   ('format' 10)
+   ('version' 2)
+   ('game_origin' 'rb2')
+   ('short_version' 0)
+   ('rating' 2)
+   ('genre' 'rock')
+   ('vocal_gender' 'male')
+   ('year_released' 1986)
+   ('album_art' 'TRUE')
+   (
+      'album_name'
+      "Slippery When Wet"
+   )
+   ('album_track_number' 3)
+)
+(
+   'lump'
+   (
+      'name'
+      "Lump"
+   )
+   (
+      'artist'
+      "The Presidents of the United States of America"
+   )
+   ('master' 'TRUE')
+   ('song_id' 286)
+   (
+      'song'
+      (
+         'name'
+         "songs/lump/lump"
+      )
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1 2 3 4)
+            )
+            (
+               'bass'
+               (5 6)
+            )
+            (
+               'guitar'
+               (7 8)
+            )
+            (
+               'vocals'
+               (9 10)
+            )
+            (
+               'keys'
+               ()
+            )
+         )
+      )
+      (
+         'pans'
+         (0.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0)
+      )
+      (
+         'vols'
+         (-0.5 -0.5 -0.5 -1.5 -1.5 -2.0 -2.0 -3.0 -3.0 -5.5 -5.5 -5.5 -5.5)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 -1 -1 -1 1 1 -1 -1 -1 -1)
+      )
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+   )
+   ('bank' 'sfx/tambourine_bank.milo')
+   ('anim_tempo' 'kTempoMedium')
+   ('song_scroll_speed' 2300)
+   ('preview' 3064 33064)
+   ('song_length' 136818)
+   (
+      'rank'
+      ('drum' 357)
+      ('guitar' 161)
+      ('bass' 343)
+      ('vocals' 103)
+      ('keys' 0)
+      ('real_guitar' 0)
+      ('real_bass' 0)
+      ('real_keys' 0)
+      ('band' 232)
+   )
+   ('format' 10)
+   ('version' 2)
+   ('game_origin' 'rb2')
+   ('short_version' 0)
+   ('rating' 2)
+   ('genre' 'poprock')
+   ('vocal_gender' 'male')
+   ('year_released' 1995)
+   ('album_art' 'TRUE')
+   (
+      'album_name'
+      "The Presidents of the United States of America"
+   )
+   ('album_track_number' 3)
+)
+(
+   'maninthebox'
+   (
+      'name'
+      "Man in the Box"
+   )
+   (
+      'artist'
+      "Alice In Chains"
+   )
+   ('master' 'TRUE')
+   ('song_id' 287)
+   (
+      'song'
+      (
+         'name'
+         "songs/maninthebox/maninthebox"
+      )
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1 2 3 4 5)
+            )
+            (
+               'bass'
+               (6)
+            )
+            (
+               'guitar'
+               (7 8)
+            )
+            (
+               'vocals'
+               (9 10)
+            )
+            (
+               'keys'
+               ()
+            )
+         )
+      )
+      ('crowd_channels' 13 14)
+      (
+         'pans'
+         (-1.0 1.0 -1.0 1.0 -1.0 1.0 0.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -2.5 2.5)
+      )
+      (
+         'vols'
+         (-1.0 -1.0 -1.0 -1.0 -1.5 -1.5 -3.0 -4.0 -4.0 -3.0 -3.0 -3.3 -3.3 -4.3 -4.3)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 -1 -1 -1 1 1 -1 -1 -1 -1 -1 -1)
+      )
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+   )
+   ('bank' 'sfx/tambourine_bank.milo')
+   ('anim_tempo' 'kTempoMedium')
+   ('song_scroll_speed' 2300)
+   ('preview' 76900 106900)
+   ('song_length' 291818)
+   (solo (guitar vocal_percussion))
+   (
+      'rank'
+      ('drum' 147)
+      ('guitar' 181)
+      ('bass' 153)
+      ('vocals' 131)
+      ('keys' 0)
+      ('real_guitar' 0)
+      ('real_bass' 0)
+      ('real_keys' 0)
+      ('band' 163)
+   )
+   ('format' 10)
+   ('version' 2)
+   ('game_origin' 'rb2')
+   ('short_version' 0)
+   ('rating' 2)
+   ('genre' 'grunge')
+   ('vocal_gender' 'male')
+   ('year_released' 1991)
+   ('album_art' 'TRUE')
+   (
+      'album_name'
+      "Facelift"
+   )
+   ('album_track_number' 2)
+)
+(
+   'masterexploder'
+   (
+      'name'
+      "Master Exploder"
+   )
+   (
+      'artist'
+      "Tenacious D"
+   )
+   ('master' 'TRUE')
+   ('song_id' 288)
+   (
+      'song'
+      (
+         'name'
+         "songs/masterexploder/masterexploder"
+      )
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1 2 3 4)
+            )
+            (
+               'bass'
+               (5)
+            )
+            (
+               'guitar'
+               (6 7)
+            )
+            (
+               'vocals'
+               (8 9)
+            )
+            (
+               'keys'
+               ()
+            )
+         )
+      )
+      (
+         'pans'
+         (0.0 -1.0 1.0 -1.0 1.0 0.0 -1.0 1.0 -1.0 1.0 -1.0 1.0)
+      )
+      (
+         'vols'
+         (-0.5 -0.5 -0.5 -2.0 -2.0 -4.0 -3.0 -3.0 -4.0 -4.0 -5.5 -5.5)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 -1 -1 1 1 -1 -1 -1 -1)
+      )
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+   )
+   ('bank' 'sfx/cowbell_bank.milo')
+   ('anim_tempo' 'kTempoFast')
+   ('song_scroll_speed' 2300)
+   ('preview' 79300 109300)
+   ('song_length' 151363)
+   (solo (guitar vocal_percussion))
+   (
+      'rank'
+      ('drum' 352)
+      ('guitar' 414)
+      ('bass' 206)
+      ('vocals' 424)
+      ('keys' 0)
+      ('real_guitar' 0)
+      ('real_bass' 0)
+      ('real_keys' 0)
+      ('band' 420)
+   )
+   ('format' 10)
+   ('version' 2)
+   ('game_origin' 'rb2')
+   ('short_version' 0)
+   ('rating' 2)
+   ('genre' 'rock')
+   ('vocal_gender' 'male')
+   ('year_released' 2006)
+   ('album_art' 'TRUE')
+   (
+      'album_name'
+      "The Pick Of Destiny"
+   )
+   ('album_track_number' 7)
+)
+(
+   'mountainsong'
+   (
+      'name'
+      "Mountain Song"
+   )
+   (
+      'artist'
+      "Jane's Addiction"
+   )
+   ('master' 'TRUE')
+   ('song_id' 289)
+   (
+      'song'
+      (
+         'name'
+         "songs/mountainsong/mountainsong"
+      )
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1 2 3 4 5)
+            )
+            (
+               'bass'
+               (6)
+            )
+            (
+               'guitar'
+               (7 8)
+            )
+            (
+               'vocals'
+               (9 10)
+            )
+            (
+               'keys'
+               ()
+            )
+         )
+      )
+      ('crowd_channels' 13 14)
+      (
+         'pans'
+         (-1.0 1.0 -1.0 1.0 -1.0 1.0 0.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -2.5 2.5)
+      )
+      (
+         'vols'
+         (-0.5 -0.5 -2.5 -2.5 -2.0 -2.0 -3.0 -3.0 -3.0 -3.2 -3.2 -3.5 -3.5 -4.0 -4.0)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 -1 -1 -1 1 1 -1 -1 -1 -1 -1 -1)
+      )
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+   )
+   ('bank' 'sfx/cowbell_bank.milo')
+   ('anim_tempo' 'kTempoFast')
+   ('song_scroll_speed' 2300)
+   ('preview' 30139 60139)
+   ('song_length' 251363)
+   (solo (guitar vocal_percussion))
+   (
+      'rank'
+      ('drum' 309)
+      ('guitar' 177)
+      ('bass' 300)
+      ('vocals' 287)
+      ('keys' 0)
+      ('real_guitar' 0)
+      ('real_bass' 0)
+      ('real_keys' 0)
+      ('band' 300)
+   )
+   ('format' 10)
+   ('version' 2)
+   ('game_origin' 'rb2')
+   ('short_version' 0)
+   ('rating' 2)
+   ('genre' 'alternative')
+   ('vocal_gender' 'male')
+   ('year_released' 1988)
+   ('album_art' 'TRUE')
+   (
+      'album_name'
+      "Nothing's Shocking"
+   )
+   ('album_track_number' 7)
+)
+(
+   'myownworstenemy'
+   (
+      'name'
+      "My Own Worst Enemy"
+   )
+   (
+      'artist'
+      "Lit"
+   )
+   ('master' 'TRUE')
+   ('song_id' 290)
+   (
+      'song'
+      (
+         'name'
+         "songs/myownworstenemy/myownworstenemy"
+      )
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1 2 3 4 5)
+            )
+            (
+               'bass'
+               (6)
+            )
+            (
+               'guitar'
+               (7 8)
+            )
+            (
+               'vocals'
+               (9 10)
+            )
+            (
+               'keys'
+               ()
+            )
+         )
+      )
+      ('crowd_channels' 13 14)
+      (
+         'pans'
+         (-1.0 1.0 -1.0 1.0 -1.0 1.0 0.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -2.5 2.5)
+      )
+      (
+         'vols'
+         (-3.0 -3.0 -3.0 -3.0 -5.0 -5.0 -5.0 -3.0 -3.0 -3.0 -3.0 -3.5 -3.5 -3.5 -3.5)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 -1 -1 -1 1 1 -1 -1 -1 -1 -1 -1)
+      )
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+   )
+   ('bank' 'sfx/tambourine_bank.milo')
+   ('anim_tempo' 'kTempoMedium')
+   ('song_scroll_speed' 2300)
+   ('preview' 32000 62000)
+   ('song_length' 173181)
+   (solo (guitar))
+   (
+      'rank'
+      ('drum' 118)
+      ('guitar' 124)
+      ('bass' 135)
+      ('vocals' 121)
+      ('keys' 0)
+      ('real_guitar' 0)
+      ('real_bass' 0)
+      ('real_keys' 0)
+      ('band' 105)
+   )
+   ('format' 10)
+   ('version' 2)
+   ('game_origin' 'rb2')
+   ('short_version' 0)
+   ('rating' 2)
+   ('genre' 'poprock')
+   ('vocal_gender' 'male')
+   ('year_released' 1999)
+   ('album_art' 'TRUE')
+   (
+      'album_name'
+      "A Place in the Sun"
+   )
+   ('album_track_number' 2)
+)
+(
+   'newkidinschool'
+   (
+      'name'
+      "New Kid in School"
+   )
+   (
+      'artist'
+      "The Donnas"
+   )
+   ('master' 'TRUE')
+   ('song_id' 291)
+   (
+      'song'
+      (
+         'name'
+         "songs/newkidinschool/newkidinschool"
+      )
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1 2 3 4)
+            )
+            (
+               'bass'
+               (5)
+            )
+            (
+               'guitar'
+               (6 7)
+            )
+            (
+               'vocals'
+               (8 9)
+            )
+            (
+               'keys'
+               ()
+            )
+         )
+      )
+      (
+         'pans'
+         (0.0 -1.0 1.0 -1.0 1.0 0.0 -1.0 1.0 -1.0 1.0 -1.0 1.0)
+      )
+      (
+         'vols'
+         (-0.5 -0.5 -0.5 -1.5 -1.5 -5.0 -4.0 -4.0 -4.5 -4.5 -3.5 -3.5)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 -1 -1 1 1 -1 -1 -1 -1)
+      )
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+   )
+   ('bank' 'sfx/cowbell3_bank.milo')
+   ('anim_tempo' 'kTempoMedium')
+   ('song_scroll_speed' 2300)
+   ('preview' 133746 163746)
+   ('song_length' 219545)
+   (solo (guitar vocal_percussion))
+   (
+      'rank'
+      ('drum' 109)
+      ('guitar' 153)
+      ('bass' 203)
+      ('vocals' 333)
+      ('keys' 0)
+      ('real_guitar' 0)
+      ('real_bass' 0)
+      ('real_keys' 0)
+      ('band' 200)
+   )
+   ('format' 10)
+   ('version' 2)
+   ('game_origin' 'rb2')
+   ('short_version' 0)
+   ('rating' 2)
+   ('genre' 'rock')
+   ('vocal_gender' 'female')
+   ('year_released' 2007)
+   ('album_art' 'TRUE')
+   (
+      'album_name'
+      "Bitchin'"
+   )
+   ('album_track_number' 19)
+)
+(
+   'nightlies'
+   (
+      'name'
+      "Night Lies"
+   )
+   (
+      'artist'
+      "Bang Camaro"
+   )
+   ('master' 'TRUE')
+   ('song_id' 329)
+   (
+      'song'
+      (
+         'name'
+         "songs/nightlies/nightlies"
+      )
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1)
+            )
+            (
+               'bass'
+               (2)
+            )
+            (
+               'guitar'
+               (3 4)
+            )
+            (
+               'vocals'
+               (5 6)
+            )
+         )
+      )
+      (
+         'pans'
+         (-1.0 1.0 0.0 -1.0 1.0 -1.0 1.0 -1.0 1.0)
+      )
+      (
+         'vols'
+         (-1.5 -1.5 -2.0 -3.0 -3.0 -3.3 -3.3 -4.0 -4.0)
+      )
+      (
+         'cores'
+         (-1 -1 -1 1 1 -1 -1 -1 -1)
+      )
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+   )
+   ('bank' 'sfx/cowbell_bank.milo')
+   ('anim_tempo' 'kTempoMedium')
+   ('song_scroll_speed' 2300)
+   ('preview' 67800 97800)
+   ('song_length' 231063)
+   (solo (guitar vocal_percussion))
+   (
+      'rank'
+      ('drum' 250)
+      ('guitar' 353)
+      ('bass' 322)
+      ('vocals' 206)
+      ('keys' 0)
+      ('real_guitar' 0)
+      ('real_bass' 0)
+      ('real_keys' 0)
+      ('band' 368)
+   )
+   ('format' 10)
+   ('version' 2)
+   ('game_origin' 'rb2')
+   ('short_version' 0)
+   ('rating' 2)
+   ('genre' 'rock')
+   ('vocal_gender' 'male')
+   ('year_released' 2008)
+   ('album_art' 'TRUE')
+)
+(
+   'nineintheafternoon'
+   (
+      'name'
+      "Nine in the Afternoon"
+   )
+   (
+      'artist'
+      "Panic at the Disco"
+   )
+   ('master' 'TRUE')
+   ('song_id' 292)
+   (
+      'song'
+      (
+         'name'
+         "songs/nineintheafternoon/nineintheafternoon"
+      )
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1 2 3 4 5)
+            )
+            (
+               'bass'
+               (6)
+            )
+            (
+               'guitar'
+               (7 8)
+            )
+            (
+               'vocals'
+               (9 10)
+            )
+            (
+               'keys'
+               ()
+            )
+         )
+      )
+      (
+         'pans'
+         (-1.0 1.0 -1.0 1.0 -1.0 1.0 0.0 -1.0 1.0 -1.0 1.0 -1.0 1.0)
+      )
+      (
+         'vols'
+         (-3.0 -3.0 -2.0 -2.0 -2.5 -2.5 -4.0 -2.7 -2.7 -4.7 -4.7 -2.5 -2.5)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 -1 -1 -1 1 1 -1 -1 -1 -1)
+      )
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+   )
+   ('bank' 'sfx/tambourine_bank.milo')
+   ('anim_tempo' 'kTempoMedium')
+   ('song_scroll_speed' 2300)
+   ('preview' 47860 76700)
+   ('song_length' 200000)
+   (
+      'rank'
+      ('drum' 112)
+      ('guitar' 173)
+      ('bass' 182)
+      ('vocals' 186)
+      ('keys' 0)
+      ('real_guitar' 0)
+      ('real_bass' 0)
+      ('real_keys' 0)
+      ('band' 142)
+   )
+   ('format' 10)
+   ('version' 2)
+   ('game_origin' 'rb2')
+   ('short_version' 0)
+   ('rating' 2)
+   ('genre' 'poprock')
+   ('vocal_gender' 'male')
+   ('year_released' 2008)
+   ('album_art' 'TRUE')
+   (
+      'album_name'
+      "Pretty. Odd."
+   )
+   ('album_track_number' 2)
+)
+(
+   'onestepcloser'
+   (
+      'name'
+      "One Step Closer"
+   )
+   (
+      'artist'
+      "Linkin Park"
+   )
+   ('master' 'TRUE')
+   ('song_id' 293)
+   (
+      'song'
+      (
+         'name'
+         "songs/onestepcloser/onestepcloser"
+      )
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1 2 3 4)
+            )
+            (
+               'bass'
+               (5)
+            )
+            (
+               'guitar'
+               (6 7)
+            )
+            (
+               'vocals'
+               (8 9)
+            )
+            (
+               'keys'
+               ()
+            )
+         )
+      )
+      (
+         'pans'
+         (0.0 -1.0 1.0 -1.0 1.0 0.0 -1.0 1.0 -1.0 1.0 -1.0 1.0)
+      )
+      (
+         'vols'
+         (-0.5 -0.5 -0.5 -2.5 -2.5 -3.5 -3.5 -3.5 -3.0 -3.0 -3.0 -3.0)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 -1 -1 1 1 -1 -1 -1 -1)
+      )
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+   )
+   ('bank' 'sfx/tambourine_bank.milo')
+   ('anim_tempo' 'kTempoMedium')
+   ('song_scroll_speed' 2300)
+   ('preview' 37500 59900)
+   ('song_length' 161818)
+   (
+      'rank'
+      ('drum' 257)
+      ('guitar' 128)
+      ('bass' 165)
+      ('vocals' 284)
+      ('keys' 0)
+      ('real_guitar' 0)
+      ('real_bass' 0)
+      ('real_keys' 0)
+      ('band' 214)
+   )
+   ('format' 10)
+   ('version' 2)
+   ('game_origin' 'rb2')
+   ('short_version' 0)
+   ('rating' 2)
+   ('genre' 'numetal')
+   ('vocal_gender' 'male')
+   ('year_released' 2000)
+   ('album_art' 'TRUE')
+   (
+      'album_name'
+      "Hybrid Theory"
+   )
+   ('album_track_number' 2)
+)
+(
+   'onewayoranother'
+   (
+      'name'
+      "One Way or Another"
+   )
+   (
+      'artist'
+      "Blondie"
+   )
+   ('master' 'TRUE')
+   ('song_id' 294)
+   (
+      'song'
+      (
+         'name'
+         "songs/onewayoranother/onewayoranother"
+      )
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1 2 3 4)
+            )
+            (
+               'bass'
+               (5)
+            )
+            (
+               'guitar'
+               (6 7)
+            )
+            (
+               'vocals'
+               (8 9)
+            )
+            (
+               'keys'
+               ()
+            )
+         )
+      )
+      ('crowd_channels' 12 13)
+      (
+         'pans'
+         (0.0 -1.0 1.0 -1.0 1.0 0.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -2.5 2.5)
+      )
+      (
+         'vols'
+         (-0.5 -1.0 -1.0 -3.0 -3.0 -4.5 -3.0 -3.0 -3.0 -3.0 -3.5 -3.5 -5.0 -5.0)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 -1 -1 1 1 -1 -1 -1 -1 -1 -1)
+      )
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+   )
+   ('bank' 'sfx/tambourine_bank.milo')
+   ('anim_tempo' 'kTempoFast')
+   ('song_scroll_speed' 2300)
+   ('preview' 68049 88675)
+   ('song_length' 235909)
+   (solo (guitar vocal_percussion))
+   (
+      'rank'
+      ('drum' 197)
+      ('guitar' 273)
+      ('bass' 271)
+      ('vocals' 223)
+      ('keys' 0)
+      ('real_guitar' 0)
+      ('real_bass' 0)
+      ('real_keys' 0)
+      ('band' 268)
+   )
+   ('format' 10)
+   ('version' 2)
+   ('game_origin' 'rb2')
+   ('short_version' 0)
+   ('rating' 2)
+   ('genre' 'poprock')
+   ('vocal_gender' 'female')
+   ('year_released' 1978)
+   ('album_art' 'TRUE')
+   (
+      'album_name'
+      "Parallel Lines"
+   )
+   ('album_track_number' 2)
+)
+(
+   'ourtruth'
+   (
+      'name'
+      "Our Truth"
+   )
+   (
+      'artist'
+      "Lacuna Coil"
+   )
+   ('master' 'TRUE')
+   ('song_id' 295)
+   (
+      'song'
+      (
+         'name'
+         "songs/ourtruth/ourtruth"
+      )
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1 2 3 4)
+            )
+            (
+               'bass'
+               (5)
+            )
+            (
+               'guitar'
+               (6 7)
+            )
+            (
+               'vocals'
+               (8 9)
+            )
+            (
+               'keys'
+               ()
+            )
+         )
+      )
+      (
+         'pans'
+         (0.0 -1.0 1.0 -1.0 1.0 0.0 -1.0 1.0 -1.0 1.0 -1.0 1.0)
+      )
+      (
+         'vols'
+         (0.0 -0.5 -0.5 -3.0 -3.0 -3.5 -5.0 -5.0 -4.5 -4.5 -3.5 -3.5)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 -1 -1 1 1 -1 -1 -1 -1)
+      )
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+   )
+   ('bank' 'sfx/cowbell_bank.milo')
+   ('anim_tempo' 'kTempoMedium')
+   ('song_scroll_speed' 2300)
+   ('preview' 60300 82290)
+   ('song_length' 221363)
+   (solo (vocal_percussion))
+   (
+      'rank'
+      ('drum' 326)
+      ('guitar' 185)
+      ('bass' 374)
+      ('vocals' 365)
+      ('keys' 0)
+      ('real_guitar' 0)
+      ('real_bass' 0)
+      ('real_keys' 0)
+      ('band' 355)
+   )
+   ('format' 10)
+   ('version' 2)
+   ('game_origin' 'rb2')
+   ('short_version' 0)
+   ('rating' 2)
+   ('genre' 'metal')
+   ('vocal_gender' 'female')
+   ('year_released' 2006)
+   ('album_art' 'TRUE')
+   (
+      'album_name'
+      "Karmacode"
+   )
+   ('album_track_number' 3)
+)
+(
+   'painkiller'
+   (
+      'name'
+      "Painkiller"
+   )
+   (
+      'artist'
+      "Judas Priest"
+   )
+   ('master' 'TRUE')
+   ('song_id' 296)
+   (
+      'song'
+      (
+         'name'
+         "songs/painkiller/painkiller"
+      )
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1 2 3 4)
+            )
+            (
+               'bass'
+               (5)
+            )
+            (
+               'guitar'
+               (6 7)
+            )
+            (
+               'vocals'
+               (8 9)
+            )
+            (
+               'keys'
+               ()
+            )
+         )
+      )
+      (
+         'pans'
+         (0.0 -1.0 1.0 -1.0 1.0 0.0 -1.0 1.0 -1.0 1.0 -1.0 1.0)
+      )
+      (
+         'vols'
+         (-2.0 -3.5 -3.5 -2.0 -2.0 -3.0 -3.8 -3.8 -1.8 -1.8 -3.5 -3.5)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 -1 -1 1 1 -1 -1 -1 -1)
+      )
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+   )
+   ('bank' 'sfx/cowbell3_bank.milo')
+   ('anim_tempo' 'kTempoSlow')
+   ('song_scroll_speed' 2300)
+   ('preview' 30371 60371)
+   ('song_length' 370909)
+   (solo (drum guitar vocal_percussion))
+   (
+      'rank'
+      ('drum' 540)
+      ('guitar' 505)
+      ('bass' 436)
+      ('vocals' 430)
+      ('keys' 0)
+      ('real_guitar' 0)
+      ('real_bass' 0)
+      ('real_keys' 0)
+      ('band' 550)
+   )
+   ('format' 10)
+   ('version' 2)
+   ('game_origin' 'rb2')
+   ('short_version' 0)
+   ('rating' 2)
+   ('genre' 'metal')
+   ('vocal_gender' 'male')
+   ('year_released' 1990)
+   ('album_art' 'TRUE')
+   (
+      'album_name'
+      "Painkiller"
+   )
+   ('album_track_number' 1)
+)
+(
+   'panicattack'
+   (
+      'name'
+      "Panic Attack"
+   )
+   (
+      'artist'
+      "Dream Theater"
+   )
+   ('master' 'TRUE')
+   ('song_id' 297)
+   (
+      'song'
+      (
+         'name'
+         "songs/panicattack/panicattack"
+      )
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1 2 3 4)
+            )
+            (
+               'bass'
+               (5)
+            )
+            (
+               'guitar'
+               (6 7)
+            )
+            (
+               'vocals'
+               (8 9)
+            )
+            (
+               'keys'
+               ()
+            )
+         )
+      )
+      (
+         'pans'
+         (0.0 -1.0 1.0 -1.0 1.0 0.0 -1.0 1.0 -1.0 1.0 -1.0 1.0)
+      )
+      (
+         'vols'
+         (-0.5 -3.0 -3.0 -2.0 -2.0 -5.0 -3.5 -3.5 -5.2 -5.2 -6.2 -6.2)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 -1 -1 1 1 -1 -1 -1 -1)
+      )
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+   )
+   ('bank' 'sfx/cowbell3_bank.milo')
+   ('anim_tempo' 'kTempoMedium')
+   ('song_scroll_speed' 2300)
+   ('preview' 106200 136200)
+   ('song_length' 442727)
+   (solo (guitar vocal_percussion))
+   (
+      'rank'
+      ('drum' 550)
+      ('guitar' 491)
+      ('bass' 600)
+      ('vocals' 359)
+      ('keys' 0)
+      ('real_guitar' 0)
+      ('real_bass' 0)
+      ('real_keys' 0)
+      ('band' 540)
+   )
+   ('format' 10)
+   ('version' 2)
+   ('game_origin' 'rb2')
+   ('short_version' 0)
+   ('rating' 2)
+   ('genre' 'prog')
+   ('vocal_gender' 'male')
+   ('year_released' 2005)
+   ('album_art' 'TRUE')
+   (
+      'album_name'
+      "Octavarium"
+   )
+   ('album_track_number' 5)
+)
+(
+   'pda'
+   (
+      'name'
+      "PDA"
+   )
+   (
+      'artist'
+      "Interpol"
+   )
+   ('master' 'TRUE')
+   ('song_id' 298)
+   (
+      'song'
+      (
+         'name'
+         "songs/pda/pda"
+      )
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1 2 3)
+            )
+            (
+               'bass'
+               (4)
+            )
+            (
+               'guitar'
+               (5 6)
+            )
+            (
+               'vocals'
+               (7 8)
+            )
+            (
+               'keys'
+               ()
+            )
+         )
+      )
+      (
+         'pans'
+         (0.0 0.0 -1.0 1.0 0.0 -1.0 1.0 -1.0 1.0 -1.0 1.0)
+      )
+      (
+         'vols'
+         (-1.0 -1.0 -2.5 -2.5 -3.0 -3.5 -3.5 -4.5 -4.5 -3.0 -3.0)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 -1 1 1 -1 -1 -1 -1)
+      )
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+   )
+   ('bank' 'sfx/tambourine_bank.milo')
+   ('anim_tempo' 'kTempoMedium')
+   ('song_scroll_speed' 2300)
+   ('preview' 64400 91800)
+   ('song_length' 305000)
+   (solo (vocal_percussion))
+   (
+      'rank'
+      ('drum' 264)
+      ('guitar' 250)
+      ('bass' 248)
+      ('vocals' 248)
+      ('keys' 0)
+      ('real_guitar' 0)
+      ('real_bass' 0)
+      ('real_keys' 0)
+      ('band' 158)
+   )
+   ('format' 10)
+   ('version' 2)
+   ('game_origin' 'rb2')
+   ('short_version' 0)
+   ('rating' 2)
+   ('genre' 'indierock')
+   ('vocal_gender' 'male')
+   ('year_released' 2002)
+   ('album_art' 'TRUE')
+   (
+      'album_name'
+      "Turn On the Bright Lights"
+   )
+   ('album_track_number' 4)
+)
+(
+   'peacesells'
+   (
+      'name'
+      "Peace Sells"
+   )
+   (
+      'artist'
+      "Megadeth"
+   )
+   ('master' 'TRUE')
+   ('song_id' 299)
+   (
+      'song'
+      (
+         'name'
+         "songs/peacesells/peacesells"
+      )
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1 2 3 4 5)
+            )
+            (
+               'bass'
+               (6)
+            )
+            (
+               'guitar'
+               (7 8)
+            )
+            (
+               'vocals'
+               (9 10)
+            )
+            (
+               'keys'
+               ()
+            )
+         )
+      )
+      (
+         'pans'
+         (-1.0 1.0 -1.0 1.0 -1.0 1.0 0.0 -1.0 1.0 -1.0 1.0 -1.0 1.0)
+      )
+      (
+         'vols'
+         (-0.5 -0.5 -0.5 -0.5 -3.0 -3.0 -3.5 -3.5 -3.5 -3.0 -3.0 -3.5 -3.5)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 -1 -1 -1 1 1 -1 -1 -1 -1)
+      )
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+   )
+   ('bank' 'sfx/cowbell3_bank.milo')
+   ('anim_tempo' 'kTempoMedium')
+   ('song_scroll_speed' 2300)
+   ('preview' 8314 38314)
+   ('song_length' 246818)
+   (solo (guitar vocal_percussion))
+   (
+      'rank'
+      ('drum' 500)
+      ('guitar' 457)
+      ('bass' 495)
+      ('vocals' 190)
+      ('keys' 0)
+      ('real_guitar' 0)
+      ('real_bass' 0)
+      ('real_keys' 0)
+      ('band' 480)
+   )
+   ('format' 10)
+   ('version' 2)
+   ('game_origin' 'rb2')
+   ('short_version' 0)
+   ('rating' 2)
+   ('genre' 'metal')
+   ('vocal_gender' 'male')
+   ('year_released' 1985)
+   ('album_art' 'TRUE')
+   (
+      'album_name'
+      "Peace Sells... but Who's Buying?"
+   )
+   ('album_track_number' 3)
+)
+(
+   'pinballwizard'
+   (
+      'name'
+      "Pinball Wizard"
+   )
+   (
+      'artist'
+      "The Who"
+   )
+   ('master' 'TRUE')
+   ('song_id' 300)
+   (
+      'song'
+      (
+         'name'
+         "songs/pinballwizard/pinballwizard"
+      )
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1)
+            )
+            (
+               'bass'
+               (2)
+            )
+            (
+               'guitar'
+               (3 4)
+            )
+            (
+               'vocals'
+               (5 6)
+            )
+            (
+               'keys'
+               ()
+            )
+         )
+      )
+      ('crowd_channels' 9 10)
+      (
+         'pans'
+         (-1.0 1.0 0.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -2.5 2.5)
+      )
+      (
+         'vols'
+         (-0.5 -0.5 -3.3 -2.3 -2.3 -3.5 -3.5 -3.5 -3.5 -4.0 -4.0)
+      )
+      (
+         'cores'
+         (-1 -1 -1 1 1 -1 -1 -1 -1 -1 -1)
+      )
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+   )
+   ('bank' 'sfx/tambourine_bank.milo')
+   ('anim_tempo' 'kTempoFast')
+   ('song_scroll_speed' 2300)
+   ('preview' 16000 46000)
+   ('song_length' 190000)
+   (
+      'rank'
+      ('drum' 370)
+      ('guitar' 327)
+      ('bass' 290)
+      ('vocals' 252)
+      ('keys' 0)
+      ('real_guitar' 0)
+      ('real_bass' 0)
+      ('real_keys' 0)
+      ('band' 350)
+   )
+   ('format' 10)
+   ('version' 2)
+   ('game_origin' 'rb2')
+   ('short_version' 0)
+   ('rating' 2)
+   ('genre' 'classicrock')
+   ('vocal_gender' 'male')
+   ('year_released' 1969)
+   ('album_art' 'TRUE')
+   (
+      'album_name'
+      "Tommy"
+   )
+   ('album_track_number' 13)
+)
+(
+   'pretendweredead'
+   (
+      'name'
+      "Pretend We're Dead"
+   )
+   (
+      'artist'
+      "L7"
+   )
+   ('master' 'TRUE')
+   ('song_id' 301)
+   (
+      'song'
+      (
+         'name'
+         "songs/pretendweredead/pretendweredead"
+      )
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1 2 3 4)
+            )
+            (
+               'bass'
+               (5)
+            )
+            (
+               'guitar'
+               (6 7)
+            )
+            (
+               'vocals'
+               (8 9)
+            )
+            (
+               'keys'
+               ()
+            )
+         )
+      )
+      ('crowd_channels' 12 13)
+      (
+         'pans'
+         (0.0 -1.0 1.0 -1.0 1.0 0.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -2.5 2.5)
+      )
+      (
+         'vols'
+         (-0.5 -0.5 -0.5 -1.5 -1.5 -3.0 -2.5 -2.5 -3.5 -3.5 -3.0 -3.0 -4.7 -4.7)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 -1 -1 1 1 -1 -1 -1 -1 -1 -1)
+      )
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+   )
+   ('bank' 'sfx/tambourine_bank.milo')
+   ('anim_tempo' 'kTempoMedium')
+   ('song_scroll_speed' 2300)
+   ('preview' 50294 80248)
+   ('song_length' 243636)
+   (
+      'rank'
+      ('drum' 144)
+      ('guitar' 120)
+      ('bass' 176)
+      ('vocals' 100)
+      ('keys' 0)
+      ('real_guitar' 0)
+      ('real_bass' 0)
+      ('real_keys' 0)
+      ('band' 132)
+   )
+   ('format' 10)
+   ('version' 2)
+   ('game_origin' 'rb2')
+   ('short_version' 0)
+   ('rating' 2)
+   ('genre' 'grunge')
+   ('vocal_gender' 'female')
+   ('year_released' 1992)
+   ('album_art' 'TRUE')
+   (
+      'album_name'
+      "Bricks Are Heavy"
+   )
+   ('album_track_number' 3)
+)
+(
+   'psychokiller'
+   (
+      'name'
+      "Psycho Killer"
+   )
+   (
+      'artist'
+      "Talking Heads"
+   )
+   ('master' 'TRUE')
+   ('song_id' 302)
+   (
+      'song'
+      (
+         'name'
+         "songs/psychokiller/psychokiller"
+      )
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1 2 3 4)
+            )
+            (
+               'bass'
+               (5)
+            )
+            (
+               'guitar'
+               (6 7)
+            )
+            (
+               'vocals'
+               (8 9)
+            )
+            (
+               'keys'
+               ()
+            )
+         )
+      )
+      ('crowd_channels' 12 13)
+      (
+         'pans'
+         (0.0 -1.0 1.0 -1.0 1.0 0.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -2.5 2.5)
+      )
+      (
+         'vols'
+         (-0.5 -1.0 -1.0 -1.5 -1.5 -3.0 -3.0 -3.0 -3.0 -3.0 -3.0 -3.0 -2.0 -2.0)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 -1 -1 1 1 -1 -1 -1 -1 -1 -1)
+      )
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+   )
+   ('bank' 'sfx/tambourine_bank.milo')
+   ('anim_tempo' 'kTempoMedium')
+   ('song_scroll_speed' 2300)
+   ('preview' 58839 88839)
+   ('song_length' 268181)
+   (solo (guitar vocal_percussion))
+   (
+      'rank'
+      ('drum' 103)
+      ('guitar' 197)
+      ('bass' 277)
+      ('vocals' 391)
+      ('keys' 0)
+      ('real_guitar' 0)
+      ('real_bass' 0)
+      ('real_keys' 0)
+      ('band' 227)
+   )
+   ('format' 10)
+   ('version' 2)
+   ('game_origin' 'rb2')
+   ('short_version' 0)
+   ('rating' 2)
+   ('genre' 'new_wave')
+   ('vocal_gender' 'male')
+   ('year_released' 1977)
+   ('album_art' 'TRUE')
+   (
+      'album_name'
+      "Talking Heads: 77"
+   )
+   ('album_track_number' 10)
+)
+(
+   'pumpitup'
+   (
+      'name'
+      "Pump It Up"
+   )
+   (
+      'artist'
+      "Elvis Costello"
+   )
+   ('master' 'TRUE')
+   ('song_id' 303)
+   (
+      'song'
+      (
+         'name'
+         "songs/pumpitup/pumpitup"
+      )
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1 2 3 4)
+            )
+            (
+               'bass'
+               (5)
+            )
+            (
+               'guitar'
+               (6 7)
+            )
+            (
+               'vocals'
+               (8 9)
+            )
+            (
+               'keys'
+               ()
+            )
+         )
+      )
+      ('crowd_channels' 12 13)
+      (
+         'pans'
+         (0.0 -1.0 1.0 -1.0 1.0 0.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -2.5 2.5)
+      )
+      (
+         'vols'
+         (-0.5 -0.5 -0.5 -2.0 -2.0 -2.0 -3.5 -3.5 -2.0 -2.0 -3.0 -3.0 -3.5 -3.5)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 -1 -1 1 1 -1 -1 -1 -1 -1 -1)
+      )
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+   )
+   ('bank' 'sfx/tambourine_bank.milo')
+   ('anim_tempo' 'kTempoFast')
+   ('song_scroll_speed' 2300)
+   ('preview' 38200 58900)
+   ('song_length' 222272)
+   (solo (vocal_percussion))
+   (
+      'rank'
+      ('drum' 221)
+      ('guitar' 232)
+      ('bass' 210)
+      ('vocals' 169)
+      ('keys' 0)
+      ('real_guitar' 0)
+      ('real_bass' 0)
+      ('real_keys' 0)
+      ('band' 209)
+   )
+   ('format' 10)
+   ('version' 2)
+   ('game_origin' 'rb2')
+   ('short_version' 0)
+   ('rating' 2)
+   ('genre' 'rock')
+   ('vocal_gender' 'male')
+   ('year_released' 1978)
+   ('album_art' 'TRUE')
+   (
+      'album_name'
+      "This Year's Model"
+   )
+   ('album_track_number' 4)
+)
+(
+   'ramblinman'
+   (
+      'name'
+      "Ramblin' Man"
+   )
+   (
+      'artist'
+      "The Allman Brothers Band"
+   )
+   ('master' 'TRUE')
+   ('song_id' 304)
+   (
+      'song'
+      (
+         'name'
+         "songs/ramblinman/ramblinman"
+      )
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1)
+            )
+            (
+               'bass'
+               (2)
+            )
+            (
+               'guitar'
+               (3 4)
+            )
+            (
+               'vocals'
+               (5 6)
+            )
+            (
+               'keys'
+               ()
+            )
+         )
+      )
+      ('crowd_channels' 9 10)
+      (
+         'pans'
+         (-1.0 1.0 0.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -2.5 2.5)
+      )
+      (
+         'vols'
+         (-0.5 -0.5 -3.0 -3.0 -3.0 -3.0 -3.0 -2.5 -2.5 -4.0 -4.0)
+      )
+      (
+         'cores'
+         (-1 -1 -1 1 1 -1 -1 -1 -1 -1 -1)
+      )
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+      ('hopo_threshold' 250)
+   )
+   ('bank' 'sfx/tambourine_bank.milo')
+   ('anim_tempo' 'kTempoSlow')
+   ('song_scroll_speed' 2300)
+   ('preview' 5201 35201)
+   ('song_length' 320454)
+   (solo (guitar vocal_percussion))
+   (
+      'rank'
+      ('drum' 387)
+      ('guitar' 422)
+      ('bass' 459)
+      ('vocals' 398)
+      ('keys' 0)
+      ('real_guitar' 0)
+      ('real_bass' 0)
+      ('real_keys' 0)
+      ('band' 467)
+   )
+   ('format' 10)
+   ('version' 2)
+   ('game_origin' 'rb2')
+   ('short_version' 0)
+   ('rating' 2)
+   ('genre' 'southernrock')
+   ('vocal_gender' 'male')
+   ('year_released' 1973)
+   ('album_art' 'TRUE')
+   (
+      'album_name'
+      "Brothers and Sisters"
+   )
+   ('album_track_number' 2)
+)
+(
+   'rebelgirl'
+   (
+      'name'
+      "Rebel Girl"
+   )
+   (
+      'artist'
+      "Bikini Kill"
+   )
+   ('master' 'TRUE')
+   ('song_id' 305)
+   (
+      'song'
+      (
+         'name'
+         "songs/rebelgirl/rebelgirl"
+      )
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1 2 3)
+            )
+            (
+               'bass'
+               (4)
+            )
+            (
+               'guitar'
+               (5 6)
+            )
+            (
+               'vocals'
+               (7)
+            )
+            (
+               'keys'
+               ()
+            )
+         )
+      )
+      (
+         'pans'
+         (0.0 0.0 -1.0 1.0 0.0 -1.0 1.0 0.0 -1.0 1.0)
+      )
+      (
+         'vols'
+         (-0.5 -2.0 -3.0 -3.0 -3.5 -3.5 -3.5 -2.5 -4.0 -4.0)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 -1 1 1 -1 -1 -1)
+      )
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+   )
+   ('bank' 'sfx/tambourine_bank.milo')
+   ('anim_tempo' 'kTempoMedium')
+   ('song_scroll_speed' 2300)
+   ('preview' 23974 53974)
+   ('song_length' 163181)
+   (solo (guitar))
+   (
+      'rank'
+      ('drum' 115)
+      ('guitar' 140)
+      ('bass' 188)
+      ('vocals' 166)
+      ('keys' 0)
+      ('real_guitar' 0)
+      ('real_bass' 0)
+      ('real_keys' 0)
+      ('band' 137)
+   )
+   ('format' 10)
+   ('version' 2)
+   ('game_origin' 'rb2')
+   ('short_version' 0)
+   ('rating' 2)
+   ('genre' 'punk')
+   ('vocal_gender' 'female')
+   ('year_released' 1993)
+   ('album_art' 'TRUE')
+   (
+      'album_name'
+      "Bikini Kill: The Singles"
+   )
+   ('album_track_number' 2)
+)
+(
+   'robtheprezodent'
+   (
+      'name'
+      "Rob the Prez-O-Dent"
+   )
+   (
+      'artist'
+      "That Handsome Devil"
+   )
+   ('master' 'TRUE')
+   ('song_id' 330)
+   (
+      'song'
+      (
+         'name'
+         "songs/robtheprezodent/robtheprezodent"
+      )
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1 2 3 4)
+            )
+            (
+               'bass'
+               (5)
+            )
+            (
+               'guitar'
+               (6 7)
+            )
+            (
+               'vocals'
+               (8 9)
+            )
+         )
+      )
+      (
+         'pans'
+         (0.0 -1.0 1.0 -1.0 1.0 0.0 -1.0 1.0 -1.0 1.0 -1.0 1.0)
+      )
+      (
+         'vols'
+         (-1.0 -1.0 -1.0 -2.0 -2.0 -3.0 -4.0 -4.0 -2.5 -2.5 -0.5 -0.5)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 -1 -1 1 1 -1 -1 -1 -1)
+      )
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+   )
+   ('bank' 'sfx/tambourine_bank.milo')
+   ('anim_tempo' 'kTempoMedium')
+   ('song_scroll_speed' 2300)
+   ('preview' 32900 62900)
+   ('song_length' 183591)
+   (solo (guitar))
+   (
+      'rank'
+      ('drum' 383)
+      ('guitar' 331)
+      ('bass' 370)
+      ('vocals' 265)
+      ('keys' 0)
+      ('real_guitar' 0)
+      ('real_bass' 0)
+      ('real_keys' 0)
+      ('band' 440)
+   )
+   ('format' 10)
+   ('version' 2)
+   ('game_origin' 'rb2')
+   ('short_version' 0)
+   ('rating' 2)
+   ('genre' 'rock')
+   ('vocal_gender' 'male')
+   ('year_released' 2008)
+   ('album_art' 'TRUE')
+   (
+      'album_name'
+      "A City Dressed in Dynamite"
+   )
+   ('album_track_number' 3)
+)
+(
+   'rocknme'
+   (
+      'name'
+      "Rock'n Me"
+   )
+   (
+      'artist'
+      "Steve Miller Band"
+   )
+   ('master' 'TRUE')
+   ('song_id' 306)
+   (
+      'song'
+      (
+         'name'
+         "songs/rocknme/rocknme"
+      )
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1 2 3 4)
+            )
+            (
+               'bass'
+               (5)
+            )
+            (
+               'guitar'
+               (6 7)
+            )
+            (
+               'vocals'
+               (8 9)
+            )
+            (
+               'keys'
+               ()
+            )
+         )
+      )
+      ('crowd_channels' 12 13)
+      (
+         'pans'
+         (0.0 -1.0 1.0 -1.0 1.0 0.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -2.5 2.5)
+      )
+      (
+         'vols'
+         (-0.5 -0.5 -0.5 -2.5 -2.5 -3.0 -3.0 -3.0 -4.0 -4.0 -4.5 -4.5 -5.0 -5.0)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 -1 -1 1 1 -1 -1 -1 -1 -1 -1)
+      )
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+   )
+   ('bank' 'sfx/tambourine_bank.milo')
+   ('anim_tempo' 'kTempoMedium')
+   ('song_scroll_speed' 2300)
+   ('preview' 62740 92740)
+   ('song_length' 209090)
+   (
+      'rank'
+      ('drum' 162)
+      ('guitar' 383)
+      ('bass' 281)
+      ('vocals' 242)
+      ('keys' 0)
+      ('real_guitar' 0)
+      ('real_bass' 0)
+      ('real_keys' 0)
+      ('band' 314)
+   )
+   ('format' 10)
+   ('version' 2)
+   ('game_origin' 'rb2')
+   ('short_version' 0)
+   ('rating' 2)
+   ('genre' 'classicrock')
+   ('vocal_gender' 'male')
+   ('year_released' 1976)
+   ('album_art' 'TRUE')
+   (
+      'album_name'
+      "Fly Like an Eagle"
+   )
+   ('album_track_number' 2)
+)
+(
+   'roundandround'
+   (
+      'name'
+      "Round and Round"
+   )
+   (
+      'artist'
+      "Ratt"
+   )
+   ('master' 'TRUE')
+   ('song_id' 307)
+   (
+      'song'
+      (
+         'name'
+         "songs/roundandround/roundandround"
+      )
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1 2 3 4 5)
+            )
+            (
+               'bass'
+               (6)
+            )
+            (
+               'guitar'
+               (7 8)
+            )
+            (
+               'vocals'
+               (9 10)
+            )
+            (
+               'keys'
+               ()
+            )
+         )
+      )
+      ('crowd_channels' 13 14)
+      (
+         'pans'
+         (-1.0 1.0 -1.0 1.0 -1.0 1.0 0.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -2.5 2.5)
+      )
+      (
+         'vols'
+         (-0.5 -0.5 -1.0 -1.0 -3.0 -3.0 -4.0 -3.0 -3.0 -2.2 -2.2 -4.5 -4.5 -2.5 -2.5)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 -1 -1 -1 1 1 -1 -1 -1 -1 -1 -1)
+      )
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+   )
+   ('bank' 'sfx/cowbell3_bank.milo')
+   ('anim_tempo' 'kTempoMedium')
+   ('song_scroll_speed' 2300)
+   ('preview' 56700 86096)
+   ('song_length' 269090)
+   (solo (guitar vocal_percussion))
+   (
+      'rank'
+      ('drum' 188)
+      ('guitar' 348)
+      ('bass' 159)
+      ('vocals' 294)
+      ('keys' 0)
+      ('real_guitar' 0)
+      ('real_bass' 0)
+      ('real_keys' 0)
+      ('band' 327)
+   )
+   ('format' 10)
+   ('version' 2)
+   ('game_origin' 'rb2')
+   ('short_version' 0)
+   ('rating' 2)
+   ('genre' 'metal')
+   ('vocal_gender' 'male')
+   ('year_released' 1984)
+   ('album_art' 'TRUE')
+   (
+      'album_name'
+      "Out of the Cellar"
+   )
+   ('album_track_number' 3)
+)
+(
+   'shacklersrevenge'
+   (
+      'name'
+      "Shackler's Revenge"
+   )
+   (
+      'artist'
+      "Guns N' Roses"
+   )
+   ('master' 'TRUE')
+   ('song_id' 308)
+   (
+      'song'
+      (
+         'name'
+         "songs/shacklersrevenge/shacklersrevenge"
+      )
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1 2 3 4 5)
+            )
+            (
+               'bass'
+               (6 7)
+            )
+            (
+               'guitar'
+               (8 9)
+            )
+            (
+               'vocals'
+               (10 11)
+            )
+            (
+               'keys'
+               ()
+            )
+         )
+      )
+      (
+         'pans'
+         (-1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0)
+      )
+      (
+         'vols'
+         (-0.5 -0.5 -0.5 -0.5 -1.5 -1.5 -5.5 -5.5 -5.0 -5.0 -5.0 -5.0 -5.0 -5.0)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 -1 -1 -1 -1 1 1 -1 -1 -1 -1)
+      )
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+   )
+   ('bank' 'sfx/cowbell_bank.milo')
+   ('anim_tempo' 'kTempoMedium')
+   ('song_scroll_speed' 2300)
+   ('preview' 42840 72840)
+   ('song_length' 220000)
+   (solo (guitar vocal_percussion))
+   (
+      'rank'
+      ('drum' 182)
+      ('guitar' 405)
+      ('bass' 330)
+      ('vocals' 216)
+      ('keys' 0)
+      ('real_guitar' 0)
+      ('real_bass' 0)
+      ('real_keys' 0)
+      ('band' 382)
+   )
+   ('format' 10)
+   ('version' 2)
+   ('game_origin' 'rb2')
+   ('short_version' 0)
+   ('rating' 2)
+   ('genre' 'rock')
+   ('vocal_gender' 'male')
+   ('year_released' 2008)
+   ('album_art' 'TRUE')
+   (
+      'album_name'
+      "Chinese Democracy"
+   )
+   ('album_track_number' 2)
+)
+(
+   'shootingstar'
+   (
+      'name'
+      "Shooting Star"
+   )
+   (
+      'artist'
+      "Bad Company"
+   )
+   ('master' 'TRUE')
+   ('song_id' 309)
+   (
+      'song'
+      (
+         'name'
+         "songs/shootingstar/shootingstar"
+      )
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1 2 3 4)
+            )
+            (
+               'bass'
+               (5)
+            )
+            (
+               'guitar'
+               (6 7)
+            )
+            (
+               'vocals'
+               (8 9)
+            )
+            (
+               'keys'
+               ()
+            )
+         )
+      )
+      ('crowd_channels' 12 13)
+      (
+         'pans'
+         (0.0 -1.0 1.0 -1.0 1.0 0.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -2.5 2.5)
+      )
+      (
+         'vols'
+         (0.0 -0.5 -0.5 -1.5 -1.5 -4.5 -4.5 -4.5 -4.5 -4.5 -3.0 -3.0 -2.5 -2.5)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 -1 -1 1 1 -1 -1 -1 -1 -1 -1)
+      )
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+   )
+   ('bank' 'sfx/handclap_bank.milo')
+   ('anim_tempo' 'kTempoSlow')
+   ('song_scroll_speed' 2300)
+   ('preview' 67825 97825)
+   ('song_length' 395909)
+   (solo (guitar vocal_percussion))
+   (
+      'rank'
+      ('drum' 132)
+      ('guitar' 255)
+      ('bass' 252)
+      ('vocals' 176)
+      ('keys' 0)
+      ('real_guitar' 0)
+      ('real_bass' 0)
+      ('real_keys' 0)
+      ('band' 245)
+   )
+   ('format' 10)
+   ('version' 2)
+   ('game_origin' 'rb2')
+   ('short_version' 0)
+   ('rating' 2)
+   ('genre' 'classicrock')
+   ('vocal_gender' 'male')
+   ('year_released' 1975)
+   ('album_art' 'TRUE')
+   (
+      'album_name'
+      "Straight Shooter"
+   )
+   ('album_track_number' 4)
+)
+(
+   'shouldertotheplow'
+   (
+      'name'
+      "Shoulder to the Plow"
+   )
+   (
+      'artist'
+      "Breaking Wheel"
+   )
+   ('master' 'TRUE')
+   ('song_id' 331)
+   (
+      'song'
+      (
+         'name'
+         "songs/shouldertotheplow/shouldertotheplow"
+      )
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1 2 3 4)
+            )
+            (
+               'bass'
+               (5)
+            )
+            (
+               'guitar'
+               (6 7)
+            )
+            (
+               'vocals'
+               (8 9)
+            )
+         )
+      )
+      (
+         'pans'
+         (0.0 -1.0 1.0 -1.0 1.0 0.0 -1.0 1.0 -1.0 1.0 -1.0 1.0)
+      )
+      (
+         'vols'
+         (0.0 0.0 0.0 0.0 0.0 -3.0 -4.5 -4.5 -3.0 -3.0 -3.0 -3.0)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 -1 -1 1 1 -1 -1 -1 -1)
+      )
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+   )
+   ('bank' 'sfx/cowbell3_bank.milo')
+   ('anim_tempo' 'kTempoMedium')
+   ('song_scroll_speed' 2300)
+   ('preview' 56900 86200)
+   ('song_length' 294135)
+   (solo (guitar vocal_percussion))
+   (
+      'rank'
+      ('drum' 520)
+      ('guitar' 431)
+      ('bass' 448)
+      ('vocals' 141)
+      ('keys' 0)
+      ('real_guitar' 0)
+      ('real_bass' 0)
+      ('real_keys' 0)
+      ('band' 510)
+   )
+   ('format' 10)
+   ('version' 2)
+   ('game_origin' 'rb2')
+   ('short_version' 0)
+   ('rating' 2)
+   ('genre' 'metal')
+   ('vocal_gender' 'male')
+   ('year_released' 2008)
+   ('album_art' 'TRUE')
+   (
+      'album_name'
+      "Breaking Wheel"
+   )
+   ('album_track_number' 5)
+)
+(
+   'soulsofblack'
+   (
+      'name'
+      "Souls of Black"
+   )
+   (
+      'artist'
+      "Testament"
+   )
+   ('master' 'TRUE')
+   ('song_id' 310)
+   (
+      'song'
+      (
+         'name'
+         "songs/soulsofblack/soulsofblack"
+      )
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1 2 3 4)
+            )
+            (
+               'bass'
+               (5)
+            )
+            (
+               'guitar'
+               (6 7)
+            )
+            (
+               'vocals'
+               (8 9)
+            )
+            (
+               'keys'
+               ()
+            )
+         )
+      )
+      (
+         'pans'
+         (0.0 -1.0 1.0 -1.0 1.0 0.0 -1.0 1.0 -1.0 1.0 -1.0 1.0)
+      )
+      (
+         'vols'
+         (-0.5 -1.0 -1.0 -3.0 -3.0 -3.0 -4.0 -4.0 -4.5 -4.5 -2.5 -2.5)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 -1 -1 1 1 -1 -1 -1 -1)
+      )
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+   )
+   ('bank' 'sfx/cowbell_bank.milo')
+   ('anim_tempo' 'kTempoMedium')
+   ('song_scroll_speed' 2300)
+   ('preview' 71900 98000)
+   ('song_length' 227272)
+   (solo (guitar vocal_percussion))
+   (
+      'rank'
+      ('drum' 396)
+      ('guitar' 465)
+      ('bass' 529)
+      ('vocals' 339)
+      ('keys' 0)
+      ('real_guitar' 0)
+      ('real_bass' 0)
+      ('real_keys' 0)
+      ('band' 493)
+   )
+   ('format' 10)
+   ('version' 2)
+   ('game_origin' 'rb2')
+   ('short_version' 0)
+   ('rating' 2)
+   ('genre' 'metal')
+   ('vocal_gender' 'male')
+   ('year_released' 1990)
+   ('album_art' 'TRUE')
+   (
+      'album_name'
+      "Souls of Black"
+   )
+   ('album_track_number' 4)
+)
+(
+   'sowhatchawant'
+   (
+      'name'
+      "So What'cha Want"
+   )
+   (
+      'artist'
+      "Beastie Boys"
+   )
+   ('master' 'TRUE')
+   ('song_id' 311)
+   (
+      'song'
+      (
+         'name'
+         "songs/sowhatchawant/sowhatchawant"
+      )
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1)
+            )
+            (
+               'bass'
+               (2)
+            )
+            (
+               'guitar'
+               (3 4)
+            )
+            (
+               'vocals'
+               (5 6)
+            )
+            (
+               'keys'
+               ()
+            )
+         )
+      )
+      (
+         'pans'
+         (-1.0 1.0 0.0 -1.0 1.0 -1.0 1.0 -1.0 1.0)
+      )
+      (
+         'vols'
+         (-3.3 -3.3 -4.5 -5.0 -5.0 -4.0 -4.0 -3.5 -3.5)
+      )
+      (
+         'cores'
+         (-1 -1 -1 1 1 -1 -1 -1 -1)
+      )
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+   )
+   ('bank' 'sfx/handclap_bank.milo')
+   ('anim_tempo' 'kTempoSlow')
+   ('song_scroll_speed' 2300)
+   ('preview' 33370 59351)
+   ('song_length' 220000)
+   (solo (vocal_percussion))
+   (
+      'rank'
+      ('drum' 135)
+      ('guitar' 144)
+      ('bass' 106)
+      ('vocals' 219)
+      ('keys' 0)
+      ('real_guitar' 0)
+      ('real_bass' 0)
+      ('real_keys' 0)
+      ('band' 116)
+   )
+   ('format' 10)
+   ('version' 2)
+   ('game_origin' 'rb2')
+   ('short_version' 0)
+   ('rating' 2)
+   ('genre' 'rock')
+   ('vocal_gender' 'male')
+   ('year_released' 1992)
+   ('album_art' 'TRUE')
+   (
+      'album_name'
+      "Check Your Head"
+   )
+   ('album_track_number' 7)
+)
+(
+   'spiritinthesky'
+   (
+      'name'
+      "Spirit in the Sky"
+   )
+   (
+      'artist'
+      "Norman Greenbaum"
+   )
+   ('master' 'TRUE')
+   ('song_id' 312)
+   (
+      'song'
+      (
+         'name'
+         "songs/spiritinthesky/spiritinthesky"
+      )
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1)
+            )
+            (
+               'bass'
+               (2)
+            )
+            (
+               'guitar'
+               (3 4)
+            )
+            (
+               'vocals'
+               (5 6)
+            )
+            (
+               'keys'
+               ()
+            )
+         )
+      )
+      ('crowd_channels' 9 10)
+      (
+         'pans'
+         (-1.0 1.0 0.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -2.5 2.5)
+      )
+      (
+         'vols'
+         (-0.5 -0.5 -1.0 -3.0 -3.0 -5.5 -5.5 -2.5 -2.5 -4.0 -4.0)
+      )
+      (
+         'cores'
+         (-1 -1 -1 1 1 -1 -1 -1 -1 -1 -1)
+      )
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+   )
+   ('bank' 'sfx/handclap_bank.milo')
+   ('anim_tempo' 'kTempoMedium')
+   ('song_scroll_speed' 2300)
+   ('preview' 48947 78947)
+   ('song_length' 260000)
+   (solo (guitar vocal_percussion))
+   (
+      'rank'
+      ('drum' 153)
+      ('guitar' 201)
+      ('bass' 141)
+      ('vocals' 128)
+      ('keys' 0)
+      ('real_guitar' 0)
+      ('real_bass' 0)
+      ('real_keys' 0)
+      ('band' 189)
+   )
+   ('format' 10)
+   ('version' 2)
+   ('game_origin' 'rb2')
+   ('short_version' 0)
+   ('rating' 2)
+   ('genre' 'classicrock')
+   ('vocal_gender' 'male')
+   ('year_released' 1969)
+   ('album_art' 'TRUE')
+   (
+      'album_name'
+      "Spirit in the Sky"
+   )
+   ('album_track_number' 2)
+)
+(
+   'espoonman'
+   (
+      'name'
+      "Spoonman"
+   )
+   (
+      'artist'
+      "Soundgarden"
+   )
+   ('master' 'TRUE')
+   ('song_id' 614038520)
+   (
+      'song'
+      (
+         'name'
+         "songs/spoonman/spoonman"
+      )
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1 2 3 4)
+            )
+            ('bass' 5)
+            (
+               'guitar'
+               (6 7)
+            )
+            (
+               'vocals'
+               (8 9)
+            )
+         )
+      )
+      (
+         'pans'
+         (0.0 -1.0 1.0 -1.0 1.0 0.0 -1.0 1.0 -1.0 1.0 -1.0 1.0)
+      )
+      (
+         'vols'
+         (-0.5 -5.0 -5.0 -3.0 -3.0 -4.0 -3.0 -3.0 -4.0 -4.0 -4.8 -4.8)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 -1 -1 1 1 -1 -1 -1 -1)
+      )
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+      (midi_file "songs/spoonman/spoonman.mid")
+   )
+   ('song_scroll_speed' 2300)
+   ('bank' 'sfx/tambourine_bank.milo')
+   ('anim_tempo' 'kTempoFast')
+   ('preview' 92700 121000)
+   ('song_length' 252000)
+   (
+      'rank'
+      ('drum' 391)
+      ('guitar' 392)
+      ('bass' 400)
+      ('vocals' 437)
+      ('keys' 0)
+      ('real_guitar' 0)
+      ('real_bass' 0)
+      ('real_keys' 0)
+      ('band' 447)
+   )
+   ('format' 3)
+   ('version' 1)
+   ('game_origin' 'rb2')
+   ('genre' 'grunge')
+   ('downloaded' 'TRUE')
+   ('vocal_gender' 'male')
+   ('year_released' 1994)
+   ('album_art' 'TRUE')
+   (
+      'album_name'
+      "Superunknown"
+   )
+   ('album_track_number' 8)
+)
+(
+   'supremegirl'
+   (
+      'name'
+      "Supreme Girl"
+   )
+   (
+      'artist'
+      "The Sterns"
+   )
+   ('master' 'TRUE')
+   ('song_id' 332)
+   (
+      'song'
+      (
+         'name'
+         "songs/supremegirl/supremegirl"
+      )
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1 2 3)
+            )
+            (
+               'bass'
+               (4)
+            )
+            (
+               'guitar'
+               (5 6)
+            )
+            (
+               'vocals'
+               (7 8)
+            )
+         )
+      )
+      (
+         'pans'
+         (0.0 0.0 -1.0 1.0 0.0 -1.0 1.0 -1.0 1.0 -1.0 1.0)
+      )
+      (
+         'vols'
+         (-2.5 -1.0 -2.0 -2.0 -4.0 -3.5 -3.5 -1.5 -1.5 -4.0 -4.0)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 -1 1 1 -1 -1 -1 -1)
+      )
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+   )
+   ('bank' 'sfx/tambourine_bank.milo')
+   ('anim_tempo' 'kTempoMedium')
+   ('song_scroll_speed' 2300)
+   ('preview' 25775 54983)
+   ('song_length' 157170)
+   (solo (vocal_percussion))
+   (
+      'rank'
+      ('drum' 322)
+      ('guitar' 300)
+      ('bass' 274)
+      ('vocals' 258)
+      ('keys' 0)
+      ('real_guitar' 0)
+      ('real_bass' 0)
+      ('real_keys' 0)
+      ('band' 345)
+   )
+   ('format' 10)
+   ('version' 2)
+   ('game_origin' 'rb2')
+   ('short_version' 0)
+   ('rating' 2)
+   ('genre' 'poprock')
+   ('vocal_gender' 'male')
+   ('year_released' 2006)
+   ('album_art' 'TRUE')
+   (
+      'album_name'
+      "Sinners Stick Together"
+   )
+   ('album_track_number' 2)
+)
+(
+   'tangledupinblue'
+   (
+      'name'
+      "Tangled Up in Blue"
+   )
+   (
+      'artist'
+      "Bob Dylan"
+   )
+   ('master' 'TRUE')
+   ('song_id' 314)
+   (
+      'song'
+      (
+         'name'
+         "songs/tangledupinblue/tangledupinblue"
+      )
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1)
+            )
+            (
+               'bass'
+               (2)
+            )
+            (
+               'guitar'
+               (3 4)
+            )
+            (
+               'vocals'
+               (5 6)
+            )
+            (
+               'keys'
+               ()
+            )
+         )
+      )
+      (
+         'pans'
+         (-1.0 1.0 0.0 -1.0 1.0 -1.0 1.0 -1.0 1.0)
+      )
+      (
+         'vols'
+         (-0.5 -0.5 -3.0 -2.0 -2.0 -3.0 -3.0 -3.0 -3.0)
+      )
+      (
+         'cores'
+         (-1 -1 -1 1 1 -1 -1 -1 -1)
+      )
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+   )
+   ('bank' 'sfx/tambourine_bank.milo')
+   ('anim_tempo' 'kTempoSlow')
+   ('song_scroll_speed' 2300)
+   ('preview' 34365 64365)
+   ('song_length' 350454)
+   (solo (vocal_percussion))
+   (
+      'rank'
+      ('drum' 124)
+      ('guitar' 278)
+      ('bass' 223)
+      ('vocals' 450)
+      ('keys' 0)
+      ('real_guitar' 0)
+      ('real_bass' 0)
+      ('real_keys' 0)
+      ('band' 318)
+   )
+   ('format' 10)
+   ('version' 2)
+   ('game_origin' 'rb2')
+   ('short_version' 0)
+   ('rating' 2)
+   ('genre' 'classicrock')
+   ('vocal_gender' 'male')
+   ('year_released' 1975)
+   ('album_art' 'TRUE')
+   (
+      'album_name'
+      "Blood on the Tracks"
+   )
+   ('album_track_number' 1)
+)
+(
+   'teenageriot'
+   (
+      'name'
+      "Teen Age Riot"
+   )
+   (
+      'artist'
+      "Sonic Youth"
+   )
+   ('master' 'TRUE')
+   ('song_id' 315)
+   (
+      'song'
+      (
+         'name'
+         "songs/teenageriot/teenageriot"
+      )
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1 2 3 4)
+            )
+            (
+               'bass'
+               (5)
+            )
+            (
+               'guitar'
+               (6 7)
+            )
+            (
+               'vocals'
+               (8 9)
+            )
+            (
+               'keys'
+               ()
+            )
+         )
+      )
+      (
+         'pans'
+         (0.0 -1.0 1.0 -1.0 1.0 0.0 -1.0 1.0 -1.0 1.0 -1.0 1.0)
+      )
+      (
+         'vols'
+         (-1.5 -1.0 -1.0 -3.0 -3.0 -4.0 -3.0 -3.0 -3.5 -3.5 -4.5 -4.5)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 -1 -1 1 1 -1 -1 -1 -1)
+      )
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+   )
+   ('bank' 'sfx/tambourine_bank.milo')
+   ('anim_tempo' 'kTempoMedium')
+   ('song_scroll_speed' 2300)
+   ('preview' 147200 171800)
+   ('song_length' 418181)
+   (solo (vocal_percussion))
+   (
+      'rank'
+      ('drum' 414)
+      ('guitar' 370)
+      ('bass' 287)
+      ('vocals' 159)
+      ('keys' 0)
+      ('real_guitar' 0)
+      ('real_bass' 0)
+      ('real_keys' 0)
+      ('band' 377)
+   )
+   ('format' 10)
+   ('version' 2)
+   ('game_origin' 'rb2')
+   ('short_version' 0)
+   ('rating' 2)
+   ('genre' 'alternative')
+   ('vocal_gender' 'male')
+   ('year_released' 1988)
+   ('album_art' 'TRUE')
+   (
+      'album_name'
+      "Daydream Nation"
+   )
+   ('album_track_number' 1)
+   ('tuning_offset_cents' 20)
+)
+(
+   'testify'
+   (
+      'name'
+      "Testify"
+   )
+   (
+      'artist'
+      "Rage Against the Machine"
+   )
+   ('master' 'TRUE')
+   ('song_id' 316)
+   (
+      'song'
+      (
+         'name'
+         "songs/testify/testify"
+      )
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1 2 3)
+            )
+            (
+               'bass'
+               (4 5)
+            )
+            (
+               'guitar'
+               (6 7)
+            )
+            (
+               'vocals'
+               (8 9)
+            )
+            (
+               'keys'
+               ()
+            )
+         )
+      )
+      (
+         'pans'
+         (0.0 0.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0)
+      )
+      (
+         'vols'
+         (-0.5 -0.5 -2.0 -2.0 -3.0 -3.0 -3.0 -3.0 -3.0 -3.0 -3.0 -3.0)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 -1 -1 1 1 -1 -1 -1 -1)
+      )
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+   )
+   ('bank' 'sfx/cowbell_bank.milo')
+   ('anim_tempo' 'kTempoMedium')
+   ('song_scroll_speed' 2300)
+   ('preview' 75000 105000)
+   ('song_length' 214090)
+   (solo (guitar))
+   (
+      'rank'
+      ('drum' 335)
+      ('guitar' 335)
+      ('bass' 361)
+      ('vocals' 277)
+      ('keys' 0)
+      ('real_guitar' 0)
+      ('real_bass' 0)
+      ('real_keys' 0)
+      ('band' 341)
+   )
+   ('format' 10)
+   ('version' 2)
+   ('game_origin' 'rb2')
+   ('short_version' 0)
+   ('rating' 2)
+   ('genre' 'alternative')
+   ('vocal_gender' 'male')
+   ('year_released' 1999)
+   ('album_art' 'TRUE')
+   (
+      'album_name'
+      "The Battle of Los Angeles"
+   )
+   ('album_track_number' 1)
+)
+(
+   'thatswhatyouget'
+   (
+      'name'
+      "That's What You Get"
+   )
+   (
+      'artist'
+      "Paramore"
+   )
+   ('master' 'TRUE')
+   ('song_id' 317)
+   (
+      'song'
+      (
+         'name'
+         "songs/thatswhatyouget/thatswhatyouget"
+      )
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1 2 3 4)
+            )
+            (
+               'bass'
+               (5)
+            )
+            (
+               'guitar'
+               (6 7)
+            )
+            (
+               'vocals'
+               (8 9)
+            )
+            (
+               'keys'
+               ()
+            )
+         )
+      )
+      ('crowd_channels' 12 13)
+      (
+         'pans'
+         (0.0 -1.0 1.0 -1.0 1.0 0.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -2.5 2.5)
+      )
+      (
+         'vols'
+         (-1.0 -1.0 -1.0 -3.0 -3.0 -3.0 -3.0 -3.0 -3.0 -3.0 -3.0 -3.0 -2.0 -2.0)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 -1 -1 1 1 -1 -1 -1 -1 -1 -1)
+      )
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+   )
+   ('bank' 'sfx/tambourine_bank.milo')
+   ('anim_tempo' 'kTempoMedium')
+   ('song_scroll_speed' 2300)
+   ('preview' 52686 82663)
+   ('song_length' 223636)
+   (
+      'rank'
+      ('drum' 165)
+      ('guitar' 136)
+      ('bass' 112)
+      ('vocals' 274)
+      ('keys' 0)
+      ('real_guitar' 0)
+      ('real_bass' 0)
+      ('real_keys' 0)
+      ('band' 184)
+   )
+   ('format' 10)
+   ('version' 2)
+   ('game_origin' 'rb2')
+   ('short_version' 0)
+   ('rating' 2)
+   ('genre' 'poprock')
+   ('vocal_gender' 'female')
+   ('year_released' 2007)
+   ('album_art' 'TRUE')
+   (
+      'album_name'
+      "Riot!"
+   )
+   ('album_track_number' 2)
+)
+(
+   'themiddle'
+   (
+      'name'
+      "The Middle"
+   )
+   (
+      'artist'
+      "Jimmy Eat World"
+   )
+   ('master' 'TRUE')
+   ('song_id' 318)
+   (
+      'song'
+      (
+         'name'
+         "songs/themiddle/themiddle"
+      )
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1 2 3 4)
+            )
+            (
+               'bass'
+               (5)
+            )
+            (
+               'guitar'
+               (6 7)
+            )
+            (
+               'vocals'
+               (8 9)
+            )
+            (
+               'keys'
+               ()
+            )
+         )
+      )
+      ('crowd_channels' 12 13)
+      (
+         'pans'
+         (0.0 -1.0 1.0 -1.0 1.0 0.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -2.5 2.5)
+      )
+      (
+         'vols'
+         (-0.5 -0.5 -0.5 -1.5 -1.5 -5.0 -4.0 -4.0 -4.5 -4.5 -4.0 -4.0 -3.0 -3.0)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 -1 -1 1 1 -1 -1 -1 -1 -1 -1)
+      )
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+   )
+   ('bank' 'sfx/tambourine_bank.milo')
+   ('anim_tempo' 'kTempoFast')
+   ('song_scroll_speed' 2300)
+   ('preview' 38429 68249)
+   ('song_length' 175909)
+   (solo (guitar vocal_percussion))
+   (
+      'rank'
+      ('drum' 271)
+      ('guitar' 291)
+      ('bass' 245)
+      ('vocals' 226)
+      ('keys' 0)
+      ('real_guitar' 0)
+      ('real_bass' 0)
+      ('real_keys' 0)
+      ('band' 255)
+   )
+   ('format' 10)
+   ('version' 2)
+   ('game_origin' 'rb2')
+   ('short_version' 0)
+   ('rating' 2)
+   ('genre' 'poprock')
+   ('vocal_gender' 'male')
+   ('year_released' 2001)
+   ('album_art' 'TRUE')
+   (
+      'album_name'
+      "Bleed American"
+   )
+   ('album_track_number' 3)
+)
+(
+   'thetrees'
+   (
+      'name'
+      "The Trees (Vault Edition)"
+   )
+   (
+      'artist'
+      "Rush"
+   )
+   ('master' 'TRUE')
+   ('song_id' 319)
+   (
+      'song'
+      (
+         'name'
+         "songs/thetrees/thetrees"
+      )
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1)
+            )
+            (
+               'bass'
+               (2 3)
+            )
+            (
+               'guitar'
+               (4 5)
+            )
+            (
+               'vocals'
+               (6 7)
+            )
+            (
+               'keys'
+               ()
+            )
+         )
+      )
+      (
+         'pans'
+         (-1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0)
+      )
+      (
+         'vols'
+         (-0.5 -0.5 -5.0 -5.0 -6.0 -6.0 -4.5 -4.5 -5.0 -5.0)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 1 1 -1 -1 -1 -1)
+      )
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+   )
+   ('bank' 'sfx/tambourine_bank.milo')
+   ('anim_tempo' 'kTempoMedium')
+   ('song_scroll_speed' 2300)
+   ('preview' 49063 79063)
+   ('song_length' 290909)
+   (solo (drum guitar vocal_percussion))
+   (
+      'rank'
+      ('drum' 457)
+      ('guitar' 375)
+      ('bass' 387)
+      ('vocals' 404)
+      ('keys' 0)
+      ('real_guitar' 0)
+      ('real_bass' 0)
+      ('real_keys' 0)
+      ('band' 391)
+   )
+   ('format' 10)
+   ('version' 2)
+   ('game_origin' 'rb2')
+   ('short_version' 0)
+   ('rating' 2)
+   ('genre' 'prog')
+   ('vocal_gender' 'male')
+   ('year_released' 1978)
+   ('album_art' 'TRUE')
+   (
+      'album_name'
+      "Hemispheres"
+   )
+   ('album_track_number' 3)
+)
+(
+   'today'
+   (
+      'name'
+      "Today"
+   )
+   (
+      'artist'
+      "Smashing Pumpkins"
+   )
+   ('master' 'TRUE')
+   ('song_id' 320)
+   (
+      'song'
+      (
+         'name'
+         "songs/today/today"
+      )
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1 2 3 4 5)
+            )
+            (
+               'bass'
+               (6 7)
+            )
+            (
+               'guitar'
+               (8 9)
+            )
+            (
+               'vocals'
+               (10 11)
+            )
+            (
+               'keys'
+               ()
+            )
+         )
+      )
+      ('crowd_channels' 14 15)
+      (
+         'pans'
+         (-1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -2.5 2.5)
+      )
+      (
+         'vols'
+         (-2.0 -2.0 -0.5 -0.5 -3.0 -3.0 -7.5 -7.5 -3.0 -3.0 -4.5 -4.5 -5.0 -5.0 -6.0 -6.0)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 -1 -1 -1 -1 1 1 -1 -1 -1 -1 -1 -1)
+      )
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+   )
+   ('bank' 'sfx/tambourine_bank.milo')
+   ('anim_tempo' 'kTempoSlow')
+   ('song_scroll_speed' 2300)
+   ('preview' 40400 68000)
+   ('song_length' 212272)
+   (solo (guitar))
+   (
+      'rank'
+      ('drum' 179)
+      ('guitar' 108)
+      ('bass' 255)
+      ('vocals' 152)
+      ('keys' 0)
+      ('real_guitar' 0)
+      ('real_bass' 0)
+      ('real_keys' 0)
+      ('band' 179)
+   )
+   ('format' 10)
+   ('version' 2)
+   ('game_origin' 'rb2')
+   ('short_version' 0)
+   ('rating' 2)
+   ('genre' 'alternative')
+   ('vocal_gender' 'male')
+   ('year_released' 1993)
+   ('album_art' 'TRUE')
+   (
+      'album_name'
+      "Siamese Dream"
+   )
+   ('album_track_number' 3)
+)
+(
+   'uncontrollableurge'
+   (
+      'name'
+      "Uncontrollable Urge"
+   )
+   (
+      'artist'
+      "Devo"
+   )
+   ('master' 'TRUE')
+   ('song_id' 321)
+   (
+      'song'
+      (
+         'name'
+         "songs/uncontrollableurge/uncontrollableurge"
+      )
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1 2 3)
+            )
+            (
+               'bass'
+               (4)
+            )
+            (
+               'guitar'
+               (5 6)
+            )
+            (
+               'vocals'
+               (7 8)
+            )
+            (
+               'keys'
+               ()
+            )
+         )
+      )
+      ('crowd_channels' 11 12)
+      (
+         'pans'
+         (0.0 0.0 -1.0 1.0 0.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -2.5 2.5)
+      )
+      (
+         'vols'
+         (-0.5 -0.5 -1.0 -1.0 -5.5 -5.5 -5.5 -3.0 -3.0 -4.0 -4.0 -3.0 -3.0)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 -1 1 1 -1 -1 -1 -1 -1 -1)
+      )
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+   )
+   ('bank' 'sfx/tambourine_bank.milo')
+   ('anim_tempo' 'kTempoFast')
+   ('song_scroll_speed' 2300)
+   ('preview' 31474 61474)
+   ('song_length' 198636)
+   (solo (vocal_percussion))
+   (
+      'rank'
+      ('drum' 304)
+      ('guitar' 340)
+      ('bass' 383)
+      ('vocals' 385)
+      ('keys' 0)
+      ('real_guitar' 0)
+      ('real_bass' 0)
+      ('real_keys' 0)
+      ('band' 359)
+   )
+   ('format' 10)
+   ('version' 2)
+   ('game_origin' 'rb2')
+   ('short_version' 0)
+   ('rating' 2)
+   ('genre' 'new_wave')
+   ('vocal_gender' 'male')
+   ('year_released' 1978)
+   ('year_recorded' 2008)
+   ('album_art' 'TRUE')
+   (
+      'album_name'
+      "Devo Rock Band Re-Records"
+   )
+   ('album_track_number' 1)
+)
+(
+   'visions'
+   (
+      'name'
+      "Visions"
+   )
+   (
+      'artist'
+      "Abnormality"
+   )
+   ('master' 'TRUE')
+   ('song_id' 333)
+   (
+      'song'
+      (
+         'name'
+         "songs/visions/visions"
+      )
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1 2 3)
+            )
+            (
+               'bass'
+               (4)
+            )
+            (
+               'guitar'
+               (5 6)
+            )
+            (
+               'vocals'
+               (7 8)
+            )
+         )
+      )
+      (
+         'pans'
+         (0.0 0.0 -1.0 1.0 0.0 -1.0 1.0 -1.0 1.0 -1.0 1.0)
+      )
+      (
+         'vols'
+         (-1.0 -1.0 -2.0 -2.0 -3.0 -4.0 -4.0 -3.0 -3.0 -3.0 -3.0)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 -1 1 1 -1 -1 -1 -1)
+      )
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+   )
+   ('bank' 'sfx/tambourine_bank.milo')
+   ('anim_tempo' 'kTempoFast')
+   ('song_scroll_speed' 2300)
+   ('preview' 61894 90725)
+   ('song_length' 180462)
+   (
+      'rank'
+      ('drum' 530)
+      ('guitar' 500)
+      ('bass' 576)
+      ('vocals' 155)
+      ('keys' 0)
+      ('real_guitar' 0)
+      ('real_bass' 0)
+      ('real_keys' 0)
+      ('band' 530)
+   )
+   ('format' 10)
+   ('version' 2)
+   ('game_origin' 'rb2')
+   ('short_version' 0)
+   ('rating' 2)
+   ('genre' 'metal')
+   ('vocal_gender' 'female')
+   ('year_released' 2007)
+   ('album_art' 'TRUE')
+   (
+      'album_name'
+      "Abnormality Demo"
+   )
+   ('album_track_number' 2)
+)
+(
+   'wegotthebeat'
+   (
+      'name'
+      "We Got the Beat"
+   )
+   (
+      'artist'
+      "Go-Go's"
+   )
+   ('master' 'TRUE')
+   ('song_id' 322)
+   (
+      'song'
+      (
+         'name'
+         "songs/wegotthebeat/wegotthebeat"
+      )
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1 2 3 4 5)
+            )
+            (
+               'bass'
+               (6 7)
+            )
+            (
+               'guitar'
+               (8 9)
+            )
+            (
+               'vocals'
+               (10 11)
+            )
+            (
+               'keys'
+               ()
+            )
+         )
+      )
+      ('crowd_channels' 14 15)
+      (
+         'pans'
+         (-1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -2.5 2.5)
+      )
+      (
+         'vols'
+         (-0.5 -0.5 -1.0 -1.0 -3.0 -3.0 -2.0 -2.0 -3.0 -3.0 -2.0 -2.0 -3.5 -3.5 -3.0 -3.0)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 -1 -1 -1 -1 1 1 -1 -1 -1 -1 -1 -1)
+      )
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+   )
+   ('bank' 'sfx/tambourine_bank.milo')
+   ('anim_tempo' 'kTempoMedium')
+   ('song_scroll_speed' 2300)
+   ('preview' 58049 77675)
+   ('song_length' 161363)
+   (solo (drum vocal_percussion))
+   (
+      'rank'
+      ('drum' 200)
+      ('guitar' 132)
+      ('bass' 239)
+      ('vocals' 138)
+      ('keys' 0)
+      ('real_guitar' 0)
+      ('real_bass' 0)
+      ('real_keys' 0)
+      ('band' 195)
+   )
+   ('format' 10)
+   ('version' 2)
+   ('game_origin' 'rb2')
+   ('short_version' 0)
+   ('rating' 2)
+   ('genre' 'poprock')
+   ('vocal_gender' 'female')
+   ('year_released' 1981)
+   ('album_art' 'TRUE')
+   (
+      'album_name'
+      "Beauty and the Beat"
+   )
+   ('album_track_number' 6)
+)
+(
+   'welcometothe'
+   (
+      'name'
+      "Welcome to the Neighborhood"
+   )
+   (
+      'artist'
+      "Libyans"
+   )
+   ('master' 'TRUE')
+   ('song_id' 334)
+   (
+      'song'
+      (
+         'name'
+         "songs/welcometothe/welcometothe"
+      )
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1 2 3)
+            )
+            (
+               'bass'
+               (4)
+            )
+            (
+               'guitar'
+               (5 6)
+            )
+            (
+               'vocals'
+               (7 8)
+            )
+         )
+      )
+      (
+         'pans'
+         (0.0 0.0 -1.0 1.0 0.0 -1.0 1.0 -1.0 1.0 -1.0 1.0)
+      )
+      (
+         'vols'
+         (-2.0 -0.5 -0.5 -0.5 -2.0 -2.5 -2.5 -1.5 -1.5 -2.5 -2.5)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 -1 1 1 -1 -1 -1 -1)
+      )
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+   )
+   ('bank' 'sfx/tambourine_bank.milo')
+   ('anim_tempo' 'kTempoFast')
+   ('song_scroll_speed' 2300)
+   ('preview' 13540 43540)
+   ('song_length' 142374)
+   (solo (guitar vocal_percussion))
+   (
+      'rank'
+      ('drum' 279)
+      ('guitar' 246)
+      ('bass' 242)
+      ('vocals' 245)
+      ('keys' 0)
+      ('real_guitar' 0)
+      ('real_bass' 0)
+      ('real_keys' 0)
+      ('band' 218)
+   )
+   ('format' 10)
+   ('version' 2)
+   ('game_origin' 'rb2')
+   ('short_version' 0)
+   ('rating' 2)
+   ('genre' 'punk')
+   ('vocal_gender' 'female')
+   ('year_released' 2008)
+   ('album_art' 'TRUE')
+   (
+      'album_name'
+      "Welcome to the Neighborhood 7"
+   )
+   ('album_track_number' 1)
+)
+(
+   'wheredyougo'
+   (
+      'name'
+      "Where'd You Go?"
+   )
+   (
+      'artist'
+      "The Mighty Mighty Bosstones"
+   )
+   ('master' 'TRUE')
+   ('song_id' 323)
+   (
+      'song'
+      (
+         'name'
+         "songs/wheredyougo/wheredyougo"
+      )
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1 2)
+            )
+            (
+               'bass'
+               (3 4)
+            )
+            (
+               'guitar'
+               (5 6)
+            )
+            (
+               'vocals'
+               (7 8)
+            )
+            (
+               'keys'
+               ()
+            )
+         )
+      )
+      (
+         'pans'
+         (0.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0)
+      )
+      (
+         'vols'
+         (-0.5 -0.5 -0.5 -4.0 -4.0 -2.3 -2.3 -3.5 -3.5 -3.3 -3.3)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 -1 1 1 -1 -1 -1 -1)
+      )
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+   )
+   ('bank' 'sfx/tambourine_bank.milo')
+   ('anim_tempo' 'kTempoMedium')
+   ('song_scroll_speed' 2300)
+   ('preview' 18400 47850)
+   ('song_length' 198181)
+   (solo (guitar))
+   (
+      'rank'
+      ('drum' 174)
+      ('guitar' 314)
+      ('bass' 313)
+      ('vocals' 162)
+      ('keys' 0)
+      ('real_guitar' 0)
+      ('real_bass' 0)
+      ('real_keys' 0)
+      ('band' 305)
+   )
+   ('format' 10)
+   ('version' 2)
+   ('game_origin' 'rb2')
+   ('short_version' 0)
+   ('rating' 2)
+   ('genre' 'alternative')
+   ('vocal_gender' 'male')
+   ('year_released' 1991)
+   ('year_recorded' 2008)
+   ('album_art' 'TRUE')
+   (
+      'album_name'
+      "Bosstones Rock Band Re-Records"
+   )
+   ('album_track_number' 1)
+)
+(
+   'whitewedding'
+   (
+      'name'
+      "White Wedding (Part 1)"
+   )
+   (
+      'artist'
+      "Billy Idol"
+   )
+   ('master' 'TRUE')
+   ('song_id' 324)
+   (
+      'song'
+      (
+         'name'
+         "songs/whitewedding/whitewedding"
+      )
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1 2 3 4)
+            )
+            (
+               'bass'
+               (5)
+            )
+            (
+               'guitar'
+               (6 7)
+            )
+            (
+               'vocals'
+               (8 9)
+            )
+            (
+               'keys'
+               ()
+            )
+         )
+      )
+      ('crowd_channels' 12 13)
+      (
+         'pans'
+         (0.0 -1.0 1.0 -1.0 1.0 0.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -2.5 2.5)
+      )
+      (
+         'vols'
+         (-1.0 -1.5 -1.5 -2.0 -2.0 -4.0 -3.5 -3.5 -3.5 -3.5 -3.0 -3.0 -4.0 -4.0)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 -1 -1 1 1 -1 -1 -1 -1 -1 -1)
+      )
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+   )
+   ('bank' 'sfx/tambourine_bank.milo')
+   ('anim_tempo' 'kTempoMedium')
+   ('song_scroll_speed' 2300)
+   ('preview' 30830 60830)
+   ('song_length' 262727)
+   (solo (guitar vocal_percussion))
+   (
+      'rank'
+      ('drum' 159)
+      ('guitar' 189)
+      ('bass' 294)
+      ('vocals' 346)
+      ('keys' 0)
+      ('real_guitar' 0)
+      ('real_bass' 0)
+      ('real_keys' 0)
+      ('band' 223)
+   )
+   ('format' 10)
+   ('version' 2)
+   ('game_origin' 'rb2')
+   ('short_version' 0)
+   ('rating' 2)
+   ('genre' 'rock')
+   ('vocal_gender' 'male')
+   ('year_released' 1982)
+   ('album_art' 'TRUE')
+   (
+      'album_name'
+      "Billy Idol"
+   )
+   ('album_track_number' 2)
+)
+(
+   'yououghtaknow'
+   (
+      'name'
+      "You Oughta Know"
+   )
+   (
+      'artist'
+      "Alanis Morissette"
+   )
+   ('master' 'TRUE')
+   ('song_id' 325)
+   (
+      'song'
+      (
+         'name'
+         "songs/yououghtaknow/yououghtaknow"
+      )
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1)
+            )
+            (
+               'bass'
+               (2)
+            )
+            (
+               'guitar'
+               (3 4)
+            )
+            (
+               'vocals'
+               (5 6)
+            )
+            (
+               'keys'
+               ()
+            )
+         )
+      )
+      (
+         'pans'
+         (-1.0 1.0 0.0 -1.0 1.0 -1.0 1.0 -1.0 1.0)
+      )
+      (
+         'vols'
+         (-1.0 -1.0 -3.0 -3.0 -3.0 -3.0 -3.0 -4.0 -4.0)
+      )
+      (
+         'cores'
+         (-1 -1 -1 1 1 -1 -1 -1 -1)
+      )
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+   )
+   ('bank' 'sfx/tambourine_bank.milo')
+   ('anim_tempo' 'kTempoSlow')
+   ('song_scroll_speed' 2300)
+   ('preview' 49800 79800)
+   ('song_length' 255000)
+   (solo (guitar))
+   (
+      'rank'
+      ('drum' 214)
+      ('guitar' 237)
+      ('bass' 378)
+      ('vocals' 352)
+      ('keys' 0)
+      ('real_guitar' 0)
+      ('real_bass' 0)
+      ('real_keys' 0)
+      ('band' 332)
+   )
+   ('format' 10)
+   ('version' 2)
+   ('game_origin' 'rb2')
+   ('short_version' 0)
+   ('rating' 2)
+   ('genre' 'poprock')
+   ('vocal_gender' 'female')
+   ('year_released' 1995)
+   ('album_art' 'TRUE')
+   (
+      'album_name'
+      "Jagged Little Pill"
+   )
+   ('album_track_number' 2)
+)

@@ -1,0 +1,544 @@
+(
+   'lightsout'
+   (
+      'name'
+      "Lights Out"
+   )
+   (
+      'artist'
+      "AudioDamn!"
+   )
+   ('master' 1)
+   (
+      'song'
+      ('name' 'songs/lightsout/lightsout')
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1)
+            )
+            (
+               'bass'
+               (2 3)
+            )
+            (
+               'guitar'
+               (4 5)
+            )
+            (
+               'vocals'
+               (6 7)
+            )
+         )
+      )
+      (
+         'pans'
+         (-1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0)
+      )
+      (
+         'vols'
+         (0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 1 1 -1 -1 -1 -1)
+      )
+      ('vocal_parts' 3)
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+      ('midi_file' 'songs/lightsout/lightsout.mid')
+   )
+   ('song_scroll_speed' 2300)
+   (
+      'bank'
+      "sfx/tambourine_bank.milo"
+   )
+   (drum_bank sfx/kit01_bank.milo)
+   ('anim_tempo' 'kTempoMedium')
+   ('song_length' 151945)
+   ('preview' 41057 71058)
+   (
+      'rank'
+      ('band' 253)
+      ('guitar' 180)
+      ('drum' 367)
+      ('bass' 220)
+      ('vocals' 317)
+   )
+   ('genre' 'poprock')
+   ('vocal_gender' 'male')
+   ('version' 0)
+   ('format' 4)
+   ('album_art' 1)
+   ('year_released' 2016)
+   ('rating' 2)
+   ('sub_genre' 'subgenre_other')
+   ('song_id' 1020226)
+   ('tuning_offset_cents' 0.0)
+   ('game_origin' 'rbvr')
+   (
+      'album_name'
+      "AudioDamn! - EP"
+   )
+   ('album_track_number' 3)
+   ('vocal_tonic_note' 2)
+   ('ugc' 0)
+   (
+      'author'
+      "Harmonix, Rhythm Authors"
+   )
+   ('context' 2000)
+   ('decade' 'the10s')
+   ('downloaded' 'TRUE')
+   ('base_points' 0)
+)
+
+(
+   'casualparty'
+   (
+      'name'
+      "Casual Party"
+   )
+   (
+      'artist'
+      "Band of Horses"
+   )
+   ('master' 1)
+   (
+      'song'
+      ('name' 'songs/casualparty/casualparty')
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1)
+            )
+            (
+               'bass'
+               (2 3)
+            )
+            (
+               'guitar'
+               (4 5)
+            )
+            (
+               'vocals'
+               (6 7)
+            )
+         )
+      )
+      (
+         'pans'
+         (-1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0)
+      )
+      (
+         'vols'
+         (0.0 0.0 -2.0 -2.0 -0.3 -0.3 0.0 0.0 -0.5 -0.5)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 1 1 -1 -1 -1 -1)
+      )
+      ('vocal_parts' 3)
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+      ('midi_file' 'songs/casualparty/casualparty.mid')
+   )
+   ('song_scroll_speed' 2300)
+   (
+      'bank'
+      "sfx/tambourine_bank.milo"
+   )
+   (drum_bank sfx/kit01_bank.milo)
+   ('anim_tempo' 'kTempoMedium')
+   ('song_length' 216500)
+   ('preview' 69216 99216)
+   (
+      'rank'
+      ('band' 170)
+      ('guitar' 178)
+      ('drum' 129)
+      ('bass' 176)
+      ('vocals' 135)
+   )
+   ('genre' 'indierock')
+   ('vocal_gender' 'male')
+   ('version' 0)
+   ('format' 4)
+   ('album_art' 1)
+   ('year_released' 2016)
+   ('rating' 1)
+   ('sub_genre' 'subgenre_other')
+   ('song_id' 1020229)
+   ('tuning_offset_cents' 0.0)
+   ('game_origin' 'rbvr')
+   (
+      'album_name'
+      "Why Are You OK"
+   )
+   ('album_track_number' 4)
+   ('vocal_tonic_note' 2)
+   ('ugc' 0)
+   (
+      'author'
+      "Harmonix, Rhythm Authors"
+   )
+   ('context' 2000)
+   ('decade' 'the10s')
+   ('downloaded' 'TRUE')
+   ('base_points' 0)
+)
+
+(
+   'birds'
+   (
+      'name'
+      "Birds"
+   )
+   (
+      'artist'
+      "Coldplay"
+   )
+   ('master' 1)
+   (
+      'song'
+      ('name' 'songs/birds/birds')
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1)
+            )
+            (
+               'bass'
+               (2 3)
+            )
+            (
+               'guitar'
+               (4 5)
+            )
+            (
+               'vocals'
+               (6 7)
+            )
+         )
+      )
+      (
+         'pans'
+         (-1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0)
+      )
+      (
+         'vols'
+         (0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 1 1 -1 -1 -1 -1)
+      )
+      ('vocal_parts' 2)
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+      ('midi_file' 'songs/birds/birds.mid')
+   )
+   ('song_scroll_speed' 2300)
+   (
+      'bank'
+      "sfx/tambourine_bank.milo"
+   )
+   (drum_bank sfx/kit01_bank.milo)
+   ('anim_tempo' 'kTempoMedium')
+   ('song_length' 235428)
+   ('preview' 81573 111573)
+   (
+      'rank'
+      ('band' 252)
+      ('guitar' 271)
+      ('drum' 171)
+      ('bass' 266)
+      ('vocals' 341)
+   )
+   ('genre' 'alternative')
+   ('vocal_gender' 'male')
+   ('version' 0)
+   ('format' 4)
+   ('album_art' 1)
+   ('year_released' 2015)
+   ('rating' 1)
+   ('sub_genre' 'subgenre_alternative')
+   ('song_id' 1020238)
+   ('tuning_offset_cents' 0.0)
+   ('game_origin' 'rbvr')
+   (
+      'album_name'
+      "A Head Full of Dreams"
+   )
+   ('album_track_number' 2)
+   ('vocal_tonic_note' 2)
+   ('ugc' 0)
+   (
+      'author'
+      "Harmonix, Rhythm Authors"
+   )
+   ('context' 2000)
+   ('decade' 'the10s')
+   ('downloaded' 'TRUE')
+   ('base_points' 0)
+)
+
+(
+   'quitter'
+   (
+      'name'
+      "Quitter"
+   )
+   (
+      'artist'
+      "The Starting Line"
+   )
+   ('master' 1)
+   (
+      'song'
+      ('name' 'songs/quitter/quitter')
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1)
+            )
+            (
+               'bass'
+               (2 3)
+            )
+            (
+               'guitar'
+               (4 5)
+            )
+            (
+               'vocals'
+               (6 7)
+            )
+         )
+      )
+      (
+         'pans'
+         (-1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0)
+      )
+      (
+         'vols'
+         (-1.5 -1.5 0.0 0.0 0.0 0.0 0.0 0.0 -0.8 -0.8)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 1 1 -1 -1 -1 -1)
+      )
+      ('vocal_parts' 3)
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+      ('midi_file' 'songs/quitter/quitter.mid')
+   )
+   ('song_scroll_speed' 2300)
+   (
+      'bank'
+      "sfx/tambourine_bank.milo"
+   )
+   (drum_bank sfx/kit01_bank.milo)
+   ('anim_tempo' 'kTempoFast')
+   ('song_length' 139999)
+   ('preview' 42713 72714)
+   (
+      'rank'
+      ('band' 250)
+      ('guitar' 215)
+      ('drum' 191)
+      ('bass' 261)
+      ('vocals' 258)
+   )
+   ('genre' 'punk')
+   ('vocal_gender' 'male')
+   ('version' 0)
+   ('format' 4)
+   ('album_art' 1)
+   ('year_released' 2016)
+   ('rating' 1)
+   ('sub_genre' 'subgenre_other')
+   ('song_id' 1020232)
+   ('tuning_offset_cents' 0.0)
+   ('game_origin' 'rbvr')
+   (
+      'album_name'
+      "Anyways"
+   )
+   ('album_track_number' 2)
+   ('vocal_tonic_note' 8)
+   ('ugc' 0)
+   (
+      'author'
+      "Harmonix, Rhythm Authors"
+   )
+   ('context' 2000)
+   ('decade' 'the10s')
+   ('downloaded' 'TRUE')
+   ('base_points' 0)
+)
+
+(
+   'iamalive'
+   (
+      'name'
+      "I Am Alive"
+   )
+   (
+      'artist'
+      "Twin Atlantic"
+   )
+   ('master' 1)
+   (
+      'song'
+      ('name' 'songs/iamalive/iamalive')
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1)
+            )
+            (
+               'bass'
+               (2 3)
+            )
+            (
+               'guitar'
+               (4 5)
+            )
+            (
+               'vocals'
+               (6 7)
+            )
+         )
+      )
+      (
+         'pans'
+         (-1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0)
+      )
+      (
+         'vols'
+         (0.0 0.0 -1.8 -1.8 -2.5 -2.5 0.0 0.0 -0.9 -0.9)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 1 1 -1 -1 -1 -1)
+      )
+      ('vocal_parts' 3)
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+      ('midi_file' 'songs/iamalive/iamalive.mid')
+   )
+   ('song_scroll_speed' 2300)
+   (
+      'bank'
+      "sfx/tambourine_bank.milo"
+   )
+   (drum_bank sfx/kit01_bank.milo)
+   ('anim_tempo' 'kTempoMedium')
+   ('song_length' 213789)
+   ('preview' 61522 91522)
+   (
+      'rank'
+      ('band' 251)
+      ('guitar' 211)
+      ('drum' 231)
+      ('bass' 141)
+      ('vocals' 231)
+   )
+   ('genre' 'alternative')
+   ('vocal_gender' 'male')
+   ('version' 0)
+   ('format' 4)
+   ('album_art' 1)
+   ('year_released' 2016)
+   ('rating' 2)
+   ('sub_genre' 'subgenre_alternative')
+   ('song_id' 1020216)
+   ('tuning_offset_cents' 0.0)
+   ('game_origin' 'rbvr')
+   (
+      'album_name'
+      "GLA"
+   )
+   ('album_track_number' 7)
+   ('vocal_tonic_note' 2)
+   ('ugc' 0)
+   (
+      'author'
+      "Harmonix, Rhythm Authors"
+   )
+   ('context' 2000)
+   ('decade' 'the10s')
+   ('downloaded' 'TRUE')
+   ('base_points' 0)
+)

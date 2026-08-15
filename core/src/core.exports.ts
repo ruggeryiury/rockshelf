@@ -1,3 +1,22 @@
+export * from './core/api/CommandLineInterfaceAPI'
+export * from './core/api/DataSyncAPI'
+export * from './core/api/PerformanceTimerAPI'
+export * from './core/api/RichPresenceAPI'
+export * from './core/api/RockshelfFileSystemAPI'
+export * from './core/api/RockshelfGitHubAPI'
+export * from './core/api/RockshelfLocaleAPI'
+export * from './core/api/RockshelfProtocolAPI'
+export * from './core/api/RockshelfPythonServiceAPI'
+export * from './core/api/SongDownloadQueueAPI'
+export * from './core/api/TempFilesDisposerAPI'
+export * from './core/api/UserDataAPI'
+
+export * from './core/cli/moggdec'
+export * from './core/cli/moggenc'
+export * from './core/cli/moggstat'
+export * from './core/cli/rb3stat'
+export * from './core/cli/stfsstat'
+
 export * from './core/electron/createWindow'
 export * from './core/electron/getBrowserWindowFromEvent'
 export * from './core/electron/getLocaleStringFromRenderer'
@@ -6,14 +25,7 @@ export * from './core/electron/rendererSenders'
 export * from './core/electron/setElectronUserDataFolder'
 export * from './core/electron/windowFunctions'
 
-export * from './core/fs/RockshelfFileSystemAPI'
-export * from './core/fs/UserConfigAPI'
-
-export * from './core/protocol/rbiconsToPath'
-export * from './core/protocol/tempjpgToPath'
-
-export * from './core/rhythmverse/SongDownloadQueueAPI'
-
-export * from './core/rpcs3/richPresence'
-
-export * from './core/pythonEnv'
+export * from './core/locale/en-US'
+export * from './core/locale/es-419'
+export * from './core/locale/fr-CA'
+export * from './core/locale/pt-BR'

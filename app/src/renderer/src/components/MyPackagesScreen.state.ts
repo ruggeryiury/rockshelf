@@ -7,30 +7,30 @@ export interface MyPackagesScreenStateProps {
   active: boolean
   myPackagesTab: number
   packagesCatalog: SongPackagesFilterGenericObject | false | 'loading'
-  packageDescription: string | undefined | 1 // 1 = 'loading'
-
-  selPKG: number
-  packageDetailsTab: number
+  packageDescription: string | false | 1 // 1 = 'loading'
   hoveredPKG: number
-  pkgDetailsDropdown: number
 
-  songsCatalog: DTAFilterGenericObject | DTAFilterByArtistObject | DTAFilterByDifficultyObject | false | 'loading'
-  songDetailsTab: number
-  songLeaderboards: false | 'loading' | GoCentralLeaderboardResultObject
-  selSong: number
-  isArtworkLoading: boolean
-  artworkURL: string | null
+  // selPKG: number
+  // packageDetailsTab: number
+  // pkgDetailsDropdown: number
 
-  editPackageName: string
-  packageNameError: string | null
-  hasPackageNameChanged: boolean
+  // songsCatalog: DTAFilterGenericObject | DTAFilterByArtistObject | DTAFilterByDifficultyObject | false | 'loading'
+  // songDetailsTab: number
+  // songLeaderboards: false | 'loading' | GoCentralLeaderboardResultObject
+  // selSong: number
+  // isArtworkLoading: boolean
+  // artworkURL: string | null
 
-  editPackageFolderName: string
-  packageFolderNameError: string | null
-  hasPackageFolderNameChanged: boolean
+  // editPackageName: string
+  // packageNameError: string | null
+  // hasPackageNameChanged: boolean
 
-  editPackageCategory: RSPackImagePackageCategoryValues
-  hasPackageCategoryChanged: boolean
+  // editPackageFolderName: string
+  // packageFolderNameError: string | null
+  // hasPackageFolderNameChanged: boolean
+
+  // editPackageCategory: RSPackImagePackageCategoryValues
+  // hasPackageCategoryChanged: boolean
 }
 
 export interface MyPackagesScreenStateActions {
@@ -58,30 +58,30 @@ const defaultState: MyPackagesScreenStateProps = {
   active: false,
   myPackagesTab: 0,
   packagesCatalog: false,
-  packageDescription: undefined,
-
-  selPKG: -1,
-  packageDetailsTab: 0,
+  packageDescription: false,
   hoveredPKG: -1,
-  pkgDetailsDropdown: -1,
 
-  songsCatalog: false,
-  songDetailsTab: 0,
-  songLeaderboards: false,
-  selSong: -1,
-  isArtworkLoading: true,
-  artworkURL: null,
+  // selPKG: -1,
+  // packageDetailsTab: 0,
+  // pkgDetailsDropdown: -1,
 
-  editPackageName: '',
-  packageNameError: null,
-  hasPackageNameChanged: false,
+  // songsCatalog: false,
+  // songDetailsTab: 0,
+  // songLeaderboards: false,
+  // selSong: -1,
+  // isArtworkLoading: true,
+  // artworkURL: null,
 
-  editPackageFolderName: '',
-  packageFolderNameError: null,
-  hasPackageFolderNameChanged: false,
+  // editPackageName: '',
+  // packageNameError: null,
+  // hasPackageNameChanged: false,
 
-  editPackageCategory: 'other',
-  hasPackageCategoryChanged: false,
+  // editPackageFolderName: '',
+  // packageFolderNameError: null,
+  // hasPackageFolderNameChanged: false,
+
+  // editPackageCategory: 'other',
+  // hasPackageCategoryChanged: false,
 }
 
 export const useMyPackagesScreenState = create<MyPackagesScreenStateHook>()((set, get) => ({

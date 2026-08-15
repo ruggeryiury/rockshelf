@@ -1,0 +1,4978 @@
+(
+   'UGC_5011726'
+   (
+      'name'
+      "Letter"
+   )
+   (
+      'artist'
+      "Amberian Dawn"
+   )
+   ('master' 1)
+   (
+      'song'
+      (
+         'name'
+         "songs/UGC_5011726/UGC_5011726"
+      )
+      (
+         'tracks_count'
+         (5 1 2 2 2 2)
+      )
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1 2 3 4)
+            )
+            (
+               'bass'
+               (5)
+            )
+            (
+               'guitar'
+               (6 7)
+            )
+            (
+               'vocals'
+               (8 9)
+            )
+            (
+               'keys'
+               (10 11)
+            )
+         )
+      )
+      (
+         'pans'
+         (0.0 -1.0 1.0 -1.0 1.0 0.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0)
+      )
+      (
+         'vols'
+         (-3.0 -3.0 -3.0 -3.0 -3.0 -3.0 -3.0 -3.0 -3.0 -3.0 -3.0 -3.0 -3.0 -3.0)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1)
+      )
+      ('vocal_parts' 3)
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+   )
+   ('song_scroll_speed' 2300)
+   (
+      'bank'
+      "sfx/tambourine_bank.milo"
+   )
+   ('anim_tempo' 64)
+   ('song_length' 270831)
+   ('preview' 53000 83000)
+   (
+      'rank'
+      ('drum' 448)
+      ('guitar' 333)
+      ('bass' 293)
+      ('vocals' 218)
+      ('keys' 443)
+      ('real_keys' 443)
+      ('band' 292)
+   )
+   ('genre' 'metal')
+   ('vocal_gender' 'female')
+   ('version' 30)
+   ('format' 10)
+   ('album_art' 1)
+   ('year_released' 2012)
+   ('rating' 2)
+   ('sub_genre' 'subgenre_power')
+   ('song_id' 5011726)
+   ('tuning_offset_cents' 0.0)
+   ('guide_pitch_volume' -3.0)
+   (
+      'game_origin'
+      #ifdef CUSTOMSOURCE
+      'ugc_lost'
+      #else
+      'ugc_plus'
+      #endif
+   )
+   ('encoding' 'latin1')
+   (
+      'album_name'
+      "Circus Black"
+   )
+   ('album_track_number' 6)
+)
+(
+   'o170693922_orbofthemoons_a1x'
+   (
+      'name'
+      "Orb of the Moons"
+   )
+   (
+      'artist'
+      "Ascension"
+   )
+   ('master' 1)
+   (
+      'song'
+      (
+         'name'
+         "songs/orbofthemoons1x/orbofthemoons1x"
+      )
+      (
+         'tracks_count'
+         (5 2 2 0 2 2)
+      )
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1 2 3 4)
+            )
+            (
+               'bass'
+               (5 6)
+            )
+            (
+               'guitar'
+               (7 8)
+            )
+            (
+               'keys'
+               (9 10)
+            )
+         )
+      )
+      (
+         'pans'
+         (0.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0)
+      )
+      (
+         'vols'
+         (0.0 0.0 0.0 0.0 0.0 -3.0 -3.0 -3.0 -3.0 0.0 0.0 0.0 0.0)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1)
+      )
+      ('vocal_parts' 0)
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+      ('mute_volume' -96)
+      ('mute_volume_vocals' -12)
+      ('hopo_threshold' 170)
+   )
+   ('song_scroll_speed' 2300)
+   (
+      'bank'
+      "sfx/tambourine_bank.milo"
+   )
+   (drum_bank sfx/kit01_bank.milo)
+   ('anim_tempo' 64)
+   ('song_length' 292101)
+   ('preview' 73000 103000)
+   (
+      'rank'
+      ('drum' 448)
+      ('guitar' 409)
+      ('bass' 364)
+      ('vocals' 0)
+      ('keys' 443)
+      ('real_keys' 443)
+      ('band' 345)
+   )
+   ('genre' 'metal')
+   ('vocal_gender' 'female')
+   ('version' 30)
+   ('format' 10)
+   ('album_art' 1)
+   ('year_released' 2012)
+   ('rating' 2)
+   ('sub_genre' 'subgenre_power')
+   ('song_id' 1687600088)
+   (solo (drum guitar keys))
+   ('tuning_offset_cents' 0)
+   ('guide_pitch_volume' -3.0)
+   (
+      'game_origin'
+      #ifdef CUSTOMSOURCE
+      'ugc_lost'
+      #else
+      'ugc_plus'
+      #endif
+   )
+   ('encoding' 'latin1')
+   (
+      'album_name'
+      "Far Beyond the Stars"
+   )
+   ('album_track_number' 6)
+)
+(
+   'o170693922_orbofthemoons_a2x'
+   (
+      'name'
+      "Orb of the Moons (2x Bass Pedal)"
+   )
+   (
+      'artist'
+      "Ascension"
+   )
+   ('master' 1)
+   (
+      'song'
+      (
+         'name'
+         "songs/orbofthemoons2x/orbofthemoons2x"
+      )
+      (
+         'tracks_count'
+         (5 2 2 0 2 2)
+      )
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1 2 3 4)
+            )
+            (
+               'bass'
+               (5 6)
+            )
+            (
+               'guitar'
+               (7 8)
+            )
+            (
+               'keys'
+               (9 10)
+            )
+         )
+      )
+      (
+         'pans'
+         (0.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0)
+      )
+      (
+         'vols'
+         (0.0 0.0 0.0 0.0 0.0 -3.0 -3.0 -3.0 -3.0 0.0 0.0 0.0 0.0)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1)
+      )
+      ('vocal_parts' 0)
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+      ('mute_volume' -96)
+      ('mute_volume_vocals' -12)
+      ('hopo_threshold' 170)
+   )
+   ('song_scroll_speed' 2300)
+   (
+      'bank'
+      "sfx/tambourine_bank.milo"
+   )
+   (drum_bank sfx/kit01_bank.milo)
+   ('anim_tempo' 64)
+   ('song_length' 292101)
+   ('preview' 73000 103000)
+   (
+      'rank'
+      ('drum' 448)
+      ('guitar' 409)
+      ('bass' 364)
+      ('vocals' 0)
+      ('keys' 443)
+      ('real_keys' 443)
+      ('band' 345)
+   )
+   ('genre' 'metal')
+   ('vocal_gender' 'female')
+   ('version' 30)
+   ('format' 10)
+   ('album_art' 1)
+   ('year_released' 2012)
+   ('rating' 2)
+   ('sub_genre' 'subgenre_power')
+   ('song_id' 1687600094)
+   (solo (drum guitar keys))
+   ('tuning_offset_cents' 0)
+   ('guide_pitch_volume' -3.0)
+   (
+      'game_origin'
+      #ifdef CUSTOMSOURCE
+      'ugc_lost'
+      #else
+      'ugc_plus'
+      #endif
+   )
+   ('encoding' 'latin1')
+   (
+      'album_name'
+      "Far Beyond the Stars"
+   )
+   ('album_track_number' 6)
+)
+(
+   'somewhereback1x'
+   (
+      'name'
+      "Somewhere Back in Time"
+   )
+   (
+      'artist'
+      "Ascension"
+   )
+   ('master' 1)
+   (
+      'song'
+      (
+         'name'
+         "songs/somewhereback1x/somewhereback1x"
+      )
+      (
+         'tracks_count'
+         (4 1 2 2 2 2)
+      )
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1 2 3)
+            )
+            (
+               'bass'
+               (4)
+            )
+            (
+               'guitar'
+               (5 6)
+            )
+            (
+               'vocals'
+               (7 8)
+            )
+            (
+               'keys'
+               (9 10)
+            )
+         )
+      )
+      (
+         'pans'
+         (0.0 0.0 -1.0 1.0 0.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0)
+      )
+      (
+         'vols'
+         (-4.0 -5.5 -4.5 -4.5 -6.5 -5.0 -5.0 -5.0 -5.0 -8.0 -8.0 -5.0 -5.0)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1)
+      )
+      ('vocal_parts' 2)
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+      ('mute_volume' -96)
+      ('mute_volume_vocals' -12)
+      ('hopo_threshold' 170)
+   )
+   ('song_scroll_speed' 2300)
+   (
+      'bank'
+      "sfx/cowbell_bank.milo"
+   )
+   (drum_bank sfx/kit02_bank.milo)
+   ('anim_tempo' 64)
+   ('song_length' 362138)
+   ('preview' 64633 94633)
+   (
+      'rank'
+      ('drum' 448)
+      ('guitar' 409)
+      ('bass' 364)
+      ('vocals' 427)
+      ('keys' 1)
+      ('real_keys' 1)
+      ('band' 345)
+   )
+   ('genre' 'metal')
+   ('vocal_gender' 'male')
+   ('version' 30)
+   ('format' 10)
+   ('album_art' 1)
+   ('year_released' 2012)
+   ('rating' 1)
+   ('sub_genre' 'subgenre_power')
+   ('song_id' 1687600092)
+   (solo (guitar bass vocal_percussion))
+   ('tuning_offset_cents' 0)
+   ('guide_pitch_volume' -3.0)
+   (
+      'game_origin'
+      #ifdef CUSTOMSOURCE
+      'ugc_lost'
+      #else
+      'ugc_plus'
+      #endif
+   )
+   ('encoding' 'latin1')
+   (
+      'album_name'
+      "Far Beyond the Stars"
+   )
+   ('album_track_number' 1)
+   ('vocal_tonic_note' 8)
+   ('song_tonality' 0)
+)
+(
+   'somewhereback2x'
+   (
+      'name'
+      "Somewhere Back in Time (2x Bass Pedal)"
+   )
+   (
+      'artist'
+      "Ascension"
+   )
+   ('master' 1)
+   (
+      'song'
+      (
+         'name'
+         "songs/somewhereback2x/somewhereback2x"
+      )
+      (
+         'tracks_count'
+         (4 1 2 2 2 2)
+      )
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1 2 3)
+            )
+            (
+               'bass'
+               (4)
+            )
+            (
+               'guitar'
+               (5 6)
+            )
+            (
+               'vocals'
+               (7 8)
+            )
+            (
+               'keys'
+               (9 10)
+            )
+         )
+      )
+      (
+         'pans'
+         (0.0 0.0 -1.0 1.0 0.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0)
+      )
+      (
+         'vols'
+         (-4.0 -5.5 -4.5 -4.5 -6.5 -5.0 -5.0 -5.0 -5.0 -8.0 -8.0 -5.0 -5.0)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1)
+      )
+      ('vocal_parts' 2)
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+      ('mute_volume' -96)
+      ('mute_volume_vocals' -12)
+      ('hopo_threshold' 170)
+   )
+   ('song_scroll_speed' 2300)
+   (
+      'bank'
+      "sfx/cowbell_bank.milo"
+   )
+   (drum_bank sfx/kit02_bank.milo)
+   ('anim_tempo' 64)
+   ('song_length' 362138)
+   ('preview' 64633 94633)
+   (
+      'rank'
+      ('drum' 448)
+      ('guitar' 409)
+      ('bass' 364)
+      ('vocals' 427)
+      ('keys' 1)
+      ('real_keys' 1)
+      ('band' 345)
+   )
+   ('genre' 'metal')
+   ('vocal_gender' 'male')
+   ('version' 30)
+   ('format' 10)
+   ('album_art' 1)
+   ('year_released' 2012)
+   ('rating' 1)
+   ('sub_genre' 'subgenre_power')
+   ('song_id' 1687600093)
+   (solo (guitar bass vocal_percussion))
+   ('tuning_offset_cents' 0)
+   ('guide_pitch_volume' -3.0)
+   (
+      'game_origin'
+      #ifdef CUSTOMSOURCE
+      'ugc_lost'
+      #else
+      'ugc_plus'
+      #endif
+   )
+   ('encoding' 'latin1')
+   (
+      'album_name'
+      "Far Beyond the Stars"
+   )
+   ('album_track_number' 1)
+   ('vocal_tonic_note' 8)
+   ('song_tonality' 0)
+)
+(
+   'UGC_5011840'
+   (
+      'name'
+      "Looks Good"
+   )
+   (
+      'artist'
+      "Askari Nari"
+   )
+   ('master' 1)
+   (
+      'song'
+      (
+         'name'
+         "songs/UGC_5011840/UGC_5011840"
+      )
+      (
+         'tracks_count'
+         (2 2 2 0 2 2)
+      )
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1)
+            )
+            (
+               'bass'
+               (2 3)
+            )
+            (
+               'guitar'
+               (4 5)
+            )
+            (
+               'keys'
+               (6 7)
+            )
+         )
+      )
+      (
+         'pans'
+         (-1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0)
+      )
+      (
+         'vols'
+         (0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 -1 -1 -1 -1 -1 -1)
+      )
+      ('vocal_parts' 0)
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+   )
+   ('song_scroll_speed' 2300)
+   (
+      'bank'
+      "sfx/tambourine_bank.milo"
+   )
+   ('anim_tempo' 32)
+   ('song_length' 317406)
+   ('preview' 222000 252000)
+   (
+      'rank'
+      ('drum' 448)
+      ('guitar' 267)
+      ('bass' 228)
+      ('vocals' 0)
+      ('keys' 443)
+      ('real_keys' 443)
+      ('band' 345)
+   )
+   ('genre' 'popdanceelectronic')
+   ('vocal_gender' 'male')
+   ('version' 30)
+   ('format' 10)
+   ('album_art' 1)
+   ('year_released' 2011)
+   ('rating' 2)
+   ('sub_genre' 'subgenre_electronica')
+   ('song_id' 5011840)
+   ('tuning_offset_cents' 0.0)
+   ('guide_pitch_volume' -3.0)
+   (
+      'game_origin'
+      #ifdef CUSTOMSOURCE
+      'ugc_lost'
+      #else
+      'ugc_plus'
+      #endif
+   )
+   ('encoding' 'latin1')
+   (
+      'album_name'
+      "Fake Music"
+   )
+   ('album_track_number' 14)
+)
+(
+   'UGC_5011923'
+   (
+      'name'
+      "Unshakeable"
+   )
+   (
+      'artist'
+      "Celldweller"
+   )
+   ('master' 1)
+   (
+      'song'
+      (
+         'name'
+         "songs/UGC_5011923/UGC_5011923"
+      )
+      (
+         'tracks_count'
+         (2 2 2 1 2 1)
+      )
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1)
+            )
+            (
+               'bass'
+               (2 3)
+            )
+            (
+               'guitar'
+               (4 5)
+            )
+            (
+               'vocals'
+               (6)
+            )
+            (
+               'keys'
+               (7 8)
+            )
+         )
+      )
+      (
+         'pans'
+         (-1.0 1.0 -1.0 1.0 -1.0 1.0 0.0 -1.0 1.0 0.0)
+      )
+      (
+         'vols'
+         (-3.0 -3.0 -3.0 -3.0 -3.0 -3.0 -3.0 -3.0 -3.0 -3.0)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 -1 -1 -1 -1 -1 -1)
+      )
+      ('vocal_parts' 1)
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+   )
+   ('song_scroll_speed' 2300)
+   (
+      'bank'
+      "sfx/cowbell_bank.milo"
+   )
+   ('anim_tempo' 64)
+   ('song_length' 322333)
+   ('preview' 96000 126000)
+   (
+      'rank'
+      ('drum' 345)
+      ('guitar' 221)
+      ('bass' 228)
+      ('vocals' 132)
+      ('keys' 385)
+      ('real_keys' 385)
+      ('band' 292)
+   )
+   ('genre' 'metal')
+   ('vocal_gender' 'male')
+   ('version' 30)
+   ('format' 10)
+   ('album_art' 1)
+   ('year_released' 2012)
+   ('rating' 2)
+   ('sub_genre' 'subgenre_other')
+   ('song_id' 5011923)
+   ('tuning_offset_cents' 0.0)
+   ('guide_pitch_volume' -3.0)
+   (
+      'game_origin'
+      #ifdef CUSTOMSOURCE
+      'ugc_lost'
+      #else
+      'ugc_plus'
+      #endif
+   )
+   ('encoding' 'latin1')
+   (
+      'album_name'
+      "Wish Upon a Blackstar"
+   )
+   ('album_track_number' 2)
+)
+(
+   'UGC_5011367'
+   (
+      'name'
+      "Erratic"
+   )
+   (
+      'artist'
+      "Children of Nova"
+   )
+   ('master' 1)
+   (
+      'song'
+      (
+         'name'
+         "songs/UGC_5011367/UGC_5011367"
+      )
+      (
+         'tracks_count'
+         (5 1 2 2 0 2)
+      )
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1 2 3 4)
+            )
+            (
+               'bass'
+               (5)
+            )
+            (
+               'guitar'
+               (6 7)
+            )
+            (
+               'vocals'
+               (8 9)
+            )
+         )
+      )
+      (
+         'pans'
+         (0.0 -1.0 1.0 -1.0 1.0 0.0 -1.0 1.0 -1.0 1.0 -1.0 1.0)
+      )
+      (
+         'vols'
+         (-3.0 -3.0 -3.0 -3.0 -3.0 -3.0 -3.0 -3.0 -3.0 -3.0 -3.0 -3.0)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1)
+      )
+      ('vocal_parts' 3)
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+   )
+   ('song_scroll_speed' 2300)
+   (
+      'bank'
+      "sfx/tambourine_bank.milo"
+   )
+   ('anim_tempo' 64)
+   ('song_length' 224821)
+   ('preview' 96000 126000)
+   (
+      'rank'
+      ('drum' 345)
+      ('guitar' 267)
+      ('bass' 293)
+      ('vocals' 218)
+      ('keys' 0)
+      ('real_keys' 0)
+      ('band' 267)
+   )
+   ('genre' 'prog')
+   ('vocal_gender' 'male')
+   ('version' 30)
+   ('format' 10)
+   ('album_art' 1)
+   ('year_released' 2012)
+   ('rating' 2)
+   ('sub_genre' 'subgenre_progrock')
+   ('song_id' 5011367)
+   ('tuning_offset_cents' 0.0)
+   ('guide_pitch_volume' -3.0)
+   (
+      'game_origin'
+      #ifdef CUSTOMSOURCE
+      'ugc_lost'
+      #else
+      'ugc_plus'
+      #endif
+   )
+   ('encoding' 'latin1')
+   (
+      'album_name'
+      "Impossible Landscape"
+   )
+   ('album_track_number' 1)
+)
+(
+   'UGC_5012026'
+   (
+      'name'
+      "Boss"
+   )
+   (
+      'artist'
+      "Chris Lee"
+   )
+   ('master' 1)
+   (
+      'song'
+      (
+         'name'
+         "songs/UGC_5012026/UGC_5012026"
+      )
+      (
+         'tracks_count'
+         (6 2 2 0 0 2)
+      )
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1 2 3 4 5)
+            )
+            (
+               'bass'
+               (6 7)
+            )
+            (
+               'guitar'
+               (8 9)
+            )
+         )
+      )
+      (
+         'pans'
+         (-1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0)
+      )
+      (
+         'vols'
+         (-3.0 -3.0 -3.0 -3.0 -3.0 -3.0 -3.0 -3.0 -3.0 -3.0 -3.0 -3.0)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1)
+      )
+      ('vocal_parts' 0)
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+   )
+   ('song_scroll_speed' 2300)
+   (
+      'bank'
+      "sfx/tambourine_bank.milo"
+   )
+   ('anim_tempo' 32)
+   ('song_length' 186500)
+   ('preview' 68000 98000)
+   (
+      'rank'
+      ('drum' 448)
+      ('guitar' 409)
+      ('bass' 364)
+      ('vocals' 0)
+      ('keys' 0)
+      ('real_keys' 0)
+      ('band' 345)
+   )
+   ('genre' 'prog')
+   ('vocal_gender' 'male')
+   ('version' 30)
+   ('format' 10)
+   ('album_art' 1)
+   ('year_released' 2011)
+   ('rating' 2)
+   ('sub_genre' 'subgenre_progrock')
+   ('song_id' 5012026)
+   ('tuning_offset_cents' 0.0)
+   ('guide_pitch_volume' -3.0)
+   (
+      'game_origin'
+      #ifdef CUSTOMSOURCE
+      'ugc_lost'
+      #else
+      'ugc_plus'
+      #endif
+   )
+   ('encoding' 'latin1')
+   (
+      'album_name'
+      "The Notetracker"
+   )
+   ('album_track_number' 1)
+)
+(
+   'UGC_5011851'
+   (
+      'name'
+      "Rocket Shop"
+   )
+   (
+      'artist'
+      "Christian Muenzner"
+   )
+   ('master' 1)
+   (
+      'song'
+      (
+         'name'
+         "songs/UGC_5011851/UGC_5011851"
+      )
+      (
+         'tracks_count'
+         (6 2 2 0 0 2)
+      )
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1 2 3 4 5)
+            )
+            (
+               'bass'
+               (6 7)
+            )
+            (
+               'guitar'
+               (8 9)
+            )
+         )
+      )
+      (
+         'pans'
+         (-1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0)
+      )
+      (
+         'vols'
+         (-1.5 -1.5 -2.5 -2.5 -0.0 -0.0 -1.5 -1.5 -1.5 -1.5 -1.5 -1.5)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1)
+      )
+      ('vocal_parts' 0)
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+   )
+   ('song_scroll_speed' 2300)
+   (
+      'bank'
+      "sfx/tambourine_bank.milo"
+   )
+   ('anim_tempo' 64)
+   ('song_length' 239300)
+   ('preview' 29000 59000)
+   (
+      'rank'
+      ('drum' 448)
+      ('guitar' 409)
+      ('bass' 436)
+      ('vocals' 0)
+      ('keys' 0)
+      ('real_keys' 0)
+      ('band' 345)
+   )
+   ('genre' 'metal')
+   ('vocal_gender' 'male')
+   ('version' 30)
+   ('format' 10)
+   ('album_art' 1)
+   ('year_released' 2011)
+   ('rating' 2)
+   ('sub_genre' 'subgenre_power')
+   ('song_id' 5011851)
+   ('tuning_offset_cents' 0.0)
+   ('guide_pitch_volume' -3.0)
+   (
+      'game_origin'
+      #ifdef CUSTOMSOURCE
+      'ugc_lost'
+      #else
+      'ugc_plus'
+      #endif
+   )
+   ('encoding' 'latin1')
+   (
+      'album_name'
+      "Timewarp"
+   )
+   ('album_track_number' 6)
+)
+(
+   'UGC_5011860'
+   (
+      'name'
+      "Life"
+   )
+   (
+      'artist'
+      "Decibelle"
+   )
+   ('master' 1)
+   (
+      'song'
+      (
+         'name'
+         "songs/UGC_5011860/UGC_5011860"
+      )
+      (
+         'tracks_count'
+         (6 2 0 0 2 2)
+      )
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1 2 3 4 5)
+            )
+            (
+               'bass'
+               (6 7)
+            )
+            (
+               'keys'
+               (8 9)
+            )
+         )
+      )
+      (
+         'pans'
+         (-1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0)
+      )
+      (
+         'vols'
+         (0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1)
+      )
+      ('vocal_parts' 0)
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+   )
+   ('song_scroll_speed' 2300)
+   (
+      'bank'
+      "sfx/tambourine_bank.milo"
+   )
+   ('anim_tempo' 32)
+   ('song_length' 209764)
+   ('preview' 96000 126000)
+   (
+      'rank'
+      ('drum' 345)
+      ('guitar' 0)
+      ('bass' 181)
+      ('vocals' 0)
+      ('keys' 385)
+      ('real_keys' 385)
+      ('band' 292)
+   )
+   ('genre' 'popdanceelectronic')
+   ('vocal_gender' 'male')
+   ('version' 30)
+   ('format' 10)
+   ('album_art' 1)
+   ('year_released' 2012)
+   ('rating' 2)
+   ('sub_genre' 'subgenre_electronica')
+   ('song_id' 5011860)
+   ('tuning_offset_cents' 0.0)
+   ('guide_pitch_volume' -3.0)
+   (
+      'game_origin'
+      #ifdef CUSTOMSOURCE
+      'ugc_lost'
+      #else
+      'ugc_plus'
+      #endif
+   )
+   ('encoding' 'latin1')
+   (
+      'album_name'
+      "Alpha"
+   )
+   ('album_track_number' 1)
+)
+(
+   'UGC_5011215'
+   (
+      'name'
+      "Ethos of Coercion"
+   )
+   (
+      'artist'
+      "Dying Fetus"
+   )
+   ('master' 1)
+   (
+      'song'
+      (
+         'name'
+         "songs/UGC_5011215/UGC_5011215"
+      )
+      (
+         'tracks_count'
+         (6 2 2 2 0 2)
+      )
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1 2 3 4 5)
+            )
+            (
+               'bass'
+               (6 7)
+            )
+            (
+               'guitar'
+               (8 9)
+            )
+            (
+               'vocals'
+               (10 11)
+            )
+         )
+      )
+      (
+         'pans'
+         (-1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0)
+      )
+      (
+         'vols'
+         (-3.0 -3.0 -2.0 -2.0 -2.5 -2.5 -1.7 -1.7 -3.5 -3.5 -6.0 -6.0 -3.0 -3.0)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1)
+      )
+      ('vocal_parts' 1)
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+   )
+   ('song_scroll_speed' 2300)
+   (
+      'bank'
+      "sfx/tambourine_bank.milo"
+   )
+   ('anim_tempo' 64)
+   ('song_length' 207186)
+   ('preview' 102000 132000)
+   (
+      'rank'
+      ('drum' 448)
+      ('guitar' 409)
+      ('bass' 436)
+      ('vocals' 1)
+      ('keys' 0)
+      ('real_keys' 0)
+      ('band' 345)
+   )
+   ('genre' 'metal')
+   ('vocal_gender' 'male')
+   ('version' 30)
+   ('format' 10)
+   ('album_art' 1)
+   ('year_released' 2009)
+   ('rating' 2)
+   ('sub_genre' 'subgenre_death')
+   ('song_id' 5011215)
+   ('tuning_offset_cents' 0.0)
+   ('guide_pitch_volume' -3.0)
+   (
+      'game_origin'
+      #ifdef CUSTOMSOURCE
+      'ugc_lost'
+      #else
+      'ugc_plus'
+      #endif
+   )
+   ('encoding' 'latin1')
+   (
+      'album_name'
+      "Descend Into Depravity"
+   )
+   ('album_track_number' 8)
+)
+(
+   'UGC_5011819'
+   (
+      'name'
+      "Artisan"
+   )
+   (
+      'artist'
+      "Engineering an Empire"
+   )
+   ('master' 1)
+   (
+      'song'
+      (
+         'name'
+         "songs/UGC_5011819/UGC_5011819"
+      )
+      (
+         'tracks_count'
+         (6 2 2 2 0 2)
+      )
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1 2 3 4 5)
+            )
+            (
+               'bass'
+               (6 7)
+            )
+            (
+               'guitar'
+               (8 9)
+            )
+            (
+               'vocals'
+               (10 11)
+            )
+         )
+      )
+      (
+         'pans'
+         (-1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0)
+      )
+      (
+         'vols'
+         (-3.0 -3.0 -3.0 -3.0 -3.0 -3.0 -3.0 -3.0 -3.0 -3.0 -3.0 -3.0 -3.0 -3.0)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1)
+      )
+      ('vocal_parts' 3)
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+   )
+   ('song_scroll_speed' 2300)
+   (
+      'bank'
+      "sfx/tambourine_bank.milo"
+   )
+   ('anim_tempo' 64)
+   ('song_length' 424658)
+   ('preview' 73000 103000)
+   (
+      'rank'
+      ('drum' 448)
+      ('guitar' 333)
+      ('bass' 436)
+      ('vocals' 132)
+      ('keys' 0)
+      ('real_keys' 0)
+      ('band' 292)
+   )
+   ('genre' 'metal')
+   ('vocal_gender' 'male')
+   ('version' 30)
+   ('format' 10)
+   ('album_art' 1)
+   ('year_released' 2011)
+   ('rating' 2)
+   ('sub_genre' 'subgenre_core')
+   ('song_id' 5011819)
+   ('tuning_offset_cents' 0.0)
+   ('guide_pitch_volume' -3.0)
+   (
+      'game_origin'
+      #ifdef CUSTOMSOURCE
+      'ugc_lost'
+      #else
+      'ugc_plus'
+      #endif
+   )
+   ('encoding' 'latin1')
+   (
+      'album_name'
+      "Foundations"
+   )
+   ('album_track_number' 5)
+)
+(
+   'UGC_5011916'
+   (
+      'name'
+      "Luna (NIGHTMARE MODE)"
+   )
+   (
+      'artist'
+      "Eurobeat Brony ft. Odyssey"
+   )
+   ('master' 1)
+   (
+      'song'
+      (
+         'name'
+         "songs/UGC_5011916/UGC_5011916"
+      )
+      (
+         'tracks_count'
+         (6 2 2 2 2 2)
+      )
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1 2 3 4 5)
+            )
+            (
+               'bass'
+               (6 7)
+            )
+            (
+               'guitar'
+               (8 9)
+            )
+            (
+               'vocals'
+               (10 11)
+            )
+            (
+               'keys'
+               (12 13)
+            )
+         )
+      )
+      (
+         'pans'
+         (-1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0)
+      )
+      (
+         'vols'
+         (0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1)
+      )
+      ('vocal_parts' 3)
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+   )
+   ('song_scroll_speed' 2300)
+   (
+      'bank'
+      "sfx/handclap_bank.milo"
+   )
+   ('anim_tempo' 32)
+   ('song_length' 265827)
+   ('preview' 127000 157000)
+   (
+      'rank'
+      ('drum' 345)
+      ('guitar' 267)
+      ('bass' 364)
+      ('vocals' 218)
+      ('keys' 385)
+      ('real_keys' 443)
+      ('band' 292)
+   )
+   ('genre' 'popdanceelectronic')
+   ('vocal_gender' 'male')
+   ('version' 30)
+   ('format' 10)
+   ('album_art' 1)
+   ('year_released' 2011)
+   ('rating' 2)
+   ('sub_genre' 'subgenre_dance')
+   ('song_id' 5011916)
+   ('tuning_offset_cents' 0.0)
+   ('guide_pitch_volume' -3.0)
+   (
+      'game_origin'
+      #ifdef CUSTOMSOURCE
+      'ugc_lost'
+      #else
+      'ugc_plus'
+      #endif
+   )
+   ('encoding' 'latin1')
+   (
+      'album_name'
+      "Super Ponybeat Vol. 1"
+   )
+   ('album_track_number' 13)
+)
+(
+   'UGC_5011815'
+   (
+      'name'
+      "Roaches"
+   )
+   (
+      'artist'
+      "Fist of the North Star"
+   )
+   ('master' 1)
+   (
+      'song'
+      (
+         'name'
+         "songs/UGC_5011815/UGC_5011815"
+      )
+      (
+         'tracks_count'
+         (6 2 2 2 0 2)
+      )
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1 2 3 4 5)
+            )
+            (
+               'bass'
+               (6 7)
+            )
+            (
+               'guitar'
+               (8 9)
+            )
+            (
+               'vocals'
+               (10 11)
+            )
+         )
+      )
+      (
+         'pans'
+         (-1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0)
+      )
+      (
+         'vols'
+         (0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1)
+      )
+      ('vocal_parts' 3)
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+   )
+   ('song_scroll_speed' 2300)
+   (
+      'bank'
+      "sfx/tambourine_bank.milo"
+   )
+   ('anim_tempo' 32)
+   ('song_length' 148210)
+   ('preview' 20000 50000)
+   (
+      'rank'
+      ('drum' 448)
+      ('guitar' 409)
+      ('bass' 293)
+      ('vocals' 1)
+      ('keys' 0)
+      ('real_keys' 0)
+      ('band' 345)
+   )
+   ('genre' 'punk')
+   ('vocal_gender' 'male')
+   ('version' 30)
+   ('format' 10)
+   ('album_art' 1)
+   ('year_released' 2011)
+   ('rating' 2)
+   ('sub_genre' 'subgenre_hardcore')
+   ('song_id' 5011815)
+   ('tuning_offset_cents' 0.0)
+   ('guide_pitch_volume' -3.0)
+   (
+      'game_origin'
+      #ifdef CUSTOMSOURCE
+      'ugc_lost'
+      #else
+      'ugc_plus'
+      #endif
+   )
+   ('encoding' 'latin1')
+   (
+      'album_name'
+      "International Split"
+   )
+   ('album_track_number' 13)
+)
+(
+   'UGC_5011719'
+   (
+      'name'
+      "Ten Forward"
+   )
+   (
+      'artist'
+      "Gatling"
+   )
+   ('master' 1)
+   (
+      'song'
+      (
+         'name'
+         "songs/UGC_5011719/UGC_5011719"
+      )
+      (
+         'tracks_count'
+         (2 2 2 2 0 2)
+      )
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1)
+            )
+            (
+               'bass'
+               (2 3)
+            )
+            (
+               'guitar'
+               (4 5)
+            )
+            (
+               'vocals'
+               (6 7)
+            )
+         )
+      )
+      (
+         'pans'
+         (-1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0)
+      )
+      (
+         'vols'
+         (-1.0 -1.0 -2.0 -2.0 -3.0 -3.0 -3.0 -3.0 -3.0 -3.0)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 -1 -1 -1 -1 -1 -1)
+      )
+      ('vocal_parts' 2)
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+   )
+   ('song_scroll_speed' 2300)
+   (
+      'bank'
+      "sfx/tambourine_bank.milo"
+   )
+   ('anim_tempo' 64)
+   ('song_length' 488101)
+   ('preview' 351000 381000)
+   (
+      'rank'
+      ('drum' 345)
+      ('guitar' 333)
+      ('bass' 293)
+      ('vocals' 132)
+      ('keys' 0)
+      ('real_keys' 0)
+      ('band' 292)
+   )
+   ('genre' 'prog')
+   ('vocal_gender' 'male')
+   ('version' 30)
+   ('format' 10)
+   ('album_art' 1)
+   ('year_released' 2012)
+   ('rating' 2)
+   ('sub_genre' 'subgenre_progrock')
+   ('song_id' 5011719)
+   ('tuning_offset_cents' 0.0)
+   ('guide_pitch_volume' -3.0)
+   (
+      'game_origin'
+      #ifdef CUSTOMSOURCE
+      'ugc_lost'
+      #else
+      'ugc_plus'
+      #endif
+   )
+   ('encoding' 'latin1')
+   (
+      'album_name'
+      "Beforemath"
+   )
+   ('album_track_number' 1)
+)
+(
+   'UGC_5012062'
+   (
+      'name'
+      "River of Blood"
+   )
+   (
+      'artist'
+      "Jim Morris Band"
+   )
+   ('master' 1)
+   (
+      'song'
+      (
+         'name'
+         "songs/UGC_5012062/UGC_5012062"
+      )
+      (
+         'tracks_count'
+         (6 2 2 0 0 2)
+      )
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1 2 3 4 5)
+            )
+            (
+               'bass'
+               (6 7)
+            )
+            (
+               'guitar'
+               (8 9)
+            )
+         )
+      )
+      (
+         'pans'
+         (-1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0)
+      )
+      (
+         'vols'
+         (0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1)
+      )
+      ('vocal_parts' 0)
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+   )
+   ('song_scroll_speed' 2300)
+   (
+      'bank'
+      "sfx/tambourine_bank.milo"
+   )
+   ('anim_tempo' 64)
+   ('song_length' 392430)
+   ('preview' 76000 106000)
+   (
+      'rank'
+      ('drum' 448)
+      ('guitar' 409)
+      ('bass' 436)
+      ('vocals' 0)
+      ('keys' 0)
+      ('real_keys' 0)
+      ('band' 345)
+   )
+   ('genre' 'metal')
+   ('vocal_gender' 'male')
+   ('version' 30)
+   ('format' 10)
+   ('album_art' 1)
+   ('year_released' 2008)
+   ('rating' 2)
+   ('sub_genre' 'subgenre_metal')
+   ('song_id' 5012062)
+   ('tuning_offset_cents' 0.0)
+   ('guide_pitch_volume' -3.0)
+   (
+      'game_origin'
+      #ifdef CUSTOMSOURCE
+      'ugc_lost'
+      #else
+      'ugc_plus'
+      #endif
+   )
+   ('encoding' 'latin1')
+   (
+      'album_name'
+      "Lamentia"
+   )
+   ('album_track_number' 10)
+)
+(
+   'Godlike'
+   (
+      'name'
+      "Godlike"
+   )
+   (
+      'artist'
+      "KMFDM"
+   )
+   ('master' 1)
+   (
+      'song'
+      (
+         'name'
+         "songs/godlike/godlike"
+      )
+      (
+         'tracks_count'
+         (5 1 2 1 0 2)
+      )
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1 2 3 4)
+            )
+            (
+               'bass'
+               (5)
+            )
+            (
+               'guitar'
+               (6 7)
+            )
+            (
+               'vocals'
+               (8)
+            )
+         )
+      )
+      (
+         'pans'
+         (0.0 -1.0 1.0 -1.0 1.0 0.0 -1.0 1.0 0.0 -1.0 1.0)
+      )
+      (
+         'vols'
+         (0.0 0.0 0.0 0.0 0.0 -3.0 -2.0 -2.0 -3.0 -3.0 -3.0)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1)
+      )
+      ('vocal_parts' 1)
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+      ('mute_volume' -96)
+      ('mute_volume_vocals' -12)
+      ('hopo_threshold' 90)
+   )
+   ('song_scroll_speed' 2300)
+   (
+      'bank'
+      "sfx/tambourine_bank.milo"
+   )
+   (drum_bank sfx/kit01_bank.milo)
+   ('anim_tempo' 32)
+   ('song_length' 310691)
+   ('preview' 182489 212489)
+   (
+      'rank'
+      ('drum' 178)
+      ('guitar' 267)
+      ('bass' 181)
+      ('vocals' 1)
+      ('keys' 0)
+      ('real_keys' 0)
+      ('band' 215)
+   )
+   ('genre' 'metal')
+   ('vocal_gender' 'male')
+   ('version' 30)
+   ('format' 10)
+   ('album_art' 1)
+   ('year_released' 1990)
+   ('rating' 2)
+   ('sub_genre' 'subgenre_industrial')
+   ('song_id' 1687600084)
+   (solo (guitar))
+   ('tuning_offset_cents' 0)
+   ('guide_pitch_volume' -3.0)
+   (
+      'game_origin'
+      #ifdef CUSTOMSOURCE
+      'ugc_lost'
+      #else
+      'ugc_plus'
+      #endif
+   )
+   ('encoding' 'utf8')
+   (
+      'album_name'
+      "Naïve"
+   )
+   ('album_track_number' 11)
+   ('vocal_tonic_note' 5)
+   ('song_tonality' 0)
+)
+(
+   'UGC_5011178'
+   (
+      'name'
+      "O Vurdón"
+   )
+   (
+      'artist'
+      "Lechuga"
+   )
+   ('master' 1)
+   (
+      'song'
+      (
+         'name'
+         "songs/UGC_5011178/UGC_5011178"
+      )
+      (
+         'tracks_count'
+         (6 2 2 0 2 2)
+      )
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1 2 3 4 5)
+            )
+            (
+               'bass'
+               (6 7)
+            )
+            (
+               'guitar'
+               (8 9)
+            )
+            (
+               'keys'
+               (10 11)
+            )
+         )
+      )
+      (
+         'pans'
+         (-1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0)
+      )
+      (
+         'vols'
+         (0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1)
+      )
+      ('vocal_parts' 0)
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+   )
+   ('song_scroll_speed' 2300)
+   (
+      'bank'
+      "sfx/tambourine_bank.milo"
+   )
+   ('anim_tempo' 64)
+   ('song_length' 307427)
+   ('preview' 72000 102000)
+   (
+      'rank'
+      ('drum' 448)
+      ('guitar' 409)
+      ('bass' 436)
+      ('vocals' 0)
+      ('keys' 443)
+      ('real_keys' 443)
+      ('band' 345)
+   )
+   ('genre' 'metal')
+   ('vocal_gender' 'male')
+   ('version' 30)
+   ('format' 10)
+   ('album_art' 1)
+   ('year_released' 2011)
+   ('rating' 2)
+   ('sub_genre' 'subgenre_prog')
+   ('song_id' 5011178)
+   ('tuning_offset_cents' 0.0)
+   ('guide_pitch_volume' -3.0)
+   (
+      'game_origin'
+      #ifdef CUSTOMSOURCE
+      'ugc_lost'
+      #else
+      'ugc_plus'
+      #endif
+   )
+   ('encoding' 'latin1')
+   (
+      'album_name'
+      "Lechuga"
+   )
+   ('album_track_number' 2)
+)
+(
+   'UGC_5011279'
+   (
+      'name'
+      "Nouakchott"
+   )
+   (
+      'artist'
+      "Matthew Rybicki"
+   )
+   ('master' 1)
+   (
+      'song'
+      (
+         'name'
+         "songs/UGC_5011279/UGC_5011279"
+      )
+      (
+         'tracks_count'
+         (5 2 2 2 2 2)
+      )
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1 2 3 4)
+            )
+            (
+               'bass'
+               (5 6)
+            )
+            (
+               'guitar'
+               (7 8)
+            )
+            (
+               'vocals'
+               (9 10)
+            )
+            (
+               'keys'
+               (11 12)
+            )
+         )
+      )
+      (
+         'pans'
+         (0.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0)
+      )
+      (
+         'vols'
+         (-1.0 -0.0 -0.0 -0.7 -0.7 -0.9 -0.9 -1.5 -1.5 -1.4 -1.4 -0.6 -0.6 -3.0 -3.0)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1)
+      )
+      ('vocal_parts' 3)
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+   )
+   ('song_scroll_speed' 2300)
+   (
+      'bank'
+      "sfx/tambourine_bank.milo"
+   )
+   ('anim_tempo' 32)
+   ('song_length' 426113)
+   ('preview' 251000 281000)
+   (
+      'rank'
+      ('drum' 448)
+      ('guitar' 333)
+      ('bass' 293)
+      ('vocals' 175)
+      ('keys' 385)
+      ('real_keys' 385)
+      ('band' 292)
+   )
+   ('genre' 'jazz')
+   ('vocal_gender' 'female')
+   ('version' 30)
+   ('format' 10)
+   ('album_art' 1)
+   ('year_released' 2010)
+   ('rating' 2)
+   ('sub_genre' 'subgenre_contemporary')
+   ('song_id' 5011279)
+   ('tuning_offset_cents' 0.0)
+   ('guide_pitch_volume' -3.0)
+   (
+      'game_origin'
+      #ifdef CUSTOMSOURCE
+      'ugc_lost'
+      #else
+      'ugc_plus'
+      #endif
+   )
+   ('encoding' 'latin1')
+   (
+      'album_name'
+      "Driven"
+   )
+   ('album_track_number' 1)
+)
+(
+   'BrandNewKey'
+   (
+      'name'
+      "Brand New Key"
+   )
+   (
+      'artist'
+      "Melanie"
+   )
+   ('master' 1)
+   (
+      'song'
+      (
+         'name'
+         "songs/brandnewkey/brandnewkey"
+      )
+      (
+         'tracks_count'
+         (2 2 2 2 2 2)
+      )
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1)
+            )
+            (
+               'bass'
+               (2 3)
+            )
+            (
+               'guitar'
+               (4 5)
+            )
+            (
+               'vocals'
+               (6 7)
+            )
+            (
+               'keys'
+               (8 9)
+            )
+         )
+      )
+      (
+         'pans'
+         (-1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0)
+      )
+      (
+         'vols'
+         (0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1)
+      )
+      ('vocal_parts' 3)
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+      ('mute_volume' -96)
+      ('mute_volume_vocals' -12)
+      ('hopo_threshold' 170)
+   )
+   ('song_scroll_speed' 2300)
+   (
+      'bank'
+      "sfx/tambourine_bank.milo"
+   )
+   (drum_bank sfx/kit03_bank.milo)
+   ('anim_tempo' 16)
+   ('song_length' 161495)
+   ('preview' 30000 60000)
+   (
+      'rank'
+      ('drum' 178)
+      ('guitar' 221)
+      ('bass' 135)
+      ('vocals' 279)
+      ('keys' 211)
+      ('real_keys' 211)
+      ('band' 243)
+   )
+   ('genre' 'rock')
+   ('vocal_gender' 'female')
+   ('version' 30)
+   ('format' 10)
+   ('album_art' 1)
+   ('year_recorded' 2012)
+   ('year_released' 1971)
+   ('rating' 1)
+   ('sub_genre' 'subgenre_folkrock')
+   ('song_id' 1687600081)
+   ('tuning_offset_cents' 0)
+   ('guide_pitch_volume' -3.0)
+   (
+      'game_origin'
+      #ifdef CUSTOMSOURCE
+      'ugc_lost'
+      #else
+      'ugc_plus'
+      #endif
+   )
+   ('encoding' 'latin1')
+   ('vocal_tonic_note' 1)
+   ('song_tonality' 0)
+)
+(
+   'UGC_5011046'
+   (
+      'name'
+      "Dig It"
+   )
+   (
+      'artist'
+      "Mike Orlando"
+   )
+   ('master' 1)
+   (
+      'song'
+      (
+         'name'
+         "songs/UGC_5011046/UGC_5011046"
+      )
+      (
+         'tracks_count'
+         (6 2 2 0 0 2)
+      )
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1 2 3 4 5)
+            )
+            (
+               'bass'
+               (6 7)
+            )
+            (
+               'guitar'
+               (8 9)
+            )
+         )
+      )
+      (
+         'pans'
+         (-1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0)
+      )
+      (
+         'vols'
+         (-3.0 -3.0 -3.0 -3.0 -3.0 -3.0 -1.0 -1.0 -3.0 -3.0 -3.0 -3.0)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1)
+      )
+      ('vocal_parts' 0)
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+   )
+   ('song_scroll_speed' 2300)
+   (
+      'bank'
+      "sfx/tambourine_bank.milo"
+   )
+   ('anim_tempo' 32)
+   ('song_length' 328788)
+   ('preview' 90000 120000)
+   (
+      'rank'
+      ('drum' 448)
+      ('guitar' 409)
+      ('bass' 436)
+      ('vocals' 0)
+      ('keys' 0)
+      ('real_keys' 0)
+      ('band' 345)
+   )
+   ('genre' 'rock')
+   ('vocal_gender' 'male')
+   ('version' 30)
+   ('format' 10)
+   ('album_art' 1)
+   ('year_released' 2010)
+   ('rating' 2)
+   ('sub_genre' 'subgenre_rock')
+   ('song_id' 5011046)
+   ('tuning_offset_cents' 0.0)
+   ('guide_pitch_volume' -3.0)
+   (
+      'game_origin'
+      #ifdef CUSTOMSOURCE
+      'ugc_lost'
+      #else
+      'ugc_plus'
+      #endif
+   )
+   ('encoding' 'latin1')
+   (
+      'album_name'
+      "Sonic Stomp II"
+   )
+   ('album_track_number' 2)
+)
+(
+   'UGC_5011770'
+   (
+      'name'
+      "Departure"
+   )
+   (
+      'artist'
+      "Mors Principium Est"
+   )
+   ('master' 1)
+   (
+      'song'
+      (
+         'name'
+         "songs/UGC_5011770/UGC_5011770"
+      )
+      (
+         'tracks_count'
+         (5 1 2 2 2 2)
+      )
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1 2 3 4)
+            )
+            (
+               'bass'
+               (5)
+            )
+            (
+               'guitar'
+               (6 7)
+            )
+            (
+               'vocals'
+               (8 9)
+            )
+            (
+               'keys'
+               (10 11)
+            )
+         )
+      )
+      (
+         'pans'
+         (0.0 -1.0 1.0 -1.0 1.0 0.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0)
+      )
+      (
+         'vols'
+         (-3.0 -3.0 -3.0 -3.0 -3.0 -3.0 -3.0 -3.0 -3.0 -3.0 -3.0 -3.0 -3.0 -3.0)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1)
+      )
+      ('vocal_parts' 3)
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+   )
+   ('song_scroll_speed' 2300)
+   (
+      'bank'
+      "sfx/tambourine_bank.milo"
+   )
+   ('anim_tempo' 32)
+   ('song_length' 403456)
+   ('preview' 175000 205000)
+   (
+      'rank'
+      ('drum' 448)
+      ('guitar' 409)
+      ('bass' 364)
+      ('vocals' 1)
+      ('keys' 269)
+      ('real_keys' 327)
+      ('band' 292)
+   )
+   ('genre' 'metal')
+   ('vocal_gender' 'male')
+   ('version' 30)
+   ('format' 10)
+   ('album_art' 1)
+   ('year_released' 2012)
+   ('rating' 2)
+   ('sub_genre' 'subgenre_death')
+   ('song_id' 5011770)
+   ('tuning_offset_cents' 0.0)
+   ('guide_pitch_volume' -3.0)
+   (
+      'game_origin'
+      #ifdef CUSTOMSOURCE
+      'ugc_lost'
+      #else
+      'ugc_plus'
+      #endif
+   )
+   ('encoding' 'latin1')
+   (
+      'album_name'
+      "...And Death Said Live"
+   )
+   ('album_track_number' 1)
+)
+(
+   'UGC_5011785'
+   (
+      'name'
+      "Merciless Times"
+   )
+   (
+      'artist'
+      "Myrath"
+   )
+   ('master' 1)
+   (
+      'song'
+      (
+         'name'
+         "songs/UGC_5011785/UGC_5011785"
+      )
+      (
+         'tracks_count'
+         (6 2 2 2 2 2)
+      )
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1 2 3 4 5)
+            )
+            (
+               'bass'
+               (6 7)
+            )
+            (
+               'guitar'
+               (8 9)
+            )
+            (
+               'vocals'
+               (10 11)
+            )
+            (
+               'keys'
+               (12 13)
+            )
+         )
+      )
+      (
+         'pans'
+         (-1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0)
+      )
+      (
+         'vols'
+         (-1.0 -1.0 -1.0 -1.0 -1.0 -1.0 -1.0 -1.0 -1.0 -1.0 -1.0 -1.0 -1.0 -1.0 -1.0 -1.0)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1)
+      )
+      ('vocal_parts' 2)
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+   )
+   ('song_scroll_speed' 2300)
+   (
+      'bank'
+      "sfx/tambourine_bank.milo"
+   )
+   ('anim_tempo' 32)
+   ('song_length' 206885)
+   ('preview' 85000 115000)
+   (
+      'rank'
+      ('drum' 345)
+      ('guitar' 333)
+      ('bass' 228)
+      ('vocals' 218)
+      ('keys' 385)
+      ('real_keys' 385)
+      ('band' 267)
+   )
+   ('genre' 'metal')
+   ('vocal_gender' 'male')
+   ('version' 30)
+   ('format' 10)
+   ('album_art' 1)
+   ('year_released' 2011)
+   ('rating' 2)
+   ('sub_genre' 'subgenre_prog')
+   ('song_id' 5011785)
+   ('tuning_offset_cents' 0.0)
+   ('guide_pitch_volume' -3.0)
+   (
+      'game_origin'
+      #ifdef CUSTOMSOURCE
+      'ugc_lost'
+      #else
+      'ugc_plus'
+      #endif
+   )
+   ('encoding' 'latin1')
+   (
+      'album_name'
+      "Tales of the Sands"
+   )
+   ('album_track_number' 1)
+)
+(
+   'UGC_5011073'
+   (
+      'name'
+      "Snow Zombies [NSFR Mix]"
+   )
+   (
+      'artist'
+      "Nathaniel Whitlock"
+   )
+   ('master' 1)
+   (
+      'song'
+      (
+         'name'
+         "songs/UGC_5011073/UGC_5011073"
+      )
+      (
+         'tracks_count'
+         (2 2 2 2 2 2)
+      )
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1)
+            )
+            (
+               'bass'
+               (2 3)
+            )
+            (
+               'guitar'
+               (4 5)
+            )
+            (
+               'vocals'
+               (6 7)
+            )
+            (
+               'keys'
+               (8 9)
+            )
+         )
+      )
+      (
+         'pans'
+         (-1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0)
+      )
+      (
+         'vols'
+         (-3.0 -3.0 -3.0 -3.0 -3.0 -3.0 -3.0 -3.0 -3.0 -3.0 -3.0 -3.0)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1)
+      )
+      ('vocal_parts' 2)
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+   )
+   ('song_scroll_speed' 2300)
+   (
+      'bank'
+      "sfx/tambourine_bank.milo"
+   )
+   ('anim_tempo' 32)
+   ('song_length' 274560)
+   ('preview' 0 30000)
+   (
+      'rank'
+      ('drum' 448)
+      ('guitar' 409)
+      ('bass' 1)
+      ('vocals' 132)
+      ('keys' 443)
+      ('real_keys' 443)
+      ('band' 345)
+   )
+   ('genre' 'novelty')
+   ('vocal_gender' 'male')
+   ('version' 30)
+   ('format' 10)
+   ('album_art' 1)
+   ('year_released' 2011)
+   ('rating' 2)
+   ('sub_genre' 'subgenre_novelty')
+   ('song_id' 5011073)
+   ('tuning_offset_cents' 0.0)
+   ('guide_pitch_volume' -3.0)
+   (
+      'game_origin'
+      #ifdef CUSTOMSOURCE
+      'ugc_lost'
+      #else
+      'ugc_plus'
+      #endif
+   )
+   ('encoding' 'latin1')
+)
+(
+   'o554338798_afeast_nekrogob'
+   (
+      'name'
+      "A Feast"
+   )
+   (
+      'artist'
+      "Nekrogoblikon"
+   )
+   ('master' 1)
+   (
+      'song'
+      (
+         'name'
+         "songs/o554338798_afeast_nekrogob/o554338798_afeast_nekrogob"
+      )
+      (
+         'tracks_count'
+         (4 2 2 2 2 2)
+      )
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1 2 3)
+            )
+            (
+               'bass'
+               (4 5)
+            )
+            (
+               'guitar'
+               (6 7)
+            )
+            (
+               'vocals'
+               (8 9)
+            )
+            (
+               'keys'
+               (10 11)
+            )
+         )
+      )
+      (
+         'pans'
+         (0.0 0.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0)
+      )
+      (
+         'vols'
+         (0.0 0.0 0.0 0.0 -3.0 -3.0 -3.0 -3.0 -3.0 -3.0 -3.0 -3.0 0.0 0.0)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1)
+      )
+      ('vocal_parts' 3)
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+      ('mute_volume' -96)
+      ('mute_volume_vocals' -12)
+      ('hopo_threshold' 170)
+   )
+   ('song_scroll_speed' 2300)
+   (
+      'bank'
+      "sfx/tambourine_bank.milo"
+   )
+   (drum_bank sfx/kit01_bank.milo)
+   ('anim_tempo' 64)
+   ('song_length' 317090)
+   ('preview' 60000 90000)
+   (
+      'rank'
+      ('drum' 448)
+      ('guitar' 333)
+      ('bass' 364)
+      ('vocals' 1)
+      ('keys' 385)
+      ('real_keys' 385)
+      ('band' 292)
+   )
+   ('genre' 'metal')
+   ('vocal_gender' 'male')
+   ('version' 30)
+   ('format' 10)
+   ('album_art' 1)
+   ('year_released' 2011)
+   ('rating' 2)
+   ('sub_genre' 'subgenre_metal')
+   ('song_id' 1687600082)
+   (solo (keys))
+   ('tuning_offset_cents' 0)
+   ('guide_pitch_volume' -3.0)
+   (
+      'game_origin'
+      #ifdef CUSTOMSOURCE
+      'ugc_lost'
+      #else
+      'ugc_plus'
+      #endif
+   )
+   ('encoding' 'latin1')
+   (
+      'album_name'
+      "STENCH"
+   )
+   ('album_track_number' 5)
+)
+(
+   'UGC_5011444'
+   (
+      'name'
+      "Cloaked in Wolf Skin"
+   )
+   (
+      'artist'
+      "Nightrage"
+   )
+   ('master' 1)
+   (
+      'song'
+      (
+         'name'
+         "songs/UGC_5011444/UGC_5011444"
+      )
+      (
+         'tracks_count'
+         (5 1 2 2 0 2)
+      )
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1 2 3 4)
+            )
+            (
+               'bass'
+               (5)
+            )
+            (
+               'guitar'
+               (6 7)
+            )
+            (
+               'vocals'
+               (8 9)
+            )
+         )
+      )
+      (
+         'pans'
+         (0.0 -1.0 1.0 -1.0 1.0 0.0 -1.0 1.0 -1.0 1.0 -1.0 1.0)
+      )
+      (
+         'vols'
+         (-3.0 -3.0 -3.0 -3.0 -3.0 -3.0 -3.0 -3.0 -3.0 -3.0 -3.0 -3.0)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1)
+      )
+      ('vocal_parts' 3)
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+   )
+   ('song_scroll_speed' 2300)
+   (
+      'bank'
+      "sfx/tambourine_bank.milo"
+   )
+   ('anim_tempo' 64)
+   ('song_length' 205248)
+   ('preview' 100000 130000)
+   (
+      'rank'
+      ('drum' 448)
+      ('guitar' 409)
+      ('bass' 293)
+      ('vocals' 1)
+      ('keys' 0)
+      ('real_keys' 0)
+      ('band' 345)
+   )
+   ('genre' 'metal')
+   ('vocal_gender' 'male')
+   ('version' 30)
+   ('format' 10)
+   ('album_art' 1)
+   ('year_released' 2011)
+   ('rating' 2)
+   ('sub_genre' 'subgenre_death')
+   ('song_id' 5011444)
+   ('tuning_offset_cents' 0.0)
+   ('guide_pitch_volume' -3.0)
+   (
+      'game_origin'
+      #ifdef CUSTOMSOURCE
+      'ugc_lost'
+      #else
+      'ugc_plus'
+      #endif
+   )
+   ('encoding' 'latin1')
+   (
+      'album_name'
+      "Insidious"
+   )
+   ('album_track_number' 7)
+)
+(
+   'UGC_5011349'
+   (
+      'name'
+      "Expulsion of Fury"
+   )
+   (
+      'artist'
+      "Origin"
+   )
+   ('master' 1)
+   (
+      'song'
+      (
+         'name'
+         "songs/UGC_5011349/UGC_5011349"
+      )
+      (
+         'tracks_count'
+         (6 2 2 2 0 2)
+      )
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1 2 3 4 5)
+            )
+            (
+               'bass'
+               (6 7)
+            )
+            (
+               'guitar'
+               (8 9)
+            )
+            (
+               'vocals'
+               (10 11)
+            )
+         )
+      )
+      (
+         'pans'
+         (-1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0)
+      )
+      (
+         'vols'
+         (-3.0 -3.0 -3.0 -3.0 -3.0 -3.0 -3.0 -3.0 -3.0 -3.0 -3.0 -3.0 -3.0 -3.0)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1)
+      )
+      ('vocal_parts' 3)
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+   )
+   ('song_scroll_speed' 2300)
+   (
+      'bank'
+      "sfx/tambourine_bank.milo"
+   )
+   ('anim_tempo' 64)
+   ('song_length' 185369)
+   ('preview' 16000 46000)
+   (
+      'rank'
+      ('drum' 448)
+      ('guitar' 409)
+      ('bass' 436)
+      ('vocals' 1)
+      ('keys' 0)
+      ('real_keys' 0)
+      ('band' 345)
+   )
+   ('genre' 'metal')
+   ('vocal_gender' 'male')
+   ('version' 30)
+   ('format' 10)
+   ('album_art' 1)
+   ('year_released' 2011)
+   ('rating' 2)
+   ('sub_genre' 'subgenre_death')
+   ('song_id' 5011349)
+   ('tuning_offset_cents' 0.0)
+   ('guide_pitch_volume' -3.0)
+   (
+      'game_origin'
+      #ifdef CUSTOMSOURCE
+      'ugc_lost'
+      #else
+      'ugc_plus'
+      #endif
+   )
+   ('encoding' 'latin1')
+   (
+      'album_name'
+      "Entity"
+   )
+   ('album_track_number' 1)
+)
+(
+   'UGC_5011985'
+   (
+      'name'
+      "Jam (RB3 Version)"
+   )
+   (
+      'artist'
+      "Philip Franco"
+   )
+   ('master' 1)
+   (
+      'song'
+      (
+         'name'
+         "songs/UGC_5011985/UGC_5011985"
+      )
+      (
+         'tracks_count'
+         (5 2 2 0 0 1)
+      )
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1 2 3 4)
+            )
+            (
+               'bass'
+               (5 6)
+            )
+            (
+               'guitar'
+               (7 8)
+            )
+         )
+      )
+      (
+         'pans'
+         (0.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 0.0)
+      )
+      (
+         'vols'
+         (0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 -5.0)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 -1 -1 -1 -1 -1 -1)
+      )
+      ('vocal_parts' 0)
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+   )
+   ('song_scroll_speed' 2300)
+   (
+      'bank'
+      "sfx/tambourine_bank.milo"
+   )
+   ('anim_tempo' 32)
+   ('song_length' 274004)
+   ('preview' 26000 56000)
+   (
+      'rank'
+      ('drum' 345)
+      ('guitar' 333)
+      ('bass' 228)
+      ('vocals' 0)
+      ('keys' 0)
+      ('real_keys' 0)
+      ('band' 267)
+   )
+   ('genre' 'rbsoulfunk')
+   ('vocal_gender' 'male')
+   ('version' 30)
+   ('format' 10)
+   ('album_art' 1)
+   ('year_released' 2010)
+   ('rating' 2)
+   ('sub_genre' 'subgenre_funk')
+   ('song_id' 5011985)
+   ('tuning_offset_cents' 0.0)
+   ('guide_pitch_volume' -3.0)
+   (
+      'game_origin'
+      #ifdef CUSTOMSOURCE
+      'ugc_lost'
+      #else
+      'ugc_plus'
+      #endif
+   )
+   ('encoding' 'latin1')
+   (
+      'album_name'
+      "Game"
+   )
+   ('album_track_number' 1)
+)
+(
+   'UGC_5011968'
+   (
+      'name'
+      "Jam 2"
+   )
+   (
+      'artist'
+      "Philip Franco and the Jam Band"
+   )
+   ('master' 1)
+   (
+      'song'
+      (
+         'name'
+         "songs/UGC_5011968/UGC_5011968"
+      )
+      (
+         'tracks_count'
+         (6 2 2 0 0 2)
+      )
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1 2 3 4 5)
+            )
+            (
+               'bass'
+               (6 7)
+            )
+            (
+               'guitar'
+               (8 9)
+            )
+         )
+      )
+      (
+         'pans'
+         (-1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0)
+      )
+      (
+         'vols'
+         (-3.0 -3.0 -3.0 -3.0 -3.0 -3.0 -3.0 -3.0 -3.0 -3.0 -3.0 -3.0)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1)
+      )
+      ('vocal_parts' 0)
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+   )
+   ('song_scroll_speed' 2300)
+   (
+      'bank'
+      "sfx/tambourine_bank.milo"
+   )
+   ('anim_tempo' 32)
+   ('song_length' 282167)
+   ('preview' 24000 54000)
+   (
+      'rank'
+      ('drum' 345)
+      ('guitar' 267)
+      ('bass' 181)
+      ('vocals' 0)
+      ('keys' 0)
+      ('real_keys' 0)
+      ('band' 267)
+   )
+   ('genre' 'rock')
+   ('vocal_gender' 'male')
+   ('version' 30)
+   ('format' 10)
+   ('album_art' 1)
+   ('year_released' 2011)
+   ('rating' 2)
+   ('sub_genre' 'subgenre_rock')
+   ('song_id' 5011968)
+   ('tuning_offset_cents' 0.0)
+   ('guide_pitch_volume' -3.0)
+   (
+      'game_origin'
+      #ifdef CUSTOMSOURCE
+      'ugc_lost'
+      #else
+      'ugc_plus'
+      #endif
+   )
+   ('encoding' 'latin1')
+   (
+      'album_name'
+      "GAME"
+   )
+   ('album_track_number' 2)
+)
+(
+   'UGC_5011926'
+   (
+      'name'
+      "Beloved Horrifier"
+   )
+   (
+      'artist'
+      "Revocation"
+   )
+   ('master' 1)
+   (
+      'song'
+      (
+         'name'
+         "songs/UGC_5011926/UGC_5011926"
+      )
+      (
+         'tracks_count'
+         (6 2 2 2 0 2)
+      )
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1 2 3 4 5)
+            )
+            (
+               'bass'
+               (6 7)
+            )
+            (
+               'guitar'
+               (8 9)
+            )
+            (
+               'vocals'
+               (10 11)
+            )
+         )
+      )
+      (
+         'pans'
+         (-1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0)
+      )
+      (
+         'vols'
+         (-3.0 -3.0 -2.0 -2.0 -1.0 -1.0 -3.0 -3.0 -3.5 -3.5 -4.0 -4.0 -3.0 -3.0)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1)
+      )
+      ('vocal_parts' 2)
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+   )
+   ('song_scroll_speed' 2300)
+   (
+      'bank'
+      "sfx/tambourine_bank.milo"
+   )
+   ('anim_tempo' 32)
+   ('song_length' 253927)
+   ('preview' 94000 124000)
+   (
+      'rank'
+      ('drum' 448)
+      ('guitar' 409)
+      ('bass' 364)
+      ('vocals' 1)
+      ('keys' 0)
+      ('real_keys' 0)
+      ('band' 292)
+   )
+   ('genre' 'metal')
+   ('vocal_gender' 'male')
+   ('version' 30)
+   ('format' 10)
+   ('album_art' 1)
+   ('year_released' 2011)
+   ('rating' 2)
+   ('sub_genre' 'subgenre_metal')
+   ('song_id' 5011926)
+   ('tuning_offset_cents' 0.0)
+   ('guide_pitch_volume' -3.0)
+   (
+      'game_origin'
+      #ifdef CUSTOMSOURCE
+      'ugc_lost'
+      #else
+      'ugc_plus'
+      #endif
+   )
+   ('encoding' 'latin1')
+   (
+      'album_name'
+      "Chaos of Forms"
+   )
+   ('album_track_number' 10)
+)
+(
+   'UGC_5011216'
+   (
+      'name'
+      "Conjuring the Cataclysm"
+   )
+   (
+      'artist'
+      "Revocation"
+   )
+   ('master' 1)
+   (
+      'song'
+      (
+         'name'
+         "songs/UGC_5011216/UGC_5011216"
+      )
+      (
+         'tracks_count'
+         (6 2 2 2 2 2)
+      )
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1 2 3 4 5)
+            )
+            (
+               'bass'
+               (6 7)
+            )
+            (
+               'guitar'
+               (8 9)
+            )
+            (
+               'vocals'
+               (10 11)
+            )
+            (
+               'keys'
+               (12 13)
+            )
+         )
+      )
+      (
+         'pans'
+         (-1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0)
+      )
+      (
+         'vols'
+         (-3.0 -3.0 -2.0 -2.0 -3.0 -3.0 -2.5 -2.5 -3.0 -3.0 -3.0 -3.0 -3.0 -3.0 -3.0 -3.0)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1)
+      )
+      ('vocal_parts' 3)
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+   )
+   ('song_scroll_speed' 2300)
+   (
+      'bank'
+      "sfx/tambourine_bank.milo"
+   )
+   ('anim_tempo' 32)
+   ('song_length' 281951)
+   ('preview' 107000 137000)
+   (
+      'rank'
+      ('drum' 345)
+      ('guitar' 333)
+      ('bass' 293)
+      ('vocals' 1)
+      ('keys' 1)
+      ('real_keys' 1)
+      ('band' 292)
+   )
+   ('genre' 'metal')
+   ('vocal_gender' 'male')
+   ('version' 30)
+   ('format' 10)
+   ('album_art' 1)
+   ('year_released' 2011)
+   ('rating' 2)
+   ('sub_genre' 'subgenre_metal')
+   ('song_id' 5011216)
+   ('tuning_offset_cents' 0.0)
+   ('guide_pitch_volume' -3.0)
+   (
+      'game_origin'
+      #ifdef CUSTOMSOURCE
+      'ugc_lost'
+      #else
+      'ugc_plus'
+      #endif
+   )
+   ('encoding' 'latin1')
+   (
+      'album_name'
+      "Chaos of Forms"
+   )
+   ('album_track_number' 8)
+)
+(
+   'UGC_5011589'
+   (
+      'name'
+      "No Funeral"
+   )
+   (
+      'artist'
+      "Revocation"
+   )
+   ('master' 1)
+   (
+      'song'
+      (
+         'name'
+         "songs/UGC_5011589/UGC_5011589"
+      )
+      (
+         'tracks_count'
+         (6 2 2 2 0 2)
+      )
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1 2 3 4 5)
+            )
+            (
+               'bass'
+               (6 7)
+            )
+            (
+               'guitar'
+               (8 9)
+            )
+            (
+               'vocals'
+               (10 11)
+            )
+         )
+      )
+      (
+         'pans'
+         (-1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0)
+      )
+      (
+         'vols'
+         (-1.0 -1.0 0.0 0.0 0.0 0.0 -3.5 -3.5 -2.0 -2.0 -0.8 -0.8 -2.0 -2.0)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1)
+      )
+      ('vocal_parts' 3)
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+   )
+   ('song_scroll_speed' 2300)
+   (
+      'bank'
+      "sfx/tambourine_bank.milo"
+   )
+   ('anim_tempo' 64)
+   ('song_length' 239615)
+   ('preview' 58000 88000)
+   (
+      'rank'
+      ('drum' 448)
+      ('guitar' 409)
+      ('bass' 364)
+      ('vocals' 132)
+      ('keys' 0)
+      ('real_keys' 0)
+      ('band' 292)
+   )
+   ('genre' 'metal')
+   ('vocal_gender' 'male')
+   ('version' 30)
+   ('format' 10)
+   ('album_art' 1)
+   ('year_released' 2011)
+   ('rating' 2)
+   ('sub_genre' 'subgenre_metal')
+   ('song_id' 5011589)
+   ('tuning_offset_cents' 0.0)
+   ('guide_pitch_volume' -3.0)
+   (
+      'game_origin'
+      #ifdef CUSTOMSOURCE
+      'ugc_lost'
+      #else
+      'ugc_plus'
+      #endif
+   )
+   ('encoding' 'latin1')
+   (
+      'album_name'
+      "Chaos of Forms"
+   )
+   ('album_track_number' 6)
+)
+(
+   'UGC_5011934'
+   (
+      'name'
+      "The Watchers"
+   )
+   (
+      'artist'
+      "Revocation"
+   )
+   ('master' 1)
+   (
+      'song'
+      (
+         'name'
+         "songs/UGC_5011934/UGC_5011934"
+      )
+      (
+         'tracks_count'
+         (6 2 2 2 2 2)
+      )
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1 2 3 4 5)
+            )
+            (
+               'bass'
+               (6 7)
+            )
+            (
+               'guitar'
+               (8 9)
+            )
+            (
+               'vocals'
+               (10 11)
+            )
+            (
+               'keys'
+               (12 13)
+            )
+         )
+      )
+      (
+         'pans'
+         (-1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0)
+      )
+      (
+         'vols'
+         (-1.0 -1.0 -0.0 -0.0 -0.0 -0.0 -3.0 -3.0 -1.0 -1.0 -1.0 -1.0 -1.0 -1.0 -1.0 -1.0)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1)
+      )
+      ('vocal_parts' 2)
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+   )
+   ('song_scroll_speed' 2300)
+   (
+      'bank'
+      "sfx/cowbell_bank.milo"
+   )
+   ('anim_tempo' 32)
+   ('song_length' 258718)
+   ('preview' 58000 88000)
+   (
+      'rank'
+      ('drum' 448)
+      ('guitar' 409)
+      ('bass' 436)
+      ('vocals' 1)
+      ('keys' 385)
+      ('real_keys' 385)
+      ('band' 292)
+   )
+   ('genre' 'metal')
+   ('vocal_gender' 'male')
+   ('version' 30)
+   ('format' 10)
+   ('album_art' 1)
+   ('year_released' 2011)
+   ('rating' 2)
+   ('sub_genre' 'subgenre_metal')
+   ('song_id' 5011934)
+   ('tuning_offset_cents' 0.0)
+   ('guide_pitch_volume' -3.0)
+   (
+      'game_origin'
+      #ifdef CUSTOMSOURCE
+      'ugc_lost'
+      #else
+      'ugc_plus'
+      #endif
+   )
+   ('encoding' 'latin1')
+   (
+      'album_name'
+      "Chaos of Forms"
+   )
+   ('album_track_number' 9)
+)
+(
+   'UGC_5012052'
+   (
+      'name'
+      "Shadow of the Beast"
+   )
+   (
+      'artist'
+      "Richard Campbell"
+   )
+   ('master' 1)
+   (
+      'song'
+      (
+         'name'
+         "songs/UGC_5012052/UGC_5012052"
+      )
+      (
+         'tracks_count'
+         (6 2 2 2 2 2)
+      )
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1 2 3 4 5)
+            )
+            (
+               'bass'
+               (6 7)
+            )
+            (
+               'guitar'
+               (8 9)
+            )
+            (
+               'vocals'
+               (10 11)
+            )
+            (
+               'keys'
+               (12 13)
+            )
+         )
+      )
+      (
+         'pans'
+         (-1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0)
+      )
+      (
+         'vols'
+         (0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1)
+      )
+      ('vocal_parts' 3)
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+   )
+   ('song_scroll_speed' 2300)
+   (
+      'bank'
+      "sfx/tambourine_bank.milo"
+   )
+   ('anim_tempo' 32)
+   ('song_length' 306072)
+   ('preview' 147000 177000)
+   (
+      'rank'
+      ('drum' 448)
+      ('guitar' 409)
+      ('bass' 364)
+      ('vocals' 279)
+      ('keys' 269)
+      ('real_keys' 385)
+      ('band' 292)
+   )
+   ('genre' 'prog')
+   ('vocal_gender' 'male')
+   ('version' 30)
+   ('format' 10)
+   ('album_art' 1)
+   ('year_released' 2012)
+   ('rating' 2)
+   ('sub_genre' 'subgenre_progrock')
+   ('song_id' 5012052)
+   ('tuning_offset_cents' 0.0)
+   ('guide_pitch_volume' -3.0)
+   (
+      'game_origin'
+      #ifdef CUSTOMSOURCE
+      'ugc_lost'
+      #else
+      'ugc_plus'
+      #endif
+   )
+   ('encoding' 'latin1')
+   (
+      'album_name'
+      "Frankenstein"
+   )
+   ('album_track_number' 5)
+)
+(
+   'UGC_5011827'
+   (
+      'name'
+      "Freaks and Animals"
+   )
+   (
+      'artist'
+      "Rishloo"
+   )
+   ('master' 1)
+   (
+      'song'
+      (
+         'name'
+         "songs/UGC_5011827/UGC_5011827"
+      )
+      (
+         'tracks_count'
+         (6 2 2 2 0 2)
+      )
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1 2 3 4 5)
+            )
+            (
+               'bass'
+               (6 7)
+            )
+            (
+               'guitar'
+               (8 9)
+            )
+            (
+               'vocals'
+               (10 11)
+            )
+         )
+      )
+      (
+         'pans'
+         (-1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0)
+      )
+      (
+         'vols'
+         (-3.0 -3.0 -3.0 -3.0 -3.0 -3.0 -3.0 -3.0 -3.0 -3.0 -3.0 -3.0 -3.0 -3.0)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1)
+      )
+      ('vocal_parts' 2)
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+   )
+   ('song_scroll_speed' 2300)
+   (
+      'bank'
+      "sfx/tambourine_bank.milo"
+   )
+   ('anim_tempo' 16)
+   ('song_length' 258891)
+   ('preview' 45000 75000)
+   (
+      'rank'
+      ('drum' 242)
+      ('guitar' 333)
+      ('bass' 228)
+      ('vocals' 218)
+      ('keys' 0)
+      ('real_keys' 0)
+      ('band' 267)
+   )
+   ('genre' 'prog')
+   ('vocal_gender' 'male')
+   ('version' 30)
+   ('format' 10)
+   ('album_art' 1)
+   ('year_released' 2007)
+   ('rating' 2)
+   ('sub_genre' 'subgenre_progrock')
+   ('song_id' 5011827)
+   ('tuning_offset_cents' 0.0)
+   ('guide_pitch_volume' -3.0)
+   (
+      'game_origin'
+      #ifdef CUSTOMSOURCE
+      'ugc_lost'
+      #else
+      'ugc_plus'
+      #endif
+   )
+   ('encoding' 'latin1')
+   (
+      'album_name'
+      "Eidolon"
+   )
+   ('album_track_number' 2)
+)
+(
+   'UGC_5011909'
+   (
+      'name'
+      "Schizophrenic Seizure (ft. Paolo Viteri)"
+   )
+   (
+      'artist'
+      "Superfluous Motor"
+   )
+   ('master' 1)
+   (
+      'song'
+      (
+         'name'
+         "songs/UGC_5011909/UGC_5011909"
+      )
+      (
+         'tracks_count'
+         (2 2 2 0 2 2)
+      )
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1)
+            )
+            (
+               'bass'
+               (2 3)
+            )
+            (
+               'guitar'
+               (4 5)
+            )
+            (
+               'keys'
+               (6 7)
+            )
+         )
+      )
+      (
+         'pans'
+         (-1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0)
+      )
+      (
+         'vols'
+         (0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 -1 -1 -1 -1 -1 -1)
+      )
+      ('vocal_parts' 0)
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+   )
+   ('song_scroll_speed' 2300)
+   (
+      'bank'
+      "sfx/tambourine_bank.milo"
+   )
+   ('anim_tempo' 32)
+   ('song_length' 254404)
+   ('preview' 110000 140000)
+   (
+      'rank'
+      ('drum' 448)
+      ('guitar' 409)
+      ('bass' 436)
+      ('vocals' 0)
+      ('keys' 443)
+      ('real_keys' 443)
+      ('band' 345)
+   )
+   ('genre' 'prog')
+   ('vocal_gender' 'male')
+   ('version' 30)
+   ('format' 10)
+   ('album_art' 1)
+   ('year_released' 2012)
+   ('rating' 2)
+   ('sub_genre' 'subgenre_progrock')
+   ('song_id' 5011909)
+   ('tuning_offset_cents' 0.0)
+   ('guide_pitch_volume' -3.0)
+   (
+      'game_origin'
+      #ifdef CUSTOMSOURCE
+      'ugc_lost'
+      #else
+      'ugc_plus'
+      #endif
+   )
+   ('encoding' 'latin1')
+   (
+      'album_name'
+      "Shattered Groove"
+   )
+   ('album_track_number' 7)
+)
+(
+   'UGC_5011794'
+   (
+      'name'
+      "Resilience"
+   )
+   (
+      'artist'
+      "Synthetic Breed"
+   )
+   ('master' 1)
+   (
+      'song'
+      (
+         'name'
+         "songs/UGC_5011794/UGC_5011794"
+      )
+      (
+         'tracks_count'
+         (6 2 2 2 2 2)
+      )
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1 2 3 4 5)
+            )
+            (
+               'bass'
+               (6 7)
+            )
+            (
+               'guitar'
+               (8 9)
+            )
+            (
+               'vocals'
+               (10 11)
+            )
+            (
+               'keys'
+               (12 13)
+            )
+         )
+      )
+      (
+         'pans'
+         (-1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0)
+      )
+      (
+         'vols'
+         (-2.5 -2.5 -2.0 -2.0 -1.0 -1.0 -0.6 -0.6 -1.5 -1.5 -3.5 -3.5 -1.5 -1.5 -2.5 -2.5)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1)
+      )
+      ('vocal_parts' 3)
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+   )
+   ('song_scroll_speed' 2300)
+   (
+      'bank'
+      "sfx/handclap_bank.milo"
+   )
+   ('anim_tempo' 64)
+   ('song_length' 264250)
+   ('preview' 84000 114000)
+   (
+      'rank'
+      ('drum' 448)
+      ('guitar' 409)
+      ('bass' 436)
+      ('vocals' 175)
+      ('keys' 153)
+      ('real_keys' 153)
+      ('band' 292)
+   )
+   ('genre' 'metal')
+   ('vocal_gender' 'male')
+   ('version' 30)
+   ('format' 10)
+   ('album_art' 1)
+   ('year_released' 2010)
+   ('rating' 2)
+   ('sub_genre' 'subgenre_industrial')
+   ('song_id' 5011794)
+   ('tuning_offset_cents' 0.0)
+   ('guide_pitch_volume' -3.0)
+   (
+      'game_origin'
+      #ifdef CUSTOMSOURCE
+      'ugc_lost'
+      #else
+      'ugc_plus'
+      #endif
+   )
+   ('encoding' 'latin1')
+   (
+      'album_name'
+      "Perpetual Motion Machine"
+   )
+   ('album_track_number' 1)
+)
+(
+   'UGC_5011778'
+   (
+      'name'
+      "Ahnedonia"
+   )
+   (
+      'artist'
+      "Teramaze"
+   )
+   ('master' 1)
+   (
+      'song'
+      (
+         'name'
+         "songs/UGC_5011778/UGC_5011778"
+      )
+      (
+         'tracks_count'
+         (2 2 2 2 2 2)
+      )
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1)
+            )
+            (
+               'bass'
+               (2 3)
+            )
+            (
+               'guitar'
+               (4 5)
+            )
+            (
+               'vocals'
+               (6 7)
+            )
+            (
+               'keys'
+               (8 9)
+            )
+         )
+      )
+      (
+         'pans'
+         (-1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0)
+      )
+      (
+         'vols'
+         (-3.0 -3.0 -3.5 -3.5 -3.0 -3.0 -4.0 -4.0 -3.0 -3.0 -3.0 -3.0)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1)
+      )
+      ('vocal_parts' 3)
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+   )
+   ('song_scroll_speed' 2300)
+   (
+      'bank'
+      "sfx/tambourine_bank.milo"
+   )
+   ('anim_tempo' 64)
+   ('song_length' 310766)
+   ('preview' 215000 245000)
+   (
+      'rank'
+      ('drum' 345)
+      ('guitar' 333)
+      ('bass' 364)
+      ('vocals' 218)
+      ('keys' 153)
+      ('real_keys' 1)
+      ('band' 292)
+   )
+   ('genre' 'metal')
+   ('vocal_gender' 'male')
+   ('version' 30)
+   ('format' 10)
+   ('album_art' 1)
+   ('year_released' 2012)
+   ('rating' 2)
+   ('sub_genre' 'subgenre_metal')
+   ('song_id' 5011778)
+   ('tuning_offset_cents' 0.0)
+   ('guide_pitch_volume' -3.0)
+   (
+      'game_origin'
+      #ifdef CUSTOMSOURCE
+      'ugc_lost'
+      #else
+      'ugc_plus'
+      #endif
+   )
+   ('encoding' 'latin1')
+   (
+      'album_name'
+      "Ahnedonia"
+   )
+   ('album_track_number' 1)
+)
+(
+   'UGC_5011853'
+   (
+      'name'
+      "Machine"
+   )
+   (
+      'artist'
+      "Teramaze"
+   )
+   ('master' 1)
+   (
+      'song'
+      (
+         'name'
+         "songs/UGC_5011853/UGC_5011853"
+      )
+      (
+         'tracks_count'
+         (2 2 2 2 0 2)
+      )
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1)
+            )
+            (
+               'bass'
+               (2 3)
+            )
+            (
+               'guitar'
+               (4 5)
+            )
+            (
+               'vocals'
+               (6 7)
+            )
+         )
+      )
+      (
+         'pans'
+         (-1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0)
+      )
+      (
+         'vols'
+         (-3.0 -3.0 -3.5 -3.5 -3.0 -3.0 -4.0 -4.0 -3.0 -3.0)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 -1 -1 -1 -1 -1 -1)
+      )
+      ('vocal_parts' 3)
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+   )
+   ('song_scroll_speed' 2300)
+   (
+      'bank'
+      "sfx/tambourine_bank.milo"
+   )
+   ('anim_tempo' 32)
+   ('song_length' 299224)
+   ('preview' 50000 80000)
+   (
+      'rank'
+      ('drum' 345)
+      ('guitar' 333)
+      ('bass' 228)
+      ('vocals' 353)
+      ('keys' 0)
+      ('real_keys' 0)
+      ('band' 292)
+   )
+   ('genre' 'metal')
+   ('vocal_gender' 'male')
+   ('version' 30)
+   ('format' 10)
+   ('album_art' 1)
+   ('year_released' 2012)
+   ('rating' 2)
+   ('sub_genre' 'subgenre_prog')
+   ('song_id' 5011853)
+   ('tuning_offset_cents' 0.0)
+   ('guide_pitch_volume' -3.0)
+   (
+      'game_origin'
+      #ifdef CUSTOMSOURCE
+      'ugc_lost'
+      #else
+      'ugc_plus'
+      #endif
+   )
+   ('encoding' 'latin1')
+   (
+      'album_name'
+      "Anhedonia"
+   )
+   ('album_track_number' 4)
+)
+(
+   'o98517793_alltheway_thespi'
+   (
+      'name'
+      "All The Way"
+   )
+   (
+      'artist'
+      "The Spittin' Cobras"
+   )
+   ('master' 1)
+   (
+      'song'
+      (
+         'name'
+         "songs/o98517793_allthewayi/o98517793_allthewayi"
+      )
+      (
+         'tracks_count'
+         (6 2 2 2 0 2)
+      )
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1 2 3 4 5)
+            )
+            (
+               'bass'
+               (6 7)
+            )
+            (
+               'guitar'
+               (8 9)
+            )
+            (
+               'vocals'
+               (10 11)
+            )
+         )
+      )
+      (
+         'pans'
+         (-1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0)
+      )
+      (
+         'vols'
+         (0.0 0.0 0.0 0.0 0.0 0.0 -3.0 -3.0 -3.0 -3.0 -3.0 -3.0 0.0 0.0)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1)
+      )
+      ('vocal_parts' 1)
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+      ('mute_volume' -96)
+      ('mute_volume_vocals' -12)
+      ('hopo_threshold' 170)
+   )
+   ('song_scroll_speed' 2300)
+   (
+      'bank'
+      "sfx/tambourine_bank.milo"
+   )
+   (drum_bank sfx/kit01_bank.milo)
+   ('anim_tempo' 64)
+   ('song_length' 206239)
+   ('preview' 101000 131000)
+   (
+      'rank'
+      ('drum' 242)
+      ('guitar' 333)
+      ('bass' 293)
+      ('vocals' 218)
+      ('keys' 0)
+      ('real_keys' 0)
+      ('band' 292)
+   )
+   ('genre' 'rock')
+   ('vocal_gender' 'male')
+   ('version' 30)
+   ('format' 10)
+   ('album_art' 1)
+   ('year_released' 2009)
+   ('rating' 2)
+   ('sub_genre' 'subgenre_hardrock')
+   ('song_id' 1687600083)
+   (solo (guitar))
+   ('tuning_offset_cents' 0)
+   ('guide_pitch_volume' -3.0)
+   (
+      'game_origin'
+      #ifdef CUSTOMSOURCE
+      'ugc_lost'
+      #else
+      'ugc_plus'
+      #endif
+   )
+   ('encoding' 'latin1')
+   (
+      'album_name'
+      "Year of the Cobra"
+   )
+   ('album_track_number' 1)
+   ('vocal_tonic_note' 9)
+   ('song_tonality' 0)
+)
+(
+   'UGC_5011271'
+   (
+      'name'
+      "Divine Illusion"
+   )
+   (
+      'artist'
+      "All Shall Perish"
+   )
+   ('master' 1)
+   (
+      'song'
+      (
+         'name'
+         "songs/UGC_5011271/UGC_5011271"
+      )
+      (
+         'tracks_count'
+         (6 2 2 2 0 2)
+      )
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1 2 3 4 5)
+            )
+            (
+               'bass'
+               (6 7)
+            )
+            (
+               'guitar'
+               (8 9)
+            )
+            (
+               'vocals'
+               (10 11)
+            )
+         )
+      )
+      (
+         'pans'
+         (-1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0)
+      )
+      (
+         'vols'
+         (-3.0 -3.0 -3.0 -3.0 -3.0 -3.0 -3.0 -3.0 -3.0 -3.0 -3.0 -3.0 -3.0 -3.0)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1)
+      )
+      ('vocal_parts' 3)
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+   )
+   ('song_scroll_speed' 2300)
+   (
+      'bank'
+      "sfx/tambourine_bank.milo"
+   )
+   ('anim_tempo' 32)
+   ('song_length' 206500)
+   ('preview' 140000 170000)
+   (
+      'rank'
+      ('drum' 448)
+      ('guitar' 409)
+      ('bass' 436)
+      ('vocals' 1)
+      ('keys' 0)
+      ('real_keys' 0)
+      ('band' 345)
+   )
+   ('genre' 'metal')
+   ('vocal_gender' 'male')
+   ('version' 30)
+   ('format' 10)
+   ('album_art' 1)
+   ('year_released' 2011)
+   ('rating' 2)
+   ('sub_genre' 'subgenre_death')
+   ('song_id' 5011271)
+   ('tuning_offset_cents' 0.0)
+   ('guide_pitch_volume' -3.0)
+   (
+      'game_origin'
+      #ifdef CUSTOMSOURCE
+      'ugc_lost'
+      #else
+      'ugc_plus'
+      #endif
+   )
+   ('encoding' 'latin1')
+   (
+      'album_name'
+      "This is Where it Ends"
+   )
+   ('album_track_number' 1)
+)
+(
+   'UGC_5011235'
+   (
+      'name'
+      "Royalty Into Exile"
+   )
+   (
+      'artist'
+      "All Shall Perish"
+   )
+   ('master' 1)
+   (
+      'song'
+      (
+         'name'
+         "songs/UGC_5011235/UGC_5011235"
+      )
+      (
+         'tracks_count'
+         (6 2 2 2 0 2)
+      )
+      (
+         'tracks'
+         (
+            (
+               'drum'
+               (0 1 2 3 4 5)
+            )
+            (
+               'bass'
+               (6 7)
+            )
+            (
+               'guitar'
+               (8 9)
+            )
+            (
+               'vocals'
+               (10 11)
+            )
+         )
+      )
+      (
+         'pans'
+         (-1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0 -1.0 1.0)
+      )
+      (
+         'vols'
+         (-3.0 -3.0 -2.0 -2.0 -3.0 -3.0 -2.0 -2.0 -3.0 -3.0 -3.0 -3.0 -3.0 -3.0)
+      )
+      (
+         'cores'
+         (-1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1)
+      )
+      ('vocal_parts' 2)
+      (
+         'drum_solo'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'tom1.cue' 'tom2.cue' 'crash.cue')
+         )
+      )
+      (
+         'drum_freestyle'
+         (
+            'seqs'
+            ('kick.cue' 'snare.cue' 'hat.cue' 'ride.cue' 'crash.cue')
+         )
+      )
+   )
+   ('song_scroll_speed' 2300)
+   (
+      'bank'
+      "sfx/tambourine_bank.milo"
+   )
+   ('anim_tempo' 64)
+   ('song_length' 268909)
+   ('preview' 36000 66000)
+   (
+      'rank'
+      ('drum' 448)
+      ('guitar' 409)
+      ('bass' 364)
+      ('vocals' 1)
+      ('keys' 0)
+      ('real_keys' 0)
+      ('band' 292)
+   )
+   ('genre' 'metal')
+   ('vocal_gender' 'male')
+   ('version' 30)
+   ('format' 10)
+   ('album_art' 1)
+   ('year_released' 2011)
+   ('rating' 2)
+   ('sub_genre' 'subgenre_death')
+   ('song_id' 5011235)
+   ('tuning_offset_cents' 0.0)
+   ('guide_pitch_volume' -3.0)
+   (
+      'game_origin'
+      #ifdef CUSTOMSOURCE
+      'ugc_lost'
+      #else
+      'ugc_plus'
+      #endif
+   )
+   ('encoding' 'latin1')
+   (
+      'album_name'
+      "This is Where it Ends"
+   )
+   ('album_track_number' 8)
+)

@@ -5,7 +5,13 @@ import { createRSPackImage } from '../../lib.exports'
 import { DTAParser, TextureFile } from '../rbtools'
 import { isRPCS3Devhdd0PathValid, rpcs3GenSongPackageManifest, getOfficialSongPackageStatsFromHash } from '../rbtools/lib.exports'
 
-export const genPackImageToAllPackages = async (devhdd0Path: DirPathLikeTypes) => {
+/**
+ * Generates Rockshelf Pack Image files to all installed packages that doesn't have a Rockshelf Pack Image file on it.
+ * - - - -
+ * @param {DirPathLikeTypes} devhdd0Path The path to the `dev_hdd0` folder of your RPCS3 installation.
+ * @returns {Promise<void>}
+ */
+export const genPackImageToAllPackages = async (devhdd0Path: DirPathLikeTypes): Promise<void> => {
   const devhdd0 = isRPCS3Devhdd0PathValid(devhdd0Path)
 
   const rb3UsrDir = RockshelfFileSystemAPI.rb3UsrDir(devhdd0)
@@ -18,23 +24,23 @@ export const genPackImageToAllPackages = async (devhdd0Path: DirPathLikeTypes) =
 
         if (!dtaFilePath.exists) continue
 
-        let parsedData: DTAParser
-        try {
-          parsedData = await DTAParser.fromFile(dtaFilePath)
-        } catch (err) {
-          continue
-        }
-
-        const { manifest } = await rpcs3GenSongPackageManifest(packagePath)
-        const contentsHash = createHashFromBuffer(Buffer.from(manifest))
-        const official = getOfficialSongPackageStatsFromHash('extractedRPCS3', contentsHash)
-        if (official) {
-          if (official.isDuplicatedForRB3) continue
-          await parsedData.applyDXUpdatesOnSongs()
-        }
-
         const thumbnailSrc = packagePath.gotoFile('folder.jpg')
         if (!thumbnailSrc.exists) {
+          let parsedData: DTAParser
+          try {
+            parsedData = await DTAParser.fromFile(dtaFilePath)
+          } catch (err) {
+            continue
+          }
+
+          const { manifest } = await rpcs3GenSongPackageManifest(packagePath)
+          const contentsHash = createHashFromBuffer(Buffer.from(manifest))
+          const official = getOfficialSongPackageStatsFromHash('extractedRPCS3', contentsHash)
+          if (official) {
+            if (official.isDuplicatedForRB3) continue
+            await parsedData.applyDXUpdatesOnSongs()
+          }
+
           if (parsedData.songs.length === 1) {
             const onlySong = parsedData.songs[0]
             const texture = new TextureFile(packagePath.gotoFile(`songs/${onlySong.songname}/gen/${onlySong.songname}_keep.png_ps3`))
@@ -66,26 +72,26 @@ export const genPackImageToAllPackages = async (devhdd0Path: DirPathLikeTypes) =
 
           if (!dtaFilePath.exists) continue
 
-          let parsedData: DTAParser
-          try {
-            parsedData = await DTAParser.fromFile(dtaFilePath)
-          } catch (err) {
-            continue
-          }
-
-          const { manifest, packageSize, packageFiles } = await rpcs3GenSongPackageManifest(packagePath)
-          const contentsHash = createHashFromBuffer(Buffer.from(manifest))
-          const official = getOfficialSongPackageStatsFromHash('extractedRPCS3', contentsHash)
-
-          // Comment the next line if you want to see the extracted RPCS3 of unknown RB1 packages
-          if (!official) continue
-          if (official?.isDuplicatedForRB3) continue
-
-          await parsedData.applyDXUpdatesOnSongs()
-
           const thumbnailSrc = packagePath.gotoFile('folder.jpg')
 
           if (!thumbnailSrc.exists) {
+            let parsedData: DTAParser
+            try {
+              parsedData = await DTAParser.fromFile(dtaFilePath)
+            } catch (err) {
+              continue
+            }
+
+            const { manifest } = await rpcs3GenSongPackageManifest(packagePath)
+            const contentsHash = createHashFromBuffer(Buffer.from(manifest))
+            const official = getOfficialSongPackageStatsFromHash('extractedRPCS3', contentsHash)
+
+            // Comment the next line if you want to see the extracted RPCS3 of unknown RB1 packages
+            if (!official) continue
+            if (official?.isDuplicatedForRB3) continue
+
+            await parsedData.applyDXUpdatesOnSongs()
+
             if (parsedData.songs.length === 1) {
               const onlySong = parsedData.songs[0]
               const texture = new TextureFile(packagePath.gotoFile(`songs/${onlySong.songname}/gen/${onlySong.songname}_keep.png_ps3`))

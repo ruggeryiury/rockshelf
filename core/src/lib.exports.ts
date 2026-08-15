@@ -1,10 +1,5 @@
-export * from './lib/github/GitHubAPI'
-
-export * from './lib/image/cropImageToTempPNG'
-
 export * from './lib/pkg/extractPackagesForRPCS3Extra'
 export * from './lib/pkg/filterSongPackages'
-export * from './lib/pkg/installRB3PatchFromPKG'
 
 export * from './lib/rb3p/createRB3File'
 export * from './lib/rb3p/extractRB3File'
@@ -25,5 +20,4 @@ export * from './lib/strnum/isValidFolderName'
 export * from './lib/strnum/sanitizeFilename'
 export * from './lib/strnum/stringFunctions'
 
-export * from './lib/utils/getInternalPythonName'
 export * from './lib/utils/sleep'

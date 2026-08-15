@@ -100,7 +100,7 @@ export const extractPackagesForRPCS3 = async (packages: RB3PackageLikeType[], de
   const hasSongSelection = songs.length > 0
   let allSelectedSongs: SelectedSongForExtractionObject[] = []
 
-  if (hasSongSelection) allSelectedSongs = songs.map((song) => (typeof song === 'string' ? { type: 'songname', value: song } : song)) as SelectedSongForExtractionObject[]
+  if (hasSongSelection) allSelectedSongs = songs.map((song) => (typeof song === 'string' ? { type: 'songname', value: song } : song))
 
   const dest = pathLikeToDirPath(destFolderPath)
   let isDevhdd0 = false

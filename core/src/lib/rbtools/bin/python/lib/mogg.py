@@ -956,3 +956,13 @@ def reencrypt_mogg(xbox: bool, red: bool, enc_ver: Literal[10, 11, 12, 13, 14, 1
 
     fout.close()
     return failed
+
+
+def mogg_to_ogg(fin: BufferedReader, fout: BufferedReader):
+    fin.seek(4)
+    ogg_offset_bytes = fin.read(4)
+
+    ogg_offset = int.from_bytes(ogg_offset_bytes, 'little')
+    fin.seek(ogg_offset)
+
+    fout.write(fin.read())

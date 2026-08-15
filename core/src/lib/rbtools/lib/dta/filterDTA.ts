@@ -405,14 +405,11 @@ export const filterDTAByArtist = (songs: RB3CompatibleDTAFile[], options?: DTAFi
     for (const song of allSongsFromArtist) allAlbums.add(song.album_name)
     const albumsArray = (Array.from(allAlbums.values()) as (string | undefined)[])
       .filter((val) => typeof val === 'string')
-      .map(
-        (val) =>
-          ({
-            name: val,
-            code: formatStringFromDTA(null, leadingArticleToTrailing(val), 'id'),
-            songsIndexes: [],
-          }) as Omit<DTAFilterGenericHeaders, 'songsIndexes'> & { songsIndexes: RB3CompatibleDTAFileWithIndex[] }
-      )
+      .map<Omit<DTAFilterGenericHeaders, 'songsIndexes'> & { songsIndexes: RB3CompatibleDTAFileWithIndex[] }>((val) => ({
+        name: val,
+        code: formatStringFromDTA(null, leadingArticleToTrailing(val), 'id'),
+        songsIndexes: [],
+      }))
 
     for (const album of albumsArray) {
       for (const song of allSongsFromArtist) {

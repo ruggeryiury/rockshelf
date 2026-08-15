@@ -152,10 +152,10 @@ export const parseRSDATBuffer = async (rsdatBuffer: Buffer): Promise<ParsedRSPac
 
   return {
     fileVersion: 1,
-    type: (rsPackImage.type[type] as RSPackImageTypeValues | undefined) ?? 'rockshelf',
-    source: (rsPackImage.source[source] as RSPackImageSourceValues | undefined) ?? 'stfs',
-    encryptionStatus: (rsPackImage.encryptionStatus[encryptionStatus] as RSPackImageEncryptionStatusValues | undefined) ?? 'unknown',
-    category: (rsPackImage.packageCategory[category] as RSPackImagePackageCategoryValues | undefined) ?? 'other',
+    type: rsPackImage.type[type] ?? 'rockshelf',
+    source: rsPackImage.source[source] ?? 'stfs',
+    encryptionStatus: rsPackImage.encryptionStatus[encryptionStatus] ?? 'unknown',
+    category: rsPackImage.packageCategory[category] ?? 'other',
     creationDate,
     packageName,
   }

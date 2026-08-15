@@ -23,3 +23,8 @@ export const windowMaximize = useHandler((win): boolean => {
  * Closes the application.
  */
 export const windowClose = useHandler((win): void => win.close())
+
+/**
+ * Restarts the application.
+ */
+export const windowRestart = useHandler((win): void => win.reload())

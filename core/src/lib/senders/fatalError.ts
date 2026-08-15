@@ -7,17 +7,17 @@ export interface FatalErrorObject {
 }
 
 /**
- * Sends a fatal error event to the renderer process.
+ * Sends a message that controls the `FatalErrorScreen` component on the renderer.
  * - - - -
- * @param {BrowserWindow} win Target `BrowserWindow` that will receive the message.
- * @param {Error} err The error object.
+ * @param {BrowserWindow} win The `BrowserWindow` instance of the event emitter.
+ * @param {Error} err The error object to be displayed on the renderer.
  */
 export const sendFatalError = (win: BrowserWindow, err: Error): true => {
   const errObject = {
     name: err.name,
     message: err.message,
     stack: err.stack,
-  } as FatalErrorObject
+  }
   win.webContents.send('sendFatalError', errObject)
   return true
 }

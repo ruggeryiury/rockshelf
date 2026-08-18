@@ -3,7 +3,7 @@
 **/out/
 *.env
 *.http
-pnpm-lock.yaml
+core/pnpm-lock.yaml
 **/temp/
 !LICENSE.md
 !README.md

@@ -18,6 +18,7 @@ export function ConfigScreen() {
   const { disableButtons, saveData, setWindowState } = useWindowState(useShallow((x) => ({ disableButtons: x.disableButtons, saveData: x.saveData, setWindowState: x.setWindowState })))
   const { setMyPackagesScreenState } = useMyPackagesScreenState(useShallow((x) => ({ setMyPackagesScreenState: x.setMyPackagesScreenState })))
   const setMessageBoxState = useMessageBoxState((x) => x.setMessageBoxState)
+  
   return (
     <AnimatedSection id="ConfigScreen" condition={active} {...animate({ opacity: true })} className="absolute! z-3 h-full max-h-full w-full max-w-full bg-black p-8">
       <div className="mb-2 flex-row! items-center border-b border-white/25 pb-1">
@@ -55,10 +56,10 @@ export function ConfigScreen() {
                 <img src={MEXFlag} width={12} className="mr-2" />
                 <h1>{t('es-419')}</h1>
               </button>
-              <button className={clsx('mr-2 flex-row! items-center rounded-xs border border-neutral-800 px-2 py-1 text-xs! uppercase duration-200 last:mr-0', i18n.language === 'fr-CA' ? 'bg-neutral-400 text-neutral-900 hover:bg-neutral-300 active:bg-neutral-200' : 'bg-neutral-900 hover:bg-neutral-800 active:bg-neutral-700')} onClick={() => i18n.changeLanguage('fr-CA')}>
+              {/* <button className={clsx('mr-2 flex-row! items-center rounded-xs border border-neutral-800 px-2 py-1 text-xs! uppercase duration-200 last:mr-0', i18n.language === 'fr-CA' ? 'bg-neutral-400 text-neutral-900 hover:bg-neutral-300 active:bg-neutral-200' : 'bg-neutral-900 hover:bg-neutral-800 active:bg-neutral-700')} onClick={() => i18n.changeLanguage('fr-CA')}>
                 <img src={FCAFlag} width={12} className="mr-2" />
                 <h1>{t('fr-CA')}</h1>
-              </button>
+              </button> */}
             </div>
           </div>
 

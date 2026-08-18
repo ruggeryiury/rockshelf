@@ -1,6 +1,6 @@
 import { dialog, shell } from 'electron'
 import { getLocaleStringFromRenderer, RockshelfFileSystemAPI, sendMessageBox, useHandler } from '../core.exports'
-import { userData } from '../data'
+import { userData } from '../init'
 import { pathLikeToDirPath, pathLikeToFilePath, type DirPath } from 'node-lib'
 import { ImageFile, TextureFile } from '../lib/rbtools'
 
@@ -8,7 +8,7 @@ export const openExternalURL = useHandler(async (_, __, url: string): Promise<vo
   return await shell.openExternal(url)
 })
 
-export type RockshelfFileSystemAPItemCommand = 'coreModuleRootDir' | 'appUserDataDir' | 'appTempDir' | 'appDownloadableContentDir' | 'rb1UsrDir' | 'rb2UsrDir' | 'rb3UsrDir'
+export type RockshelfFileSystemAPItemCommand = 'coreModuleRootDir' | 'appUserDataDir' | 'appDownloadableContentDir' | 'rb1UsrDir' | 'rb2UsrDir' | 'rb3UsrDir'
 
 export const openRockshelfFSDir = useHandler(async (_, __, command: RockshelfFileSystemAPItemCommand): Promise<boolean> => {
   if (!userData.userConfig) throw new Error('User config data is not loaded.')
@@ -22,10 +22,6 @@ export const openRockshelfFSDir = useHandler(async (_, __, command: RockshelfFil
     case 'appUserDataDir':
     default: {
       path = RockshelfFileSystemAPI.appUserDataDir()
-      break
-    }
-    case 'appTempDir': {
-      path = RockshelfFileSystemAPI.appTempDir()
       break
     }
     case 'appDownloadableContentDir': {

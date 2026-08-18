@@ -1,6 +1,6 @@
 import { pathLikeToDirPath, pathLikeToFilePath, type DirPath, type FilePath } from 'node-lib'
 import { RockshelfFileSystemAPI, sendDialog, sendMessageBox, useHandler } from '../core.exports'
-import { dataSync, userData } from '../data'
+import { dataSync, userData } from '../init'
 import type { RockBand3Data } from '../lib/rbtools/lib.exports'
 import { exec } from 'child_process'
 

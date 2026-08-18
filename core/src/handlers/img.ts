@@ -2,7 +2,7 @@ import { temporaryFile } from 'tempy'
 import { RockshelfProtocolAPI } from '../core.exports'
 import { FilePath, pathLikeToFilePath, type FilePathJSONRepresentation } from 'node-lib'
 import { ImageFile, PythonAPI, TextureFile, type ImageCropOptions } from '../lib/rbtools'
-import { temps } from '../data'
+import { temps } from '../init'
 
 export const imgCropAndSaveToTemp = async (srcFile: string, options?: ImageCropOptions): Promise<FilePathJSONRepresentation> => {
   let src: FilePath

@@ -93,10 +93,9 @@ export function FirstTimeScreen() {
             const userConfigStatus = await window.api.userConfig.save({
               devhdd0Path,
               rpcs3ExePath,
-              mostPlayedDifficulty: 3,
-              mostPlayedInstrument: 'band',
             })
             if (STRUCT_LOG) console.log('struct UserConfigObject ["core/src/core/api/UserDataAPI.ts"]:', userConfigStatus)
+            setUserConfigState({ ...userConfigStatus })
 
             const initialState = await window.api.data.getInitialState()
             if (STRUCT_LOG) console.log('struct InitialStateObject ["core/src/core/api/DataSyncAPI.ts"]:', initialState)
@@ -134,10 +133,10 @@ export function FirstTimeScreen() {
           <img src={MEXFlag} width={12} className="mr-2" />
           <h1>{t('es-419')}</h1>
         </button>
-        <button className={clsx('mr-2 flex-row! items-center rounded-xs border border-neutral-800 px-2 py-1 text-xs! uppercase duration-200 last:mr-0', i18n.language === 'fr-CA' ? 'bg-neutral-400 text-neutral-900 hover:bg-neutral-300 active:bg-neutral-200' : 'bg-neutral-900 hover:bg-neutral-800 active:bg-neutral-700')} onClick={() => i18n.changeLanguage('fr-CA')}>
+        {/* <button className={clsx('mr-2 flex-row! items-center rounded-xs border border-neutral-800 px-2 py-1 text-xs! uppercase duration-200 last:mr-0', i18n.language === 'fr-CA' ? 'bg-neutral-400 text-neutral-900 hover:bg-neutral-300 active:bg-neutral-200' : 'bg-neutral-900 hover:bg-neutral-800 active:bg-neutral-700')} onClick={() => i18n.changeLanguage('fr-CA')}>
           <img src={FCAFlag} width={12} className="mr-2" />
           <h1>{t('fr-CA')}</h1>
-        </button>
+        </button> */}
       </div>
     </AnimatedSection>
   )

@@ -3,7 +3,7 @@ import { isDir, type FilePath } from 'node-lib'
 import { RockshelfFileSystemAPI } from './RockshelfFileSystemAPI'
 import { net, protocol } from 'electron'
 import { pathToFileURL } from 'node:url'
-import { userData } from '../../data'
+import { userData } from '../../init'
 
 /**
  * A class with static methods that translates URLs from different protocols.
@@ -35,19 +35,6 @@ export class RockshelfProtocolAPI {
     const hostname = decodeURIComponent(urlObj.hostname)
     const root = RockshelfFileSystemAPI.tempDir()
     const filePath = root.gotoFile(`${hostname}`)
-    return filePath
-  }
-
-  /**
-   * Resolves the path from the `tempjpg://` protocol.
-   * - - - -
-   * @param {string} url The url you want to resolve.
-   * @returns {FilePath}
-   */
-  static tempjpgToPath(url: string): FilePath {
-    const root = RockshelfFileSystemAPI.appTempDir()
-    const name = url.slice('tempjpg://'.length)
-    const filePath = root.gotoFile(`${name}.jpg`)
     return filePath
   }
 

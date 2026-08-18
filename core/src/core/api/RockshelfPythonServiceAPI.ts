@@ -2,7 +2,7 @@ import { spawn } from 'node:child_process'
 import { platform } from 'node:os'
 import { execAsync } from 'node-lib'
 import { dialog } from 'electron'
-import { CommandLineInterfaceAPI } from './CommandLineInterfaceAPI'
+import { CLIAPI } from './CLIAPI'
 import { RockshelfFileSystemAPI } from './RockshelfFileSystemAPI'
 import { RockshelfLocaleAPI } from './RockshelfLocaleAPI'
 
@@ -44,7 +44,7 @@ export class RockshelfPythonServiceAPI {
       const title = RockshelfLocaleAPI.t('pythonNotInstalledErrorTitle')
       const message = RockshelfLocaleAPI.t('pythonNotInstalledError')
       dialog.showErrorBox(title, message)
-      CommandLineInterfaceAPI.exit(1)
+      CLIAPI.exit(1)
     }
 
     const version = res.stdout
@@ -57,13 +57,13 @@ export class RockshelfPythonServiceAPI {
       const title = RockshelfLocaleAPI.t('pythonOutdatedErrorTitle')
       const message = RockshelfLocaleAPI.t('pythonOutdatedError')
       dialog.showErrorBox(title, message)
-      CommandLineInterfaceAPI.exit(1)
+      CLIAPI.exit(1)
     }
     if (version[0] < 3 || (version[0] === 3 && version[1] < 10)) {
       const title = RockshelfLocaleAPI.t('pythonOutdatedErrorTitle')
       const message = RockshelfLocaleAPI.t('pythonOutdatedError')
       dialog.showErrorBox(title, message)
-      CommandLineInterfaceAPI.exit(1)
+      CLIAPI.exit(1)
     }
   }
   /**

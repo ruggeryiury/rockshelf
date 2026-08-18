@@ -8,7 +8,7 @@ import { RB3File } from './RB3File'
 import { createRSPackImage } from '../rspackimg/createRSPackImage'
 import { createReadStream } from 'node:fs'
 import { pipeline } from 'node:stream/promises'
-import { userData } from '../../data'
+import { userData } from '../../init'
 import { EDATFile } from '../rbtools'
 
 export interface RB3FileExtractionOptions {

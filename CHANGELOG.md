@@ -32,3 +32,4 @@ _This will be the first version that will be compiled and released using GitHub 
 - `ENHANCEMENT` Rock Band 3 Song Package (`.rb3`) files are not able to embed pre-RB3 files (`*.pan`, `*.usr`, `*.vnn`, `*.voc`, `*.xvocab`, `*_weights.bin`).
 - `ENHANCEMENT` Rock Band 3 Song Package (`.rb3`) files are now a valid song package file to be installed through "Create New Package".
 - `FIX` (on `DTAParser`) Fixed a bug where the DTA parser was correctly parsing but wasn't setting `original_id` values.
+- `FIX` (on `DTAParser`) Fixed a bug where any string value with a semicolon (;) wasn't correctly parsed.

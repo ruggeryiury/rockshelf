@@ -52,20 +52,6 @@ export type UserConfigReadObject = UserConfigObject | 'firstTime' | 'corrupted'
  * This class settles an API for user data synchronization, reading and editing between the main and renderer processes.
  */
 export class UserDataAPI {
-  static defaultValues = {
-    userConfig: {
-      devhdd0Path: '',
-      rpcs3ExePath: '',
-      mostPlayedInstrument: 'band',
-      mostPlayedDifficulty: 3,
-      packagesCatalogSortBy: 'name',
-      songsCatalogSortBy: 'title',
-      rpcs3NoGUI: false,
-      downloadedContentDirPath: DirPath.of(app.getPath('userData')).gotoDir('../Rockshelf/DownloadedContent').path,
-      downloadedContentFileName: 'hash',
-    } as UserConfigObject,
-  }
-
   userConfig?: UserConfigObject
   constructor() {}
 
@@ -97,10 +83,18 @@ export class UserDataAPI {
     const userConfigFilePath = RockshelfFileSystemAPI.userConfigFile()
 
     const newData = {
-      ...UserDataAPI.defaultValues.userConfig,
+      devhdd0Path: '',
+      rpcs3ExePath: '',
+      mostPlayedInstrument: 'band',
+      mostPlayedDifficulty: 3,
+      packagesCatalogSortBy: 'name',
+      songsCatalogSortBy: 'title',
+      rpcs3NoGUI: false,
+      downloadedContentDirPath: DirPath.of(app.getPath('documents')).gotoDir('DownloadedContent').path,
+      downloadedContentFileName: 'hash',
       ...this.userConfig,
       ...newConfig,
-    }
+    } satisfies UserConfigObject
 
     this.userConfig = newData
     await userConfigFilePath.write(JSON.stringify(newData))

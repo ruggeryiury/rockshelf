@@ -1,7 +1,7 @@
 import { command, oneOf, option, positional, string } from 'cmd-ts'
 import { MOGGFile } from '../../lib/rbtools'
-import { CommandLineInterfaceAPI } from '../api/CommandLineInterfaceAPI'
-import { type CLIOutputFormats, cliOutputFormats } from '../../data'
+import { CLIAPI } from '../api/CLIAPI'
+import { type CLIOutputFormats, cliOutputFormats } from '../../init'
 
 export const moggstat = command({
   name: 'moggstat',
@@ -15,19 +15,19 @@ export const moggstat = command({
 
     if (!mogg.path.exists) {
       console.error(`ERROR: Provided MOGG file { ${mogg.path.path} } does not exists.`)
-      return CommandLineInterfaceAPI.exit(1)
+      return CLIAPI.exit(1)
     }
     try {
       await mogg.checkFileIntegrity()
     } catch (err) {
       console.error(`ERROR: Provided MOGG file { ${mogg.path.path} } is not a valid MOGG file.`)
-      return CommandLineInterfaceAPI.exit(1)
+      return CLIAPI.exit(1)
     }
 
     const stat = await mogg.toJSON()
 
-    const out = CommandLineInterfaceAPI.formatOutput(outputFormat, stat)
+    const out = CLIAPI.formatOutput(outputFormat, stat)
     console.log(out)
-    return CommandLineInterfaceAPI.exit()
+    return CLIAPI.exit()
   },
 })

@@ -1,10 +1,10 @@
 import { app, BrowserWindow, type IpcMainInvokeEvent } from 'electron'
-import { addHandler, CommandLineInterfaceAPI, createWindow, RichPresenceAPI, RockshelfFileSystemAPI, RockshelfProtocolAPI, RockshelfPythonServiceAPI, SongDownloadQueueAPI, windowClose, windowMaximize, windowMinimize, windowRestart, type CreateWindowOptions } from './core.exports'
+import { addHandler, CLIAPI, createWindow, RichPresenceAPI, RockshelfFileSystemAPI, RockshelfProtocolAPI, RockshelfPythonServiceAPI, SongDownloadQueueAPI, windowClose, windowMaximize, windowMinimize, windowRestart, type CreateWindowOptions } from './core.exports'
 import { optimizer } from '@electron-toolkit/utils'
 import type { Promisable } from 'type-fest'
 import { extractMOGGTracksFromSong, imgCropAndSaveToTemp, installHighMemoryPatch, openConsoleWindow, openDir, openExternalURL, openImageToCrop, openRockshelfFSDir, playRB3, rhythmverseFetchData, selectorDevhdd0, selectorDir, selectorPackageFiles, selectorPathToRB3File, selectorRB3File, selectorRPCS3Exe } from './handlers.exports'
-import { dataSync, temps } from './data'
 import type { ImageCropOptions } from './lib/rbtools'
+import { dataSync, temps } from './init'
 
 export type HandlerFnType = (window: BrowserWindow, event: IpcMainInvokeEvent, ...args: any[]) => Promisable<any>
 export type InitHandlersArray = [string, HandlerFnType][]
@@ -41,9 +41,16 @@ export class Rockshelf {
 
     ['audio.extractMOGGTracksFromSong', extractMOGGTracksFromSong],
   ]
+
+  /**
+   * Initiates all application handlers that's not tied to an API in specific.
+   * - - - -
+   * @returns {void}
+   */
   static initHandlers(): void {
     for (const [channel, listeners] of Rockshelf.handlers) addHandler(channel, listeners)
   }
+
   /**
    * Initializes Rockshelf.
    * - - - -
@@ -57,7 +64,7 @@ export class Rockshelf {
 
     await app.whenReady()
     await RockshelfPythonServiceAPI.init()
-    if (options.argv.length > 1) return void CommandLineInterfaceAPI.init(options.argv)
+    if (options.argv.length > 1) return void CLIAPI.init(options.argv)
 
     app.on('window-all-closed', () => {
       dataSync.savePackagesDataCacheSync()

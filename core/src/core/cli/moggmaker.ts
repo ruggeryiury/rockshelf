@@ -1,9 +1,9 @@
+import { temporaryFile } from 'tempy'
 import { command, flag, number, option, restPositionals, string } from 'cmd-ts'
 import { PerformanceTimerAPI } from '../api/PerformanceTimerAPI'
-import { CommandLineInterfaceAPI } from '../api/CommandLineInterfaceAPI'
+import { CLIAPI } from '../api/CLIAPI'
 import { FilePath, pathLikeToFilePath, type FilePathLikeTypes } from 'node-lib'
 import { BinaryAPI, PythonAPI } from '../../lib/rbtools'
-import { temporaryFile } from 'tempy'
 
 /**
  * A class that can create multitrack OGG files to use on Rock Band games.
@@ -104,7 +104,7 @@ export const moggmaker = command({
     }),
     output: option({ long: 'output', short: 'o', type: string, description: 'The destination path of the new MOGG file.' }),
     encrypted: flag({ long: 'encrypt', short: 'e', defaultValue: () => false, description: 'Encrypts the created MOGG file using 0x0B encryption.' }),
-    quality: option({ long: 'quality', short: 'q', type: number, defaultValue: () => 3, description: 'Encrypts the created MOGG file using 0x0B encryption.' }),
+    quality: option({ long: 'quality', short: 'q', type: number, defaultValue: () => 3, description: 'The quality value of the OGG encoding.' }),
     verbose: flag({ long: 'verbose', short: 'v', defaultValue: () => false, description: 'Print additional information during execution.' }),
   },
   async handler({ files, verbose, encrypted, output, quality }) {
@@ -141,6 +141,6 @@ export const moggmaker = command({
     if (outOGG.exists) await outOGG.delete()
 
     console.log(`Operation Completed: ${timer.end()}`)
-    return CommandLineInterfaceAPI.exit()
+    return CLIAPI.exit()
   },
 })

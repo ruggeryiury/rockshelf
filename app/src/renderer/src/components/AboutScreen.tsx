@@ -135,7 +135,7 @@ export function AboutScreen() {
               <p>{`${t('es-419')}`}</p>
             </div>
           </div>
-          <div className="mb-1 flex-row! items-center">
+          {/* <div className="mb-1 flex-row! items-center">
             <img src={mrbean} className="mr-2 h-16 w-16 rounded-sm" />
             <div>
               <div className="mb-1 flex-row! items-center">
@@ -144,7 +144,7 @@ export function AboutScreen() {
               </div>
               <p>{`${t('fr-CA')}`}</p>
             </div>
-          </div>
+          </div> */}
         </div>
       </div>
     </AnimatedSection>

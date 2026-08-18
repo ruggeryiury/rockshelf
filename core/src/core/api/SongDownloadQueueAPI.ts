@@ -9,7 +9,7 @@ import { RockshelfFileSystemAPI } from '../api/RockshelfFileSystemAPI'
 import { STFSFile, type STFSFileJSONRepresentation } from '../../lib/rbtools'
 import type { UserConfigObject } from '../../core.exports'
 import { sanitizeFilename } from '../../lib.exports'
-import { userData } from '../../data'
+import { userData } from '../../init'
 
 export interface RhythmverseDownloadSongOptions {
   downloadLink: string

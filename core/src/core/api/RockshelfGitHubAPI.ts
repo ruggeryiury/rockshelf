@@ -1,7 +1,7 @@
 import axios from 'axios'
 import { RockshelfFileSystemAPI } from '../../core.exports'
 import { Hex, pathLikeToDirPath, type FilePathJSONRepresentation } from 'node-lib'
-import { userData } from '../../data'
+import { userData } from '../../init'
 
 export interface ResponseGetBasicOptions {
   timeout?: number

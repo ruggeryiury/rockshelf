@@ -1,7 +1,7 @@
 import { command, oneOf, option, positional, string } from 'cmd-ts'
-import { CommandLineInterfaceAPI } from '../api/CommandLineInterfaceAPI'
+import { CLIAPI } from '../api/CLIAPI'
 import { PKGFile } from '../../lib/rbtools'
-import { type CLIOutputFormats, cliOutputFormats } from '../../data'
+import { type CLIOutputFormats, cliOutputFormats } from '../../init'
 
 export const pkgstat = command({
   name: 'pkgstat',
@@ -15,19 +15,19 @@ export const pkgstat = command({
 
     if (!pkg.path.exists) {
       console.error(`ERROR: Provided PKG file { ${pkg.path.path} } does not exists.`)
-      return CommandLineInterfaceAPI.exit(1)
+      return CLIAPI.exit(1)
     }
     try {
       await pkg.checkFileIntegrity()
     } catch (err) {
       console.error(`ERROR: Provided PKG file { ${pkg.path.path} } is not a valid PKG file.`)
-      return CommandLineInterfaceAPI.exit(1)
+      return CLIAPI.exit(1)
     }
 
     const stat = await pkg.toJSON()
 
-    const out = CommandLineInterfaceAPI.formatOutput(outputFormat, stat)
+    const out = CLIAPI.formatOutput(outputFormat, stat)
     console.log(out)
-    return CommandLineInterfaceAPI.exit()
+    return CLIAPI.exit()
   },
 })

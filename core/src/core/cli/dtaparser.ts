@@ -1,10 +1,11 @@
 import { command, flag, oneOf, option, positional, string } from 'cmd-ts'
 import { pathLikeToFilePath } from 'node-lib'
 import { DTAParser } from '../../lib/rbtools'
-import { CommandLineInterfaceAPI } from '../api/CommandLineInterfaceAPI'
-import { cliOutputFormats, type CLIOutputFormats } from '../../data'
+import { CLIAPI } from '../api/CLIAPI'
+import { cliOutputFormats, type CLIOutputFormats } from '../../init'
 import { PerformanceTimerAPI } from '../api/PerformanceTimerAPI'
 import { getCompleteDTAMissingValues } from '../../lib/rbtools/lib.exports'
+import chalk from 'chalk'
 
 export const dtaparser = command({
   name: 'dtaparser',
@@ -16,12 +17,13 @@ export const dtaparser = command({
     applyDXUpdates: flag({ long: 'apply-dx-updates', short: 'u', defaultValue: () => false, description: 'Applies Rock Band 3 Deluxe updates on songs.' }),
   },
   async handler({ dtaFile, outputFormat, verbose, applyDXUpdates }) {
+    CLIAPI.clearLine()
     const dta = pathLikeToFilePath(dtaFile)
     const dest = dta.changeFileExt(outputFormat === 'yaml' ? 'yml' : 'json')
 
     if (!dta.exists) {
       console.error(`Error: DTA file { ${dta.path} } does not exists`)
-      return CommandLineInterfaceAPI.exit(1)
+      return CLIAPI.exit(1)
     }
     const parser = await DTAParser.fromFile(dta)
     const oldUpdates = [...parser.updates]
@@ -30,7 +32,8 @@ export const dtaparser = command({
       console.log(upd.id, getCompleteDTAMissingValues(upd))
     }
     const allOldSongs = parser.songs.length + parser.updates.length
-    console.log(parser)
+    const parserStats = parser.stat()
+    console.log(chalk.blue('[DTAParser]') + ` :: File ` + chalk.italic(dta.fullname) + ` parsed: ${parserStats.songsCount} song${parserStats.songsCount === 1 ? '' : 's'}, ${parserStats.updatesCount} update${parserStats.updatesCount === 1 ? '' : 's'}`)
     console.log(`Trying to parse ${allOldSongs} song${allOldSongs === 1 ? '' : 's'}...`)
     if (parser.updates.length > 0) {
       const editedSongs = await parser.applyDXUpdatesOnSongs(false)
@@ -40,10 +43,9 @@ export const dtaparser = command({
       if (parser.songs.length === allOldSongs) {
         parser.updates = []
         parser.sort('ID')
-        const a = JSON.stringify(parser.songs)
-        console.log(a)
-        await dest.write(a)
-        return CommandLineInterfaceAPI.exit()
+        const content = JSON.stringify(parser.songs)
+        await dest.write(content)
+        return CLIAPI.exit()
       }
 
       if (parser.updates.length > 0) {
@@ -55,23 +57,23 @@ export const dtaparser = command({
             if (parser.updates.length > 0) {
               console.log(update.id, getCompleteDTAMissingValues(update))
             }
-            return CommandLineInterfaceAPI.exit()
+            return CLIAPI.exit()
           }
         } else {
           // Fix exists on rockshelf.dta
           parser.sort('ID')
-          await dest.write(JSON.stringify(parser.songs))
-          return CommandLineInterfaceAPI.exit()
+          await dest.write(CLIAPI.formatOutput(outputFormat, { ...parser.songs }))
+          return CLIAPI.exit()
         }
       } else {
         parser.sort('ID')
-        await dest.write(JSON.stringify(parser.songs))
-        return CommandLineInterfaceAPI.exit()
+        await dest.write(CLIAPI.formatOutput(outputFormat, { ...parser.songs }))
+        return CLIAPI.exit()
       }
     } else {
       parser.sort('ID')
-      await dest.write(JSON.stringify(parser.songs))
-      return CommandLineInterfaceAPI.exit()
+      await dest.write(CLIAPI.formatOutput(outputFormat, { ...parser.songs }))
+      return CLIAPI.exit()
     }
     // const timer = new PerformanceTimerAPI()
     // const dtaPath = pathLikeToFilePath(dtaFile)
@@ -80,7 +82,7 @@ export const dtaparser = command({
     // try {
     //   if (!dtaPath.exists) {
     //     console.error(`ERROR: Provided DTA file { ${dtaPath.path} } does not exists.`)
-    //     return CommandLineInterfaceAPI.exit(1)
+    //     return CLIAPI.exit(1)
     //   }
 
     //   if (verbose) console.log(`Parsing DTA File... { ${dtaPath.path} }`)
@@ -95,12 +97,12 @@ export const dtaparser = command({
 
     //   console.log(parser)
 
-    //   const out = CommandLineInterfaceAPI.formatOutput(outputFormat, parser.songs)
+    //   const out = CLIAPI.formatOutput(outputFormat, parser.songs)
     //   if (verbose) console.log(`Writing ${outputFormat === 'json' || outputFormat === 'json-pretty' ? 'JSON' : 'YAML'} file... { ${savePath.path} }`)
     //   await savePath.write(out)
     // } catch (err) {
     //   if (err instanceof Error) console.error(`ERROR: An error occurred while trying to parse a DTA file: ${err.message}.`)
-    //   return CommandLineInterfaceAPI.exit(1)
+    //   return CLIAPI.exit(1)
     // }
 
     // console.log(`Operation Completed: ${timer.end()}`)

@@ -1,7 +1,7 @@
 import { command, oneOf, option, positional, string } from 'cmd-ts'
 import { STFSFile } from '../../lib/rbtools'
-import { CommandLineInterfaceAPI } from '../api/CommandLineInterfaceAPI'
-import { type CLIOutputFormats, cliOutputFormats } from '../../data'
+import { CLIAPI } from '../api/CLIAPI'
+import { type CLIOutputFormats, cliOutputFormats } from '../../init'
 
 export const stfsstat = command({
   name: 'stfsstat',
@@ -16,20 +16,20 @@ export const stfsstat = command({
 
     if (!stfs.path.exists) {
       console.error(`ERROR: Provided CON file { ${stfs.path.path} } does not exists.`)
-      return CommandLineInterfaceAPI.exit(1)
+      return CLIAPI.exit(1)
     }
 
     try {
       await stfs.checkFileIntegrity()
     } catch (err) {
       console.error(`ERROR: Provided CON file { ${stfs.path.path} } is not a valid Xbox 360 CON file.`)
-      return CommandLineInterfaceAPI.exit(1)
+      return CLIAPI.exit(1)
     }
 
     const stat = await stfs.toJSON()
 
-    const out = CommandLineInterfaceAPI.formatOutput(outputFormat, stat)
+    const out = CLIAPI.formatOutput(outputFormat, stat)
     console.log(out)
-    return CommandLineInterfaceAPI.exit()
+    return CLIAPI.exit()
   },
 })

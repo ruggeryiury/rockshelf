@@ -1,7 +1,7 @@
 import { command, oneOf, option, positional, string } from 'cmd-ts'
 import { ImageFile } from '../../lib/rbtools'
-import { CommandLineInterfaceAPI } from '../api/CommandLineInterfaceAPI'
-import { cliOutputFormats, type CLIOutputFormats } from '../../data'
+import { CLIAPI } from '../api/CLIAPI'
+import { cliOutputFormats, type CLIOutputFormats } from '../../init'
 
 export const imgstat = command({
   name: 'imgstat',
@@ -15,12 +15,12 @@ export const imgstat = command({
 
     if (!img.path.exists) {
       console.error(`ERROR: Provided image file { ${img.path.path} } does not exists.`)
-      return CommandLineInterfaceAPI.exit(1)
+      return CLIAPI.exit(1)
     }
 
     const stat = await img.toJSON()
 
-    console.log(CommandLineInterfaceAPI.formatOutput(outputFormat, stat))
-    return CommandLineInterfaceAPI.exit()
+    console.log(CLIAPI.formatOutput(outputFormat, stat))
+    return CLIAPI.exit()
   },
 })

@@ -13,7 +13,7 @@ export const parseDTA = (songContent: string): RB3CompatibleDTAFile | PartialDTA
 
   const removeComments = songContent
     .split('\r\n')
-    .map((line) => line.trim().replace(/;.*/, '').replace(/\s+/g, ' ').trim())
+    .map((line) => line.trim().replace(/;(?=(?:[^"]*"[^"]*")*[^"]*$)/g, '').replace(/\s+/g, ' ').trim())
     .join('\r\n')
 
   const allStrings = removeComments

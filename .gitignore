@@ -5,7 +5,6 @@
 *.http
 pnpm-lock.yaml
 **/temp/
-*.md
 !LICENSE.md
 !README.md
 !CHANGELOG.md

@@ -1,4 +1,4 @@
-export * from './core/api/CommandLineInterfaceAPI'
+export * from './core/api/CLIAPI'
 export * from './core/api/DataSyncAPI'
 export * from './core/api/PerformanceTimerAPI'
 export * from './core/api/RichPresenceAPI'

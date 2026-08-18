@@ -3,7 +3,7 @@ import { pathLikeToFilePath, FilePath, Hex } from 'node-lib'
 import { temporaryFile } from 'tempy'
 import { MOGGFile } from '../../lib/rbtools'
 import { PerformanceTimerAPI } from '../api/PerformanceTimerAPI'
-import { CommandLineInterfaceAPI } from '../api/CommandLineInterfaceAPI'
+import { CLIAPI } from '../api/CLIAPI'
 
 export const moggenc = command({
   name: 'moggenc',
@@ -22,20 +22,20 @@ export const moggenc = command({
 
     if (!src.path.exists) {
       console.error(`ERROR: Provided MOGG file { ${src.path.path} } does not exists.`)
-      return CommandLineInterfaceAPI.exit(1)
+      return CLIAPI.exit(1)
     }
 
     try {
       encStatus = await src.checkFileIntegrity()
     } catch (err) {
       console.error(`ERROR: Provided MOGG file { ${src.path.path} } is not a valid MOGG file.`)
-      return CommandLineInterfaceAPI.exit(1)
+      return CLIAPI.exit(1)
     }
     if (verbose) console.log(`${src.path.fullname}\nEncryption Status: ${Hex.toHexString(encStatus).toUpperCase()}\n`)
 
     if (encStatus === 11) {
       console.error(`ERROR: Provided MOGG file { ${src.path.path} } is already encrypted with 0x0B encryption.`)
-      return CommandLineInterfaceAPI.exit(1)
+      return CLIAPI.exit(1)
     } else if (encStatus !== 10) {
       temp = pathLikeToFilePath(temporaryFile({ extension: 'mogg' }))
       await src.decrypt(temp)
@@ -49,6 +49,6 @@ export const moggenc = command({
       await temp.delete()
     }
     console.log(`Operation Completed: ${timer.end()}`)
-    return CommandLineInterfaceAPI.exit()
+    return CLIAPI.exit()
   },
 })

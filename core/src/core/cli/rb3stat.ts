@@ -1,7 +1,7 @@
 import { command, oneOf, option, positional, string } from 'cmd-ts'
 import { RB3File } from '../../lib.exports'
-import { CommandLineInterfaceAPI } from '../api/CommandLineInterfaceAPI'
-import { type CLIOutputFormats, cliOutputFormats } from '../../data'
+import { CLIAPI } from '../api/CLIAPI'
+import { type CLIOutputFormats, cliOutputFormats } from '../../init'
 
 export const rb3stat = command({
   name: 'rb3stat',
@@ -11,24 +11,31 @@ export const rb3stat = command({
     outputFormat: option({ short: 'o', long: 'output-format', description: 'The output format.', type: oneOf<CLIOutputFormats>(cliOutputFormats), defaultValue: (): CLIOutputFormats => 'json' }),
   },
   async handler({ rb3Path, outputFormat }) {
-    const rb3 = new RB3File(rb3Path)
-
-    if (!rb3.path.exists) {
-      console.error(`ERROR: Provided Rock Band 3 Song Package file { ${rb3.path.path} } does not exists.`)
-      return CommandLineInterfaceAPI.exit(1)
-    }
-
+    CLIAPI.clearLine()
     try {
-      await rb3.checkFileIntegrity()
+      const rb3 = new RB3File(rb3Path)
+
+      if (!rb3.path.exists) {
+        console.error(`ERROR: Provided Rock Band 3 Song Package file { ${rb3.path.path} } does not exists.`)
+        return CLIAPI.exit(1)
+      }
+
+      try {
+        await rb3.checkFileIntegrity()
+      } catch (err) {
+        console.error(`ERROR: Provided Rock Band 3 Song Package file { ${rb3.path.path} } is not a valid Rock Band 3 Song Package file.`)
+        return CLIAPI.exit(1)
+      }
+
+      const stat = await rb3.toJSON()
+
+      const out = CLIAPI.formatOutput(outputFormat, stat)
+      console.log(out)
+      return CLIAPI.exit()
     } catch (err) {
-      console.error(`ERROR: Provided Rock Band 3 Song Package file { ${rb3.path.path} } is not a valid Rock Band 3 Song Package file.`)
-      return CommandLineInterfaceAPI.exit(1)
+      if (err instanceof Error) console.error(CLIAPI.style.red(err.message))
+      else throw err
+      CLIAPI.exit(1)
     }
-
-    const stat = await rb3.toJSON()
-
-    const out = CommandLineInterfaceAPI.formatOutput(outputFormat, stat)
-    console.log(out)
-    return CommandLineInterfaceAPI.exit()
   },
 })

@@ -2,7 +2,7 @@ import { command, flag, oneOf, option, positional, string } from 'cmd-ts'
 import { TextureFile, type ImageFormatTypes } from '../../lib/rbtools'
 import { pathLikeToFilePath } from 'node-lib'
 import { PerformanceTimerAPI } from '../api/PerformanceTimerAPI'
-import { CommandLineInterfaceAPI } from '../api/CommandLineInterfaceAPI'
+import { CLIAPI } from '../api/CLIAPI'
 
 const imageFormatTypes = ['bmp', 'jpg', 'png', 'tga', 'webp'] as const
 
@@ -22,19 +22,19 @@ export const textoimg = command({
 
     if (!src.path.exists) {
       console.error(`ERROR: Provided texture file { ${src.path.path} } does not exists.`)
-      return CommandLineInterfaceAPI.exit(1)
+      return CLIAPI.exit(1)
     }
 
     try {
       await src.checkFileIntegrity()
     } catch (err) {
       console.error(`ERROR: Provided texture file { ${src.path.path} } is not a valid Texture file.`)
-      return CommandLineInterfaceAPI.exit(1)
+      return CLIAPI.exit(1)
     }
     if (verbose) console.log(`Converting texture file ${src.path.fullname}...\nOutput: ${dest.path}\n`)
 
     await src.convertToImage(dest, format)
     console.log(`Operation Completed: ${timer.end()}`)
-    return CommandLineInterfaceAPI.exit()
+    return CLIAPI.exit()
   },
 })

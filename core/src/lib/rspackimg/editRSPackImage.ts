@@ -4,7 +4,7 @@ import { temporaryFile } from 'tempy'
 import { RockshelfFileSystemAPI } from '../../core.exports'
 import { TextureFile, PythonAPI } from '../rbtools'
 import { imgCropAndSaveToTemp } from '../../handlers.exports'
-import { temps } from '../../data'
+import { temps } from '../../init'
 
 export interface CropImageCoordinatesObject {
   /**

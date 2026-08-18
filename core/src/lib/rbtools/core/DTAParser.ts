@@ -9,6 +9,25 @@ import { encode as iconvEncode } from 'iconv-lite'
 import type { WriteStream } from 'node:fs'
 import { temporaryFile } from 'tempy'
 
+export interface DTAParserStats {
+  /**
+   * An array with parsed song objects.
+   */
+  songs: RB3CompatibleDTAFile[]
+  /**
+   * An array with parsed song objects with incomplete required metadata for Rock Band 3.
+   */
+  updates: DTAFileUpdateObject[]
+  /**
+   * The amount of songs succesfully parsed with full required metadata for Rock Band 3.
+   */
+  songsCount: number
+  /**
+   * The amount of songs parsed with incomplete required metadata for Rock Band 3.
+   */
+  updatesCount: number
+}
+
 export interface DTAParserJSONRepresentation {
   /**
    * An array with songs with complete information to work properly on Rock Band 3.
@@ -165,6 +184,15 @@ export class DTAParser {
   }
 
   // #region Instance Methods
+
+  stat(): DTAParserStats {
+    return {
+      songs: this.songs,
+      updates: this.updates,
+      songsCount: this.songs.length,
+      updatesCount: this.updates.length,
+    }
+  }
 
   /**
    * Gets a song entry by it's entry ID. Returns `undefined` if the song is not found.

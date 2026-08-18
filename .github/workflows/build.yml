@@ -93,6 +93,7 @@ jobs:
         with:
           node-version: 24.15.0
           cache: pnpm
+          cache-dependency-path: app/pnpm-lock.yaml
 
       - name: Download core package
         uses: actions/download-artifact@v4

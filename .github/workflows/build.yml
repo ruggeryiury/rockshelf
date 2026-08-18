@@ -6,6 +6,7 @@ on:
       - main
     paths:
       - core/package.json
+  workflow_dispatch:
 
 permissions:
   contents: write
@@ -45,7 +46,7 @@ jobs:
 
           echo "version=$CURRENT_VERSION" >> "$GITHUB_OUTPUT"
 
-          if [ "$CURRENT_VERSION" != "$PREVIOUS_VERSION" ]; then
+          if [ "$CURRENT_VERSION" != "$PREVIOUS_VERSION" ] || [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
             echo "should_release=true" >> "$GITHUB_OUTPUT"
           else
             echo "should_release=false" >> "$GITHUB_OUTPUT"

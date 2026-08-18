@@ -95,12 +95,6 @@ jobs:
           cache: pnpm
           cache-dependency-path: app/pnpm-lock.yaml
 
-      - name: Download core package
-        uses: actions/download-artifact@v4
-        with:
-          name: core-package
-          path: packages
-
       - name: Install app dependencies
         working-directory: app
         run: pnpm install

@@ -3191,7 +3191,7 @@ packages:
     engines: {node: '>=8.0'}
 
   rockshelf-core@file:../packages/rockshelf-core-0.1.1.tgz:
-    resolution: {integrity: sha512-UbX1K/m6Z2R3u6hAfNrcxXZp3cQ/xHJ0YuNEsACK4ON7nQ34xLsClDm/yX7LnU2/qhDAx2q2JHxj9gtbcwHs0Q==, tarball: file:../packages/rockshelf-core-0.1.1.tgz}
+    resolution: {integrity: sha512-vkumOls2CO4FiDRiVFLO8v9X+AayGEZ6wR/egTDqbkjMpr8L0UN7u0+lRNtN7j81ZR7zFMDpG4X123IWSpmn9w==, tarball: file:../packages/rockshelf-core-0.1.1.tgz}
     version: 0.1.1
 
   rollup@4.63.3:
@@ -5867,7 +5867,7 @@ snapshots:
       es6-error: 4.1.1
       matcher: 3.0.0
       roarr: 2.15.4
-      semver: 7.8.5
+      semver: 7.7.4
       serialize-error: 7.0.1
     optional: true
 
@@ -6808,11 +6808,11 @@ snapshots:
 
   node-abi@4.35.0:
     dependencies:
-      semver: 7.8.5
+      semver: 7.7.4
 
   node-api-version@0.2.1:
     dependencies:
-      semver: 7.8.5
+      semver: 7.7.4
 
   node-exports-info@1.6.2:
     dependencies:
@@ -6828,7 +6828,7 @@ snapshots:
       graceful-fs: 4.2.11
       nopt: 9.0.0
       proc-log: 6.1.0
-      semver: 7.8.5
+      semver: 7.7.4
       tar: 7.5.22
       tinyglobby: 0.2.17
       undici: 6.28.1

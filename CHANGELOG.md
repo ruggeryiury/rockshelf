@@ -37,10 +37,11 @@ _This will be the first version that will be compiled and released using GitHub 
 
 ## v0.1.1
 
+- `FEATURE` Added new commands on Rockshelf CLI (see [CLI.md](./docs/CLI.md) for detailed Rockshelf CLI documentation).
+- `ENHANCEMENT` Added "Search" functionality on "My Packages".
 - `CHANGE` Rockshelf now requires only the RPCS3 executable file path as starting point.
 - `CHANGE` User config and package cache are you kept on a specific "Rockshelf" folder on `<USERNAME>/Documents` (Windows) or `~/Documents`/Path defined by the `XDG_DOCUMENTS_DIR` environment variable (Linux).
 - `CHANGE` Better error display and trace stack from renderer.
-- `FEATURE` Added new commands on Rockshelf CLI (see [CLI.md](./docs/CLI.md) for detailed Rockshelf CLI documentation).
 - `FIX` (on `DTAParser`) Fixed a bug where the parser wasn't correctly exporting `'crowd_channels'` attributes.
 - `FIX` (for Linux users) Fixed a bug where Linux users can't select the RPCS3 executable because the old code was hardcored to look for EXE files, even on Linux distributions.
 - `FIX` Now all executables from the Binary API module uses `spawn` rather than `exec` to avoid arguments character limitation error.

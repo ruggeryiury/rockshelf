@@ -156,7 +156,7 @@ export function EditSongScreen() {
                 {/* 
               // region Song Entry ID
               */}
-                <div className="group rounded-xs p-2 duration-200 hover:bg-white/5">
+                <div className="group mr-2 rounded-xs p-2 duration-200 hover:bg-white/5">
                   <div className="flex-row! items-center">
                     <h1 className="mr-2 uppercase">{t('songEntryID')}</h1>
                     <h2 className={clsx('mr-auto text-xs font-semibold', songEntryIDError !== null && 'text-red-500/80')}>{`${songEntryID.length}/64`}</h2>
@@ -290,7 +290,7 @@ export function EditSongScreen() {
               // region HEADER: Metadata
               */}
             {editSongScreenTab === EDIT_SONG_SCREEN_TABS.METADATA && (
-              <>
+              <div className="mr-2">
                 {/* 
               // region || FLEX
               */}
@@ -633,7 +633,7 @@ export function EditSongScreen() {
                     </div>
                   ))}
                 </div>
-              </>
+              </div>
             )}
             {/* 
               // region HEADER: Instrument Data
@@ -654,6 +654,12 @@ export function EditSongScreen() {
                 </div>
                 <div className="group flex-row! items-center rounded-xs p-2 duration-200 hover:bg-white/5">
                   <img src="rbicons://instrument-icons-vocals" title={t('vocals')} className="mr-1 h-12 w-12 duration-100" />
+                </div>
+                <div className="group flex-row! items-center rounded-xs p-2 duration-200 hover:bg-white/5">
+                  <img src="rbicons://instrument-icons-backing" title={t('vocals')} className="mr-1 h-12 w-12 duration-100" />
+                </div>
+                <div className="group flex-row! items-center rounded-xs p-2 duration-200 hover:bg-white/5">
+                  <img src="rbicons://instrument-icons-crowd" title={t('vocals')} className="mr-1 h-12 w-12 duration-100" />
                 </div>
               </>
             )}

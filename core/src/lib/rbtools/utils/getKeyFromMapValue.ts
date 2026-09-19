@@ -9,11 +9,11 @@
  * @returns {keyof T | null}
  */
 export const getKeyFromMapValue = <T extends Record<string, unknown>>(map: T, value: T[keyof T]): keyof T | null => {
-  const keys = Object.keys(map) as (keyof T)[]
+	const keys = Object.keys(map) as (keyof T)[]
 
-  for (const key of keys) {
-    if (map[key] === value) return key
-  }
+	for (const key of keys) {
+		if (map[key] === value) return key
+	}
 
-  return null
+	return null
 }

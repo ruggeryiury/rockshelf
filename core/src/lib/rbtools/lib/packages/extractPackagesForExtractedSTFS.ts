@@ -1,67 +1,68 @@
-import { DirPath, pathLikeToDirPath, pathLikeToFilePath, type DirPathLikeTypes } from 'node-lib'
-import { BinaryAPI, DTAParser, EDATFile, MOGGFile, PKGFile, PythonAPI, STFSFile, TextureFile, type PKGExtractionTempFolderObject, type PKGFileJSONRepresentation, type RB3PackageLikeType, type SelectedSongForExtractionObject, type STFSExtractionTempFolderObject, type STFSFileJSONRepresentation, type SupportedRB3PackageFileType } from '../../core.exports'
-import { useDefaultOptions } from 'use-default-options'
+import { DirPath, type DirPathLikeTypes, pathLikeToDirPath, pathLikeToFilePath } from 'node-lib'
 import { temporaryDirectory, temporaryFile } from 'tempy'
-import { getUnpackedFilesPathFromRootExtraction, type DTAFileBatchUpdateObject, type DTAFileUpdateObject, type RB3CompatibleDTAFile } from '../../lib.exports'
+import { useDefaultOptions } from 'use-default-options'
+
+import { BinaryAPI, DTAParser, EDATFile, MOGGFile, type PKGExtractionTempFolderObject, PKGFile, type PKGFileJSONRepresentation, PythonAPI, type RB3PackageLikeType, type STFSExtractionTempFolderObject, STFSFile, type STFSFileJSONRepresentation, type SelectedSongForExtractionObject, type SupportedRB3PackageFileType, TextureFile } from '../../core.exports'
+import { type DTAFileBatchUpdateObject, type DTAFileUpdateObject, type RB3CompatibleDTAFile, getUnpackedFilesPathFromRootExtraction } from '../../lib.exports'
 
 export interface STFSExtractionOptions {
-  /**
-   * Whether you want to overwrite the package found with the same folder name. Default is `true`.
-   */
-  overwritePackFolder?: boolean
-  /**
-   * Force encryption/decryption of the MOGG files. Default is `"disabled"`.
-   */
-  forceEncryption?: 'enabled' | 'disabled'
-  /**
-   * An array with the internal songnames of the songs you want to extract from the packages. If left empty, all songs from the packages will be extracted and installed.
-   *
-   * If the value is a string, it will be considered as the internal songname of the song. If the value is an object, you can select the song by its internal songname, its entry ID, or its song ID. Example: `{ type: 'id', value: 'songentryid' }` or `{ type: 'songID', value: 5678 }`
-   */
-  songs?: (string | SelectedSongForExtractionObject)[]
-  /**
-   * An array with objects which will updates a specific parsed song object based on its provided entry ID.
-   */
-  updates?: DTAFileUpdateObject[]
-  /**
-   * An object which will update all parsed song objects.
-   */
-  updateAllSongs?: DTAFileBatchUpdateObject | null
+	/**
+	 * Whether you want to overwrite the package found with the same folder name. Default is `true`.
+	 */
+	overwritePackFolder?: boolean
+	/**
+	 * Force encryption/decryption of the MOGG files. Default is `"disabled"`.
+	 */
+	forceEncryption?: 'enabled' | 'disabled'
+	/**
+	 * An array with the internal songnames of the songs you want to extract from the packages. If left empty, all songs from the packages will be extracted and installed.
+	 *
+	 * If the value is a string, it will be considered as the internal songname of the song. If the value is an object, you can select the song by its internal songname, its entry ID, or its song ID. Example: `{ type: 'id', value: 'songentryid' }` or `{ type: 'songID', value: 5678 }`
+	 */
+	songs?: (string | SelectedSongForExtractionObject)[]
+	/**
+	 * An array with objects which will updates a specific parsed song object based on its provided entry ID.
+	 */
+	updates?: DTAFileUpdateObject[]
+	/**
+	 * An object which will update all parsed song objects.
+	 */
+	updateAllSongs?: DTAFileBatchUpdateObject | null
 }
 
 export interface STFSPackageExtractionObject {
-  /**
-   * The path where the pack was extracted.
-   */
-  path: DirPath
-  /**
-   * The path to temporary folder created to ultimately gather all package files to move to the actual extracted STFS package folder.
-   */
-  mainTempFolder: DirPath
-  /**
-   * An array with all temporary folder created when each package were extracted.
-   */
-  tempFolders: (STFSExtractionTempFolderObject | PKGExtractionTempFolderObject)[]
-  /**
-   * The size of the created package.
-   */
-  packSize: number
-  /**
-   * The amount of songs installed.
-   */
-  songsInstalled: number
-  /**
-   * The installed song parsed objects that was installed.
-   */
-  songs: RB3CompatibleDTAFile[]
-  /**
-   * An array with all song entry ID installed.
-   */
-  installedSongIDs: string[]
-  /**
-   * An array with all internal songnames installed.
-   */
-  installedSongSongnames: string[]
+	/**
+	 * The path where the pack was extracted.
+	 */
+	path: DirPath
+	/**
+	 * The path to temporary folder created to ultimately gather all package files to move to the actual extracted STFS package folder.
+	 */
+	mainTempFolder: DirPath
+	/**
+	 * An array with all temporary folder created when each package were extracted.
+	 */
+	tempFolders: (STFSExtractionTempFolderObject | PKGExtractionTempFolderObject)[]
+	/**
+	 * The size of the created package.
+	 */
+	packSize: number
+	/**
+	 * The amount of songs installed.
+	 */
+	songsInstalled: number
+	/**
+	 * The installed song parsed objects that was installed.
+	 */
+	songs: RB3CompatibleDTAFile[]
+	/**
+	 * An array with all song entry ID installed.
+	 */
+	installedSongIDs: string[]
+	/**
+	 * An array with all internal songnames installed.
+	 */
+	installedSongSongnames: string[]
 }
 
 /**
@@ -75,316 +76,316 @@ export interface STFSPackageExtractionObject {
  * @returns {Promise<RPCS3PackageExtractionObject>}
  */
 export const extractPackagesForExtractedSTFS = async (packages: RB3PackageLikeType[], destFolderPath: DirPathLikeTypes, options?: STFSExtractionOptions): Promise<STFSPackageExtractionObject> => {
-  const { forceEncryption, overwritePackFolder, songs, updates, updateAllSongs } = useDefaultOptions<STFSExtractionOptions>(
-    {
-      forceEncryption: 'disabled',
-      overwritePackFolder: true,
-      songs: [],
-      updates: [],
-      updateAllSongs: null,
-    },
-    options
-  )
+	const { forceEncryption, overwritePackFolder, songs, updates, updateAllSongs } = useDefaultOptions<STFSExtractionOptions>(
+		{
+			forceEncryption: 'disabled',
+			overwritePackFolder: true,
+			songs: [],
+			updates: [],
+			updateAllSongs: null,
+		},
+		options,
+	)
 
-  const hasSongSelection = songs.length > 0
-  let allSelectedSongs: SelectedSongForExtractionObject[] = []
+	const hasSongSelection = songs.length > 0
+	let allSelectedSongs: SelectedSongForExtractionObject[] = []
 
-  if (hasSongSelection) allSelectedSongs = songs.map((song) => (typeof song === 'string' ? { type: 'songname', value: song } : song))
+	if (hasSongSelection) allSelectedSongs = songs.map((song) => (typeof song === 'string' ? { type: 'songname', value: song } : song))
 
-  const dest = pathLikeToDirPath(destFolderPath)
+	const dest = pathLikeToDirPath(destFolderPath)
 
-  if (dest.exists && !overwritePackFolder) throw new Error(`Provided destination folder "${dest.path}" already exists.`)
+	if (dest.exists && !overwritePackFolder) throw new Error(`Provided destination folder "${dest.path}" already exists.`)
 
-  const parser = new DTAParser()
+	const parser = new DTAParser()
 
-  const allPackages: SupportedRB3PackageFileType[] = packages.map((pack) => {
-    if (pack instanceof STFSFile || pack instanceof PKGFile) return pack
-    else {
-      const filePath = pathLikeToFilePath(pack)
-      if (filePath.ext === '.pkg') return new PKGFile(filePath)
-      else return new STFSFile(filePath)
-    }
-  })
+	const allPackages: SupportedRB3PackageFileType[] = packages.map((pack) => {
+		if (pack instanceof STFSFile || pack instanceof PKGFile) return pack
+		else {
+			const filePath = pathLikeToFilePath(pack)
+			if (filePath.ext === '.pkg') return new PKGFile(filePath)
+			else return new STFSFile(filePath)
+		}
+	})
 
-  const tempFolders: (STFSExtractionTempFolderObject | PKGExtractionTempFolderObject)[] = []
-  for (const pack of allPackages) {
-    const tempFolderPath = pathLikeToDirPath(temporaryDirectory())
-    const type = pack instanceof STFSFile ? 'stfs' : 'pkg'
-    const stat = await pack.toJSON()
+	const tempFolders: (STFSExtractionTempFolderObject | PKGExtractionTempFolderObject)[] = []
+	for (const pack of allPackages) {
+		const tempFolderPath = pathLikeToDirPath(temporaryDirectory())
+		const type = pack instanceof STFSFile ? 'stfs' : 'pkg'
+		const stat = await pack.toJSON()
 
-    if (!hasSongSelection) {
-      await pack.extract(tempFolderPath, true)
-      parser.addSongs(stat.dta)
+		if (!hasSongSelection) {
+			await pack.extract(tempFolderPath, true)
+			parser.addSongs(stat.dta)
 
-      if (type === 'stfs') {
-        tempFolders.push({
-          path: tempFolderPath,
-          type: 'stfs',
-          songs: stat.dta.map((song) => {
-            let newSongname = ''
-            const hasUpdates = updates.find((val) => val.id.toString() === song.id.toString())
-            if (updates.length > 0 && hasUpdates) {
-              newSongname = hasUpdates.songname
-            }
-            return { songname: song.songname, newSongname, files: getUnpackedFilesPathFromRootExtraction('stfs', tempFolderPath, song.songname) }
-          }),
-          stat: stat as STFSFileJSONRepresentation,
-        })
-      } else {
-        tempFolders.push({
-          path: tempFolderPath,
-          type: 'pkg',
-          songs: stat.dta.map((song) => {
-            let newSongname = ''
-            const hasUpdates = updates.find((val) => val.id.toString() === song.id.toString())
-            if (updates.length > 0 && hasUpdates) {
-              newSongname = hasUpdates.songname
-            }
-            return { songname: song.songname, newSongname, files: getUnpackedFilesPathFromRootExtraction('pkg', tempFolderPath, song.songname) }
-          }),
-          stat: stat as PKGFileJSONRepresentation,
-        })
-      }
-    } else {
-      const allSelectedSongnames: string[] = []
+			if (type === 'stfs') {
+				tempFolders.push({
+					path: tempFolderPath,
+					type: 'stfs',
+					songs: stat.dta.map((song) => {
+						let newSongname = ''
+						const hasUpdates = updates.find((val) => val.id.toString() === song.id.toString())
+						if (updates.length > 0 && hasUpdates) {
+							newSongname = hasUpdates.songname
+						}
+						return { songname: song.songname, newSongname, files: getUnpackedFilesPathFromRootExtraction('stfs', tempFolderPath, song.songname) }
+					}),
+					stat: stat as STFSFileJSONRepresentation,
+				})
+			} else {
+				tempFolders.push({
+					path: tempFolderPath,
+					type: 'pkg',
+					songs: stat.dta.map((song) => {
+						let newSongname = ''
+						const hasUpdates = updates.find((val) => val.id.toString() === song.id.toString())
+						if (updates.length > 0 && hasUpdates) {
+							newSongname = hasUpdates.songname
+						}
+						return { songname: song.songname, newSongname, files: getUnpackedFilesPathFromRootExtraction('pkg', tempFolderPath, song.songname) }
+					}),
+					stat: stat as PKGFileJSONRepresentation,
+				})
+			}
+		} else {
+			const allSelectedSongnames: string[] = []
 
-      for (const song of stat.dta) {
-        for (const selSongOption of allSelectedSongs) {
-          if ((selSongOption.type === 'songname' && selSongOption.value.toString() === song.songname.toString()) || (selSongOption.type === 'id' && selSongOption.value.toString() === song.id.toString()) || (selSongOption.type === 'songID' && selSongOption.value.toString() === song.song_id.toString())) allSelectedSongnames.push(song.songname)
-        }
-      }
+			for (const song of stat.dta) {
+				for (const selSongOption of allSelectedSongs) {
+					if ((selSongOption.type === 'songname' && selSongOption.value.toString() === song.songname.toString()) || (selSongOption.type === 'id' && selSongOption.value.toString() === song.id.toString()) || (selSongOption.type === 'songID' && selSongOption.value.toString() === song.song_id.toString())) allSelectedSongnames.push(song.songname)
+				}
+			}
 
-      const filterdSelectedSongnames = stat.dta.filter((song) => allSelectedSongnames.includes(song.songname))
+			const filterdSelectedSongnames = stat.dta.filter((song) => allSelectedSongnames.includes(song.songname))
 
-      if (filterdSelectedSongnames.length === 0) {
-        await tempFolderPath.deleteDir(true)
-        continue
-      }
+			if (filterdSelectedSongnames.length === 0) {
+				await tempFolderPath.deleteDir(true)
+				continue
+			}
 
-      await pack.extract(tempFolderPath, true, allSelectedSongnames)
-      parser.addSongs(filterdSelectedSongnames)
+			await pack.extract(tempFolderPath, true, allSelectedSongnames)
+			parser.addSongs(filterdSelectedSongnames)
 
-      if (type === 'stfs') {
-        tempFolders.push({
-          path: tempFolderPath,
-          type: 'stfs',
-          songs: filterdSelectedSongnames.map((song) => {
-            let newSongname = ''
-            const hasUpdates = updates.find((val) => val.id.toString() === song.id.toString())
-            if (updates.length > 0 && hasUpdates) {
-              newSongname = hasUpdates.songname
-            }
-            return { songname: song.songname, newSongname, files: getUnpackedFilesPathFromRootExtraction('stfs', tempFolderPath, song.songname) }
-          }),
-          stat: stat as STFSFileJSONRepresentation,
-        })
-      } else {
-        tempFolders.push({
-          path: tempFolderPath,
-          type: 'pkg',
-          songs: filterdSelectedSongnames.map((song) => {
-            let newSongname = ''
-            const hasUpdates = updates.find((val) => val.id.toString() === song.id.toString())
-            if (updates.length > 0 && hasUpdates) {
-              newSongname = hasUpdates.songname
-            }
-            return { songname: song.songname, newSongname, files: getUnpackedFilesPathFromRootExtraction('pkg', tempFolderPath, song.songname) }
-          }),
-          stat: stat as PKGFileJSONRepresentation,
-        })
-      }
-    }
-  }
+			if (type === 'stfs') {
+				tempFolders.push({
+					path: tempFolderPath,
+					type: 'stfs',
+					songs: filterdSelectedSongnames.map((song) => {
+						let newSongname = ''
+						const hasUpdates = updates.find((val) => val.id.toString() === song.id.toString())
+						if (updates.length > 0 && hasUpdates) {
+							newSongname = hasUpdates.songname
+						}
+						return { songname: song.songname, newSongname, files: getUnpackedFilesPathFromRootExtraction('stfs', tempFolderPath, song.songname) }
+					}),
+					stat: stat as STFSFileJSONRepresentation,
+				})
+			} else {
+				tempFolders.push({
+					path: tempFolderPath,
+					type: 'pkg',
+					songs: filterdSelectedSongnames.map((song) => {
+						let newSongname = ''
+						const hasUpdates = updates.find((val) => val.id.toString() === song.id.toString())
+						if (updates.length > 0 && hasUpdates) {
+							newSongname = hasUpdates.songname
+						}
+						return { songname: song.songname, newSongname, files: getUnpackedFilesPathFromRootExtraction('pkg', tempFolderPath, song.songname) }
+					}),
+					stat: stat as PKGFileJSONRepresentation,
+				})
+			}
+		}
+	}
 
-  const mainTempFolder = pathLikeToDirPath(temporaryDirectory())
+	const mainTempFolder = pathLikeToDirPath(temporaryDirectory())
 
-  try {
-    // Move to a main temp will all files together and encrypt/decrypt all files
-    for (const temp of tempFolders) {
-      if (temp.songs.length === 0) {
-        await temp.path.deleteDir(true)
-        continue
-      }
-      for (const song of temp.songs) {
-        // MILO
-        const oldMiloPath = song.files.milo
-        const newMiloPath = mainTempFolder.gotoFile(`${song.files.milo.name}.milo_xbox`)
-        await oldMiloPath.copy(newMiloPath, true)
-        await oldMiloPath.delete()
+	try {
+		// Move to a main temp will all files together and encrypt/decrypt all files
+		for (const temp of tempFolders) {
+			if (temp.songs.length === 0) {
+				await temp.path.deleteDir(true)
+				continue
+			}
+			for (const song of temp.songs) {
+				// MILO
+				const oldMiloPath = song.files.milo
+				const newMiloPath = mainTempFolder.gotoFile(`${song.files.milo.name}.milo_xbox`)
+				await oldMiloPath.copy(newMiloPath, true)
+				await oldMiloPath.delete()
 
-        // PNG
-        const oldPNGPath = song.files.png
-        const newPNGPath = mainTempFolder.gotoFile(`${song.files.png.name}.png_xbox`)
-        if (temp.type === 'stfs') {
-          await oldPNGPath.copy(newPNGPath, true)
-          await oldPNGPath.delete()
-        } else {
-          // PS3 PNGs must be converted to Xbox
-          const tempPNG = pathLikeToFilePath(temporaryFile({ extension: 'png' }))
-          const tex = new TextureFile(oldPNGPath)
-          const newImg = await tex.convertToImage(tempPNG, 'png')
+				// PNG
+				const oldPNGPath = song.files.png
+				const newPNGPath = mainTempFolder.gotoFile(`${song.files.png.name}.png_xbox`)
+				if (temp.type === 'stfs') {
+					await oldPNGPath.copy(newPNGPath, true)
+					await oldPNGPath.delete()
+				} else {
+					// PS3 PNGs must be converted to Xbox
+					const tempPNG = pathLikeToFilePath(temporaryFile({ extension: 'png' }))
+					const tex = new TextureFile(oldPNGPath)
+					const newImg = await tex.convertToImage(tempPNG, 'png')
 
-          await newImg.convertToTexture(newPNGPath, 'png_xbox')
-          await tempPNG.delete()
-        }
+					await newImg.convertToTexture(newPNGPath, 'png_xbox')
+					await tempPNG.delete()
+				}
 
-        // MOGG
-        const oldMOGGPath = new MOGGFile(song.files.mogg)
-        const moggEncVersion = await oldMOGGPath.checkFileIntegrity()
-        if (forceEncryption === 'disabled' && moggEncVersion === 10) {
-          // Do nothing, the MOGG file is decrypted
-        } else if (forceEncryption === 'disabled' && moggEncVersion > 10) {
-          // MOGG is encrypted, but it must not
-          const decMOGGPath = pathLikeToFilePath(temporaryFile({ extension: 'mogg' }))
+				// MOGG
+				const oldMOGGPath = new MOGGFile(song.files.mogg)
+				const moggEncVersion = await oldMOGGPath.checkFileIntegrity()
+				if (forceEncryption === 'disabled' && moggEncVersion === 10) {
+					// Do nothing, the MOGG file is decrypted
+				} else if (forceEncryption === 'disabled' && moggEncVersion > 10) {
+					// MOGG is encrypted, but it must not
+					const decMOGGPath = pathLikeToFilePath(temporaryFile({ extension: 'mogg' }))
 
-          await PythonAPI.decryptMOGG(oldMOGGPath.path, decMOGGPath)
-          await decMOGGPath.copy(oldMOGGPath.path, true)
-          await decMOGGPath.delete()
-        } else if (forceEncryption === 'enabled' && moggEncVersion === 11) {
-          // Do nothing, the MOGG file is encrypted
-        } else if (forceEncryption === 'enabled' && moggEncVersion === 10) {
-          // MOGG is decypted, but it must not
-          const encMOGGPath = pathLikeToFilePath(temporaryFile({ extension: 'mogg' }))
+					await PythonAPI.decryptMOGG(oldMOGGPath.path, decMOGGPath)
+					await decMOGGPath.copy(oldMOGGPath.path, true)
+					await decMOGGPath.delete()
+				} else if (forceEncryption === 'enabled' && moggEncVersion === 11) {
+					// Do nothing, the MOGG file is encrypted
+				} else if (forceEncryption === 'enabled' && moggEncVersion === 10) {
+					// MOGG is decypted, but it must not
+					const encMOGGPath = pathLikeToFilePath(temporaryFile({ extension: 'mogg' }))
 
-          await BinaryAPI.makeMoggEncrypt(oldMOGGPath.path, encMOGGPath)
-          await encMOGGPath.copy(oldMOGGPath.path, true)
-          await encMOGGPath.delete()
-        } else if (forceEncryption === 'enabled' && moggEncVersion > 11) {
-          // MOGG is encrypted, but not for PS3 use
-          const decMOGGPath = pathLikeToFilePath(temporaryFile({ extension: 'mogg' }))
+					await BinaryAPI.makeMoggEncrypt(oldMOGGPath.path, encMOGGPath)
+					await encMOGGPath.copy(oldMOGGPath.path, true)
+					await encMOGGPath.delete()
+				} else if (forceEncryption === 'enabled' && moggEncVersion > 11) {
+					// MOGG is encrypted, but not for PS3 use
+					const decMOGGPath = pathLikeToFilePath(temporaryFile({ extension: 'mogg' }))
 
-          await PythonAPI.decryptMOGG(oldMOGGPath.path, decMOGGPath)
-          await BinaryAPI.makeMoggEncrypt(decMOGGPath, oldMOGGPath.path)
+					await PythonAPI.decryptMOGG(oldMOGGPath.path, decMOGGPath)
+					await BinaryAPI.makeMoggEncrypt(decMOGGPath, oldMOGGPath.path)
 
-          await decMOGGPath.delete()
-        }
-        const newMOGGPath = mainTempFolder.gotoFile(song.files.mogg.fullname)
-        await oldMOGGPath.path.copy(newMOGGPath, true)
-        await oldMOGGPath.path.delete()
+					await decMOGGPath.delete()
+				}
+				const newMOGGPath = mainTempFolder.gotoFile(song.files.mogg.fullname)
+				await oldMOGGPath.path.copy(newMOGGPath, true)
+				await oldMOGGPath.path.delete()
 
-        // MIDI
-        const oldMIDIPath = song.files.mid
-        const newMIDIPath = mainTempFolder.gotoFile(`${song.songname}.mid`)
+				// MIDI
+				const oldMIDIPath = song.files.mid
+				const newMIDIPath = mainTempFolder.gotoFile(`${song.songname}.mid`)
 
-        // MIDI is decrypted, just move the MIDI file to main temp
-        if (temp.type === 'stfs') {
-          await oldMIDIPath.copy(newMIDIPath, true)
-          await oldMIDIPath.delete()
-        }
-        // MIDI might be encrypted for PKG files
-        else if (temp.type === 'pkg') {
-          const oldEDAT = new EDATFile(oldMIDIPath)
-          const isEDATEncrypted = await oldEDAT.isEncrypted()
+				// MIDI is decrypted, just move the MIDI file to main temp
+				if (temp.type === 'stfs') {
+					await oldMIDIPath.copy(newMIDIPath, true)
+					await oldMIDIPath.delete()
+				}
+				// MIDI might be encrypted for PKG files
+				else if (temp.type === 'pkg') {
+					const oldEDAT = new EDATFile(oldMIDIPath)
+					const isEDATEncrypted = await oldEDAT.isEncrypted()
 
-          if (!isEDATEncrypted) {
-            // MIDI is decrypted, just move the MIDI file to main temp
-            await oldMIDIPath.copy(newMIDIPath, true)
-            await oldMIDIPath.delete()
-          } else {
-            // Original MIDI must be decrypted anyway
-            const tempDecEDAT = pathLikeToFilePath(temporaryFile({ extension: 'mid' }))
-            const oldDevklic = EDATFile.genDevKLicHash(temp.stat.folderName)
-            await BinaryAPI.makeNPDataDecrypt(oldMIDIPath, oldDevklic, tempDecEDAT)
-            await tempDecEDAT.copy(newMIDIPath, true)
-            await tempDecEDAT.delete()
-          }
-        }
-      }
+					if (!isEDATEncrypted) {
+						// MIDI is decrypted, just move the MIDI file to main temp
+						await oldMIDIPath.copy(newMIDIPath, true)
+						await oldMIDIPath.delete()
+					} else {
+						// Original MIDI must be decrypted anyway
+						const tempDecEDAT = pathLikeToFilePath(temporaryFile({ extension: 'mid' }))
+						const oldDevklic = EDATFile.genDevKLicHash(temp.stat.folderName)
+						await BinaryAPI.makeNPDataDecrypt(oldMIDIPath, oldDevklic, tempDecEDAT)
+						await tempDecEDAT.copy(newMIDIPath, true)
+						await tempDecEDAT.delete()
+					}
+				}
+			}
 
-      await temp.path.deleteDir()
-    }
-  } catch (err) {
-    for (const temp of tempFolders) {
-      await temp.path.deleteDir(true)
-    }
-    await mainTempFolder.deleteDir(true)
-    throw err
-  }
+			await temp.path.deleteDir()
+		}
+	} catch (err) {
+		for (const temp of tempFolders) {
+			await temp.path.deleteDir(true)
+		}
+		await mainTempFolder.deleteDir(true)
+		throw err
+	}
 
-  if (dest.exists) await dest.deleteDir(true)
+	if (dest.exists) await dest.deleteDir(true)
 
-  const newDTAPath = dest.gotoFile('songs/songs.dta')
+	const newDTAPath = dest.gotoFile('songs/songs.dta')
 
-  await dest.gotoDir('songs').mkDir(true)
+	await dest.gotoDir('songs').mkDir(true)
 
-  if (updates.length > 0) parser.addUpdates(updates)
-  if (updateAllSongs !== null) parser.addUpdatesToAllSongs(updateAllSongs)
-  if (updates.length > 0 || updateAllSongs !== null) parser.applyUpdatesToExistingSongs(true)
+	if (updates.length > 0) parser.addUpdates(updates)
+	if (updateAllSongs !== null) parser.addUpdatesToAllSongs(updateAllSongs)
+	if (updates.length > 0 || updateAllSongs !== null) parser.applyUpdatesToExistingSongs(true)
 
-  parser.sort('ID')
-  parser.patchCores()
-  parser.patchSongsEncodings()
+	parser.sort('ID')
+	parser.patchCores()
+	parser.patchSongsEncodings()
 
-  try {
-    await parser.export(newDTAPath)
-  } catch (err) {
-    for (const temp of tempFolders) {
-      await temp.path.deleteDir(true)
-    }
-    await mainTempFolder.deleteDir(true)
-    throw new Error(`No DTA file could be created. None of the provided internal songnames were found on the packages provided.`, { cause: err })
-  }
-  const dtaStat = await newDTAPath.stat()
+	try {
+		await parser.export(newDTAPath)
+	} catch (err) {
+		for (const temp of tempFolders) {
+			await temp.path.deleteDir(true)
+		}
+		await mainTempFolder.deleteDir(true)
+		throw new Error(`No DTA file could be created. None of the provided internal songnames were found on the packages provided.`, { cause: err })
+	}
+	const dtaStat = await newDTAPath.stat()
 
-  let packSize: number = dtaStat.size
+	let packSize: number = dtaStat.size
 
-  try {
-    for (const temp of tempFolders) {
-      if (temp.songs.length === 0) {
-        continue
-      }
-      for (const { songname, newSongname } of temp.songs) {
-        const newUsedSongname = newSongname.length > 0 ? newSongname : songname
-        const mainTempMOGG = mainTempFolder.gotoFile(`${songname}.mogg`)
-        const mainTempMIDI = mainTempFolder.gotoFile(`${songname}.mid`)
-        const mainTempPNG = mainTempFolder.gotoFile(`${songname}_keep.png_xbox`)
-        const mainTempMILO = mainTempFolder.gotoFile(`${songname}.milo_xbox`)
+	try {
+		for (const temp of tempFolders) {
+			if (temp.songs.length === 0) {
+				continue
+			}
+			for (const { songname, newSongname } of temp.songs) {
+				const newUsedSongname = newSongname.length > 0 ? newSongname : songname
+				const mainTempMOGG = mainTempFolder.gotoFile(`${songname}.mogg`)
+				const mainTempMIDI = mainTempFolder.gotoFile(`${songname}.mid`)
+				const mainTempPNG = mainTempFolder.gotoFile(`${songname}_keep.png_xbox`)
+				const mainTempMILO = mainTempFolder.gotoFile(`${songname}.milo_xbox`)
 
-        if (!mainTempMOGG.exists) {
-          await mainTempFolder.deleteDir()
-          throw new Error(`Registered song on DTA with internal songname "${songname}" ${newSongname.length > 0 && `(with new internal songname "${newSongname}") `}has no audio files linked to the song.`)
-        }
+				if (!mainTempMOGG.exists) {
+					await mainTempFolder.deleteDir()
+					throw new Error(`Registered song on DTA with internal songname "${songname}" ${newSongname.length > 0 && `(with new internal songname "${newSongname}") `}has no audio files linked to the song.`)
+				}
 
-        const songGenFolder = dest.gotoDir(`songs/${newUsedSongname}/gen`)
-        await songGenFolder.mkDir(true)
-        const newMOGG = songGenFolder.gotoFile(`../${newUsedSongname}.mogg`)
-        const newMIDI = songGenFolder.gotoFile(`../${newUsedSongname}.mid`)
-        const newPNG = songGenFolder.gotoFile(`${newUsedSongname}_keep.png_xbox`)
-        const newMILO = songGenFolder.gotoFile(`${newUsedSongname}.milo_xbox`)
+				const songGenFolder = dest.gotoDir(`songs/${newUsedSongname}/gen`)
+				await songGenFolder.mkDir(true)
+				const newMOGG = songGenFolder.gotoFile(`../${newUsedSongname}.mogg`)
+				const newMIDI = songGenFolder.gotoFile(`../${newUsedSongname}.mid`)
+				const newPNG = songGenFolder.gotoFile(`${newUsedSongname}_keep.png_xbox`)
+				const newMILO = songGenFolder.gotoFile(`${newUsedSongname}.milo_xbox`)
 
-        await mainTempMOGG.copy(newMOGG, true)
-        await mainTempMOGG.delete()
-        await mainTempMIDI.copy(newMIDI, true)
-        await mainTempMIDI.delete()
-        await mainTempPNG.copy(newPNG, true)
-        await mainTempPNG.delete()
-        await mainTempMILO.copy(newMILO, true)
-        await mainTempMILO.delete()
+				await mainTempMOGG.copy(newMOGG, true)
+				await mainTempMOGG.delete()
+				await mainTempMIDI.copy(newMIDI, true)
+				await mainTempMIDI.delete()
+				await mainTempPNG.copy(newPNG, true)
+				await mainTempPNG.delete()
+				await mainTempMILO.copy(newMILO, true)
+				await mainTempMILO.delete()
 
-        const moggStat = await newMOGG.stat()
-        packSize += moggStat.size
-        const midiStat = await newMIDI.stat()
-        packSize += midiStat.size
-        const pngStat = await newPNG.stat()
-        packSize += pngStat.size
-        const miloStat = await newMILO.stat()
-        packSize += miloStat.size
-      }
-    }
-  } catch (err) {
-    await mainTempFolder.deleteDir(true)
-    throw err
-  }
-  // Delete anything residual from temp folder
-  await mainTempFolder.deleteDir()
-  return {
-    path: dest,
-    mainTempFolder,
-    tempFolders,
-    packSize,
-    songsInstalled: parser.songs.length,
-    songs: parser.songs,
-    installedSongIDs: parser.songs.map((song) => song.id),
-    installedSongSongnames: parser.songs.map((song) => song.songname),
-  }
+				const moggStat = await newMOGG.stat()
+				packSize += moggStat.size
+				const midiStat = await newMIDI.stat()
+				packSize += midiStat.size
+				const pngStat = await newPNG.stat()
+				packSize += pngStat.size
+				const miloStat = await newMILO.stat()
+				packSize += miloStat.size
+			}
+		}
+	} catch (err) {
+		await mainTempFolder.deleteDir(true)
+		throw err
+	}
+	// Delete anything residual from temp folder
+	await mainTempFolder.deleteDir()
+	return {
+		path: dest,
+		mainTempFolder,
+		tempFolders,
+		packSize,
+		songsInstalled: parser.songs.length,
+		songs: parser.songs,
+		installedSongIDs: parser.songs.map((song) => song.id),
+		installedSongSongnames: parser.songs.map((song) => song.songname),
+	}
 }

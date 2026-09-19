@@ -7,18 +7,17 @@ import { useMessageBoxState } from './MessageBox.state'
 import clsx from 'clsx'
 import { BRAFlag, MEXFlag, USAFlag, ARGFlag, COLFlag, bandIcon, guitarIcon, bassIcon, drumsIcon, keysIcon, vocalsIcon, proGuitarIcon, proBassIcon, proDrumsIcon, proKeysIcon, harm3Icon, FCAFlag } from '@renderer/assets/images'
 import { useShallow } from 'zustand/shallow'
-import type { RockBand3Data } from 'rockshelf-core/rbtools/lib'
 import { STRUCT_LOG } from '@renderer/app/rockshelf.globals'
 import { useMyPackagesScreenState } from './MyPackagesScreen.state'
 
 export function ConfigScreen() {
   const { i18n, t } = useTranslation()
   const { active, resetConfigScreenState } = useConfigScreenState(useShallow((x) => ({ active: x.active, resetConfigScreenState: x.resetConfigScreenState })))
-  const { devhdd0Path, rpcs3ExePath, mostPlayedInstrument, getUserConfigState, setUserConfigState, downloadedContentDirPath, downloadedContentFileName } = useUserConfigState(useShallow((x) => ({ devhdd0Path: x.devhdd0Path, rpcs3ExePath: x.rpcs3ExePath, mostPlayedInstrument: x.mostPlayedInstrument, getUserConfigState: x.getUserConfigState, setUserConfigState: x.setUserConfigState, downloadedContentFileName: x.downloadedContentFileName, downloadedContentDirPath: x.downloadedContentDirPath })))
+  const { rpcs3ExePath, mostPlayedInstrument, getUserConfigState, setUserConfigState, downloadedContentDirPath, downloadedContentFileName } = useUserConfigState(useShallow((x) => ({ rpcs3ExePath: x.rpcs3ExePath, mostPlayedInstrument: x.mostPlayedInstrument, getUserConfigState: x.getUserConfigState, setUserConfigState: x.setUserConfigState, downloadedContentFileName: x.downloadedContentFileName, downloadedContentDirPath: x.downloadedContentDirPath })))
   const { disableButtons, saveData, setWindowState } = useWindowState(useShallow((x) => ({ disableButtons: x.disableButtons, saveData: x.saveData, setWindowState: x.setWindowState })))
   const { setMyPackagesScreenState } = useMyPackagesScreenState(useShallow((x) => ({ setMyPackagesScreenState: x.setMyPackagesScreenState })))
   const setMessageBoxState = useMessageBoxState((x) => x.setMessageBoxState)
-  
+
   return (
     <AnimatedSection id="ConfigScreen" condition={active} {...animate({ opacity: true })} className="absolute! z-3 h-full max-h-full w-full max-w-full bg-black p-8">
       <div className="mb-2 flex-row! items-center border-b border-white/25 pb-1">
@@ -64,40 +63,6 @@ export function ConfigScreen() {
           </div>
 
           <div className="group rounded-xs p-2 duration-200 hover:bg-white/5">
-            <h1 className="mb-1 uppercase">{t('devhdd0Dir')}</h1>
-            <p className="mb-4 text-xs italic">
-              <TransComponent i18nKey="devhdd0DirDesc" />
-            </p>
-            <div className="mb-2 bg-neutral-900 px-3 py-1 duration-200 group-hover:bg-neutral-800">
-              <p className="font-mono">{devhdd0Path}</p>
-            </div>
-            <button
-              className="mb-1 w-fit rounded-xs border border-neutral-800 bg-neutral-900 px-1 py-0.5 text-xs! uppercase duration-100 last:mb-0 hover:bg-neutral-700 active:bg-neutral-600 disabled:text-neutral-700 disabled:hover:bg-neutral-900"
-              disabled={disableButtons}
-              onClick={async () => {
-                setWindowState({ disableButtons: true })
-                try {
-                  const path = await window.api.selector.devhdd0()
-                  if (!path) {
-                    setWindowState({ disableButtons: false })
-                    return
-                  }
-                  setUserConfigState({ devhdd0Path: path })
-                  const newConfig = getUserConfigState()
-                  await window.api.userConfig.save(newConfig)
-                  const newRB3Stats = (await window.api.data.getRockBand3Data()) as RockBand3Data
-                  setWindowState({ disableButtons: false, rb3Stats: newRB3Stats })
-                  setMessageBoxState({ message: { type: 'success', code: 'changedDevhdd0Dir' } })
-                } catch (err) {
-                  if (err instanceof Error) setWindowState({ err })
-                }
-              }}
-            >
-              {t('change')}
-            </button>
-          </div>
-
-          <div className="group rounded-xs p-2 duration-200 hover:bg-white/5">
             <h1 className="mb-1 uppercase">{t('rpcs3Exe')}</h1>
             <p className="mb-4 text-xs italic">
               <TransComponent i18nKey="rpcs3ExeDesc" />
@@ -110,20 +75,16 @@ export function ConfigScreen() {
               disabled={disableButtons}
               onClick={async () => {
                 setWindowState({ disableButtons: true })
-                try {
-                  const path = await window.api.selector.rpcs3Exe()
-                  if (!path) {
-                    setWindowState({ disableButtons: false })
-                    return
-                  }
-                  setUserConfigState({ rpcs3ExePath: path })
-                  const newConfig = getUserConfigState()
-                  await window.api.userConfig.save(newConfig)
+                const path = await window.api.selector.rpcs3Exe()
+                if (!path) {
                   setWindowState({ disableButtons: false })
-                  setMessageBoxState({ message: { type: 'success', code: 'changedRPCS3ExeFile' } })
-                } catch (err) {
-                  if (err instanceof Error) setWindowState({ err })
+                  return
                 }
+                setUserConfigState({ rpcs3ExePath: path })
+                const newConfig = getUserConfigState()
+                await window.api.userConfig.save(newConfig)
+                setWindowState({ disableButtons: false })
+                setMessageBoxState({ message: { type: 'success', code: 'changedRPCS3ExeFile' } })
               }}
             >
               {t('change')}
@@ -353,19 +314,15 @@ export function ConfigScreen() {
               disabled={disableButtons}
               onClick={async () => {
                 setWindowState({ disableButtons: true })
-                try {
-                  const path = await window.api.selector.dir()
-                  if (!path) {
-                    setWindowState({ disableButtons: false })
-                    return
-                  }
-                  setUserConfigState({ downloadedContentDirPath: path })
-                  const newConfig = getUserConfigState()
-                  await window.api.userConfig.save(newConfig)
+                const path = await window.api.selector.dir()
+                if (!path) {
                   setWindowState({ disableButtons: false })
-                } catch (err) {
-                  if (err instanceof Error) setWindowState({ err })
+                  return
                 }
+                setUserConfigState({ downloadedContentDirPath: path })
+                const newConfig = getUserConfigState()
+                await window.api.userConfig.save(newConfig)
+                setWindowState({ disableButtons: false })
               }}
             >
               {t('change')}
@@ -416,30 +373,36 @@ export function ConfigScreen() {
             onClick={async () => {
               setWindowState({ disableButtons: true })
               setMessageBoxState({ message: { type: 'loading', code: 'recreatePackagesCacheFile' } })
-              try {
-                const newPackagesData = await window.api.data.getLightSongPackagesData()
-                if (STRUCT_LOG) console.log('struct LightRB3SongPackagesData ["core/api/DataSyncAPI.ts"]:', newPackagesData)
-                setWindowState({ packages: newPackagesData, disableButtons: false })
-                setMyPackagesScreenState({ packagesCatalog: false })
-                setMessageBoxState({ message: { type: 'success', code: 'recreatePackagesCacheFile' } })
-              } catch (err) {
-                if (err instanceof Error) setWindowState({ err })
-              }
+              const newPackagesData = await window.api.data.getLightSongPackagesData()
+              if (STRUCT_LOG) console.log('struct LightRB3SongPackagesData ["core/api/DataSyncAPI.ts"]:', newPackagesData)
+              setWindowState({ packages: newPackagesData, disableButtons: false })
+              setMyPackagesScreenState({ packagesCatalog: false })
+              setMessageBoxState({ message: { type: 'success', code: 'recreatePackagesCacheFile' } })
             }}
           >
             {t('recreatePackagesCacheFile')}
           </button>
-          <p className="mb-4 pl-5 text-xs text-neutral-600 italic">
-            <TransComponent i18nKey="recreatePackagesCacheFileDesc" />
-          </p>
+          <button
+            disabled={disableButtons}
+            className="mb-2 w-fit self-start rounded-xs border border-neutral-700 bg-neutral-900 px-1 py-0.5 text-xs! uppercase duration-100 hover:bg-neutral-700 active:bg-neutral-600 disabled:text-neutral-700 disabled:hover:bg-neutral-900"
+            onClick={async () => {
+              setWindowState({ disableButtons: true })
+              setMessageBoxState({ message: { type: 'loading', code: 'recreatePackagesCacheFile' } })
+              const newPackagesData = await window.api.data.getLightSongPackagesData()
+              if (STRUCT_LOG) console.log('struct LightRB3SongPackagesData ["core/api/DataSyncAPI.ts"]:', newPackagesData)
+              setWindowState({ packages: newPackagesData, disableButtons: false })
+              setMyPackagesScreenState({ packagesCatalog: false })
+              setMessageBoxState({ message: { type: 'success', code: 'recreatePackagesCacheFile' } })
+            }}
+          >
+            {t('deleteAllThumbnails')}
+          </button>
           <button
             disabled={disableButtons}
             className="mr-2 mb-1 w-fit self-start rounded-xs border border-red-500 bg-neutral-900 px-1 py-0.5 text-xs! text-red-500 uppercase duration-100 last:mr-0 last:mb-0 hover:bg-red-950/25 active:bg-neutral-600 disabled:text-neutral-700 disabled:hover:bg-neutral-900"
             onClick={async () => {
               setWindowState({ disableButtons: true })
-              // await window.api.deleteRockshelfDataFromPackages()
               await window.api.userConfig.delete()
-              await window.api.win.restart()
               await window.api.win.restart()
             }}
           >

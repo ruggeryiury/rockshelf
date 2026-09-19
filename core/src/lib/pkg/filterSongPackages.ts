@@ -1,51 +1,53 @@
 import { useDefaultOptions } from 'use-default-options'
-import { rsPackImage, type RPCS3SongPackagesObjectExtra } from '../../lib.exports'
+
+import type { RB3SongPackagesDataObject } from '../../core.exports'
+import { rsPackImage } from '../../lib.exports'
 import { getKeyFromMapValue, leadingArticleToTrailing } from '../rbtools/utils.exports'
 
 export interface SongPackagesFilterGenericHeaders {
-  /**
-   * The name of header (in English).
-   */
-  name: string
-  /**
-   * A unique string to identity the header.
-   */
-  code: string
-  /**
-   * An array with indexes of packages from the original songs array.
-   */
-  indexes: number[]
+	/**
+	 * The name of header (in English).
+	 */
+	name: string
+	/**
+	 * A unique string to identity the header.
+	 */
+	code: string
+	/**
+	 * An array with indexes of packages from the original songs array.
+	 */
+	indexes: number[]
 }
 
 export type SongPackagesFilterTypes = 'name' | 'officialUnofficial' | 'userCategory'
 
 export interface SongPackagesFilterGenericObject {
-  /**
-   * The type of the catalog.
-   */
-  type: SongPackagesFilterTypes
-  /**
-   * An array with objects representing each header from the specified type.
-   */
-  headers: SongPackagesFilterGenericHeaders[]
-  /**
-   * The amount of song packages from the original song packages array.
-   */
-  packagesCount: number
+	/**
+	 * The type of the catalog.
+	 */
+	type: SongPackagesFilterTypes
+	/**
+	 * An array with objects representing each header from the specified type.
+	 */
+	headers: SongPackagesFilterGenericHeaders[]
+	/**
+	 * The amount of song packages from the original song packages array.
+	 */
+	packagesCount: number
 }
 
 export interface SongPackagesFilterOptions {
-  /**
-   * Remove unused headers. Default is `true`.
-   */
-  filterEmptyHeader?: boolean
+	/**
+	 * Remove unused headers. Default is `true`.
+	 */
+	filterEmptyHeader?: boolean
 }
 
-export type RPCS3SongPackagesObjectExtraWithIndex = RPCS3SongPackagesObjectExtra & {
-  /**
-   * A number to track down the packages's index on the original array.
-   */
-  index: number
+export type RB3SongPackagesDataObjectWithIndex = RB3SongPackagesDataObject & {
+	/**
+	 * A number to track down the packages's index on the original array.
+	 */
+	index: number
 }
 
 /**
@@ -54,8 +56,8 @@ export type RPCS3SongPackagesObjectExtraWithIndex = RPCS3SongPackagesObjectExtra
  * @param {RB3CompatibleDTAFile[]} songs An array with song package data  objects.
  * @returns {RB3CompatibleDTAFileWithIndex[]}
  */
-export const insertIndexOnSongPackagesArray = (songs: RPCS3SongPackagesObjectExtra[]): RPCS3SongPackagesObjectExtraWithIndex[] => {
-  return songs.map((song, songIndex) => ({ ...song, index: songIndex }))
+export const insertIndexOnSongPackagesArray = (songs: RB3SongPackagesDataObject[]): RB3SongPackagesDataObjectWithIndex[] => {
+	return songs.map((song, songIndex) => ({ ...song, index: songIndex }))
 }
 
 /**
@@ -65,101 +67,101 @@ export const insertIndexOnSongPackagesArray = (songs: RPCS3SongPackagesObjectExt
  * @param {RB3CompatibleDTAFileWithIndex} b Parsed song data B.
  * @returns {number}
  */
-export const useGenericPackagesCatalogSort = (a: RPCS3SongPackagesObjectExtraWithIndex, b: RPCS3SongPackagesObjectExtraWithIndex): number => {
-  return leadingArticleToTrailing(a.packageData.packageName).toLowerCase().localeCompare(leadingArticleToTrailing(b.packageData.packageName).toLowerCase())
+export const useGenericPackagesCatalogSort = (a: RB3SongPackagesDataObjectWithIndex, b: RB3SongPackagesDataObjectWithIndex): number => {
+	return leadingArticleToTrailing(a.packageData.packageName).toLowerCase().localeCompare(leadingArticleToTrailing(b.packageData.packageName).toLowerCase())
 }
 
-export const filterSongPackagesByName = (packages: RPCS3SongPackagesObjectExtra[], options?: SongPackagesFilterOptions): SongPackagesFilterGenericObject => {
-  const { filterEmptyHeader } = useDefaultOptions<SongPackagesFilterOptions>({ filterEmptyHeader: true }, options)
-  const sortedPackages = insertIndexOnSongPackagesArray(packages).sort(useGenericPackagesCatalogSort)
+export const filterSongPackagesByName = (packages: RB3SongPackagesDataObject[], options?: SongPackagesFilterOptions): SongPackagesFilterGenericObject => {
+	const { filterEmptyHeader } = useDefaultOptions<SongPackagesFilterOptions>({ filterEmptyHeader: true }, options)
+	const sortedPackages = insertIndexOnSongPackagesArray(packages).sort(useGenericPackagesCatalogSort)
 
-  const charZCode = 0x7a
-  const headers: SongPackagesFilterGenericHeaders[] = [
-    {
-      name: '123',
-      code: 'titleSymbols',
-      indexes: [],
-    },
-  ] as SongPackagesFilterGenericHeaders[]
+	const charZCode = 0x7a
+	const headers: SongPackagesFilterGenericHeaders[] = [
+		{
+			name: '123',
+			code: 'titleSymbols',
+			indexes: [],
+		},
+	] as SongPackagesFilterGenericHeaders[]
 
-  for (let i = 0x61; i <= charZCode; i++) {
-    const letter = Buffer.from([i]).toString()
-    headers.push({
-      name: letter.toUpperCase(),
-      code: `title${letter.toUpperCase()}`,
-      indexes: [],
-    })
-  }
-  for (const pkg of sortedPackages) {
-    const nameWOLeadingArticle = leadingArticleToTrailing(pkg.packageData.packageName)
-    const nameFirstChar = nameWOLeadingArticle[0].toLowerCase()
-    const nameFirstCharCode = Buffer.from(nameFirstChar)[0]
-    if (nameFirstCharCode >= 0x61 && nameFirstCharCode <= charZCode) {
-      const charIndex = nameFirstCharCode - 0x60
-      headers[charIndex].indexes.push(pkg.index)
-    } else headers[0].indexes.push(pkg.index)
-  }
+	for (let i = 0x61; i <= charZCode; i++) {
+		const letter = Buffer.from([i]).toString()
+		headers.push({
+			name: letter.toUpperCase(),
+			code: `title${letter.toUpperCase()}`,
+			indexes: [],
+		})
+	}
+	for (const pkg of sortedPackages) {
+		const nameWOLeadingArticle = leadingArticleToTrailing(pkg.packageData.packageName)
+		const nameFirstChar = nameWOLeadingArticle[0].toLowerCase()
+		const nameFirstCharCode = Buffer.from(nameFirstChar)[0]
+		if (nameFirstCharCode >= 0x61 && nameFirstCharCode <= charZCode) {
+			const charIndex = nameFirstCharCode - 0x60
+			headers[charIndex].indexes.push(pkg.index)
+		} else headers[0].indexes.push(pkg.index)
+	}
 
-  return {
-    type: 'name',
-    headers: filterEmptyHeader ? headers.filter((val) => val.indexes.length > 0) : headers,
-    packagesCount: sortedPackages.length,
-  }
+	return {
+		type: 'name',
+		headers: filterEmptyHeader ? headers.filter((val) => val.indexes.length > 0) : headers,
+		packagesCount: sortedPackages.length,
+	}
 }
 
-export const filterSongPackagesByOfficialPkg = (packages: RPCS3SongPackagesObjectExtra[], options?: SongPackagesFilterOptions): SongPackagesFilterGenericObject => {
-  const { filterEmptyHeader } = useDefaultOptions<SongPackagesFilterOptions>({ filterEmptyHeader: true }, options)
-  const sortedPackages = insertIndexOnSongPackagesArray(packages).sort(useGenericPackagesCatalogSort)
+export const filterSongPackagesByOfficialPkg = (packages: RB3SongPackagesDataObject[], options?: SongPackagesFilterOptions): SongPackagesFilterGenericObject => {
+	const { filterEmptyHeader } = useDefaultOptions<SongPackagesFilterOptions>({ filterEmptyHeader: true }, options)
+	const sortedPackages = insertIndexOnSongPackagesArray(packages).sort(useGenericPackagesCatalogSort)
 
-  const headers: SongPackagesFilterGenericHeaders[] = [
-    {
-      name: 'Official',
-      code: 'official',
-      indexes: [],
-    },
-    {
-      name: 'Unofficial',
-      code: 'unofficial',
-      indexes: [],
-    },
-  ] as SongPackagesFilterGenericHeaders[]
+	const headers: SongPackagesFilterGenericHeaders[] = [
+		{
+			name: 'Official',
+			code: 'official',
+			indexes: [],
+		},
+		{
+			name: 'Unofficial',
+			code: 'unofficial',
+			indexes: [],
+		},
+	] as SongPackagesFilterGenericHeaders[]
 
-  for (const pkg of sortedPackages) headers[pkg.official ? 0 : 1].indexes.push(pkg.index)
+	for (const pkg of sortedPackages) headers[pkg.official ? 0 : 1].indexes.push(pkg.index)
 
-  return {
-    type: 'officialUnofficial',
-    headers: filterEmptyHeader ? headers.filter((val) => val.indexes.length > 0) : headers,
-    packagesCount: sortedPackages.length,
-  }
+	return {
+		type: 'officialUnofficial',
+		headers: filterEmptyHeader ? headers.filter((val) => val.indexes.length > 0) : headers,
+		packagesCount: sortedPackages.length,
+	}
 }
 
-export const filterSongPackagesByUserCategory = (packages: RPCS3SongPackagesObjectExtra[], options?: SongPackagesFilterOptions): SongPackagesFilterGenericObject => {
-  const { filterEmptyHeader } = useDefaultOptions<SongPackagesFilterOptions>({ filterEmptyHeader: true }, options)
-  const sortedPackages = insertIndexOnSongPackagesArray(packages).sort(useGenericPackagesCatalogSort)
+export const filterSongPackagesByUserCategory = (packages: RB3SongPackagesDataObject[], options?: SongPackagesFilterOptions): SongPackagesFilterGenericObject => {
+	const { filterEmptyHeader } = useDefaultOptions<SongPackagesFilterOptions>({ filterEmptyHeader: true }, options)
+	const sortedPackages = insertIndexOnSongPackagesArray(packages).sort(useGenericPackagesCatalogSort)
 
-  const headers: SongPackagesFilterGenericHeaders[] = [
-    { name: 'Other Packages', code: 'other', indexes: [] },
-    { name: 'Author Packages', code: 'author', indexes: [] },
-    { name: 'Artist/Band Packages', code: 'artistBand', indexes: [] },
-    { name: 'Full Band Packages', code: 'fullBand', indexes: [] },
-    { name: 'Singles', code: 'singles', indexes: [] },
-    { name: 'Rock Band Packages', code: 'rockBand', indexes: [] },
-    { name: 'Guitar Hero Packages', code: 'guitarHero', indexes: [] },
-    { name: 'Official Packages', code: 'official', indexes: [] },
-    { name: 'Unofficial Packages', code: 'unofficial', indexes: [] },
-    { name: 'Themed Packages', code: 'themed', indexes: [] },
-    { name: 'Seasonal Packages', code: 'seasonal', indexes: [] },
-    { name: 'Debug', code: 'debug', indexes: [] },
-  ]
+	const headers: SongPackagesFilterGenericHeaders[] = [
+		{ name: 'Other Packages', code: 'other', indexes: [] },
+		{ name: 'Author Packages', code: 'author', indexes: [] },
+		{ name: 'Artist/Band Packages', code: 'artistBand', indexes: [] },
+		{ name: 'Full Band Packages', code: 'fullBand', indexes: [] },
+		{ name: 'Singles', code: 'singles', indexes: [] },
+		{ name: 'Rock Band Packages', code: 'rockBand', indexes: [] },
+		{ name: 'Guitar Hero Packages', code: 'guitarHero', indexes: [] },
+		{ name: 'Official Packages', code: 'official', indexes: [] },
+		{ name: 'Unofficial Packages', code: 'unofficial', indexes: [] },
+		{ name: 'Themed Packages', code: 'themed', indexes: [] },
+		{ name: 'Seasonal Packages', code: 'seasonal', indexes: [] },
+		{ name: 'Debug', code: 'debug', indexes: [] },
+	]
 
-  for (const pkg of sortedPackages) {
-    const categoryNum = getKeyFromMapValue(rsPackImage.packageCategory, pkg.packageData.category)
-    if (categoryNum !== null) headers[categoryNum].indexes.push(pkg.index)
-  }
+	for (const pkg of sortedPackages) {
+		const categoryNum = getKeyFromMapValue(rsPackImage.packageCategory, pkg.packageData.category)
+		if (categoryNum !== null) headers[categoryNum].indexes.push(pkg.index)
+	}
 
-  return {
-    type: 'userCategory',
-    headers: filterEmptyHeader ? headers.filter((val) => val.indexes.length > 0) : headers,
-    packagesCount: sortedPackages.length,
-  }
+	return {
+		type: 'userCategory',
+		headers: filterEmptyHeader ? headers.filter((val) => val.indexes.length > 0) : headers,
+		packagesCount: sortedPackages.length,
+	}
 }

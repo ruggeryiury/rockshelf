@@ -1,28 +1,28 @@
 import type { BrowserWindow } from 'electron'
 
 export interface BuzyLoadScreenSenderObject {
-  code: 'incrementStep' | 'callSuccess'
+	code: 'incrementStep' | 'callSuccess'
 }
 
 export interface BuzyLoadErrorObject {
-  code: 'throwError'
-  key?: string
-  messageValues?: Record<string, string>
+	code: 'throwError'
+	key?: string
+	messageValues?: Record<string, string>
 }
 
 export type BuzyLoadOnCompleteActions = 'refreshRB3Stats' | 'resetCreateNewPackageScreenState' | 'resetExportPackageModalState' | 'resetInstallRB3FileScreenState'
 
 export interface BuzyLoadInitObject {
-  code: 'init'
-  title: string
-  steps: string[]
-  onCompleted?: BuzyLoadOnCompleteActions[]
+	code: 'init'
+	title: string
+	steps: string[]
+	onCompleted?: BuzyLoadOnCompleteActions[]
 }
 
 export interface BuzyLoadSubtextObject {
-  code: 'subtext'
-  key: string
-  messageValues?: Record<string, string>
+	code: 'subtext'
+	key: string
+	messageValues?: Record<string, string>
 }
 
 /**
@@ -33,6 +33,6 @@ export interface BuzyLoadSubtextObject {
  * @returns {true}
  */
 export const sendBuzyLoad = (win: BrowserWindow, func: BuzyLoadScreenSenderObject | BuzyLoadInitObject | BuzyLoadErrorObject | BuzyLoadSubtextObject): true => {
-  win.webContents.send('sendBuzyLoad', func)
-  return true
+	win.webContents.send('sendBuzyLoad', func)
+	return true
 }

@@ -1,40 +1,41 @@
 import { BinaryReader, type FilePathLikeTypes, pathLikeToFilePath } from 'node-lib'
+
 import { dateISOFormatObjectToDateISOString } from '../rbtools/utils.exports'
 
 export const rsPackImage = {
-  fileVersion: {
-    1: 'Version 1',
-  },
-  type: {
-    0: 'rockshelf',
-    1: 'other',
-  },
-  source: {
-    0: 'merged',
-    1: 'stfs',
-    2: 'pkg',
-    3: 'rb3',
-  },
-  encryptionStatus: {
-    0: 'unknown',
-    1: 'encrypted',
-    2: 'decrypted',
-    3: 'mixed',
-  },
-  packageCategory: {
-    0: 'other',
-    1: 'author',
-    2: 'artistBand',
-    3: 'fullBand',
-    4: 'singles',
-    5: 'rockBand',
-    6: 'guitarHero',
-    7: 'official',
-    8: 'unofficial',
-    9: 'themed',
-    10: 'seasonal',
-    11: 'debug',
-  },
+	fileVersion: {
+		1: 'Version 1',
+	},
+	type: {
+		0: 'rockshelf',
+		1: 'other',
+	},
+	source: {
+		0: 'merged',
+		1: 'stfs',
+		2: 'pkg',
+		3: 'rb3',
+	},
+	encryptionStatus: {
+		0: 'unknown',
+		1: 'encrypted',
+		2: 'decrypted',
+		3: 'mixed',
+	},
+	packageCategory: {
+		0: 'other',
+		1: 'author',
+		2: 'artistBand',
+		3: 'fullBand',
+		4: 'singles',
+		5: 'rockBand',
+		6: 'guitarHero',
+		7: 'official',
+		8: 'unofficial',
+		9: 'themed',
+		10: 'seasonal',
+		11: 'debug',
+	},
 } as const
 
 export type RSPackImageFileVersionNumbers = keyof typeof rsPackImage.fileVersion
@@ -53,43 +54,56 @@ export type RSPackImagePackageCategoryNumbers = keyof typeof rsPackImage.package
 export type RSPackImagePackageCategoryValues = (typeof rsPackImage.packageCategory)[keyof typeof rsPackImage.packageCategory]
 
 export interface ParsedRSPackImageObject {
-  /**
-   * The version of the Rockshelf Pack Image. This is used internally to switch between different parser methods based on the version of the file.
-   */
-  fileVersion: RSPackImageFileVersionNumbers
-  /**
-   * The installation type of the song package.
-   *
-   * - `"rockshelf"`: Installed through Rockshelf itself.
-   * - `"other"`: Installed through other program (probably Onyx).
-   */
-  type: RSPackImageTypeValues
-  /**
-   * The installation source of the song package.
-   */
-  source: RSPackImageSourceValues
-  /**
-   * The encryption status of the package files.
-   */
-  encryptionStatus: RSPackImageEncryptionStatusValues
-  /**
-   * The category of the package.
-   */
-  category: RSPackImagePackageCategoryValues
-  /**
-   * The display name of the song package on Rockshelf.
-   */
-  packageName: string
-  /**
-   * The creation date of the file in ISO string format.
-   */
-  creationDate: string
+	/**
+	 * The version of the Rockshelf Pack Image. This is used internally to switch between different parser methods based on the version of the file.
+	 */
+	fileVersion: RSPackImageFileVersionNumbers
+	/**
+	 * The installation type of the song package.
+	 *
+	 * - `"rockshelf"`: Installed through Rockshelf itself.
+	 * - `"other"`: Installed through other program (probably Onyx).
+	 */
+	type: RSPackImageTypeValues
+	/**
+	 * The installation source of the song package.
+	 */
+	source: RSPackImageSourceValues
+	/**
+	 * The encryption status of the package files.
+	 */
+	encryptionStatus: RSPackImageEncryptionStatusValues
+	/**
+	 * The category of the package.
+	 */
+	category: RSPackImagePackageCategoryValues
+	/**
+	 * The display name of the song package on Rockshelf.
+	 */
+	packageName: string
+	/**
+	 * The creation date of the file in ISO string format.
+	 */
+	creationDate: string
 }
 
 export interface RSPackImageValidationResults {
-  fileVersion: RSPackImageFileVersionNumbers
-  buffer: Buffer
-  footerSizeLength: number
+	/**
+	 * The file version of the Rockshelf Pack Image file.
+	 */
+	fileVersion: RSPackImageFileVersionNumbers
+	/**
+	 * The length of the image (including the extra footer).
+	 */
+	imageFileSize: number
+	/**
+	 * A Buffer object of the Rockshelf Pack Image footer.
+	 */
+	buffer: Buffer
+	/**
+	 * The size in bytes of the Rockshelf Pack Image footer
+	 */
+	footerSizeLength: number
 }
 
 /**
@@ -99,29 +113,30 @@ export interface RSPackImageValidationResults {
  * @returns {Promise<RSPackImageValidationResults | undefined>}
  */
 export const isJPEGRockshelfPackImage = async (srcPath: FilePathLikeTypes): Promise<RSPackImageValidationResults | undefined> => {
-  const src = pathLikeToFilePath(srcPath)
-  const reader = await src.openReader()
-  const imageFileSize = reader.length
-  reader.seek(imageFileSize - 4)
-  const footerSizeLength = await reader.readUInt32LE()
-  if (imageFileSize - footerSizeLength <= 4) {
-    await reader.close()
-    return
-  }
-  reader.seek(imageFileSize - footerSizeLength)
-  const magic = await reader.readASCII(4)
-  if (magic !== 'RSDT') {
-    await reader.close()
-    return
-  }
-  const fileVersion = (await reader.readUInt8()) as RSPackImageFileVersionNumbers
-  const buffer = await reader.read()
-  await reader.close()
-  return {
-    fileVersion,
-    buffer,
-    footerSizeLength,
-  }
+	const src = pathLikeToFilePath(srcPath)
+	const reader = await src.openReader()
+	const imageFileSize = reader.length
+	reader.seek(imageFileSize - 4)
+	const footerSizeLength = await reader.readUInt32LE()
+	if (imageFileSize - footerSizeLength <= 4) {
+		await reader.close()
+		return
+	}
+	reader.seek(imageFileSize - footerSizeLength)
+	const magic = await reader.readASCII(4)
+	if (magic !== 'RSDT') {
+		await reader.close()
+		return
+	}
+	const fileVersion = (await reader.readUInt8()) as RSPackImageFileVersionNumbers
+	const buffer = await reader.read()
+	await reader.close()
+	return {
+		fileVersion,
+		imageFileSize,
+		buffer,
+		footerSizeLength,
+	}
 }
 
 /**
@@ -131,34 +146,34 @@ export const isJPEGRockshelfPackImage = async (srcPath: FilePathLikeTypes): Prom
  * @returns {Promise<ParsedRSPackImageObject>}
  */
 export const parseRSDATBuffer = async (rsdatBuffer: Buffer): Promise<ParsedRSPackImageObject> => {
-  const reader = BinaryReader.fromBuffer(rsdatBuffer)
-  const type = (await reader.readUInt8()) as RSPackImageTypeNumbers
-  const source = (await reader.readUInt8()) as RSPackImageSourceNumbers
-  const encryptionStatus = (await reader.readUInt8()) as RSPackImageEncryptionStatusNumbers
-  const category = (await reader.readUInt8()) as RSPackImagePackageCategoryNumbers
+	const reader = BinaryReader.fromBuffer(rsdatBuffer)
+	const type = (await reader.readUInt8()) as RSPackImageTypeNumbers
+	const source = (await reader.readUInt8()) as RSPackImageSourceNumbers
+	const encryptionStatus = (await reader.readUInt8()) as RSPackImageEncryptionStatusNumbers
+	const category = (await reader.readUInt8()) as RSPackImagePackageCategoryNumbers
 
-  reader.padding(12)
-  const year = await reader.readUInt16LE()
-  const month = await reader.readUInt8()
-  const day = await reader.readUInt8()
-  const hour = await reader.readUInt8()
-  const min = await reader.readUInt8()
-  const sec = await reader.readUInt8()
+	reader.padding(12)
+	const year = await reader.readUInt16LE()
+	const month = await reader.readUInt8()
+	const day = await reader.readUInt8()
+	const hour = await reader.readUInt8()
+	const min = await reader.readUInt8()
+	const sec = await reader.readUInt8()
 
-  const creationDate = dateISOFormatObjectToDateISOString({ day, hour, min, month, sec, year })
+	const creationDate = dateISOFormatObjectToDateISOString({ day, hour, min, month, sec, year })
 
-  const packageNameLength = await reader.readUInt8()
-  const packageName = await reader.readUTF8(packageNameLength)
+	const packageNameLength = await reader.readUInt8()
+	const packageName = await reader.readUTF8(packageNameLength)
 
-  return {
-    fileVersion: 1,
-    type: rsPackImage.type[type] ?? 'rockshelf',
-    source: rsPackImage.source[source] ?? 'stfs',
-    encryptionStatus: rsPackImage.encryptionStatus[encryptionStatus] ?? 'unknown',
-    category: rsPackImage.packageCategory[category] ?? 'other',
-    creationDate,
-    packageName,
-  }
+	return {
+		fileVersion: 1,
+		type: rsPackImage.type[type] ?? 'rockshelf',
+		source: rsPackImage.source[source] ?? 'stfs',
+		encryptionStatus: rsPackImage.encryptionStatus[encryptionStatus] ?? 'unknown',
+		category: rsPackImage.packageCategory[category] ?? 'other',
+		creationDate,
+		packageName,
+	}
 }
 
 /**
@@ -169,14 +184,14 @@ export const parseRSDATBuffer = async (rsdatBuffer: Buffer): Promise<ParsedRSPac
  * @throws {Error} If the provided JPEG image file is not a valid Rockshelf Pack Image file.
  */
 export const parseRSPackImageFile = async (srcPath: FilePathLikeTypes): Promise<ParsedRSPackImageObject> => {
-  const src = pathLikeToFilePath(srcPath)
-  const results = await isJPEGRockshelfPackImage(srcPath)
-  if (!results) throw new Error(`Provided JPEG image file "${src.path}" is not a valid Rockshelf Pack Image file.`)
-  const { buffer, fileVersion } = results
+	const src = pathLikeToFilePath(srcPath)
+	const results = await isJPEGRockshelfPackImage(srcPath)
+	if (!results) throw new Error(`Provided JPEG image file "${src.path}" is not a valid Rockshelf Pack Image file.`)
+	const { buffer, fileVersion } = results
 
-  switch (fileVersion) {
-    case 1:
-    default:
-      return await parseRSDATBuffer(buffer)
-  }
+	switch (fileVersion) {
+		case 1:
+		default:
+			return await parseRSDATBuffer(buffer)
+	}
 }

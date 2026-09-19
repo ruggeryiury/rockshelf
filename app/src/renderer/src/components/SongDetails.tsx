@@ -2,46 +2,25 @@ import { AnimatedDiv, AnimatedSection, TransComponent, animate, formatMillisecon
 import { useWindowState } from '@renderer/stores/Window.state'
 import { useEffect, useMemo } from 'react'
 import { useTranslation } from 'react-i18next'
-import { ChevronLeftIcon, ChevronRightIcon, DiamondIcon, LoadingIcon, PlaystationIcon, RPCS3Icon, WiiIcon, XboxIcon } from '@renderer/assets/icons'
+import { DiamondIcon, LoadingIcon, PlaystationIcon, RPCS3Icon, WiiIcon, XboxIcon } from '@renderer/assets/icons'
 import clsx from 'clsx'
 import { useShallow } from 'zustand/shallow'
 import { SONG_DETAILS_TABS, STRUCT_LOG } from '@renderer/app/rockshelf.globals'
 import { useUserConfigState } from '@renderer/stores/UserConfig.state'
-import { bandIcon, guitarIcon, bassIcon, drumsIcon, keysIcon, vocalsIcon, proGuitarIcon, proBassIcon, proDrumsIcon, proKeysIcon, harm3Icon, diffDotOn, diffDotOff, diffDotDevil } from '@renderer/assets/images'
-import { StarsInline } from '@renderer/components.exports'
+import { bandIcon, guitarIcon, bassIcon, drumsIcon, keysIcon, vocalsIcon, proGuitarIcon, proBassIcon, proDrumsIcon, proKeysIcon, harm3Icon } from '@renderer/assets/images'
+import { DiffIconInline, StarsInline } from '@renderer/components.exports'
 import { useEditSongScreenState } from './EditSongScreen.state'
 import { useSongDetailsState } from './SongDetails.state'
 import { usePackageDetailsState } from './PackageDetails.state'
 import { useMessageBoxState } from './MessageBox.state'
 
-export function DiffIconInline({ diff, width, mr }: { diff: number; width?: number; mr?: 'auto' | number }) {
-  const { t, i18n } = useTranslation()
-  return (
-    <div style={{ width: `${5.625 * (width || 1)}rem`, marginRight: mr === 'auto' || !mr ? 'auto' : `${mr}rem` }} className="w-22.5 max-w-22.5 flex-row! items-center last:mr-0" title={t(diff === -1 ? 'noPart' : `diff${diff}`)}>
-      {diff > -1 && (
-        <>
-          <img src={diff === 6 ? diffDotDevil : diff >= 1 ? diffDotOn : diffDotOff} style={{ width: `${width || 4}rem` }} />
-          <img src={diff === 6 ? diffDotDevil : diff >= 2 ? diffDotOn : diffDotOff} style={{ width: `${width || 4}rem` }} />
-          <img src={diff === 6 ? diffDotDevil : diff >= 3 ? diffDotOn : diffDotOff} style={{ width: `${width || 4}rem` }} />
-          <img src={diff === 6 ? diffDotDevil : diff >= 4 ? diffDotOn : diffDotOff} style={{ width: `${width || 4}rem` }} />
-          <img src={diff === 6 ? diffDotDevil : diff >= 5 ? diffDotOn : diffDotOff} style={{ width: `${width || 4}rem` }} />
-        </>
-      )}
-      {diff === -1 && (
-        <h1 style={{ fontSize: `${i18n.language === 'pt-BR' ? 0.79 * (width || 1) : i18n.language === 'en-US' ? 1.05 * (width || 1) : 0.88 * (width || 1)}rem` }} className="uppercase">
-          {t('noPart')}
-        </h1>
-      )}
-    </div>
-  )
-}
 export function SongDetails() {
   const { t } = useTranslation()
   const { setMessageBoxState } = useMessageBoxState(useShallow((x) => ({ setMessageBoxState: x.setMessageBoxState })))
   const { pkgIndex, songs, setPackageDetailsState } = usePackageDetailsState(useShallow((x) => ({ pkgIndex: x.pkgIndex, songs: x.songs, setPackageDetailsState: x.setPackageDetailsState })))
   const { songDetailsTab, songIndex, artworkURL, isArtworkLoading, songLeaderboards, setSongDetailsState } = useSongDetailsState(useShallow((x) => ({ songDetailsTab: x.songDetailsTab, songIndex: x.songIndex, artworkURL: x.artworkURL, isArtworkLoading: x.isArtworkLoading, songLeaderboards: x.songLeaderboards, setSongDetailsState: x.setSongDetailsState })))
 
-  const { songsCatalogSortBy, mostPlayedInstrument } = useUserConfigState(useShallow((x) => ({ mostPlayedInstrument: x.mostPlayedInstrument, songsCatalogSortBy: x.songsCatalogSortBy })))
+  const { mostPlayedInstrument } = useUserConfigState(useShallow((x) => ({ mostPlayedInstrument: x.mostPlayedInstrument })))
 
   const { disableButtons, setWindowState, packages, saveData, rb3Stats } = useWindowState(useShallow((x) => ({ disableButtons: x.disableButtons, setWindowState: x.setWindowState, packages: x.packages, saveData: x.saveData, rb3Stats: x.rb3Stats })))
 
@@ -85,13 +64,9 @@ export function SongDetails() {
           return
         }
 
-        try {
-          const artworkDataURL = await window.api.data.getArtworkDataURLFromSong(packageDetails, songDetails)
-          if (artworkDataURL) setSongDetailsState({ artworkURL: artworkDataURL, isArtworkLoading: false })
-          else setSongDetailsState({ artworkURL: packageDetails.thumbnailSrc, isArtworkLoading: false })
-        } catch (err) {
-          if (err instanceof Error) setWindowState({ err })
-        }
+        const artworkDataURL = await window.api.data.getArtworkDataURLFromSong(packageDetails, songDetails)
+        if (artworkDataURL) setSongDetailsState({ artworkURL: artworkDataURL, isArtworkLoading: false })
+        else setSongDetailsState({ artworkURL: packageDetails.thumbnailSrc, isArtworkLoading: false })
       }
 
       void start()
@@ -177,15 +152,11 @@ export function SongDetails() {
                     className="mr-2 w-full self-start rounded-xs border border-neutral-700 bg-neutral-900 px-1 py-0.5 text-xs! text-nowrap uppercase duration-100 hover:bg-neutral-700 active:bg-neutral-600 disabled:text-neutral-700 disabled:hover:bg-neutral-900"
                     onClick={async () => {
                       setWindowState({ disableButtons: true })
-                      try {
-                        const destPath = await window.api.selector.pathToRB3File('song')
-                        if (destPath) {
-                          setMessageBoxState({ message: { type: 'loading', code: 'exportingSong', messageValues: { songTitle: songDetails.name } } })
-                          await window.api.data.exportSong(pkgIndex, songIndex, destPath)
-                          setMessageBoxState({ message: { type: 'success', code: 'exportingSong' } })
-                        }
-                      } catch (err) {
-                        if (err instanceof Error) setWindowState({ err })
+                      const destPath = await window.api.selector.pathToRB3File('song')
+                      if (destPath) {
+                        setMessageBoxState({ message: { type: 'loading', code: 'exportingSong', messageValues: { songTitle: songDetails.name } } })
+                        await window.api.data.exportSong(pkgIndex, songIndex, destPath)
+                        setMessageBoxState({ message: { type: 'success', code: 'exportingSong' } })
                       }
                       setWindowState({ disableButtons: false })
                     }}
@@ -203,50 +174,6 @@ export function SongDetails() {
                   {t('goBack')}
                 </button>
               </div>
-              {/* <div className="flex-row! items-center">
-                <button
-                  disabled={disableButtons || songDetailsTab === SONG_DETAILS_TABS.LEADERBOARDS}
-                  className=" ml-auto w-fit items-center rounded-xs border border-neutral-700 bg-neutral-900 px-1 py-0.5 text-xs! text-nowrap uppercase duration-100 hover:bg-neutral-700 active:bg-neutral-600 disabled:text-neutral-700 disabled:hover:bg-neutral-900"
-                  onClick={async () => {
-                    setWindowState({ disableButtons: true })
-                    if (songIndex === 0) {
-                      setSongDetailsState({
-                        songIndex: songsCount - 1,
-                      })
-                    } else {
-                      setSongDetailsState({
-                        songIndex: songIndex - 1,
-                      })
-                    }
-
-                    await sleep(1000)
-                    setWindowState({ disableButtons: false })
-                  }}
-                >
-                  <ChevronLeftIcon />
-                </button>
-                <button
-                  disabled={disableButtons || songDetailsTab === SONG_DETAILS_TABS.LEADERBOARDS}
-                  className="w-fit items-center rounded-xs border border-neutral-700 bg-neutral-900 px-1 py-0.5 text-xs! text-nowrap uppercase duration-100 hover:bg-neutral-700 active:bg-neutral-600 disabled:text-neutral-700 disabled:hover:bg-neutral-900"
-                  onClick={async () => {
-                    setWindowState({ disableButtons: true })
-                    if (songIndex === songsCount - 1) {
-                      setSongDetailsState({
-                        songIndex: 0,
-                      })
-                    } else {
-                      setSongDetailsState({
-                        songIndex: songIndex + 1,
-                      })
-                    }
-
-                    await sleep(1000)
-                    setWindowState({ disableButtons: false })
-                  }}
-                >
-                  <ChevronRightIcon />
-                </button>
-              </div> */}
             </div>
           </div>
           <div className="mb-2 h-6 min-h-6 w-full flex-row! items-center rounded-b-sm bg-white/15 px-4">
@@ -891,33 +818,27 @@ export function SongDetails() {
                       onClick={async (ev) => {
                         setWindowState({ disableButtons: true })
                         if (packageDetails) {
-                          try {
-                            await window.api.audio.extractMOGGTracksFromSong(packageDetails, songDetails, { applyVolume: false })
-                          } catch (err) {
-                            if (err instanceof Error) setWindowState({ err })
-                          }
+                          await window.api.audio.extractMOGGTracksFromSong(packageDetails, songDetails, { applyVolume: false })
                         }
                         setWindowState({ disableButtons: false })
                       }}
                     >
                       {t(typeof songDetails.multitrack !== 'string' && !packageDetails?.official ? 'extractSongAudioTrack' : 'extractTracks')}
                     </button>
-                    <button
-                      className="mr-2 w-fit rounded-xs border border-neutral-800 bg-neutral-900 px-1 py-0.5 text-xs! uppercase duration-100 last:mb-0 hover:bg-neutral-700 active:bg-neutral-600 disabled:text-neutral-700 disabled:hover:bg-neutral-900"
-                      onClick={async (ev) => {
-                        setWindowState({ disableButtons: true })
-                        if (packageDetails) {
-                          try {
-                            await window.api.audio.extractMOGGTracksFromSong(packageDetails, songDetails, { applyVolume: true })
-                          } catch (err) {
-                            if (err instanceof Error) setWindowState({ err })
+                    {typeof songDetails.multitrack === 'string' && (
+                      <button
+                        className="mr-2 w-fit rounded-xs border border-neutral-800 bg-neutral-900 px-1 py-0.5 text-xs! uppercase duration-100 last:mb-0 hover:bg-neutral-700 active:bg-neutral-600 disabled:text-neutral-700 disabled:hover:bg-neutral-900"
+                        onClick={async () => {
+                          setWindowState({ disableButtons: true })
+                          if (packageDetails) {
+                            await window.api.audio.extractMOGGTracksFromSong(packageDetails, songDetails)
                           }
-                        }
-                        setWindowState({ disableButtons: false })
-                      }}
-                    >
-                      {t(typeof songDetails.multitrack !== 'string' && !packageDetails?.official ? 'extractSongAudioTrackApplyVolume' : 'extractTracksApplyVolume')}
-                    </button>
+                          setWindowState({ disableButtons: false })
+                        }}
+                      >
+                        {t(typeof songDetails.multitrack !== 'string' && !packageDetails?.official ? 'extractSongAudioTrackApplyVolume' : 'extractTracksApplyVolume')}
+                      </button>
+                    )}
                   </div>
                 </div>
                 {packageDetails?.official === undefined && (
@@ -947,15 +868,11 @@ export function SongDetails() {
                         className="mr-2 mb-1 w-fit self-start rounded-xs border border-red-500 bg-neutral-900 px-1 py-0.5 text-xs! text-red-500 uppercase duration-100 last:mr-0 last:mb-0 hover:bg-red-950/25 active:bg-neutral-600 disabled:text-neutral-700 disabled:hover:bg-neutral-900"
                         onClick={async () => {
                           setWindowState({ disableButtons: true })
-                          try {
-                            const newPackages = await window.api.data.deleteSongsFromPackage(pkgIndex, [songDetails.songname])
-                            if (STRUCT_LOG) console.log('struct LightRB3SongPackagesData ["core/api/DataSyncAPI.ts"]:', newPackages)
-                            resetSongDetailsState()
-                            setPackageDetailsState({ songsCatalog: false })
-                            setWindowState({ packages: newPackages })
-                          } catch (err) {
-                            if (err instanceof Error) setWindowState({ err })
-                          }
+                          const newPackages = await window.api.data.deleteSongsFromPackage(pkgIndex, [songDetails.songname])
+                          if (STRUCT_LOG) console.log('struct LightRB3SongPackagesData ["core/api/DataSyncAPI.ts"]:', newPackages)
+                          resetSongDetailsState()
+                          setPackageDetailsState({ songsCatalog: false })
+                          setWindowState({ packages: newPackages })
                           setWindowState({ disableButtons: false })
                         }}
                       >

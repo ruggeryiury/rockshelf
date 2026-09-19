@@ -44,7 +44,7 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(
         description="RBTools: MOGG File Stat", epilog="By Ruggery Iury Corrêa."
     )
-    parser.add_argument("midi_file_path", help="The path to the MOGG file", type=str)
+    parser.add_argument("midi_file_path", help="The path to the MIDI file", type=str)
     parser.add_argument(
         "-p",
         "--print-results",

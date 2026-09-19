@@ -5,7 +5,6 @@ import { useWindowState } from '@renderer/stores/Window.state'
 import { useTranslation } from 'react-i18next'
 import type { ParsedRB3SaveData, InstrumentScoreData } from 'rockshelf-core/rbtools'
 import { DXNIGHTLYLINK, STRUCT_LOG } from '@renderer/app/rockshelf.globals'
-import type { RockBand3Data } from 'rockshelf-core/rbtools/lib'
 import { useDeluxeConfigScreenState } from './DeluxeConfigScreen.state'
 import { useMessageBoxState } from './MessageBox.state'
 import { useConfigScreenState } from './ConfigScreen.state'
@@ -15,6 +14,7 @@ import { useCreateNewPackageScreenState } from './CreateNewPackageScreen.state'
 import { useRhythmverseScreenState } from './RhythmverseScreen.state'
 import { useInstallRB3FileScreenState } from './InstallRB3FileScreen.state'
 import { useAboutScreenState } from './AboutScreen.state'
+import { RockBand3Data } from 'rockshelf-core'
 
 export function MainScreen() {
   const { t } = useTranslation()
@@ -96,29 +96,25 @@ export function MainScreen() {
             disabled={disableButtons}
             onClick={async () => {
               setWindowState({ disableButtons: true, rb3Stats: 'loading' })
-              try {
-                setTimeout(async () => {
-                  const newRB3Stats = await window.api.data.getRockBand3Data()
-                  if (STRUCT_LOG) console.log('struct RockBand3Data ["rbtools/src/lib/rpcs3/rpcs3GetRB3Stats.ts"]:', newRB3Stats)
+              setTimeout(async () => {
+                const newRB3Stats = await window.api.data.getRockBand3Data()
+                if (STRUCT_LOG) console.log('struct RockBand3Data ["rbtools/src/lib/rpcs3/rpcs3GetRB3Stats.ts"]:', newRB3Stats)
 
-                  const newInstalledDeluxeData = await window.api.data.getInstalledDeluxeData()
-                  if (STRUCT_LOG) console.log('struct DeluxeInstalledData ["rbtools/src/lib/github/api.ts"]:', newInstalledDeluxeData)
+                const newInstalledDeluxeData = await window.api.data.getInstalledDeluxeData()
+                if (STRUCT_LOG) console.log('struct DeluxeInstalledData ["rbtools/src/lib/github/api.ts"]:', newInstalledDeluxeData)
 
-                  let newSaveData: ParsedRB3SaveData | false = false
-                  let newInstrumentScores: InstrumentScoreData | false = false
-                  if (typeof rb3Stats === 'object' && (rb3Stats.hasSaveData || rb3Stats.userName !== null)) {
-                    newSaveData = await window.api.data.getRockBand3SaveData()
-                    if (STRUCT_LOG) console.log('struct ParsedRB3SaveData ["rbtools/src/lib/rpsc3/getSaveData.ts"]:', newSaveData)
-                    if (newSaveData) {
-                      newInstrumentScores = await window.api.data.getInstrumentScoresData(newSaveData)
-                      if (STRUCT_LOG) console.log('struct InstrumentScoreData ["rbtools/src/lib/rpcs3/getInstrumentScoresData.ts"]:', newInstrumentScores)
-                    }
+                let newSaveData: ParsedRB3SaveData | false = false
+                let newInstrumentScores: InstrumentScoreData | false = false
+                if (typeof rb3Stats === 'object' && (rb3Stats.hasSaveData || rb3Stats.userName !== null)) {
+                  newSaveData = await window.api.data.getRockBand3SaveData()
+                  if (STRUCT_LOG) console.log('struct ParsedRB3SaveData ["rbtools/src/lib/rpsc3/getSaveData.ts"]:', newSaveData)
+                  if (newSaveData) {
+                    newInstrumentScores = await window.api.data.getInstrumentScoresData(newSaveData)
+                    if (STRUCT_LOG) console.log('struct InstrumentScoreData ["rbtools/src/lib/rpcs3/getInstrumentScoresData.ts"]:', newInstrumentScores)
                   }
-                  setWindowState({ disableButtons: false, rb3Stats: newRB3Stats, saveData: newSaveData, instrumentScores: newInstrumentScores, installedDeluxeData: newInstalledDeluxeData })
-                }, 300)
-              } catch (err) {
-                if (err instanceof Error) setWindowState({ err })
-              }
+                }
+                setWindowState({ disableButtons: false, rb3Stats: newRB3Stats, saveData: newSaveData, instrumentScores: newInstrumentScores, installedDeluxeData: newInstalledDeluxeData })
+              }, 300)
             }}
           >
             {t('refresh')}
@@ -136,7 +132,7 @@ export function MainScreen() {
                   disabled={disableButtons}
                   onClick={async () => {
                     setWindowState({ disableButtons: true })
-                    await window.api.rpcs3.playRB3()
+                    await window.api.data.playRB3()
                     setWindowState({ disableButtons: false })
                   }}
                 >
@@ -297,21 +293,16 @@ export function MainScreen() {
                                 className="cursor-pointer underline hover:text-neutral-400 active:text-neutral-300"
                                 onClick={async () => {
                                   setWindowState({ disableButtons: true })
-                                  try {
-                                    await window.api.rpcs3.installHighMemoryPatch()
-                                    setWindowState((oldState) => {
-                                      return {
-                                        rb3Stats: {
-                                          ...(oldState.rb3Stats as RockBand3Data),
-                                          hasHighMemoryPatch: true,
-                                        },
-                                      }
-                                    })
-                                    setWindowState({ disableButtons: false })
-                                  } catch (err) {
-                                    console.log(err)
-                                    if (err instanceof Error) setWindowState({ err })
-                                  }
+                                  await window.api.data.installHighMemoryPatch()
+                                  setWindowState((oldState) => {
+                                    return {
+                                      rb3Stats: {
+                                        ...(oldState.rb3Stats as RockBand3Data),
+                                        hasHighMemoryPatch: true,
+                                      },
+                                    }
+                                  })
+                                  setWindowState({ disableButtons: false })
                                 }}
                               />
                             ),

@@ -34,17 +34,13 @@ export function ExportPackageModal() {
                   disabled={disableButtons}
                   onClick={async () => {
                     setWindowState({ disableButtons: true })
-                    try {
-                      const exportPackagePath = await window.api.selector.pathToRB3File()
-                      if (!exportPackagePath) {
-                        setWindowState({ disableButtons: false })
-                        return
-                      }
-                      setExportPackageModalState({ destPath: exportPackagePath })
+                    const exportPackagePath = await window.api.selector.pathToRB3File()
+                    if (!exportPackagePath) {
                       setWindowState({ disableButtons: false })
-                    } catch (err) {
-                      if (err instanceof Error) setWindowState({ err })
+                      return
                     }
+                    setExportPackageModalState({ destPath: exportPackagePath })
+                    setWindowState({ disableButtons: false })
                   }}
                   className="rounded-xs border border-neutral-800 bg-neutral-900 px-1 py-0.5 text-sm! uppercase duration-100 hover:bg-neutral-800 active:bg-neutral-700 disabled:text-neutral-700 disabled:hover:bg-neutral-900"
                 >
@@ -101,11 +97,7 @@ export function ExportPackageModal() {
                   className="mr-2 w-fit self-start rounded-xs border border-neutral-700 bg-neutral-900 px-1 py-0.5 text-xs! whitespace-nowrap uppercase duration-100 hover:bg-neutral-700 active:bg-neutral-600 disabled:text-neutral-700 disabled:hover:bg-neutral-900"
                   onClick={async () => {
                     if (destPath !== null) {
-                      try {
-                        await window.api.data.exportPackage(active.path, destPath, { creatorName: packageCreatorName })
-                      } catch (err) {
-                        if (err instanceof Error) setWindowState({ err })
-                      }
+                      await window.api.data.exportPackage(active.path, destPath, { creatorName: packageCreatorName })
                     }
                   }}
                 >

@@ -1,5 +1,5 @@
-import { fileURLToPath } from 'node:url'
 import { FilePath } from 'node-lib'
+import { fileURLToPath } from 'node:url'
 
 /**
  * Returns the path of the script in execution.

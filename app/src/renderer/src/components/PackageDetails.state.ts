@@ -1,7 +1,6 @@
 import { create } from 'zustand'
-import { RSPackImagePackageCategoryValues, SongPackagesFilterGenericObject, SongPackagesFilterTypes } from 'rockshelf-core'
-import type { DTAFilterGenericObject, DTAFilterByArtistObject, DTAFilterByDifficultyObject, DTAFilterTypes, RB3CompatibleDTAFile } from 'rockshelf-core/rbtools/lib'
-import type { GoCentralLeaderboardResultObject } from 'rockshelf-core/rbtools'
+import { RSPackImagePackageCategoryValues } from 'rockshelf-core'
+import type { DTAFilterGenericObject, DTAFilterByArtistObject, DTAFilterByDifficultyObject, RB3CompatibleDTAFile } from 'rockshelf-core/rbtools/lib'
 
 export interface PackageDetailsStateProps {
   songs: RB3CompatibleDTAFile[] | false

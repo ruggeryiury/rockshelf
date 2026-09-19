@@ -1,4 +1,6 @@
 export const appENUSLocaleNew = {
+  // NEW
+
   // Edit All Songs
   editAllSongs: 'Edit All Songs',
   editAllSongsDesc: 'Edit all songs metadata at once.',

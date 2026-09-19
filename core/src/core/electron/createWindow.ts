@@ -1,23 +1,22 @@
-/* eslint-disable @typescript-eslint/no-floating-promises */
 import { is } from '@electron-toolkit/utils'
 import { BrowserWindow, shell } from 'electron'
-import { pathLikeToDirPath, pathLikeToString, type DirPathLikeTypes, type FilePathLikeTypes } from 'node-lib'
+import { type DirPathLikeTypes, type FilePathLikeTypes, pathLikeToDirPath, pathLikeToString } from 'node-lib'
 
 export interface CreateWindowOptions {
-  /**
-   * The root folder of the loaded main process file.
-   *
-   * You can get it using both `__dirname` (CommonJS) or `import.meta.dirname` (ESModules).
-   */
-  mainScriptRootFolder: DirPathLikeTypes
-  /**
-   * The path to the icon asset used on Linux systems.
-   */
-  linuxIconPath: FilePathLikeTypes
-  /**
-   * An array with arguments provided when executing Rockshelf.
-   */
-  argv: string[]
+	/**
+	 * The root folder of the loaded main process file.
+	 *
+	 * You can get it using both `__dirname` (CommonJS) or `import.meta.dirname` (ESModules).
+	 */
+	mainScriptRootFolder: DirPathLikeTypes
+	/**
+	 * The path to the icon asset used on Linux systems.
+	 */
+	linuxIconPath: FilePathLikeTypes
+	/**
+	 * An array with arguments provided when executing Rockshelf.
+	 */
+	argv: string[]
 }
 
 /**
@@ -27,42 +26,42 @@ export interface CreateWindowOptions {
  * @returns {BrowserWindow}
  */
 export function createWindow(options: CreateWindowOptions): BrowserWindow {
-  const { linuxIconPath, mainScriptRootFolder } = options
-  const icon = pathLikeToString(linuxIconPath)
-  const main = pathLikeToDirPath(mainScriptRootFolder)
+	const { linuxIconPath, mainScriptRootFolder } = options
+	const icon = pathLikeToString(linuxIconPath)
+	const main = pathLikeToDirPath(mainScriptRootFolder)
 
-  const mainWindow = new BrowserWindow({
-    width: 1280,
-    height: 800,
-    minWidth: 1280,
-    minHeight: 800,
-    show: false,
-    autoHideMenuBar: true,
-    fullscreenable: false,
-    resizable: false,
-    frame: false,
-    ...(process.platform === 'linux' ? { icon } : {}),
-    webPreferences: {
-      preload: main.gotoFile('../preload/index.mjs').path,
-      sandbox: false,
-    },
-  })
+	const mainWindow = new BrowserWindow({
+		width: 1280,
+		height: 800,
+		minWidth: 1280,
+		minHeight: 800,
+		show: false,
+		autoHideMenuBar: true,
+		fullscreenable: false,
+		resizable: false,
+		frame: false,
+		...(process.platform === 'linux' ? { icon } : {}),
+		webPreferences: {
+			preload: main.gotoFile('../preload/index.mjs').path,
+			sandbox: false,
+		},
+	})
 
-  mainWindow.on('ready-to-show', () => {
-    if (is.dev) mainWindow.webContents.openDevTools({ mode: 'detach' })
-    mainWindow.show()
-  })
+	mainWindow.on('ready-to-show', () => {
+		if (is.dev) mainWindow.webContents.openDevTools({ mode: 'detach' })
+		mainWindow.show()
+	})
 
-  mainWindow.webContents.setWindowOpenHandler((details) => {
-    shell.openExternal(details.url)
-    return { action: 'deny' }
-  })
+	mainWindow.webContents.setWindowOpenHandler((details) => {
+		shell.openExternal(details.url)
+		return { action: 'deny' }
+	})
 
-  if (is.dev && process.env['ELECTRON_RENDERER_URL']) {
-    mainWindow.loadURL(process.env['ELECTRON_RENDERER_URL'])
-  } else {
-    mainWindow.loadFile(main.gotoFile('../renderer/index.html').path)
-  }
+	if (is.dev && process.env['ELECTRON_RENDERER_URL']) {
+		mainWindow.loadURL(process.env['ELECTRON_RENDERER_URL'])
+	} else {
+		mainWindow.loadFile(main.gotoFile('../renderer/index.html').path)
+	}
 
-  return mainWindow
+	return mainWindow
 }

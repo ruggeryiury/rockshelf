@@ -2,6 +2,7 @@
 
 Rockshelf exposes many internal methods on its command line interface API.
 
+- [`chartstat`](#chartstat)
 - [`imgstat`](#imgstat)
 - [`moggdec`](#moggdec)
 - [`moggenc`](#moggenc)
@@ -11,6 +12,25 @@ Rockshelf exposes many internal methods on its command line interface API.
 - [`rb3stat`](#rb3stat)
 - [`stfsstat` | `constat`](#stfsstat--constat)
 - [`textoimg`](#textoimg)
+
+## `chartstat`
+
+_Displays statistics of a song chart file._
+
+```bash
+rockshelf chartstat <midi_path> [flags]
+```
+
+| Argument    | Type   | Description                                                                                    |
+| :---------- | :----- | :--------------------------------------------------------------------------------------------- |
+| `midi_path` | String | **Required.** The song chart file to be read. Both MIDI and decrypted EDAT files are accepted. |
+
+`--output-format`, `-o`
+
+- **Type:** String
+- **Default:** `json`
+- **Valid Values:** `json` | `yaml` | `json-pretty`
+- **Description:** The output format.
 
 ## `imgstat`
 

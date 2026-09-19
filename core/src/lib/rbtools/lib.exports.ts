@@ -28,7 +28,6 @@ export * from './lib/packages/extractPackagesForSTFSFile'
 export * from './lib/packages/getUnpackedFilesPathFromRootExtraction'
 export * from './lib/packages/officialPackages'
 
-export * from './lib/path/buildOSCommand'
 export * from './lib/path/thisFilePath'
 
 export * from './lib/pkg/calculateAesAlignedOffsetAndSize'
@@ -45,12 +44,5 @@ export * from './lib/rb3savedata/getProfileName'
 export * from './lib/rb3savedata/getScoresListBytesWii'
 export * from './lib/rb3savedata/getScoresListBytesXboxPS3'
 export * from './lib/rb3savedata/getXboxPS3BandName'
-
-export * from './lib/rpcs3/installRB3HighMemoryPatch'
-export * from './lib/rpcs3/installRPCS3QuickConfig'
-export * from './lib/rpcs3/isRPCS3Devhdd0PathValid'
-export * from './lib/rpcs3/isRPCS3ExePathValid'
-export * from './lib/rpcs3/rpcs3GetRB3Stats'
-export * from './lib/rpcs3/rpcs3GetSongPackagesStats'
 
 export * from './lib/u8/parseU8ArchiveHeader'

@@ -7,7 +7,6 @@ import type { BrowserWindow } from 'electron'
  * @param {any[]} value Any value that you want to be logged into console.
  */
 export const sendRendererConsole = (win: BrowserWindow, ...value: any[]): true => {
-  // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
-  win.webContents.send('sendRendererConsole', ...value)
-  return true
+	win.webContents.send('sendRendererConsole', ...value)
+	return true
 }

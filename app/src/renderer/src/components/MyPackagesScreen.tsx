@@ -3,7 +3,7 @@ import { AnimatedDiv, AnimatedSection, animate, getReadableBytesSize } from '@re
 import { useMyPackagesScreenState } from './MyPackagesScreen.state'
 import { useWindowState } from '@renderer/stores/Window.state'
 import { useTranslation } from 'react-i18next'
-import { LightRB3SongPackagesData, RSPackImagePackageCategoryValues } from 'rockshelf-core'
+import { RSPackImagePackageCategoryValues } from 'rockshelf-core'
 import { useDialogScreenState } from './DialogScreen.state'
 import { useShallow } from 'zustand/shallow'
 import { MYPACKAGES_TABS, PKG_CATEGORIES, STRUCT_LOG } from '@renderer/app/rockshelf.globals'
@@ -12,15 +12,18 @@ import { useEffect } from 'react'
 import { useUserConfigState } from '@renderer/stores/UserConfig.state'
 import { useMergePackageModalState } from './MergePackageModal.state'
 import { usePackageDetailsState } from './PackageDetails.state'
+import { useSongDetailsState } from './SongDetails.state'
+import z from 'zod'
 
 export function MyPackagesScreen() {
   const { t } = useTranslation()
-  const { active, hoveredPKG, setMyPackagesScreenState, resetMyPackagesScreenState, myPackagesTab, packagesCatalog } = useMyPackagesScreenState(useShallow((x) => ({ active: x.active, hoveredPKG: x.hoveredPKG, setMyPackagesScreenState: x.setMyPackagesScreenState, resetMyPackagesScreenState: x.resetMyPackagesScreenState, myPackagesTab: x.myPackagesTab, packagesCatalog: x.packagesCatalog })))
+  const { active, hoveredPKG, setMyPackagesScreenState, resetMyPackagesScreenState, myPackagesTab, packagesCatalog, searchField, isFetchingSearch, searchFieldError, searchHeaders } = useMyPackagesScreenState(useShallow((x) => ({ active: x.active, hoveredPKG: x.hoveredPKG, setMyPackagesScreenState: x.setMyPackagesScreenState, resetMyPackagesScreenState: x.resetMyPackagesScreenState, myPackagesTab: x.myPackagesTab, packagesCatalog: x.packagesCatalog, searchField: x.searchField, searchFieldError: x.searchFieldError, isFetchingSearch: x.isFetchingSearch, searchHeaders: x.searchHeaders })))
   const { disableButtons, packages, setWindowState, disableImg } = useWindowState(useShallow((x) => ({ disableButtons: x.disableButtons, packages: x.packages, setWindowState: x.setWindowState, disableImg: x.disableImg })))
   const { setDialogScreenState } = useDialogScreenState(useShallow((x) => ({ setDialogScreenState: x.setDialogScreenState })))
   const { packagesCatalogSortBy, setUserConfigState, getUserConfigState } = useUserConfigState(useShallow((x) => ({ packagesCatalogSortBy: x.packagesCatalogSortBy, setUserConfigState: x.setUserConfigState, getUserConfigState: x.getUserConfigState })))
   const { setMergePackageModalState } = useMergePackageModalState(useShallow((x) => ({ setMergePackageModalState: x.setMergePackageModalState })))
   const { setPackageDetailsState } = usePackageDetailsState(useShallow((x) => ({ setPackageDetailsState: x.setPackageDetailsState })))
+  const { setSongDetailsState } = useSongDetailsState(useShallow((x) => ({ setSongDetailsState: x.setSongDetailsState })))
 
   useEffect(
     function fetchCatalogObject() {
@@ -28,14 +31,10 @@ export function MyPackagesScreen() {
         if (typeof packages === 'object' && packagesCatalog === false) {
           setMyPackagesScreenState({ packagesCatalog: 'loading' })
           setWindowState({ disableButtons: true })
-          try {
-            const newCatalog = await window.api.data.filterSongPackages(packagesCatalogSortBy)
-            if (STRUCT_LOG) console.log('struct SongPackagesFilterGenericObject [core/src/lib/dta/getDTACatalog.ts]', newCatalog)
-            setMyPackagesScreenState({ packagesCatalog: newCatalog })
-            setWindowState({ disableButtons: false })
-          } catch (err) {
-            if (err instanceof Error) setWindowState({ err })
-          }
+          const newCatalog = await window.api.data.filterSongPackages(packagesCatalogSortBy)
+          if (STRUCT_LOG) console.log('struct SongPackagesFilterGenericObject [core/src/lib/dta/getDTACatalog.ts]', newCatalog)
+          setMyPackagesScreenState({ packagesCatalog: newCatalog })
+          setWindowState({ disableButtons: false })
         }
       }
 
@@ -43,6 +42,10 @@ export function MyPackagesScreen() {
     },
     [packages, packagesCatalog, packagesCatalogSortBy]
   )
+
+  useEffect(() => {
+    if (myPackagesTab !== MYPACKAGES_TABS.SEARCH && (searchFieldError !== null || searchHeaders !== null)) setMyPackagesScreenState({ searchFieldError: null, searchHeaders: null })
+  }, [myPackagesTab])
 
   return (
     <>
@@ -54,15 +57,10 @@ export function MyPackagesScreen() {
             className="mr-2 w-fit self-start rounded-xs border border-neutral-700 bg-neutral-900 px-1 py-0.5 text-xs! uppercase duration-100 last:mr-0 hover:bg-neutral-700 active:bg-neutral-600 disabled:text-neutral-700 disabled:hover:bg-neutral-900"
             onClick={async () => {
               setWindowState({ disableButtons: true, packages: 'loading' })
-              let newPackages: LightRB3SongPackagesData | false = false
-              try {
-                newPackages = await window.api.data.getLightSongPackagesData()
-                if (STRUCT_LOG) console.log('struct LightRB3SongPackagesData ["core/api/DataSyncAPI.ts"]:', newPackages)
-                setMyPackagesScreenState({ packagesCatalog: false })
-                setWindowState({ packages: newPackages })
-              } catch (err) {
-                if (err instanceof Error) setWindowState({ err })
-              }
+              const newPackages = await window.api.data.getLightSongPackagesData()
+              if (STRUCT_LOG) console.log('struct LightRB3SongPackagesData ["core/api/DataSyncAPI.ts"]:', newPackages)
+              setMyPackagesScreenState({ packagesCatalog: false })
+              setWindowState({ packages: newPackages })
               setWindowState({ disableButtons: false })
             }}
           >
@@ -87,6 +85,15 @@ export function MyPackagesScreen() {
             }}
           >
             {t('packages')}
+          </button>
+          <button
+            disabled={disableButtons}
+            className={clsx(myPackagesTab === MYPACKAGES_TABS.SEARCH ? 'bg-yellow-500 text-black/90 hover:bg-yellow-400 active:bg-yellow-300' : 'hover:text-neutral-300 active:text-neutral-200', 'h-full w-fit justify-center px-2 duration-200')}
+            onClick={() => {
+              setMyPackagesScreenState({ myPackagesTab: MYPACKAGES_TABS.SEARCH })
+            }}
+          >
+            {t('search')}
           </button>
           <button
             disabled={disableButtons}
@@ -129,13 +136,9 @@ export function MyPackagesScreen() {
                                 onMouseLeave={() => setMyPackagesScreenState({ hoveredPKG: -1 })}
                                 onClick={async () => {
                                   setWindowState({ disableButtons: true })
-                                  try {
-                                    const songs = await window.api.data.getSongsFromPackage(packageIndex)
-                                    if (STRUCT_LOG) console.log('struct RB3CompatibleDTAFile[] ["rbtools/lib/dta/dtaStruct.ts"]:', songs)
-                                    setPackageDetailsState({ songs, pkgIndex: packageIndex })
-                                  } catch (err) {
-                                    if (err instanceof Error) setWindowState({ err })
-                                  }
+                                  const songs = await window.api.data.getSongsFromPackage(packageIndex)
+                                  if (STRUCT_LOG) console.log('struct RB3CompatibleDTAFile[] ["rbtools/lib/dta/dtaStruct.ts"]:', songs)
+                                  setPackageDetailsState({ songs, pkgIndex: packageIndex })
                                   setWindowState({ disableButtons: false })
                                 }}
                               >
@@ -203,6 +206,89 @@ export function MyPackagesScreen() {
             </div>
           </>
         )}
+        {myPackagesTab === MYPACKAGES_TABS.SEARCH && (
+          <>
+            <div className="mb-2 flex-row! items-center">
+              <h1 className="mr-2 text-3xl uppercase">{t('search')}</h1>
+            </div>
+            <form
+              onSubmit={async (ev) => {
+                ev.preventDefault()
+                ev.stopPropagation()
+                setWindowState({ disableButtons: true })
+                setMyPackagesScreenState({ isFetchingSearch: true })
+                const safeSearchField = z.string().trim().min(3, 'errorSearchFieldTooSmall').safeParse(searchField)
+                if (!safeSearchField.success) {
+                  console.log(safeSearchField)
+                  setWindowState({ disableButtons: false })
+                  setMyPackagesScreenState({ isFetchingSearch: false, searchFieldError: safeSearchField.error.issues[0].message, searchHeaders: null })
+                  return
+                }
+                setMyPackagesScreenState({ searchFieldError: null })
+                const searchResults = await window.api.data.search(searchField)
+
+                setWindowState({ disableButtons: false })
+                setMyPackagesScreenState({ isFetchingSearch: false, searchHeaders: searchResults })
+              }}
+              className="mb-2 flex! flex-row items-center"
+            >
+              <input className={clsx('mr-2 w-full rounded-sm border px-2 py-1 text-base', searchFieldError ? 'border-red-500 hover:border-red-400 focus:border-neutral-300 active:border-neutral-200' : 'border-neutral-500 hover:border-neutral-400 focus:border-neutral-300 active:border-neutral-200')} type="text" placeholder={t('pkgSearchPlaceholder')} value={searchField} onChange={(ev) => setMyPackagesScreenState({ searchField: ev.target.value })} />
+              <button type="submit" className="mr-2 h-full w-fit justify-center rounded-xs border border-neutral-700 bg-neutral-900 px-1 py-0.5 text-xs! uppercase duration-100 last:mr-0 hover:bg-neutral-700 active:bg-neutral-600 disabled:text-neutral-700 disabled:hover:bg-neutral-900">
+                {t('search')}
+              </button>
+            </form>
+            <AnimatedDiv condition={searchFieldError !== null && !isFetchingSearch}>
+              <p className="text-red-500">{t(searchFieldError!)}</p>
+              <div className="h-2 w-full" />
+            </AnimatedDiv>
+            <div className="h-full w-full overflow-x-hidden overflow-y-auto pr-3">
+              {isFetchingSearch && (
+                <>
+                  <div className="mt-2 flex-row! items-center">
+                    <LoadingIcon className="mr-2 animate-spin" />
+                    <p>{t('loadingSongSearch')}</p>
+                  </div>
+                </>
+              )}
+              {!isFetchingSearch && searchHeaders && typeof packages === 'object' && (
+                <>
+                  {searchHeaders.headers.map((headers, hi) => {
+                    const pkg = packages.packages[headers.pkgIndex]
+                    return (
+                      <div key={`searchHeaders${hi}`}>
+                        <div className="border-default-white/75 mb-2 flex-row! items-end border-b pb-1">
+                          <img className="mr-2 h-10 min-h-10 w-10 min-w-10 border border-neutral-700" src={pkg.thumbnailSrc} />
+                          <h1 className="text-default-white/85 mr-auto text-3xl uppercase">{pkg.packageData.packageName}</h1>
+                          <p className="font-pentatonic font-bold uppercase">{t(headers.songs.length === 1 ? 'songsCount' : 'songsCountPlural', { count: headers.songs.length })}</p>
+                        </div>
+                        <div>
+                          {headers.songs.map((result, resultI) => {
+                            return (
+                              <button
+                                key={`searchHeaders${hi}__${resultI}`}
+                                className="mb-1 cursor-pointer! flex-row! items-center rounded-sm p-1 text-base text-neutral-500 last:mb-4 hover:bg-white/5 hover:text-neutral-400 focus:text-neutral-300 active:text-neutral-200"
+                                onClick={async () => {
+                                  const songs = await window.api.data.getSongsFromPackage(headers.pkgIndex)
+                                  if (STRUCT_LOG) console.log('struct RB3CompatibleDTAFile[] ["rbtools/lib/dta/dtaStruct.ts"]:', songs)
+                                  setPackageDetailsState({ songs, pkgIndex: headers.pkgIndex })
+                                  setSongDetailsState({ songIndex: result.songIndex })
+                                  setWindowState({ disableButtons: false })
+                                }}
+                              >
+                                <h1 className="mr-2">{result.songData.name}</h1>
+                                <h2 className="font-sans! text-xs leading-none font-normal italic">{result.songData.artist}</h2>
+                              </button>
+                            )
+                          })}
+                        </div>
+                      </div>
+                    )
+                  })}
+                </>
+              )}
+            </div>
+          </>
+        )}
         {myPackagesTab === MYPACKAGES_TABS.FILTERS && (
           <>
             <div className="h-full w-full overflow-y-auto">
@@ -217,12 +303,8 @@ export function MyPackagesScreen() {
                       setWindowState({ disableButtons: true })
                       setUserConfigState({ packagesCatalogSortBy: 'name' })
                       const newConfig = getUserConfigState()
-                      try {
-                        await window.api.userConfig.save(newConfig)
-                        setMyPackagesScreenState({ packagesCatalog: false })
-                      } catch (err) {
-                        if (err instanceof Error) setWindowState({ err })
-                      }
+                      await window.api.userConfig.save(newConfig)
+                      setMyPackagesScreenState({ packagesCatalog: false })
                       setWindowState({ disableButtons: false })
                     }}
                   >
@@ -235,12 +317,8 @@ export function MyPackagesScreen() {
                       setWindowState({ disableButtons: true })
                       setUserConfigState({ packagesCatalogSortBy: 'officialUnofficial' })
                       const newConfig = getUserConfigState()
-                      try {
-                        await window.api.userConfig.save(newConfig)
-                        setMyPackagesScreenState({ packagesCatalog: false })
-                      } catch (err) {
-                        if (err instanceof Error) setWindowState({ err })
-                      }
+                      await window.api.userConfig.save(newConfig)
+                      setMyPackagesScreenState({ packagesCatalog: false })
                       setWindowState({ disableButtons: false })
                     }}
                   >
@@ -253,12 +331,8 @@ export function MyPackagesScreen() {
                       setWindowState({ disableButtons: true })
                       setUserConfigState({ packagesCatalogSortBy: 'userCategory' })
                       const newConfig = getUserConfigState()
-                      try {
-                        await window.api.userConfig.save(newConfig)
-                        setMyPackagesScreenState({ packagesCatalog: false })
-                      } catch (err) {
-                        if (err instanceof Error) setWindowState({ err })
-                      }
+                      await window.api.userConfig.save(newConfig)
+                      setMyPackagesScreenState({ packagesCatalog: false })
                       setWindowState({ disableButtons: false })
                     }}
                   >

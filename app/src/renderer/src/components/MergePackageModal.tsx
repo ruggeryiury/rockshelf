@@ -105,16 +105,12 @@ export function MergePackageModal() {
                       setWindowState({ disableButtons: true })
                       setMessageBoxState({ message: { type: 'loading', code: 'mergePackages', messageValues: { toBeMergedPackageName: packages.packages[selPKG].packageData.packageName, mainPackageName: packages.packages[index].packageData.packageName } } })
 
-                      try {
-                        const newPackages = await window.api.data.mergePackages(selPKG, index)
-                        if (newPackages) {
-                          resetMergePackageModalState()
-                          setMyPackagesScreenState({ packagesCatalog: false })
-                          setWindowState({ packages: newPackages })
-                          setMessageBoxState({ message: { type: 'success', code: 'mergePackages' } })
-                        }
-                      } catch (err) {
-                        if (err instanceof Error) setWindowState({ err })
+                      const newPackages = await window.api.data.mergePackages(selPKG, index)
+                      if (newPackages) {
+                        resetMergePackageModalState()
+                        setMyPackagesScreenState({ packagesCatalog: false })
+                        setWindowState({ packages: newPackages })
+                        setMessageBoxState({ message: { type: 'success', code: 'mergePackages' } })
                       }
 
                       setWindowState({ disableButtons: false })

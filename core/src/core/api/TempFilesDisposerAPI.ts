@@ -1,36 +1,39 @@
-import { FilePath, pathLikeToFilePath, type FilePathLikeTypes } from 'node-lib'
+import { FilePath, type FilePathLikeTypes, pathLikeToFilePath } from 'node-lib'
 
 /**
- * An API that gathers temporary files to be deleted.
+ * An API that gathers temporary files to be deleted when Rockshelf shuts down.
  */
 export class TempFilesDisposerAPI {
-  /** An array with paths to files stored on the user's temporary folder. */
-  temps: FilePath[]
-  constructor() {
-    this.temps = []
-  }
+	/** An array with paths to files stored on the user's temporary folder. */
+	temps: FilePath[]
+	constructor() {
+		this.temps = []
+	}
 
-  /**
-   * Adds a temporary file to the disposal API.
-   * - - - -
-   * @param {FilePathLikeTypes} file The path to the temporary file.
-   * @returns {void}
-   */
-  addTempFile(file: FilePathLikeTypes): void {
-    this.temps.push(pathLikeToFilePath(file))
-  }
+	/**
+	 * Adds a temporary file to the disposal API.
+	 * - - - -
+	 * @param {FilePathLikeTypes} file The path to the temporary file.
+	 * @returns {void}
+	 */
+	addTempFile(file: FilePathLikeTypes): void {
+		this.temps.push(pathLikeToFilePath(file))
+	}
 
-  /**
-   *
-   * @returns {void}
-   */
-  cleanTempFilesSync(): void {
-    for (const temp of this.temps) {
-      if (temp.exists) {
-        console.log(`Disposing temporary file: { ${temp.path} }`)
-        temp.deleteSync()
-      }
-    }
-    this.temps = []
-  }
+	/**
+	 * Synchronously deletes all temporary files created by Rockshelf.
+	 * - - - -
+	 * @returns {void}
+	 */
+	cleanTempFilesSync(): void {
+		if (this.temps.length > 0) {
+			for (const temp of this.temps) {
+				if (temp.exists) {
+					console.log(`Disposing temporary file: { ${temp.path} }`)
+					temp.deleteSync()
+				}
+			}
+		}
+		this.temps = []
+	}
 }

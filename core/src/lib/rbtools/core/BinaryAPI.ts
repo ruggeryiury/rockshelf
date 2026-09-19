@@ -1,232 +1,273 @@
-import { execAsync, type FilePath, pathLikeToFilePath, pathLikeToString, resolve, type FilePathLikeTypes, type DirPathLikeTypes, pathLikeToDirPath, DirPath, Hex } from 'node-lib'
-import { EDATFile, ImageFile, MIDIFile, MOGGFile, RBTools } from '../core.exports'
-import { buildOSCommand } from '../lib.exports'
 import { is } from '@electron-toolkit/utils'
+import { DirPath, type DirPathLikeTypes, type FilePath, type FilePathLikeTypes, Hex, execAsync, pathLikeToDirPath, pathLikeToFilePath, pathLikeToString, resolve, spawnAsync } from 'node-lib'
+import type { SpawnOptionsWithoutStdio } from 'node:child_process'
+import { platform } from 'node:os'
+
+import { EDATFile, ImageFile, MIDIFile, MOGGFile, RBTools } from '../core.exports'
 
 export interface OGGEncodingOptions {
-  /**
-   * Specify quality, between `-1` (very low) and `10` (very high), instead of specifying a particular bitrate. Fractional qualities (e.g. `2.75`) are permitted. Default is `3`.
-   */
-  quality: number
+	/**
+	 * Specify quality, between `-1` (very low) and `10` (very high), instead of specifying a particular bitrate. Fractional qualities (e.g. `2.75`) are permitted. Default is `3`.
+	 */
+	quality: number
+}
+
+export interface BuiltSpawnCmdObject {
+	/**
+	 * The command you want to execute, might be the provided `exeName` argument, or `'wine'` in Linux environments.
+	 */
+	command: string
+	/**
+	 * An array of strings that will be passed as arguments for the spawn process.
+	 */
+	args: string[]
+	/**
+	 * An object with options to the spawn process.
+	 */
+	options: SpawnOptionsWithoutStdio
 }
 
 /**
  * A class with APIs to use RBTools executables.
  */
 export class BinaryAPI {
-  /**
-   * Inserts the HMX MOGG header on a multitrack OGG file. You can also encrypt the MOGG file with `0x1B` encryption, that works on both Xbox 360 and PS3 systems.
-   * - - - -
-   * @param {FilePathLikeTypes} srcFile The path to the multitrack OGG file, without HMX header, to be converted to MOGG file.
-   * @param {FilePathLikeTypes} destPath The destination path of the new MOGG file.
-   * @param {boolean} [encrypt] `OPTIONAL` Encrypts the MOGG file if `true`. Default is `false`.
-   * @returns {MOGGFile} A `MOGGFile` instance pointing to the new MOGG file path.
-   */
-  static async makeMogg(srcFile: FilePathLikeTypes, destPath: FilePathLikeTypes, encrypt: boolean = false): Promise<MOGGFile> {
-    const exeName = RBTools.binFolder.gotoFile('makemogg.exe').name
-    const command = buildOSCommand(`${exeName} "${pathLikeToString(srcFile)}" -${encrypt ? 'e' : ''}m "${pathLikeToString(destPath)}"`)
-    const cwd = is.dev ? RBTools.binFolder.path : RBTools.binFolder.path.replace(/(\.asar)([\\/])/, '.asar.unpacked$2')
-    const { stderr } = await execAsync(command, { windowsHide: true, cwd })
-    if (stderr) throw new Error(stderr.trim())
-    return new MOGGFile(destPath)
-  }
+	static buildSpawnCommand(exeName: string, args: string[]): BuiltSpawnCmdObject {
+		let command = ''
+		const commandArgs: string[] = []
+		const env = { ...process.env, WINEDEBUG: '-all' }
 
-  /**
-   * Encrypts a decrypted MOGG file.
-   * - - - -
-   * @param {FilePathLikeTypes} srcFile The path to the MOGG file to be encrypted.
-   * @param {FilePathLikeTypes} destPath The destination path of the new, encrypted MOGG file.
-   * @returns {MOGGFile} A `MOGGFile` instance pointing to the new MOGG file path.
-   */
-  static async makeMoggEncrypt(srcFile: FilePathLikeTypes, destPath: FilePathLikeTypes): Promise<MOGGFile> {
-    const exeName = RBTools.binFolder.gotoFile('makemogg.exe').name
-    const command = buildOSCommand(`${exeName} "${pathLikeToString(srcFile)}" -e "${pathLikeToString(destPath)}"`)
-    const cwd = is.dev ? RBTools.binFolder.path : RBTools.binFolder.path.replace(/(\.asar)([\\/])/, '.asar.unpacked$2')
-    const { stderr } = await execAsync(command, { windowsHide: true, cwd })
-    if (stderr) throw new Error(stderr.trim())
-    return new MOGGFile(destPath)
-  }
+		if (platform() === 'linux') {
+			command = 'wine'
+			commandArgs.push(exeName)
+		} else command = exeName
 
-  /**
-   * Encodes a multitrack audio file to OGG. Returns an instantiated `FilePath` class pointing to the new OGG file.
-   * - - - -
-   * @param {FilePathLikeTypes} srcFile The source audio file you want to encode as OGG.
-   * @param {FilePathLikeTypes} destPath The destination path to the new OGG file.
-   * @param {OGGEncodingOptions | undefined} [options] `OPTIONAL` An object with options for the OGG encoder.
-   * @returns {Promise<FilePath>}
-   */
-  static async oggEnc(srcFile: FilePathLikeTypes, destPath: FilePathLikeTypes, options?: OGGEncodingOptions): Promise<FilePath> {
-    const { quality } = {
-      quality: 3,
-      ...options,
-    } as Required<OGGEncodingOptions>
+		commandArgs.push(...args)
 
-    const dest = pathLikeToFilePath(destPath)
+		return { command, args: commandArgs, options: { env, cwd: is.dev ? RBTools.binFolder.path : RBTools.binFolder.path.replace(/(\.asar)([\\/])/, '.asar.unpacked$2'), windowsHide: true } }
+	}
+	/**
+	 * Inserts the HMX MOGG header on a multitrack OGG file. You can also encrypt the MOGG file with `0x1B` encryption, that works on both Xbox 360 and PS3 systems.
+	 * - - - -
+	 * @param {FilePathLikeTypes} srcFile The path to the multitrack OGG file, without HMX header, to be converted to MOGG file.
+	 * @param {FilePathLikeTypes} destPath The destination path of the new MOGG file.
+	 * @param {boolean} [encrypt] `OPTIONAL` Encrypts the MOGG file if `true`. Default is `false`.
+	 * @returns {MOGGFile} A `MOGGFile` instance pointing to the new MOGG file path.
+	 */
+	static async makeMogg(srcFile: FilePathLikeTypes, destPath: FilePathLikeTypes, encrypt: boolean = false): Promise<MOGGFile> {
+		const exeName = RBTools.binFolder.gotoFile('makemogg.exe').fullname
+		const rawArgs: string[] = [pathLikeToString(srcFile), `-${encrypt ? 'e' : ''}m`, pathLikeToString(destPath)]
+		const { command, args, options } = this.buildSpawnCommand(exeName, rawArgs)
+		const { code, stderr } = await spawnAsync(command, args, options)
+		if (code !== 0) throw new Error(stderr.trim())
+		return new MOGGFile(destPath)
+	}
 
-    const exeName = RBTools.binFolder.gotoFile('oggenc.exe').name
-    const command = buildOSCommand(`${exeName} -o "${dest.path}" -q ${quality.toString()} "${pathLikeToString(srcFile)}"`)
-    const cwd = is.dev ? RBTools.binFolder.path : RBTools.binFolder.path.replace(/(\.asar)([\\/])/, '.asar.unpacked$2')
-    const { stderr } = await execAsync(command, { windowsHide: true, cwd })
-    if (stderr) throw new Error(stderr.trim())
-    return dest
-  }
+	/**
+	 * Encrypts a decrypted MOGG file.
+	 * - - - -
+	 * @param {FilePathLikeTypes} srcFile The path to the MOGG file to be encrypted.
+	 * @param {FilePathLikeTypes} destPath The destination path of the new, encrypted MOGG file.
+	 * @returns {MOGGFile} A `MOGGFile` instance pointing to the new MOGG file path.
+	 */
+	static async makeMoggEncrypt(srcFile: FilePathLikeTypes, destPath: FilePathLikeTypes): Promise<MOGGFile> {
+		const exeName = RBTools.binFolder.gotoFile('makemogg.exe').fullname
+		const rawArgs: string[] = [pathLikeToString(srcFile), '-e', pathLikeToString(destPath)]
+		const { command, args, options } = this.buildSpawnCommand(exeName, rawArgs)
+		const { code, stderr } = await spawnAsync(command, args, options)
+		if (code !== 0) throw new Error(stderr.trim())
+		return new MOGGFile(destPath)
+	}
 
-  /**
-   * Decrypts an encrypted MOGG file.
-   * - - - -
-   * @param {FilePathLikeTypes} srcFile The path to the MOGG file to be decrypted.
-   * @param {FilePathLikeTypes} destPath The destination path of the new, decrypted MOGG file.
-   * @returns {MOGGFile} A `MOGGFile` instance pointing to the new MOGG file path.
-   */
-  static async cliCryptDecrypt(srcFile: FilePathLikeTypes, destPath: FilePathLikeTypes): Promise<MOGGFile> {
-    const exeName = RBTools.binFolder.gotoFile('cliCrypt.exe').name
-    const command = buildOSCommand(`${exeName} "${pathLikeToString(srcFile)}" "${pathLikeToString(destPath)}" decrypt`)
-    const cwd = is.dev ? RBTools.binFolder.path : RBTools.binFolder.path.replace(/(\.asar)([\\/])/, '.asar.unpacked$2')
-    const { stderr } = await execAsync(command, { windowsHide: true, cwd })
-    if (stderr) throw new Error(stderr.trim())
-    return new MOGGFile(destPath)
-  }
+	/**
+	 * Encodes a multitrack audio file to OGG. Returns an instantiated `FilePath` class pointing to the new OGG file.
+	 * - - - -
+	 * @param {FilePathLikeTypes} srcFile The source audio file you want to encode as OGG.
+	 * @param {FilePathLikeTypes} destPath The destination path to the new OGG file.
+	 * @param {OGGEncodingOptions | undefined} [options] `OPTIONAL` An object with options for the OGG encoder.
+	 * @returns {Promise<FilePath>}
+	 */
+	static async oggEnc(srcFile: FilePathLikeTypes, destPath: FilePathLikeTypes, options?: OGGEncodingOptions): Promise<FilePath> {
+		const { quality } = {
+			quality: 3,
+			...options,
+		} as Required<OGGEncodingOptions>
 
-  /**
-   * Encrypts files using custom 16-bytes `devKLic` key hash and returns an instance of `EDATFile` pointing to the new encrypted EDAT file.
-   * - - - -
-   * @param {FilePathLikeTypes} srcFile The path to the source file to be encrypted.
-   * @param {string} contentID The Content ID to the encrypted EDAT file. You can generate formatted Content IDs using static `EDATFile.genContentID()`.
-   * @param {string} devKLic A 16-bytes key used to encrypt the EDAT file. You can generated DevKLic for Rock Band games using the static `EDATFile.genDevKLic()`.
-   * @param {FilePathLikeTypes} [destPath] `OPTIONAL` The destination path of the encrypted EDAT file. If no argument is provided, the new EDAT file will be placed on the same directory of the source MIDI file.
-   * @returns {Promise<EDATFile>}
-   */
-  static async makeNPDataEncrypt(srcFile: FilePathLikeTypes, contentID: string, devKLic: string, destPath?: FilePathLikeTypes): Promise<EDATFile> {
-    if (!Hex.isHexString(devKLic)) throw new Error('Provided devklic must be a HEX string.')
-    if (devKLic.length !== 32) throw new Error('Provided devklic must be a fixed-length HEX string of 32 characters.')
-    const exeName = RBTools.binFolder.gotoFile('make_npdata.exe').name
-    const src = pathLikeToFilePath(srcFile)
-    let dest: FilePath
-    if (destPath) dest = pathLikeToFilePath(`${pathLikeToString(destPath)}${pathLikeToString(destPath).toLowerCase().endsWith('.edat') ? '' : '.edat'}`)
-    else dest = pathLikeToFilePath(`${src.root}/${src.fullname}${src.fullname.toLowerCase().endsWith('.edat') ? '' : '.edat'}`)
+		const dest = pathLikeToFilePath(destPath)
 
-    const cwd = is.dev ? RBTools.binFolder.path : RBTools.binFolder.path.replace(/(\.asar)([\\/])/, '.asar.unpacked$2')
-    const command = buildOSCommand(`${exeName} -e "${src.path}" "${dest.path}" 1 1 2 0 16 3 00 ${contentID.length > 0x30 ? contentID.slice(0, 0x30) : contentID} 8 ${devKLic}`)
-    await execAsync(command, { windowsHide: true, cwd })
+		const exeName = RBTools.binFolder.gotoFile('oggenc.exe').fullname
+		const rawArgs: string[] = ['-o', dest.path, '-q', quality.toString(), pathLikeToString(srcFile)]
+		const { command, args, options: opts } = this.buildSpawnCommand(exeName, rawArgs)
+		const { code, stderr } = await spawnAsync(command, args, opts)
+		if (code !== 0) throw new Error(stderr.trim())
+		return dest
+	}
 
-    return new EDATFile(dest)
-  }
+	/**
+	 * Decrypts an encrypted MOGG file.
+	 * - - - -
+	 * @param {FilePathLikeTypes} srcFile The path to the MOGG file to be decrypted.
+	 * @param {FilePathLikeTypes} destPath The destination path of the new, decrypted MOGG file.
+	 * @returns {MOGGFile} A `MOGGFile` instance pointing to the new MOGG file path.
+	 */
+	static async cliCryptDecrypt(srcFile: FilePathLikeTypes, destPath: FilePathLikeTypes): Promise<MOGGFile> {
+		const exeName = RBTools.binFolder.gotoFile('cliCrypt.exe').fullname
+		const rawArgs: string[] = [pathLikeToString(srcFile), pathLikeToString(destPath), 'decrypt']
+		const { command, args, options } = this.buildSpawnCommand(exeName, rawArgs)
+		const { code, stderr } = await spawnAsync(command, args, options)
+		if (code !== 0) throw new Error(stderr.trim())
+		return new MOGGFile(destPath)
+	}
 
-  /**
-   * Decrypts EDAT files using a `devKLic` key hash and returns an instance of `MIDIFile` pointing to the decrypted MIDI file.
-   * - - - -
-   * @param {FilePathLikeTypes} srcFile The path to the EDAT file to be decrypted.
-   * @param {string} devKLicHash A 16-bytes hash used to decrypt the EDAT file.
-   *
-   * A DevKLic key hash is made by concating the folder name where the `.mid.edat` is installed, so the EDAT file content is only decrypted correctly using the original name of the folder.
-   *
-   * You can generate DevKLic hashes for Rock Band games on PS3 using the static `EDATFile.genDevKLic()` method.
-   * @param {FilePathLikeTypes} [destPath] `OPTIONAL` The destination path of the decrypted MIDI file. If no argument is provided, the new MIDI file will be placed on the same directory of the source EDAT file.
-   * @returns {Promise<MIDIFile>}
-   */
-  static async makeNPDataDecrypt(srcFile: FilePathLikeTypes, devKLic: string, destPath?: FilePathLikeTypes): Promise<MIDIFile> {
-    if (!Hex.isHexString(devKLic)) throw new Error('Provided devklic must be a HEX string.')
-    if (devKLic.length !== 32) throw new Error('Provided devklic must be a fixed-length HEX string of 32 characters.')
-    const exeName = RBTools.binFolder.gotoFile('make_npdata.exe').name
-    const src = pathLikeToFilePath(srcFile)
-    let dest: FilePath
-    if (destPath) dest = pathLikeToFilePath(destPath).changeFileExt('mid')
-    else dest = pathLikeToFilePath(resolve(src.root, src.name))
-    const command = buildOSCommand(`${exeName} -d "${src.path}" "${dest.path}" 8 ${devKLic}`)
-    const cwd = is.dev ? RBTools.binFolder.path : RBTools.binFolder.path.replace(/(\.asar)([\\/])/, '.asar.unpacked$2')
-    const { stderr, stdout } = await execAsync(command, { windowsHide: true, cwd })
+	/**
+	 * Encrypts files using custom 16-bytes `devKLic` key hash and returns an instance of `EDATFile` pointing to the new encrypted EDAT file.
+	 * - - - -
+	 * @param {FilePathLikeTypes} srcFile The path to the source file to be encrypted.
+	 * @param {string} contentID The Content ID to the encrypted EDAT file. You can generate formatted Content IDs using static `EDATFile.genContentID()`.
+	 * @param {string} devKLic A 16-bytes key used to encrypt the EDAT file. You can generated DevKLic for Rock Band games using the static `EDATFile.genDevKLic()`.
+	 * @param {FilePathLikeTypes} [destPath] `OPTIONAL` The destination path of the encrypted EDAT file. If no argument is provided, the new EDAT file will be placed on the same directory of the source MIDI file.
+	 * @returns {Promise<EDATFile>}
+	 */
+	static async makeNPDataEncrypt(srcFile: FilePathLikeTypes, contentID: string, devKLic: string, destPath?: FilePathLikeTypes): Promise<EDATFile> {
+		if (!Hex.isHexString(devKLic)) throw new Error('Provided devklic must be a HEX string.')
+		if (devKLic.length !== 32) throw new Error('Provided devklic must be a fixed-length HEX string of 32 characters.')
+		const src = pathLikeToFilePath(srcFile)
+		let dest: FilePath
+		if (destPath) dest = pathLikeToFilePath(`${pathLikeToString(destPath)}${pathLikeToString(destPath).toLowerCase().endsWith('.edat') ? '' : '.edat'}`)
+		else dest = pathLikeToFilePath(`${src.root}/${src.fullname}${src.fullname.toLowerCase().endsWith('.edat') ? '' : '.edat'}`)
 
-    if (stderr) throw new Error(stderr.trim())
-    const lastMessage = stdout.trim().split('\n').slice(-1)[0]
-    if (lastMessage.startsWith('ERROR: ')) {
-      const err = lastMessage.slice('ERROR: '.length)
-      throw new Error(err)
-    }
+		const exeName = RBTools.binFolder.gotoFile('make_npdata.exe').fullname
+		const rawArgs: string[] = ['-e', src.path, dest.path, '1', '1', '2', '0', '16', '3', '00', contentID.length > 0x30 ? contentID.slice(0, 0x30) : contentID, '8', devKLic]
+		const { command, args, options } = this.buildSpawnCommand(exeName, rawArgs)
+		const { code, stderr } = await spawnAsync(command, args, options)
+		if (code !== 0) throw new Error(stderr.trim())
 
-    return new MIDIFile(dest)
-  }
-  /**
-   * Executes the Wiimms Image Tool encoder, that converts PNG files into Wii's TPL (Texture Palette Library) image format.
-   * - - - -
-   * @param {FilePathLikeTypes} srcFile The path to the PNG image file to be converted.
-   * @param {FilePathLikeTypes} destPath The path to the new converted TPL image file.
-   * @returns {Promise<FilePath>}
-   */
-  static async wimgtEnc(srcFile: FilePathLikeTypes, destPath: FilePathLikeTypes): Promise<FilePath> {
-    const exeName = RBTools.binFolder.gotoFile('wimgt.exe').name
-    const src = pathLikeToFilePath(srcFile)
-    const dest = pathLikeToFilePath(destPath)
-    const command = buildOSCommand(`${exeName} -d "${dest.path}" ENC -x TPL.CMPR "${src.path}"`)
-    const cwd = is.dev ? RBTools.binFolder.path : RBTools.binFolder.path.replace(/(\.asar)([\\/])/, '.asar.unpacked$2')
-    const { stderr } = await execAsync(command, { windowsHide: true, cwd })
-    if (stderr) {
-      if (stderr.includes("find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer")) return pathLikeToFilePath(dest)
-      else throw new Error(stderr.trim())
-    }
-    return pathLikeToFilePath(dest)
-  }
+		return new EDATFile(dest)
+	}
 
-  /**
-   * Executes the Wiimms Image Tool decoder, that converts Wii's TPL (Texture Palette Library) image format into PNG image format.
-   * - - - -
-   * @param {FilePathLikeTypes} srcTPLFile The path to the TPL file to be converted.
-   * @param {FilePathLikeTypes} destImgFile The path to the new converted PNG file.
-   * @returns {Promise<ImageFile>}
-   */
-  static async wimgtDec(srcFile: FilePathLikeTypes, destPath: FilePathLikeTypes): Promise<ImageFile> {
-    const exeName = RBTools.binFolder.gotoFile('wimgt.exe').name
-    const tpl = pathLikeToFilePath(srcFile)
-    const dest = pathLikeToFilePath(destPath)
-    const command = buildOSCommand(`${exeName} -d "${dest.path}" DEC -x TPL.CMPR "${tpl.path}"`)
-    const cwd = is.dev ? RBTools.binFolder.path : RBTools.binFolder.path.replace(/(\.asar)([\\/])/, '.asar.unpacked$2')
-    const { stderr } = await execAsync(command, { windowsHide: true, cwd })
-    if (stderr) {
-      if (stderr.includes("find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer")) return new ImageFile(dest)
-      else throw new Error(stderr.trim())
-    }
-    return new ImageFile(dest)
-  }
+	/**
+	 * Decrypts EDAT files using a `devKLic` key hash and returns an instance of `MIDIFile` pointing to the decrypted MIDI file.
+	 * - - - -
+	 * @param {FilePathLikeTypes} srcFile The path to the EDAT file to be decrypted.
+	 * @param {string} devKLicHash A 16-bytes hash used to decrypt the EDAT file.
+	 *
+	 * A DevKLic key hash is made by concating the folder name where the `.mid.edat` is installed, so the EDAT file content is only decrypted correctly using the original name of the folder.
+	 *
+	 * You can generate DevKLic hashes for Rock Band games on PS3 using the static `EDATFile.genDevKLic()` method.
+	 * @param {FilePathLikeTypes} [destPath] `OPTIONAL` The destination path of the decrypted MIDI file. If no argument is provided, the new MIDI file will be placed on the same directory of the source EDAT file.
+	 * @returns {Promise<MIDIFile>}
+	 */
+	static async makeNPDataDecrypt(srcFile: FilePathLikeTypes, devKLic: string, destPath?: FilePathLikeTypes): Promise<MIDIFile> {
+		if (!Hex.isHexString(devKLic)) throw new Error('Provided devklic must be a HEX string.')
+		if (devKLic.length !== 32) throw new Error('Provided devklic must be a fixed-length HEX string of 32 characters.')
+		const src = pathLikeToFilePath(srcFile)
+		let dest: FilePath
+		if (destPath) dest = pathLikeToFilePath(destPath).changeFileExt('mid')
+		else dest = pathLikeToFilePath(resolve(src.root, src.name))
 
-  /**
-   * Executes the NVIDIA Texture Tools.
-   *
-   * _NVIDIA Texture Tools converts TGA image files to DDS image files._
-   * - - - -
-   * @param {FilePathLikeTypes} srcFile The path to the TGA image file to be converted.
-   * @param {FilePathLikeTypes} destPath The path to the new DDS image file.
-   * @returns {Promise<FilePath>}
-   */
-  static async nvCompress(srcFile: FilePathLikeTypes, destPath: FilePathLikeTypes): Promise<FilePath> {
-    const exeName = RBTools.binFolder.gotoFile('nvcompress.exe').name
-    const src = pathLikeToFilePath(srcFile)
-    const dest = pathLikeToFilePath(destPath)
+		const exeName = RBTools.binFolder.gotoFile('make_npdata.exe').fullname
+		const rawArgs: string[] = ['-d', src.path, dest.path, '8', devKLic]
+		const { command, args, options } = this.buildSpawnCommand(exeName, rawArgs)
+		const { code, stderr, stdout } = await spawnAsync(command, args, options)
+		if (code !== 0) throw new Error(stderr.trim())
 
-    const command = buildOSCommand(`${exeName} -nocuda -bc3 "${src.path}" "${dest.path}"`)
-    const cwd = is.dev ? RBTools.binFolder.path : RBTools.binFolder.path.replace(/(\.asar)([\\/])/, '.asar.unpacked$2')
-    const { stderr } = await execAsync(command, { windowsHide: true, cwd })
-    if (stderr) throw new Error(stderr.trim())
-    return dest
-  }
+		if (stderr) throw new Error(stderr.trim())
+		const lastMessage = stdout.trim().split('\n').slice(-1)[0]
+		if (lastMessage.startsWith('ERROR: ')) {
+			const err = lastMessage.slice('ERROR: '.length)
+			throw new Error(err)
+		}
 
-  /**
-   * Execute the PS3P_PKG_Ripper executable. Returns the `destFolder` argument.
-   *
-   * _PS3P_PKG_Ripper extracts PKG files._
-   * - - - -
-   * @param {FilePathLikeTypes} pkgFilePath The path to the PKG file to be extracted.
-   * @param {DirPathLikeTypes} destPath The folder you want to extract the PKG file contents.
-   * @param {string[]} [files] `OPTIONAL` An array with files to be extracted.
-   * @returns {Promise<DirPath>}
-   */
-  static async ps3pPKGRipper(pkgFilePath: FilePathLikeTypes, destPath: DirPathLikeTypes, files?: string[]): Promise<DirPath> {
-    const exeName = RBTools.binFolder.gotoFile('PS3P_PKG_Ripper.exe').name
-    const pkgFile = pathLikeToFilePath(pkgFilePath)
-    const dest = pathLikeToDirPath(destPath)
+		return new MIDIFile(dest)
+	}
+	/**
+	 * Executes the Wiimms Image Tool encoder, that converts PNG files into Wii's TPL (Texture Palette Library) image format.
+	 * - - - -
+	 * @param {FilePathLikeTypes} srcFile The path to the PNG image file to be converted.
+	 * @param {FilePathLikeTypes} destPath The path to the new converted TPL image file.
+	 * @returns {Promise<FilePath>}
+	 */
+	static async wimgtEnc(srcFile: FilePathLikeTypes, destPath: FilePathLikeTypes): Promise<FilePath> {
+		const src = pathLikeToFilePath(srcFile)
+		const dest = pathLikeToFilePath(destPath)
 
-    const command = buildOSCommand(`${exeName} -o "${dest.path}" "${pkgFile.path}"${files ? files.reduce((prev, curr) => `${prev} -i "${curr}"`, '') : ''}`)
-    const cwd = is.dev ? RBTools.binFolder.path : RBTools.binFolder.path.replace(/(\.asar)([\\/])/, '.asar.unpacked$2')
-    const { stderr } = await execAsync(command, { windowsHide: true, cwd })
-    if (stderr) throw new Error(stderr.trim())
-    return dest
-  }
+		const exeName = RBTools.binFolder.gotoFile('wimgt.exe').fullname
+		const rawArgs: string[] = ['-d', dest.path, 'ENC', '-x', 'TPL.CMPR', src.path]
+		const { command, args, options } = this.buildSpawnCommand(exeName, rawArgs)
+		const { code, stderr } = await spawnAsync(command, args, options)
+		if (code !== 0) throw new Error(stderr.trim())
+		if (stderr) {
+			if (stderr.includes("find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer")) return pathLikeToFilePath(dest)
+			else throw new Error(stderr.trim())
+		}
+		return pathLikeToFilePath(dest)
+	}
+
+	/**
+	 * Executes the Wiimms Image Tool decoder, that converts Wii's TPL (Texture Palette Library) image format into PNG image format.
+	 * - - - -
+	 * @param {FilePathLikeTypes} srcFile The path to the TPL file to be converted.
+	 * @param {FilePathLikeTypes} destPath The path to the new converted PNG file.
+	 * @returns {Promise<ImageFile>}
+	 */
+	static async wimgtDec(srcFile: FilePathLikeTypes, destPath: FilePathLikeTypes): Promise<ImageFile> {
+		const tpl = pathLikeToFilePath(srcFile)
+		const dest = pathLikeToFilePath(destPath)
+
+		const exeName = RBTools.binFolder.gotoFile('wimgt.exe').fullname
+		const rawArgs: string[] = ['-d', dest.path, 'DEC', '-x', 'TPL.CMPR', tpl.path]
+		const { command, args, options } = this.buildSpawnCommand(exeName, rawArgs)
+		const { code, stderr } = await spawnAsync(command, args, options)
+		if (code !== 0) throw new Error(stderr.trim())
+		if (stderr) {
+			if (stderr.includes("find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer")) return new ImageFile(dest)
+			else throw new Error(stderr.trim())
+		}
+		return new ImageFile(dest)
+	}
+
+	/**
+	 * Executes the NVIDIA Texture Tools.
+	 *
+	 * _NVIDIA Texture Tools converts TGA image files to DDS image files._
+	 * - - - -
+	 * @param {FilePathLikeTypes} srcFile The path to the TGA image file to be converted.
+	 * @param {FilePathLikeTypes} destPath The path to the new DDS image file.
+	 * @returns {Promise<FilePath>}
+	 */
+	static async nvCompress(srcFile: FilePathLikeTypes, destPath: FilePathLikeTypes): Promise<FilePath> {
+		const src = pathLikeToFilePath(srcFile)
+		const dest = pathLikeToFilePath(destPath)
+
+		const exeName = RBTools.binFolder.gotoFile('nvcompress.exe').fullname
+		const rawArgs: string[] = ['-nocuda', '-bc3', src.path, dest.path]
+		const { command, args, options } = this.buildSpawnCommand(exeName, rawArgs)
+		const { code, stderr } = await spawnAsync(command, args, options)
+		if (code !== 0) throw new Error(stderr.trim())
+		return dest
+	}
+
+	/**
+	 * Execute the PS3P_PKG_Ripper executable. Returns the `destFolder` argument.
+	 *
+	 * _PS3P_PKG_Ripper extracts PKG files._
+	 * - - - -
+	 * @param {FilePathLikeTypes} pkgFilePath The path to the PKG file to be extracted.
+	 * @param {DirPathLikeTypes} destPath The folder you want to extract the PKG file contents.
+	 * @param {string[]} [files] `OPTIONAL` An array with files to be extracted.
+	 * @returns {Promise<DirPath>}
+	 */
+	static async ps3pPKGRipper(pkgFilePath: FilePathLikeTypes, destPath: DirPathLikeTypes, files?: string[]): Promise<DirPath> {
+		const pkgFile = pathLikeToFilePath(pkgFilePath)
+		const dest = pathLikeToDirPath(destPath)
+
+		const exeName = RBTools.binFolder.gotoFile('PS3P_PKG_Ripper.exe').fullname
+		const rawArgs: string[] = ['-o', dest.path, pkgFile.path]
+		if (files && files.length > 0) {
+			for (const file of files) rawArgs.push('-i', file)
+		}
+		const { command, args, options } = this.buildSpawnCommand(exeName, rawArgs)
+		const { code, stderr } = await spawnAsync(command, args, options)
+		if (code !== 0) throw new Error(stderr.trim())
+		return dest
+	}
 }

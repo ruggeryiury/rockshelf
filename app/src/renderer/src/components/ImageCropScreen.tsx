@@ -33,28 +33,20 @@ export function ImageCropScreen() {
                 setWindowState({ disableButtons: true })
                 setMessageBoxState({ message: { type: 'loading', code: 'imageProcessing' } })
                 if (func === 'packageDetails') {
-                  try {
-                    if (imgCropOptions) {
-                      const newPackages = await window.api.data.editPackage(pkgIndex, { imgPath, imgCropOptions })
-                      if (STRUCT_LOG) console.log('struct LightRB3SongPackagesData ["core/api/DataSyncAPI.ts"]:', newPackages)
+                  if (imgCropOptions) {
+                    const newPackages = await window.api.data.editPackage(pkgIndex, { imgPath, imgCropOptions })
+                    if (STRUCT_LOG) console.log('struct LightRB3SongPackagesData ["core/api/DataSyncAPI.ts"]:', newPackages)
 
-                      if (newPackages) setWindowState({ packages: newPackages, disableImg: pkgIndex })
-                      setMessageBoxState({ message: { type: 'success', code: 'editPackageImage' } })
-                      resetImageCropScreenState()
-                    }
-                  } catch (err) {
-                    if (err instanceof Error) setWindowState({ err })
+                    if (newPackages) setWindowState({ packages: newPackages, disableImg: pkgIndex })
+                    setMessageBoxState({ message: { type: 'success', code: 'editPackageImage' } })
+                    resetImageCropScreenState()
                   }
                 } else if (func === 'createNewPackage') {
-                  try {
-                    if (imgCropOptions) {
-                      const newArtwork = await window.api.img.cropAndSaveToTemp(imgPath, { cropX: imgCropOptions.x, cropY: imgCropOptions.y, cropWidth: imgCropOptions.width, cropHeight: imgCropOptions.height, mode: imgCropOptions.mode })
-                      setCreateNewPackageScreenState({ packageArtwork: `temp://${newArtwork.fullname}` })
-                      setMessageBoxState({ message: { type: 'success', code: 'editPackageImage' } })
-                      resetImageCropScreenState()
-                    }
-                  } catch (err) {
-                    if (err instanceof Error) setWindowState({ err })
+                  if (imgCropOptions) {
+                    const newArtwork = await window.api.img.cropAndSaveToTemp(imgPath, { cropX: imgCropOptions.x, cropY: imgCropOptions.y, cropWidth: imgCropOptions.width, cropHeight: imgCropOptions.height, mode: imgCropOptions.mode })
+                    setCreateNewPackageScreenState({ packageArtwork: `temp://${newArtwork.fullname}` })
+                    setMessageBoxState({ message: { type: 'success', code: 'editPackageImage' } })
+                    resetImageCropScreenState()
                   }
                 } else setMessageBoxState({ message: { type: 'error', code: 'imageCropNoFunc' } })
                 setWindowState({ disableButtons: false })

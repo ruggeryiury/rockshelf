@@ -6,8 +6,8 @@ import { useWindowState } from '@renderer/stores/Window.state'
 import { useTranslation } from 'react-i18next'
 import { useRhythmverseScreenState } from './RhythmverseScreen.state'
 import { RHYTHMVERSE_SCREEN_TABS, STRUCT_LOG } from '@renderer/app/rockshelf.globals'
-import { DiffIconInline } from './SongDetails'
 import { CheckedBoxIcon, ChevronLeftIcon, ChevronRightIcon, LoadingIcon, UncheckedBoxIcon } from '@renderer/assets/icons'
+import { DiffIconInline } from './DiffIconInline'
 
 export function RhythmverseScreen() {
   const { t } = useTranslation()
@@ -82,13 +82,9 @@ export function RhythmverseScreen() {
                     setWindowState({ disableButtons: true })
                     setRhythmverseScreenState({ searchResults: 'loading' })
 
-                    try {
-                      const newSearchResults = await window.api.rhythmverse.fetchData(searchField, 'text', { fullBand, multitrack, page: 1, pitchedVocals, records, sortBy, sortOrder, source })
-                      if (STRUCT_LOG) console.log('struct ProcessedRhythmverseObject ["core/src/lib/rbtools/core/RhythmverseAPI.ts"]:', newSearchResults)
-                      setRhythmverseScreenState({ searchResults: newSearchResults, page: 1 })
-                    } catch (err) {
-                      if (err instanceof Error) setWindowState({ err })
-                    }
+                    const newSearchResults = await window.api.rhythmverse.fetchData(searchField, 'text', { fullBand, multitrack, page: 1, pitchedVocals, records, sortBy, sortOrder, source })
+                    if (STRUCT_LOG) console.log('struct ProcessedRhythmverseObject ["core/src/lib/rbtools/core/RhythmverseAPI.ts"]:', newSearchResults)
+                    setRhythmverseScreenState({ searchResults: newSearchResults, page: 1 })
                     setWindowState({ disableButtons: false })
                   }}
                 >
@@ -109,13 +105,9 @@ export function RhythmverseScreen() {
                     setRhythmverseScreenState({ searchResults: 'loading' })
                     const newPage = page - 1
 
-                    try {
-                      const newSearchResults = await window.api.rhythmverse.fetchData(searchField, 'text', { fullBand, multitrack, page: page - 1, pitchedVocals, records, sortBy, sortOrder, source })
-                      if (STRUCT_LOG) console.log('struct ProcessedRhythmverseObject ["core/src/lib/rbtools/core/RhythmverseAPI.ts"]:', newSearchResults)
-                      setRhythmverseScreenState({ searchResults: newSearchResults, page: newPage })
-                    } catch (err) {
-                      if (err instanceof Error) setWindowState({ err })
-                    }
+                    const newSearchResults = await window.api.rhythmverse.fetchData(searchField, 'text', { fullBand, multitrack, page: page - 1, pitchedVocals, records, sortBy, sortOrder, source })
+                    if (STRUCT_LOG) console.log('struct ProcessedRhythmverseObject ["core/src/lib/rbtools/core/RhythmverseAPI.ts"]:', newSearchResults)
+                    setRhythmverseScreenState({ searchResults: newSearchResults, page: newPage })
                     setWindowState({ disableButtons: false })
                   }}
                 >
@@ -131,13 +123,9 @@ export function RhythmverseScreen() {
                     setRhythmverseScreenState({ searchResults: 'loading' })
                     const newPage = page + 1
 
-                    try {
-                      const newSearchResults = await window.api.rhythmverse.fetchData(searchField, 'text', { fullBand, multitrack, page: page + 1, pitchedVocals, records, sortBy, sortOrder, source })
-                      if (STRUCT_LOG) console.log('struct ProcessedRhythmverseObject ["core/src/lib/rbtools/core/RhythmverseAPI.ts"]:', newSearchResults)
-                      setRhythmverseScreenState({ searchResults: newSearchResults, page: newPage })
-                    } catch (err) {
-                      if (err instanceof Error) setWindowState({ err })
-                    }
+                    const newSearchResults = await window.api.rhythmverse.fetchData(searchField, 'text', { fullBand, multitrack, page: page + 1, pitchedVocals, records, sortBy, sortOrder, source })
+                    if (STRUCT_LOG) console.log('struct ProcessedRhythmverseObject ["core/src/lib/rbtools/core/RhythmverseAPI.ts"]:', newSearchResults)
+                    setRhythmverseScreenState({ searchResults: newSearchResults, page: newPage })
                     setWindowState({ disableButtons: false })
                   }}
                 >

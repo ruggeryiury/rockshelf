@@ -80,22 +80,18 @@ export function CreateNewPackageScreen() {
             className="mr-2 w-fit self-start rounded-xs border border-neutral-700 bg-neutral-900 px-1 py-0.5 text-xs! uppercase duration-100 hover:bg-neutral-700 active:bg-neutral-600 disabled:text-neutral-700 disabled:hover:bg-neutral-900"
             onClick={async () => {
               setWindowState({ disableButtons: true })
-              try {
-                if (allSelectedSongs.length === 0) {
-                  setMessageBoxState({ message: { type: 'error', code: 'noSongsSelectedToCreatePackageFrom' } })
-                  setWindowState({ disableButtons: false })
-                  return
-                }
-                const packagesData = await window.api.data.createPackage({ packages: files.map((file) => file.data.path.path), packageFolderName, packageName, forceEncryption, thumbnail: packageArtwork, selectedSongs: allSelectedSongs, category })
-                if (STRUCT_LOG) console.log('struct LightRB3SongPackagesData ["core/api/DataSyncAPI.ts"]:', packagesData)
-                if (packagesData) {
-                  const newCatalog = await window.api.data.filterSongPackages(packagesCatalogSortBy)
-                  if (STRUCT_LOG) console.log('struct SongPackagesFilterGenericObject [core/src/lib/dta/getDTACatalog.ts]', newCatalog)
-                  setMyPackagesScreenState({ packagesCatalog: newCatalog })
-                  setWindowState({ packages: packagesData })
-                }
-              } catch (err) {
-                if (err instanceof Error) setWindowState({ err })
+              if (allSelectedSongs.length === 0) {
+                setMessageBoxState({ message: { type: 'error', code: 'noSongsSelectedToCreatePackageFrom' } })
+                setWindowState({ disableButtons: false })
+                return
+              }
+              const packagesData = await window.api.data.createPackage({ packages: files.map((file) => file.data.path.path), packageFolderName, packageName, forceEncryption, thumbnail: packageArtwork, selectedSongs: allSelectedSongs, category })
+              if (STRUCT_LOG) console.log('struct LightRB3SongPackagesData ["core/api/DataSyncAPI.ts"]:', packagesData)
+              if (packagesData) {
+                const newCatalog = await window.api.data.filterSongPackages(packagesCatalogSortBy)
+                if (STRUCT_LOG) console.log('struct SongPackagesFilterGenericObject [core/src/lib/dta/getDTACatalog.ts]', newCatalog)
+                setMyPackagesScreenState({ packagesCatalog: newCatalog })
+                setWindowState({ packages: packagesData })
               }
               setWindowState({ disableButtons: false })
             }}
@@ -153,27 +149,23 @@ export function CreateNewPackageScreen() {
               className="mr-2 w-fit self-start rounded-xs border border-neutral-700 bg-neutral-900 px-1 py-0.5 text-xs! uppercase duration-100 last:mr-0 hover:bg-neutral-700 active:bg-neutral-600 disabled:text-neutral-700 disabled:hover:bg-neutral-900"
               onClick={async () => {
                 setWindowState({ disableButtons: true })
-                try {
-                  const selFiles = await window.api.selector.packageFiles(files)
-                  if (STRUCT_LOG) console.log('struct SelectPackageFilesObject ["core/src/controllers/selectPackageFiles.ts"]:', selFiles)
+                const selFiles = await window.api.selector.packageFiles(files)
+                if (STRUCT_LOG) console.log('struct SelectPackageFilesObject ["core/src/controllers/selectPackageFiles.ts"]:', selFiles)
 
-                  if (selFiles) {
-                    const { selectedFiles, ignoredFiles, duplicatedFiles } = selFiles
+                if (selFiles) {
+                  const { selectedFiles, ignoredFiles, duplicatedFiles } = selFiles
 
-                    if (ignoredFiles.length === 0 && duplicatedFiles.length === 0) {
-                      setMessageBoxState({ message: { type: 'info', code: `selectPackageFilesPackagesAdded${selectedFiles.length === 1 ? '' : 'Plural'}`, messageValues: { selectedFiles: selectedFiles.length } } })
-                    } else if (selectedFiles.length > 0 && (ignoredFiles.length > 0 || duplicatedFiles.length > 0)) {
-                      if (ignoredFiles.length === selectedFiles.length) setMessageBoxState({ message: { type: 'warn', code: `selectPackageFilesAllIgnored${selectedFiles.length === 1 ? '' : 'Plural'}` } })
-                      else if (duplicatedFiles.length === selectedFiles.length) setMessageBoxState({ message: { type: 'warn', code: `selectPackageFilesAllDuplicated${selectedFiles.length === 1 ? '' : 'Plural'}` } })
-                      else if (selectedFiles.length === ignoredFiles.length + duplicatedFiles.length) setMessageBoxState({ message: { type: 'warn', code: `selectPackageFilesAllIgnoredOrDuplicated` } })
-                      else setMessageBoxState({ message: { type: 'warn', code: `selectPackageFilesSomeIgnoredOrDuplicated`, messageValues: { addedFiles: selectedFiles.length - (ignoredFiles.length + duplicatedFiles.length), ignoredFiles: ignoredFiles.length, duplicatedFiles: duplicatedFiles.length } } })
-                    }
-                    setCreateNewPackageScreenState((oldState) => {
-                      return { files: selFiles.stats, addedSongsCount: oldState.addedSongsCount + selFiles.addedSongsCount, addedStarsCount: oldState.addedStarsCount + selFiles.addedStarsCount }
-                    })
+                  if (ignoredFiles.length === 0 && duplicatedFiles.length === 0) {
+                    setMessageBoxState({ message: { type: 'info', code: `selectPackageFilesPackagesAdded${selectedFiles.length === 1 ? '' : 'Plural'}`, messageValues: { selectedFiles: selectedFiles.length } } })
+                  } else if (selectedFiles.length > 0 && (ignoredFiles.length > 0 || duplicatedFiles.length > 0)) {
+                    if (ignoredFiles.length === selectedFiles.length) setMessageBoxState({ message: { type: 'warn', code: `selectPackageFilesAllIgnored${selectedFiles.length === 1 ? '' : 'Plural'}` } })
+                    else if (duplicatedFiles.length === selectedFiles.length) setMessageBoxState({ message: { type: 'warn', code: `selectPackageFilesAllDuplicated${selectedFiles.length === 1 ? '' : 'Plural'}` } })
+                    else if (selectedFiles.length === ignoredFiles.length + duplicatedFiles.length) setMessageBoxState({ message: { type: 'warn', code: `selectPackageFilesAllIgnoredOrDuplicated` } })
+                    else setMessageBoxState({ message: { type: 'warn', code: `selectPackageFilesSomeIgnoredOrDuplicated`, messageValues: { addedFiles: selectedFiles.length - (ignoredFiles.length + duplicatedFiles.length), ignoredFiles: ignoredFiles.length, duplicatedFiles: duplicatedFiles.length } } })
                   }
-                } catch (err) {
-                  if (err instanceof Error) setWindowState({ err })
+                  setCreateNewPackageScreenState((oldState) => {
+                    return { files: selFiles.stats, addedSongsCount: oldState.addedSongsCount + selFiles.addedSongsCount, addedStarsCount: oldState.addedStarsCount + selFiles.addedStarsCount }
+                  })
                 }
                 setWindowState({ disableButtons: false })
               }}
@@ -433,14 +425,10 @@ export function CreateNewPackageScreen() {
                   className="mr-2 w-fit self-start rounded-xs border border-neutral-700 bg-neutral-900 px-1 py-0.5 text-xs! uppercase duration-100 last:mr-0 hover:bg-neutral-700 active:bg-neutral-600 disabled:text-neutral-700 disabled:hover:bg-neutral-900"
                   onClick={async () => {
                     setWindowState({ disableButtons: true })
-                    try {
-                      const imgStats = await window.api.open.imageToCrop()
-                      if (imgStats) {
-                        setImageCropScreenState({ imgPath: imgStats.path, imgDataURL: imgStats.dataURL, func: 'createNewPackage' })
-                        setMessageBoxState({ message: null })
-                      }
-                    } catch (err) {
-                      if (err instanceof Error) setWindowState({ err })
+                    const imgStats = await window.api.open.imageToCrop()
+                    if (imgStats) {
+                      setImageCropScreenState({ imgPath: imgStats.path, imgDataURL: imgStats.dataURL, func: 'createNewPackage' })
+                      setMessageBoxState({ message: null })
                     }
                     setWindowState({ disableButtons: false })
                   }}

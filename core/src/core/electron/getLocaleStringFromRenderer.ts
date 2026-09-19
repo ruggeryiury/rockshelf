@@ -1,4 +1,4 @@
-import { ipcMain, type BrowserWindow } from 'electron'
+import { type BrowserWindow, ipcMain } from 'electron'
 import { randomBytesFromRanges } from 'node-lib'
 
 /**
@@ -8,9 +8,9 @@ import { randomBytesFromRanges } from 'node-lib'
  * @param {string} key The key of the locale value.
  */
 export const getLocaleStringFromRenderer = async (win: BrowserWindow, key: string, messageValues?: Record<string, string | number>): Promise<string> => {
-  const uuid = (await randomBytesFromRanges(16)).toString('hex')
-  return new Promise<string>((resolve, _) => {
-    ipcMain.once(`sendLocale/${uuid}`, (_, text: string) => resolve(text))
-    win.webContents.send('getLocaleStringFromRenderer', uuid, key, messageValues)
-  })
+	const uuid = (await randomBytesFromRanges(16)).toString('hex')
+	return new Promise<string>((resolve, _) => {
+		ipcMain.once(`sendLocale/${uuid}`, (_, text: string) => resolve(text))
+		win.webContents.send('getLocaleStringFromRenderer', uuid, key, messageValues)
+	})
 }

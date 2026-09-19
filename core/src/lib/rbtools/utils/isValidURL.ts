@@ -5,10 +5,10 @@
  * @returns {boolean} A boolean value that tells if the provided string is a link or not.
  */
 export const isValidURL = (url: string): boolean => {
-  try {
-    new URL(url)
-    return true
-  } catch (err) {
-    return false
-  }
+	try {
+		new URL(url)
+		return true
+	} catch (err) {
+		return false
+	}
 }

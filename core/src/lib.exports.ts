@@ -1,4 +1,4 @@
-export * from './lib/pkg/extractPackagesForRPCS3Extra'
+export * from './lib/pkg/extractPackagesForRPCS3'
 export * from './lib/pkg/filterSongPackages'
 
 export * from './lib/rb3p/createRB3File'
@@ -9,12 +9,10 @@ export * from './lib/rb3p/utils'
 
 export * from './lib/rspackimg/createRSPackImage'
 export * from './lib/rspackimg/editRSPackImage'
-export * from './lib/rspackimg/genPackImageToAllPackages'
 export * from './lib/rspackimg/parseRSPackImage'
 
-export * from './lib/rpcs3/getSongPackageDescriptionFileFromFolder'
-export * from './lib/rpcs3/getSongPackageStatsFromFolder'
-export * from './lib/rpcs3/rpcs3GetSongPackagesStatsExtra'
+export * from './lib/rpcs3/genRPCS3SongPackageManifest'
+export * from './lib/rpcs3/resolveRPCS3Paths'
 
 export * from './lib/strnum/isValidFolderName'
 export * from './lib/strnum/sanitizeFilename'

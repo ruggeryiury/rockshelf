@@ -1,5 +1,6 @@
 export * from './core/api/CLIAPI'
 export * from './core/api/DataSyncAPI'
+export * from './core/api/ErrorHandler'
 export * from './core/api/PerformanceTimerAPI'
 export * from './core/api/RichPresenceAPI'
 export * from './core/api/RockshelfFileSystemAPI'

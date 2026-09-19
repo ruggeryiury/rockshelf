@@ -1,7 +1,5 @@
 import { create } from 'zustand'
-import { RSPackImagePackageCategoryValues, SongPackagesFilterGenericObject, SongPackagesFilterTypes } from 'rockshelf-core'
-import type { DTAFilterGenericObject, DTAFilterByArtistObject, DTAFilterByDifficultyObject, DTAFilterTypes } from 'rockshelf-core/rbtools/lib'
-import type { GoCentralLeaderboardResultObject } from 'rockshelf-core/rbtools'
+import { DatabaseSearchFnResults, SongPackagesFilterGenericObject } from 'rockshelf-core'
 
 export interface MyPackagesScreenStateProps {
   active: boolean
@@ -9,28 +7,10 @@ export interface MyPackagesScreenStateProps {
   packagesCatalog: SongPackagesFilterGenericObject | false | 'loading'
   packageDescription: string | false | 1 // 1 = 'loading'
   hoveredPKG: number
-
-  // selPKG: number
-  // packageDetailsTab: number
-  // pkgDetailsDropdown: number
-
-  // songsCatalog: DTAFilterGenericObject | DTAFilterByArtistObject | DTAFilterByDifficultyObject | false | 'loading'
-  // songDetailsTab: number
-  // songLeaderboards: false | 'loading' | GoCentralLeaderboardResultObject
-  // selSong: number
-  // isArtworkLoading: boolean
-  // artworkURL: string | null
-
-  // editPackageName: string
-  // packageNameError: string | null
-  // hasPackageNameChanged: boolean
-
-  // editPackageFolderName: string
-  // packageFolderNameError: string | null
-  // hasPackageFolderNameChanged: boolean
-
-  // editPackageCategory: RSPackImagePackageCategoryValues
-  // hasPackageCategoryChanged: boolean
+  searchField: string
+  searchFieldError: string | null
+  isFetchingSearch: boolean
+  searchHeaders: DatabaseSearchFnResults | null
 }
 
 export interface MyPackagesScreenStateActions {
@@ -60,28 +40,10 @@ const defaultState: MyPackagesScreenStateProps = {
   packagesCatalog: false,
   packageDescription: false,
   hoveredPKG: -1,
-
-  // selPKG: -1,
-  // packageDetailsTab: 0,
-  // pkgDetailsDropdown: -1,
-
-  // songsCatalog: false,
-  // songDetailsTab: 0,
-  // songLeaderboards: false,
-  // selSong: -1,
-  // isArtworkLoading: true,
-  // artworkURL: null,
-
-  // editPackageName: '',
-  // packageNameError: null,
-  // hasPackageNameChanged: false,
-
-  // editPackageFolderName: '',
-  // packageFolderNameError: null,
-  // hasPackageFolderNameChanged: false,
-
-  // editPackageCategory: 'other',
-  // hasPackageCategoryChanged: false,
+  searchField: '',
+  searchFieldError: null,
+  isFetchingSearch: false,
+  searchHeaders: null,
 }
 
 export const useMyPackagesScreenState = create<MyPackagesScreenStateHook>()((set, get) => ({

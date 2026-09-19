@@ -3,7 +3,7 @@ import { create } from 'zustand'
 export interface RBIconsSelectorStateProps {
   active: 'editPackage' | 'createNewPackage' | null
   selIcon: number
-  selCollection: 'rb1' | 'rbdlc' | 'rb2' | 'rb3'
+  selCollection: 'other' | 'rb1' | 'rbdlc' | 'rb2' | 'rb3' | 'rb4' | 'lego' | 'gd' | 'tb' | 'blitz' | 'rbn'
 }
 
 export interface RBIconsSelectorStateActions {

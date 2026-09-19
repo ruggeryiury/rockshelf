@@ -1,22 +1,31 @@
-/* eslint-disable */
-import { ipcMain, type BrowserWindow, type IpcMainInvokeEvent } from 'electron'
+import { type BrowserWindow, type IpcMainInvokeEvent, ipcMain } from 'electron'
 import type { Promisable } from 'type-fest'
+
+import { ErrorHandler } from '../api/ErrorHandler'
 import { getBrowserWindowFromEvent } from './getBrowserWindowFromEvent'
 
-type HandlerListenerFuntion = (win: BrowserWindow, event: IpcMainInvokeEvent, ...args: any[]) => any
+type HandlerListenerFuntion = (win: BrowserWindow, event: IpcMainInvokeEvent, ...args: any[]) => Promisable<any>
+const handle = ipcMain.handle.bind(ipcMain)
 
 /**
- * Registers an IPC handler and automatically resolves the BrowserWindow
- * associated with the event.
+ * Registers an IPC handler and automatically resolves the `BrowserWindow` associated with the event.
  *
- * This is a small utility wrapper around `ipcMain.handle`.
+ * This is a small utility wrapper around `ipcMain.handle`, using the [ErrorHandler](../api/ErrorHandler.ts) API to properly catch errors during the invokation process.
  * - - - -
  * @param {string} channel The IPC channel name.
  * @param {HandlerListenerFuntion} listener The handler function to execute when the channel is invoked.
  * @returns {void}
  */
 export const addHandler = (channel: string, listener: HandlerListenerFuntion): void => {
-  ipcMain.handle(channel, (event, ...args) => listener(getBrowserWindowFromEvent(event), event, ...args))
+	handle(channel, async (event, ...args) => {
+		const win = getBrowserWindowFromEvent(event)
+		try {
+			return await listener(win, event, ...args)
+		} catch (err) {
+			if (err instanceof Error) ErrorHandler.send(win, err)
+			return false
+		}
+	})
 }
 
 /**

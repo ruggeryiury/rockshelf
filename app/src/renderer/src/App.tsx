@@ -1,5 +1,5 @@
 import { useEffect } from 'react'
-import { AboutScreen, BuzyLoadScreen, ConfigScreen, CreateNewPackageScreen, DeluxeConfigScreen, DialogScreen, EditAllSongsScreen, EditSongScreen, FatalErrorScreen, FirstTimeScreen, ImageCropScreen, InstallRB3FileScreen, LogoScreen, MainScreen, MergePackageModal, MessageBox, MusicStoreScreen, MyPackagesScreen, RBIconsSelector, RhythmverseScreen, SongDetails, Topbar, WindowFrame } from './components.exports'
+import { AboutScreen, BuzyLoadScreen, ConfigScreen, CreateNewPackageScreen, DeluxeConfigScreen, DialogScreen, EditAllSongsScreen, EditSongScreen, ErrorScreen, FirstTimeScreen, ImageCropScreen, InstallRB3FileScreen, LogoScreen, MainScreen, MergePackageModal, MessageBox, MusicStoreScreen, MyPackagesScreen, RBIconsSelector, RhythmverseScreen, SongDetails, Topbar, WindowFrame } from './components.exports'
 import { useWindowState } from './stores/Window.state'
 import { useFirstTimeScreenState } from './components/FirstTimeScreen.state'
 import { useTranslation } from 'react-i18next'
@@ -15,7 +15,7 @@ import { useRhythmverseScreenState } from './components/RhythmverseScreen.state'
 
 export function App() {
   const { i18n } = useTranslation()
-  const { setWindowState, disableImg } = useWindowState(useShallow((x) => ({ setWindowState: x.setWindowState, disableImg: x.disableImg })))
+  const { setWindowState, disableImg, err } = useWindowState(useShallow((x) => ({ setWindowState: x.setWindowState, disableImg: x.disableImg, err: x.err })))
   const { setFirstTimeScreenState } = useFirstTimeScreenState(useShallow((x) => ({ setFirstTimeScreenState: x.setFirstTimeScreenState })))
   const { setUserConfigState } = useUserConfigState(useShallow((x) => ({ setUserConfigState: x.setUserConfigState })))
   const { setLogoScreenState } = useLogoScreenState(useShallow((x) => ({ setLogoScreenState: x.setLogoScreenState })))
@@ -25,36 +25,32 @@ export function App() {
 
   useEffect(function initApp() {
     const fn = async () => {
-      try {
-        const userConfigStatus = await window.api.userConfig.read()
-        console.log('userConfigStatus', userConfigStatus)
+      const userConfigStatus = await window.api.userConfig.read()
+      console.log('userConfigStatus', userConfigStatus)
 
-        if (userConfigStatus === 'firstTime') {
-          setWindowState({ disableButtons: false })
-          setFirstTimeScreenState({ active: true })
-          return
-        } else if (userConfigStatus === 'corrupted') {
-          setWindowState({ disableButtons: false })
-          setDialogScreenState({ active: 'corruptedUserConfig' })
-          return
-        }
-
-        if (STRUCT_LOG) console.log('struct UserConfigObject ["core/src/core/api/UserDataAPI.ts"]:', userConfigStatus)
-        setUserConfigState(userConfigStatus)
-
-        await window.api.discord.setUserConfig(userConfigStatus)
-
-        const initialState = await window.api.data.getInitialState()
-        if (STRUCT_LOG) console.log('struct InitialStateObject ["core/src/core/api/DataSyncAPI.ts"]:', initialState)
-
-        setWindowState({
-          ...initialState,
-          disableButtons: false,
-        })
-        setLogoScreenState({ active: false })
-      } catch (err) {
-        if (err instanceof Error) setWindowState({ err })
+      if (userConfigStatus === 'firstTime') {
+        setWindowState({ disableButtons: false })
+        setFirstTimeScreenState({ active: true })
+        return
+      } else if (userConfigStatus === 'corrupted') {
+        setWindowState({ disableButtons: false })
+        setDialogScreenState({ active: 'corruptedUserConfig' })
+        return
       }
+
+      if (STRUCT_LOG) console.log('struct UserConfigObject ["core/src/core/api/UserDataAPI.ts"]:', userConfigStatus)
+      setUserConfigState(userConfigStatus)
+
+      await window.api.discord.setUserConfig(userConfigStatus)
+
+      const initialState = await window.api.data.getInitialState()
+      if (STRUCT_LOG) console.log('struct InitialStateObject ["core/src/core/api/DataSyncAPI.ts"]:', initialState)
+
+      setWindowState({
+        ...initialState,
+        disableButtons: false,
+      })
+      setLogoScreenState({ active: false })
     }
 
     const touts: NodeJS.Timeout[] = []
@@ -86,6 +82,11 @@ export function App() {
     window.api.onRendererConsole((_, ...val) => console.log(...val))
 
     window.api.onRhythmverseQueue((_, queue) => setRhythmverseScreenState({ queue }))
+
+    window.api.onError((_, error) => {
+      console.error('struct ErrorHandlerObject [core/src/core/api/ErrorHandler.ts]:', error)
+      if (err === null) setWindowState({ err: error })
+    })
   }, [])
 
   useEffect(
@@ -107,7 +108,7 @@ export function App() {
         <EditAllSongsScreen />
         <EditSongScreen />
         <ExportPackageModal />
-        <FatalErrorScreen />
+        <ErrorScreen />
         <FirstTimeScreen />
         <ImageCropScreen />
         <InstallRB3FileScreen />

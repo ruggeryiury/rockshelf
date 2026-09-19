@@ -46,18 +46,14 @@ export function PackageDetails() {
         if (typeof packages === 'object' && pkgIndex > -1 && pkgIndex in packages.packages && songsCatalog === false) {
           setPackageDetailsState({ songsCatalog: 'loading' })
           setWindowState({ disableButtons: true })
-          try {
-            const newCatalog = await window.api.data.filterSongsFromPackage(pkgIndex, songsCatalogSortBy, { instrument: mostPlayedInstrument })
-            if (STRUCT_LOG) {
-              if (newCatalog.type !== 'difficulty' && newCatalog.type !== 'artist') console.log('struct DTACatalogGenericObject [core/src/lib/rbtools/lib/dta/filterDTA.ts]', newCatalog)
-              else if (newCatalog.type === 'artist') console.log('struct DTACatalogByArtistObject [core/src/lib/rbtools/lib/dta/filterDTA.ts]', newCatalog)
-              else console.log('struct DTACatalogByDifficultyObject [core/src/lib/rbtools/lib/dta/filterDTA.ts]', newCatalog)
-            }
-            setPackageDetailsState({ songsCatalog: newCatalog })
-            setWindowState({ disableButtons: false })
-          } catch (err) {
-            if (err instanceof Error) setWindowState({ err })
+          const newCatalog = await window.api.data.filterSongsFromPackage(pkgIndex, songsCatalogSortBy, { instrument: mostPlayedInstrument })
+          if (STRUCT_LOG) {
+            if (newCatalog.type !== 'difficulty' && newCatalog.type !== 'artist') console.log('struct DTACatalogGenericObject [core/src/lib/rbtools/lib/dta/filterDTA.ts]', newCatalog)
+            else if (newCatalog.type === 'artist') console.log('struct DTACatalogByArtistObject [core/src/lib/rbtools/lib/dta/filterDTA.ts]', newCatalog)
+            else console.log('struct DTACatalogByDifficultyObject [core/src/lib/rbtools/lib/dta/filterDTA.ts]', newCatalog)
           }
+          setPackageDetailsState({ songsCatalog: newCatalog })
+          setWindowState({ disableButtons: false })
         }
       }
 
@@ -129,18 +125,13 @@ export function PackageDetails() {
                 setWindowState({ disableButtons: true, packages: 'loading' })
                 setMyPackagesScreenState({ packagesCatalog: false })
                 setPackageDetailsState({ songsCatalog: false, songs: false })
-                let newPackages: LightRB3SongPackagesData | false = false
-                try {
-                  newPackages = await window.api.data.refreshSongPackageData(pkgIndex)
-                  if (STRUCT_LOG) console.log('struct LightRB3SongPackagesData ["core/api/DataSyncAPI.ts"]:', newPackages)
-                  const songs = await window.api.data.getSongsFromPackage(pkgIndex)
-                  if (STRUCT_LOG) console.log('struct RB3CompatibleDTAFile[] ["rbtools/lib/dta/dtaStruct.ts"]:', songs)
+                const newPackages = await window.api.data.refreshSongPackageData(pkgIndex)
+                if (STRUCT_LOG) console.log('struct LightRB3SongPackagesData ["core/api/DataSyncAPI.ts"]:', newPackages)
+                const songs = await window.api.data.getSongsFromPackage(pkgIndex)
+                if (STRUCT_LOG) console.log('struct RB3CompatibleDTAFile[] ["rbtools/lib/dta/dtaStruct.ts"]:', songs)
 
-                  setWindowState({ packages: newPackages })
-                  setPackageDetailsState({ songs })
-                } catch (err) {
-                  if (err instanceof Error) setWindowState({ err })
-                }
+                setWindowState({ packages: newPackages })
+                setPackageDetailsState({ songs })
                 setWindowState({ disableButtons: false })
               }}
             >
@@ -517,20 +508,16 @@ export function PackageDetails() {
                         onClick={async (ev) => {
                           ev.stopPropagation()
                           setWindowState({ disableButtons: true })
-                          try {
-                            const newPackages = await window.api.data.editPackage(pkgIndex, { packageName: editPackageName })
-                            if (STRUCT_LOG) console.log('struct LightRB3SongPackagesData ["core/api/DataSyncAPI.ts"]:', newPackages)
+                          const newPackages = await window.api.data.editPackage(pkgIndex, { packageName: editPackageName })
+                          if (STRUCT_LOG) console.log('struct LightRB3SongPackagesData ["core/api/DataSyncAPI.ts"]:', newPackages)
 
-                            if (newPackages) {
-                              setWindowState({ packages: newPackages })
-                              const newCatalog = await window.api.data.filterSongPackages(packagesCatalogSortBy)
-                              if (STRUCT_LOG) console.log('struct SongPackagesFilterGenericObject [core/src/lib/dta/getDTACatalog.ts]', newCatalog)
-                              setMyPackagesScreenState({ packagesCatalog: newCatalog })
-                              setPackageDetailsState({ hasPackageNameChanged: false })
-                              setMessageBoxState({ message: { type: 'success', code: 'savePackageEditing' } })
-                            }
-                          } catch (err) {
-                            if (err instanceof Error) setWindowState({ err })
+                          if (newPackages) {
+                            setWindowState({ packages: newPackages })
+                            const newCatalog = await window.api.data.filterSongPackages(packagesCatalogSortBy)
+                            if (STRUCT_LOG) console.log('struct SongPackagesFilterGenericObject [core/src/lib/dta/getDTACatalog.ts]', newCatalog)
+                            setMyPackagesScreenState({ packagesCatalog: newCatalog })
+                            setPackageDetailsState({ hasPackageNameChanged: false })
+                            setMessageBoxState({ message: { type: 'success', code: 'savePackageEditing' } })
                           }
                           setWindowState({ disableButtons: false })
                         }}
@@ -582,21 +569,17 @@ export function PackageDetails() {
                         onClick={async (ev) => {
                           ev.stopPropagation()
                           setWindowState({ disableButtons: true })
-                          try {
-                            const newPackages = await window.api.data.editPackage(pkgIndex, { packageFolderName: editPackageFolderName })
-                            if (STRUCT_LOG) console.log('struct LightRB3SongPackagesData ["core/api/DataSyncAPI.ts"]:', newPackages)
+                          const newPackages = await window.api.data.editPackage(pkgIndex, { packageFolderName: editPackageFolderName })
+                          if (STRUCT_LOG) console.log('struct LightRB3SongPackagesData ["core/api/DataSyncAPI.ts"]:', newPackages)
 
-                            if (newPackages) {
-                              setWindowState({ packages: newPackages })
-                              const newCatalog = await window.api.data.filterSongPackages(packagesCatalogSortBy)
-                              // const newCatalog = await window.api.sortAndFilterSongPackages(packagesCatalogSortBy)
-                              if (STRUCT_LOG) console.log('struct SongPackagesFilterGenericObject [core/src/lib/dta/getDTACatalog.ts]', newCatalog)
-                              setMyPackagesScreenState({ packagesCatalog: newCatalog })
-                              setPackageDetailsState({ hasPackageFolderNameChanged: false })
-                              setMessageBoxState({ message: { type: 'success', code: 'savePackageEditing' } })
-                            }
-                          } catch (err) {
-                            if (err instanceof Error) setWindowState({ err })
+                          if (newPackages) {
+                            setWindowState({ packages: newPackages })
+                            const newCatalog = await window.api.data.filterSongPackages(packagesCatalogSortBy)
+                            // const newCatalog = await window.api.sortAndFilterSongPackages(packagesCatalogSortBy)
+                            if (STRUCT_LOG) console.log('struct SongPackagesFilterGenericObject [core/src/lib/dta/getDTACatalog.ts]', newCatalog)
+                            setMyPackagesScreenState({ packagesCatalog: newCatalog })
+                            setPackageDetailsState({ hasPackageFolderNameChanged: false })
+                            setMessageBoxState({ message: { type: 'success', code: 'savePackageEditing' } })
                           }
                           setWindowState({ disableButtons: false })
                         }}
@@ -637,14 +620,10 @@ export function PackageDetails() {
                       className="mr-2 w-fit self-start rounded-xs border border-neutral-700 bg-neutral-900 px-1 py-0.5 text-xs! uppercase duration-100 last:mr-0 hover:bg-neutral-700 active:bg-neutral-600 disabled:text-neutral-700 disabled:hover:bg-neutral-900"
                       onClick={async () => {
                         setWindowState({ disableButtons: true })
-                        try {
-                          const imgStats = await window.api.open.imageToCrop(active.path)
-                          if (imgStats) {
-                            setImageCropScreenState({ imgPath: imgStats.path, imgDataURL: imgStats.dataURL, func: 'packageDetails' })
-                            setMessageBoxState({ message: null })
-                          }
-                        } catch (err) {
-                          if (err instanceof Error) setWindowState({ err })
+                        const imgStats = await window.api.open.imageToCrop(active.path)
+                        if (imgStats) {
+                          setImageCropScreenState({ imgPath: imgStats.path, imgDataURL: imgStats.dataURL, func: 'packageDetails' })
+                          setMessageBoxState({ message: null })
                         }
                         setWindowState({ disableButtons: false })
                       }}
@@ -665,14 +644,10 @@ export function PackageDetails() {
                         disabled={disableButtons}
                         className="mr-2 w-fit self-start rounded-xs border border-neutral-700 bg-neutral-900 px-1 py-0.5 text-xs! uppercase duration-100 last:mr-0 hover:bg-neutral-700 active:bg-neutral-600 disabled:text-neutral-700 disabled:hover:bg-neutral-900"
                         onClick={async () => {
-                          try {
-                            setMessageBoxState({ message: { type: 'loading', code: 'processingSongArtworkTextureFile' } })
-                            await window.api.data.useFirstSongArtworkAsPkgArtwork(pkgIndex)
-                            setWindowState({ disableImg: pkgIndex })
-                            setMessageBoxState({ message: { type: 'success', code: 'editPackageImage' } })
-                          } catch (err) {
-                            if (err instanceof Error) setWindowState({ err })
-                          }
+                          setMessageBoxState({ message: { type: 'loading', code: 'processingSongArtworkTextureFile' } })
+                          await window.api.data.useFirstSongArtworkAsPkgArtwork(pkgIndex)
+                          setWindowState({ disableImg: pkgIndex })
+                          setMessageBoxState({ message: { type: 'success', code: 'editPackageImage' } })
                         }}
                       >
                         {t('getArtworkFromSong', { songTitle: songs[0].name })}
@@ -696,20 +671,16 @@ export function PackageDetails() {
                         onClick={async (ev) => {
                           ev.stopPropagation()
                           setWindowState({ disableButtons: true })
-                          try {
-                            const newPackages = await window.api.data.editPackage(pkgIndex, { category: editPackageCategory })
-                            if (STRUCT_LOG) console.log('struct LightRB3SongPackagesData ["core/api/DataSyncAPI.ts"]:', newPackages)
+                          const newPackages = await window.api.data.editPackage(pkgIndex, { category: editPackageCategory })
+                          if (STRUCT_LOG) console.log('struct LightRB3SongPackagesData ["core/api/DataSyncAPI.ts"]:', newPackages)
 
-                            if (newPackages) {
-                              setWindowState({ packages: newPackages })
-                              const newCatalog = await window.api.data.filterSongPackages(packagesCatalogSortBy)
-                              if (STRUCT_LOG) console.log('struct SongPackagesFilterGenericObject [core/src/lib/dta/getDTACatalog.ts]', newCatalog)
-                              setMyPackagesScreenState({ packagesCatalog: newCatalog })
-                              setPackageDetailsState({ hasPackageCategoryChanged: false })
-                              setMessageBoxState({ message: { type: 'success', code: 'savePackageEditing' } })
-                            }
-                          } catch (err) {
-                            if (err instanceof Error) setWindowState({ err })
+                          if (newPackages) {
+                            setWindowState({ packages: newPackages })
+                            const newCatalog = await window.api.data.filterSongPackages(packagesCatalogSortBy)
+                            if (STRUCT_LOG) console.log('struct SongPackagesFilterGenericObject [core/src/lib/dta/getDTACatalog.ts]', newCatalog)
+                            setMyPackagesScreenState({ packagesCatalog: newCatalog })
+                            setPackageDetailsState({ hasPackageCategoryChanged: false })
+                            setMessageBoxState({ message: { type: 'success', code: 'savePackageEditing' } })
                           }
                           setWindowState({ disableButtons: false })
                         }}
@@ -762,14 +733,10 @@ export function PackageDetails() {
                       className="mr-2 w-fit self-start rounded-xs border border-neutral-700 bg-neutral-900 px-1 py-0.5 text-xs! uppercase duration-100 last:mr-0 hover:bg-neutral-700 active:bg-neutral-600 disabled:text-neutral-700 disabled:hover:bg-neutral-900"
                       onClick={async () => {
                         setWindowState({ disableButtons: true })
-                        try {
-                          const newPackages = await window.api.data.encDecPackage(pkgIndex, 'encryptAll')
-                          if (STRUCT_LOG) console.log('struct LightRB3SongPackagesData ["core/api/DataSyncAPI.ts"]:', newPackages)
+                        const newPackages = await window.api.data.encDecPackage(pkgIndex, 'encryptAll')
+                        if (STRUCT_LOG) console.log('struct LightRB3SongPackagesData ["core/api/DataSyncAPI.ts"]:', newPackages)
 
-                          if (newPackages) setWindowState({ packages: newPackages })
-                        } catch (err) {
-                          if (err instanceof Error) setWindowState({ err })
-                        }
+                        if (newPackages) setWindowState({ packages: newPackages })
                         setWindowState({ disableButtons: false })
                       }}
                     >
@@ -780,14 +747,10 @@ export function PackageDetails() {
                       className="mr-2 w-fit self-start rounded-xs border border-neutral-700 bg-neutral-900 px-1 py-0.5 text-xs! uppercase duration-100 last:mr-0 hover:bg-neutral-700 active:bg-neutral-600 disabled:text-neutral-700 disabled:hover:bg-neutral-900"
                       onClick={async () => {
                         setWindowState({ disableButtons: true })
-                        try {
-                          const newPackages = await window.api.data.encDecPackage(pkgIndex, 'decryptAll')
-                          if (STRUCT_LOG) console.log('struct LightRB3SongPackagesData ["core/api/DataSyncAPI.ts"]:', newPackages)
+                        const newPackages = await window.api.data.encDecPackage(pkgIndex, 'decryptAll')
+                        if (STRUCT_LOG) console.log('struct LightRB3SongPackagesData ["core/api/DataSyncAPI.ts"]:', newPackages)
 
-                          if (newPackages) setWindowState({ packages: newPackages })
-                        } catch (err) {
-                          if (err instanceof Error) setWindowState({ err })
-                        }
+                        if (newPackages) setWindowState({ packages: newPackages })
                         setWindowState({ disableButtons: false })
                       }}
                     >
@@ -831,12 +794,8 @@ export function PackageDetails() {
                         setWindowState({ disableButtons: true })
                         setUserConfigState({ songsCatalogSortBy: 'title' })
                         const newConfig = getUserConfigState()
-                        try {
-                          await window.api.userConfig.save(newConfig)
-                          setPackageDetailsState({ songsCatalog: false })
-                        } catch (err) {
-                          if (err instanceof Error) setWindowState({ err })
-                        }
+                        await window.api.userConfig.save(newConfig)
+                        setPackageDetailsState({ songsCatalog: false })
                         setWindowState({ disableButtons: false })
                       }}
                     >
@@ -849,12 +808,8 @@ export function PackageDetails() {
                         setWindowState({ disableButtons: true })
                         setUserConfigState({ songsCatalogSortBy: 'artist' })
                         const newConfig = getUserConfigState()
-                        try {
-                          await window.api.userConfig.save(newConfig)
-                          setPackageDetailsState({ songsCatalog: false })
-                        } catch (err) {
-                          if (err instanceof Error) setWindowState({ err })
-                        }
+                        await window.api.userConfig.save(newConfig)
+                        setPackageDetailsState({ songsCatalog: false })
                         setWindowState({ disableButtons: false })
                       }}
                     >
@@ -867,12 +822,8 @@ export function PackageDetails() {
                         setWindowState({ disableButtons: true })
                         setUserConfigState({ songsCatalogSortBy: 'genre' })
                         const newConfig = getUserConfigState()
-                        try {
-                          await window.api.userConfig.save(newConfig)
-                          setPackageDetailsState({ songsCatalog: false })
-                        } catch (err) {
-                          if (err instanceof Error) setWindowState({ err })
-                        }
+                        await window.api.userConfig.save(newConfig)
+                        setPackageDetailsState({ songsCatalog: false })
                         setWindowState({ disableButtons: false })
                       }}
                     >
@@ -885,12 +836,8 @@ export function PackageDetails() {
                         setWindowState({ disableButtons: true })
                         setUserConfigState({ songsCatalogSortBy: 'decade' })
                         const newConfig = getUserConfigState()
-                        try {
-                          await window.api.userConfig.save(newConfig)
-                          setPackageDetailsState({ songsCatalog: false })
-                        } catch (err) {
-                          if (err instanceof Error) setWindowState({ err })
-                        }
+                        await window.api.userConfig.save(newConfig)
+                        setPackageDetailsState({ songsCatalog: false })
                         setWindowState({ disableButtons: false })
                       }}
                     >
@@ -903,12 +850,8 @@ export function PackageDetails() {
                         setWindowState({ disableButtons: true })
                         setUserConfigState({ songsCatalogSortBy: 'yearReleased' })
                         const newConfig = getUserConfigState()
-                        try {
-                          await window.api.userConfig.save(newConfig)
-                          setPackageDetailsState({ songsCatalog: false })
-                        } catch (err) {
-                          if (err instanceof Error) setWindowState({ err })
-                        }
+                        await window.api.userConfig.save(newConfig)
+                        setPackageDetailsState({ songsCatalog: false })
                         setWindowState({ disableButtons: false })
                       }}
                     >
@@ -921,12 +864,8 @@ export function PackageDetails() {
                         setWindowState({ disableButtons: true })
                         setUserConfigState({ songsCatalogSortBy: 'songRating' })
                         const newConfig = getUserConfigState()
-                        try {
-                          await window.api.userConfig.save(newConfig)
-                          setPackageDetailsState({ songsCatalog: false })
-                        } catch (err) {
-                          if (err instanceof Error) setWindowState({ err })
-                        }
+                        await window.api.userConfig.save(newConfig)
+                        setPackageDetailsState({ songsCatalog: false })
                         setWindowState({ disableButtons: false })
                       }}
                     >
@@ -939,12 +878,8 @@ export function PackageDetails() {
                         setWindowState({ disableButtons: true })
                         setUserConfigState({ songsCatalogSortBy: 'difficulty' })
                         const newConfig = getUserConfigState()
-                        try {
-                          await window.api.userConfig.save(newConfig)
-                          setPackageDetailsState({ songsCatalog: false })
-                        } catch (err) {
-                          if (err instanceof Error) setWindowState({ err })
-                        }
+                        await window.api.userConfig.save(newConfig)
+                        setPackageDetailsState({ songsCatalog: false })
                         setWindowState({ disableButtons: false })
                       }}
                     >

@@ -12,28 +12,29 @@
  * @returns Return `true` if valid, `false` otherwise.
  */
 export function isValidFolderName(name: string): true | 'noEmptyString' | 'noInvalidChars' | 'noEndsWithSpaceOrDot' | 'noSystemReservedNames' | 'tooBig' {
-  if (!name || name.trim().length === 0) {
-    return 'noEmptyString'
-  }
-  if (name.length > 255) return 'tooBig'
+	if (!name || name.trim().length === 0) {
+		return 'noEmptyString'
+	}
+	if (name.length > 255) return 'tooBig'
 
-  // Invalid characters (Windows + safe cross-platform)
-  const invalidChars = /[<>:"/\\|?*\x00-\x1F]/
-  if (invalidChars.test(name)) {
-    return 'noInvalidChars'
-  }
+	// Invalid characters (Windows + safe cross-platform)
+	// eslint-disable-next-line no-control-regex
+	const invalidChars = /[<>:"/\\|?*\x00-\x1F]/
+	if (invalidChars.test(name)) {
+		return 'noInvalidChars'
+	}
 
-  // Cannot end with space or dot (Windows)
-  if (/[. ]$/.test(name)) {
-    return 'noEndsWithSpaceOrDot'
-  }
+	// Cannot end with space or dot (Windows)
+	if (/[. ]$/.test(name)) {
+		return 'noEndsWithSpaceOrDot'
+	}
 
-  // Reserved Windows names (case-insensitive)
-  const reservedNames = new Set(['CON', 'PRN', 'AUX', 'NUL', 'COM1', 'COM2', 'COM3', 'COM4', 'COM5', 'COM6', 'COM7', 'COM8', 'COM9', 'LPT1', 'LPT2', 'LPT3', 'LPT4', 'LPT5', 'LPT6', 'LPT7', 'LPT8', 'LPT9'])
+	// Reserved Windows names (case-insensitive)
+	const reservedNames = new Set(['CON', 'PRN', 'AUX', 'NUL', 'COM1', 'COM2', 'COM3', 'COM4', 'COM5', 'COM6', 'COM7', 'COM8', 'COM9', 'LPT1', 'LPT2', 'LPT3', 'LPT4', 'LPT5', 'LPT6', 'LPT7', 'LPT8', 'LPT9'])
 
-  if (reservedNames.has(name.toUpperCase())) {
-    return 'noSystemReservedNames'
-  }
+	if (reservedNames.has(name.toUpperCase())) {
+		return 'noSystemReservedNames'
+	}
 
-  return true
+	return true
 }

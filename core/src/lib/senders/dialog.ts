@@ -10,6 +10,6 @@ export type DialogScreenPromptsTypes = 'corruptedUserConfig' | 'corruptedPackage
  * @returns {true}
  */
 export const sendDialog = (win: BrowserWindow, code: DialogScreenPromptsTypes): true => {
-  win.webContents.send('sendDialog', code)
-  return true
+	win.webContents.send('sendDialog', code)
+	return true
 }

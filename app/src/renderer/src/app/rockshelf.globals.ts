@@ -2,17 +2,17 @@ import type { SongGenre, SongGenreDX, SongSubGenre, SongSubGenreDX } from 'rocks
 import zod from 'zod'
 
 /** Aplication version, change this when updating. */
-export const APP_VERSION = '0.1'
+export const APP_VERSION = '0.1.1'
 /**
  * Allow logging of specific typed objects sent by the main process.
  */
 export const STRUCT_LOG = true
 
 export const DXNIGHTLYLINK = 'https://nightly.link/hmxmilohax/rock-band-3-deluxe/workflows/build/develop'
-export const TU5LINK = 'http://b0.ww.np.dl.playstation.net/tppkg/np/BLUS30463/BLUS30463_T4/e52d21c696ed0fcf/UP8802-BLUS30463_00-ROCKBAND3PATCH05-A0105-V0100-PE.pkg'
 
 export const MYPACKAGES_TABS = {
   PACKAGES: 0,
+  SEARCH: 1,
   FILTERS: 10,
 } as const
 

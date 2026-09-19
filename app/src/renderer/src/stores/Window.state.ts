@@ -1,7 +1,5 @@
-import { GitHubCommitCompare, GitHubCommitResponse } from '@renderer/app/types'
 import { ParsedRB3SaveData, InstrumentScoreData } from 'rockshelf-core/rbtools'
-import { RockBand3Data } from 'rockshelf-core/rbtools/lib'
-import { DeluxeInstalledData, LightRB3SongPackagesData } from 'rockshelf-core'
+import { DeluxeInstalledData, ErrorHandlerObject, LightRB3SongPackagesData, RockBand3Data } from 'rockshelf-core'
 import { create, StoreApi, UseBoundStore } from 'zustand'
 import { immer } from 'zustand/middleware/immer'
 
@@ -19,7 +17,7 @@ export interface WindowStateProps {
    */
   disableTopbarButtons: boolean
   disableImg: number
-  err: Error | null
+  err: ErrorHandlerObject | null
   rb3Stats: false | RockBand3Data | 'loading'
   saveData: false | ParsedRB3SaveData | 'loading'
   instrumentScores: false | InstrumentScoreData | 'loading'

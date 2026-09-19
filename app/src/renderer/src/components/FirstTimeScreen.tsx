@@ -13,7 +13,7 @@ import { STRUCT_LOG } from '@renderer/app/rockshelf.globals'
 export function FirstTimeScreen() {
   const { i18n, t } = useTranslation()
   const { active } = useFirstTimeScreenState(useShallow((x) => ({ active: x.active })))
-  const { devhdd0Path, rpcs3ExePath, setUserConfigState } = useUserConfigState(useShallow((x) => ({ devhdd0Path: x.devhdd0Path, rpcs3ExePath: x.rpcs3ExePath, setUserConfigState: x.setUserConfigState })))
+  const { rpcs3ExePath, setUserConfigState } = useUserConfigState(useShallow((x) => ({ rpcs3ExePath: x.rpcs3ExePath, setUserConfigState: x.setUserConfigState })))
   const { disableButtons, setWindowState } = useWindowState(useShallow((x) => ({ disableButtons: x.disableButtons, setWindowState: x.setWindowState })))
   const { setFirstTimeScreenState } = useFirstTimeScreenState(useShallow((x) => ({ setFirstTimeScreenState: x.setFirstTimeScreenState })))
   const { setLogoScreenState } = useLogoScreenState(useShallow((x) => ({ setLogoScreenState: x.setLogoScreenState })))
@@ -28,51 +28,19 @@ export function FirstTimeScreen() {
         <TransComponent i18nKey="firstTimeScreenText" />
       </p>
       <div className="mb-2 flex-row! items-center border-b border-white/25 pb-1">
-        <h1 className="mr-auto text-[1.25rem] uppercase">{t('devhdd0Dir')}</h1>
-        <p className={clsx('mr-2 text-neutral-600', devhdd0Path ? 'font-mono' : 'italic')}>{devhdd0Path || t('noPathSelected')}</p>
-        <button
-          disabled={disableButtons}
-          onClick={async () => {
-            setWindowState({ disableButtons: true })
-            try {
-              const selectedDevhdd0Path = await window.api.selector.devhdd0()
-              if (!selectedDevhdd0Path) {
-                setWindowState({ disableButtons: false })
-                return
-              }
-              setUserConfigState({ devhdd0Path: selectedDevhdd0Path })
-              setWindowState({ disableButtons: false })
-            } catch (err) {
-              if (err instanceof Error) setWindowState({ err })
-            }
-          }}
-          className="rounded-xs border border-neutral-800 bg-neutral-900 px-1 py-0.5 text-sm! uppercase duration-100 hover:bg-neutral-800 active:bg-neutral-700 disabled:text-neutral-700 disabled:hover:bg-neutral-900"
-        >
-          {t('select')}
-        </button>
-      </div>
-      <p className="mb-4 text-xs! text-neutral-600 italic">
-        <TransComponent i18nKey="devhdd0DirDesc" />
-      </p>
-
-      <div className="mb-2 flex-row! items-center border-b border-white/25 pb-1">
-        <h1 className="mr-auto text-[1.25rem] uppercase">{t('rpcs3Exe')}</h1>
+        <h1 className="mr-auto text-[1.25rem] uppercase">{window.electron.process.platform === 'win32' ? t('rpcs3Exe') : t('appImageFile')}</h1>
         <p className={clsx('mr-2 text-neutral-600', rpcs3ExePath ? 'font-mono' : 'italic')}>{rpcs3ExePath || t('noPathSelected')}</p>
         <button
           disabled={disableButtons}
           onClick={async () => {
             setWindowState({ disableButtons: true })
-            try {
-              const selectedRPCS3Exe = await window.api.selector.rpcs3Exe()
-              if (!selectedRPCS3Exe) {
-                setWindowState({ disableButtons: false })
-                return
-              }
-              setUserConfigState({ rpcs3ExePath: selectedRPCS3Exe })
+            const selectedRPCS3Exe = await window.api.selector.rpcs3Exe()
+            if (!selectedRPCS3Exe) {
               setWindowState({ disableButtons: false })
-            } catch (err) {
-              if (err instanceof Error) setWindowState({ err })
+              return
             }
+            setUserConfigState({ rpcs3ExePath: selectedRPCS3Exe })
+            setWindowState({ disableButtons: false })
           }}
           className="rounded-xs border border-neutral-800 bg-neutral-900 px-1 py-0.5 text-sm! uppercase duration-100 hover:bg-neutral-800 active:bg-neutral-700 disabled:text-neutral-700 disabled:hover:bg-neutral-900"
         >
@@ -80,37 +48,32 @@ export function FirstTimeScreen() {
         </button>
       </div>
       <p className="mb-4 text-xs! text-neutral-600 italic">
-        <TransComponent i18nKey="rpcs3ExeDesc" />
+        <TransComponent i18nKey={window.electron.process.platform === 'win32' ? 'rpcs3ExeDesc' : 'appImageFileDesc'} />
       </p>
       <AnimatedButton
-        condition={Boolean(devhdd0Path) && Boolean(rpcs3ExePath)}
+        condition={Boolean(rpcs3ExePath)}
         disabled={disableButtons}
         {...animate({ opacity: true, height: true, scaleY: true })}
         onClick={async () => {
           setWindowState({ disableButtons: true })
           setMessageBoxState({ message: { type: 'loading', code: 'firstTimeData' } })
-          try {
-            const userConfigStatus = await window.api.userConfig.save({
-              devhdd0Path,
-              rpcs3ExePath,
-            })
-            if (STRUCT_LOG) console.log('struct UserConfigObject ["core/src/core/api/UserDataAPI.ts"]:', userConfigStatus)
-            setUserConfigState({ ...userConfigStatus })
+          const userConfigStatus = await window.api.userConfig.save({
+            rpcs3ExePath,
+          })
+          if (STRUCT_LOG) console.log('struct UserConfigObject ["core/src/core/api/UserDataAPI.ts"]:', userConfigStatus)
+          setUserConfigState({ ...userConfigStatus })
 
-            const initialState = await window.api.data.getInitialState()
-            if (STRUCT_LOG) console.log('struct InitialStateObject ["core/src/core/api/DataSyncAPI.ts"]:', initialState)
+          const initialState = await window.api.data.getInitialState()
+          if (STRUCT_LOG) console.log('struct InitialStateObject ["core/src/core/api/DataSyncAPI.ts"]:', initialState)
 
-            setWindowState({
-              ...initialState,
-              disableButtons: false,
-            })
+          setWindowState({
+            ...initialState,
+            disableButtons: false,
+          })
 
-            setMessageBoxState({ message: null })
-            setLogoScreenState({ active: false })
-            setFirstTimeScreenState({ active: false })
-          } catch (err) {
-            if (err instanceof Error) setWindowState({ err })
-          }
+          setMessageBoxState({ message: null })
+          setLogoScreenState({ active: false })
+          setFirstTimeScreenState({ active: false })
         }}
         className="w-fit origin-top rounded-xs border border-neutral-800 bg-neutral-900 px-1 py-0.5 text-sm! uppercase duration-100 hover:bg-neutral-800 active:bg-neutral-700 disabled:text-neutral-700 disabled:hover:bg-neutral-900"
       >

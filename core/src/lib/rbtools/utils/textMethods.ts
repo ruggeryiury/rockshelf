@@ -6,26 +6,26 @@
  * @returns {string} The normalized string with accents removed.
  */
 export const normalizeString = (str: string): string => {
-  return str.normalize('NFD').replace(/[\u0300-\u036f]/g, '')
+	return str.normalize('NFD').replace(/[\u0300-\u036f]/g, '')
 }
 
 const articles = [
-  // English
-  'a',
-  'an',
-  'the',
+	// English
+	'a',
+	'an',
+	'the',
 
-  // Spanish
-  'lo',
-  'la',
-  'los',
-  'las',
-  'el',
+	// Spanish
+	'lo',
+	'la',
+	'los',
+	'las',
+	'el',
 
-  // Portuguese
-  'o',
-  'os',
-  'as',
+	// Portuguese
+	'o',
+	'os',
+	'as',
 ] as const
 
 /**
@@ -35,14 +35,14 @@ const articles = [
  * @returns {string} The text processed.
  */
 export const omitLeadingArticle = (text: string): string => {
-  const words = text.split(' ')
-  const firstWord = words[0]
-  const hasLeadingArticle = articles.includes(firstWord.toLowerCase() as (typeof articles)[number])
-  if (hasLeadingArticle) {
-    return words.slice(1).join(' ')
-  }
+	const words = text.split(' ')
+	const firstWord = words[0]
+	const hasLeadingArticle = articles.includes(firstWord.toLowerCase() as (typeof articles)[number])
+	if (hasLeadingArticle) {
+		return words.slice(1).join(' ')
+	}
 
-  return words.join(' ')
+	return words.join(' ')
 }
 
 /**
@@ -52,14 +52,14 @@ export const omitLeadingArticle = (text: string): string => {
  * @returns {string} The text processed.
  */
 export const leadingArticleToTrailing = (text: string): string => {
-  const words = text.split(' ')
-  const firstWord = words[0]
-  const hasLeadingArticle = articles.includes(firstWord.toLowerCase() as (typeof articles)[number])
-  if (hasLeadingArticle) {
-    return `${words.slice(1).join(' ')}, ${firstWord}`
-  }
+	const words = text.split(' ')
+	const firstWord = words[0]
+	const hasLeadingArticle = articles.includes(firstWord.toLowerCase() as (typeof articles)[number])
+	if (hasLeadingArticle) {
+		return `${words.slice(1).join(' ')}, ${firstWord}`
+	}
 
-  return words.join(' ')
+	return words.join(' ')
 }
 
 /**

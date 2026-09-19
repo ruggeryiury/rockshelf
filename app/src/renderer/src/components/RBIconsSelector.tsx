@@ -32,6 +32,7 @@ const allIcons: string[] = [
   'website',
 ]
 
+const otherIcons: string[] = ['custom', 'dx', 'website']
 const rbIcons: string[] = ['rb1-green', 'rb1-red', 'rb1-yellow', 'rb1', 'rb1-orange']
 const rbDLCIcons: string[] = [
   'rb1-2',
@@ -43,6 +44,12 @@ const rbDLCIcons: string[] = [
 ]
 const rb2Icons: string[] = ['rb2', 'rb2-cyan', 'rb2-hot', 'rb2-mustard', 'rb2-ocean', 'rb2-pink', 'rb2-red', 'rb2-terrain', 'rb2-tropical']
 const rb3Icons: string[] = ['rb3-green', 'rb3-red', 'rb3-yellow', 'rb3', 'rb3-orange']
+const rb4Icons: string[] = ['rb4', 'rb4r']
+const legoIcons: string[] = ['lego', 'lego-instr-icons']
+const gdIcons: string[] = ['gdrb']
+const tbIcons: string[] = ['tbrb']
+const blitzIcons: string[] = ['rbb']
+const rbnIcons: string[] = ['rbb']
 
 export function RBIconsSelector() {
   const { t } = useTranslation()
@@ -80,19 +87,36 @@ export function RBIconsSelector() {
                 case 'rb3':
                   rbIconURL += rb3Icons[selIcon]
                   break
+                case 'rb4':
+                  rbIconURL += rb4Icons[selIcon]
+                  break
+                case 'lego':
+                  rbIconURL += legoIcons[selIcon]
+                  break
+                case 'gd':
+                  rbIconURL += gdIcons[selIcon]
+                  break
+                case 'tb':
+                  rbIconURL += tbIcons[selIcon]
+                  break
+                case 'blitz':
+                  rbIconURL += blitzIcons[selIcon]
+                  break
+                case 'rbn':
+                  rbIconURL += rbnIcons[selIcon]
+                  break
+                case 'other':
+                  rbIconURL += otherIcons[selIcon]
+                  break
               }
 
               if (active === 'editPackage') {
-                try {
-                  const newPackages = await window.api.data.editPackage(pkgIndex, { imgPath: rbIconURL })
-                  if (STRUCT_LOG) console.log('struct LightRB3SongPackagesData ["core/api/DataSyncAPI.ts"]:', newPackages)
+                const newPackages = await window.api.data.editPackage(pkgIndex, { imgPath: rbIconURL })
+                if (STRUCT_LOG) console.log('struct LightRB3SongPackagesData ["core/api/DataSyncAPI.ts"]:', newPackages)
 
-                  if (newPackages) setWindowState({ packages: newPackages, disableImg: pkgIndex })
-                  setMessageBoxState({ message: { type: 'success', code: 'editPackageImage' } })
-                  resetRBIconsSelectorState()
-                } catch (err) {
-                  if (err instanceof Error) setWindowState({ err })
-                }
+                if (newPackages) setWindowState({ packages: newPackages, disableImg: pkgIndex })
+                setMessageBoxState({ message: { type: 'success', code: 'editPackageImage' } })
+                resetRBIconsSelectorState()
               } else if (active === 'createNewPackage') {
                 const newArtwork = await window.api.img.cropAndSaveToTemp(rbIconURL)
                 setMessageBoxState({ message: { type: 'success', code: 'editPackageImage' } })
@@ -171,6 +195,96 @@ export function RBIconsSelector() {
                 className={clsx(selIcon === iconIndex && selCollection === 'rb3' ? '' : 'border-transparent', 'h-16 min-h-16 w-16 min-w-16 border-2')}
                 onClick={async () => {
                   setRBIconsSelectorState({ selIcon: iconIndex, selCollection: 'rb3' })
+                }}
+              />
+            )
+          })}
+        </div>
+        <h1 className="mb-1 text-2xl uppercase">Rock Band 4</h1>
+        <div className="mb-2 flex-row! flex-wrap gap-2 last:mb-0">
+          {rb4Icons.map((icon, iconIndex) => {
+            return (
+              <img
+                key={`icon_${icon}`}
+                src={`rbicons://${icon}`}
+                className={clsx(selIcon === iconIndex && selCollection === 'rb4' ? '' : 'border-transparent', 'h-16 min-h-16 w-16 min-w-16 border-2')}
+                onClick={async () => {
+                  setRBIconsSelectorState({ selIcon: iconIndex, selCollection: 'rb4' })
+                }}
+              />
+            )
+          })}
+        </div>
+        <h1 className="mb-1 text-2xl uppercase">LEGO Rock Band</h1>
+        <div className="mb-2 flex-row! flex-wrap gap-2 last:mb-0">
+          {legoIcons.map((icon, iconIndex) => {
+            return (
+              <img
+                key={`icon_${icon}`}
+                src={`rbicons://${icon}`}
+                className={clsx(selIcon === iconIndex && selCollection === 'lego' ? '' : 'border-transparent', 'h-16 min-h-16 w-16 min-w-16 border-2')}
+                onClick={async () => {
+                  setRBIconsSelectorState({ selIcon: iconIndex, selCollection: 'lego' })
+                }}
+              />
+            )
+          })}
+        </div>
+        <h1 className="mb-1 text-2xl uppercase">Green Day Rock Band</h1>
+        <div className="mb-2 flex-row! flex-wrap gap-2 last:mb-0">
+          {gdIcons.map((icon, iconIndex) => {
+            return (
+              <img
+                key={`icon_${icon}`}
+                src={`rbicons://${icon}`}
+                className={clsx(selIcon === iconIndex && selCollection === 'gd' ? '' : 'border-transparent', 'h-16 min-h-16 w-16 min-w-16 border-2')}
+                onClick={async () => {
+                  setRBIconsSelectorState({ selIcon: iconIndex, selCollection: 'gd' })
+                }}
+              />
+            )
+          })}
+        </div>
+        <h1 className="mb-1 text-2xl uppercase">The Beatles Rock Band</h1>
+        <div className="mb-2 flex-row! flex-wrap gap-2 last:mb-0">
+          {tbIcons.map((icon, iconIndex) => {
+            return (
+              <img
+                key={`icon_${icon}`}
+                src={`rbicons://${icon}`}
+                className={clsx(selIcon === iconIndex && selCollection === 'tb' ? '' : 'border-transparent', 'h-16 min-h-16 w-16 min-w-16 border-2')}
+                onClick={async () => {
+                  setRBIconsSelectorState({ selIcon: iconIndex, selCollection: 'tb' })
+                }}
+              />
+            )
+          })}
+        </div>
+        <h1 className="mb-1 text-2xl uppercase">Rock Band Blitz</h1>
+        <div className="mb-2 flex-row! flex-wrap gap-2 last:mb-0">
+          {blitzIcons.map((icon, iconIndex) => {
+            return (
+              <img
+                key={`icon_${icon}`}
+                src={`rbicons://${icon}`}
+                className={clsx(selIcon === iconIndex && selCollection === 'blitz' ? '' : 'border-transparent', 'h-16 min-h-16 w-16 min-w-16 border-2')}
+                onClick={async () => {
+                  setRBIconsSelectorState({ selIcon: iconIndex, selCollection: 'blitz' })
+                }}
+              />
+            )
+          })}
+        </div>
+        <h1 className="mb-1 text-2xl uppercase">Others</h1>
+        <div className="mb-2 flex-row! flex-wrap gap-2 last:mb-0">
+          {otherIcons.map((icon, iconIndex) => {
+            return (
+              <img
+                key={`icon_${icon}`}
+                src={`rbicons://${icon}`}
+                className={clsx(selIcon === iconIndex && selCollection === 'other' ? '' : 'border-transparent', 'h-16 min-h-16 w-16 min-w-16 border-2')}
+                onClick={async () => {
+                  setRBIconsSelectorState({ selIcon: iconIndex, selCollection: 'other' })
                 }}
               />
             )

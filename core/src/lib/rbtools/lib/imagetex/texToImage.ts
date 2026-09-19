@@ -1,7 +1,8 @@
+import { type FilePathLikeTypes, pathLikeToFilePath } from 'node-lib'
 import { once } from 'node:events'
-import { pathLikeToFilePath, type FilePathLikeTypes } from 'node-lib'
 import { temporaryFile } from 'tempy'
-import { BinaryAPI, type ImageFile, PythonAPI, type ImageFormatTypes } from '../../core.exports'
+
+import { BinaryAPI, type ImageFile, type ImageFormatTypes, PythonAPI } from '../../core.exports'
 import { getDDSHeader, getTPLHeader } from '../../lib.exports'
 
 /**
@@ -13,34 +14,34 @@ import { getDDSHeader, getTPLHeader } from '../../lib.exports'
  * @returns {Promise<ImageFile>} A new instantiated `ImgFile` class pointing to the new converted image file.
  */
 export const texXboxPs3ToImage = async (srcFile: FilePathLikeTypes, destPath: FilePathLikeTypes, toFormat: ImageFormatTypes): Promise<ImageFile> => {
-  const src = pathLikeToFilePath(srcFile)
-  const dest = pathLikeToFilePath(destPath).changeFileExt(toFormat)
-  const dds = pathLikeToFilePath(temporaryFile({ extension: '.dds' }))
+	const src = pathLikeToFilePath(srcFile)
+	const dest = pathLikeToFilePath(destPath).changeFileExt(toFormat)
+	const dds = pathLikeToFilePath(temporaryFile({ extension: '.dds' }))
 
-  await dest.delete()
+	await dest.delete()
 
-  const srcBuffer = await src.read()
-  // 32 is the size of the texture file header we need to skip
-  const srcContents = src.ext === '.png_ps3' ? srcBuffer.subarray(32) : srcBuffer.subarray(32).swap16()
+	const srcBuffer = await src.read()
+	// 32 is the size of the texture file header we need to skip
+	const srcContents = src.ext === '.png_ps3' ? srcBuffer.subarray(32) : srcBuffer.subarray(32).swap16()
 
-  const fullHeader = srcBuffer.subarray(0, 16)
-  const shortHeader = srcBuffer.subarray(5, 11)
+	const fullHeader = srcBuffer.subarray(0, 16)
+	const shortHeader = srcBuffer.subarray(5, 11)
 
-  const srcHeader = getDDSHeader(fullHeader, shortHeader)
-  const ddsStream = await dds.createWriteStream()
-  ddsStream.write(srcHeader.data)
-  ddsStream.end(srcContents)
+	const srcHeader = getDDSHeader(fullHeader, shortHeader)
+	const ddsStream = await dds.createWriteStream()
+	ddsStream.write(srcHeader.data)
+	ddsStream.end(srcContents)
 
-  await once(ddsStream, 'finish')
+	await once(ddsStream, 'finish')
 
-  try {
-    const image = await PythonAPI.imageConverter(dds, dest, toFormat, { width: srcHeader.width, height: srcHeader.height })
-    await dds.delete()
-    return image
-  } catch (error) {
-    await dds.delete()
-    throw error
-  }
+	try {
+		const image = await PythonAPI.imageConverter(dds, dest, toFormat, { width: srcHeader.width, height: srcHeader.height })
+		await dds.delete()
+		return image
+	} catch (error) {
+		await dds.delete()
+		throw error
+	}
 }
 
 /**
@@ -52,25 +53,25 @@ export const texXboxPs3ToImage = async (srcFile: FilePathLikeTypes, destPath: Fi
  * @returns {Promise<ImageFile>} A new instantiated `ImgFile` class pointing to the new converted image file.
  */
 export const texWiiToImage = async (srcFile: FilePathLikeTypes, destPath: FilePathLikeTypes, toFormat: ImageFormatTypes): Promise<ImageFile> => {
-  if (process.platform !== 'win32') throw new Error('PNG_WII texture convertion only works on Windows OS.')
-  const src = pathLikeToFilePath(srcFile)
-  const dest = pathLikeToFilePath(destPath).changeFileExt(toFormat)
-  const tpl = pathLikeToFilePath(temporaryFile({ extension: '.tpl' }))
+	if (process.platform !== 'win32') throw new Error('PNG_WII texture convertion only works on Windows OS.')
+	const src = pathLikeToFilePath(srcFile)
+	const dest = pathLikeToFilePath(destPath).changeFileExt(toFormat)
+	const tpl = pathLikeToFilePath(temporaryFile({ extension: '.tpl' }))
 
-  await dest.delete()
+	await dest.delete()
 
-  const srcHeader = await getTPLHeader(src)
-  // 32 is the size of the texture file header we need to skip
-  const srcContents = await src.readOffset(32)
+	const srcHeader = await getTPLHeader(src)
+	// 32 is the size of the texture file header we need to skip
+	const srcContents = await src.readOffset(32)
 
-  const tplStream = await tpl.createWriteStream()
-  tplStream.write(srcHeader.data)
-  tplStream.end(srcContents)
+	const tplStream = await tpl.createWriteStream()
+	tplStream.write(srcHeader.data)
+	tplStream.end(srcContents)
 
-  await once(tplStream, 'finish')
+	await once(tplStream, 'finish')
 
-  const image = await BinaryAPI.wimgtDec(tpl, dest)
+	const image = await BinaryAPI.wimgtDec(tpl, dest)
 
-  await tpl.delete()
-  return image
+	await tpl.delete()
+	return image
 }

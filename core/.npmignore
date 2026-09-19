@@ -10,6 +10,7 @@ src/
 .prettierignore
 eslint.config.js
 pnpm-lock.yaml
+pnpm-workspace.yaml
 prettier.config.js
 prod.tsconfig.json
 tsconfig.json

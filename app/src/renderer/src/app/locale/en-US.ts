@@ -403,7 +403,7 @@ export const appENUSLocale = {
   installPKGFile: 'Install PKG File',
   installQuickConfigurations: 'Install Quick Configurations',
   installRB3File: 'Install RB3 File',
-  installRB3FileBtnDesc: 'Install a song package from a Rock Band 3 Song Package file (.rb3)',
+  installRB3FileBtnDesc: 'Install a Rock Band 3 Song Package file (.rb3)',
   installRB3FilePackageFolderNameDesc: 'Be sure to verify if the song package folder name is available, as any package with the same folder name will be overwritten.',
   instrument: 'Instrument',
   instrumentDesc: 'Change the instrument when sorting by difficulty.',
